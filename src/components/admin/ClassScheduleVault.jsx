@@ -472,6 +472,17 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+// import { db } from "../../firebaseConfig";
+// import {
+//   collection,
+//   addDoc,
+//   getDocs,
+//   query,
+//   where,
+//   updateDoc,
+//   doc,
+// } from "firebase/firestore";
+
 import {
   FaCalendarDays,
   // FaCirclePlus,
@@ -505,6 +516,7 @@ const ClassScheduleVault = () => {
 
   const [formData, setFormData] = useState({
     targetDateTime: "",
+    weekPicker: "",
     currentLesson: "",
     specialNotes: "",
     zoomLink: "",
@@ -521,6 +533,7 @@ const ClassScheduleVault = () => {
   useEffect(() => {
     if (currentSchedule) {
       setFormData({
+        weekPicker: currentSchedule.weekPicker || "",
         targetDateTime: currentSchedule.targetDateTime || "",
         currentLesson: currentSchedule.currentLesson || "",
         specialNotes: currentSchedule.specialNotes || "",
@@ -528,6 +541,7 @@ const ClassScheduleVault = () => {
       });
     } else {
       setFormData({
+        weekPicker: "",
         targetDateTime: "",
         currentLesson: "",
         specialNotes: "",
@@ -579,6 +593,7 @@ const ClassScheduleVault = () => {
       currentLesson: formData.currentLesson,
       specialNotes: formData.specialNotes,
       zoomLink: formData.zoomLink,
+      weekPicker: formData.weekPicker,
       overrideStatus: "AUTO",
     };
 
@@ -717,6 +732,33 @@ const ClassScheduleVault = () => {
                 name="targetDateTime"
                 required
                 value={formData.targetDateTime}
+                onChange={handleInputChange}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  borderRadius: "8px",
+                  border: "1px solid #ddd",
+                  fontWeight: "bold",
+                }}
+              />
+            </div>
+
+            <div className="input-group">
+              <label
+                style={{
+                  fontWeight: "600",
+                  fontSize: "0.85rem",
+                  color: "#1a0a54",
+                  display: "block",
+                  marginBottom: "5px",
+                }}>
+                Class Week
+              </label>
+              <input
+                type="week"
+                name="weekPicker"
+                required
+                value={formData.weekPicker}
                 onChange={handleInputChange}
                 style={{
                   width: "100%",
@@ -895,7 +937,7 @@ const ClassScheduleVault = () => {
                   gap: "10px",
                   boxShadow: "0 4px 10px rgba(46,204,113,0.2)",
                 }}>
-                <FaVideo /> 🟢 FORCE ACTIVE
+                <FaVideo /> FORCE ACTIVE
               </button>
               <button
                 onClick={() => handleStatusOverride("POSTPONED")}
@@ -914,7 +956,7 @@ const ClassScheduleVault = () => {
                   gap: "10px",
                   boxShadow: "0 4px 10px rgba(243,156,18,0.2)",
                 }}>
-                <FaPause /> ⏳ POSTPONE CLASS
+                <FaPause /> POSTPONE CLASS
               </button>
               <button
                 onClick={() => handleStatusOverride("CLOSED")}
@@ -933,7 +975,7 @@ const ClassScheduleVault = () => {
                   gap: "10px",
                   boxShadow: "0 4px 10px rgba(231,76,60,0.2)",
                 }}>
-                <FaCircleXmark /> 🔴 CLOSED CLASS
+                <FaCircleXmark /> CLOSED CLASS
               </button>
             </div>
           </div>
