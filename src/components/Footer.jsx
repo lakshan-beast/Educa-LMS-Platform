@@ -102,13 +102,13 @@ const Footer = () => {
           <h3>Quick Navigation</h3>
           <ul>
             <li>
-              <NavHashLink smooth to="/#resources">
-                <FaCaretRight className="footer-icon" /> Academic Resources
+              <NavHashLink smooth to="/#home">
+                <FaCaretRight className="footer-icon" /> Home
               </NavHashLink>
             </li>
             <li>
-              <NavHashLink smooth to="/#reviews">
-                <FaCaretRight className="footer-icon" /> Students Feedbacks
+              <NavHashLink smooth to="/#resources">
+                <FaCaretRight className="footer-icon" /> Academic Resources
               </NavHashLink>
             </li>
             <li>
@@ -128,7 +128,7 @@ const Footer = () => {
               </NavHashLink>
             </li>
             <li>
-              <NavHashLink smooth to="/#about">
+              <NavHashLink smooth to="/#information">
                 <FaCaretRight className="footer-icon" /> Why Choose
               </NavHashLink>
             </li>
@@ -144,6 +144,11 @@ const Footer = () => {
         <div className="footer-card footer-links">
           <h3>Study Resources</h3>
           <ul>
+            <li>
+              <NavHashLink smooth to="/#reviews">
+                <FaCaretRight className="footer-icon" /> Students Feedbacks
+              </NavHashLink>
+            </li>
             <li>
               <Link to="/tool">
                 <FaCaretRight className="footer-icon" /> Smart Study Tools
@@ -261,11 +266,11 @@ const Footer = () => {
           <p>
             <FaLaptopCode className="footer-icon" />
             last updated
-            <span> 2026 May</span>
+            <span> 2026 June</span>
           </p>
           <p>
             <FaUsers className="footer-icon" />
-            Community reviewed
+            Community Reviewed
           </p>
         </div>
 
