@@ -157,6 +157,12 @@
 
       color: $white;
       text-align: left;
+      border: 1px solid $text-medium;
+
+      &:hover {
+        border-color: $primary-orange;
+        font-size: 0.95rem;
+      }
     }
   }
 
