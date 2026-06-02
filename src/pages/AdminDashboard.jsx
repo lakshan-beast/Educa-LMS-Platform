@@ -430,6 +430,8 @@ import NoticeBoard from "../components/admin/NoticeVault";
 import ClassScheduleVault from "../components/admin/ClassScheduleVault";
 import PaperHubUploadVault from "../components/admin/PaperHubUploadVault";
 
+import PasswordField from "../components/PasswordField";
+
 import {
   FaUserPlus,
   FaGraduationCap,
@@ -442,7 +444,7 @@ import {
   FaFolderPlus,
   FaLock,
   FaUserShield,
-  FaKey,
+  // FaKey,
   FaCalendarCheck,
 } from "react-icons/fa6";
 
@@ -460,7 +462,9 @@ const AdminDashboard = () => {
   // 🎛️ States ਪාලනය
   const [isAgreed, setIsAgreed] = useState(false);
   const [inputUsername, setInputUsername] = useState("");
-  const [inputPassword, setInputPassword] = useState("");
+  // const [inputPassword, setInputPassword] = useState("");
+  const [password, setPassword] = useState("");
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loginError, setLoginError] = useState("");
 
@@ -500,7 +504,7 @@ const AdminDashboard = () => {
     if (validCredentials) {
       if (
         inputUsername.trim() === validCredentials.username &&
-        inputPassword.trim() === validCredentials.password
+        password.trim() === validCredentials.password
       ) {
         setIsAuthenticated(true);
         setLoginError("");
@@ -515,7 +519,7 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     setIsAuthenticated(false);
     setInputUsername("");
-    setInputPassword("");
+    setPassword("");
     navigate("/");
   };
 
@@ -644,7 +648,7 @@ const AdminDashboard = () => {
                   }}
                 />
               </div>
-              <div
+              {/* <div
                 className="input-group"
                 style={{
                   marginBottom: "20px",
@@ -672,7 +676,14 @@ const AdminDashboard = () => {
                     border: "1px solid #ddd",
                   }}
                 />
-              </div>
+              </div> */}
+
+              <PasswordField
+                label=" Secret Login Password"
+                placeholder="Type Your Paper-Slip Password..."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
               {/* 👑 🆕 [THE LEGAL CHECKBOX MODULE]: ලොගින් එකට දැමූ නීතිමය ආරක්ෂක වැට */}
               <div
