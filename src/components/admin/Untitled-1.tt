@@ -1,0 +1,456 @@
+import React, { useState } from "react";
+import { db } from "../../firebaseConfig"; // 👑 අපේ මධ්‍යම Firebase පාලම ගත්තා
+import { collection, addDoc } from "firebase/firestore"; // ☁️ Cloud එකට ලියන Tools ගත්තා
+import { FaCloudArrowUp, FaFolderOpen, FaHeading, FaLink, FaGraduationCap } from "react-icons/fa6";
+
+const PaperHubUploadVault = ({ selectedGrade, subject }) => {
+  // 1. 📋 [FORM DATA STATE]: ඔයා කිව්ව ඉන්පුට් 4 ලස්සනට මෙතන තියෙනවා මචං
+  const [formData, setFormData] = useState({
+    grade: selectedGrade || "11", // Admin Dashboard එකෙන් එන Grade එක ඔටෝ සෙට් වේ
+    category: "class-tutes",     // Default Category එක Class Tutes වේ
+    materialTitle: "",
+    driveUrl: "",
+  });
+
+  const [error, setError] = useState("");     
+  const [success, setSuccess] = useState(""); 
+  const [isSubmitting, setIsSubmitting] = useState(false); // බටන් එක Double Click වීම වැළැක්වීමට
+
+  // Input වෙනස් වෙද්දී දත්ත State එකට ගන්නා ලොජික් එක
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // 🧠 ☁️ [THE UNIFIED UPLOAD ENGINE]: "Upload Tute" බටන් එක ඔබපු ගමන් Firebase එකට ලියන හැටි
+  const handleMaterialUploadSubmit = async (e) => {
+    e.preventDefault(); 
+    setIsSubmitting(true);
+
+    if (!formData.materialTitle || !formData.driveUrl) {
+      setError("කරුණාකර නිබන්ධනයේ නම සහ Google Drive ලින්ක් එක ඇතුළත් කරන්න! ⚠️");
+      setSuccess("");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Cloud එකට යන පිරිසිදු අධ්‍යයන දත්ත ව්‍යුහය
+    const materialCloudData = {
+      grade: formData.grade,
+      category: formData.category,
+      title: formData.materialTitle,
+      driveUrl: formData.driveUrl.trim(),
+      subject: subject, // ලොග් වී ඉන්න සර්ගේ විෂය (maths/science/english) ඔටෝම වැදේ
+      createdAt: new Date().toISOString()
+    };
+
+    try {
+      // 🚀 [THE MAGIC]: 'academic_materials' Collection එකට දත්ත ලියයි (Collection එක ඉබේම සෑදේ!)
+      await addDoc(collection(db, "academic_materials"), materialCloudData);
+
+      // ලස්සන කොළ පාට Success Notification එකක් පෙන්වයි
+      setSuccess("${formData.materialTitle}" `නිබන්ධනය සාර්ථකව Google Cloud එකට අප්ලෝඩ් කරන ලදී! 🟢`);
+      setError("");
+
+      // 💾 [FORM RESET]: ටයිප් කරපු විස්තර ඔක්කොම ක්ලියර් කරයි (Grade & Category ඉතුරු කරමින්)
+      setFormData((prev) => ({
+        ...prev,
+        materialTitle: "",
+        driveUrl: "",
+      }));
+
+    } catch (err) {
+      console.error("Firebase Storage Error:", err);
+      setError("Cloud Database එකට දත්ත අප්ඩේට් කිරීමේදී දෝෂයක් සිදු විය! ❌");
+      setSuccess("");
+    }
+
+    setIsSubmitting(false);
+
+    // තත්පර 5කින් ඇලර්ට් කාඩ්ස් නිවී යයි
+    setTimeout(() => {
+      setSuccess("");
+      setError("");
+    }, 5000);
+  };
+
+  return (
+    <div className="vault-container" style={{ background: "white", padding: "30px", borderRadius: "20px" }}>
+      
+      {/* Vault Header */}
+      <div style={{ marginBottom: "25px" }}>
+        <h3 style={{ color: "#1a0a54", margin: 0, display: "flex", alignItems: "center", gap: "10px" }}>
+          <FaCloudArrowUp /> Academic Paper Hub Upload Vault ({subject?.toUpperCase()})
+        </h3>
+        <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
+          සර්ලගේ පන්ති නිබන්ධන (Tutes), පසුගිය විභාග ප්‍රශ්න පත්‍ර (Past Papers) සහ සූත්‍ර පත්‍රිකා ළමයින්ගේ Dashboard එකට ලයිව් අප්ලෝඩ් කරන්න [INDEX 4, 51].
+        </p>
+      </div>
+
+      {/* Premium Notification Alerts */}
+      {error && <div style={{ background: "#fdedec", borderLeft: "5px solid #e74c3c", color: "#c0392b", padding: "13px", borderRadius: "8px", marginBottom: "20px", fontSize: "0.88rem", fontWeight: "bold" }}>⚠️ {error}</div>}
+      {success && <div style={{ background: "#e8f8f5", borderLeft: "5px solid #2ecc71", color: "#27ae60", padding: "13px", borderRadius: "8px", marginBottom: "20px", fontSize: "0.88rem", fontWeight: "bold" }}>✓ {success}</div>}
+      {/* Main Form Box */}
+      <div style={{ background: "#f8faff", padding: "30px", borderRadius: "16px", border: "1px solid #eef2ff", maxWidth: "650px", margin: "0 auto" }}>
+        <form onSubmit={handleMaterialUploadSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          
+          {/* Row 1: Grade and Category */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+            <div className="input-group">
+              <label style={{ fontWeight: "600", fontSize: "0.85rem", color: "#1a0a54", display: "block", marginBottom: "6px" }}>
+                <FaGraduationCap /> Target Grade (ශ්‍රේණිය)
+              </label>
+              <select name="grade" value={formData.grade} onChange={handleChange} style={{ width: "100%", padding: "11px", borderRadius: "8px", border: "1px solid #ddd", background: "white", fontSize: "0.9rem", fontWeight: "600" }}>
+                <option value="10">Grade 10</option>
+                <option value="11">Grade 11</option>
+              </select>
+            </div>
+
+            <div className="input-group">
+              <label style={{ fontWeight: "600", fontSize: "0.85rem", color: "#1a0a54", display: "block", marginBottom: "6px" }}>
+                <FaFolderOpen /> Material Category (කාණ්ඩය)
+              </label>
+              <select name="category" value={formData.category} onChange={handleChange} style={{ width: "100%", padding: "11px", borderRadius: "8px", border: "1px solid #ddd", background: "white", fontSize: "0.9rem", fontWeight: "600" }}>
+                <option value="class-tutes">📄 Class Tutes (නිබන්ධන)</option>
+                <option value="past-papers">📕 Past Papers (ප්‍රශ්න පත්‍ර)</option>
+                <option value="formulas">🎓 Formula Guides (සූත්‍ර පත්‍ර)</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Row 2: Material Title */}
+          <div className="input-group">
+            <label style={{ fontWeight: "600", fontSize: "0.85rem", color: "#1a0a54", display: "block", marginBottom: "6px" }}>
+              <FaHeading /> Document Title / Name (නිබන්ධනයේ නම)
+            </label>
+            <input 
+              type="text" 
+              name="materialTitle" 
+              placeholder="ex: 2026 Pure Maths - Geometry Lesson 02 Tute" 
+              required 
+              value={formData.materialTitle} 
+              onChange={handleChange} 
+              style={{ width: "100%", padding: "11px", borderRadius: "8px", border: "1px solid #ddd", fontSize: "0.9rem" }} 
+            />
+          </div>
+
+          {/* Row 3: Google Drive Link */}
+          <div className="input-group">
+            <label style={{ fontWeight: "600", fontSize: "0.85rem", color: "#1a0a54", display: "block", marginBottom: "6px" }}>
+              <FaLink /> Google Drive Resource URL (ඩ්‍රයිව් ලින්ක් එක)
+            </label>
+            <input 
+              type="url" 
+              name="driveUrl" 
+              placeholder="https://google.com..." 
+              required 
+              value={formData.driveUrl} 
+              onChange={handleChange} 
+              style={{ width: "100%", padding: "11px", borderRadius: "8px", border: "1px solid #ddd", fontSize: "0.9rem", color: "#4b6bfb", fontWeight: "500" }} 
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            style={{ width: "100%", padding: "13px", background: "#ff4b2b", color: "white", border: "none", borderRadius: "8px", fontWeight: "bold", cursor: isSubmitting ? "not-allowed" : "pointer", marginTop: "5px", boxShadow: "0 4px 10px rgba(255,75,43,0.2)", fontSize: "0.95rem", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", opacity: isSubmitting ? 0.7 : 1, transition: "0.3s" }}
+          >
+            🚀 {isSubmitting ? "Uploading to Cloud..." : "Upload Material to Paper Hub"}
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  );
+};
+
+export default PaperHubUploadVault;
+
+
+
+// const PaperHubUploadVaulst = ({ selectedGrade, subject }) => {
+//   // 👑 6 සිට 11 දක්වා ටියුට්ස් අප්ලෝඩ් පාලනයට වෙනම ස්ටේට් එකක්
+//   const [localGrade, setLocalGrade] = useState("11");
+
+//   const [uploadedMaterials, setUploadedMaterials] = useState([
+//     {
+//       id: 1,
+//       grade: "11",
+//       subject: "maths",
+//       category: "tutes",
+//       title: "ජ්‍යාමිතිය ප්‍රමේයයන් සහ සිද්ධාන්ත නිබන්ධනය",
+//       link: "https://google.com",
+//     },
+//   ]);
+
+//   // 👑 1. [FIXED STATE]: අකුරු සහ වරහන් නිවැරදි කළා
+//   const [formData, setFormData] = useState({
+//     grade: selectedGrade || "11",
+//     category: "class-tutes",
+//     materialTitle: "",
+//     driveUrl: "",
+//   });
+
+//   const [error, setError] = useState("");
+//   const [success, setSuccess] = useState("");
+//   const [isSubmitting, setIsSubmitting] = useState(false);
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData((prev) => ({ ...prev, [name]: value }));
+//   };
+
+//   // 🧠 ☁️ 2. [FIXED ASYNC ENGINE]: 'async' කෑල්ල නූලටම එකතු කළා
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setIsSubmitting(true);
+
+//     // 👑 3. [FIXED OR LOGIC]: OR (||) කෑල්ල නිවැරදිව දැම්මා
+//     if (formData.materialTitle.trim() === "" || formData.driveUrl.trim() === "") {
+//       setError("Please enter all details correctly! ⚠️");
+//       setSuccess("");
+//       setIsSubmitting(false);
+//       return;
+//     }
+
+//     const materialCloudData = {
+//       grade: formData.grade,
+//       category: formData.category,
+//       title: formData.materialTitle,
+//       driveUrl: formData.driveUrl.trim(),
+//       subject: subject, 
+//       createdAt: new Date().toISOString()
+//     };
+
+//     try {
+//       // 🚀 [THE FIREBASE CONNECTION]: 'academic_materials' Collection එකට දත්ත ලියයි
+//       await addDoc(collection(db, "academic_materials"), materialCloudData);
+      
+//       // 👑 4. [FIXED BACKTICKS]: බැක්ටික්ස් ලොජික් එක නූලටම සෙට් කළා
+//       setSuccess(`"${formData.materialTitle}" නිබන්ධනය සාර්ථකව Google Cloud එකට අප්ලෝඩ් කරන ලදී! 🟢`);
+//       setError("");
+      
+//       // Local List එකටත් දත්ත එකතු කිරීම
+//       setUploadedMaterials((prevMaterials) => [materialCloudData, ...prevMaterials]);
+
+//       // 💾 Form එක රීසෙට් කිරීම
+//       setFormData((prev) => ({
+//         ...prev,
+//         materialTitle: "",
+//         driveUrl: "",
+//       }));
+
+//     } catch (err) {
+//       console.error("Firebase Storage Error:", err);
+//       setError("Cloud Database එකට දත්ත අප්ඩේට් කිරීමේදී දෝෂයක් සිදු විය! ❌");
+//       setSuccess("");
+//     }
+    
+//     setIsSubmitting(false);
+    
+//     setTimeout(() => {
+//       setSuccess("");
+//       setError("");
+//     }, 5000);
+//   };
+
+
+
+
+
+  // import React, { useState } from "react";
+import { db } from "../../firebaseConfig"; // 👑 Firebase db පාලම ගත්තා
+import { collection, addDoc } from "firebase/firestore"; // ☁️ Cloud Tools ගත්තා
+
+import {
+  FaFolderPlus,
+  FaFilePdf,
+  FaTrashCan,
+  FaFileLines,
+  FaGraduationCap,
+} from "react-icons/fa6";
+
+const PaperHubUploadVault = ({ selectedGrade, subject }) => {
+  // 👑 [LOCAL GRADE STATE]: 6 සිට 11 දක්වා ටියුට්ස් අප්ලෝඩ් පාලනයට වෙනම ස්ටේට් එකක්
+  const [localGrade, setLocalGrade] = useState("11");
+
+  const [uploadedMaterials, setUploadedMaterials] = useState([
+    {
+      id: 1,
+      grade: "11",
+      subject: "maths",
+      category: "tutes",
+      title: "ජ්‍යාමිතිය ප්‍රමේයයන් සහ සිද්ධාන්ත නිබන්ධනය",
+      link: "https://google.com",
+    },
+  ]);
+
+  // 👑 1. [FIXED STATE LOGIC]: selectedGrade || "11" ලෙස නිවැරදි කළා
+  const [formData, setFormData] = useState({
+    grade: selectedGrade || "11",
+    category: "class-tutes",
+    materialTitle: "",
+    driveUrl: "",
+  });
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // 👑 2. [FIXED ASYNC]: await එක වැඩ කරන්න මෙතනට 'async' කෑල්ල නූලටම දැම්මා
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // 👑 3. [FIXED OR LOGIC]: මැදට || ලකුණු දෙක නිවැරදිව එකතු කළා
+    if (formData.materialTitle.trim() === "" || formData.driveUrl.trim() === "") {
+      setError("Please enter all details correctly! ⚠️");
+      setSuccess("");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const materialCloudData = {
+      grade: formData.grade,
+      category: formData.category,
+      title: formData.materialTitle,
+      driveUrl: formData.driveUrl.trim(),
+      subject: subject, // ලොග් වී ඉන්න සර්ගේ විෂය (maths/science/english) ඔටෝම වැදේ
+      createdAt: new Date().toISOString()
+    };
+    
+    try {
+      // 🚀 [THE REAL MAGIC]: 'academic_materials' Collection එකට දත්ත ලියයි
+      await addDoc(collection(db, "academic_materials"), materialCloudData);
+      
+      // 👑 4. [FIXED BACKTICKS]: මැසේජ් එක වටේට නිවැරදිව බැක්ටික්ස් (``  `) දැම්මා
+      setSuccess(`"${formData.materialTitle}" The tutorial was successfully uploaded to Google Cloud! 🟢`);
+      setError("");
+
+      // Local List එකටත් දත්ත එකතු කිරීම
+      setUploadedMaterials((prevMaterials) => [materialCloudData, ...prevMaterials]);
+
+      // 💾 [FORM RESET]: පෝම් එක පිරිසිදු කිරීම
+      setFormData((prev) => ({
+        ...prev,
+        materialTitle: "",
+        driveUrl: "",
+      }));
+
+    } catch (err) {
+      console.error("Firebase Storage Error:", err);
+      setError("An error occurred while updating data to the Cloud Database! ❌");
+      setSuccess("");
+    }
+    
+    setIsSubmitting(false);
+    
+    setTimeout(() => {
+      setSuccess("");
+      setError("");
+    }, 5000);
+  };
+
+  const handleDeleteMaterial = (id) => {
+    if (window.confirm("Do you want to remove this tutorial from the student portal? 😮")) {
+      setUploadedMaterials(uploadedMaterials.filter((m) => m.id !== id));
+      setSuccess("The material was successfully removed from the system! 🔴");
+      setTimeout(() => setSuccess(""), 3000);
+    }
+  };
+
+  return (
+    <div className="vault-container" style={{ background: "white", padding: "30px", borderRadius: "20px" }}>
+      
+      <div style={{ marginBottom: "25px" }}>
+        <h3 style={{ color: "#1a0a54", margin: 0, display: "flex", alignItems: "center", gap: "10px" }}>
+          <FaFolderPlus /> Academic Paper Hub Upload Vault ({subject?.toUpperCase()})
+        </h3>
+        <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
+          සර්ලගේ පන්ති නිබන්ධන සහ ප්‍රශ්න පත්‍ර ළමයින්ගේ Dashboard එකට ලයිව් අප්ලෝඩ් කරන්න [INDEX 4, 51].
+        </p>
+      </div>
+      {error && <div style={{ background: "#fdedec", borderLeft: "5px solid #e74c3c", color: "#c0392b", padding: "12px", borderRadius: "8px", marginBottom: "15px", fontSize: "0.85rem", fontWeight: "bold" }}>⚠️ {error}</div>}
+      {success && <div style={{ background: "#e8f8f5", borderLeft: "5px solid #2ecc71", color: "#27ae60", padding: "12px", borderRadius: "8px", marginBottom: "15px", fontSize: "0.85rem", fontWeight: "bold" }}>✓ {success}</div>}
+
+      <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "30px" }}>
+        
+        {/* UPLOAD FORM */}
+        <div style={{ background: "#f8faff", padding: "25px", borderRadius: "16px", border: "1px solid #eef2ff" }}>
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+            
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "15px" }}>
+              <div className="input-group">
+                <label style={{ fontWeight: "600", fontSize: "0.85rem", color: "#1a0a54", display: "block", marginBottom: "5px" }}>
+                  <FaGraduationCap /> Select Grade
+                </label>
+                <select name="grade" value={formData.grade} onChange={handleInputChange} style={{ width: "100%", padding: "10px", borderRadius: "8px", border: "1px solid #ddd", background: "white" }}>
+                  <option value="10">Grade 10</option>
+                  <option value="11">Grade 11</option>
+                </select>
+              </div>
+
+              <div className="input-group">
+                <label style={{ fontWeight: "600", fontSize: "0.85rem", color: "#1a0a54", display: "block", marginBottom: "5px" }}>Category</label>
+                <select name="category" value={formData.category} onChange={handleInputChange} style={{ width: "100%", padding: "10px", borderRadius: "8px", border: "1px solid #ddd", background: "white" }}>
+                  <option value="class-tutes">Class Tutes</option>
+                  <option value="past-papers">Past Papers</option>
+                  <option value="formulas">Formulas</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="input-group">
+              <label style={{ fontWeight: "600", fontSize: "0.85rem", color: "#1a0a54", display: "block", marginBottom: "5px" }}>
+                <FaFileLines /> Material Title / Name
+              </label>
+              <input type="text" name="materialTitle" placeholder="ex: Limits Tute 01" required value={formData.materialTitle} onChange={handleInputChange} style={{ width: "100%", padding: "10px", borderRadius: "8px", border: "1px solid #ddd" }} />
+            </div>
+
+            <div className="input-group">
+              <label style={{ fontWeight: "600", fontSize: "0.85rem", color: "#1a0a54", display: "block", marginBottom: "5px" }}>Google Drive URL Link</label>
+              <input type="url" name="driveUrl" placeholder="https://google.com..." required value={formData.driveUrl} onChange={handleInputChange} style={{ width: "100%", padding: "10px", borderRadius: "8px", border: "1px solid #ddd", color: "#4b6bfb" }} />
+            </div>
+
+            <button type="submit" disabled={isSubmitting} style={{ width: "100%", padding: "12px", background: "#ff4b2b", color: "white", border: "none", borderRadius: "8px", fontWeight: "bold", cursor: isSubmitting ? "not-allowed" : "pointer", opacity: isSubmitting ? 0.7 : 1 }}>
+              {isSubmitting ? "Uploading..." : "🚀 Upload Material to Cloud"}
+            </button>
+          </form>
+        </div>
+
+        {/* UPLOADED LOG HISTORY */}
+        <div style={{ background: "#fdfdfd", padding: "20px", borderRadius: "16px", border: "1px solid #eee", maxHeight: "380px", overflowY: "auto" }}>
+          <h4 style={{ margin: "0 0 15px", color: "#1a0a54", display: "flex", alignItems: "center", gap: "8px" }}>
+            <FaFilePdf /> Recent Uploaded Logs (Session)
+          </h4>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            {uploadedMaterials.map((material, idx) => (
+              <div key={idx} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "white", padding: "12px", borderRadius: "10px", border: "1px solid #eef2ff", fontSize: "0.85rem" }}>
+                <div style={{ textAlign: "left" }}>
+                  <strong style={{ color: "#1a0a54", display: "block" }}>{material.title || material.materialTitle}</strong>
+                  <span style={{ fontSize: "0.75rem", color: "#777" }}>Grade {material.grade} | {material.category}</span>
+                </div>
+                <button onClick={() => handleDeleteMaterial(material.id)} style={{ background: "#fdedec", color: "#e74c3c", border: "none", padding: "6px", borderRadius: "6px", cursor: "pointer" }}>
+                  <FaTrashCan />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default PaperHubUploadVault;
