@@ -304,12 +304,12 @@ const Dashboard = () => {
             src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f41d/512.gif"
             alt="live-emoji"
             style={{
-              width: "350px",
-              height: "350px",
-              zIndex: "9999",
+              width: "250px",
+              height: "250px",
+              zIndex: "999",
               position: "absolute",
               top: "5%",
-              left: "20%",
+              left: "15%",
               objectFit: "contain",
             }}
             refferrerPolicy="no-referrer"
