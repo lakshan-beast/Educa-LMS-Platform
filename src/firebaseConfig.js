@@ -24,7 +24,7 @@
 
 // src/firebaseConfig.js
 import { initializeApp } from "firebase/app";
-import { initializeFirestore } from "firebase/firestore"; // 👑 Network Errors වළක්වන එක ගත්තා
+import { initializeFirestore } from "firebase/firestore"; // 👑 for Fixed Network Errors
 
 // ⚠️ Firebase වෙබ් අඩවියෙන් ලැබුණු ඔයාගේම ප්‍රොජෙක්ට් එකේ රහස් කේත ටික මෙතනට දාන්න:
 const firebaseConfig = {
