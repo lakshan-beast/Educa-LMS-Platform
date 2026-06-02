@@ -50,8 +50,26 @@ const ConfirmationModal = ({
             marginBottom: "15px",
           }}>
           <FaCircleExclamation />
-        </div>
 
+          {/* <picture>
+  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5d1_fe0f/512.webp" type="image/webp">
+  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5d1_fe0f/512.gif" alt="🗑" width="32" height="32">
+</picture> */}
+        </div>
+        <img
+          src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5d1_fe0f/512.gif"
+          alt="live-emoji"
+          style={{
+            width: "60px",
+            height: "60px",
+            zIndex: "9999",
+            position: "absolute",
+            top: "28%",
+            right: "39%",
+            objectFit: "contain",
+          }}
+          refferrerPolicy="no-referrer"
+        />
         <h3 style={{ margin: "0 0 10px", color: "#1a0a54", fontWeight: "800" }}>
           {title}
         </h3>
