@@ -31,7 +31,7 @@ const Resources = () => {
       </p>
 
       <div className="resources-grid">
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="100">
+        <div className="resources-card" data-aos="fade-up">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Parents Only
           </span>
@@ -53,8 +53,7 @@ const Resources = () => {
         <div
           className="resources-card card-style result-check"
           id="result-check"
-          data-aos="fade-up"
-          data-aos-delay="120">
+          data-aos="fade-up">
           <span className="card-badge card-badge-official">
             <FaMedal className="icon" /> Official
           </span>
@@ -76,10 +75,7 @@ const Resources = () => {
         </div>
 
         {/* 2. Student Reviews Card */}
-        <div
-          className="resources-card card-style"
-          data-aos="fade-up"
-          data-aos-delay="140">
+        <div className="resources-card card-style" data-aos="fade-up">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Verified
           </span>
@@ -100,10 +96,7 @@ const Resources = () => {
         </div>
 
         {/* 1. Smart Tools Card */}
-        <div
-          className="resources-card card-style"
-          data-aos="fade-up"
-          data-aos-delay="160">
+        <div className="resources-card card-style" data-aos="fade-up">
           <span className="card-badge card-badge-new">
             <FaRocket className="icon" /> New Tools
           </span>
@@ -124,10 +117,7 @@ const Resources = () => {
         </div>
 
         {/* 4. Daily Questions Card */}
-        <div
-          className="resources-card card-style"
-          data-aos="fade-up"
-          data-aos-delay="180">
+        <div className="resources-card card-style" data-aos="fade-up">
           <span className="card-badge card-badge-daily">
             <FaCircleCheck className="icon" /> Everyday
           </span>
@@ -148,10 +138,7 @@ const Resources = () => {
         </div>
 
         {/* 5. Interactive Quizzes Card */}
-        <div
-          className="resources-card card-style"
-          data-aos="fade-up"
-          data-aos-delay="200">
+        <div className="resources-card card-style" data-aos="fade-up">
           <span className="card-badge card-badge-hot">
             <FaMedal className="icon" /> Most Popular
           </span>
