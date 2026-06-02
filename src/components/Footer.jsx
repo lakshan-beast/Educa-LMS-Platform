@@ -239,7 +239,7 @@ const Footer = () => {
               <div className="contact-support">
                 <a
                   href={
-                    `https://wa.me/94740130305?text=Hello%20eEduca%20Support%20Team,%30I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20` +
+                    `https://wa.me/94740130305?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20` +
                     formData.name
                   }
                   target="_blank"

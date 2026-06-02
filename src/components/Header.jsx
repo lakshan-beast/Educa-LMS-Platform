@@ -227,7 +227,7 @@ const Header = () => {
             <div className="logo-circle">E</div>educa<span>.</span>
           </a>
           {/* ==================== 💻 👑 🆕 DESKTOP NAVBAR (NO ICONS - EXECUTIVE LOOK) ==================== */}
-          <div className="desktop-navbar-links" style={{ display: "none" }}>
+          <div className="desktop-navbar-links">
             <NavHashLink
               smooth
               to="/#home"
