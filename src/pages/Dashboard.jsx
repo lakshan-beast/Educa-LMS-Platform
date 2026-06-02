@@ -301,7 +301,8 @@ const Dashboard = () => {
         {/* 👑 A. Dynamic Welcome Banner */}
         <div className="welcome-banner">
           <img
-            src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f41d/512.gif"
+            // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f41d/512.gif"
+            src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif"
             alt="live-emoji"
             style={{
               width: "250px",
