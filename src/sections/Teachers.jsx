@@ -54,7 +54,8 @@ const Teachers = () => {
           <div
             className="teacher-card"
             key={index}
-            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}>
+            // data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}>
+          >
             <div className="teacher-image-column">
               <img src={teacher.img} alt={teacher.name} />
             </div>
@@ -75,18 +76,6 @@ const Teachers = () => {
                   </div>
                   <p className="philosophy-box">{teacher.philosophy}</p>
                 </div>
-
-                {/* <div className="teacher-socials">
-                  <a href="#">
-                    <FaFacebook />
-                  </a>
-                  <a href="#">
-                    <FaWhatsapp />
-                  </a>
-                  <a href={`tel:${teacher.phone}`}>
-                    <FaPhone />
-                  </a>
-                </div> */}
 
                 <div className="teacher-socials">
                   <a href="#">
