@@ -7,6 +7,8 @@ import {
   parentAttendanceTable,
 } from "../data/parentPortalData";
 
+import PasswordField from "../components/PasswordField";
+
 import {
   FaUserShield,
   // FaKey,
@@ -203,7 +205,7 @@ const ParentPortal = () => {
                   }}
                 />
               </div>
-              <div className="input-group" style={{ marginBottom: "20px" }}>
+              {/* <div className="input-group" style={{ marginBottom: "20px" }}>
                 <label
                   style={{
                     fontWeight: "600",
@@ -227,7 +229,13 @@ const ParentPortal = () => {
                     border: "1px solid #ddd",
                   }}
                 />
-              </div>
+              </div> */}
+              <PasswordField
+                label=" Secret Login Password"
+                placeholder="Type Your Paper-Slip Password..."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               {error && (
                 <p
                   style={{
@@ -251,6 +259,7 @@ const ParentPortal = () => {
                   borderRadius: "10px",
                   fontWeight: "bold",
                   cursor: "pointer",
+                  marginTop: "20px",
                 }}>
                 View Reports
               </button>
