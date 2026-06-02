@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
+import PasswordField from "../components/PasswordField";
+
 const Login = () => {
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
@@ -134,7 +136,7 @@ const Login = () => {
             onChange={(e) => setStudentId(e.target.value)}
           />
         </div>
-        <div className="input-group">
+        {/* <div className="input-group">
           <label>Secure Login Password</label>
           <input
             type="password"
@@ -143,7 +145,15 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
+        </div> */}
+
+        {/* 🔑 🔐 [THE MASTER REUSABLE FIELD]: පරණ පේළි 20 වෙනුවට එකම පේළියකින් ඇස් දෙකේ ලොජික් එකම වැඩ කරයි! */}
+        <PasswordField
+          label=" Secret Login Password"
+          placeholder="Type Your Paper-Slip Password..."
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
         {error && (
           <p style={{ color: "red", fontSize: "0.85rem", marginTop: "5px" }}>
