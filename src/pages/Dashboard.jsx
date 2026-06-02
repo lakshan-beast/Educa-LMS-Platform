@@ -145,7 +145,7 @@ import {
   FaLock,
   // FaCheckCircle,
   FaArrowLeft,
-  FaHourglassHalf,
+  // FaHourglassHalf,
   FaRightFromBracket,
 } from "react-icons/fa6";
 // import { ImOffice } from "react-icons/im";
@@ -356,7 +356,7 @@ const Dashboard = () => {
           {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
           <div className="card-container countdown-card">
             <h4>
-              <FaHourglassHalf />
+              {/* <FaHourglassHalf /> */}
               <img
                 src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
                 alt="live-emoji"
