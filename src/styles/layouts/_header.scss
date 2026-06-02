@@ -228,6 +228,15 @@
   }
 }
 
+.desktop-navbar-links {
+  display: none;
+
+  @include respond(desktop) {
+    display: flex;
+    gap: 1.5rem;
+  }
+}
+
 // overlay
 .overlay {
   position: fixed;

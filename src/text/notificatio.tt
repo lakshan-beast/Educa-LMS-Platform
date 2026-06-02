@@ -1,0 +1,23 @@
+{/* <div
+              className="notif-bell-wrapper"
+              onClick={() => setShowNotif(!showNotif)}>
+              <FaBell className="notif-bell" />
+              {notifications.length > 0 && (
+                <span className="notif-count"></span>
+              )}
+            </div> */}
+
+            {/* {showNotif && (
+              <NotificationCenter
+                notifications={notifications}
+                onClose={() => setShowNotif(false)}
+              />
+            )} */}
+
+
+             {/* <Link to="/tools" className="mob-nav-card" onClick={toggleMenu}>
+                <FaToolbox /> <span>Smart Tools</span>
+              </Link>
+              <Link to="/quizzes" className="mob-nav-card" onClick={toggleMenu}>
+                <FaGraduationCap /> <span>Skill Test</span>
+              </Link> */}

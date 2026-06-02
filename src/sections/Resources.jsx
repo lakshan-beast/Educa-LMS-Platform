@@ -31,7 +31,7 @@ const Resources = () => {
       </p>
 
       <div className="resources-grid">
-        <div className="resources-card" data-aos="fade-up">
+        <div className="resources-card" data-aos="fade-up" id="parent-portal">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Parents Only
           </span>

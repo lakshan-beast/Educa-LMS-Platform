@@ -217,13 +217,13 @@ const Dashboard = () => {
   }, [navigate]);
 
   // ☀️ 3. Dynamic Greeting Calculator Logic
-  const getGreeting = () => {
-    const hr = new Date().getHours();
-    if (hr < 10) return `Good Morning ☀️`;
-    if (hr < 14) return "Good Afternoon ⛅";
-    if (hr < 17) return "Good Evening ⛅";
-    return "Good Night 🌙";
-  };
+  // const getGreeting = () => {
+  //   const hr = new Date().getHours();
+  //   if (hr < 10) return `Good Morning ☀️ 🌞`;
+  //   if (hr < 14) return "Good Afternoon ⛅ 🌛";
+  //   if (hr < 17) return "Good Evening ⛅ 🌛";
+  //   return "Good Night 🌙";
+  // };
 
   // 👑 🆕 [DYNAMIC NAME GRABBER]: බ්‍රවුසර් එකේ මතකයෙන් ළමයාගේ ඇත්තම නම ලබා ගැනීම
   const loggedInUser = JSON.parse(localStorage.getItem("studentUser")) || {};
@@ -254,6 +254,44 @@ const Dashboard = () => {
     window.location.reload();
   };
 
+  // 👑 🔐 [THE FIXED ANIMATED ENGINE]: Not Found Errors සදහටම නැති කරන නිල Google CDN ලින්ක්ස්
+  // 👑 🔐 [THE ULTIMATE FIXED ENGINE]: කොටු කොටු පෙනෙන ලෙඩේ සදහටම නැති කරන සජීවී ත්‍රිමාණ ලින්ක්ස්!
+  const getGreetings = () => {
+    const hr = new Date().getHours();
+
+    // 🌅 A. උදේ 10ට අඩු නම් -> Morning (ලස්සන ත්‍රිමාණ සූර්යෝදයක්)
+    if (hr < 10) {
+      return {
+        text: "Good Morning",
+        animUrl: "https://fonts.gstatic.com/s/e/notoemoji/latest/1f31e/512.gif",
+      };
+    }
+
+    // ☀️ B. දවල් 2ට අඩු නම් -> Afternoon (දිලිසෙන ත්‍රිමාණ සූර්යයා)
+    if (hr < 14) {
+      return {
+        text: "Good Afternoon",
+        animUrl: "https://fonts.gstatic.com/s/e/notoemoji/latest/26c5/512.gif",
+      };
+    }
+
+    // 🌇 C. සවස 5ට අඩු නම් -> Evening (ලස්සන බැසයන සූර්යයා)
+    if (hr < 17) {
+      return {
+        text: "Good Evening",
+        animUrl: "https://fonts.gstatic.com/s/e/notoemoji/latest/1f307/512.gif",
+      };
+    }
+
+    // 🌙 D. රෑ බෝ වුණාම -> Night (ත්‍රිමාණ හඳ සහ තරු)
+    return {
+      text: "Good Night",
+      animUrl: "https://fonts.gstatic.com/s/e/notoemoji/latest/1f31b/512.gif",
+    };
+  };
+
+  const greeting = getGreetings();
+
   return (
     <div className="dashboard-wrapper page-container">
       <div className="system-container">
@@ -262,12 +300,90 @@ const Dashboard = () => {
         </Link>
         {/* 👑 A. Dynamic Welcome Banner */}
         <div className="welcome-banner">
+          <img
+            src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f41d/512.gif"
+            alt="live-emoji"
+            style={{
+              width: "350px",
+              height: "350px",
+              zIndex: "9999",
+              position: "absolute",
+              top: "5%",
+              left: "20%",
+              objectFit: "contain",
+            }}
+            refferrerPolicy="no-referrer"
+          />
+
           {/* <h2>{getGreeting()}, Student!</h2> */}
-          <h2>
-            {getGreeting()}, {studentFirstName}!
-          </h2>
+
+          {/* 👑 🆕 [ANIMATED BANNER INTERFACE]: කිසිම බ්‍රෝකන් ලින්ක් එකක් නැති පිරිසිදුම Layout එක */}
+          <h1
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              margin: 0,
+            }}>
+            <span>
+              {greeting.text}, {studentFirstName}!
+            </span>
+
+            <img
+              src={greeting.animUrl}
+              alt="live-emoji"
+              style={{ width: "42px", height: "42px", objectFit: "contain" }}
+              refferrerPolicy="no-referrer"
+            />
+          </h1>
+
+          {/* <picture>
+  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.webp" type="image/webp">
+  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif" alt="⌛" width="32" height="32">
+</picture> */}
+
           <p className="student-id">Your ID: {studentId}</p>
+          <p>Your password is secure and encrypted.</p>
           <span> Grade 11 - 2026 O/L Batch</span>
+
+          <div className="side-dash-content">
+            {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
+            <div className="card-container countdown-card">
+              <h4>
+                <FaHourglassHalf />
+                <img
+                  src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
+                  alt="live-emoji"
+                  style={{
+                    width: "42px",
+                    height: "42px",
+                    objectFit: "contain",
+                  }}
+                  refferrerPolicy="no-referrer"
+                />{" "}
+                O/L 2026 Countdown
+              </h4>
+              <div className="countdown-tiles">
+                <div>
+                  <h3>{countdown.days}</h3>
+                  <small>Days</small>
+                </div>
+                <div>
+                  <h3>{countdown.hours}</h3>
+                  <small>Hours</small>
+                </div>
+                <div>
+                  <h3>{countdown.mins}</h3>
+                  <small>Mins</small>
+                </div>
+                <div>
+                  <h3 className="seconds">{countdown.secs}</h3>
+                  <small>Secs</small>
+                </div>
+              </div>
+              <p>* Target Date: December 08, 2026</p>
+            </div>
+          </div>
 
           <button onClick={handleLogout} className="browse-btn signout-btn">
             <FaRightFromBracket className="icon" />
@@ -365,8 +481,8 @@ const Dashboard = () => {
         </div>
 
         {/* දකුණු පැත්තේ කොටස: Countdown Clock & Actions */}
-        <div className="side-dash-content">
-          {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
+        {/* <div className="side-dash-content">
+          {/* ⏰ D. 2026 O/L Exam Countdown Clock Area 
           <div className="card-container countdown-card">
             <h4>
               <FaHourglassHalf /> O/L 2026 Countdown
@@ -391,7 +507,7 @@ const Dashboard = () => {
             </div>
             <p>* Target Date: December 08, 2026</p>
           </div>
-        </div>
+        </div> */}
 
         {/* ================================================================ */}
         {/* 👑 PREMIUM SCORE ANALYTICS ZONE */}

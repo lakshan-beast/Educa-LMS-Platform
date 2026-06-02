@@ -24,6 +24,38 @@ const Hero = () => {
             <br />
             <span>Ace Your Exams.</span>
           </h1>
+
+          {/* <picture>
+  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.webp" type="image/webp">
+  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.gif" alt="🪎" width="32" 
+  
+  <picture>
+  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f512/512.webp" type="image/webp">
+  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f512/512.gif" alt="🔒" width="32" height="32">
+</picture>height="32">
+
+<picture>
+  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.webp" type="image/webp">
+  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.gif" alt="🪎" width="32" height="32">
+</picture>
+</picture> */}
+
+          <img
+            // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa82/512.gif"
+            src="https://fonts.gstatic.com/s/e/notoemoji/latest/1facd/512.gif"
+            // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.gif"
+            alt="live-emoji"
+            style={{
+              width: "95px",
+              height: "95px",
+              objectFit: "contain",
+              position: "absolute",
+              zIndex: "9999",
+              bottom: "0%",
+              right: "1%",
+            }}
+            refferrerPolicy="no-referrer"
+          />
           <p>
             Simplified lessons, exam-focused strategies, and a community of
             2500+ successful students. Join the most trusted learning platform

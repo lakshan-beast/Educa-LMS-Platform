@@ -429,6 +429,21 @@ const PaperHub = ({ subject }) => {
 
         {/* 👑 Subject Header Title */}
         <div className="subject-vault-header">
+          <img
+            src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/512.gif"
+            alt="live-emoji"
+            style={{
+              width: "60px",
+              height: "60px",
+              zIndex: "9999",
+              position: "fixed",
+              bottom: "3%",
+              right: "3%",
+              objectFit: "contain",
+            }}
+            refferrerPolicy="no-referrer"
+          />
+
           <h2>
             {subject
               ? subject.toUpperCase() + " PAPER HUB"

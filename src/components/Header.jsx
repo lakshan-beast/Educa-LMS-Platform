@@ -227,9 +227,7 @@ const Header = () => {
             <div className="logo-circle">E</div>educa<span>.</span>
           </a>
           {/* ==================== 💻 👑 🆕 DESKTOP NAVBAR (NO ICONS - EXECUTIVE LOOK) ==================== */}
-          <div
-            className="desktop-navbar-links"
-            style={{ display: "flex", alignItems: "center", gap: "25px" }}>
+          <div className="desktop-navbar-links" style={{ display: "none" }}>
             <NavHashLink
               smooth
               to="/#home"
@@ -328,6 +326,23 @@ const Header = () => {
           <div
             className={`header-navbar ${isActive ? "nav-active" : ""}`}
             id="header-navbar">
+            <img
+              // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa82/512.gif"
+              src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.gif"
+              // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.gif"
+              alt="live-emoji"
+              style={{
+                width: "70px",
+                height: "70px",
+                objectFit: "contain",
+                position: "absolute",
+                zIndex: "9999",
+                bottom: "6%",
+                right: "5%",
+              }}
+              refferrerPolicy="no-referrer"
+            />
+
             {/* 1. TOP CONTAINER: Logo & Close Button */}
             <div className="mobile-nav-header">
               <div className="header-logo">

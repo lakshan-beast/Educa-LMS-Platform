@@ -123,7 +123,7 @@ const ParentPortal = () => {
             textDecoration: "none",
             fontWeight: "bold",
           }}>
-          <FaArrowLeft /> Back to Home
+          <FaArrowLeft /> Back to Home page
         </Link>
 
         {!isAuthenticated ? (
