@@ -346,49 +346,49 @@ const Dashboard = () => {
           <p>Your password is secure and encrypted.</p>
           <span> Grade 11 - 2026 O/L Batch</span>
 
-          <div className="side-dash-content">
-            {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
-            <div className="card-container countdown-card">
-              <h4>
-                <FaHourglassHalf />
-                <img
-                  src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
-                  alt="live-emoji"
-                  style={{
-                    width: "42px",
-                    height: "42px",
-                    objectFit: "contain",
-                  }}
-                  refferrerPolicy="no-referrer"
-                />{" "}
-                O/L 2026 Countdown
-              </h4>
-              <div className="countdown-tiles">
-                <div>
-                  <h3>{countdown.days}</h3>
-                  <small>Days</small>
-                </div>
-                <div>
-                  <h3>{countdown.hours}</h3>
-                  <small>Hours</small>
-                </div>
-                <div>
-                  <h3>{countdown.mins}</h3>
-                  <small>Mins</small>
-                </div>
-                <div>
-                  <h3 className="seconds">{countdown.secs}</h3>
-                  <small>Secs</small>
-                </div>
-              </div>
-              <p>* Target Date: December 08, 2026</p>
-            </div>
-          </div>
-
           <button onClick={handleLogout} className="browse-btn signout-btn">
             <FaRightFromBracket className="icon" />
             Sign Out
           </button>
+        </div>
+
+        <div className="side-dash-content">
+          {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
+          <div className="card-container countdown-card">
+            <h4>
+              <FaHourglassHalf />
+              <img
+                src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
+                alt="live-emoji"
+                style={{
+                  width: "42px",
+                  height: "42px",
+                  objectFit: "contain",
+                }}
+                refferrerPolicy="no-referrer"
+              />{" "}
+              O/L 2026 Countdown
+            </h4>
+            <div className="countdown-tiles">
+              <div>
+                <h3>{countdown.days}</h3>
+                <small>Days</small>
+              </div>
+              <div>
+                <h3>{countdown.hours}</h3>
+                <small>Hours</small>
+              </div>
+              <div>
+                <h3>{countdown.mins}</h3>
+                <small>Mins</small>
+              </div>
+              <div>
+                <h3 className="seconds">{countdown.secs}</h3>
+                <small>Secs</small>
+              </div>
+            </div>
+            <p>* Target Date: December 08, 2026</p>
+          </div>
         </div>
 
         <div className="dashboard-grid">

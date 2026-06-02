@@ -41,7 +41,7 @@ const PasswordField = ({
           style={{
             width: "100%",
             padding: "11px",
-            paddingRight: "40px",
+            // paddingRight: "40px",
             borderRadius: "8px",
             border: "1px solid #ddd",
             background: "white",
