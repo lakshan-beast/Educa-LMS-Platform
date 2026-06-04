@@ -84,19 +84,16 @@ import Resources from "../sections/Resources";
 import Classes from "../sections/Classes";
 import Teachers from "../sections/Teachers";
 import Information from "../sections/Information";
-// import Testimonials from "../sections/Testimonials";
 import Contact from "../sections/Contacts";
 
 const Home = () => {
   return (
     <>
-      {/* Home Page එකේ සියලුම කොටස් පේළියට පෙන්වීම */}
       <Hero />
       <Resources />
       <Classes />
       <Teachers />
       <Information />
-      {/* <Testimonials /> */}
       <Contact />
     </>
   );
