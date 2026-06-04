@@ -697,29 +697,28 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: transform 0.2s ease; /* Micro-animation speed */
+  transition: transform 0.4s ease; /* Micro-animation speed */
   font-size: 1.5rem;
+  width: 32px;
+  height: 32px;
+  background-color: $secondary-blue;
+  color: $white;
+  border-radius: 6px;
+}
+
+.teacher-socials .call-icon {
+  font-size: 1.15rem;
 }
 
 /* ළමයෙක් අයිකන් එකක් උඩට මවුස් එක ගෙනිච්චම ඒක විතරක් ලස්සනට scale වේ */
 .teacher-socials a:hover {
-  transform: scale(1.25);
-}
-
-/* 🔵 Facebook නිල වර්ණය */
-.teacher-socials .facebook-icon {
-  color: #1877f2;
-  // font-size: 1.25rem;
-}
-
-/* 🟢 WhatsApp නිල වර්ණය */
-.teacher-socials .whatsapp-icon {
-  color: #25d366;
-  // font-size: 1.3rem;
-}
-
-/* 🔴 Direct Call නිල වර්ණය */
-.teacher-socials .call-icon {
-  color: #e74c3c;
-  // font-size: 1.15rem;
+  transform: scale(1.05);
+  border-radius: 8px;
+  color: $white;
+  //   background: #f72008;
+  //   color: $white;
+  //   width: 32px;
+  //   height: 32px;
+  //   border-radius: 6px;
+  //   font-size: 1.25rem;
 }
