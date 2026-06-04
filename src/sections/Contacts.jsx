@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaMobile, FaEnvelope } from "react-icons/fa6";
-import { GiEarthAsiaOceania } from "react-icons/gi";
+// import { GiEarthAsiaOceania } from "react-icons/gi";
 
 // import { useForm, ValidationError } from "@formspree/react";
 import {
@@ -204,7 +204,7 @@ const Contact = () => {
                     loading="lazy"
                     title={item.subject}></iframe> */}
                   <address>
-                    <GiEarthAsiaOceania className="contact-icon" />
+                    {/* <GiEarthAsiaOceania className="contact-icon" /> */}
                     {item.address}
                   </address>
                 </div>
