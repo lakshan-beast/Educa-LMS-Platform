@@ -94,6 +94,8 @@
 
   &:hover {
     background: $primary-orange;
+    color: $white;
+    text-decoration: none;
     gap: 15px; // ඊතලය ටිකක් එහාට යන effect එකක්
   }
 }
