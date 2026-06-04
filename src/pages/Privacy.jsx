@@ -11,34 +11,39 @@ import {
 const Privacy = () => {
   const navigate = useNavigate();
 
-  //const [showGenModal, setShowGenModal] = useState(false);
+  // const [showGenModal, setShowGenModal] = useState(false);
 
   return (
     <div
-      //className="legal-wrapper"
-      className="login-overlay"
-      style={{
-        padding: "50px 20px",
-        background: "#f8faff",
-        minHeight: "90vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
+    // className="legal-wrapper"
+    // className="login-overlay"
+    // style={{
+    //   padding: "50px 20px",
+    //   background: "#f8faff",
+    //   minHeight: "90vh",
+    //   display: "flex",
+    //   justifyContent: "center",
+    //   alignItems: "center",
+    // }}>
+    >
       <div
-        //className="legal-container"
-        className="login-modal-box"
-        style={{
-          position: "relative",
-          maxWidth: "750px",
-          background: "white",
-          padding: "40px",
-          borderRadius: "24px",
-          boxShadow: "0 15px 35px rgba(0,0,0,0.05)",
-          border: "1px solid #eef2ff",
-        }}>
+        // className="legal-container"
+        // className="login-modal-box"
+        className="privacy-card"
+        // style={{
+        //   position: "relative",
+        //   maxWidth: "750px",
+        //   background: "white",
+        //   padding: "40px",
+        //   borderRadius: "24px",
+        //   boxShadow: "0 15px 35px rgba(0,0,0,0.05)",
+        //   border: "1px solid #eef2ff",
+        // }}>
+      >
+        {/* {showGenModal && ( */}
         <button
           className="close-x"
+          // onClick={() => setShowGenModal(true)}
           style={{
             position: "absolute",
             top: "10px",
@@ -50,6 +55,7 @@ const Privacy = () => {
           }}>
           &times;
         </button>
+        {/* // )} */}
         {/* Header Icon */}
         <div style={{ textAlign: "center", marginBottom: "30px" }}>
           <div
@@ -68,7 +74,7 @@ const Privacy = () => {
             <FaShieldHalved />
           </div>
           <h2 style={{ color: "#1a0a54", margin: 0, fontWeight: "800" }}>
-            Privacy Policy (රහස්‍යතා ප්‍රකාශය)
+            Privacy Policy
           </h2>
           <p style={{ color: "#777", fontSize: "0.85rem", marginTop: "5px" }}>
             Student & Parent Data Integrity Standard
@@ -109,7 +115,7 @@ const Privacy = () => {
             platform executes a native identity mask algorithm across all public
             interfaces. Student identification strings rendered on global logs
             are programmatically converted into an untraceable layout (e.g.,{" "}
-            <code>EDU-MES-11-LAKXXXXX-0102</code>), ensuring complete localized
+            <code>EDU-MES-11-LAKXXXXX-9999</code>), ensuring complete localized
             obscurity.
           </p>
 
@@ -152,6 +158,7 @@ const Privacy = () => {
         </div>
       </div>
     </div>
+    // )}
   );
 };
 
