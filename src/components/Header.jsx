@@ -166,7 +166,7 @@
 // export default Header;
 
 import { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 
 import Login from "../pages/Login";
@@ -233,14 +233,14 @@ const Header = () => {
               to="/#home"
               style={{
                 textDecoration: "none",
-                fontSize: "0.93rem",
-                fontWeight: "700",
+                fontSize: "1.1rem",
+                fontWeight: "600",
                 color:
                   isLinkActive("/#home") ||
                   location.hash === "#home" ||
                   location.hash === ""
                     ? "#26136d"
-                    : "#555",
+                    : "#8d8d8d",
                 borderBottom:
                   isLinkActive("/#home") ||
                   location.hash === "#home" ||
@@ -258,9 +258,9 @@ const Header = () => {
               to="/#resources"
               style={{
                 textDecoration: "none",
-                fontSize: "0.93rem",
-                fontWeight: "700",
-                color: isLinkActive("/#resources") ? "#26136d" : "#555",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+                color: isLinkActive("/#resources") ? "#26136d" : "#8d8d8d",
                 borderBottom: isLinkActive("/#resources")
                   ? "2px solid #26136d"
                   : "2px solid transparent",
@@ -275,9 +275,9 @@ const Header = () => {
               to="/#classes"
               style={{
                 textDecoration: "none",
-                fontSize: "0.93rem",
-                fontWeight: "700",
-                color: isLinkActive("/#classes") ? "#26136d" : "#555",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+                color: isLinkActive("/#classes") ? "#26136d" : "#8d8d8d",
                 borderBottom: isLinkActive("/#classes")
                   ? "2px solid #26136d"
                   : "2px solid transparent",
@@ -289,28 +289,28 @@ const Header = () => {
 
             <NavHashLink
               smooth
-              to="/#parent-portal"
+              to="/#teachers"
               style={{
                 textDecoration: "none",
-                fontSize: "0.93rem",
-                fontWeight: "700",
-                color: isLinkActive("/#parent-portal") ? "#26136d" : "#555",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+                color: isLinkActive("/#parent-portal") ? "#26136d" : "#8d8d8d",
                 borderBottom: isLinkActive("/#parent-portal")
                   ? "2px solid #26136d"
                   : "2px solid transparent",
                 padding: "6px 0",
                 transition: "0.3s",
               }}>
-              Student Portal
+              Our Tutors
             </NavHashLink>
             <NavHashLink
               smooth
               to="/#contacts"
               style={{
                 textDecoration: "none",
-                fontSize: "0.93rem",
-                fontWeight: "700",
-                color: isLinkActive("/#contacts") ? "#26136d" : "#555",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+                color: isLinkActive("/#contacts") ? "#26136d" : "#8d8d8d",
                 borderBottom: isLinkActive("/#contacts")
                   ? "2px solid #26136d"
                   : "2px solid transparent",
@@ -356,9 +356,12 @@ const Header = () => {
 
             {/* 2. CENTER CONTAINER: The Smart Grid Links */}
             <div className="mobile-nav-links-grid">
-              <Link to="/#home" className="mob-nav-card" onClick={toggleMenu}>
+              <NavHashLink
+                to="/#home"
+                className="mob-nav-card"
+                onClick={toggleMenu}>
                 <FaHouse /> <span>Home</span>
-              </Link>
+              </NavHashLink>
               <NavHashLink
                 smooth
                 to="/#resources"
@@ -375,10 +378,10 @@ const Header = () => {
               </NavHashLink>
               <NavHashLink
                 smooth
-                to="/#parent-portal"
+                to="/#teachers"
                 className="mob-nav-card"
                 onClick={toggleMenu}>
-                <FaAddressCard /> <span>Student Portal</span>
+                <FaAddressCard /> <span>Our Tutors</span>
               </NavHashLink>
               <NavHashLink
                 smooth
@@ -403,7 +406,7 @@ const Header = () => {
               {isLoggedIn ? (
                 <FaUserCircle style={{ color: "#1d10ac" }} />
               ) : (
-                <FaRegUserCircle style={{ color: "#f7786f" }} />
+                <FaRegUserCircle />
               )}
             </button>
           </div>
