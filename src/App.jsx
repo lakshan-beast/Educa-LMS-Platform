@@ -14,8 +14,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 
 import Home from "./pages/Home";
 import Tools from "./pages/Tools";
-import DailyQuestions from "./pages/DailyQuestions";
-import DailyQuizzes from "./pages/DailyQuizzes";
+// import DailyQuestions from "./pages/DailyQuestions";
+// import DailyQuizzes from "./pages/DailyQuizzes";
 import PaperHub from "./pages/PaperHub";
 
 import FullTimetable from "./pages/Timetables";
@@ -48,8 +48,8 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
 
           <Route path="/tools" element={<Tools />} />
-          <Route path="/daily-questions" element={<DailyQuestions />} />
-          <Route path="/daily-quizzes" element={<DailyQuizzes />} />
+          {/* <Route path="/daily-questions" element={<DailyQuestions />} /> */}
+          {/* <Route path="/daily-quizzes" element={<DailyQuizzes />} /> */}
           <Route path="/paper-hub/:id" element={<PaperHub />} />
 
           <Route path="/full-timetable" element={<FullTimetable />} />
