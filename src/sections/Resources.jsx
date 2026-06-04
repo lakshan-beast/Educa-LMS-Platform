@@ -5,18 +5,18 @@ import {
   FaMedal,
   FaComments,
   FaChartColumn,
-  FaToolbox,
-  FaRocket,
-  FaCircleQuestion,
-  FaPenToSquare,
+  // FaToolbox,
+  // FaRocket,
+  // FaCircleQuestion,
+  // FaPenToSquare,
   FaUserShield,
 } from "react-icons/fa6";
 
-import Tools from "../assets/study.webp";
+// import Tools from "../assets/study.webp";
 import Comments from "../assets/comments.webp";
 import Results from "../assets/results.webp";
-import Quizes from "../assets/quizs.webp";
-import Quetions from "../assets/questions.webp";
+// import Quizes from "../assets/quizs.webp";
+// import Quetions from "../assets/questions.webp";
 import Parent from "../assets/parent.webp";
 
 const Resources = () => {
@@ -96,7 +96,7 @@ const Resources = () => {
         </div>
 
         {/* 1. Smart Tools Card */}
-        <div className="resources-card card-style" data-aos="fade-up">
+        {/* <div className="resources-card card-style" data-aos="fade-up">
           <span className="card-badge card-badge-new">
             <FaRocket className="icon" /> New Tools
           </span>
@@ -110,14 +110,14 @@ const Resources = () => {
           </p>
           {/* <Link to="/tools" className="browse-btn">
             Open Tools
-          </Link> */}
+          </Link> 
           <button disabled="disabled" className="browse-btn">
             Developing Mode
           </button>
-        </div>
+        </div> */}
 
         {/* 4. Daily Questions Card */}
-        <div className="resources-card card-style" data-aos="fade-up">
+        {/* <div className="resources-card card-style" data-aos="fade-up">
           <span className="card-badge card-badge-daily">
             <FaCircleCheck className="icon" /> Everyday
           </span>
@@ -131,14 +131,14 @@ const Resources = () => {
           </p>
           {/* <Link to="/daily-questions" className="browse-btn">          
             Start Today
-          </Link> */}
+          </Link> 
           <button disabled="disabled" className="browse-btn">
             Developing Mode
           </button>
-        </div>
+        </div> */}
 
         {/* 5. Interactive Quizzes Card */}
-        <div className="resources-card card-style" data-aos="fade-up">
+        {/* <div className="resources-card card-style" data-aos="fade-up">
           <span className="card-badge card-badge-hot">
             <FaMedal className="icon" /> Most Popular
           </span>
@@ -151,11 +151,11 @@ const Resources = () => {
           </p>
           {/* <Link to="/quizzes" className="browse-btn">
             Take a Quiz
-          </Link> */}
+          </Link> *
           <button disabled="disabled" className="browse-btn">
             Developing Mode
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
