@@ -29,6 +29,7 @@ const Footer = () => {
 
   // ID Generator Popup එක පාලනය කරන State
   const [showGenModal, setShowGenModal] = useState(false);
+  // const [showLegelCard, setshowLegelCard] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     pin: "",
@@ -214,26 +215,27 @@ const Footer = () => {
                 to="/privacy"
                 onClick={() => setShowGenModal(true)}
                 onMouseEnter={(e) => (e.target.style.color = "#ff4b2b")}
-                onMouseLeave={(e) => (e.target.style.color = "#aaa")}>
+                onMouseLeave={(e) => (e.target.style.color = "#ffffff")}>
                 <FaCaretRight className="footer-icon" /> Privacy Policy
               </Link>
             </li>
             <li>
               <Link
                 to="/terms"
+                onClick={() => setShowGenModal(true)}
                 onMouseEnter={(e) => (e.target.style.color = "#ff4b2b")}
-                onMouseLeave={(e) => (e.target.style.color = "#aaa")}>
+                onMouseLeave={(e) => (e.target.style.color = "#ffffff")}>
                 <FaCaretRight className="footer-icon" /> Terms of Services
               </Link>
             </li>
 
-            <li>
+            {/* <li>
               <span
-                onClick={() => setShowGenModal(true)}
+                // onClick={() => setShowGenModal(true)}
                 className="secret-gen-link">
                 <FaCaretRight className="footer-icon" /> Generate Your Unique ID
               </span>
-            </li>
+            </li> */}
 
             <li>
               <div className="contact-support">
@@ -313,11 +315,12 @@ const Footer = () => {
               maxWidth: "400px",
               width: "100%",
               position: "relative",
+              // display: "none",
             }}>
             <button
               className="close-x"
               onClick={() => {
-                setShowGenModal(false);
+                // showLegelCard(false);
                 setGeneratedID("");
               }}
               style={{
