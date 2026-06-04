@@ -49,7 +49,7 @@ main {
 // resources grid styles
 .resources-grid,
 .teachers-grid {
-  padding: 3rem 0rem;
+  padding: 4rem 0rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: $grid-gap-small $grid-gap-large;
