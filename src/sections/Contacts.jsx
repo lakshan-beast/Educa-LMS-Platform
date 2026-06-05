@@ -5,10 +5,10 @@ import { FaMobile, FaEnvelope } from "react-icons/fa6";
 // import { useForm, ValidationError } from "@formspree/react";
 import {
   // FaEnvelope,
-  FaWhatsapp,
-  FaBookOpen,
-  FaCircleInfo,
-  FaPen,
+  // FaWhatsapp,
+  // FaBookOpen,
+  // FaPen,
+  // FaCircleInfo,
   FaPaperPlane,
 } from "react-icons/fa6";
 
@@ -225,7 +225,8 @@ const Contact = () => {
               <div className="input-row">
                 <div className="input-group">
                   <label>
-                    <FaEnvelope /> Email Address *
+                    {/* <FaEnvelope />  */}
+                    Email Address *
                   </label>
                   <input
                     type="email"
@@ -237,7 +238,8 @@ const Contact = () => {
                 </div>
                 <div className="input-group">
                   <label>
-                    <FaWhatsapp /> Whatsapp Number
+                    {/* <FaWhatsapp />  */}
+                    Whatsapp Number
                   </label>
                   <input
                     type="tel"
@@ -252,7 +254,8 @@ const Contact = () => {
                 {/* <div className="input-row"> */}
                 <div className="input-group">
                   <label>
-                    <FaBookOpen /> Subject
+                    {/* <FaBookOpen />  */}
+                    Subject
                   </label>
                   <select name="subject" required onChange={handleChange}>
                     <option value="">Select Subject</option>
@@ -261,21 +264,23 @@ const Contact = () => {
                     <option value="English">English</option>
                   </select>
                 </div>
-                <div className="input-group">
+                {/* <div className="input-group">
                   <label>
-                    <FaCircleInfo /> Inquiry Type
+                    {/* <FaCircleInfo />  *
+                    Inquiry Type
                   </label>
                   <select name="content" required onChange={handleChange}>
                     <option value="">Select Content</option>
                     <option value="class">Class Information</option>
                     <option value="documents">Study Materials</option>
                   </select>
-                </div>
+                </div> */}
               </div>
 
               <div className="input-group">
                 <label>
-                  <FaPen /> Your Message
+                  {/* <FaPen />  */}
+                  Your Message
                 </label>
                 <textarea
                   name="message"
