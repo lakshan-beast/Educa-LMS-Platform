@@ -573,8 +573,8 @@
     @include center-everything;
 
     img {
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: $shadow-light;
@@ -615,12 +615,14 @@
       .philosophy-box {
         font-style: italic;
         background: rgba($blue-medium, 0.1);
-        color: $secondary-blue;
+        color: rgba($secondary-blue, 0.7);
+        font-weight: 500;
         padding: 15px;
-        border-left: 4px solid $blue-medium;
-        border-radius: 0 12px 12px 0;
+        // border-left: 4px solid $blue-medium;
+        // border-radius: 0 12px 12px 0;
+        border-radius: 12px;
         margin-top: 10px;
-        box-shadow: $shadow-medium;
+        // box-shadow: $shadow-medium;
         font-size: 0.8rem;
       }
     }
