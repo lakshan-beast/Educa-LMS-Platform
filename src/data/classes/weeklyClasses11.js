@@ -7,7 +7,7 @@ export const allClassData11 = [
     teacher: "Sir 01",
     day: "Friday",
     startTime: "08:00", // 24-hour format වලින් දාන්න (HH:MM)
-    endTime: "12:00",
+    endTime: "18:00",
     statusOverride: "Auto", // "Auto", "Canceled", "Holiday"
     link: "zoom.us",
     notice: {
@@ -20,8 +20,8 @@ export const allClassData11 = [
     grade: "11",
     subject: "O/L Science",
     teacher: "Sir 02",
-    day: "Monday",
-    startTime: "03:30",
+    day: "Friday",
+    startTime: "12:30",
     endTime: "17:30",
     statusOverride: "Auto",
     link: "zoom.us",
