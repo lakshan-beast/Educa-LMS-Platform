@@ -137,6 +137,7 @@ const ParentPortal = () => {
             className="card-container"
             style={{
               maxWidth: "420px",
+              minWidth: "300px",
               margin: "40px auto",
               padding: "35px 30px",
               borderRadius: "24px",
