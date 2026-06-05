@@ -461,11 +461,18 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { completeShedules } from "../data/completeShedule";
 import {
-  FaClock,
-  FaVideo,
-  FaBell,
+  // FaClock,
+  // FaVideo,
+  // FaBell,
+  // FaPenToSquare,
+  FaBook,
   FaCalendarCheck,
   FaArrowLeft,
+  FaPenToSquare,
+  // FaBookOpen,
+  // FaRegCalendarRange,
+  // FaRegCalendarDays,
+  FaClockRotateLeft,
 } from "react-icons/fa6";
 
 const ClassesDetails = () => {
@@ -551,7 +558,7 @@ const ClassesDetails = () => {
             textDecoration: "none",
             fontWeight: "bold",
           }}>
-          <FaArrowLeft /> Back to Home
+          <FaArrowLeft /> Back to Home Page
         </Link>
         <h2 style={{ textAlign: "center" }}>
           Weekly <span>Class Schedule</span>
@@ -567,7 +574,7 @@ const ClassesDetails = () => {
             margin: "20px 0",
             flexWrap: "wrap",
           }}>
-          {["6", "7", "8", "9", "10", "11", "Paper Class"].map((grade) => (
+          {["6", "7", "8", "9", "10", "11", "11 Paper Class"].map((grade) => (
             <button
               key={grade}
               className={`grade-tab-btn ${selectedGrade === grade ? "active-tab" : ""}`}
@@ -588,7 +595,7 @@ const ClassesDetails = () => {
           style={{
             display: "grid",
             gap: "20px",
-            marginTop: "30px",
+            marginTop: "40px",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           }}>
           {filteredClasses.length > 0 ? (
@@ -606,16 +613,47 @@ const ClassesDetails = () => {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      marginBottom: "15px",
+                      // marginBottom: "15px",
                     }}>
-                    <span
+                    {/* status part */}
+                    {/* <span
                       className={`status-badge ${currentStatus.toLowerCase()}`}>
                       {currentStatus === "Active" && "● Live Now"}
                       {currentStatus === "Upcoming" && "Upcoming"}
                       {currentStatus === "Ended" && "Class Ended"}
                       {currentStatus === "Canceled" && "Postponed"}
-                    </span>
-                    <span className="class-day">
+                    </span> */}
+
+                    <p
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        margin: 0,
+                        padding: " 6px",
+                        // color: "#1a0a54",
+                        color: "white",
+                        borderRadius: "6px",
+                        // borderLeft: "6px solid #4b6bfb",
+                        background:
+                          currentStatus === "Active" ? "#f77c8f" : "#a2c0ff",
+                      }}>
+                      <FaClockRotateLeft /> {cls.startTime} - {cls.endTime}
+                    </p>
+                    <span
+                      className="class-day"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        margin: 0,
+                        padding: " 6px",
+                        color: "#1a0a54",
+                        // color: "white",
+                        // borderRadius: "6px",
+                        fontWeight: "600",
+                        borderBottom: "2px solid #4b6bfb",
+                      }}>
                       <FaCalendarCheck /> {cls.day}
                     </span>
                   </div>
@@ -623,19 +661,66 @@ const ClassesDetails = () => {
                   {/* Card Body */}
                   <div className="class-body" style={{ margin: "15px 0" }}>
                     <h3>{cls.subject}</h3>
-                    <p>
+                    <p
+                      style={{
+                        marginBottom: "5px",
+                        textAlign: "left",
+                        padding: "0",
+                      }}>
                       Teacher: <b>{cls.teacher}</b>
                     </p>
-                    <p>
+                    {/* <p>
                       <FaClock /> {cls.startTime} - {cls.endTime}
-                    </p>
-                    <p
+                    </p> */}
+
+                    {/* <span
+                      className={`status-badge ${currentStatus.toLowerCase()}`}>
+                      {currentStatus === "Active" && "● Live Now"}
+                      {currentStatus === "Upcoming" && "Upcoming"}
+                      {currentStatus === "Ended" && "Class Ended"}
+                      {currentStatus === "Canceled" && "Postponed"}
+                    </span> */}
+                    {/* <p
                       style={{
                         marginTop: "5px",
                         fontSize: "0.9rem",
                         color: "#555",
                       }}>
                       <b>Current Lesson:</b> {cls.notice.lesson}
+                    </p> */}
+                  </div>
+
+                  {/* Lesson Notice Section */}
+                  <div
+                    className="class-notice"
+                    style={{
+                      background:
+                        currentStatus === "Canceled" ? "#f0f9ff" : "#f2f5ff",
+                      padding: "10px",
+                      borderRadius: "8px",
+                      borderLeft:
+                        currentStatus === "Canceled"
+                          ? "4px solid #4b6bfb"
+                          : "4px solid #1877f2",
+                      marginBottom: "0px",
+                      display: "flex",
+                      textAlign: "left",
+                    }}>
+                    <p
+                      style={{ fontSize: "0.85rem", color: "#333", margin: 0 }}>
+                      <FaBook
+                        style={{
+                          color:
+                            currentStatus === "Canceled"
+                              ? "#1a0a54"
+                              : "#1877f2",
+                          marginRight: "5px",
+                        }}
+                      />{" "}
+                      <b>Current Lesson:</b>
+                      <span style={{ display: "block", marginTop: "5px" }}>
+                        {cls.notice.lesson}
+                      </span>
                     </p>
                   </div>
 
@@ -652,10 +737,12 @@ const ClassesDetails = () => {
                           ? "4px solid #ff4d4d"
                           : "4px solid #f7786f",
                       marginBottom: "15px",
+                      display: "flex",
+                      textAlign: "left",
                     }}>
                     <p
                       style={{ fontSize: "0.85rem", color: "#333", margin: 0 }}>
-                      <FaBell
+                      <FaPenToSquare
                         style={{
                           color:
                             currentStatus === "Canceled"
@@ -664,18 +751,38 @@ const ClassesDetails = () => {
                           marginRight: "5px",
                         }}
                       />{" "}
-                      <b>Special Note:</b> {cls.notice.specialNote}
+                      <b>Special Note:</b>
+                      <span style={{ display: "block", marginTop: "5px" }}>
+                        {cls.notice.specialNote}
+                      </span>
                     </p>
                   </div>
 
                   {/* Card Footer (Active Class Link Logic) */}
                   <div className="class-footer">
                     {currentStatus === "Active" ? (
-                      <a
-                        href={cls.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="start-btn"
+                      // <a
+                      //   href={cls.link}
+                      //   target="_blank"
+                      //   rel="noopener noreferrer"
+                      //   className="start-btn"
+                      //   style={{
+                      //     width: "100%",
+                      //     display: "flex",
+                      //     justifyContent: "center",
+                      //     alignItems: "center",
+                      //     gap: "8px",
+                      //     textDecoration: "none",
+                      //     background:
+                      //       "linear-gradient(to right, #ff4b2b, #ff416c)",
+                      //     color: "white",
+                      //     padding: "10px",
+                      //     borderRadius: "8px",
+                      //     fontWeight: "bold",
+                      //   }}>
+                      //   <FaVideo /> Join Live Class Now
+                      // </a>
+                      <span
                         style={{
                           width: "100%",
                           display: "flex",
@@ -689,14 +796,19 @@ const ClassesDetails = () => {
                           padding: "10px",
                           borderRadius: "8px",
                           fontWeight: "bold",
-                        }}>
-                        <FaVideo /> Join Live Class Now
-                      </a>
+                        }}
+                        className={`status-badge ${currentStatus.toLowerCase()}`}>
+                        {currentStatus === "Active" && "● Live Now"}
+                        {/* {currentStatus === "Upcoming" && "Upcoming"}
+                        {currentStatus === "Ended" && "Class Ended"}
+                        {currentStatus === "Canceled" && "Postponed"} */}
+                      </span>
                     ) : (
                       <button
                         className="browse-btn"
                         disabled
                         style={{
+                          maxWidth: "300px",
                           width: "100%",
                           cursor: "not-allowed",
                           opacity: "0.6",
