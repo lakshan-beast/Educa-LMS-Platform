@@ -81,11 +81,11 @@ const ParentPortal = () => {
         setSearchQuery(cleanId); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක වගු වල ඔටෝ සර්ච් (Filter) වෙනවා
         setError("");
       } else {
-        setError("The password entered is incorrect! ❌");
+        setError("The password entered is incorrect!");
       }
     } else {
       setError(
-        "Invalid or unapproved student ID number. Please contact Card Marker. ❌",
+        "Invalid or unapproved student ID number. Please contact Card Marker.",
       );
     }
   };
@@ -107,9 +107,12 @@ const ParentPortal = () => {
     <div
       className="parent-portal-wrapper"
       style={{
-        padding: "40px 20px",
-        background: "#f8faff",
-        minHeight: "85vh",
+        // padding: "40px 20px",
+        // background: "#f8faff",
+        // minHeight: "85vh",
+        maxWidth: "1200px",
+        margin: "0px auto",
+        paddingTop: "5rem",
       }}>
       <div
         className="system-container"
@@ -179,30 +182,21 @@ const ParentPortal = () => {
               onSubmit={handleParentLogin}
               className="styled-form"
               style={{ textAlign: "left" }}>
-              <div className="input-group" style={{ marginBottom: "15px" }}>
-                <label
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "0.85rem",
-                    color: "#26136d",
-                    display: "block",
-                    marginBottom: "5px",
-                  }}>
-                  Student ID
-                </label>
+              <div className="input-group">
+                <label>Student ID</label>
                 <input
                   type="text"
                   placeholder="ex: EDU-MES-11-..."
                   required
                   value={studentId}
                   onChange={(e) => setStudentId(e.target.value)}
-                  style={{
-                    width: "100%",
-                    padding: "12px",
-                    borderRadius: "10px",
-                    border: "1px solid #ddd",
-                    textTransform: "uppercase",
-                  }}
+                  // style={{
+                  //   width: "100%",
+                  //   padding: "12px",
+                  //   borderRadius: "10px",
+                  //   border: "1px solid #ddd",
+                  //   textTransform: "uppercase",
+                  // }}
                 />
               </div>
               {/* <div className="input-group" style={{ marginBottom: "20px" }}>
