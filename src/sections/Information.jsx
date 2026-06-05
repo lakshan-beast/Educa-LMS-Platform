@@ -3,12 +3,11 @@ import {
   FaFilePen,
   FaHeadset,
   FaChartLine,
-  FaChalkboard,
+  FaGraduationCap,
   FaUserGraduate,
-  FaFaceSmile,
 } from "react-icons/fa6";
 
-import { FaChalkboardTeacher } from "react-icons/fa";
+import { FaChalkboardTeacher, FaSmileBeam } from "react-icons/fa";
 
 const Information = () => {
   return (
@@ -70,7 +69,7 @@ const Information = () => {
         <div className="info-right" data-aos="fade-right">
           <div className="about-status">
             <div className="courses-box box" data-aos="fade-right">
-              <FaChalkboard />
+              <FaGraduationCap />
               <h3 data-aos="zoom-in">3+</h3>
               <p>Specialized Subjects</p>
             </div>
@@ -85,7 +84,7 @@ const Information = () => {
               <p>Success Stories</p>
             </div>
             <div className="satisfaction-box box" data-aos="fade-down">
-              <FaFaceSmile />
+              <FaSmileBeam />
               <h3 data-aos="zoom-in">100%</h3>
               <p>Student Trust Rate</p>
             </div>
