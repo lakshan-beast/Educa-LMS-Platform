@@ -30,7 +30,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
-    alert("ස්තූතියි! ඔබේ පණිවිඩය අපට ලැබුණා.");
+    alert("Thank you! We received your message. We'll get back to you soon.");
   };
 
   const classContacts = [
