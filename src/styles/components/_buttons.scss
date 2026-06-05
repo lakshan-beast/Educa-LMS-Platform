@@ -21,6 +21,8 @@
 
   &:hover {
     transform: scale(1.05);
+    text-decoration: none;
+    color: $white;
   }
 }
 
@@ -35,6 +37,8 @@
   padding: 8px 10px;
   border-radius: $border-radius-xlarge;
   margin: 0 auto;
+  transition: 0.3s ease;
+
   i {
     margin-left: 0.5rem;
   }
