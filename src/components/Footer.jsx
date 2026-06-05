@@ -325,7 +325,7 @@ const Footer = () => {
               }}
               style={{
                 position: "absolute",
-                top: "10px",
+                top: "50px",
                 right: "20px",
                 background: "none",
                 border: "none",
