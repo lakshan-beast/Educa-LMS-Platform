@@ -13,15 +13,17 @@ const PasswordField = ({
   return (
     <div
       className="input-group"
-      style={{ position: "relative", width: "100%" }}>
+      // style={{ position: "relative", width: "100%" }}
+    >
       <label
-        style={{
-          fontWeight: "600",
-          fontSize: "0.85rem",
-          color: "#1a0a54",
-          display: "block",
-          marginBottom: "5px",
-        }}>
+      // style={{
+      //   fontWeight: "600",
+      //   fontSize: "0.85rem",
+      //   color: "#1a0a54",
+      //   display: "block",
+      //   marginBottom: "5px",
+      // }}
+      >
         {label}
       </label>
 
@@ -33,30 +35,31 @@ const PasswordField = ({
           width: "100%",
         }}>
         <input
-          type={showPassword ? "text" : "password"} // 🚀 true නම් අකුරු පෙනේ, false නම් හැංගී තිත් වැටේ!
+          type={showPassword ? "password" : "text"}
           placeholder={placeholder}
           required
           value={value}
           onChange={onChange}
-          style={{
-            width: "100%",
-            padding: "11px",
-            // paddingRight: "40px",
-            borderRadius: "8px",
-            border: "1px solid #ddd",
-            background: "white",
-            fontSize: "0.9rem",
-          }}
+          // style={{
+          //   width: "100%",
+          //   padding: "11px",
+          //   // paddingRight: "40px",
+          //   borderRadius: "8px",
+          //   border: "1px solid #ddd",
+          //   background: "white",
+          //   fontSize: "0.9rem",
+          // }}
         />
 
         {/* 👁️ TOGGLE ICON BUTTON */}
         <span
+          className="eye-content"
           onClick={() => setShowPassword(!showPassword)}
           style={{
             position: "absolute",
             right: "12px",
             cursor: "pointer",
-            color: "#666",
+            color: "#1a0a54",
             display: "flex",
             alignItems: "center",
             fontSize: "1.1rem",
