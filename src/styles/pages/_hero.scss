@@ -21,7 +21,6 @@
     }
   }
   .column {
-    // heading | main heading
     h1 {
       margin-bottom: $margin-small;
       color: $secondary-blue;
@@ -35,6 +34,10 @@
         font-weight: bold;
         text-shadow: none;
       }
+    }
+
+    p {
+      color: rgba($secondary-blue, 0.5);
     }
 
     // home buttons
