@@ -33,7 +33,7 @@
   // Mobile එකේදී scroll වෙන්න
   @include respond(mobile) {
     display: block;
-    overflow-x: auto;
+    overflow-x: scroll;
     white-space: nowrap;
   }
 }
