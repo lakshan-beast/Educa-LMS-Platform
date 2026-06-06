@@ -18,17 +18,17 @@ footer {
     margin: 0;
   }
 
-  Link,
   .secret-gen-link,
+  Link,
   a {
-    display: block;
     margin: 5px 0;
+    display: block;
     color: $text-light;
-    opacity: 0.8;
     font-size: 0.85rem;
     text-decoration: none;
     transition: transform 0.3s ease;
     cursor: pointer;
+    opacity: 0.8;
 
     &:hover {
       color: $primary-orange;
@@ -65,9 +65,9 @@ footer {
     @include flex-custom(flex-start, flex-start, column);
 
     p {
-      color: $text-medium;
       padding: 0;
       margin: 0;
+      color: $text-medium;
       font-size: 0.85rem;
     }
   }
@@ -89,6 +89,7 @@ footer {
       color: $primary-orange;
     }
   }
+
   p {
     font-size: $font-size-body;
     font-size: 0.85rem;
