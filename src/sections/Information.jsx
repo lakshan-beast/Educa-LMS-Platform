@@ -91,7 +91,7 @@ const Information = () => {
           </div>
 
           {/* Chart Area */}
-          <div className="result-container" data-aos="fade-up">
+          {/* <div className="result-container" data-aos="fade-up">
             <canvas id="olResultChart" width="400" height="250"></canvas>
             <p
               style={{
@@ -101,7 +101,7 @@ const Information = () => {
               }}>
               * O/L Result Improvement Analysis
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
