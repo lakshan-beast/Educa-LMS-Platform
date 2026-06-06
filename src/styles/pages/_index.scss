@@ -1,8 +1,28 @@
 // main part div style
 main {
-  margin-bottom: $margin-xlarge;
+  // margin-bottom: $margin-xlarge;
 
   @include flex-custom;
+}
+
+.page-container {
+  .system-container {
+    max-width: 1400px;
+    min-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      color: #7b808f;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
 }
 
 // parts
@@ -53,4 +73,12 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: $grid-gap-small $grid-gap-large;
+}
+
+// classes grid
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
 }
