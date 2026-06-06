@@ -1,170 +1,3 @@
-// import { useState } from "react";
-// import { Link } from "react-router-dom";
-// import { NavHashLink } from "react-router-hash-link";
-
-// import NotificationCenter from "./NotificationCenter";
-// import Login from "../pages/Login";
-
-// import {
-//   FaBarsStaggered,
-//   // FaRegCopyright,
-//   // FaRocket,
-//   // FaRegCircle,
-//   FaBell,
-//   FaX,
-// } from "react-icons/fa6";
-// import { FaRegUserCircle } from "react-icons/fa";
-
-// const Header = () => {
-//   const [isActive, setIsActive] = useState(false);
-//   const [showNotif, setShowNotif] = useState(false);
-//   const [showLogin, setShowLogin] = useState(false);
-
-//   const toggleMenu = () => {
-//     setIsActive(!isActive);
-//   };
-
-//   const notifications = [
-//     {
-//       id: 1,
-//       subject: "Maths",
-//       message: "අද රාත්‍රී 8ට විශේෂ අමතර පන්තියක් පැවැත්වේ.",
-//       time: "10 mins ago",
-//     },
-//     {
-//       id: 2,
-//       subject: "Science",
-//       message: "නව නිබන්ධනය Paper Hub එකට එක් කර ඇත.",
-//       time: "1 hour ago",
-//     },
-//     {
-//       id: 3,
-//       subject: "English",
-//       message: "Closed",
-//       time: "2 hour ago",
-//     },
-//   ];
-
-//   return (
-//     <>
-//       <header id="header" className="header-section">
-//         <nav className="header">
-//           <FaBarsStaggered
-//             className="menu-btn"
-//             id="menu-btn"
-//             title="Menu"
-//             onClick={toggleMenu}
-//           />
-
-//           <a href="#home" className="header-logo">
-//             <div className="logo-circle">E</div>educa<span>.</span>
-//           </a>
-
-//           <div
-//             className={`header-navbar ${isActive ? "nav-active" : ""}`}
-//             id="header-navbar">
-//             <Link
-//               to="/#home"
-//               className={({ isActive }) =>
-//                 isActive ? "nav-active active" : ""
-//               }>
-//               Home
-//             </Link>
-
-//             <NavHashLink
-//               smooth
-//               to="/#resources"
-//               className={({ isActive }) =>
-//                 isActive ? "nav-active active" : ""
-//               }>
-//               Learning Hub
-//             </NavHashLink>
-
-//             <NavHashLink
-//               smooth
-//               to="/#classes"
-//               className={({ isActive }) =>
-//                 isActive ? "nav-active active" : ""
-//               }>
-//               Class Schedule
-//             </NavHashLink>
-
-//             <Link
-//               to="/tools"
-//               className={({ isActive }) =>
-//                 isActive ? "nav-active active" : ""
-//               }>
-//               Smart Tools
-//             </Link>
-
-//             <Link
-//               to="/quizzes"
-//               className={({ isActive }) =>
-//                 isActive ? "nav-active active" : ""
-//               }>
-//               Skill Test
-//             </Link>
-
-//             {/* <div className="header-copyrights">
-//               <a href="#home" className="header-logo">
-//                 <FaRegCircle /> educa<span>.</span>
-//               </a>
-//               <p>
-//                 <FaRocket />
-//                 Version 1.0
-//               </p>
-//               <p>
-//                 <FaRegCopyright />
-//                 <span> {new Date().getFullYear()}</span> All rights reserved.
-//               </p>
-//             </div> */}
-//           </div>
-
-//           <div className="header-actions">
-//             <div
-//               className="notif-bell-wrapper"
-//               onClick={() => setShowNotif(!showNotif)}>
-//               <FaBell className="notif-bell" />
-//               {notifications.length > 0 && (
-//                 <span className="notif-count"></span>
-//               )}
-//             </div>
-
-//             {showNotif && (
-//               <NotificationCenter
-//                 notifications={notifications}
-//                 onClose={() => setShowNotif(false)}
-//               />
-//             )}
-
-//             <button className="sign-btn" onClick={() => setShowLogin(true)}>
-//               <FaRegUserCircle />
-//             </button>
-//           </div>
-//         </nav>
-//       </header>
-
-//       <div
-//         className={`overlay ${isActive ? "active" : ""}`}
-//         onClick={toggleMenu}></div>
-
-//       {/* Login Popup Overlay */}
-//       {showLogin && (
-//         <div className="login-overlay" onClick={() => setShowLogin(false)}>
-//           <div className="login-modal" onClick={(e) => e.stopPropagation()}>
-//             <button className="close-modal" onClick={() => setShowLogin(false)}>
-//               <FaX className="close-btn " />
-//             </button>
-//             <Login />
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// };
-
-// export default Header;
-
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
@@ -177,7 +10,6 @@ import {
   FaHouse,
   FaHubspot,
   FaCalendarDays,
-  FaRegCopyright,
   FaAddressCard,
   FaHeadphones,
 } from "react-icons/fa6";
@@ -190,7 +22,6 @@ const Header = () => {
 
   const [isActive, setIsActive] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  // const [showNotif, setShowNotif] = useState(false);
 
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
@@ -204,10 +35,10 @@ const Header = () => {
     } else {
       setShowLogin(true);
     }
-    setIsActive(false); // ඩෑෂ්බෝඩ් යද්දී මොබයිල් මෙනු එක වහන්න
+    setIsActive(false);
   };
 
-  // 👑 🆕 [THE ACTIVE CHECKER]: 'isActive' Error එක සදහටම නැති කර දමන පිරිසිදුම ක්‍රමය
+  // [THE ACTIVE CHECKER]: 'isActive' Error එක සදහටම නැති කර දමන පිරිසිදුම ක්‍රමය
   const isLinkActive = (hashPath) => {
     return location.pathname + location.hash === hashPath;
   };
@@ -216,7 +47,6 @@ const Header = () => {
     <>
       <header id="header" className="header-section">
         <nav className="header">
-          {/* Hamburger Menu Icon */}
           <FaBarsStaggered
             className="menu-btn"
             id="menu-btn"
@@ -226,124 +56,96 @@ const Header = () => {
           <a href="#home" className="header-logo">
             <div className="logo-circle">E</div>educa<span>.</span>
           </a>
-          {/* ==================== 💻 👑 🆕 DESKTOP NAVBAR (NO ICONS - EXECUTIVE LOOK) ==================== */}
+
+          {/* 💻 DESKTOP NAVBAR (NO ICONS - EXECUTIVE LOOK) */}
           <div className="desktop-navbar-links">
             <NavHashLink
+              className="desktop-link"
               smooth
               to="/#home"
               style={{
-                textDecoration: "none",
-                fontSize: "1.1rem",
-                fontWeight: "600",
                 color:
                   isLinkActive("/#home") ||
                   location.hash === "#home" ||
                   location.hash === ""
-                    ? "#26136d"
+                    ? "#03204b"
                     : "#8d8d8d",
                 borderBottom:
                   isLinkActive("/#home") ||
                   location.hash === "#home" ||
                   location.hash === ""
-                    ? "2px solid #26136d"
+                    ? "2px solid #03204b"
                     : "2px solid transparent",
-                padding: "6px 0",
-                transition: "0.3s",
               }}>
               Home
             </NavHashLink>
 
             <NavHashLink
+              className="desktop-link"
               smooth
               to="/#resources"
               style={{
-                textDecoration: "none",
-                fontSize: "1.1rem",
-                fontWeight: "600",
-                color: isLinkActive("/#resources") ? "#26136d" : "#8d8d8d",
+                color: isLinkActive("/#resources") ? "#03204b" : "#8d8d8d",
                 borderBottom: isLinkActive("/#resources")
-                  ? "2px solid #26136d"
+                  ? "2px solid #03204b"
                   : "2px solid transparent",
-                padding: "6px 0",
-                transition: "0.3s",
               }}>
               Learning Hub
             </NavHashLink>
 
             <NavHashLink
+              className="desktop-link"
               smooth
               to="/#classes"
               style={{
-                textDecoration: "none",
-                fontSize: "1.1rem",
-                fontWeight: "600",
-                color: isLinkActive("/#classes") ? "#26136d" : "#8d8d8d",
+                color: isLinkActive("/#classes") ? "#03204b" : "#8d8d8d",
                 borderBottom: isLinkActive("/#classes")
-                  ? "2px solid #26136d"
+                  ? "2px solid #03204b"
                   : "2px solid transparent",
-                padding: "6px 0",
-                transition: "0.3s",
               }}>
               Class Schedule
             </NavHashLink>
 
             <NavHashLink
+              className="desktop-link"
               smooth
               to="/#teachers"
               style={{
-                textDecoration: "none",
-                fontSize: "1.1rem",
-                fontWeight: "600",
-                color: isLinkActive("/#parent-portal") ? "#26136d" : "#8d8d8d",
+                color: isLinkActive("/#parent-portal") ? "#03204b" : "#8d8d8d",
                 borderBottom: isLinkActive("/#parent-portal")
-                  ? "2px solid #26136d"
+                  ? "2px solid #03204b"
                   : "2px solid transparent",
-                padding: "6px 0",
-                transition: "0.3s",
               }}>
               Our Tutors
             </NavHashLink>
             <NavHashLink
+              className="desktop-link"
               smooth
               to="/#contacts"
               style={{
-                textDecoration: "none",
-                fontSize: "1.1rem",
-                fontWeight: "600",
-                color: isLinkActive("/#contacts") ? "#26136d" : "#8d8d8d",
+                color: isLinkActive("/#contacts") ? "#03204b" : "#8d8d8d",
                 borderBottom: isLinkActive("/#contacts")
-                  ? "2px solid #26136d"
+                  ? "2px solid #03204b"
                   : "2px solid transparent",
-                padding: "6px 0",
-                transition: "0.3s",
               }}>
               Contact us
             </NavHashLink>
           </div>
-          {/* ========================================================================= */}
-          {/* ========================================================================= */}
+
+          <div className="header-actions">
+            <button className="sign-btn" onClick={handleUserClick}>
+              {isLoggedIn ? (
+                <FaUserCircle style={{ color: "#03204b" }} />
+              ) : (
+                <FaRegUserCircle />
+              )}
+            </button>
+          </div>
+
           {/* 📱 NEW APP-STYLE MOBILE TiOGGLE NAVIGATION MENU */}
           <div
             className={`header-navbar ${isActive ? "nav-active" : ""}`}
             id="header-navbar">
-            <img
-              // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa82/512.gif"
-              src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.gif"
-              // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.gif"
-              alt="live-emoji"
-              style={{
-                width: "70px",
-                height: "70px",
-                objectFit: "contain",
-                position: "absolute",
-                zIndex: "9999",
-                bottom: "6%",
-                right: "5%",
-              }}
-              refferrerPolicy="no-referrer"
-            />
-
-            {/* 1. TOP CONTAINER: Logo & Close Button */}
             <div className="mobile-nav-header">
               <div className="header-logo">
                 <div className="logo-circle">E</div>educa<span>.</span>
@@ -354,13 +156,12 @@ const Header = () => {
               </button>
             </div>
 
-            {/* 2. CENTER CONTAINER: The Smart Grid Links */}
             <div className="mobile-nav-links-grid">
               <NavHashLink
                 to="/#home"
                 className="mob-nav-card"
                 onClick={toggleMenu}>
-                <FaHouse /> <span>Home</span>
+                <FaHouse /> <span>Home Page</span>
               </NavHashLink>
               <NavHashLink
                 smooth
@@ -391,24 +192,6 @@ const Header = () => {
                 <FaHeadphones /> <span>Contact us</span>
               </NavHashLink>
             </div>
-
-            {/* 3. BOTTOM CONTAINER: Legals & Version Claim */}
-            <div className="mobile-nav-footer">
-              <p>
-                <FaRegCopyright /> {new Date().getFullYear()} Educa. All Rights
-                Reserved.
-              </p>
-            </div>
-          </div>
-          {/* ========================================================================= */}
-          <div className="header-actions">
-            <button className="sign-btn" onClick={handleUserClick}>
-              {isLoggedIn ? (
-                <FaUserCircle style={{ color: "#1d10ac" }} />
-              ) : (
-                <FaRegUserCircle />
-              )}
-            </button>
           </div>
         </nav>
       </header>
