@@ -14,7 +14,7 @@
     .error-code {
       font-size: 10rem; // Responsive large text
       font-weight: 900;
-      color: rgba($dark-purple1, 0.05); // Very subtle faded effect
+      color: rgba($secondary-blue, 0.05); // Very subtle faded effect
       line-height: 1;
       position: absolute;
       top: 50%;
@@ -33,7 +33,7 @@
 
     h2 {
       font-size: 2rem;
-      color: $dark-purple2;
+      color: $secondary-blue;
       margin-bottom: 1rem;
       position: relative;
       z-index: 2;
