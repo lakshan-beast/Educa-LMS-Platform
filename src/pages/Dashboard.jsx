@@ -1,183 +1,26 @@
-// // import React from 'react';
-// import DashboardSidebar from "../components/DashboardSidebar";
-
-// const Dashboard = () => {
-//   return (
-//     <div
-//       className="dashboard-layout"
-//       style={{ display: "flex", marginTop: "80px" }}>
-//       <DashboardSidebar />
-
-//       <main className="dashboard-content" style={{ flex: 1, padding: "20px" }}>
-//         <h2>
-//           Welcome Back, <span>Student!</span> 👋
-//         </h2>
-
-//         <div
-//           className="stats-grid"
-//           style={{
-//             display: "grid",
-//             gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-//             gap: "20px",
-//             marginTop: "20px",
-//           }}>
-//           <div className="card-container stats-card">
-//             <h4>Quizzes Done</h4>
-//             <p style={{ fontSize: "2rem", fontWeight: "bold" }}>12</p>
-//           </div>
-//           <div className="card-container stats-card">
-//             <h4>Avg. Score</h4>
-//             <p style={{ fontSize: "2rem", fontWeight: "bold", color: "green" }}>
-//               85%
-//             </p>
-//           </div>
-//           <div className="card-container stats-card">
-//             <h4>Papers Downloaded</h4>
-//             <p style={{ fontSize: "2rem", fontWeight: "bold" }}>05</p>
-//           </div>
-//         </div>
-
-//         <div
-//           className="recent-activity card-container"
-//           style={{ marginTop: "30px" }}>
-//           <h3>Recent Activity</h3>
-//           <p>
-//             You completed <b>Mathematics Weekly Paper 04</b> yesterday.
-//           </p>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
-// import { useState } from "react";
-// import { FaChartLine, FaFilePdf, FaToolbox, FaUser } from "react-icons/fa6";
-
-// const Dashboard = () => {
-//   // දැනට පේන්න ඕනේ මොන කොටසද කියලා තීරණය කරන State එක
-//   const [activeTab, setActiveTab] = useState("overview");
-
-//   return (
-//     <div className="dashboard-layout">
-//       {/* 1. Sidebar කොටස (පේජ් එක ඇතුළෙම තියෙනවා) */}
-
-//       <aside className="dashboard-sidebar">
-//         <div
-//           className="sidebar-user"
-//           style={{ textAlign: "center", marginBottom: "30px" }}>
-//           <FaUser style={{ fontSize: "40px" }} />
-//           <h3>Student Name</h3>
-//         </div>
-
-//         <nav className="sidebar-nav">
-//           <button
-//             onClick={() => setActiveTab("overview")}
-//             className={activeTab === "overview" ? "start-btn" : "browse-btn"}>
-//             <FaChartLine /> Overview
-//           </button>
-//           <button
-//             onClick={() => setActiveTab("papers")}
-//             className={activeTab === "papers" ? "start-btn" : "browse-btn"}>
-//             <FaFilePdf /> My Papers
-//           </button>
-//           <button
-//             onClick={() => setActiveTab("tools")}
-//             className={activeTab === "tools" ? "start-btn" : "browse-btn"}>
-//             <FaToolbox /> Smart Tools
-//           </button>
-//         </nav>
-//       </aside>
-
-//       {/* 2. Content කොටස (activeTab එක අනුව මාරු වෙනවා) */}
-//       <main className="dashboard-main">
-//         {activeTab === "overview" && (
-//           <div className="overview-content">
-//             <h2>
-//               Welcome Back, <span>Lakshan!</span> 👋
-//             </h2>
-//             <div className="stats-grid">
-//               <div className="card-container">
-//                 <h4>Quizzes Done</h4>
-//                 <p>12</p>
-//               </div>
-//               <div className="card-container">
-//                 <h4>Avg. Score</h4>
-//                 <p>85%</p>
-//               </div>
-//             </div>
-//           </div>
-//         )}
-
-//         {activeTab === "papers" && (
-//           <div className="papers-content">
-//             <h2>
-//               My <span>Target Papers</span>
-//             </h2>
-//             <p>ඔබට අදාළ සියලුම පේපර්ස් මෙතනින් ලබාගන්න.</p>
-//             {/* පසුව මෙතනට PaperHub එකේ කෝඩ් එක දාන්න පුළුවන් */}
-//           </div>
-//         )}
-
-//         {activeTab === "tools" && (
-//           <div className="tools-content">
-//             <h2>
-//               Quick <span>Tools</span>
-//             </h2>
-//             <p>පන්ති වැඩ වලට අවශ්‍ය ටූල්ස් ඉක්මනින් පාවිච්චි කරන්න.</p>
-//           </div>
-//         )}
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
-  // FaClock,
-  // FaVideo,
   FaBookOpen,
-  // FaUser,
-  FaLock,
-  // FaCheckCircle,
   FaArrowLeft,
-  // FaHourglassHalf,
+  FaLock,
   FaRightFromBracket,
 } from "react-icons/fa6";
-// import { ImOffice } from "react-icons/im";
+import { FaCrown } from "react-icons/fa6";
 
 import ScoreAnalytics from "../components/ScorenAnalytics";
-import { premiumStudentsList } from "../data/approvedStudents"; // Premium ලැයිස්තුව ගත්තා
-import { FaCrown } from "react-icons/fa6";
+import { premiumStudentsList } from "../data/approvedStudents";
+
+import LiveNoticeDisplay from "../components/LiveNotice";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const studentId = localStorage.getItem("user_id") || "";
-  const userSubjects = localStorage.getItem("user_subjects") || ""; // උදා: "MES", "M"
+  const userSubjects = localStorage.getItem("user_subjects") || "";
 
-  // 🧠 ළමයා සල්ලි ගෙවපු Premium කෙනෙක්ද කියලා බලන True/False Logic එක
   const isPremiumUser = premiumStudentsList.includes(
     studentId.trim().toUpperCase(),
   );
-
-  // 1. Tasks State (Daily Mission Progress Bar එකට)
-  // const [tasks, setTasks] = useState([
-  //   {
-  //     id: 1,
-  //     text: "Watch this week's Mathematics recording",
-  //     completed: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     text: "Complete the Science short-note summary",
-  //     completed: false,
-  //   },
-  //   { id: 3, text: "Check your active class notifications", completed: false },
-  // ]);
 
   // 2. Countdown State (2026 O/L Exam - Target Date: Dec 1, 2026)
   const [countdown, setCountdown] = useState({
@@ -187,13 +30,13 @@ const Dashboard = () => {
     secs: 0,
   });
 
+  const nowYear = new Date().getFullYear();
+
   useEffect(() => {
-    // ලොග් වෙලා නැත්නම් කෙලින්ම හෝම් පේජ් එකට හරවනවා
     if (!localStorage.getItem("isLoggedIn")) {
       navigate("/");
     }
 
-    // විභාග Countdown ගණනය කිරීම
     const examDate = new Date("2026-12-08T08:30:00").getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -216,32 +59,11 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, [navigate]);
 
-  // ☀️ 3. Dynamic Greeting Calculator Logic
-  // const getGreeting = () => {
-  //   const hr = new Date().getHours();
-  //   if (hr < 10) return `Good Morning ☀️ 🌞`;
-  //   if (hr < 14) return "Good Afternoon ⛅ 🌛";
-  //   if (hr < 17) return "Good Evening ⛅ 🌛";
-  //   return "Good Night 🌙";
-  // };
-
-  // 👑 🆕 [DYNAMIC NAME GRABBER]: බ්‍රවුසර් එකේ මතකයෙන් ළමයාගේ ඇත්තම නම ලබා ගැනීම
   const loggedInUser = JSON.parse(localStorage.getItem("studentUser")) || {};
 
-  // මුළු නමම දිග වැඩි නම් (ex: Lakshan Sandaruwan), පළමු නම විතරක් (Lakshan) වෙන් කර ගන්නවා
   const studentFirstName = loggedInUser.fullName
     ? loggedInUser.fullName.split(" ")[0]
     : "Student";
-
-  // Progress Bar එකේ ප්‍රතිශතය හැදීම
-  // const completedCount = tasks.filter((t) => t.completed).length;
-  // const progressPercent = Math.round((completedCount / tasks.length) * 100);
-
-  // const toggleTask = (id) => {
-  //   setTasks(
-  //     tasks.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
-  //   );
-  // };
 
   // 🔒 Subject Lock Checking Logic
   const hasAccess = (subLetter) => {
@@ -254,12 +76,9 @@ const Dashboard = () => {
     window.location.reload();
   };
 
-  // 👑 🔐 [THE FIXED ANIMATED ENGINE]: Not Found Errors සදහටම නැති කරන නිල Google CDN ලින්ක්ස්
-  // 👑 🔐 [THE ULTIMATE FIXED ENGINE]: කොටු කොටු පෙනෙන ලෙඩේ සදහටම නැති කරන සජීවී ත්‍රිමාණ ලින්ක්ස්!
   const getGreetings = () => {
     const hr = new Date().getHours();
 
-    // 🌅 A. උදේ 10ට අඩු නම් -> Morning (ලස්සන ත්‍රිමාණ සූර්යෝදයක්)
     if (hr < 10) {
       return {
         text: "Good Morning",
@@ -267,7 +86,6 @@ const Dashboard = () => {
       };
     }
 
-    // ☀️ B. දවල් 2ට අඩු නම් -> Afternoon (දිලිසෙන ත්‍රිමාණ සූර්යයා)
     if (hr < 14) {
       return {
         text: "Good Afternoon",
@@ -275,7 +93,6 @@ const Dashboard = () => {
       };
     }
 
-    // 🌇 C. සවස 5ට අඩු නම් -> Evening (ලස්සන බැසයන සූර්යයා)
     if (hr < 17) {
       return {
         text: "Good Evening",
@@ -283,7 +100,6 @@ const Dashboard = () => {
       };
     }
 
-    // 🌙 D. රෑ බෝ වුණාම -> Night (ත්‍රිමාණ හඳ සහ තරු)
     return {
       text: "Good Night",
       animUrl: "https://fonts.gstatic.com/s/e/notoemoji/latest/1f31b/512.gif",
@@ -298,102 +114,95 @@ const Dashboard = () => {
         <Link className="back-btn" to="/">
           <FaArrowLeft /> Back to Home Page
         </Link>
-        {/* 👑 A. Dynamic Welcome Banner */}
-        <div className="welcome-banner">
-          <img
-            // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f41d/512.gif"
-            src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif"
-            alt="live-emoji"
-            style={{
-              width: "250px",
-              height: "250px",
-              zIndex: "999",
-              position: "absolute",
-              top: "5%",
-              left: "15%",
-              objectFit: "contain",
-            }}
-            refferrerPolicy="no-referrer"
-          />
 
-          {/* <h2>{getGreeting()}, Student!</h2> */}
-
-          {/* 👑 🆕 [ANIMATED BANNER INTERFACE]: කිසිම බ්‍රෝකන් ලින්ක් එකක් නැති පිරිසිදුම Layout එක */}
-          <h1
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              margin: 0,
-            }}>
-            <span>
-              {greeting.text}, {studentFirstName}!
-            </span>
-
+        <div className="dashboard-grid">
+          <div className="welcome-banner">
             <img
-              src={greeting.animUrl}
+              src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif"
               alt="live-emoji"
-              style={{ width: "42px", height: "42px", objectFit: "contain" }}
-              refferrerPolicy="no-referrer"
+              style={{
+                width: "250px",
+                height: "250px",
+                zIndex: "999",
+                position: "absolute",
+                top: "5%",
+                left: "15%",
+                objectFit: "contain",
+                display: "none",
+              }}
             />
-          </h1>
 
-          {/* <picture>
-  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.webp" type="image/webp">
-  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif" alt="⌛" width="32" height="32">
-</picture> */}
+            <h1
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                margin: 0,
+              }}>
+              <span>
+                {greeting.text}, {studentFirstName}!
+              </span>
 
-          <p className="student-id">Your ID: {studentId}</p>
-          <p>Your password is secure and encrypted.</p>
-          <span> Grade 11 - 2026 O/L Batch</span>
-
-          <button onClick={handleLogout} className="browse-btn signout-btn">
-            <FaRightFromBracket className="icon" />
-            Sign Out
-          </button>
-        </div>
-
-        <div className="side-dash-content">
-          {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
-          <div className="card-container countdown-card">
-            <h4>
-              {/* <FaHourglassHalf /> */}
               <img
-                src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
+                src={greeting.animUrl}
                 alt="live-emoji"
-                style={{
-                  width: "42px",
-                  height: "42px",
-                  objectFit: "contain",
-                }}
+                style={{ width: "50px", height: "50px", objectFit: "contain" }}
                 refferrerPolicy="no-referrer"
-              />{" "}
-              O/L 2026 Countdown
-            </h4>
-            <div className="countdown-tiles">
-              <div>
-                <h3>{countdown.days}</h3>
-                <small>Days</small>
+              />
+            </h1>
+
+            <p className="student-id">Your ID: {studentId}</p>
+            <p>Your password is secure and encrypted.</p>
+            <span> Grade 11 - {nowYear} O/L Batch</span>
+
+            <button onClick={handleLogout} className="browse-btn signout-btn">
+              <FaRightFromBracket className="icon" />
+              Sign Out
+            </button>
+          </div>
+
+          <div className="side-dash-content">
+            {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
+            <div className="card-container countdown-card">
+              <h4>
+                {/* <FaHourglassHalf /> */}
+                <img
+                  src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
+                  alt="live-emoji"
+                  style={{
+                    width: "25px",
+                    height: "25px",
+                    objectFit: "contain",
+                  }}
+                  refferrerPolicy="no-referrer"
+                />{" "}
+                2026 - O/L Exam Countdown
+              </h4>
+              <div className="countdown-tiles">
+                <div>
+                  <h3>{countdown.days}</h3>
+                  <small>Days</small>
+                </div>
+                <div>
+                  <h3>{countdown.hours}</h3>
+                  <small>Hours</small>
+                </div>
+                <div>
+                  <h3>{countdown.mins}</h3>
+                  <small>Mins</small>
+                </div>
+                <div>
+                  <h3 className="seconds">{countdown.secs}</h3>
+                  <small>Secs</small>
+                </div>
               </div>
-              <div>
-                <h3>{countdown.hours}</h3>
-                <small>Hours</small>
-              </div>
-              <div>
-                <h3>{countdown.mins}</h3>
-                <small>Mins</small>
-              </div>
-              <div>
-                <h3 className="seconds">{countdown.secs}</h3>
-                <small>Secs</small>
-              </div>
+              <p>* Target Date: December 08, 2026</p>
             </div>
-            <p>* Target Date: December 08, 2026</p>
           </div>
         </div>
 
-        <div className="dashboard-grid">
-          {/* 🔒 C. Core Subject Enrolment & Paper Hub Redirection Area */}
+        <div className="dashboard-grids">
+          {/* 🔒 C. Core Subject Enrolment & Study Vault Redirection Area */}
 
           <div className="subjects-section">
             <h3>Your Enrolled Class Portals</h3>
@@ -402,7 +211,7 @@ const Dashboard = () => {
               <div
                 className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
                 style={{
-                  borderLeft: "5px solid #2e78cc",
+                  // borderLeft: "10px solid #2e78cc",
                   opacity: hasAccess("M") ? 1 : 0.6,
                 }}>
                 {!hasAccess("M") && (
@@ -411,11 +220,10 @@ const Dashboard = () => {
                   </div>
                 )}
 
-                <h4>Mathematics Papers</h4>
+                <h4>Mathematics Class</h4>
                 {hasAccess("M") ? (
-                  // 🟢 දැන් මේක බටන් එකක් නෙවෙයි, කෙලින්ම maths id එක අරන් යන ස්මාර්ට් ලින්ක් එකක්
                   <Link to="/paper-hub/maths" className="browse-btn paper-btn">
-                    <FaBookOpen /> Paper Hub
+                    <FaBookOpen /> Study Vault
                   </Link>
                 ) : (
                   <p className="not-allowed ">
@@ -428,7 +236,7 @@ const Dashboard = () => {
               <div
                 className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
                 style={{
-                  borderLeft: "5px solid #2ecc71",
+                  // borderLeft: "5px solid #2ecc71",
                   opacity: hasAccess("S") ? 1 : 0.6,
                 }}>
                 {!hasAccess("S") && (
@@ -436,13 +244,12 @@ const Dashboard = () => {
                     <FaLock className="lock-icon" />
                   </div>
                 )}
-                <h4>Science Papers</h4>
+                <h4>Science Class</h4>
                 {hasAccess("S") ? (
-                  // 🟢 Science Paper Hub එකට යන ලින්ක් එක
                   <Link
                     to="/paper-hub/science"
                     className="browse-btn paper-btn">
-                    <FaBookOpen /> Paper Hub
+                    <FaBookOpen /> Study Vault
                   </Link>
                 ) : (
                   <p className="not-allowed ">
@@ -455,7 +262,7 @@ const Dashboard = () => {
               <div
                 className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
                 style={{
-                  borderLeft: "5px solid #ff9f43",
+                  // borderLeft: "5px solid #ff9f43",
                   opacity: hasAccess("E") ? 1 : 0.6,
                 }}>
                 {!hasAccess("E") && (
@@ -463,13 +270,12 @@ const Dashboard = () => {
                     <FaLock className="lock-icon" /> Locked
                   </div>
                 )}
-                <h4>English Papers</h4>
+                <h4>English Class</h4>
                 {hasAccess("E") ? (
-                  // 🟢 English Paper Hub එකට යන ලින්ක් එක
                   <Link
                     to="/paper-hub/english"
                     className="browse-btn paper-btn">
-                    <FaBookOpen /> Paper Hub
+                    <FaBookOpen /> Study Vault
                   </Link>
                 ) : (
                   <p className="not-allowed">
@@ -479,39 +285,15 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+
+          <div className="notice-area">
+            <LiveNoticeDisplay
+              // studentGrade={loggedGrade.grade}
+              studentSubjects={userSubjects}
+            />
+          </div>
         </div>
 
-        {/* දකුණු පැත්තේ කොටස: Countdown Clock & Actions */}
-        {/* <div className="side-dash-content">
-          {/* ⏰ D. 2026 O/L Exam Countdown Clock Area 
-          <div className="card-container countdown-card">
-            <h4>
-              <FaHourglassHalf /> O/L 2026 Countdown
-            </h4>
-            <div className="countdown-tiles">
-              <div>
-                <h3>{countdown.days}</h3>
-                <small>Days</small>
-              </div>
-              <div>
-                <h3>{countdown.hours}</h3>
-                <small>Hours</small>
-              </div>
-              <div>
-                <h3>{countdown.mins}</h3>
-                <small>Mins</small>
-              </div>
-              <div>
-                <h3 className="seconds">{countdown.secs}</h3>
-                <small>Secs</small>
-              </div>
-            </div>
-            <p>* Target Date: December 08, 2026</p>
-          </div>
-        </div> */}
-
-        {/* ================================================================ */}
-        {/* 👑 PREMIUM SCORE ANALYTICS ZONE */}
         <div className="premium-tracker-zone">
           {isPremiumUser ? (
             // 🔓 A. ළමයා Premium නම්: කෙලින්ම Graph පද්ධතිය වැඩ කරනවා
@@ -554,10 +336,6 @@ const Dashboard = () => {
         </div>
         {/* ================================================================ */}
       </div>
-
-      {/* <button onClick={handleLogout} className="browse-btn signout-btn">
-        Sign Out
-      </button> */}
     </div>
   );
 };
