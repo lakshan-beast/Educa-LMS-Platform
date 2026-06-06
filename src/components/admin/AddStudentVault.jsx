@@ -3,8 +3,8 @@ import { db } from "../../firebaseConfig"; // 👑 අපේ මධ්‍යම 
 import { collection, addDoc } from "firebase/firestore"; // ☁️ දත්ත ඇතුළත් කරන Cloud Tools ගත්තා
 import {
   FaUserPlus,
-  FaKey,
-  FaMobileScreen,
+  // FaKey,
+  // FaMobileScreen,
   // FaIdCard,
   FaCopy,
   // FaCheck,
@@ -71,7 +71,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       !formData.pin ||
       !formData.parentMobile
     ) {
-      setError("කරුණාකර සියලුම විස්තර නිවැරදිව පුරවන්න! ⚠️");
+      setError("Please fill in all details correctly! ⚠️");
       setSuccess("");
       return;
     }
@@ -106,7 +106,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
 
       // ලස්සන කොළ පාට Notification Card එක සක්‍රීය කරයි
       setSuccess(
-        `ශිෂ්‍යයා සාර්ථකව Google Cloud Database එකට ඇතුළත් කරන ලදී! 🟢 ID: ${finalID}`,
+        `The student was successfully added to the Google Cloud Database! 🟢 ID: ${finalID}`,
       );
       setError("");
 
@@ -122,7 +122,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       });
     } catch (err) {
       console.error("Firebase Error:", err);
-      setError("Cloud Database එකට දත්ත සේව් කිරීමේදී දෝෂයක් සිදු විය! ❌");
+      setError("An error occurred while saving data to the Cloud Database!❌");
       setSuccess("");
     }
 
@@ -229,22 +229,13 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
         className="styled-form"
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr",
+          gridTemplateColumns: "1fr 1fr",
           gap: "12px 50px",
         }}>
         {/* Left Form Column */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0px" }}>
           <div className="input-group">
-            <label
-              style={{
-                fontWeight: "600",
-                fontSize: "0.85rem",
-                color: "#1a0a54",
-                display: "block",
-                marginBottom: "5px",
-              }}>
-              Student's Full Name (කැපිටල් අකුරෙන්)
-            </label>
+            <label>Student's Full Name (In capital letters)</label>
             <input
               type="text"
               name="fullName"
@@ -252,27 +243,11 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               required
               value={formData.fullName}
               onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ddd",
-                textTransform: "uppercase",
-              }}
             />
           </div>
 
           <div className="input-group">
-            <label
-              style={{
-                fontWeight: "600",
-                fontSize: "0.85rem",
-                color: "#1a0a54",
-                display: "block",
-                marginBottom: "5px",
-              }}>
-              <FaKey /> Create Password (ළමයා සඳහා මුරපදයක්)
-            </label>
+            <label>Create Password (For the student)</label>
             <input
               type="password"
               name="password"
@@ -280,26 +255,11 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               required
               value={formData.password}
               onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ddd",
-              }}
             />
           </div>
 
           <div className="input-group">
-            <label
-              style={{
-                fontWeight: "600",
-                fontSize: "0.85rem",
-                color: "#1a0a54",
-                display: "block",
-                marginBottom: "5px",
-              }}>
-              Create 4-Digit Secret PIN (අංක 4)
-            </label>
+            <label>Create 4-Digit Secret PIN (4-digit code)</label>
             <input
               type="text"
               name="pin"
@@ -308,26 +268,14 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               required
               value={formData.pin}
               onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ddd",
-              }}
             />
           </div>
+        </div>
 
+        {/* Right Form Column */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "0px" }}>
           <div className="input-group">
-            <label
-              style={{
-                fontWeight: "600",
-                fontSize: "0.85rem",
-                color: "#1a0a54",
-                display: "block",
-                marginBottom: "5px",
-              }}>
-              Select Enrolled Subjects (විෂයන්)
-            </label>
+            <label>Select Enrolled Subjects (Subjects)</label>
             <div
               style={{
                 display: "flex",
@@ -338,14 +286,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
                 border: "1px solid #eef2ff",
                 marginTop: "5px",
               }}>
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  cursor: "pointer",
-                  fontSize: "0.9rem",
-                }}>
+              <label>
                 <input
                   type="checkbox"
                   name="maths"
@@ -388,21 +329,9 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               </label>
             </div>
           </div>
-        </div>
 
-        {/* Right Form Column */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
           <div className="input-group">
-            <label
-              style={{
-                fontWeight: "600",
-                fontSize: "0.85rem",
-                color: "#1a0a54",
-                display: "block",
-                marginBottom: "5px",
-              }}>
-              <FaMobileScreen /> Parent's Mobile Number (දෙමාපිය අංකය)
-            </label>
+            <label>Parent's Mobile Number </label>
             <input
               type="text"
               name="parentMobile"
@@ -410,26 +339,11 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               required
               value={formData.parentMobile}
               onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ddd",
-              }}
             />
           </div>
 
           <div className="input-group">
-            <label
-              style={{
-                fontWeight: "600",
-                fontSize: "0.85rem",
-                color: "#1a0a54",
-                display: "block",
-                marginBottom: "5px",
-              }}>
-              <FaMobileScreen /> Student's Mobile Number
-            </label>
+            <label>Student's Mobile Number</label>
             <input
               type="text"
               name="studentMobile"
@@ -437,12 +351,6 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               required
               value={formData.studentMobile}
               onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ddd",
-              }}
             />
           </div>
 
@@ -450,6 +358,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
             type="submit"
             className="start-btn"
             style={{
+              // maxWidth: "300px",
               width: "100%",
               padding: "12px",
               background: "#1a0a54",
@@ -458,7 +367,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               borderRadius: "8px",
               fontWeight: "bold",
               cursor: "pointer",
-              marginTop: "24px",
+              // marginTop: "24px",
             }}>
             Register & Generate Student ID
           </button>
@@ -567,10 +476,12 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
         ) : (
           <div style={{ textAlign: "center", color: "#aaa" }}>
             <p style={{ margin: 0, fontWeight: "bold", fontSize: "0.9rem" }}>
-              විස්තර පුරවා බටන් එක ඔබන්න.
+              Fill in the details and press the Register & Generate Student ID
+              button.
             </p>
             <small style={{ display: "block", marginTop: "4px" }}>
-              ID එක හැදුණු ගමන් WhatsApp Share බටන් එක මෙතන මතු වේවි.
+              Once the ID is created, the WhatsApp Share button will appear
+              here.
             </small>
           </div>
         )}
