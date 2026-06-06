@@ -33,7 +33,8 @@
       }
 
       h4 {
-        color: $dark-purple2;
+        // color: $dark-purple2;
+        color: $secondary-blue;
         margin-bottom: 15px;
         font-size: 1.1rem;
       }
@@ -133,7 +134,7 @@ a {
       font-size: 0.9rem;
       font-weight: 600;
       margin: 8px 0;
-      color: $dark-purple1;
+      color: $secondary-blue;
     }
 
     input,
@@ -159,7 +160,8 @@ a {
   .contact-submit-btn {
     width: 100%;
     padding: 15px;
-    background: $dark-purple1;
+    // background: $dark-purple1;
+    background: $secondary-blue;
     color: $white;
     border: none;
     border-radius: 12px;
