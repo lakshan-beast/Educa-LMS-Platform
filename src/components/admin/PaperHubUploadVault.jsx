@@ -18,7 +18,12 @@ import {
   FaFileLines,
   FaGraduationCap,
   FaCircleExclamation,
+  FaFileCircleCheck,
 } from "react-icons/fa6";
+
+// import { CgSpinnerTwoAlt } from "react-icons/cg";
+import { ImSpinner } from "react-icons/im";
+import { GoRocket } from "react-icons/go";
 
 import ConfirmationModal from "../ConfirmationModal";
 
@@ -95,7 +100,7 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
       formData.materialTitle.trim() === "" ||
       formData.driveUrl.trim() === ""
     ) {
-      setError("Please enter all details correctly! ⚠️");
+      setError("Please enter all details correctly!");
       setSuccess("");
       setIsSubmitting(false);
       return;
@@ -186,7 +191,7 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
       console.error("Delete Error:", err);
 
       setError(
-        "A technical error occurred while deleting the data from the cloud! ❌",
+        "A technical error occurred while deleting the data from the cloud!",
       );
 
       setSuccess("");
@@ -407,7 +412,8 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
                 cursor: "pointer",
                 marginTop: "5px",
               }}>
-              🚀 Upload Academic Material
+              <GoRocket style={{ marginRight: "8px" }} />
+              Upload Academic Material
             </button>
           </form>
         </div>
@@ -415,7 +421,8 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
         <div style={{ overflowX: "auto" }}>
           {/* 👑 Inventory Header එකත් localGrade එක අනුව වෙනස් වේ */}
           <h4 style={{ margin: "0 0 15px", color: "#1a0a54" }}>
-            📁 Active Materials Inventory (Grade {localGrade})
+            <FaFileCircleCheck /> Active Materials Inventory (Grade {localGrade}
+            )
           </h4>
 
           {isLoading ? (
@@ -428,7 +435,12 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
                 fontSize: "0.9rem",
               }}>
               {" "}
-              🔄 Loading Materials from Cloud...{" "}
+              {/* <ImSpinner /> */}
+              <ImSpinner
+                className="loading-spin"
+                style={{ marginRight: "12px" }}
+              />
+              Loading Materials from Cloud...{" "}
             </div>
           ) : (
             <table
