@@ -40,7 +40,7 @@ const Hero = () => {
 </picture>
 </picture> */}
 
-          <img
+          {/* <img
             // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa82/512.gif"
             src="https://fonts.gstatic.com/s/e/notoemoji/latest/1facd/512.gif"
             // src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa8e/512.gif"
@@ -55,7 +55,7 @@ const Hero = () => {
               right: "1%",
             }}
             refferrerPolicy="no-referrer"
-          />
+          /> */}
           <p>
             Simplified lessons, exam-focused strategies, and a community of
             2500+ successful students. Join the most trusted learning platform
