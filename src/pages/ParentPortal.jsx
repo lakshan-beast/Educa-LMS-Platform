@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
-  parentGeneralNotices,
+  // parentGeneralNotices,
   parentFeesTable,
   parentAttendanceTable,
 } from "../data/parentPortalData";
@@ -12,7 +12,7 @@ import PasswordField from "../components/PasswordField";
 import {
   FaUserShield,
   // FaKey,
-  FaBell,
+  // FaBell,
   FaMagnifyingGlass,
   FaMoneyCheckDollar,
   FaCalendarCheck,
@@ -22,6 +22,7 @@ import {
 
 import { allApprovedStudents } from "../data/approvedStudents";
 // import { NoticeBoard } from "../components/admin/NoticeVault";
+import LiveNoticeDisplay from "../components/LiveNotice";
 
 const ParentPortal = () => {
   // Gate Security States
@@ -34,51 +35,19 @@ const ParentPortal = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // 🔒 1. Login Security Gate Handler
-  // const handleParentLogin = (e) => {
-  //   e.preventDefault();
-  //   // const cleanId = studentId.trim().toUpperCase();
-  //   const cleanPassword = password.trim(); // 🆕
-
-  //   // ගාස්තු වගුවේ හෝ පැමිණීම් වගුවේ මේ ID එක තියෙනවාද බලනවා
-  //   // const isIdValid = parentFeesTable.some((r) => r.studentId === cleanId);
-
-  //   const studentFound = allApprovedStudents.find(
-  //     (grade11All) => grade11All.id === cleanPassword,
-  //   );
-
-  //   if (studentFound.password === cleanPassword) {
-  //     // PIN එක ගැලපෙනවාද බැලීම (ID එක අග තියෙන PIN එක සමඟ සසඳයි)
-  //     if (cleanPassword.endsWith(password.trim())) {
-  //       setIsAuthenticated(true);
-  //       setSearchQuery(cleanPassword); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක ඔටෝ සර්ච් වෙනවා
-  //       setError("");
-  //     } else {
-  //       setError("ඇතුළත් කළ රහස් අංකය (PIN) වැරදියි! ❌");
-  //     }
-  //   } else {
-  //     setError(
-  //       "වලංගු නොවන ශිෂ්‍ය ID අංකයකි. කරුණාකර කාඩ් මාකර් සම්බන්ධ කරගන්න. ❌",
-  //     );
-  //   }
-  // };
-
-  // 🔒 1. Login Security Gate Handler (දෙමාපිය මුරපද ලොගින් පද්ධතිය)
   const handleParentLogin = (e) => {
     e.preventDefault();
-    const cleanId = studentId.trim().toUpperCase(); // 🆕 ළමයාගේ ID එක ගත්තා
-    const cleanPassword = password.trim(); // 🆕 ළමයාගේ රහස් Password එක ගත්තා
+    const cleanId = studentId.trim().toUpperCase();
+    const cleanPassword = password.trim();
 
-    // 🔍 1. Approved සිසුන්ගේ ලැයිස්තුව ඇතුළෙන් මේ ශිෂ්‍ය ID එක තියෙන කෙනාව සර්ච් කරලා හොයාගන්නවා
     const studentFound = allApprovedStudents.find(
       (student) => student.id === cleanId,
     );
 
-    // 🔍 2. ළමයෙක් හමු වුණොත් විතරක් ඇතුළත ආරක්ෂාව පරීක්ෂා කරනවා (Crash වීම වැළැක්වීමට)
     if (studentFound) {
-      // 🔍 3. ළමයාගේ ගිණුමට අදාළ රහස් Password එක දෙමාපියන් ගැහුව Password එකට සමානද බලනවා
       if (studentFound.password === cleanPassword) {
         setIsAuthenticated(true);
-        setSearchQuery(cleanId); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක වගු වල ඔටෝ සර්ච් (Filter) වෙනවා
+        setSearchQuery(cleanId);
         setError("");
       } else {
         setError("The password entered is incorrect!");
@@ -89,12 +58,11 @@ const ParentPortal = () => {
       );
     }
   };
-  // 📅 2. අද දින පන්ති පැමිණ නැති අයගේ (Absent) ලැයිස්තුව වෙන් කරගැනීම (Not Defined Error Fix)
+
   const todayAbsentList = parentAttendanceTable.filter(
     (r) => r.status === "Absent",
   );
 
-  // 🔍 3. සර්ච් බාර් එක අනුව වගු වල දත්ත Filter කරගැනීම (Not Defined Error Fix)
   const filteredFees = parentFeesTable.filter((r) =>
     r.studentId.includes(searchQuery.trim().toUpperCase()),
   );
@@ -104,30 +72,9 @@ const ParentPortal = () => {
   );
 
   return (
-    <div
-      className="parent-portal-wrapper"
-      style={{
-        // padding: "40px 20px",
-        // background: "#f8faff",
-        // minHeight: "85vh",
-        maxWidth: "1200px",
-        margin: "0px auto",
-        paddingTop: "5rem",
-      }}>
-      <div
-        className="system-container"
-        style={{ maxWidth: "1000px", margin: "0 auto", paddingTop: "5rem" }}>
-        <Link
-          to="/"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "20px",
-            color: "#4b6bfb",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}>
+    <div className="parent-portal-wrapper page-container">
+      <div className="system-container">
+        <Link to="/" className="back-btn">
           <FaArrowLeft /> Back to Home page
         </Link>
 
@@ -150,7 +97,7 @@ const ParentPortal = () => {
                 margin: "0 auto 15px",
                 width: "65px",
                 height: "65px",
-                background: "#26136d",
+                background: "#03204b",
                 color: "white",
                 borderRadius: "50%",
                 display: "flex",
@@ -162,7 +109,7 @@ const ParentPortal = () => {
             </div>
             <h2
               style={{
-                color: "#26136d",
+                color: "#03204b",
                 fontWeight: "800",
                 marginBottom: "8px",
               }}>
@@ -191,40 +138,9 @@ const ParentPortal = () => {
                   required
                   value={studentId}
                   onChange={(e) => setStudentId(e.target.value)}
-                  // style={{
-                  //   width: "100%",
-                  //   padding: "12px",
-                  //   borderRadius: "10px",
-                  //   border: "1px solid #ddd",
-                  //   textTransform: "uppercase",
-                  // }}
                 />
               </div>
-              {/* <div className="input-group" style={{ marginBottom: "20px" }}>
-                <label
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "0.85rem",
-                    color: "#26136d",
-                    display: "block",
-                    marginBottom: "5px",
-                  }}>
-                  Password
-                </label>
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  style={{
-                    width: "100%",
-                    padding: "12px",
-                    borderRadius: "10px",
-                    border: "1px solid #ddd",
-                  }}
-                />
-              </div> */}
+
               <PasswordField
                 label=" Secret Login Password"
                 placeholder="Type Your Paper-Slip Password..."
@@ -248,7 +164,7 @@ const ParentPortal = () => {
                 style={{
                   width: "100%",
                   padding: "14px",
-                  background: "#26136d",
+                  background: "#03204b",
                   color: "white",
                   border: "none",
                   borderRadius: "10px",
@@ -264,7 +180,7 @@ const ParentPortal = () => {
           // ==================== 🔓 SCREEN 02: MAIN PARENT PORTAL DASHBOARD ====================
           <div className="parent-main-dashboard">
             {/* 📢 A. GENERAL NOTICE BOARD */}
-            <div
+            {/* <div
               className="card-container"
               style={{
                 background: "white",
@@ -323,7 +239,9 @@ const ParentPortal = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
+
+            <LiveNoticeDisplay studentSubjects={[]} />
 
             {/* 🔍 B. SEARCH PORTAL BAR */}
             <div
