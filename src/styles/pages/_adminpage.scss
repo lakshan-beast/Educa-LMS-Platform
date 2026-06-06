@@ -1,11 +1,12 @@
 // admin mobile lock
 .admin-mobile-lock {
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: $footer-dark;
+  background: $secondary-blue;
   color: $white;
   padding: 30px;
   text-align: center;
@@ -17,7 +18,8 @@
     margin-bottom: 20px;
   }
   h2 {
-    font-weight: 800;
+    font-weight: 500;
+    word-spacing: 1.1rem;
   }
   p {
     max-width: 450px;
@@ -109,8 +111,9 @@
 
   .admin-sidebar {
     width: 300px;
-    background: #1a0a54;
-    color: white;
+    // background: #1a0a54;
+    background: $secondary-blue;
+    color: $white;
     display: flex;
     flex-direction: column;
     padding: 25px 20px;
@@ -121,6 +124,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 30px 12px;
     margin-bottom: 35px;
+    border-bottom: 1px solid rgba(219, 213, 213, 0.6);
   }
 
   h3 {
@@ -134,6 +138,7 @@
     font-size: 0.75rem;
     opacity: 0.8;
     font-weight: bold;
+    padding-bottom: 6px;
   }
 
   // nav
@@ -251,5 +256,46 @@
       font-size: 0.85rem;
       margin: 5px 0 0;
     }
+  }
+}
+
+// loading spin
+.loading-spin {
+  animation: spin 1s linear infinite;
+}
+
+// admin logo form
+.legel-checkbox-group {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8faff;
+  border: 1px solid #eef2ff;
+
+  .legel-checkbox {
+    margin-top: 3pc;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+  }
+
+  label {
+    font-size: 0.8rem;
+    color: grey;
+    line-height: 1.4;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .legel-link {
+    color: $primary-orange;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline;
+    padding: 2px 6px;
   }
 }
