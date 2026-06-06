@@ -1,67 +1,49 @@
-// all btns buttun and buttons
+// all btns, button and buttons
 .start-btn,
 .browse-btn {
-  outline: none;
-  border: none;
   display: block;
-  background-size: 200% auto;
-  transition: all 0.5s ease;
   text-align: center;
+  background-size: 200% auto;
   box-shadow: 0px 0px 6px rgb(208, 208, 228);
+  border: none;
+  outline: none;
+  transition: all 0.5s ease;
+  color: $white;
 }
 
 .start-btn {
   background-image: linear-gradient(
     to right,
-    #ff5a4e 0%,
-    #4548ff 51%,
-    #c0ccf3 100%
+    #fd473a 0%,
+    #330fff 51%,
+    #d7def7 100%
   );
-  color: $white;
 
   &:hover {
+    color: $white;
     transform: scale(1.05);
     text-decoration: none;
-    color: $white;
+    background-position: right center;
+    box-shadow: 0px 0px 8px rgb(203, 203, 241);
   }
 }
 
 .browse-btn,
 .contact-btn {
-  border: 1px solid $secondary-blue;
+  margin: 0 auto;
+  padding: 6px 10px;
+  max-width: 200px;
+  width: 100%;
   color: $secondary-blue;
+  border: 1px solid $secondary-blue;
+  border-radius: $border-radius-xlarge;
   transition: background 1s ease;
 
-  width: 100%;
-  max-width: 200px;
-  padding: 8px 10px;
-  border-radius: $border-radius-xlarge;
-  margin: 0 auto;
-  transition: 0.3s ease;
-
-  i {
-    margin-left: 0.5rem;
-  }
-
   &:hover {
-    background: $blue-medium;
     color: $white;
+    background: rgba($secondary-blue, 0.9);
     border: none;
     text-decoration: none;
-  }
-}
-.start-btn:hover {
-  background-position: right center;
-  box-shadow: 0px 0px 8px rgb(203, 203, 241);
-}
-
-// .contact-btn,
-.reviews-btn {
-  background: linear-gradient(to right, #ff5e53 0%, #474aff 100%);
-
-  &:hover {
-    transform: scale(1.03);
-    background: linear-gradient(to right, #ff5e5375 0%, #474aff80 100%);
   }
 }
 
@@ -75,8 +57,8 @@
   margin-bottom: 1rem;
 
   .fullclass-btn {
-    width: 100%;
     min-width: 350px;
+    width: 100%;
   }
 }
 
@@ -84,23 +66,22 @@
 .fullclass-btn {
   width: 100%;
   padding: 8px 12px;
-  background: rgba($dark-purple1, 0.6);
   color: $white;
+  background: rgba($dark-purple2, 0.8);
   border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
   font-weight: 500;
+  text-decoration: none;
   letter-spacing: 0.5px;
   transition: 0.3s;
-  text-decoration: none;
+
+  @include center-everything;
+  gap: 10px;
 
   &:hover {
-    background: $primary-orange;
     color: $white;
+    background: $primary-orange;
     text-decoration: none;
-    gap: 15px; // ඊතලය ටිකක් එහාට යන effect එකක්
+    gap: 15px;
   }
 }
 
@@ -109,8 +90,8 @@
   width: 100%;
 
   &:hover {
-    background-color: transparent;
     color: rgba($dark-purple1, 0.6);
+    background-color: transparent;
     border: 2px solid;
   }
 }
