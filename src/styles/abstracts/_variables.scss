@@ -3,35 +3,17 @@
 // stores colors and other variables used in the project
 
 // brand colors
-$primary-orange: #f7786f;
+$primary-orange: #fd473a;
 // $secondary-blue: #1d10ac;
-$secondary-blue: #1a0a54;
+// $secondary-blue: #1a0a54;
+
+$secondary-blue: #03204b;
 $blue-light: #c6d4fa;
 $blue-medium: #4e6ab9;
 $blue-soft: #4b6bfb;
 
-// social media icons
-$facebook-color: #1877f2;
-$whatsapp-color: #5bf099;
-$call-color: #2596be;
-$insta-primary-color: #833ab4;
-$insta-original-color: linear-gradient(
-  150deg,
-  rgba(131, 58, 180, 1) 0%,
-  rgba(253, 29, 29, 1) 50%,
-  rgba(252, 176, 69, 1) 100%
-);
-
 $linear-left: linear-gradient(135deg, #4e4ef1da 0%, #000b3b 100%);
 
-// backgrounds
-// $background-linear: linear-gradient(
-//   155deg,
-//   #5454d9 0%,
-//   rgb(255, 255, 255) 5%,
-//   rgb(255, 255, 255) 85%,
-//   #5454d9 100%
-// ); old background color
 $white: #ffffff;
 $bg-light: #e0e8ff;
 $bg-soft: #7f91ec14;
@@ -58,15 +40,17 @@ $font-secondary: "Exo 2", sans-serif;
 
 // font-sizes
 $font-size-h1: 2.6rem;
-$font-size-h1-m: 2.2rem;
+$font-size-h1-m: 2rem;
 
-$font-size-h2: 2.5rem;
 $font-size-h2-m: 1.8rem;
+$font-size-h2-mm: 1.6rem;
 
-$font-size-h3: 1.5rem;
+$font-size-h3: 1.45rem;
 $font-size-h3-m: 1.35rem;
+$font-size-h3-mm: 1.2rem;
 
 $font-size-body: 1rem;
+$font-size-body-m: 0.9rem;
 
 // font-weights
 $font-weight-medium: 500;
@@ -187,5 +171,3 @@ $animation-timing-linear: linear;
 $animation-timing-ease-in: ease-in;
 $animation-timing-ease-out: ease-out;
 $animation-timing-ease-in-out: ease-in-out;
-
-// logo
