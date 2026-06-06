@@ -113,8 +113,8 @@ const Login = () => {
           height: "90px",
           zIndex: "9999",
           position: "absolute",
-          top: "22%",
-          left: "75%",
+          top: "23.5%",
+          left: "73%",
           objectFit: "contain",
         }}
         refferrerPolicy="no-referrer"
@@ -136,21 +136,11 @@ const Login = () => {
             onChange={(e) => setStudentId(e.target.value)}
           />
         </div>
-        {/* <div className="input-group">
-          <label>Secure Login Password</label>
-          <input
-            type="password"
-            placeholder="Type your Secret Password..."
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div> */}
 
         {/* 🔑 🔐 [THE MASTER REUSABLE FIELD]: පරණ පේළි 20 වෙනුවට එකම පේළියකින් ඇස් දෙකේ ලොජික් එකම වැඩ කරයි! */}
         <PasswordField
           label=" Secret Login Password"
-          placeholder="Type Your Paper-Slip Password..."
+          placeholder="Type Your Secret Password..."
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
