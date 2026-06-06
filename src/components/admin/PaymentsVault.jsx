@@ -26,9 +26,11 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
     },
   ]);
 
+  const nowMonth = new Date().toLocaleString("default", { month: "long" });
+
   const [formData, setFormData] = useState({
     studentId: "",
-    month: "May",
+    month: { nowMonth },
     amount: "1000",
   });
 
@@ -36,6 +38,15 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
   const [parentNumbers, setParentNumbers] = useState({});
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const currentSubLetter =
+    subject === "maths"
+      ? "M"
+      : subject === "science"
+        ? "S"
+        : subject === "english"
+          ? "E"
+          : "";
 
   const totalPaidStudents = paymentRecords.length;
   const totalRevenue = paymentRecords.reduce(
@@ -60,15 +71,6 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
       setSuggestions([]);
       return;
     }
-
-    const currentSubLetter =
-      subject === "maths"
-        ? "M"
-        : subject === "science"
-          ? "S"
-          : subject === "english"
-            ? "E"
-            : "";
 
     const gradeFiltered = allApprovedStudents.filter((student) => {
       if (!student || !student.id) return false;
