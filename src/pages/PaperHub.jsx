@@ -449,7 +449,7 @@ const PaperHub = ({ subject }) => {
               ? subject.toUpperCase() + " PAPER HUB"
               : "ACADEMIC PAPER HUB"}
           </h2>
-          <p style={{ margin: "5px 0 0", color: "#666", fontSize: "0.88rem" }}>
+          <p style={{ margin: "5px 0 0", fontSize: "0.88rem" }}>
             Grade {studentGrade} • All structural tutes, past papers and
             materials are dynamically fetched from Live Cloud [INDEX 51].
           </p>
@@ -472,7 +472,7 @@ const PaperHub = ({ subject }) => {
               borderRadius: "10px",
               fontWeight: "bold",
               cursor: "pointer",
-              background: activeTab === "tutes" ? "#26136d" : "white",
+              background: activeTab === "tutes" ? "#03204b" : "white",
               color: activeTab === "tutes" ? "white" : "#555",
               border: "1px solid #ddd",
               display: "flex",
@@ -490,7 +490,7 @@ const PaperHub = ({ subject }) => {
               borderRadius: "10px",
               fontWeight: "bold",
               cursor: "pointer",
-              background: activeTab === "pastPapers" ? "#26136d" : "white",
+              background: activeTab === "pastPapers" ? "#03204b" : "white",
               color: activeTab === "pastPapers" ? "white" : "#555",
               border: "1px solid #ddd",
               display: "flex",
@@ -510,7 +510,7 @@ const PaperHub = ({ subject }) => {
                 borderRadius: "10px",
                 fontWeight: "bold",
                 cursor: "pointer",
-                background: activeTab === "formulas" ? "#26136d" : "white",
+                background: activeTab === "formulas" ? "#03204b" : "white",
                 color: activeTab === "formulas" ? "white" : "#555",
                 border: "1px solid #ddd",
                 display: "flex",
@@ -523,19 +523,17 @@ const PaperHub = ({ subject }) => {
         </div>
 
         {/* 📄 CONTENT ZONE (සජීවීව Cloud එකෙන් පෙරී එන ලැයිස්තුව) */}
-        <div
-          className="papers-list-grid"
-          style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        <div className="papers-list-grid">
           {/* 🕒 A. දත්ත Cloud එකෙන් ඇදලා එනකන් පෙන්වන ලස්සන Loading තීරුව */}
           {isLoading ? (
             <div
               style={{
                 textAlign: "center",
-                color: "#26136d",
+                color: "#03204b",
                 fontWeight: "bold",
                 padding: "40px 0",
               }}>
-              🔄 Fetching Verified Materials from Cloud...
+              Fetching Verified Materials from Cloud...
             </div>
           ) : /* 📄 B. දත්ත ලෝඩ් වී ඉවර වුණු පසු පෙන්වන සැබෑ ලිස්ට් එක */
           filteredMaterials.length > 0 ? (
@@ -549,7 +547,7 @@ const PaperHub = ({ subject }) => {
                   borderRadius: "15px",
                   display: "flex",
                   justifyContent: "space-between",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.02)",
                   border: "1px solid #edf2f9",
                 }}>
@@ -575,7 +573,7 @@ const PaperHub = ({ subject }) => {
                   </div>
                   <h4
                     style={{
-                      color: "#26136d",
+                      color: "#03204b",
                       margin: 0,
                       fontSize: "0.98rem",
                       fontWeight: "700",
@@ -595,12 +593,13 @@ const PaperHub = ({ subject }) => {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "8px",
-                    background: "#26136d",
+                    background: "#03204b",
                     color: "white",
                     padding: "10px 18px",
                     borderRadius: "8px",
                     fontWeight: "bold",
                     fontSize: "0.88rem",
+                    marginTop: "10px",
                   }}>
                   Download PDF
                   <FaArrowDown className="download-icon" />
