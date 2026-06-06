@@ -1,449 +1,28 @@
-// // card for style
-// .card {
-//   background-color: rgb(168, 152, 168);
-//   border-radius: $border-radius-medium;
-//   padding: 3rem;
-//   box-shadow: $shadow-light;
-//   transition: all 0.3s ease;
-//   position: relative;
-//   overflow: hidden;
-//   @include flex-custom(center, flex-start, column, 1.5rem);
-
-//   &-icon {
-//     font-size: 3.5rem;
-//     color: $dark-purple;
-//     margin-bottom: 1rem;
-//   }
-
-//   &-title {
-//     font-size: 2rem;
-//     font-weight: $font-weight-bold;
-//     color: $dark-purple;
-//   }
-//   &-text {
-//     font-size: 1.5rem;
-//     // color: $medium-text;
-//     line-height: 1.6;
-//   }
-
-//   &:hover {
-//     transform: translateY(-10px);
-//     box-shadow: $shadow-dark;
-//     border-bottom: 4px solid $dark-purple1;
-//   }
-// }
-
-// .resources-card {
-//   background: $white;
-//   border-radius: $border-radius-medium;
-//   box-shadow: 0px 1px 8px $blue-light;
-//   transition: 0.3s ease-out;
-//   @include flex-custom(center, center, column, 0, nowrap);
-//   text-align: center;
-//   position: relative;
-
-//   &:hover {
-//     transform: translateY(-10px);
-//     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-//   }
-
-//   @include respond(mobile) {
-//     text-align: center;
-//   }
-
-//   img {
-//     width: 180px;
-//     height: 180px;
-//     object-fit: cover;
-//     margin: 1rem auto;
-//   }
-
-//   h3 {
-//     color: $blue-medium;
-//     text-align: center;
-//     margin-bottom: 6px;
-
-//     i {
-//       margin-right: 0.3rem;
-//     }
-//   }
-//   p {
-//     color: $blue-medium;
-//     text-align: center;
-//     margin: 10px 18px;
-//     margin: 6px 18px 16px 18px;
-//     padding: $padding-none;
-//   }
-//   a {
-//     box-shadow: 0px 0px 16px rgba(92, 92, 231, 0.397);
-//     margin-top: auto;
-//     border-radius: 0 0;
-//     padding: 8px 0px;
-//     /* margin-top: auto; */
-//     /* margin-bottom: 6px; */
-//     /* border-radius: 3px 0 1rem 0; */
-//     position: relative;
-//     bottom: 0;
-//     /* margin: auto -0rem 0rem auto; */
-//     width: 100%;
-//     border-radius: 0 0 1rem 1rem;
-//     color: #ffffff;
-//     background: #f7786f;
-
-//     &:hover {
-//       opacity: 0.8;
-//       border-top: 2px solid $blue-medium;
-//     }
-//   }
-// }
-
-// .card-badge {
-//   padding: 6px 16px;
-//   text-align: center;
-//   border-radius: 3px;
-//   position: absolute;
-//   top: -0.5rem;
-//   right: -0.3rem;
-//   font-size: 0.7rem;
-//   text-transform: uppercase;
-//   z-index: 10;
-//   width: auto;
-//   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.164);
-//   font-weight: 500;
-
-//   &.card-badge-official {
-//     background: gold;
-//     color: $white;
-//   }
-//   &.card-badge-update {
-//     color: $secondary-blue;
-//     background: rgb(218, 218, 218);
-//   }
-//   &.card-badge-popular {
-//     color: $secondary-blue;
-//     background: rgb(255, 251, 0);
-
-//     i {
-//       color: red;
-//     }
-//   }
-//   &.card-badge-new {
-//     background: red;
-//     color: $white;
-//   }
-//   &.card-badge-verified {
-//     color: $secondary-blue;
-//     background: rgb(51, 255, 0);
-//   }
-//   &.card-badge-free {
-//     background: rgb(40, 126, 255);
-//     color: $white;
-//   }
-//   &.card-badge-members {
-//     background: #2ecc71;
-//     color: $white;
-//   }
-//   i {
-//     margin-right: 8px;
-//   }
-// }
-
-// .classes-card {
-//   padding: 1rem 0;
-//   margin: 0.5rem 0;
-//   gap: 6px;
-//   max-width: 700px;
-//   width: 100%;
-
-//   background: $white;
-//   border-radius: $border-radius-medium;
-//   box-shadow: 0px 1px 8px $blue-light;
-//   transition: 0.3s ease-out;
-//   text-align: center;
-//   position: relative;
-
-//   @include flex-custom(space-between, center);
-
-//   @include respond(desktop) {
-//     width: 900px;
-//     flex-direction: row;
-//     &:nth-child(even) {
-//       flex-direction: row-reverse;
-//     }
-//   }
-//   .position {
-//     background-color: $blue-medium;
-//     color: $white;
-//     padding: 8px 16px;
-
-//     text-align: center;
-//     box-shadow: 0px 0px 6px $blue-light;
-
-//     margin: 12px auto 0px auto;
-//     border-radius: 6px;
-//     text-align: center;
-
-//     i {
-//       margin-right: 1rem;
-//     }
-//   }
-
-//   .classes-column img {
-//     width: 100%;
-//     max-width: 800px;
-//     height: auto;
-//     border-radius: $border-radius-styles2;
-//     object-fit: cover;
-
-//     @include respond(desktop) {
-//       max-width: 100%;
-//     }
-
-//     &:hover {
-//       transform: scale(1.05);
-//     }
-//   }
-//   .classes-info {
-//     @include flex-custom(flex-start, stretch, column, 2px, nowrap);
-//     padding: 0 1rem;
-
-//     p {
-//       color: $blue-medium;
-//       margin: 0rem 0.3rem;
-//       text-align: left;
-
-//       span {
-//         background: transparent;
-//         color: $dark-purple;
-//         text-decoration: underline;
-//         margin: 3px;
-//         border: none;
-//         box-shadow: none;
-//       }
-//     }
-//   }
-// }
-
-// .teacher-card {
-//   border: 2px solid $blue-light;
-//   @include flex-custom(space-between, flex-start, column);
-//   margin-bottom: 1rem;
-//   border-radius: $border-radius-medium;
-//   box-shadow: 0px 4px 15px $blue-light;
-
-//   @include flex-custom(space-between, center);
-
-//   @include respond(laptop) {
-//     width: 900px;
-//     flex-direction: row;
-//     &:nth-child(even) {
-//       flex-direction: row-reverse;
-//     }
-//   }
-//   .teacher-info {
-//     @include flex-custom(center, center, column, 0, nowrap);
-//     margin: $margin-none;
-//     padding: 0.8rem 0.5rem;
-//     padding: 1rem;
-//     width: 100%;
-
-//     mark {
-//       background-color: #7f91ec;
-//       color: white;
-//       padding: 2px 6px;
-//       border-radius: 3px;
-
-//       &:hover {
-//         background-color: $dark-purple;
-//         border-radius: 5px;
-//         border-bottom: 2px solid $primary-orange;
-//       }
-//     }
-
-//     h3 {
-//       text-align: center;
-//       color: $secondary-blue;
-//       // font-size: $font-size-xhuge;
-//       margin-bottom: 0.5rem;
-
-//       span {
-//         color: $dark-purple;
-//         color: #4e6ab9;
-//         font-size: 1.2rem;
-//       }
-//     }
-//     .teacher-details {
-//       @include flex-custom(flex-start, flex-start, column);
-//       border-bottom: 2px solid $blue-light;
-//       padding-bottom: 0.5rem;
-//       width: 100%;
-//       p {
-//         color: $text-medium;
-//         // font-size: $font-size-p;
-//         display: flex;
-//         align-items: flex-start;
-//         margin: $margin-none;
-//         flex-direction: column;
-
-//         span {
-//           padding: 6px;
-//           color: $text-blue;
-//           background: $white;
-//           border-radius: 6px;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// All Cards Base Style
-// .card-container,
-// .card,
-// .resources-card,
-// // .class-card,
-// .teacher-card {
-//   background: $white;
-//   border-radius: $border-radius-medium;
-//   // padding: $padding-large;
-//   box-shadow: $shadow-light;
-//   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-//   border: 1px solid rgba($blue-light, 0.3);
-//   position: relative;
-//   overflow: hidden;
-//   height: 100%;
-//   margin-bottom: 10px;
-//   @include flex-custom(flex-start, stretch, column, 1rem);
-
-//   &:hover {
-//     transform: translateY(-6px);
-//     box-shadow: $shadow-dark;
-
-//     img {
-//       transform: scale(1.05);
-//     }
-//   }
-
-//   img {
-//     width: 100%;
-//     height: 200px;
-//     object-fit: cover;
-//     border-radius: $border-radius-small;
-//     transition: transform 0.5s ease;
-//   }
-
-//   h1 {
-//     color: $dark-purple;
-//     font-size: $font-size-h3;
-//     margin-bottom: 0.5rem;
-//     text-align: center;
-//   }
-
-//   h3 {
-//     color: $dark-purple;
-//     font-size: $font-size-h3;
-//     margin-top: 0.5rem;
-//   }
-
-//   p {
-//     color: $text-medium;
-//     line-height: 1.6;
-//     font-size: 0.95rem;
-//   }
-
-//   // කාඩ් එකේ අගට එන බටන් එක
-//   .btn,
-//   // .class-btn,
-//   .browse-btn {
-//     align-self: flex-start;
-//     margin-top: auto; // බටන් එක හැමතිස්සෙම කාඩ් එකේ පල්ලෙහාටම යනවා
-//   }
-// }
-
-// // Special badge for cards (Official, Week 04 වගේ ඒවට)
-// .card-badge {
-//   position: absolute;
-//   top: 0px;
-//   right: 0px;
-//   background: #f7786f;
-//   color: white;
-//   padding: 12px 24px;
-//   border-radius: 0 20px;
-//   font-size: 0.9rem;
-//   font-weight: 700;
-//   z-index: 99;
-// }
-
 // All Cards Base Style
 .card-container,
 .card,
 .resources-card,
-// .class-card,
 .teacher-card {
-  // background: $white;
-  // border-radius: $border-radius-medium;
-  // padding: $padding-large;
-  // box-shadow: $shadow-light;
-  // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // ලස්සන bounce effect එකක්
-  // border: 1px solid rgba($blue-light, 0.3);
-  // position: relative;
-  // overflow: hidden;
-  // height: 100%;
-  // @include flex-custom(flex-start, stretch, column, 6px);
-
-  // // කාඩ් එක උඩට මවුස් එක ගෙනිච්චම වෙන වෙනස
-  // &:hover {
-  //   transform: translateY(-10px);
-  //   box-shadow: $shadow-dark;
-  //   // border-color: $dark-purple1;
-
-  //   // කාඩ් එක ඇතුළේ තියෙන ඉමේජ් එක පොඩ්ඩක් සූම් වෙන්න
-  //   img {
-  //     transform: scale(1.05);
-  //   }
-  // }
-
-  // // කාඩ් එකේ පින්තූරය සඳහා
-  // img {
-  //   width: 100%;
-  //   height: 250px;
-  //   object-fit: cover;
-  //   border-radius: $border-radius-small;
-  //   transition: transform 0.5s ease;
-  // }
-
-  // h3 {
-  //   color: $dark-purple;
-  //   font-size: $font-size-h3;
-  //   margin-top: 0.5rem;
-  // }
-
-  // p {
-  //   color: $text-medium;
-  //   line-height: 1.6;
-  //   font-size: 0.95rem;
-  // }
-
   @include card-style;
 
-  // කාඩ් එකේ අගට එන බටන් එක
   .btn,
   .class-btn,
   .browse-btn {
+    margin-top: auto;
     align-self: flex-start;
-    margin-top: auto; // බටන් එක හැමතිස්සෙම කාඩ් එකේ පල්ලෙහාටම යනවා
   }
 }
 
+// resources card
 .resources-card {
   padding: 0rem 1.5rem 1rem 1.5rem;
 
   h3 {
-    padding: 3px 0;
+    margin-top: 0.8rem;
+    padding: 3px 0 6px 0;
     text-align: center;
     font-size: 1.3rem;
     font-weight: 0;
-    margin-top: 0.8rem;
-    padding-bottom: 6px;
     border-bottom: 2px solid rgba($blue-light, 0.6);
   }
 
@@ -458,18 +37,19 @@
   }
 }
 
-// Special badge for cards (Official, Week 04 වගේ ඒවට)
+// Special badge for cards (Official)
 .card-badge {
+  padding: 8px 12px;
   position: absolute;
   top: 12px;
   right: 0px;
-  background: $primary-orange;
   color: $white;
-  padding: 8px 12px;
-  border-radius: 20px 0 0 20px;
+  background: $primary-orange;
   font-size: 0.75rem;
   font-weight: $font-weight-bold;
+  border-radius: 20px 0 0 20px;
   z-index: 10;
+
   display: block;
 
   .icon {
@@ -484,10 +64,10 @@
   padding: $padding-large;
   background: $white;
   border-radius: $border-radius-medium;
-  overflow: hidden;
   box-shadow: $shadow-medium;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba($blue-light, 0.2);
+  overflow: hidden;
 
   &:hover {
     transform: translateY(-6px);
@@ -503,6 +83,7 @@
 
       h3 {
         color: $dark-purple2;
+        // color: $secondary-blue;
         font-size: 1.5rem;
         margin-bottom: 5px;
       }
@@ -520,7 +101,8 @@
     }
 
     .class-desc {
-      color: $text-medium;
+      // color: $text-medium;
+      color: rgba($secondary-blue, 0.6);
       font-size: 0.9rem;
       line-height: 1.6;
       margin-bottom: 20px;
@@ -594,10 +176,10 @@
     }
 
     h3 {
-      font-size: 2rem;
-      color: $blue-medium;
       margin: 0 0 10px 0;
       padding-bottom: 3px;
+      font-size: 2rem;
+      color: $blue-medium;
       border-bottom: 2px solid rgba($blue-medium, 0.2);
     }
 
@@ -607,120 +189,64 @@
       }
 
       p {
-        line-height: 1.3;
-        text-align: left;
-        color: $text-medium;
         margin-bottom: 6px;
+        color: $text-medium;
+        text-align: left;
+        line-height: 1.3;
       }
       .philosophy-box {
-        font-style: italic;
+        padding: 15px;
+        margin-top: 10px;
         background: rgba($blue-medium, 0.1);
         color: rgba($secondary-blue, 0.7);
-        font-weight: 500;
-        padding: 15px;
-        // border-left: 4px solid $blue-medium;
-        // border-radius: 0 12px 12px 0;
-        border-radius: 12px;
-        margin-top: 10px;
-        // box-shadow: $shadow-medium;
+        font-style: italic;
         font-size: 0.8rem;
+        font-weight: 500;
+        border-radius: 12px;
       }
     }
   }
-  // .teacher-socials {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   gap: 15px;
-  //   flex-direction: column;
 
-  //   a {
-  //     width: 45px;
-  //     height: 45px;
-  //     border-radius: 16px;
-  //     transition: 0.3s;
-  //     // font-size: 1.3rem;
+  /* 👑 PREMIUM FLOATING RIBBON SOCIAL BAR */
+  .teacher-socials {
+    padding: 8px 20px;
+    margin: 16px auto 0 auto;
+    width: 200px;
+    background: #ecf1ff;
+    border-radius: 30px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(26, 10, 84, 0.06);
+    transition: all 0.3s ease;
 
-  //     @include center-everything;
+    @include center-everything;
+    gap: 22px;
+  }
 
-  //     &:hover {
-  //       transform: scale(1.1);
-  //     }
+  .teacher-socials:hover {
+    box-shadow: 0 6px 20px rgba(26, 10, 84, 0.1);
+    background: #ffffff;
+  }
 
-  //     // .icon {
-  //     //   color: $white;
-  //     //   width: 30px;
-  //     //   height: 30px;
-  //     //   border-radius: 50%;
-  //     // }
+  .teacher-socials a {
+    height: 32px;
+    width: 32px;
+    color: $white;
+    background-color: $secondary-blue;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: transform 0.4s ease;
 
-  //     // .facebook-icon {
-  //     //   background-color: $facebook-color;
-  //     // }
+    @include center-everything;
+  }
 
-  //     // .whatsapp-icon {
-  //     //   background-color: $whatsapp-color;
-  //     // }
+  .teacher-socials .call-icon {
+    font-size: 1.15rem;
+  }
 
-  //     // .call-icon {
-  //     //   background-color: $call-color;
-  //     // }
-  //   }
-  // }
-}
-
-/* 👑 PREMIUM FLOATING RIBBON SOCIAL BAR */
-.teacher-socials {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // flex-direction: column;
-  background: #ecf1ff; /* ලස්සන ලා දම්/නිල් පසුබිම් පටිය */
-  padding: 8px 20px;
-  border-radius: 30px; /* Ribbon එකක් වගේ දෙපැත්ත සම්පූර්ණයෙන්ම වටකුරු කරයි */
-  gap: 22px; /* අයිකන අතර පරතරය */
-  margin-top: 14px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 15px rgba(26, 10, 84, 0.06); /* ලාවට පාවෙන පෙනුමක් (Shadow) */
-  transition: all 0.3s ease;
-  margin: 16px auto 0 auto;
-  width: 200px;
-}
-
-/* Ribbon එක උඩට මවුස් එක ගෙනිච්චම සිදුවන ලස්සන Shadow මාරුව */
-.teacher-socials:hover {
-  box-shadow: 0 6px 20px rgba(26, 10, 84, 0.1);
-  background: #ffffff;
-}
-
-/* අයිකන ලින්ක්ස් සඳහා පොදු ස්ටයිල් */
-.teacher-socials a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: transform 0.4s ease; /* Micro-animation speed */
-  font-size: 1.5rem;
-  width: 32px;
-  height: 32px;
-  background-color: $secondary-blue;
-  color: $white;
-  border-radius: 6px;
-}
-
-.teacher-socials .call-icon {
-  font-size: 1.15rem;
-}
-
-/* ළමයෙක් අයිකන් එකක් උඩට මවුස් එක ගෙනිච්චම ඒක විතරක් ලස්සනට scale වේ */
-.teacher-socials a:hover {
-  transform: scale(1.05);
-  border-radius: 8px;
-  color: $white;
-  //   background: #f72008;
-  //   color: $white;
-  //   width: 32px;
-  //   height: 32px;
-  //   border-radius: 6px;
-  //   font-size: 1.25rem;
+  .teacher-socials a:hover {
+    color: $white;
+    border-radius: 8px;
+    transform: scale(1.05);
+  }
 }
