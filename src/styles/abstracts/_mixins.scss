@@ -83,13 +83,13 @@
   }
 
   h3 {
-    color: $dark-purple;
+    color: $secondary-blue;
     font-size: $font-size-h3;
     margin-top: 0.5rem;
   }
 
   p {
-    color: $text-medium;
+    color: rgba($secondary-blue, 0.5);
     line-height: 1.6;
     font-size: 0.95rem;
   }
