@@ -1,0 +1,105 @@
+
+.notif-bell-wrapper {
+  position: relative;
+  cursor: pointer;
+  margin: 0.3rem;
+  top: 5px;
+
+  @include respond(desktop) {
+    margin: 0 1rem;
+  }
+
+  .notif-bell {
+    font-size: 1.6rem;
+    color: $dark-purple2;
+  }
+
+  .notif-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    background: $primary-orange;
+    border-radius: 50%;
+    border: 2px solid $white;
+  }
+}
+
+.notification-panel {
+  position: absolute;
+  top: 95px;
+  right: 15px;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  max-height: 400px;
+  z-index: 2000;
+  animation: slideIn 0.3s ease;
+
+  .notif-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $blue-light;
+    padding-bottom: 10px;
+
+    h3 {
+      color: $dark-purple;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+  }
+  .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: $text-medium;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    box-shadow: none;
+
+    &:hover {
+      color: $dark-purple1;
+    }
+  }
+
+  .notif-list {
+    display: block;
+    width: 100%;
+    padding: 3px;
+    overflow-y: auto;
+  }
+
+  .notif-item {
+    padding: 6px 0;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #eee;
+
+    .notif-subject {
+      font-weight: $font-weight-bold;
+      color: $blue-medium;
+      letter-spacing: 1px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dot {
+      font-size: 8px;
+      color: $primary-orange;
+      margin-right: 5px;
+    }
+    p {
+      font-size: 0.85rem;
+      margin: 8px 0;
+    }
+    .notif-time {
+      font-size: 9px;
+      color: $dark-blue;
+    }
+  }
+}
