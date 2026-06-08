@@ -176,7 +176,7 @@ const ClassesDetails = () => {
                         gap: "8px",
                         margin: 0,
                         padding: " 6px",
-                        color: "#1a0a54",
+                        color: "#03204b",
                         // color: "white",
                         // borderRadius: "6px",
                         fontWeight: "600",
@@ -188,7 +188,7 @@ const ClassesDetails = () => {
 
                   {/* Card Body */}
                   <div className="class-body" style={{ margin: "15px 0" }}>
-                    <h3>{cls.subject}</h3>
+                    <h3 style={{ color: "#03204b" }}>{cls.subject}</h3>
                     <p
                       style={{
                         marginBottom: "5px",
@@ -235,7 +235,14 @@ const ClassesDetails = () => {
                       textAlign: "left",
                     }}>
                     <p
-                      style={{ fontSize: "0.85rem", color: "#333", margin: 0 }}>
+                      style={{
+                        fontSize: "0.85rem",
+                        color: "#03204b",
+                        textAlign: "left",
+                        margin: 0,
+                        // textTransform: "uppercase",
+                        fontWeight: "600",
+                      }}>
                       <FaBook
                         style={{
                           color:
@@ -246,7 +253,16 @@ const ClassesDetails = () => {
                         }}
                       />{" "}
                       <b>Current Lesson:</b>
-                      <span style={{ display: "block", marginTop: "5px" }}>
+                      <span
+                        style={{
+                          display: "block",
+                          marginTop: "12px",
+                          color:
+                            currentStatus === "Canceled"
+                              ? "#03204b"
+                              : "#062853",
+                          // borderTop: "2px solid",
+                        }}>
                         {cls.notice.lesson}
                       </span>
                     </p>
@@ -262,25 +278,39 @@ const ClassesDetails = () => {
                       borderRadius: "8px",
                       borderLeft:
                         currentStatus === "Canceled"
-                          ? "4px solid #ff4d4d"
+                          ? "4px solid #fd473a"
                           : "4px solid #f7786f",
                       marginBottom: "15px",
                       display: "flex",
                       textAlign: "left",
                     }}>
                     <p
-                      style={{ fontSize: "0.85rem", color: "#333", margin: 0 }}>
+                      style={{
+                        fontSize: "0.85rem",
+                        color: "#03204b",
+                        textAlign: "left",
+                        margin: 0,
+                        fontWeight: "600",
+                      }}>
                       <FaPenToSquare
                         style={{
                           color:
                             currentStatus === "Canceled"
-                              ? "#ff4d4d"
-                              : "#f7786f",
+                              ? "#fd473a"
+                              : "#dd1305",
                           marginRight: "5px",
                         }}
                       />{" "}
                       <b>Special Note:</b>
-                      <span style={{ display: "block", marginTop: "5px" }}>
+                      <span
+                        style={{
+                          display: "block",
+                          color:
+                            currentStatus === "Canceled"
+                              ? "#fd473a"
+                              : "#dd1305",
+                          marginTop: "12px",
+                        }}>
                         {cls.notice.specialNote}
                       </span>
                     </p>
