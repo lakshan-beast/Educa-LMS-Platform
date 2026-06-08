@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import {
+  // BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -22,6 +27,8 @@ import FullTimetable from "./pages/Timetables";
 import ClassesDetails from "./pages/ClassesDetails";
 import ParentPortal from "./pages/ParentPortal";
 
+import StudentVoices from "./components/StudentVoices";
+
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 
@@ -29,6 +36,8 @@ const App = () => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
+
+  const location = useLocation();
 
   return (
     <>
@@ -56,11 +65,16 @@ const App = () => {
           <Route path="/classes-details" element={<ClassesDetails />} />
           <Route path="/parent-portal" element={<ParentPortal />} />
 
+          <Route path="/student-voices" element={<StudentVoices />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
+      {!location.pathname.startsWith("/dashboard") && <Footer />}
+      {/* {!location.pathname.startsWith("/parent-portal") && <Footer />} */}
+      {/* {!location.pathname.startsWith("/classes-details") && <Footer />} */}
     </>
   );
 };
