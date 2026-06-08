@@ -1,0 +1,151 @@
+
+import { useState } from "react";
+import { db } from "../../firebaseConfig";
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  doc,
+  setDoc,
+  deleteDoc,
+  orderBy,
+} from "firebase/firestore"; // ☁️ Cloud Tools ගත්තා
+
+import {
+  FaBell,
+  FaCirclePlus,
+  FaTrashCan,
+  FaBullhorn,
+  FaCircleExclamation,
+} from "react-icons/fa6";
+
+import ConfirmationModal from "../ConfirmationModal";
+
+const ClassNoticeVault = ({ selectedGrade, subject }) => {
+  // 1. දැනට සයිට් එකේ ලයිව් තියෙන නිවේදන ලැයිස්තුව (State)
+  // const [notices, setNotices] = useState([
+  //   {
+  //     id: 1,
+  //     type: "Parent-Meetings",
+  //     text: "A special Zoom meeting will be held for all Grade 11 parents on Sunday, May 24, 2026 at 9:00 AM. Participation is mandatory.",
+  //     date: "2026-05-18",
+  //     grade: "11",
+  //   },
+  // ]);
+  const currentSubject = (subject || "maths").toLowerCase(); // Default to "maths" if subject prop is not provided
+
+  const [notices, setNotices] = useState([]);
+
+  const [formData, setFormData] = useState({
+    type: "💡 General-Notice",
+    text: "",
+  });
+
+  // System Error State for Notice Fetching
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Reusable Modal States
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectNoticeId, setSelectNoticeId] = useState(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // 📢 New Notice Submission Handler
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.text.trim() === "") {
+      alert("Please enter the announcement message! ❌");
+      return;
+    }
+
+    const newNotice = {
+      id: Date.now(),
+      type: formData.type,
+      text: formData.text,
+      date: new Date().toISOString().split("T")[0],
+      grade: selectedGrade,
+    };
+
+    // 🚀 Firebase Cloud එකට සහ ලෝකල් ස්ටේට් එකට දත්ත එකතු වේ
+    setNotices([newNotice, ...notices]);
+    setFormData({ type: "💡 General-Notice", text: "" });
+    alert(
+      "The announcement was successfully broadcast live to the entire site! 🟢",
+    );
+  };
+
+  // දැනට තෝරාගෙන ඇති ශ්‍රේණියට (Grade 10 / 11) අදාළ නිවේදන පමණක් වෙන් කර ගැනීම
+  const filteredNotices = notices.filter((n) => n.grade === selectedGrade);
+
+  // 🟢 නිවැරදි අලුත් ක්‍රමය (States පාවිච්චි කරමින්):
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectNoticeId, setSelectNoticeId] = useState(null);
+
+  const handleDeleteNotice = (id) => {
+    setSelectNoticeId(id);
+    setIsModalOpen(true); // 👑 ලස්සන පොප්-අප් කාඩ් එක ඕපන් කරයි
+  };
+
+  const confirmRemoveAbsent = () => {
+    setNotices(
+      // notices.filter((record) => record.id !== selectedRecordId),
+      setNotices(notices.filter((notice) => notice.id !== selectNoticeId)),
+    );
+    setIsModalOpen(false);
+  };
+
+
+
+  // ❤️ ☁️ [TOGGLE LIKE/UNLIKE ENGINE]: එක ළමයෙකුට එක ලයික් එකක් පමණක් දීමට පාලනය කරයි
+  const handleLikeIncrement = async (voiceId) => {
+    try {
+      const voiceDocRef = doc(db, "student_voices", voiceId);
+      
+      // 💾 බ්‍රවුසර් මතකයෙන් දැනට ලයික් කර ඇති ලිස්ට් එක කියවයි
+      const likedVoices = JSON.parse(localStorage.getItem("liked_voices")) || [];
+      const hasLiked = likedVoices.includes(voiceId);
+
+      if (!hasLiked) {
+        // ➕ A. තවම ලයික් කර නැත්නම් -> Cloud එකේ ලයික් එක 1කින් වැඩි කරයි
+        await updateDoc(voiceDocRef, { likesCount: increment(1) });
+        
+        // ලෝකල් මතකයට එකතු කරයි
+        likedVoices.push(voiceId);
+        localStorage.setItem("liked_voices", JSON.stringify(likedVoices));
+
+        // UI එක සජීවීව අප්ඩේට් කරයි
+        setNotices((prev) => prev.map((v) => (v.id === voiceId ? { ...v, likesCount: v.likesCount + 1, isUserLiked: true } : v)));
+      } else {
+        // ➖ B. දැනටමත් ලයික් කර ඇත්නම් -> Cloud එකේ ලයික් එක 1කින් අඩු කරයි (Unlike)
+        await updateDoc(voiceDocRef, { likesCount: increment(-1) });
+        
+        // ලෝකල් මතකයෙන් ඉවත් කරයි
+        const updatedLikes = likedVoices.filter((id) => id !== voiceId);
+        localStorage.setItem("liked_voices", JSON.stringify(updatedLikes));
+
+        // UI එක සජීවීව අප්ඩේට් කරයි
+        setNotices((prev) => prev.map((v) => (v.id === voiceId ? { ...v, likesCount: v.likesCount - 1, isUserLiked: false } : v)));
+      }
+    } catch (err) {
+      console.error("Toggle Like Error:", err);
+    }
+  };
+
+
+  const voiceCloudData = {
+      id: docId,
+      studentName: formData.studentName.trim(),
+      olBatch: formData.olBatch,
+      avatarColor: formData.avatarColor || "#26136d", // 👑 🆕 FIXED: ළමයා තෝරන පාට Cloud එකට යවයි
+      selectedTeachers: selectedTeachers,
+      voiceText: formData.voiceText.trim(),
+      likesCount: 0,
+      createdAt: new Date().toISOString()
+    };
