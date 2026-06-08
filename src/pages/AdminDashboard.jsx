@@ -141,14 +141,12 @@ const AdminDashboard = () => {
                   className="legel-checkbox"
                   type="checkbox"
                   id="adminLegalAgree"
+                  // checked="checked"
                   checked={isAgreed}
                   onChange={(e) => setIsAgreed(e.target.checked)}
-                  // style={{
-                  //   marginTop: "3px",
-                  //   cursor: "pointer",
-                  //   width: "16px",
-                  //   height: "16px",
-                  // }}
+                  style={{
+                    marginRight: "6px",
+                  }}
                 />
                 <label htmlFor="adminLegalAgree">
                   I am here as a legal obligor for data handling.
