@@ -15,8 +15,8 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
   const [paymentRecords, setPaymentRecords] = useState([
     {
       id: 1,
-      studentId: "EDU-MES-11-LAKSHAN-0102",
-      studentName: "Lakshan",
+      studentId: "EDU-MES-11-User-****",
+      studentName: "User",
       month: "May",
       amount: 1000,
       maths_fees: "Paid",
