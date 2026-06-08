@@ -181,9 +181,9 @@ const StudentVoices = () => {
     <div
       className="student-voices-wrapper page-container"
       style={{
-        padding: "40px 0",
-        width: "100%",
-        fontFamily: "inherit",
+        padding: "40px 20px",
+        // width: "100%",
+        // fontFamily: "inherit",
         marginTop: "5rem",
       }}>
       {/* ==================== 📊 TOP CONTAINER: LIVE COUNTER BAR ==================== */}
@@ -200,20 +200,21 @@ const StudentVoices = () => {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "center",
             marginBottom: "30px",
             flexWrap: "wrap",
-            gap: "15px",
+            gap: "30px",
           }}>
           <div>
             <h2
               style={{
                 color: "#03204b",
-                margin: 0,
+                margin: "16px 0",
                 fontWeight: "800",
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: "10px",
                 fontSize: "1.6rem",
               }}>
@@ -222,7 +223,7 @@ const StudentVoices = () => {
             <p
               style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
               What our verified students say about their academic journey with
-              us [INDEX 4, 51].
+              us.
             </p>
           </div>
 
@@ -269,13 +270,14 @@ const StudentVoices = () => {
           style={{
             display: "flex",
             gap: "10px",
-            marginBottom: "25px",
+            // marginBottom: "25px",
             flexWrap: "wrap",
             background: "#f4f7ff",
             padding: "8px",
             borderRadius: "14px",
             border: "1px solid #e2e8f0",
             width: "fit-content",
+            margin: "0 auto 25px auto",
           }}>
           <button
             type="button"
@@ -570,16 +572,17 @@ const StudentVoices = () => {
                   position: "absolute",
                   top: "20px",
                   right: "20px",
-                  background: "#f1f5f9",
+                  background: "#ddeeff",
                   border: "none",
-                  width: "32px",
-                  height: "32px",
+                  width: "40px",
+                  height: "40px",
                   borderRadius: "50%",
                   cursor: "pointer",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   color: "#555",
+                  fontSize: " 1.3rem",
                 }}>
                 <FaXmark />
               </button>
@@ -591,7 +594,7 @@ const StudentVoices = () => {
                   fontWeight: "800",
                   fontSize: "1.3rem",
                 }}>
-                📣 Share Your Experience
+                Share Your Experience
               </h3>
               <p
                 style={{
@@ -599,8 +602,8 @@ const StudentVoices = () => {
                   fontSize: "0.8rem",
                   margin: "0 0 20px",
                 }}>
-                ඔබේ පන්ති අත්දැකීම අනෙකුත් සිසුන් සහ දෙමාපියන් සමඟ ලයිව් බෙදා
-                ගන්න [INDEX 51].
+                Share your class experience live with other students and
+                parents.
               </p>
 
               {formError && (
@@ -619,13 +622,7 @@ const StudentVoices = () => {
                 </div>
               )}
 
-              <form
-                onSubmit={handleVoiceSubmit}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "15px",
-                }}>
+              <form className="styled-form" onSubmit={handleVoiceSubmit}>
                 {/* Input Name */}
                 <div className="input-group">
                   <label
@@ -680,10 +677,17 @@ const StudentVoices = () => {
                       background: "white",
                       fontSize: "0.85rem",
                     }}>
+                    <option value="2017">2017 O/L</option>
+                    <option value="2018">2018 O/L</option>
+                    <option value="2019">2019 O/L</option>
+                    <option value="2020">2020 O/L</option>
+                    <option value="2021">2021 O/L</option>
+                    <option value="2022">2022 O/L</option>
+                    <option value="2023">2023 O/L</option>
                     <option value="2024">2024 O/L</option>
                     <option value="2025">2025 O/L</option>
                     <option value="2026">2026 O/L</option>
-                    <option value="2027">2027 O/L</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 
@@ -702,6 +706,7 @@ const StudentVoices = () => {
                   <div
                     style={{
                       display: "flex",
+                      justifyContent: "center",
                       gap: "15px",
                       background: "#f8fafc",
                       padding: "10px",
@@ -780,7 +785,7 @@ const StudentVoices = () => {
                   <textarea
                     name="voiceText"
                     rows="4"
-                    placeholder="පන්තිය ගැන ඔයාගේ අවංක අදහස මෙතන ලියන්න මචං..."
+                    placeholder="Write your thoughts about the class here..."
                     required
                     value={formData.voiceText}
                     onChange={handleInputChange}
@@ -812,9 +817,7 @@ const StudentVoices = () => {
                     boxShadow: "0 4px 12px rgba(255,75,43,0.2)",
                     marginTop: "5px",
                   }}>
-                  {isSubmitting
-                    ? "⏳ Publishing Live..."
-                    : "📣 Broadcast My Voice"}
+                  {isSubmitting ? " Publishing Live..." : " Share My Voice"}
                 </button>
               </form>
             </div>
