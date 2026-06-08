@@ -44,9 +44,12 @@ const Resources = () => {
             announcements here.
           </p>
           {/* රහස් පේජ් එකට යන ලින්ක් එක */}
-          <Link to="/parent-portal" className="browse-btn">
+          {/* <Link to="/parent-portal" className="browse-btn">
             View Details
-          </Link>
+          </Link> */}
+          <button disabled="disabled" className="browse-btn">
+            New Version Adding
+          </button>
         </div>
 
         {/* 3. Official Results Card */}
@@ -75,7 +78,10 @@ const Resources = () => {
         </div>
 
         {/* 2. Student Reviews Card */}
-        <div className="resources-card card-style" data-aos="fade-up">
+        <div
+          className="resources-card card-style"
+          data-aos="fade-up"
+          id="reviews">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Verified
           </span>
@@ -87,12 +93,12 @@ const Resources = () => {
             See what students say about classes & their learning experience with
             us.
           </p>
-          {/* <Link to="/reviews" className="browse-btn">
+          <Link to="/student-voices" className="browse-btn">
             Read Reviews
-          </Link> */}
-          <button disabled="disabled" className="browse-btn">
+          </Link>
+          {/* <button disabled="disabled" className="browse-btn">
             Developing Mode
-          </button>
+          </button> */}
         </div>
 
         {/* 1. Smart Tools Card */}
