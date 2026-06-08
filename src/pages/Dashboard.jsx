@@ -174,7 +174,7 @@ const Dashboard = () => {
                     height: "25px",
                     objectFit: "contain",
                   }}
-                  refferrerPolicy="no-referrer"
+                  // refferrerPolicy="no-referrer"
                 />{" "}
                 2026 - O/L Exam Countdown
               </h4>
@@ -310,7 +310,7 @@ const Dashboard = () => {
                 <FaLock className="premium-lock-logo" />
               </div>
 
-              <h3>Unlock O/L Progress Analytics Tracker 👑</h3>
+              <h3>Unlock O/L Progress Analytics Tracker </h3>
               <p className="premium-desc">
                 Activate Sri Lanka's first smart system that can track your
                 mistakes and weaknesses by graphing your paper scores for all 9
