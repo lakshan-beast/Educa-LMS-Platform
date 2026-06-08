@@ -83,11 +83,11 @@ const ParentPortal = () => {
           <div
             className="card-container"
             style={{
-              margin: "40px auto",
-              padding: "35px 30px",
-              borderRadius: "24px",
-              boxShadow: "0 15px 35px rgba(0,0,0,0.05)",
-              background: "white",
+              // margin: "40px auto",
+              // padding: "35px 30px",
+              // borderRadius: "24px",
+              // boxShadow: "0 15px 35px rgba(0,0,0,0.05)",
+              // background: "white",
               textAlign: "center",
               maxWidth: "350px",
               minWidth: "300px",
