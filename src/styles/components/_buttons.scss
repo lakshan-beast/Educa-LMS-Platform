@@ -66,8 +66,7 @@
 .fullclass-btn {
   width: 100%;
   padding: 8px 12px;
-  color: $white;
-  background: rgba($dark-purple2, 0.8);
+
   border-radius: 12px;
   font-weight: 500;
   text-decoration: none;
@@ -76,22 +75,33 @@
 
   @include center-everything;
   gap: 10px;
+}
+
+.class-btns {
+  color: $white;
+  background: rgba($dark-purple2, 0.8);
 
   &:hover {
     color: $white;
     background: $primary-orange;
     text-decoration: none;
     gap: 15px;
+    transform: translate(0);
   }
 }
 
 .fullclass-btn {
-  max-width: 350px;
+  max-width: 320px;
   width: 100%;
+  color: rgba($dark-purple1, 0.6);
+  background-color: transparent;
+  border: 2px solid;
 
   &:hover {
-    color: rgba($dark-purple1, 0.6);
-    background-color: transparent;
+    background-color: rgba($dark-purple1, 0.6);
+    color: $white;
     border: 2px solid;
+    transform: translate(0) scale(1.05);
+    text-decoration: none;
   }
 }
