@@ -74,7 +74,7 @@ const ClassesDetails = () => {
       style={{ padding: "40px 20px" }}>
       <div
         className="class-container"
-        style={{ maxWidth: "1200px", margin: "0 auto", paddingTop: "5rem" }}>
+        style={{ maxWidth: "1200px", margin: "0 auto", paddingTop: "2rem" }}>
         <Link
           to="/"
           style={{
@@ -99,7 +99,7 @@ const ClassesDetails = () => {
             display: "flex",
             justifyContent: "center",
             gap: "10px",
-            margin: "20px 0",
+            margin: "30px 0",
             flexWrap: "wrap",
           }}>
           {["6", "7", "8", "9", "10", "11", "11 Paper Class"].map((grade) => (
