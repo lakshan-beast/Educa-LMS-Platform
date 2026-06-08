@@ -1,89 +1,157 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { db } from "../../firebaseConfig"; // 👑 අපේ මධ්‍යම Firebase පාලම ගත්තා
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  doc,
+  setDoc,
+  deleteDoc,
+  orderBy,
+} from "firebase/firestore"; // ☁️ Cloud Tools ගත්තා
 import {
   FaBell,
   FaCirclePlus,
   FaTrashCan,
   FaBullhorn,
   FaCircleExclamation,
+  FaCalendar,
 } from "react-icons/fa6";
-
-import ConfirmationModal from "../ConfirmationModal";
+import ConfirmationModal from "../ConfirmationModal"; // 👑 අපේ මධ්‍යම Reusable Modal එක
 
 const ClassNoticeVault = ({ selectedGrade, subject }) => {
-  // 1. දැනට සයිට් එකේ ලයිව් තියෙන නිවේදන ලැයිස්තුව (State)
-  const [notices, setNotices] = useState([
-    {
-      id: 1,
-      type: "රැස්වීම්",
-      text: "2026 මැයි 24 (ඉරිදා) උදේ 9.00 ට සියලුම 11 ශ්‍රේණි දෙමාපියන් සඳහා විශේෂ Zoom හමුවක් පැවැත්වේ. සහභාගීත්වය අනිවාර්යයි.",
-      date: "2026-05-18",
-      grade: "11",
-    },
-  ]);
+  const currentSubject = (subject || "maths").toLowerCase();
+
+  // 1. 👑 🆕 [LIVE CLOUD NOTICES STATE]: පරණ Hardcoded ලිස්ට් එක වෙනුවට හිස් Array එකක් ගත්තා
+  const [notices, setNotices] = useState([]);
 
   const [formData, setFormData] = useState({
-    type: "💡 General announcement",
+    type: "💡 General-Notice", // Default Selector Match
     text: "",
   });
+
+  // System States
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Reusable Modal States
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectNoticeId, setSelectNoticeId] = useState(null);
+
+  // ============================================================
+  // 📥 👑 [LIVE CLOUD FETCH ENGINE]: සජීවීව Firebase එකෙන් නිවේදන ඇදලා ගන්නා පාලම
+  const fetchCloudNotices = useCallback(async () => {
+    setTimeout(() => setIsLoading(true), 0);
+    try {
+      // ☁️ Firebase 'class_notices' එකෙන් තෝරාගත් ශ්‍රේණියට සහ විෂයට අදාළ සියලුම දත්ත Query කරයි
+      const q = query(
+        collection(db, "class_notices"),
+        // where("grade", "==", selectedGrade || "11"),
+        where("grade", "==", String(selectedGrade)),
+        where("subject", "==", currentSubject),
+        orderBy("createdAt", "desc"), // 🕒 අලුත්ම නිවේදන උඩටම ගනී
+      );
+
+      const querySnapshot = await getDocs(q);
+      const noticeList = [];
+
+      querySnapshot.forEach((doc) => {
+        noticeList.push({ id: doc.id, ...doc.data() });
+      });
+
+      setNotices(noticeList); // 🚀 සැබෑ Cloud දත්ත ටික State එකට දැම්මා!
+    } catch (err) {
+      console.error("Fetch Notices Error:", err);
+    }
+    setTimeout(() => setIsLoading(false), 0);
+  }, [selectedGrade, currentSubject]);
+
+  useEffect(() => {
+    // fetchCloudNotices();
+  }, [fetchCloudNotices]);
+  // ============================================================
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 📢 New Notice Submission Handler
-  const handleSubmit = (e) => {
+  // 🧠 ☁️ [THE CLOUD BROADCAST ENGINE]: නිවේදන සජීවීව Cloud එකට යවන ප්‍රධාන ලොජික් එක
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     if (formData.text.trim() === "") {
-      alert("Please enter the announcement message! ❌");
+      setError("Please enter the announcement message! ⚠️");
+      setIsSubmitting(false);
       return;
     }
 
-    const newNotice = {
-      id: Date.now(),
+    // 👑 🔐 [SMART DYNAMIC ID]: ඊයේ අපි හදපු Date.now() ස්මාර්ට් ID Generator එක
+    const docId = "NOT-" + Date.now().toString().slice(-6);
+
+    const noticeCloudData = {
+      id: docId,
       type: formData.type,
-      text: formData.text,
+      text: formData.text.trim(),
+      // 📅 සර්ලාට පේන්න අද දවසේ දිනය පිරිසිදුව සේව් කරයි
       date: new Date().toISOString().split("T")[0],
-      grade: selectedGrade,
+      // grade: selectedGrade || "11",
+      grade: String(selectedGrade),
+      subject: currentSubject,
+      author:
+        currentSubject === "maths"
+          ? "Janaka Sir"
+          : currentSubject === "science"
+            ? "Science Sir"
+            : "English Teacher",
+      createdAt: new Date().toISOString(),
     };
 
-    // 🚀 Firebase Cloud එකට සහ ලෝකල් ස්ටේට් එකට දත්ත එකතු වේ
-    setNotices([newNotice, ...notices]);
-    setFormData({ type: "💡 General announcement", text: "" });
-    alert(
-      "The announcement was successfully broadcast live to the entire site! 🟢📣",
-    );
+    try {
+      // 🚀 setDoc() මඟින් Google Firestore එක ඇතුළටම ලස්සනට ලියයි! [INDEX 51]
+      await setDoc(doc(db, "class_notices", docId), noticeCloudData);
+
+      setSuccess(
+        "The announcement was successfully broadcast live to the entire site! 🟢",
+      );
+      setError("");
+      setFormData({ type: "💡 General-Notice", text: "" });
+      fetchCloudNotices(); // වොච් එන්ජිම ලයිව් රီෆ්‍රෙෂ් කරයි
+    } catch (err) {
+      console.error("Cloud Save Notice Error:", err);
+      setError("නිවේදනය Cloud එකට සේව් කිරීමේදී දෝෂයක් සිදු විය! ❌");
+    }
+    setIsSubmitting(false);
   };
-
-  // දැනට තෝරාගෙන ඇති ශ්‍රේණියට (Grade 10 / 11) අදාළ නිවේදන පමණක් වෙන් කර ගැනීම
-  const filteredNotices = notices.filter((n) => n.grade === selectedGrade);
-
-  // 🗑️ Delete Notice Handler
-  // const handleDeleteNotice = (id) => {
-  //   if (
-  //     window.confirm(
-  //       "Do you want to completely remove this announcement from the site? 😮",
-  //     )
-  //   ) {
-  //     setNotices(notices.filter((notice) => notice.id !== id));
-  //   }
-  // };
-
-  // 🟢 නිවැරදි අලුත් ක්‍රමය (States පාවිච්චි කරමින්):
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectNoticeId, setSelectNoticeId] = useState(null);
-
+  // 🗑️ 🎛️ [THE POPUP TRIGGER]
   const handleDeleteNotice = (id) => {
     setSelectNoticeId(id);
-    setIsModalOpen(true); // 👑 ලස්සන පොප්-අප් කාඩ් එක ඕපන් කරයි
+    setIsModalOpen(true); // 👑 ලස්සන පොප්-අප් එක ඕපන් කරයි
   };
 
-  const confirmRemoveAbsent = () => {
-    setNotices(
-      // notices.filter((record) => record.id !== selectedRecordId),
-      setNotices(notices.filter((notice) => notice.id !== selectNoticeId)),
-    );
+  // 🗑️ ☁️ [THE REAL CLOUD DELETE LOGIC]: "Yes" එබූ විට සැබෑ ලෙසම Google Cloud එකෙන් මකා දමයි!
+  const confirmRemoveNotice = async () => {
     setIsModalOpen(false);
+    if (!selectNoticeId) return;
+
+    setIsLoading(true);
+    try {
+      // ☁️ Firebase Firestore එකෙන් අදාළ Document එක සදහටම ඩිලීට් කරයි!
+      await deleteDoc(doc(db, "class_notices", selectNoticeId));
+      setSuccess(
+        "The announcement was successfully removed from Google Cloud! 🔴",
+      );
+      setError("");
+      fetchCloudNotices(); // ලයිව් ලිස්ට් එක නැවත අප්ඩේට් කරයි
+    } catch (err) {
+      console.error("Delete Notice Error:", err);
+      setError("නිවේදනය Cloud එකෙන් මැකීමේදී දෝෂයක් සිදු විය! ❌");
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -105,9 +173,41 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
         </h3>
         <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
           Announcements entered here will be published live on the Student
-          Dashboard and Parent Portal simultaneously.
+          Dashboard, Parent Portal, and Home Page simultaneously [INDEX 51].
         </p>
       </div>
+
+      {/* Notifications Alert Boxes */}
+      {error && (
+        <div
+          style={{
+            background: "#fdedec",
+            borderLeft: "5px solid #e74c3c",
+            color: "#c0392b",
+            padding: "12px",
+            borderRadius: "8px",
+            marginBottom: "20px",
+            fontSize: "0.88rem",
+            fontWeight: "bold",
+          }}>
+          ⚠️ {error}
+        </div>
+      )}
+      {success && (
+        <div
+          style={{
+            background: "#e8f8f5",
+            borderLeft: "5px solid #2ecc71",
+            color: "#27ae60",
+            padding: "12px",
+            borderRadius: "8px",
+            marginBottom: "20px",
+            fontSize: "0.88rem",
+            fontWeight: "bold",
+          }}>
+          ✓ {success}
+        </div>
+      )}
 
       {/* ==================== FORMS & TABLES GRID ==================== */}
       <div
@@ -128,12 +228,12 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
           <h4
             style={{
               margin: "0 0 15px",
-              color: "#ff4b2b",
+              // color: "#ff4b2b",
               display: "flex",
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaCirclePlus /> Broadcast New Notice
+            <FaCirclePlus style={{ color: "#ff4b2b" }} /> Broadcast New Notice
           </h4>
           <form
             onSubmit={handleSubmit}
@@ -161,21 +261,11 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
                   border: "1px solid #ddd",
                   fontWeight: "bold",
                 }}>
-                <option value="💡 සාමාන්‍ය නිවේදනය">
-                  💡 සාමාන්‍ය නිවේදනය (General)
-                </option>
-                <option value="🚨 විශේෂ පණිවිඩය">
-                  🚨 විශේෂ පණිවිඩය (Special Alert)
-                </option>
-                <option value="📅 දෙමාපිය රැස්වීම්">
-                  📅 දෙමාපිය රැස්වීම් (Parent Meeting)
-                </option>
-                <option value="🛑 පන්ති නිවාඩු">
-                  🛑 පන්ති නිවාඩු (Class Holiday)
-                </option>
-                <option value="⚡ අමතර පන්ති">
-                  ⚡ අමතර පන්ති (Extra Class)
-                </option>
+                <option value=" General-Notice">💡 General Notice</option>
+                <option value=" Special-Alert">🚨 Special Alert</option>
+                <option value="Parent-Meetings">📅 Parent Meetings</option>
+                <option value=" Class-Holidays">🛑 Class Holidays</option>
+                <option value=" Extra-Classes">⚡ Extra Classes</option>
               </select>
             </div>
             {/* Notice Message Textarea */}
@@ -188,7 +278,7 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
                   display: "block",
                   marginBottom: "5px",
                 }}>
-                Notice Message (සිංහලෙන් ලියන්න)
+                Notice Message
               </label>
               <textarea
                 name="text"
@@ -225,7 +315,9 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
                 marginTop: "5px",
                 boxShadow: "0 4px 10px rgba(255,75,43,0.2)",
               }}>
-              📣 Broadcast Notice to All
+              {isSubmitting
+                ? "⏳ Broadcasting..."
+                : "📣 Broadcast Notice to All"}
             </button>
           </form>
         </div>
@@ -246,10 +338,20 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
 
           <div
             style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-            {filteredNotices.length > 0 ? (
-              filteredNotices.map((notice) => (
+            {isLoading ? (
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "#ff4b2b",
+                  fontWeight: "bold",
+                  padding: "20px 0",
+                }}>
+                🔄 Syncing Live Notices from Cloud...
+              </div>
+            ) : notices.length > 0 ? (
+              notices.map((notice, index) => (
                 <div
-                  key={notice.id}
+                  key={notice.id || index}
                   style={{
                     background: "#fcfcfd",
                     padding: "18px",
@@ -267,12 +369,15 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
                       style={{
                         display: "flex",
                         alignItems: "center",
+                        justifyContent: "space-between",
                         gap: "10px",
                         marginBottom: "8px",
+                        padding: "0 6px",
                       }}>
+                      <h2>{notice.subject} Class</h2>
                       <span
                         style={{
-                          background: "#ff4b2b",
+                          background: "#ff300b",
                           color: "white",
                           padding: "2px 8px",
                           borderRadius: "6px",
@@ -282,12 +387,12 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
                         {notice.type}
                       </span>
                       <small style={{ color: "#aaa", fontWeight: "bold" }}>
-                        📅 Posted: {notice.date}
+                        for ({notice.grade}) Students
                       </small>
                     </div>
                     <p
                       style={{
-                        margin: 0,
+                        margin: "10px 0 0 0",
                         fontSize: "0.92rem",
                         color: "#333",
                         lineHeight: "1.6",
@@ -295,6 +400,18 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
                       }}>
                       {notice.text}
                     </p>
+
+                    <small
+                      style={{
+                        color: "#aaa",
+                        fontWeight: "bold",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        alignItems: "center",
+                        gap: "12px",
+                      }}>
+                      <FaCalendar /> Posted: {notice.date}
+                    </small>
                   </div>
 
                   {/* Delete Notice Button Tool */}
@@ -358,7 +475,7 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
         title="Are You Sure?"
         message="Do you want to completely remove this data from the system? This action cannot be undone."
         type="danger"
-        onConfirm={confirmRemoveAbsent}
+        onConfirm={confirmRemoveNotice}
         onCancel={() => setIsModalOpen(false)}
       />
     </div>
