@@ -146,9 +146,9 @@ const Footer = () => {
           <h3>Study Resources</h3>
           <ul>
             <li>
-              <NavHashLink smooth to="/#reviews">
+              <Link to="/student-voices">
                 <FaCaretRight className="footer-icon" /> Students Feedbacks
-              </NavHashLink>
+              </Link>
             </li>
             <li>
               <Link to="/tool">
