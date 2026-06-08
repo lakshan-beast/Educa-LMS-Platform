@@ -276,7 +276,7 @@
   border: 1px solid #eef2ff;
 
   .legel-checkbox {
-    margin-top: 3pc;
+    margin: 3px 6px;
     cursor: pointer;
     width: 16px;
     height: 16px;
@@ -289,13 +289,16 @@
     cursor: pointer;
     font-weight: 500;
     text-align: left;
+    margin-bottom: 20px;
   }
 
-  .legel-link {
+  Link {
     color: $primary-orange;
     font-weight: bold;
     text-decoration: none;
-    display: inline;
+    // display: inline;
     padding: 2px 6px;
+    display: inline-block;
+    margin: 0 6px;
   }
 }
