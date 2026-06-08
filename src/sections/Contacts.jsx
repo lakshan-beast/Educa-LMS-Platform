@@ -75,7 +75,7 @@ const Contact = () => {
           </div>
 
           <div
-            className="contact-form-card"
+            className="contact-form-card styled-form"
             data-aos="fade-left"
             id="contact-form">
             <form
