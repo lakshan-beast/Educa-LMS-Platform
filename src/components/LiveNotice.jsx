@@ -22,7 +22,9 @@ const LiveNoticeDisplay = ({ studentGrade, studentSubject }) => {
         // ☁️ Firebase එකෙන් ළමයාගේ ශ්‍රේණියට සහ විෂයට අදාළව දාපු අලුත්ම නිවේදනය (Notice) පමණක් Query කරයි
         const q = query(
           collection(db, "class_notices"),
-          where("grade", "==", studentGrade || "11"),
+          // where("grade", "==", studentGrade || "11"),
+          where("grade", "==", String(studentGrade)),
+
           where("subject", "==", (studentSubject || "maths").toLowerCase()),
           orderBy("createdAt", "desc"), // 🕒 අලුත්ම නිවේදනය උඩටම ගනී
           limit(1), // ☝️ එකක් පමණක් පෙන්වයි
