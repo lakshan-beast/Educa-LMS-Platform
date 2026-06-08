@@ -27,7 +27,7 @@ const Classes = () => {
       subtitle: "Confidence in Communication",
       description:
         "Focus on essay writing, literature analysis & fluency to ace your exam.",
-      grade: "06 - 11",
+      grade: "01 - 11",
       medium: "English / Sinhala",
     },
   ];
