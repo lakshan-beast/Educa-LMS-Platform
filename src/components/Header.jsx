@@ -111,8 +111,8 @@ const Header = () => {
               smooth
               to="/#teachers"
               style={{
-                color: isLinkActive("/#parent-portal") ? "#03204b" : "#8d8d8d",
-                borderBottom: isLinkActive("/#parent-portal")
+                color: isLinkActive("/#teachers") ? "#03204b" : "#8d8d8d",
+                borderBottom: isLinkActive("/#teachers")
                   ? "2px solid #03204b"
                   : "2px solid transparent",
               }}>
