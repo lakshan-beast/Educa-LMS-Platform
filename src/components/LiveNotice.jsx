@@ -27,7 +27,7 @@ const LiveNoticeDisplay = ({ studentGrade, studentSubject }) => {
 
           where("subject", "==", (studentSubject || "maths").toLowerCase()),
           orderBy("createdAt", "desc"), // 🕒 අලුත්ම නිවේදනය උඩටම ගනී
-          limit(1), // ☝️ එකක් පමණක් පෙන්වයි
+          limit(1),
         );
 
         const querySnapshot = await getDocs(q);
