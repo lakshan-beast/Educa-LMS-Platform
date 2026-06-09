@@ -867,14 +867,17 @@ import {
   FaBullhorn,
   FaPlus,
   FaXmark,
-  FaCheckCircle,
+  // FaCheckCircle,
   FaHeartPulse,
-  FaStudent,
   FaUsersGear,
   FaUsers,
   FaChalkboardUser,
   FaIdCard,
 } from "react-icons/fa6"; // 👑 🆕 Phosphor/FontAwesome Styled Roles Combo ගත්තා [INDEX 55]
+
+// import {  } from "react-icons/fa";
+import { PiSealCheckFill, PiStudent } from "react-icons/pi";
+// import { IoHeartSharp } from "react-icons/io5";
 
 const StudentVoicesComponent = () => {
   // 1. Core State Management
@@ -1049,7 +1052,7 @@ const StudentVoicesComponent = () => {
 
   // 👑 🆕 [THE ROLE ICON MAPPER]: Role එක අනුව Premium filled icon එකක් පින්තාරු කරයි [INDEX 55]
   const renderRoleIcon = (type) => {
-    if (type === "boy") return <FaStudent />;
+    if (type === "boy") return <PiStudent />;
     if (type === "girl") return <FaUsersGear />;
     if (type === "parent") return <FaUsers />;
     if (type === "teacher") return <FaChalkboardUser />;
@@ -1065,8 +1068,13 @@ const StudentVoicesComponent = () => {
 
   return (
     <div
-      className="student-voices-wrapper"
-      style={{ padding: "40px 0", width: "100%", fontFamily: "inherit" }}>
+      className="student-voices-wrapper page-container"
+      style={{
+        padding: "40px 0",
+        width: "100%",
+        fontFamily: "inherit",
+        paddingTop: "7rem",
+      }}>
       {/* ==================== 📊 TOP CONTAINER: LIVE COUNTER BAR ==================== */}
       <div
         style={{
@@ -1293,7 +1301,7 @@ const StudentVoicesComponent = () => {
                               display: "flex",
                               alignItems: "center",
                             }}>
-                            <FaCheckCircle style={{ fontSize: "0.85rem" }} />
+                            <PiSealCheckFill style={{ fontSize: "0.85rem" }} />
                           </span>
                         </h4>
                         {/* ⚡ 👑 [THE EXCLUSIVE IDENTITY CLAIM BADGE]: ළමයා, දෙමාපියන් හෝ Alumni බව පෙන්වන නිල පේළිය */}
@@ -1925,7 +1933,7 @@ const StudentVoicesComponent = () => {
                               : "none",
                           transition: "0.2s",
                         }}>
-                        {formData.avatarColor === color && <FaCheckCircle />}
+                        {formData.avatarColor === color && <PiSealCheckFill />}
                       </div>
                     ),
                   )}
