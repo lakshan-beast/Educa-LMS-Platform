@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa6"; // 👑 🆕 අපේ ස්මාර්ට් Bot Icons ටික ගත්තා [INDEX 55]
 
 import { RiRobot3Fill } from "react-icons/ri";
+import { TiHeartFullOutline } from "react-icons/ti";
 
 // educa. Neti = Next-Generation Education Technology
 
@@ -220,8 +221,10 @@ const AIChatWidget = () => {
                   left: "15%",
                   fontSize: "1.5rem",
                   animation: "heartFloatUp 2.2s ease-in-out infinite",
+                  color: "#fc2212",
                 }}>
-                ❤️
+                {/* ❤️ */}
+                <TiHeartFullOutline />
               </span>
               <span
                 style={{
@@ -231,8 +234,10 @@ const AIChatWidget = () => {
                   fontSize: "1.8rem",
                   animation: "heartFloatUp 2.8s ease-in-out infinite",
                   animationDelay: "0.2s",
+                  color: "#fc2212",
                 }}>
-                ❤️
+                {/* ❤️ */}
+                <TiHeartFullOutline />
               </span>
               <span
                 style={{
@@ -242,8 +247,10 @@ const AIChatWidget = () => {
                   fontSize: "1.4rem",
                   animation: "heartFloatUp 2.0s ease-in-out infinite",
                   animationDelay: "0.5s",
+                  color: "#fc2212",
                 }}>
-                ❤️
+                {/* ❤️ */}
+                <TiHeartFullOutline />
               </span>
               <span
                 style={{
@@ -253,8 +260,10 @@ const AIChatWidget = () => {
                   fontSize: "2.0rem",
                   animation: "heartFloatUp 2.5s ease-in-out infinite",
                   animationDelay: "0.1s",
+                  color: "#fc2212",
                 }}>
-                ❤️
+                {/* ❤️ */}
+                <TiHeartFullOutline />
               </span>
               <span
                 style={{
@@ -264,8 +273,10 @@ const AIChatWidget = () => {
                   fontSize: "1.6rem",
                   animation: "heartFloatUp 2.3s ease-in-out infinite",
                   animationDelay: "0.4s",
+                  color: "#fc2212",
                 }}>
-                ❤️
+                {/* ❤️ */}
+                <TiHeartFullOutline />
               </span>
               <span
                 style={{
@@ -275,8 +286,10 @@ const AIChatWidget = () => {
                   fontSize: "1.3rem",
                   animation: "heartFloatUp 2.7s ease-in-out infinite",
                   animationDelay: "0.3s",
+                  color: "#fc2212",
                 }}>
-                ❤️
+                {/* ❤️ */}
+                <TiHeartFullOutline />
               </span>
             </div>
           )}
@@ -285,7 +298,7 @@ const AIChatWidget = () => {
           {/* A. CHAT WINDOW HEADER CONTAINER */}
           <div
             style={{
-              background: "linear-gradient(135deg, #03204b 0%, #053680 100%)",
+              background: "linear-gradient(135deg, #03204b 0%, #001431 100%)",
               padding: "18px 20px",
               display: "flex",
               justifyContent: "space-between",
@@ -498,7 +511,8 @@ const AIChatWidget = () => {
                 alignItems: "center",
                 gap: "5px",
               }}>
-              <FaGraduationCap style={{ color: "#4b6bfb" }} /> Study Plan
+              <FaGraduationCap style={{ color: "#4b6bfb", fontSize: "1rem" }} />{" "}
+              Study Plan
             </button>
             <button
               type="button"
@@ -520,7 +534,8 @@ const AIChatWidget = () => {
                 alignItems: "center",
                 gap: "5px",
               }}>
-              <FaLightbulb style={{ color: "#f1c40f" }} /> Sine Rule
+              <FaLightbulb style={{ color: "#f1c40f", fontSize: "1rem" }} />{" "}
+              Sine Rule
             </button>
             <button
               type="button"
@@ -542,7 +557,8 @@ const AIChatWidget = () => {
                 alignItems: "center",
                 gap: "5px",
               }}>
-              <FaCompass style={{ color: "#2ecc71" }} /> Tute Finder
+              <FaCompass style={{ color: "#2ecc71", fontSize: "1rem" }} /> Tute
+              Finder
             </button>
           </div>
 
