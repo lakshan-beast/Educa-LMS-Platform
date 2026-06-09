@@ -32,6 +32,8 @@ import StudentVoices from "./components/StudentVoices";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 
+// import AIChatWidget from "./components/AIChatWidget";/
+
 const App = () => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -55,6 +57,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
+          {/* <Route path="/ai-chat-widget" element={<AIChatWidget />} /> */}
 
           <Route path="/tools" element={<Tools />} />
           {/* <Route path="/daily-questions" element={<DailyQuestions />} /> */}
