@@ -78,7 +78,7 @@ const StudentVoices = () => {
 
   useEffect(() => {
     // fetchCloudVoices();
-  }, [fetchCloudVoices]);
+  }, [activeFilter, fetchCloudVoices]);
   // ============================================================
 
   const handleInputChange = (e) => {
@@ -291,6 +291,7 @@ const StudentVoices = () => {
               cursor: "pointer",
               background: activeFilter === "ALL" ? "#03204b" : "transparent",
               color: activeFilter === "ALL" ? "white" : "#555",
+              // border: activeFilter === "ALL" ? "white" : "#555",
               transition: "0.2s",
             }}>
             All Voices
@@ -374,14 +375,15 @@ const StudentVoices = () => {
                     background: "white",
                     padding: "25px",
                     borderRadius: "20px",
-                    border: "1px solid #edf2f9",
-                    boxShadow: "0 4px 15px rgba(0,0,0,0.01)",
+                    border: "2px solid #d8e8ff",
+                    boxShadow: "0 4px 15px rgba(3, 32, 75, 0.3)",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
                     gap: "15px",
                     position: "relative",
                     textAlign: "left",
+                    // background: "red",
                   }}>
                   <div>
                     {/* Card Header Info */}
@@ -391,11 +393,13 @@ const StudentVoices = () => {
                         justifyContent: "space-between",
                         alignItems: "flex-start",
                         marginBottom: "12px",
+                        // borderBottom: "2px solid #d4e4fc",
                       }}>
                       <div
                         style={{
                           display: "flex",
                           alignItems: "center",
+                          // justifyContent: "space-between",
                           gap: "10px",
                         }}>
                         <div style={{ fontSize: "2.2rem", color: "#cbd5e1" }}>
@@ -455,7 +459,7 @@ const StudentVoices = () => {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      borderTop: "1px solid #f1f5f9",
+                      borderTop: "2px solid #d4e4fc",
                       paddingTop: "12px",
                       marginTop: "5px",
                     }}>
@@ -687,6 +691,7 @@ const StudentVoices = () => {
                     <option value="2024">2024 O/L</option>
                     <option value="2025">2025 O/L</option>
                     <option value="2026">2026 O/L</option>
+                    <option value="Parents">Parents</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
