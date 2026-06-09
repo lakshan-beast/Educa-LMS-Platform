@@ -498,7 +498,7 @@ const AIChatWidget = () => {
                 alignItems: "center",
                 gap: "5px",
               }}>
-              <FaGraduationCap style={{ color: "#4b6bfb" }} /> 📅 Study Plan
+              <FaGraduationCap style={{ color: "#4b6bfb" }} /> Study Plan
             </button>
             <button
               type="button"
@@ -520,7 +520,7 @@ const AIChatWidget = () => {
                 alignItems: "center",
                 gap: "5px",
               }}>
-              <FaLightbulb style={{ color: "#f1c40f" }} /> 🧮 Sine Rule
+              <FaLightbulb style={{ color: "#f1c40f" }} /> Sine Rule
             </button>
             <button
               type="button"
@@ -542,7 +542,7 @@ const AIChatWidget = () => {
                 alignItems: "center",
                 gap: "5px",
               }}>
-              <FaCompass style={{ color: "#2ecc71" }} /> 📄 Tute Finder
+              <FaCompass style={{ color: "#2ecc71" }} /> Tute Finder
             </button>
           </div>
 
