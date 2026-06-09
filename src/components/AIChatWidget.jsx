@@ -11,6 +11,8 @@ import {
 
 import { RiRobot3Fill } from "react-icons/ri";
 
+// educa. Neti = Next-Generation Education Technology
+
 const AIChatWidget = () => {
   // 1. Core UI States
   const [isOpen, setIsOpen] = useState(false); // චැට් බොක්ස් එක ඇරලාද හැංගිලාද (Toggle)

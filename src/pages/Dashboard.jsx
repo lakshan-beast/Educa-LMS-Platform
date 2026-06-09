@@ -12,6 +12,7 @@ import ScoreAnalytics from "../components/ScorenAnalytics";
 import { premiumStudentsList } from "../data/approvedStudents";
 
 import LiveNoticeDisplay from "../components/LiveNotice";
+import AIChatWidget from "../components/AIChatWidget";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -335,6 +336,8 @@ const Dashboard = () => {
           )}
         </div>
         {/* ================================================================ */}
+
+        <AIChatWidget />
       </div>
     </div>
   );
