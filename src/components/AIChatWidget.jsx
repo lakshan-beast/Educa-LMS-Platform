@@ -1,0 +1,514 @@
+import { useState, useEffect, useRef } from "react";
+import {
+  FaPaperPlane,
+  FaXmark,
+  FaMinus,
+  FaCircle,
+  FaLightbulb,
+  FaGraduationCap,
+  FaCompass,
+} from "react-icons/fa6"; // 👑 🆕 අපේ ස්මාර්ට් Bot Icons ටික ගත්තා [INDEX 55]
+
+import { RiRobot3Fill } from "react-icons/ri";
+
+const AIChatWidget = () => {
+  // 1. Core UI States
+  const [isOpen, setIsOpen] = useState(false); // චැට් බොක්ස් එක ඇරලාද හැංගිලාද (Toggle)
+  const [inputText, setInputText] = useState("");
+  const [isTyping, setIsTyping] = useState(false); // Bot ටයිප් කරන Indicator එක පාලනයට
+  const messagesEndRef = useRef(null); // අලුත් මැසේජ් එකක් ආපු ගමන් ඔටෝම පල්ලෙහාට ස්ක්‍රෝල් කිරීමට
+
+  // 2. 👑 🆕 [THE IN-MEMORY SESSION STATE]: උඹ ඉල්ලපු, ටැබ් එක වහද්දී මැකී යන සජීවී මතක ලැයිස්තුව!
+  const [messages, setMessages] = useState([
+    {
+      role: "model",
+      text: "ආයුබෝවන් මචං! 👋 මම Educa ස්මාර්ට් AI සහකරු. ඔයාගේ O/L මැත්ස්, සයන්ස් හෝ ඉංග්‍රීසි පාඩම් වල තියෙන ඕනෑම ගැටලුවක්, සූත්‍රයක් හෝ Time Table ප්ලෑන් එකක් ගැන මගෙන් විස්තර සහිතව අහන්න මචං! 🧠✨",
+    },
+  ]);
+
+  // 3. 👑 🔐 [THE MASTER SYSTEM PROMPT BLUEPRINT]:
+  // බොට් හැසිරෙන්න ඕනේ කොහොමද කියලා Google Gemini එකට දෙන රහස් උපදෙස් වැට [INDEX 4]
+  const SYSTEM_INSTRUCTION = `
+    You are 'educa. Smart AI', an expert personal tutor built by NexusLabs for Sri Lankan O/L students (Grades 10 and 11) [INDEX 4].
+    Your tone must be extremely helpful, friendly, and encouraging, like a smart peer or brother (frequently use friendly Sri Lankan terms like 'මචං' appropriately when writing in Sinhala) [INDEX 4].
+    When a student asks a doubt, you MUST provide highly detailed breakdowns, step-by-step mathematical or scientific explanations, structured bullet points, and real-world examples [INDEX 4].
+    Always respond in a natural mix of clear Sinhala and English (Singlish phrases are highly allowed) so local students can understand perfectly [INDEX 4].
+    If they ask about class tutes or schedules, guide them to check the 'Study Materials' or 'Live Classroom' cards inside their Student Dashboard [INDEX 4].
+  `;
+
+  // අලුත් මැසේජ් එකක් ආ සැනින් චැට් එක ලස්සනට පල්ලෙහාට ස්ක්‍රෝල් කරවයි
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isTyping]);
+
+  // 🧠 🤖 [THE GEMINI API CORE ENGINE]: ගූගල් සර්වර් එකත් එක්ක සන්නිවේදනය කර මතකය රකින ප්‍රධාන ලොජික් එක
+  const sendMessageToGemini = async (userMessage) => {
+    setIsTyping(true);
+
+    try {
+      // 👑 🔐 [THE CONTINUOUS CONTEXT BLUEPRINT]:
+      // ගූගල් සර්වර් එකට පරණ හිස්ට්‍රියම ගලපා යවන ව්‍යුහය (In-Memory Session History) [INDEX 4]
+      const chatHistoryForAPI = messages.map((msg) => ({
+        role: msg.role === "user" ? "user" : "model",
+        parts: [{ text: msg.text }],
+      }));
+
+      // ⚡ 📝 සටහන: මෙතැනට ඔයාගේ නිල Google Gemini API Key එක සෘජුවම සම්බන්ධ වේ! [INDEX 4]
+      const GEMINI_API_KEY =
+        "AQ.Ab8RN6Jd2GQPsQ-L3RqWU4CyiTDdC3QcOQAdvEb5LUKusEdtIg";
+      const API_URL = `https://googleapis.com${GEMINI_API_KEY}`;
+
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [
+            { role: "user", parts: [{ text: SYSTEM_INSTRUCTION }] }, // System instruction බන්ධනය කළා
+            ...chatHistoryForAPI,
+            { role: "user", parts: [{ text: userMessage }] },
+          ],
+        }),
+      });
+
+      const data = await response.json();
+
+      // සර්වර් එකෙන් ආපු විස්තරාත්මක පිළිතුර පිරිසිදුව ලබා ගනී [INDEX 4]
+      const botReply =
+        data.candidates?.[0]?.content?.parts?.[0]?.text ||
+        "මචං, පොඩි සර්වර් අවුලක් ආවා. කරුණාකරලා නැවත ප්‍රශ්නය ටයිප් කරන්න මචං!";
+
+      // AI පිළිතුර සජීවීව මතක ලිස්තුවට එකතු කරයි (Append) [INDEX 4]
+      setMessages((prev) => [...prev, { role: "model", text: botReply }]);
+    } catch (err) {
+      console.error("Gemini AI API Error:", err);
+      setMessages((prev) => [
+        ...prev,
+        { role: "model", text: "Technical connection error occurred!" },
+      ]);
+    }
+
+    setIsTyping(false);
+  };
+  // 📣 SEND BUTTON TRIGGER HANDLER
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (inputText.trim() === "") return;
+
+    const userText = inputText.trim();
+    setInputText(""); // Input Field එක ක්ලියර් කරයි
+
+    // ළමයා ගැසූ මැසේජ් එක ක්ෂණිකව චැට් එකට දමයි [INDEX 4]
+    setMessages((prev) => [...prev, { role: "user", text: userText }]);
+
+    // ගූගල් සර්වර් එකට ලයිව් යවයි [INDEX 4]
+    await sendMessageToGemini(userText);
+  };
+  return (
+    <>
+      {/* ==================== 📱 👑 🆕 1. THE FLOATING GLOWING BOT BUTTON ==================== */}
+      {!isOpen && (
+        <div
+          onClick={() => setIsOpen(true)}
+          className="ai-floating-bubble"
+          style={{
+            position: "fixed",
+            bottom: "25px",
+            right: "25px",
+            width: "60px",
+            height: "60px",
+            background: "linear-gradient(135deg, #03204b 0%, #0265f8 100%)",
+            borderRadius: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "white",
+            fontSize: "1.8rem",
+            cursor: "pointer",
+            boxShadow: "0 8px 24px rgba(75,107,251,0.35)",
+            zIndex: 999999,
+            transition: "0.3s ease",
+          }}>
+          <RiRobot3Fill className="bot-icon-bounce" />
+          {/* සජීවීව බ්ලින්ක් වෙන කොළ පාට Online Signal එක */}
+          <span
+            style={{
+              position: "absolute",
+              bottom: "2px",
+              right: "2px",
+              width: "16px",
+              height: "16px",
+              //   background: "#2ecc71",
+              background: "#fd473a",
+              borderRadius: "50%",
+              border: "2px solid white",
+            }}></span>
+        </div>
+      )}
+
+      {/* ==================== 🖥️ 👑 🆕 2. THE MAIN PORTABLE AI CHAT WINDOW ==================== */}
+      {isOpen && (
+        <div
+          className="ai-chat-window-card"
+          style={{
+            position: "fixed",
+            bottom: "25px",
+            right: "25px",
+            width: "380px",
+            maxWidth: "90%",
+            height: "520px",
+            background: "white",
+            borderRadius: "24px",
+            boxShadow: "0 12px 40px rgba(26,10,84,0.15)",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+            zIndex: 999999,
+            border: "1px solid #eef2ff",
+            animation: "popupFade 0.3s ease",
+          }}>
+          {/* A. CHAT WINDOW HEADER CONTAINER */}
+          <div
+            style={{
+              background: "linear-gradient(135deg, #03204b 0%, #053680 100%)",
+              padding: "18px 20px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              color: "white",
+            }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div
+                style={{
+                  width: "38px",
+                  height: "38px",
+                  background: "rgba(255, 255, 255, 0.5)",
+                  borderRadius: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontSize: "1.3rem",
+                }}>
+                <RiRobot3Fill style={{ color: "#e9ecf0" }} />
+              </div>
+              <div style={{ textAlign: "left" }}>
+                <h4
+                  style={{
+                    margin: 0,
+                    fontSize: "1rem",
+                    fontWeight: "800",
+                    letterSpacing: "0.3px",
+                  }}>
+                  educa. Smart AI
+                </h4>
+                <small
+                  style={{
+                    color: "#2ecc71",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontWeight: "700",
+                    fontSize: "0.72rem",
+                    marginTop: "2px",
+                  }}>
+                  <FaCircle
+                    style={{
+                      fontSize: "0.5rem",
+                      animation: "heartBeat 1s infinite",
+                    }}
+                  />{" "}
+                  Active Now •
+                </small>
+              </div>
+            </div>
+
+            {/* Header Control Window Buttons */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                fontSize: "1rem",
+                opacity: 0.8,
+              }}>
+              <FaMinus
+                title="Minimize"
+                onClick={() => setIsOpen(false)}
+                style={{ cursor: "pointer" }}
+              />
+              <FaXmark
+                title="Close Chat"
+                onClick={() => setIsOpen(false)}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+          </div>
+
+          {/* B. CHAT MESSAGES LOG STREAM */}
+          <div
+            style={{
+              flex: 1,
+              padding: "20px",
+              overflowY: "auto",
+              background: "#f8faff",
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
+            }}>
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: msg.role === "user" ? "flex-end" : "flex-start",
+                  width: "100%",
+                }}>
+                <div
+                  style={{
+                    maxWidth: "82%",
+                    padding: "12px 16px",
+                    borderRadius:
+                      msg.role === "user"
+                        ? "18px 18px 0 18px"
+                        : "18px 18px 18px 0",
+                    background: msg.role === "user" ? "#4b6bfb" : "white",
+                    color: msg.role === "user" ? "white" : "#03204b",
+                    fontSize: "0.86rem",
+                    lineHeight: "1.5",
+                    fontWeight: "500",
+                    boxShadow:
+                      msg.role === "user"
+                        ? "0 4px 10px rgba(75,107,251,0.15)"
+                        : "0 3px 10px rgba(0,0,0,0.02)",
+                    textAlign: "left",
+                    whiteSpace: "pre-line", // AI එකෙන් දෙන නිව් ලයින් ලස්සනට පෙන්වයි [INDEX 4]
+                  }}>
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+
+            {/* ⏳ BOT IS TYPING LIVE INDICATOR ANIMATION */}
+            {isTyping && (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  width: "100%",
+                }}>
+                <div
+                  style={{
+                    background: "white",
+                    padding: "12px 18px",
+                    borderRadius: "18px 18px 18px 0",
+                    boxShadow: "0 3px 10px rgba(0,0,0,0.02)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                  }}>
+                  <span
+                    style={{
+                      color: "#777",
+                      fontSize: "0.78rem",
+                      fontWeight: "bold",
+                      marginRight: "4px",
+                    }}>
+                    educa Bot is thinking
+                  </span>
+                  <div
+                    className="typing-dot"
+                    style={{
+                      width: "5px",
+                      height: "5px",
+                      background: "#4b6bfb",
+                      borderRadius: "50%",
+                      animation: "dotBounce 1.4s infinite",
+                      animationDelay: "0s",
+                    }}></div>
+                  <div
+                    className="typing-dot"
+                    style={{
+                      width: "5px",
+                      height: "5px",
+                      background: "#4b6bfb",
+                      borderRadius: "50%",
+                      animation: "dotBounce 1.4s infinite",
+                      animationDelay: "0.2s",
+                    }}></div>
+                  <div
+                    className="typing-dot"
+                    style={{
+                      width: "5px",
+                      height: "5px",
+                      background: "#4b6bfb",
+                      borderRadius: "50%",
+                      animation: "dotBounce 1.4s infinite",
+                      animationDelay: "0.4s",
+                    }}></div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+          {/* C. QUICK SUGGESTIONS DOCK PANEL: ළමයාට ලේසියෙන් ක්ලික් කර ප්‍රශ්න ඇසීමට */}
+          <div
+            style={{
+              background: "white",
+              padding: "10px 15px 5px",
+              display: "flex",
+              gap: "8px",
+              overflowX: "auto",
+              borderTop: "1px solid #f1f5f9",
+              whiteSpace: "nowrap",
+            }}>
+            <button
+              type="button"
+              onClick={() => {
+                setInputText(
+                  "O/L විභාගයට මාස 3ක පට්ටම ප්‍රැක්ටිකල් පාඩම් Time Table එකක් හදලා දියන් මචං.",
+                );
+              }}
+              style={{
+                background: "#f1f5f9",
+                color: "#1a0a54",
+                border: "none",
+                padding: "6px 12px",
+                borderRadius: "20px",
+                fontSize: "0.75rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+              }}>
+              <FaGraduationCap style={{ color: "#4b6bfb" }} /> 📅 Study Plan
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setInputText(
+                  "Maths වල ත්‍රිකෝණමිතිය සයින් නීතිය (Sine Rule) සරලව කියලා දෙන්න.",
+                );
+              }}
+              style={{
+                background: "#f1f5f9",
+                color: "#1a0a54",
+                border: "none",
+                padding: "6px 12px",
+                borderRadius: "20px",
+                fontSize: "0.75rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+              }}>
+              <FaLightbulb style={{ color: "#f1c40f" }} /> 🧮 Sine Rule
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setInputText(
+                  "සර්ගේ 10 වසරේ පළමු පාඩමේ Science Tute එක බාගන්න ඕනේ කොහොමද කරන්නේ?",
+                );
+              }}
+              style={{
+                background: "#f1f5f9",
+                color: "#1a0a54",
+                border: "none",
+                padding: "6px 12px",
+                borderRadius: "20px",
+                fontSize: "0.75rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+              }}>
+              <FaCompass style={{ color: "#2ecc71" }} /> 📄 Tute Finder
+            </button>
+          </div>
+
+          {/* D. BOTTOM INPUT CONTROL DOCK FORM */}
+          <form
+            onSubmit={handleFormSubmit}
+            style={{
+              background: "white",
+              padding: "12px 15px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              borderTop: "1px solid #edf2f9",
+            }}>
+            <input
+              type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder="Ask anything from educa AI..."
+              style={{
+                flex: 1,
+                padding: "10px 14px",
+                borderRadius: "12px",
+                border: "1px solid #e2e8f0",
+                fontSize: "0.85rem",
+                outline: "none",
+                background: "#f8faff",
+              }}
+            />
+            <button
+              type="submit"
+              disabled={inputText.trim() === "" || isTyping}
+              style={{
+                background: "#4b6bfb",
+                color: "white",
+                border: "none",
+                width: "38px",
+                height: "38px",
+                borderRadius: "12px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "1rem",
+                cursor: "pointer",
+                boxShadow: "0 4px 10px rgba(75,107,251,0.2)",
+                transition: "0.2s",
+                opacity: inputText.trim() === "" || isTyping ? 0.6 : 1,
+              }}>
+              <FaPaperPlane />
+            </button>
+          </form>
+        </div>
+      )}
+
+      {/* ==================== 👑 KEYFRAMES ANIMATIONS CSS CONTROL ==================== */}
+      <style>{`
+        @keyframes popupFade {
+          from { transform: translateY(20px) scale(0.95); opacity: 0; }
+          to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        .bot-icon-bounce {
+          animation: botBounce 2.5s infinite ease-in-out;
+        }
+        @keyframes botBounce {
+          0%, 100% { transform: translateY(0) ; }
+          50% { transform: translateY(-4px) ; }
+        }
+        @keyframes heartBeat {
+          0%, 100% { transform: scale(1); opacity: 0.4; }
+          50% { transform: scale(1.2); opacity: 1; }
+        }
+        @keyframes dotBounce {
+          0%, 100% { transform: translateY(0); opacity: 0.4; }
+          50% { transform: translateY(-6px) opacity: 1; }
+        }
+      `}</style>
+    </>
+  );
+};
+
+export default AIChatWidget;
