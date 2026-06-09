@@ -20,18 +20,20 @@ const AIChatWidget = () => {
   const [isTyping, setIsTyping] = useState(false); // Bot ටයිප් කරන Indicator එක පාලනයට
   const messagesEndRef = useRef(null); // අලුත් මැසේජ් එකක් ආපු ගමන් ඔටෝම පල්ලෙහාට ස්ක්‍රෝල් කිරීමට
 
+  const [showHearts, setShowHearts] = useState(false);
+
   // 2. 👑 🆕 [THE IN-MEMORY SESSION STATE]: උඹ ඉල්ලපු, ටැබ් එක වහද්දී මැකී යන සජීවී මතක ලැයිස්තුව!
   const [messages, setMessages] = useState([
     {
       role: "model",
-      text: "ආයුබෝවන් මචං! 👋 මම Educa ස්මාර්ට් AI සහකරු. ඔයාගේ O/L මැත්ස්, සයන්ස් හෝ ඉංග්‍රීසි පාඩම් වල තියෙන ඕනෑම ගැටලුවක්, සූත්‍රයක් හෝ Time Table ප්ලෑන් එකක් ගැන මගෙන් විස්තර සහිතව අහන්න මචං! 🧠✨",
+      text: "Hello! I'm Neti . Ask me about any problem, formula or Time Table plan in your O/L Maths, Science or English lessons with details!",
     },
   ]);
 
   // 3. 👑 🔐 [THE MASTER SYSTEM PROMPT BLUEPRINT]:
   // බොට් හැසිරෙන්න ඕනේ කොහොමද කියලා Google Gemini එකට දෙන රහස් උපදෙස් වැට [INDEX 4]
   const SYSTEM_INSTRUCTION = `
-    You are 'educa. Smart AI', an expert personal tutor built by NexusLabs for Sri Lankan O/L students (Grades 10 and 11) [INDEX 4].
+    You are 'educa. Neti', an expert personal tutor built by NexusLabs for Sri Lankan O/L students (Grades 10 and 11) [INDEX 4].
     Your tone must be extremely helpful, friendly, and encouraging, like a smart peer or brother (frequently use friendly Sri Lankan terms like 'මචං' appropriately when writing in Sinhala) [INDEX 4].
     When a student asks a doubt, you MUST provide highly detailed breakdowns, step-by-step mathematical or scientific explanations, structured bullet points, and real-world examples [INDEX 4].
     Always respond in a natural mix of clear Sinhala and English (Singlish phrases are highly allowed) so local students can understand perfectly [INDEX 4].
@@ -81,7 +83,7 @@ const AIChatWidget = () => {
       // සර්වර් එකෙන් ආපු විස්තරාත්මක පිළිතුර පිරිසිදුව ලබා ගනී [INDEX 4]
       const botReply =
         data.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "මචං, පොඩි සර්වර් අවුලක් ආවා. කරුණාකරලා නැවත ප්‍රශ්නය ටයිප් කරන්න මචං!";
+        "Dude, there was a small server error. Please type the question again, dude!";
 
       // AI පිළිතුර සජීවීව මතක ලිස්තුවට එකතු කරයි (Append) [INDEX 4]
       setMessages((prev) => [...prev, { role: "model", text: botReply }]);
@@ -106,9 +108,33 @@ const AIChatWidget = () => {
     // ළමයා ගැසූ මැසේජ් එක ක්ෂණිකව චැට් එකට දමයි [INDEX 4]
     setMessages((prev) => [...prev, { role: "user", text: userText }]);
 
+    // ============================================================
+    // 🚀 🔐 [THE MASTER NETHMI BYPASS TRIGGER]: උඹ රහස් වචනය ගැසූ සැනින් හාට්ස් පත්තු කරයි!
+    if (userText.toLowerCase() === "nethmi-chubby") {
+      setShowHearts(true); // 🔴 හාට්ස් ඇනිමේෂන් එක පත්තු කරයි
+      setInputText("");
+
+      setTimeout(() => {
+        // තත්පර 2ක් ඇතුළත බොට් විසින් උඹට විතරක් තේරෙන රහස් පණිවිඩය ලියයි මචං [INDEX 4]
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "model",
+            text: "Lakshan, you worked hard to build this system. 🤝 Your partner will bring great luck to your life for sure! 🤫❤️",
+          },
+        ]);
+        setIsTyping(false);
+      }, 1000);
+
+      // තත්පර 3කින් හාට්ස් වැස්ස ඔටෝම නිවා දමයි
+      setTimeout(() => setShowHearts(false), 5000);
+      return; // 🚀 Gemini API එකට මැසේජ් එක යැවීම වළක්වයි (Bypass)
+    }
+
     // ගූගල් සර්වර් එකට ලයිව් යවයි [INDEX 4]
     await sendMessageToGemini(userText);
   };
+
   return (
     <>
       {/* ==================== 📱 👑 🆕 1. THE FLOATING GLOWING BOT BUTTON ==================== */}
@@ -172,6 +198,90 @@ const AIChatWidget = () => {
             border: "1px solid #eef2ff",
             animation: "popupFade 0.3s ease",
           }}>
+          {/* ============================================================ */}
+          {/* 🔴 👑 🆕 [THE SECRET NETHMI HEARTS RAIN INTERFACE]: 
+              showHearts එක true වුණු සැනින් වෙන වෙනම පැතිවලින් හාට්ස් 8ක් පාවේ! */}
+          {showHearts && (
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                pointerEvents: "none",
+                zIndex: 99999,
+                overflow: "hidden",
+              }}>
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "-20px",
+                  left: "15%",
+                  fontSize: "1.5rem",
+                  animation: "heartFloatUp 2.2s ease-in-out infinite",
+                }}>
+                ❤️
+              </span>
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "-20px",
+                  left: "30%",
+                  fontSize: "1.8rem",
+                  animation: "heartFloatUp 2.8s ease-in-out infinite",
+                  animationDelay: "0.2s",
+                }}>
+                ❤️
+              </span>
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "-20px",
+                  left: "45%",
+                  fontSize: "1.4rem",
+                  animation: "heartFloatUp 2.0s ease-in-out infinite",
+                  animationDelay: "0.5s",
+                }}>
+                ❤️
+              </span>
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "-20px",
+                  left: "60%",
+                  fontSize: "2.0rem",
+                  animation: "heartFloatUp 2.5s ease-in-out infinite",
+                  animationDelay: "0.1s",
+                }}>
+                ❤️
+              </span>
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "-20px",
+                  left: "75%",
+                  fontSize: "1.6rem",
+                  animation: "heartFloatUp 2.3s ease-in-out infinite",
+                  animationDelay: "0.4s",
+                }}>
+                ❤️
+              </span>
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "-20px",
+                  left: "85%",
+                  fontSize: "1.3rem",
+                  animation: "heartFloatUp 2.7s ease-in-out infinite",
+                  animationDelay: "0.3s",
+                }}>
+                ❤️
+              </span>
+            </div>
+          )}
+          {/* ============================================================ */}
+
           {/* A. CHAT WINDOW HEADER CONTAINER */}
           <div
             style={{
@@ -204,7 +314,7 @@ const AIChatWidget = () => {
                     fontWeight: "800",
                     letterSpacing: "0.3px",
                   }}>
-                  educa. Smart AI
+                  educa. Neti
                 </h4>
                 <small
                   style={{
@@ -508,6 +618,7 @@ const AIChatWidget = () => {
           0%, 100% { transform: translateY(0); opacity: 0.4; }
           50% { transform: translateY(-6px) opacity: 1; }
         }
+@keyframes heartFloatUp { 0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; } 15% { opacity: 0.9; } 85% { opacity: 0.9; } 100% { transform: translateY(-420px) scale(1.3) rotate(30deg); opacity: 0; } }
       `}</style>
     </>
   );
