@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@google/genai": "^2.8.0",
+    "@google/generative-ai": "^0.24.1",
     "aos": "^2.3.4",
     "chart.js": "^4.5.1",
     "firebase": "^12.13.0",

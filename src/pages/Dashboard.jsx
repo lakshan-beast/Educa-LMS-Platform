@@ -148,7 +148,6 @@ const Dashboard = () => {
                 src={greeting.animUrl}
                 alt="live-emoji"
                 style={{ width: "50px", height: "50px", objectFit: "contain" }}
-                refferrerPolicy="no-referrer"
               />
             </h1>
 

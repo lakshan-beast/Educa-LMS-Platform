@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   FaPaperPlane,
   FaXmark,
-  FaMinus,
+  // FaMinus,
   FaCircle,
   FaLightbulb,
   FaGraduationCap,
@@ -13,6 +13,8 @@ import { RiRobot3Fill } from "react-icons/ri";
 import { TiHeartFullOutline } from "react-icons/ti";
 
 // educa. Neti = Next-Generation Education Technology
+
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const AIChatWidget = () => {
   // 1. Core UI States
@@ -26,8 +28,12 @@ const AIChatWidget = () => {
   // 2. 👑 🆕 [THE IN-MEMORY SESSION STATE]: උඹ ඉල්ලපු, ටැබ් එක වහද්දී මැකී යන සජීවී මතක ලැයිස්තුව!
   const [messages, setMessages] = useState([
     {
+      role: "user",
+      text: "Hey! Can you help me?",
+    },
+    {
       role: "model",
-      text: "Hello! I'm Neti . Ask me about any problem, formula or Time Table plan in your O/L Maths, Science or English lessons with details!",
+      text: "Hello! I'm Neti . How can help your?",
     },
   ]);
 
@@ -52,43 +58,71 @@ const AIChatWidget = () => {
 
   // 🧠 🤖 [THE GEMINI API CORE ENGINE]: ගූගල් සර්වර් එකත් එක්ක සන්නිවේදනය කර මතකය රකින ප්‍රධාන ලොජික් එක
   const sendMessageToGemini = async (userMessage) => {
+    if (!userMessage.trim()) return; // Don't send empty messages
     setIsTyping(true);
 
     try {
-      // 👑 🔐 [THE CONTINUOUS CONTEXT BLUEPRINT]:
-      // ගූගල් සර්වර් එකට පරණ හිස්ට්‍රියම ගලපා යවන ව්‍යුහය (In-Memory Session History) [INDEX 4]
-      const chatHistoryForAPI = messages.map((msg) => ({
-        role: msg.role === "user" ? "user" : "model",
-        parts: [{ text: msg.text }],
-      }));
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      // const apiKey = "AQ.Ab8RN6IYDIPYsioLS8VVqAn0jFID4FoS-c5nKAu7-NMxYBWZZQ";
 
-      // ⚡ 📝 සටහන: මෙතැනට ඔයාගේ නිල Google Gemini API Key එක සෘජුවම සම්බන්ධ වේ! [INDEX 4]
-      const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-      const API_URL = `https://googleapis.com${GEMINI_API_KEY}`;
+      // 2️⃣ 🤖 [THE SDK INITIALIZATION]: උඩින් import කරපු GoogleGenerativeAI එක පණ ගන්වයි! [INDEX 4]
+      const genAI = new GoogleGenerativeAI(apiKey);
 
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [
-            { role: "user", parts: [{ text: SYSTEM_INSTRUCTION }] }, // System instruction බන්ධනය කළා
-            ...chatHistoryForAPI,
-            { role: "user", parts: [{ text: userMessage }] },
-          ],
-        }),
+      // const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      if (!apiKey) {
+        console.error("API Key is missing!");
+        return;
+      }
+      // const genAI = new GoogleGenAI(); // Missing the API key argument
+      // const model = genAI.getGenerativeModel({
+      //   model: "gemini-1.5-pro",
+      //   systemInstruction: SYSTEM_INSTRUCTION, // අපේ සිංහල උපදෙස් වැට මෙතැනට ලොක් කළා මචං [INDEX 4]
+      // });
+
+      const model = genAI.getGenerativeModel({
+        model: "gemini-3.5-flash", // Faster and more reliable for web widgets
+        systemInstruction: SYSTEM_INSTRUCTION,
       });
 
-      const data = await response.json();
+      // 3️⃣ පරණ හිස්ට්‍රියම (Context Memory) ගූගල් SDK එකට ගැළපෙන පිරිසිදු ව්‍යුහයට හරවා ගනී [INDEX 4]
+      // const chatHistoryForSDK = messages.map((msg) => ({
+      //   role: msg.role === "user" ? "user" : "model",
+      //   parts: [{ text: msg.text }],
+      // }));
 
-      // සර්වර් එකෙන් ආපු විස්තරාත්මක පිළිතුර පිරිසිදුව ලබා ගනී [INDEX 4]
+      // Change this part in your code:
+      const chatHistoryForSDK = messages
+        .filter((msg) => msg.text && msg.text.trim() !== "") // Ensure no empty messages
+        .map((msg) => ({
+          role: msg.role === "user" ? "user" : "model",
+          parts: [{ text: msg.text }],
+        }));
+
+      // Add a check: if the first message is from the model, remove it for the SDK
+      if (
+        chatHistoryForSDK.length > 0 &&
+        chatHistoryForSDK[0].role === "model"
+      ) {
+        chatHistoryForSDK.shift();
+      }
+
+      // 4️⃣ 🚀 [THE START CHAT ENGINE]: ගූගල් නිල සන්නිවේදන පාලම ලයිව් ස්ටාර්ට් කරයි! [INDEX 4]
+      const chat = model.startChat({
+        history: chatHistoryForSDK,
+      });
+
+      // ගූගල් නිල සර්වර් එකට මැසේජ් එක ලයිව් යවා විස්තරාත්මක පිළිතුර ලබා ගනී [INDEX 4]
+      const result = await chat.sendMessage(userMessage);
+      const response = await result.response;
       const botReply =
-        data.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "Dude, there was a small server error. Please type the question again, dude!";
+        response.text() ||
+        "Dude, there was a small server error. Please type the question again.";
 
       // AI පිළිතුර සජීවීව මතක ලිස්තුවට එකතු කරයි (Append) [INDEX 4]
       setMessages((prev) => [...prev, { role: "model", text: botReply }]);
-    } catch (err) {
-      console.error("Gemini AI API Error:", err);
+    } catch (error) {
+      console.error("Gemini SDK Core Error:", error);
+
       setMessages((prev) => [
         ...prev,
         { role: "model", text: "Technical connection error occurred!" },
@@ -97,6 +131,7 @@ const AIChatWidget = () => {
 
     setIsTyping(false);
   };
+
   // 📣 SEND BUTTON TRIGGER HANDLER
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -120,7 +155,7 @@ const AIChatWidget = () => {
           ...prev,
           {
             role: "model",
-            text: "Lakshan, you worked hard to build this system. 🤝 Your partner will bring great luck to your life for sure! 🤫❤️",
+            text: "Lakshan, you worked hard to build this system. Your partner will bring great luck to your life for sure! 🤫❤️",
           },
         ]);
         setIsTyping(false);
@@ -326,7 +361,7 @@ const AIChatWidget = () => {
                     fontWeight: "800",
                     letterSpacing: "0.3px",
                   }}>
-                  educa. Neti
+                  educa. • Neti
                 </h4>
                 <small
                   style={{
@@ -344,7 +379,7 @@ const AIChatWidget = () => {
                       animation: "heartBeat 1s infinite",
                     }}
                   />{" "}
-                  Active Now •
+                  Active Now
                 </small>
               </div>
             </div>
@@ -355,14 +390,14 @@ const AIChatWidget = () => {
                 display: "flex",
                 alignItems: "center",
                 gap: "12px",
-                fontSize: "1rem",
+                fontSize: "1.3rem",
                 opacity: 0.8,
               }}>
-              <FaMinus
+              {/* <FaMinus
                 title="Minimize"
                 onClick={() => setIsOpen(false)}
                 style={{ cursor: "pointer" }}
-              />
+              /> */}
               <FaXmark
                 title="Close Chat"
                 onClick={() => setIsOpen(false)}
@@ -442,7 +477,7 @@ const AIChatWidget = () => {
                       fontWeight: "bold",
                       marginRight: "4px",
                     }}>
-                    educa Bot is thinking
+                    Neti is thinking
                   </span>
                   <div
                     className="typing-dot"
@@ -576,7 +611,7 @@ const AIChatWidget = () => {
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder="Ask anything from educa AI..."
+              placeholder="Ask anything from Neti..."
               style={{
                 flex: 1,
                 padding: "10px 14px",
