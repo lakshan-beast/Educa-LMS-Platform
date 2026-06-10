@@ -128,8 +128,8 @@ const AIChatWidget = () => {
       }, 1000);
 
       // තත්පර 3කින් හාට්ස් වැස්ස ඔටෝම නිවා දමයි
-      setTimeout(() => setShowHearts(false), 5000);
-      return; // 🚀 Gemini API එකට මැසේජ් එක යැවීම වළක්වයි (Bypass)
+      setTimeout(() => setShowHearts(false), 8000);
+      return; // 🚀 Gemini API එකට මැසේජ් එක යැවීම වළක්0වයි (Bypass)
     }
 
     // ගූගල් සර්වර් එකට ලයිව් යවයි [INDEX 4]

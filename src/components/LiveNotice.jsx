@@ -18,6 +18,7 @@ const LiveNoticeDisplay = ({ studentGrade, studentSubject }) => {
   useEffect(() => {
     const fetchLatestNotice = async () => {
       setTimeout(() => setIsLoading(true), 0);
+
       try {
         // ☁️ Firebase එකෙන් ළමයාගේ ශ්‍රේණියට සහ විෂයට අදාළව දාපු අලුත්ම නිවේදනය (Notice) පමණක් Query කරයි
         const q = query(
@@ -47,6 +48,14 @@ const LiveNoticeDisplay = ({ studentGrade, studentSubject }) => {
     if (studentGrade && studentSubject) {
       fetchLatestNotice();
     }
+
+    const loadLiveNoticeNow = async () => {
+      if (studentGrade && studentSubject) {
+        await fetchLatestNotice();
+      }
+    };
+
+    loadLiveNoticeNow();
   }, [studentGrade, studentSubject]);
 
   if (isLoading) {
