@@ -63,8 +63,7 @@ const AIChatWidget = () => {
       }));
 
       // ⚡ 📝 සටහන: මෙතැනට ඔයාගේ නිල Google Gemini API Key එක සෘජුවම සම්බන්ධ වේ! [INDEX 4]
-      const GEMINI_API_KEY =
-        "AQ.Ab8RN6Jd2GQPsQ-L3RqWU4CyiTDdC3QcOQAdvEb5LUKusEdtIg";
+      const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
       const API_URL = `https://googleapis.com${GEMINI_API_KEY}`;
 
       const response = await fetch(API_URL, {
