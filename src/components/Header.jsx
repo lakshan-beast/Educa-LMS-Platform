@@ -68,13 +68,13 @@ const Header = () => {
                   isLinkActive("/#home") ||
                   location.hash === "#home" ||
                   location.hash === ""
-                    ? "#03204b"
-                    : "#8d8d8d",
+                    ? "#001b42"
+                    : "#a8abb1d0",
                 borderBottom:
                   isLinkActive("/#home") ||
                   location.hash === "#home" ||
                   location.hash === ""
-                    ? "2px solid #03204b"
+                    ? "2px solid #001b42"
                     : "2px solid transparent",
               }}>
               Home
@@ -85,9 +85,9 @@ const Header = () => {
               smooth
               to="/#resources"
               style={{
-                color: isLinkActive("/#resources") ? "#03204b" : "#8d8d8d",
+                color: isLinkActive("/#resources") ? "#001b42" : "#a8abb1d0",
                 borderBottom: isLinkActive("/#resources")
-                  ? "2px solid #03204b"
+                  ? "2px solid #001b42"
                   : "2px solid transparent",
               }}>
               Learning Hub
@@ -98,9 +98,9 @@ const Header = () => {
               smooth
               to="/#classes"
               style={{
-                color: isLinkActive("/#classes") ? "#03204b" : "#8d8d8d",
+                color: isLinkActive("/#classes") ? "#001b42" : "#a8abb1d0",
                 borderBottom: isLinkActive("/#classes")
-                  ? "2px solid #03204b"
+                  ? "2px solid #001b42"
                   : "2px solid transparent",
               }}>
               Class Schedule
@@ -111,9 +111,9 @@ const Header = () => {
               smooth
               to="/#teachers"
               style={{
-                color: isLinkActive("/#teachers") ? "#03204b" : "#8d8d8d",
+                color: isLinkActive("/#teachers") ? "#001b42" : "#a8abb1d0",
                 borderBottom: isLinkActive("/#teachers")
-                  ? "2px solid #03204b"
+                  ? "2px solid #001b42"
                   : "2px solid transparent",
               }}>
               Our Tutors
@@ -123,9 +123,9 @@ const Header = () => {
               smooth
               to="/#contacts"
               style={{
-                color: isLinkActive("/#contacts") ? "#03204b" : "#8d8d8d",
+                color: isLinkActive("/#contacts") ? "#001b42" : "#a8abb1d0",
                 borderBottom: isLinkActive("/#contacts")
-                  ? "2px solid #03204b"
+                  ? "2px solid #001b42"
                   : "2px solid transparent",
               }}>
               Contact us
@@ -135,7 +135,7 @@ const Header = () => {
           <div className="header-actions">
             <button className="sign-btn" onClick={handleUserClick}>
               {isLoggedIn ? (
-                <FaUserCircle style={{ color: "#03204b" }} />
+                <FaUserCircle style={{ color: "#001b42" }} />
               ) : (
                 <FaRegUserCircle />
               )}
