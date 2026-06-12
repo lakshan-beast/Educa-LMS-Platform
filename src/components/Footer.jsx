@@ -24,13 +24,16 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
+// import { Privacy } from "../pages/Privacy";
+// import { Terms } from "../pages/Terms";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   // ID Generator Popup එක පාලනය කරන State
   const [showGenModal, setShowGenModal] = useState(false);
-  const [showPrivacyCard, setShowPrivacyCard] = useState(false);
-  const [showTermsCard, setShowTermsCard] = useState(false);
+  // const [showPrivacyCard, setShowPrivacyCard] = useState(false);
+  // const [showTermsCard, setShowTermsCard] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -241,7 +244,7 @@ const Footer = () => {
 
             <li>
               <span
-                onClick={() => setShowPrivacyCard(true)}
+                // onClick={() => setShowPrivacyCard(true)}
                 className="secret-gen-link">
                 <FaCaretRight className="footer-icon" /> Privacy Policy
               </span>
@@ -249,7 +252,7 @@ const Footer = () => {
 
             <li>
               <span
-                onClick={() => setShowTermsCard(true)}
+                // onClick={() => setShowTermsCard(true)}
                 className="secret-gen-link">
                 <FaCaretRight className="footer-icon" />
                 Terms of Services

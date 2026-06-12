@@ -9,12 +9,12 @@ footer {
   @include flex-custom(flex-start, flex-start, column);
 
   @include respond(desktop) {
-    border-radius: none;
+    border-radius: 0;
   }
 
   h3 {
     margin-bottom: 16px;
-    color: $blue-light;
+    color: $white;
     font-size: 1.2rem;
   }
 
@@ -37,9 +37,9 @@ footer {
     opacity: 0.8;
 
     &:hover {
-      color: $primary-orange;
+      color: $secondary-blue3;
       transform: translateX(8px);
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
 
@@ -51,7 +51,7 @@ footer {
 
 // footer contents
 .footer-contents {
-  gap: 30px;
+  gap: 50px;
   width: 100%;
   padding: 30px 10%;
   transition: 0.3s ease;
@@ -59,7 +59,7 @@ footer {
   @include respond(desktop) {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15%, 1fr));
-    gap: 30px;
+    gap: 60px;
   }
 
   // footer cards
@@ -92,7 +92,13 @@ footer {
     letter-spacing: 2px;
 
     span {
-      color: $primary-orange;
+      color: $secondary-blue3;
+    }
+
+    &:hover {
+      transform: translate(0);
+      color: $white;
+      text-decoration: none;
     }
   }
 
@@ -113,7 +119,7 @@ footer {
     font-size: 1.75rem;
 
     &:hover {
-      color: $primary-orange;
+      color: $secondary-blue3;
       transform: translateY(-3px);
     }
   }
@@ -128,7 +134,7 @@ footer {
   margin-bottom: 6px;
   border-top: none;
 
-  @include flex-custom(space-between, center, column, 0, wrap);
+  @include flex-custom(space-between, center, column, 20px, wrap);
 
   @include respond(mobile) {
     border-top: 2px solid #212747;
@@ -161,7 +167,7 @@ footer {
   a {
     margin-left: 10px;
     display: inline-block;
-    color: $dark-purple2;
+    color: rgba($white, 0.9);
   }
 }
 
@@ -176,7 +182,7 @@ footer {
   }
 
   .contact-button {
-    color: $primary-orange;
+    color: $secondary-blue;
     background-color: $navbar-white;
     padding: 6px 12px;
     text-align: center;

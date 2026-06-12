@@ -4,7 +4,7 @@
   display: block;
   text-align: center;
   background-size: 200% auto;
-  box-shadow: 0px 0px 6px rgb(208, 208, 228);
+  box-shadow: 0px 0px 6px rgb(153, 153, 153);
   border: none;
   outline: none;
   transition: all 0.5s ease;
@@ -14,9 +14,13 @@
 .start-btn {
   background-image: linear-gradient(
     to right,
-    #fd473a 0%,
-    #330fff 51%,
-    #d7def7 100%
+    // #fd473a 0%,
+    // #330fff 51%,
+    // #d7def7 100%
+    #c4c4c4 0%,
+    // #000d1f 51%,
+    #001b42 51%,
+    #ffffff 100%
   );
 
   &:hover {
@@ -34,14 +38,14 @@
   padding: 6px 10px;
   max-width: 200px;
   width: 100%;
-  color: $secondary-blue;
+  color: $secondary-blue2;
   border: 1px solid $secondary-blue;
   border-radius: $border-radius-xlarge;
   transition: background 1s ease;
 
   &:hover {
     color: $white;
-    background: rgba($secondary-blue, 0.9);
+    background: rgba($secondary-blue2, 0.9);
     border: none;
     text-decoration: none;
   }
@@ -79,13 +83,13 @@
 
 .class-btns {
   color: $white;
-  background: rgba($dark-purple2, 0.8);
+  background: $secondary-blue;
 
   &:hover {
     color: $white;
-    background: $primary-orange;
+    background: rgba($secondary-blue, 0.6);
     text-decoration: none;
-    gap: 15px;
+    gap: 20px;
     transform: translate(0);
   }
 }
@@ -93,12 +97,12 @@
 .fullclass-btn {
   max-width: 320px;
   width: 100%;
-  color: rgba($dark-purple1, 0.6);
+  color: rgba($secondary-blue, 0.6);
   background-color: transparent;
   border: 2px solid;
 
   &:hover {
-    background-color: rgba($dark-purple1, 0.6);
+    background-color: rgba($secondary-blue, 0.7);
     color: $white;
     border: 2px solid;
     transform: translate(0) scale(1.05);

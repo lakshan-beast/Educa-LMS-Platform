@@ -66,7 +66,7 @@
   border-radius: $border-radius-medium;
   box-shadow: $shadow-medium;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba($blue-light, 0.2);
+  border: 1px solid rgba($secondary-blue, 0.1);
   overflow: hidden;
 
   &:hover {
@@ -82,15 +82,15 @@
       margin-bottom: 15px;
 
       h3 {
-        color: $dark-purple2;
+        color: $secondary-blue;
         // color: $secondary-blue;
-        font-size: 1.6rem;
-        text-shadow: 0px 0px 4px rgba($dark-purple2, 0.6);
+        font-size: 1.5rem;
+        text-shadow: 0px 0px 4px rgba($secondary-blue, 0.6);
         // margin-bottom: 5px;
       }
       h4 {
-        background: rgba($primary-orange, 0.9);
-        font-size: 0.9rem;
+        background: rgba($secondary-blue, 0.9);
+        font-size: 0.85rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -104,7 +104,7 @@
     .class-desc {
       // color: $text-medium;
       color: rgba($secondary-blue, 0.5);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.6;
       margin-bottom: 20px;
       height: 60px;
@@ -118,7 +118,7 @@
     .class-meta {
       display: flex;
       justify-content: space-between;
-      background: #f8faff;
+      background: #f4f4f5;
       padding: 12px;
       border-radius: 15px;
       margin-bottom: 12px;
@@ -135,7 +135,7 @@
         .value {
           font-size: 0.9rem;
           font-weight: 700;
-          color: $dark-purple1;
+          color: $secondary-blue;
         }
       }
     }
@@ -169,8 +169,8 @@
 
     .subject-tag {
       padding: 5px 15px;
-      background: rgba($primary-orange, 0.1);
-      color: $primary-orange;
+      background: rgba($secondary-blue, 0.1);
+      color: $secondary-blue;
       border-radius: 20px;
       font-weight: bold;
       font-size: 0.8rem;
@@ -180,8 +180,8 @@
       margin: 0 0 10px 0;
       padding-bottom: 3px;
       font-size: 2rem;
-      color: $blue-medium;
-      border-bottom: 2px solid rgba($blue-medium, 0.2);
+      color: $secondary-blue;
+      border-bottom: 2px solid rgba($secondary-blue, 0.2);
     }
 
     .detail-list {
