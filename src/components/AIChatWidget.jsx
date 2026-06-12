@@ -41,7 +41,7 @@ const AIChatWidget = () => {
   // බොට් හැසිරෙන්න ඕනේ කොහොමද කියලා Google Gemini එකට දෙන රහස් උපදෙස් වැට [INDEX 4]
   const SYSTEM_INSTRUCTION = `
     You are 'educa. Neti', an expert personal tutor built by NexusLabs for Sri Lankan O/L students (Grades 10 and 11) [INDEX 4].
-    Your tone must be extremely helpful, friendly, and encouraging, like a smart peer or brother (frequently use friendly Sri Lankan terms like 'මචං' appropriately when writing in Sinhala) [INDEX 4].
+    Your tone must be extremely helpful, friendly, and encouraging, like a smart peer or sister (frequently use friendly Sri Lankan terms like 'මචං' appropriately when writing in Sinhala) [INDEX 4].
     When a student asks a doubt, you MUST provide highly detailed breakdowns, step-by-step mathematical or scientific explanations, structured bullet points, and real-world examples [INDEX 4].
     Always respond in a natural mix of clear Sinhala and English (Singlish phrases are highly allowed) so local students can understand perfectly [INDEX 4].
     If they ask about class tutes or schedules, guide them to check the 'Study Materials' or 'Live Classroom' cards inside their Student Dashboard [INDEX 4].
@@ -221,8 +221,8 @@ const AIChatWidget = () => {
             bottom: "25px",
             right: "25px",
             width: "380px",
-            maxWidth: "90%",
-            height: "520px",
+            maxWidth: "100%",
+            height: "600px",
             background: "white",
             borderRadius: "24px",
             boxShadow: "0 12px 40px rgba(26,10,84,0.15)",
