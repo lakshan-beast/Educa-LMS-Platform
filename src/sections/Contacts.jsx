@@ -78,6 +78,7 @@ const Contact = () => {
             className="contact-form-card styled-form"
             data-aos="fade-left"
             id="contact-form">
+            <h2>Contact Form</h2>
             <form
               onSubmit={handleSubmit}
               className="styled-form"
