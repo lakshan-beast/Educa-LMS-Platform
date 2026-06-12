@@ -29,7 +29,9 @@ const Footer = () => {
 
   // ID Generator Popup එක පාලනය කරන State
   const [showGenModal, setShowGenModal] = useState(false);
-  // const [showLegelCard, setshowLegelCard] = useState(false);
+  const [showPrivacyCard, setShowPrivacyCard] = useState(false);
+  const [showTermsCard, setShowTermsCard] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     pin: "",
@@ -210,7 +212,7 @@ const Footer = () => {
         <div className=" footer-card footer-legels">
           <h3>Legal</h3>
           <ul>
-            <li>
+            {/* <li>
               <Link
                 to="/privacy"
                 onClick={() => setShowGenModal(true)}
@@ -227,15 +229,32 @@ const Footer = () => {
                 onMouseLeave={(e) => (e.target.style.color = "#ffffff")}>
                 <FaCaretRight className="footer-icon" /> Terms of Services
               </Link>
-            </li>
+            </li> */}
 
-            {/* <li>
+            <li>
               <span
-                // onClick={() => setShowGenModal(true)}
+                onClick={() => setShowGenModal(true)}
                 className="secret-gen-link">
                 <FaCaretRight className="footer-icon" /> Generate Your Unique ID
               </span>
-            </li> */}
+            </li>
+
+            <li>
+              <span
+                onClick={() => setShowPrivacyCard(true)}
+                className="secret-gen-link">
+                <FaCaretRight className="footer-icon" /> Privacy Policy
+              </span>
+            </li>
+
+            <li>
+              <span
+                onClick={() => setShowTermsCard(true)}
+                className="secret-gen-link">
+                <FaCaretRight className="footer-icon" />
+                Terms of Services
+              </span>
+            </li>
 
             <li>
               <div className="contact-support">
