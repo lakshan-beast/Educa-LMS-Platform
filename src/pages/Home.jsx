@@ -76,6 +76,7 @@ export default Hero; */
 }
 
 // import React from 'react';
+// import { useEffect } from "react";
 
 // Sections Import කිරීම
 // Folder paths ඔයාගේ project එකේ විදිහට නිවැරදිද කියලා බලන්න
@@ -86,7 +87,32 @@ import Teachers from "../sections/Teachers";
 import Information from "../sections/Information";
 import Contact from "../sections/Contacts";
 
+// import { messaging } from "../firebaseConfig";
+// import { getToken } from "firebase/messaging";
+
 const Home = () => {
+  // useEffect(() => {
+  //   // 👑 ළමයාගෙන් Push Notification සඳහා නිල අවසරය ලබා ගැනීම
+  //   Notification.requestPermission().then((permission) => {
+  //     if (permission === "granted") {
+  //       console.log("🔔 Notification permission granted!");
+
+  //       // 🚀 Firebase සර්වර් එකෙන් මේ ෆෝන් එකට වෙන් වුණු රහස් ලිපිනය (Token) ලබා ගනී
+  //       getToken(messaging, {
+  //         vapidKey:
+  //           "BOm5aVK8En-o-CswMRFJ95Rlfs8ijlwfUIJTiJZJHqZTtGfHv9D8rLxQeCV5Y0_DEV25AxAT_L6T3s_pgroDxu8",
+  //       })
+  //         .then((currentToken) => {
+  //           if (currentToken) {
+  //             console.log("Device Token Generated Successfully:", currentToken);
+  //             // 💡 මෙම Token එක කෙලින්ම Firebase Cloud එකේ සේව් කිරීමට සූදානම් මචං! [INDEX 51]
+  //           }
+  //         })
+  //         .catch((err) => console.error("Token Generation Error:", err));
+  //     }
+  //   });
+  // }, []);
+
   return (
     <>
       <Hero />
