@@ -12,22 +12,33 @@ import { FaChalkboardTeacher, FaSmileBeam } from "react-icons/fa";
 const Information = () => {
   return (
     <section className="parts" id="information">
-      <h2>
+      {/* <h2>
         Why <span>Choose Us?</span>
       </h2>
       <p>
         Empowering the next generation of Sri Lankan Students with simplified
         learning & proven results.
+      </p> */}
+
+      <h2>
+        Why Study With <span>Our Faculty?</span>
+      </h2>
+
+      <p>
+        Discover how we combine expert local teachers, friendly step-by-step
+        lessons, and a modern online tracking portal to help every student boost
+        their confidence and score top exam results.
       </p>
 
       <div className="about-container info-column" id="about">
         {/* Left Content */}
         <div className="info-left card" data-aos="fade-right">
           <p data-aos="fade-up">
-            At Educa, we understand that every student learns differently. Our
-            mission is to bridge the gap between complex theories and exam
-            success by providing simplified, high-quality lessons tailored for
-            O/L students.
+            We firmly believe that every child absorbs information differently.
+            Our core mission is to bridge the gap between heavy textbook
+            theories and direct exam success by providing clear, highly
+            engaging, and supportive learning frameworks structured carefully
+            for local secondary school benchmarks.
           </p>
 
           <div className="about-info" data-aos="fade-up">
@@ -35,32 +46,36 @@ const Information = () => {
               <FaBrain className="icon" /> Simplified Concept Mapping
             </h4>
             <p>
-              Breaking down complex theories into easy-to-understand diagrams
-              and Teaching Philosophy.
+              We break down deep academic syllabus work into friendly
+              step-by-step visual blueprints, easy memory tricks, and clear
+              summaries.
             </p>
 
             <h4>
-              <FaFilePen className="icon" /> Exam-Oriented Training
+              <FaFilePen className="icon" /> Exam-Focused Guidance
             </h4>
             <p>
-              Focused sessions on Past Papers, Model Papers, and Time Management
-              Strategies.
+              Dedicated interactive review drills covering past papers,
+              predictive model papers, and practical exam time-management
+              methods.
             </p>
 
             <h4>
-              <FaHeadset className="icon" /> 24/7 Academic Support
+              <FaHeadset className="icon" /> 24/7 Intelligent Assistance
             </h4>
             <p>
-              A dedicated community where students can clarify doubts at any
-              time.
+              Immediate access to our custom "Neti AI" Assistant alongside
+              active messaging channels to resolve student doubts instantly at
+              any hour.
             </p>
 
             <h4>
-              <FaChartLine className="icon" /> Proven Track Record
+              <FaChartLine className="icon" /> Proven Academic Growth
             </h4>
             <p>
-              Over 2500+ students have successfully transformed their grades
-              through our guidance.
+              Thousands of local students have successfully elevated their term
+              marks, transformed their understanding, and secured top grades
+              through our structural guidance.
             </p>
           </div>
         </div>
@@ -71,22 +86,25 @@ const Information = () => {
             <div className="courses-box box" data-aos="fade-right">
               <FaGraduationCap />
               <h3 data-aos="zoom-in">3+</h3>
-              <p>Specialized Subjects</p>
+              <p>Core Academic Disciplines</p>
             </div>
+
             <div className="teachers-box box" data-aos="fade-up">
               <FaChalkboardTeacher />
               <h3 data-aos="zoom-in">3+</h3>
-              <p>Expert Educators</p>
+              <p>Dedicated Faculty Leads</p>
             </div>
+
             <div className="students-box box" data-aos="fade-left">
               <FaUserGraduate />
               <h3 data-aos="zoom-in">2500+</h3>
-              <p>Success Stories</p>
+              <p>Verified Success Metrics</p>
             </div>
+
             <div className="satisfaction-box box" data-aos="fade-down">
               <FaSmileBeam />
               <h3 data-aos="zoom-in">100%</h3>
-              <p>Student Trust Rate</p>
+              <p>Institutional Integrity</p>
             </div>
           </div>
         </div>
