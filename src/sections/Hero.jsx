@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 
 import { FaRocket, FaArrowRight } from "react-icons/fa6";
 
-import heroImg from "../assets/hero-imgs.png";
+import heroImg from "../assets/hero-image.png";
 
 const Hero = () => {
   useEffect(() => {

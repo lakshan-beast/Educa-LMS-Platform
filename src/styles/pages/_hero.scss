@@ -25,7 +25,7 @@
       margin-bottom: $margin-small;
       color: $secondary-blue;
       font-weight: $font-weight-semi-bold;
-      text-shadow: 0px 0px 3px $blue-medium;
+      text-shadow: 0px 0px 3px $secondary-blue;
       transition: $transition-fast;
 
       span {
@@ -62,10 +62,13 @@
         width: $container-width-default;
         max-width: 200px;
         padding: 10px 10px;
-        margin-top: $margin-small;
         margin-right: 6px;
         border-radius: $border-radius-xlarge;
         height: 50px;
+
+        @include respond(tablet) {
+          margin-top: $margin-small;
+        }
 
         .icon {
           margin: 6px 0 0 10px;

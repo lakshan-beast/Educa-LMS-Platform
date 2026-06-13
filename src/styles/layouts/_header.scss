@@ -114,16 +114,17 @@
 
 // header navbar style
 .header-navbar {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 70%;
-  max-width: 350px;
-  height: 100vh;
-  padding: $padding-xlarge;
-  background-color: $white;
-  z-index: 1100;
-  transition: right 0.5s ease-in-out;
+  // position: fixed;
+  // top: 0;
+  // right: -100%;
+  // width: 70%;
+  // max-width: 350px;
+  // height: 100vh;
+  // padding: $padding-xlarge;
+  // background-color: $white;
+  // z-index: 1100;
+  // transition: right 0.5s ease-in-out;
+  // margin: 0;
 
   @include flex-custom(space-around, center, column, 0, nowrap);
 
@@ -344,6 +345,7 @@
   background: $white;
   background: rgba(3, 32, 75, 0.95);
   background: $secondary-blue2;
+  margin: 0;
 
   z-index: 999999;
   display: flex;
@@ -379,6 +381,7 @@
     align-items: center;
     border-bottom: 6px solid rgba(255, 244, 244, 0.233);
     padding: 25px;
+    margin: 0;
 
     .header-logo {
       color: $white;
@@ -469,5 +472,4 @@
       margin: 0;
     }
   }
-  // }
 }
