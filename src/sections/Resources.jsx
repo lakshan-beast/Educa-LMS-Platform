@@ -5,29 +5,39 @@ import {
   FaMedal,
   FaComments,
   FaChartColumn,
+  FaUserShield,
   // FaToolbox,
   // FaRocket,
   // FaCircleQuestion,
   // FaPenToSquare,
-  FaUserShield,
 } from "react-icons/fa6";
 
-// import Tools from "../assets/study.webp";
 import Comments from "../assets/comments.webp";
 import Results from "../assets/results.webp";
+import Parent from "../assets/parent.webp";
+// import Tools from "../assets/study.webp";
 // import Quizes from "../assets/quizs.webp";
 // import Quetions from "../assets/questions.webp";
-import Parent from "../assets/parent.webp";
 
 const Resources = () => {
   return (
     <section className="parts" id="resources">
-      <h2>
+      {/* <h2>
         Explore Our Powerful <span>Learning Tools</span>
       </h2>
       <p>
         Explore our collection of smart learning tools desgiged to make your O/L
         preparation easy, fun, & effective.
+      </p> */}
+
+      <h2>
+        Our Smart <span>Learning System</span>
+      </h2>
+
+      <p>
+        Explore the special features designed to connect parents with the
+        classroom, check modern exam reports, and view verified student feedback
+        instantly.
       </p>
 
       <div className="resources-grid">
@@ -40,15 +50,16 @@ const Resources = () => {
             <FaUserShield className="icon" /> Perant Portal
           </h3>
           <p>
-            View your child's attendance, fees reports, and special public
-            announcements here.
+            Monitor your child's weekly class attendance, monthly payment
+            histories, and direct urgent announcements safely in one unified
+            space.
           </p>
           {/* රහස් පේජ් එකට යන ලින්ක් එක */}
           {/* <Link to="/parent-portal" className="browse-btn">
             View Details
           </Link> */}
           <button disabled="disabled" className="browse-btn">
-            New Version Adding
+            Coming Soon
           </button>
         </div>
 
@@ -62,11 +73,13 @@ const Resources = () => {
           </span>
           <img src={Results} loading="lazy" alt="O/L Results" />
           <h3>
-            <FaChartColumn className="icon" /> O/L Result Portal
+            <FaChartColumn className="icon" />
+            National O/L Results
           </h3>
           <p>
-            Quickly access the official Department of Examinations portal to
-            check your results.
+            Directly access the official Department of Examinations portal to
+            check your national Ordinary Level results safely and quickly right
+            here.
           </p>
           <a
             href="https://www.doenets.lk/examresults"
@@ -90,15 +103,13 @@ const Resources = () => {
             <FaComments className="icon" /> Student Voices
           </h3>
           <p>
-            See what students say about classes & their learning experience with
-            us.
+            Read genuine feedback and learning experiences shared by our
+            top-performing Ordinary Level students who achieved their dream
+            results with us .
           </p>
           <Link to="/student-voices" className="browse-btn">
             Read Reviews
           </Link>
-          {/* <button disabled="disabled" className="browse-btn">
-            Developing Mode
-          </button> */}
         </div>
 
         {/* 1. Smart Tools Card */}
