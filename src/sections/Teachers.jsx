@@ -4,58 +4,109 @@ import tutor from "../assets/tutor.jpg";
 
 const Teachers = () => {
   const teacherData = [
+    // {
+    //   name: "Sir 01",
+    //   subject: "Mathematics Teacher",
+    //   img: tutor,
+    //   background: "B.Sc. (Physical Science) / Trained Mathematics Educator.",
+    //   expertise:
+    //     "15+ Years of experience in producing 'A' passes for O/L Mathematics.",
+    //   approach:
+    //     "Step-by-step simplification of complex theories with logic-based shortcuts.",
+    //   philosophy:
+    //     "Mastering the fundamentals to turn math-phobia into math-mastery through daily practice.",
+    //   phone: "+9471XXXXXXX",
+    // },
+    // {
+    //   name: "Sir 02",
+    //   subject: "Science Teacher",
+    //   img: tutor,
+    //   background: "B.Sc. in Biological Science",
+    //   expertise: "10+ Years of proven success in O/L Science.",
+    //   approach:
+    //     "Visualization of theories with real-world practical applications.",
+    //   philosophy:
+    //     "Specializes in simplifying Physics & Chemistry through interactive memory techniques.",
+    //   phone: "+94787030317",
+    // },
+    // {
+    //   name: "Sir 03",
+    //   subject: "English Teacher",
+    //   img: tutor,
+    //   background: "B.A. in English Language & Literature / Trained Educator.",
+    //   expertise:
+    //     "Expert in O/L English Syllabus & Spoken Fluency for 10+ Years.",
+    //   approach:
+    //     "Interactive language immersion focused on exam writing & fluency.",
+    //   philosophy:
+    //     "Helps students master O/L English paper structure and creative essay writing.",
+    //   phone: "+94787030317",
+    // },
+
     {
-      name: "Sir 01",
-      subject: "Mathematics Teacher",
+      name: "Mathematics Faculty Lead",
+      subject: "Mathematics Specialist",
       img: tutor,
-      background: "B.Sc. (Physical Science) / Trained Mathematics Educator.",
+      background:
+        "B.Sc. (Physical Science) / Trained Institutional Mathematics Educator.",
       expertise:
-        "15+ Years of experience in producing 'A' passes for O/L Mathematics.",
+        "15+ Years of proven classroom experience in producing outstanding 'A' passes for Ordinary Level Mathematics.",
       approach:
-        "Step-by-step simplification of complex theories with logic-based shortcuts.",
+        "Explains difficult geometry and algebra step-by-step using clear logic and fast exam-focused shortcuts.",
       philosophy:
-        "Mastering the fundamentals to turn math-phobia into math-mastery through daily practice.",
+        "We focus on building strong math basics daily, turning exam fear into absolute problem-solving confidence.",
+      facebook: "https://facebook.com",
+      whatsapp: "...",
       phone: "+9471XXXXXXX",
     },
     {
-      name: "Sir 02",
-      subject: "Science Teacher",
+      name: "Science Faculty Lead",
+      subject: "Science Specialist",
       img: tutor,
-      background: "B.Sc. in Biological Science",
-      expertise: "10+ Years of proven success in O/L Science.",
+      background:
+        "B.Sc. (Biological Science) / Experienced Science Communicator.",
+      expertise:
+        "10+ Years of dedicated teaching success in managing Ordinary Level local syllabus benchmarks.",
       approach:
-        "Visualization of theories with real-world practical applications.",
+        "Brings Physics, Chemistry, and Biology to life through friendly visual notes and practical examples.",
       philosophy:
-        "Specializes in simplifying Physics & Chemistry through interactive memory techniques.",
-      phone: "+94787030317",
+        "Specializes in simplifying heavy science syllabus work using easy memory-tricks and interactive test drills.",
+      facebook: "https://facebook.com",
+      whatsapp: "...",
+      phone: "+947XXXXXXXXX",
     },
     {
-      name: "Sir 03",
-      subject: "English Teacher",
+      name: "English Faculty Lead",
+      subject: "English Language & Literature Specialist",
       img: tutor,
-      background: "B.A. in English Language & Literature / Trained Educator.",
+      background:
+        "B.A. in English Language & Literature / Certified Institutional Educator.",
       expertise:
-        "Expert in O/L English Syllabus & Spoken Fluency for 10+ Years.",
+        "10+ Years of expert experience in managing local O/L English paper structures and student fluency.",
       approach:
-        "Interactive language immersion focused on exam writing & fluency.",
+        "Teaches interactive writing blueprints, essay frameworks, and core textbook grammar rules friendly.",
       philosophy:
-        "Helps students master O/L English paper structure and creative essay writing.",
-      phone: "+94787030317",
+        "Helps every student master creative writing layouts and formal answers to score a guaranteed 'A' grade.",
+      facebook: "https://facebook.com",
+      whatsapp: "...",
+      phone: "+947XXXXXXXXX",
     },
   ];
   return (
     <section className="parts teachers-section" id="teachers">
       <h2>
-        Our <span>Teachers</span>
+        Meet Our Expert <span>Faculty Leads</span>
       </h2>
+
+      <p>
+        Learn from our highly experienced and friendly educators dedicated to
+        your success. We combine proven exam methods with structured papers to
+        guide you toward a guaranteed 'A' grade.
+      </p>
 
       <div className="teachers-container teachers-grid">
         {teacherData.map((teacher, index) => (
-          <div
-            className="teacher-card"
-            key={index}
-            // data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}>
-          >
+          <div className="teacher-card" key={index}>
             <div className="teacher-image-column">
               <img src={teacher.img} alt={teacher.name} />
             </div>
@@ -78,10 +129,10 @@ const Teachers = () => {
                 </div>
 
                 <div className="teacher-socials">
-                  <a href="#">
+                  <a href={`tel:${teacher.facebook}`}>
                     <FaFacebook className="facebook-icon icon" />
                   </a>
-                  <a href="#">
+                  <a href={`tel:${teacher.whatsapp}`}>
                     <FaWhatsapp className="whatsapp-icon icon" />
                   </a>
                   <a href={`tel:${teacher.phone}`}>
