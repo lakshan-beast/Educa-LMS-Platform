@@ -89,19 +89,6 @@ const Information = () => {
               <p>Student Trust Rate</p>
             </div>
           </div>
-
-          {/* Chart Area */}
-          {/* <div className="result-container" data-aos="fade-up">
-            <canvas id="olResultChart" width="400" height="250"></canvas>
-            <p
-              style={{
-                textAlign: "center",
-                fontSize: "12px",
-                marginTop: "10px",
-              }}>
-              * O/L Result Improvement Analysis
-            </p>
-          </div> */}
         </div>
       </div>
     </section>
