@@ -1,0 +1,149 @@
+// .ai-floating-bubble {
+// position: "fixed",
+//             bottom: "25px",
+//             right: "25px",
+//             width: "60px",
+//             height: "60px",
+//             background: "linear-gradient(135deg, #03204b 0%, #0265f8 100%)",
+//             borderRadius: "50%",
+//             display: "flex",
+//             justifyContent: "center",
+//             alignItems: "center",
+//             color: "white",
+//             fontSize: "1.8rem",
+//             cursor: "pointer",
+//             boxShadow: "0 8px 24px rgba(75,107,251,0.35)",
+//             zIndex: 999999,
+//             transition: "0.3s ease",
+
+//             span {
+//                  position: "absolute",
+//               bottom: "2px",
+//               right: "2px",
+//               width: "16px",
+//               height: "16px",
+//               //   background: "#2ecc71",
+//               background: "#fd473a",
+//               borderRadius: "50%",
+//               border: "2px solid white",
+//             }
+// }
+
+// // ai chat window card
+// .ai-chat-window-card {
+//     position: "fixed",
+//             bottom: "25px",
+//             right: "25px",
+//             width: "380px",
+//             maxWidth: "100%",
+//             height: "600px",
+//             background: "white",
+//             borderRadius: "24px",
+//             boxShadow: "0 12px 40px rgba(26,10,84,0.15)",
+//             display: "flex",
+//             flexDirection: "column",
+//             overflow: "hidden",
+//             zIndex: 999999,
+//             border: "1px solid #eef2ff",
+//             animation: "popupFade 0.3s ease",
+
+//             // hearts
+//             .hearts-container {
+//                 position: "absolute",
+//                 top: 0,
+//                 left: 0,
+//                 width: "100%",
+//                 height: "100%",
+//                 pointerEvents: "none",
+//                 zIndex: 99999,
+//                 overflow: "hidden",
+
+//                 span {
+//                     position: "absolute",
+//                   bottom: "-20px",
+//                   left: "15%",
+//                   fontSize: "1.5rem",
+//                   animation: "heartFloatUp 2.2s ease-in-out infinite",
+//                   color: "#fc2212",
+//                 }
+//             }
+
+//     // chat window header
+//     .chat-header-container {
+//          background: "linear-gradient(135deg, #03204b 0%, #001431 100%)",
+//               padding: "18px 20px",
+//               display: "flex",
+//               justifyContent: "space-between",
+//               alignItems: "center",
+//               color: "white",
+
+//               .chat-header {
+//                 display: "flex", alignItems: "center", gap: "12px";
+
+//                 .chat-logo {
+//                      width: "38px",
+//                   height: "38px",
+//                   background: "rgba(255, 255, 255, 0.5)",
+//                   borderRadius: "50%",
+//                   display: "flex",
+//                   justifyContent: "center",
+//                   alignItems: "center",
+//                   fontSize: "1.3rem",
+
+//                   .icon {
+//                     color: #e9ecf0;
+//                   }
+//                 }
+
+//                 .chat-top {
+//                     text-align: left;
+
+//                     h4 {
+//                          margin: 0,
+//                     fontSize: "1rem",
+//                     fontWeight: "800",
+//                     letterSpacing: "0.3px",
+//                     }
+
+//                     small {
+//                         color: "#2ecc71",
+//                     display: "flex",
+//                     alignItems: "center",
+//                     gap: "5px",
+//                     fontWeight: "700",
+//                     fontSize: "0.72rem",
+//                     marginTop: "2px",
+//                     }
+
+//                     .active-ball {
+//                         fontSize: "0.5rem",
+//                       animation: "heartBeat 1s infinite",
+//                     }
+//                 }
+
+//                 // control part
+//                 .window-control {
+//                     display: "flex",
+//                 alignItems: "center",
+//                 gap: "12px",
+//                 fontSize: "1.3rem",
+//                 opacity: 0.8,
+
+//                 .close-mark {
+//                     cursor: pointer;
+//                 }
+//                 }
+//               }
+//     }
+
+//     // chat messsage box
+//     .chat-message {
+//         flex: 1,
+//               padding: "20px",
+//               overflowY: "auto",
+//               background: "#f8faff",
+//               display: "flex",
+//               flexDirection: "column",
+//               gap: "15px",
+//     }
+// }
