@@ -86,8 +86,8 @@ const Footer = () => {
             <div className="logo-circle">E</div>educa<span>.</span>
           </a>
           <p>
-            Helping students learn better with simple lessons & smart study
-            tools.
+            Clear lessons, smart tracking, and proven exam success for every
+            student.
           </p>
 
           <div className="social-links">
@@ -112,7 +112,7 @@ const Footer = () => {
           <ul>
             <li>
               <NavHashLink smooth to="/#home">
-                <FaCaretRight className="footer-icon" /> Home
+                <FaCaretRight className="footer-icon" /> Home Portal
               </NavHashLink>
             </li>
             <li>
@@ -122,23 +122,23 @@ const Footer = () => {
             </li>
             <li>
               <NavHashLink smooth to="/#classes">
-                <FaCaretRight className="footer-icon" /> Class Schedule
+                <FaCaretRight className="footer-icon" /> Class Schedules
               </NavHashLink>
             </li>
 
             <li>
               <a href="https://www.doenets.lk/examresults">
-                <FaCaretRight className="footer-icon" /> O/L Results
+                <FaCaretRight className="footer-icon" /> National O/L Results
               </a>
             </li>
             <li>
               <NavHashLink smooth to="/#teachers">
-                <FaCaretRight className="footer-icon" /> Our Faculty
+                <FaCaretRight className="footer-icon" /> Our Expert Faculty
               </NavHashLink>
             </li>
             <li>
               <NavHashLink smooth to="/#information">
-                <FaCaretRight className="footer-icon" /> Why Choose
+                <FaCaretRight className="footer-icon" /> Why Study with us
               </NavHashLink>
             </li>
             <li>
@@ -175,17 +175,17 @@ const Footer = () => {
             </li>
             <li>
               <Link to="/daily-question">
-                <FaCaretRight className="footer-icon" /> Daily Mission
+                <FaCaretRight className="footer-icon" /> Daily Learning Mission
               </Link>
             </li>
           </ul>
         </div>
 
         <div className="footer-card footer-contact">
-          <h3>Contact Info</h3>
+          <h3>Contact Information</h3>
           <p>
             <a href="tel:+94 77 123 4567" className="contact-link">
-              <FaPhone className="footer-icon" /> +94 77 123 4567
+              <FaPhone className="footer-icon" /> +94 77 *** ****
             </a>
           </p>
           <p>
@@ -293,23 +293,22 @@ const Footer = () => {
 
         {/* footer badge level */}
         <div className="footer-card badge-levelup">
-          <h3>for Sri Lanka | O/L Students</h3>
+          <h3>Biuld for Sri Lankan | O/L Students</h3>
           <p>
             <FaRocket className="footer-icon" />
-            Version 1.5
+            Version 1.5 Production
           </p>
           <p>
             <FaSquareCheck className="footer-icon" />
-            Verified Links
+            Verified Academic Links
           </p>
           <p>
             <FaLaptopCode className="footer-icon" />
-            last updated
-            <span> 2026 June</span>
+            last updated :<span> 2026 June</span>
           </p>
           <p>
             <FaUsers className="footer-icon" />
-            Community Reviewed
+            Community Reviewed & Approved
           </p>
         </div>
 
