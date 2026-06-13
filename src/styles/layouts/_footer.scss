@@ -134,7 +134,7 @@ footer {
   margin-bottom: 6px;
   border-top: none;
 
-  @include flex-custom(space-between, center, column, 20px, wrap);
+  @include flex-custom(space-between, center, column, 0px, wrap);
 
   @include respond(mobile) {
     border-top: 2px solid #212747;
@@ -202,7 +202,7 @@ footer {
   margin-bottom: 15px;
 
   a {
-    color: $primary-orange;
+    color: $orange;
     text-decoration: none;
   }
 }
