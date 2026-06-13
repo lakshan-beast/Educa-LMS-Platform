@@ -1,0 +1,85 @@
+import React, { useState } from "react";
+import { db } from "../firebase/config";
+import { doc, setDoc } from "firebase/firestore";
+
+const ContactForm = () => {
+  const [contactFormData, setContactFormData] = useState({
+    fullName: "",
+    phone: "",
+    messageText: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formSuccess, setFormSuccess] = useState("");
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setContactFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormSuccess("");
+
+    if (!contactFormData.fullName.trim()  !contactFormData.phone.trim()  !contactFormData.messageText.trim()) {
+      alert("Please fill all fields!");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const docId = "MSG-" + Date.now().toString().slice(-6);
+
+    const contactData = {
+      id: docId,
+      fullName: contactFormData.fullName.trim(),
+      phone: contactFormData.phone.trim(),
+      messageText: contactFormData.messageText.trim(),
+      status: "unread",
+      createdAt: new Date().toISOString()
+    };
+
+    try {
+      await setDoc(doc(db, "contact_messages", docId), contactData);
+      setFormSuccess("Your message was sent successfully! 🚀");
+      setContactFormData({ fullName: "", phone: "", messageText: "" });
+    } catch (err) {
+      console.error("Cloud Contact Save Error:", err);
+    }
+    setIsSubmitting(false);
+  };
+
+  return (
+    <div style={{ maxWidth: "500px", margin: "40px auto", padding: "30px", background: "#ffffff", borderRadius: "24px", boxShadow: "0 15px 35px rgba(3,32,75,0.08)", border: "1px solid #eef2ff", textAlign: "left" }}>
+      <h2 style={{ color: "#03204b", margin: "0 0 8px 0", fontSize: "1.6rem", fontWeight: "800" }}>Contact Academic Support</h2>
+      <p style={{ color: "#666", fontSize: "0.88rem", margin: "0 0 25px 0", lineHeight: "1.5" }}>පන්ති විස්තර සහ ගැටලු සඳහා සෘජුවම ගුරුවරුන් සම්බන්ධ කර ගැනීමට මෙම පෝරමය පුරවා එවන්න ළමයෝ.</p>
+
+      {formSuccess && (
+        <div style={{ background: "#ecfdf5", color: "#065f46", padding: "12px 16px", borderRadius: "12px", fontSize: "0.85rem", fontWeight: "700", marginBottom: "20px", border: "1px solid #a7f3d0" }}>
+          {formSuccess}
+        </div>
+      )}
+
+      <form onSubmit={handleContactSubmit}>
+        <div style={{ marginBottom: "18px" }}>
+          <label style={{ display: "block", color: "#03204b", fontSize: "0.82rem", fontWeight: "700", marginBottom: "6px" }}>Full Name / සම්පූර්ණ නම</label>
+          <input type="text" name="fullName" value={contactFormData.fullName} onChange={handleInputChange} placeholder="E.g., Nuwan Perera" style={{ width: "100%", padding: "12px 16px", borderRadius: "12px", border: "1px solid #cbd5e1", fontSize: "0.9rem", outline: "none", boxSizing: "border-box" }} required />
+        </div>
+
+        <div style={{ marginBottom: "18px" }}>
+          <label style={{ display: "block", color: "#03204b", fontSize: "0.82rem", fontWeight: "700", marginBottom: "6px" }}>Phone Number / දුරකථන අංකය</label>
+          <input type="tel" name="phone" value={contactFormData.phone} onChange={handleInputChange} placeholder="E.g., 0771234567" style={{ width: "100%", padding: "12px 16px", borderRadius: "12px", border: "1px solid #cbd5e1", fontSize: "0.9rem", outline: "none", boxSizing: "border-box" }} required />
+        </div>
+
+        <div style={{ marginBottom: "25px" }}>
+          <label style={{ display: "block", color: "#03204b", fontSize: "0.82rem", fontWeight: "700", marginBottom: "6px" }}>Your Message / ඔයාගේ ගැටලුව</label>
+          <textarea name="messageText" value={contactFormData.messageText} onChange={handleInputChange} placeholder="Type your inquiry here..." rows="4" style={{ width: "100%", padding: "12px 16px", borderRadius: "12px", border: "1px solid #cbd5e1", fontSize: "0.9rem", outline: "none", resize: "none", boxSizing: "border-box" }} required></textarea>
+        </div>
+        <button type="submit" disabled={isSubmitting} style={{ width: "100%", padding: "14px", background: "#03204b", color: "#ffffff", border: "none", borderRadius: "12px", fontWeight: "700", fontSize: "0.95rem", cursor: "pointer", transition: "0.2s", opacity: isSubmitting ? 0.7 : 1 }}>
+          {isSubmitting ? "Sending Message..." : "Send Live Message 🚀"}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default ContactForm;
