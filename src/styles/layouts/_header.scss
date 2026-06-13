@@ -2,11 +2,11 @@
 .header {
   width: 96%;
   height: 92px;
-  // margin: 0.5rem;
+  margin: 0.5rem;
   padding: 0 25px;
   position: fixed;
   top: 0;
-  border-radius: 0 26px 26px 0;
+  border-radius: 16px;
   background-color: rgba(252, 252, 252, 0.8);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -64,7 +64,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    box-shadow: 0 10px 20px rgba(0, 13, 31, 0.3);
+    box-shadow: 0 -2px 20px rgba(0, 13, 31, 0.2);
     font-family: "Exo 2";
   }
 
@@ -91,12 +91,12 @@
     padding: 8px 16px;
     margin: 0 3px;
     border-radius: $border-radius-large;
-    background: $dark-purple1;
+    background: $secondary-blue;
     @include flex-custom(space-between, center, row);
     color: $white;
 
     &:hover {
-      background-color: $blue-medium;
+      background-color: $secondary-blue2;
       transform: translateY(-3px);
     }
   }
@@ -292,7 +292,7 @@
   top: 5px;
   font-size: 2rem;
   background: none;
-  color: $dark-purple2;
+  // color: $dark-purple2;
   cursor: pointer;
 
   @include respond(desktop) {
