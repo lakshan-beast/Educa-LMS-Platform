@@ -134,8 +134,9 @@ const Contact = () => {
               Get in <span>Touch</span>
             </h2>
             <p>
-              Have questions about classes or study materials? Message the
-              relevant teacher directly.
+              Have questions regarding localized schedules, materials, or
+              student tracking? Submit your inquiry to route it directly to the
+              designated faculty admin.
             </p>
 
             <div className="contact-cards">
@@ -221,8 +222,9 @@ const Contact = () => {
             id="contact-form">
             <h2>Contact Academic Support</h2>
             <p>
-              Fill out this form to contact teachers directly for class details
-              and questions.
+              Please complete this official form to establish a direct cloud
+              link with our subject teachers for immediate verification and
+              support.
             </p>
 
             {formSuccess && <div className="success-card">{formSuccess}</div>}
@@ -287,6 +289,7 @@ const Contact = () => {
               </div>
             </form>
           </div>
+          {/* </div> */}
         </div>
       </div>
     </section>
