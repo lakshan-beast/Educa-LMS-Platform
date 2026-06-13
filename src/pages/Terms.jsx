@@ -189,7 +189,7 @@
 //             style={{
 //               width: "65px",
 //               height: "65px",
-//               background: "#03204b",
+//               background: "#001b42",
 //               color: "white",
 //               borderRadius: "50%",
 //               display: "inline-flex",
@@ -201,7 +201,7 @@
 //             }}>
 //             <FaFileContract />
 //           </div>
-//           <h2 style={{ color: "#03204b", margin: 0, fontWeight: "900", fontSize: "1.4rem", letterSpacing: "-0.5px" }}>
+//           <h2 style={{ color: "#001b42", margin: 0, fontWeight: "900", fontSize: "1.4rem", letterSpacing: "-0.5px" }}>
 //             Platform Terms of Service
 //           </h2>
 //           <p style={{ color: "#64748b", fontSize: "0.82rem", marginTop: "4px", fontWeight: "600" }}>
@@ -223,22 +223,22 @@
 //             color: "#334155",
 //           }}
 //         >
-//           <h4 style={{ color: "#03204b", marginTop: 0, fontSize: "0.9rem", fontWeight: "800", display: "flex", alignItems: "center", gap: "8px" }}>
-//             <FaKey style={{ color: "#03204b" }} /> 1. Single-Device Authentication Lock
+//           <h4 style={{ color: "#001b42", marginTop: 0, fontSize: "0.9rem", fontWeight: "800", display: "flex", alignItems: "center", gap: "8px" }}>
+//             <FaKey style={{ color: "#001b42" }} /> 1. Single-Device Authentication Lock
 //           </h4>
 //           <p style={{ marginTop: "6px", marginBottom: "16px" }}>
 //             To maintain academic integrity, student access keys are strictly bound to a single hardware signature. Any automated script detection or parallel active sessions detected across multiple IP addresses will trigger an instant security lockdown on the respective student profile [INDEX 4].
 //           </p>
 
-//           <h4 style={{ color: "#03204b", fontSize: "0.9rem", fontWeight: "800", display: "flex", alignItems: "center", gap: "8px" }}>
-//             <FaComputer style={{ color: "#03204b" }} /> 2. Intellectual Property & Anti-Piracy
+//           <h4 style={{ color: "#001b42", fontSize: "0.9rem", fontWeight: "800", display: "flex", alignItems: "center", gap: "8px" }}>
+//             <FaComputer style={{ color: "#001b42" }} /> 2. Intellectual Property & Anti-Piracy
 //           </h4>
 //           <p style={{ marginTop: "6px", marginBottom: "16px" }}>
 //             All video lectures, custom evaluation blueprints, and predictive exam papers uploaded to educa. are protected under strict international copyright regulations. Any unauthorized distribution, recording, or extraction of content will lead to immediate legal termination of the account [INDEX 4].
 //           </p>
 
-//           <h4 style={{ color: "#03204b", fontSize: "0.9rem", fontWeight: "800", display: "flex", alignItems: "center", gap: "8px" }}>
-//             <FaDatabase style={{ color: "#03204b" }} /> 3. Dynamic Automated Ledger Terms
+//           <h4 style={{ color: "#001b42", fontSize: "0.9rem", fontWeight: "800", display: "flex", alignItems: "center", gap: "8px" }}>
+//             <FaDatabase style={{ color: "#001b42" }} /> 3. Dynamic Automated Ledger Terms
 //           </h4>
 //           <p style={{ marginTop: "6px", marginBottom: "0" }}>
 //             Subscription matrix tokens and invoice logs are verified programmatically through real-time web bridges. Access authorization to advanced multi-subject tiers is dynamically adjusted based on automated cloud system parameters synchronized with system ledgers [INDEX 51].
@@ -249,7 +249,7 @@
 //           <button
 //             onClick={onClose}
 //             style={{
-//               background: "#03204b",
+//               background: "#001b42",
 //               color: "white",
 //               border: "none",
 //               padding: "10px 24px",
@@ -298,7 +298,7 @@ const Terms = ({ onClose }) => {
             style={{
               width: "65px",
               height: "65px",
-              background: "#03204b",
+              background: "#001b42",
               color: "white",
               borderRadius: "50%",
               display: "inline-flex",
@@ -312,7 +312,7 @@ const Terms = ({ onClose }) => {
           </div>
           <h2
             style={{
-              color: "#03204b",
+              color: "#001b42",
               margin: 0,
               fontWeight: "900",
               fontSize: "1.4rem",
@@ -347,7 +347,7 @@ const Terms = ({ onClose }) => {
           }}>
           <h4
             style={{
-              color: "#03204b",
+              color: "#001b42",
               marginTop: 0,
               fontSize: "0.9rem",
               fontWeight: "800",
@@ -355,7 +355,7 @@ const Terms = ({ onClose }) => {
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaScaleBalanced style={{ color: "#03204b" }} /> 1. Intellectual
+            <FaScaleBalanced style={{ color: "#001b42" }} /> 1. Intellectual
             Property Ownership
           </h4>
           <p style={{ marginTop: "6px", marginBottom: "16px" }}>
@@ -371,14 +371,14 @@ const Terms = ({ onClose }) => {
 
           <h4
             style={{
-              color: "#03204b",
+              color: "#001b42",
               fontSize: "0.9rem",
               fontWeight: "800",
               display: "flex",
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaShieldHalved style={{ color: "#03204b" }} /> 2. SaaS Subscription
+            <FaShieldHalved style={{ color: "#001b42" }} /> 2. SaaS Subscription
             & Maintenance Agreement
           </h4>
           <p style={{ marginTop: "6px", marginBottom: "16px" }}>
@@ -393,14 +393,14 @@ const Terms = ({ onClose }) => {
 
           <h4
             style={{
-              color: "#03204b",
+              color: "#001b42",
               fontSize: "0.9rem",
               fontWeight: "800",
               display: "flex",
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaFileContract style={{ color: "#03204b" }} /> 3. Permitted
+            <FaFileContract style={{ color: "#001b42" }} /> 3. Permitted
             Academic Usage
           </h4>
           <p style={{ marginTop: "6px", marginBottom: "0" }}>
@@ -444,7 +444,7 @@ const Terms = ({ onClose }) => {
           <button
             onClick={handleAccept}
             style={{
-              background: "#03204b",
+              background: "#001b42",
               color: "white",
               border: "none",
               padding: "10px 24px",

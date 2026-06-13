@@ -15,7 +15,7 @@ const ComingSoon = ({ onClose }) => {
             style={{
               width: "65px",
               height: "65px",
-              background: "#03204b",
+              background: "#001b42",
               color: "white",
               borderRadius: "50%",
               display: "inline-flex",
@@ -29,7 +29,7 @@ const ComingSoon = ({ onClose }) => {
           </div>
           <h2
             style={{
-              color: "#03204b",
+              color: "#001b42",
               margin: 0,
               fontWeight: "900",
               fontSize: "1.4rem",
@@ -63,7 +63,7 @@ const ComingSoon = ({ onClose }) => {
           }}>
           <h4
             style={{
-              color: "#03204b",
+              color: "#001b42",
               marginTop: 0,
               fontSize: "0.9rem",
               fontWeight: "800",
@@ -71,7 +71,7 @@ const ComingSoon = ({ onClose }) => {
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaSquarePollVertical style={{ color: "#03204b" }} /> 📊 1.
+            <FaSquarePollVertical style={{ color: "#001b42" }} /> 📊 1.
             Enterprise Parent Gateway (Target: July 2026)
           </h4>
           <p style={{ marginTop: "6px", marginBottom: "16px" }}>
@@ -83,14 +83,14 @@ const ComingSoon = ({ onClose }) => {
 
           <h4
             style={{
-              color: "#03204b",
+              color: "#001b42",
               fontSize: "0.9rem",
               fontWeight: "800",
               display: "flex",
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaLightbulb style={{ color: "#03204b" }} /> 🧠 2. AI Study Studio
+            <FaLightbulb style={{ color: "#001b42" }} /> 🧠 2. AI Study Studio
             Hub (Target: August 2026)
           </h4>
           <p style={{ marginTop: "6px", marginBottom: "0" }}>
@@ -111,7 +111,7 @@ const ComingSoon = ({ onClose }) => {
           <button
             onClick={onClose}
             style={{
-              background: "#03204b",
+              background: "#001b42",
               color: "white",
               border: "none",
               padding: "10px 24px",

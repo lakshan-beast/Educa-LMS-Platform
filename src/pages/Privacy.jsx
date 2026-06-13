@@ -159,7 +159,7 @@ const Privacy = ({ onClose }) => {
             style={{
               width: "65px",
               height: "65px",
-              background: "#03204b",
+              background: "#001b42",
               color: "white",
               borderRadius: "50%",
               display: "inline-flex",
@@ -173,7 +173,7 @@ const Privacy = ({ onClose }) => {
           </div>
           <h2
             style={{
-              color: "#03204b",
+              color: "#001b42",
               margin: 0,
               fontWeight: "900",
               fontSize: "1.4rem",
@@ -208,7 +208,7 @@ const Privacy = ({ onClose }) => {
           }}>
           <h4
             style={{
-              color: "#03204b",
+              color: "#001b42",
               marginTop: 0,
               fontSize: "0.9rem",
               fontWeight: "800",
@@ -216,7 +216,7 @@ const Privacy = ({ onClose }) => {
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaUserLock style={{ color: "#03204b" }} /> 1. Next-Gen Identity
+            <FaUserLock style={{ color: "#001b42" }} /> 1. Next-Gen Identity
             Safeguarding
           </h4>
           <p style={{ marginTop: "6px", marginBottom: "16px" }}>
@@ -230,14 +230,14 @@ const Privacy = ({ onClose }) => {
 
           <h4
             style={{
-              color: "#03204b",
+              color: "#001b42",
               fontSize: "0.9rem",
               fontWeight: "800",
               display: "flex",
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaEyeSlash style={{ color: "#03204b" }} /> 2. Real-Time
+            <FaEyeSlash style={{ color: "#001b42" }} /> 2. Real-Time
             Cryptographic Masking
           </h4>
           <p style={{ marginTop: "6px", marginBottom: "16px" }}>
@@ -251,14 +251,14 @@ const Privacy = ({ onClose }) => {
 
           <h4
             style={{
-              color: "#03204b",
+              color: "#001b42",
               fontSize: "0.9rem",
               fontWeight: "800",
               display: "flex",
               alignItems: "center",
               gap: "8px",
             }}>
-            <FaSquarePollVertical style={{ color: "#03204b" }} /> 3. Verified
+            <FaSquarePollVertical style={{ color: "#001b42" }} /> 3. Verified
             Multi-Subject Scope
           </h4>
           <p style={{ marginTop: "6px", marginBottom: "0" }}>
@@ -281,7 +281,7 @@ const Privacy = ({ onClose }) => {
           <button
             onClick={onClose}
             style={{
-              background: "#03204b",
+              background: "#001b42",
               color: "white",
               border: "none",
               padding: "10px 24px",

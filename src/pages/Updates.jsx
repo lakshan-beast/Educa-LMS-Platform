@@ -10,7 +10,7 @@ const Updates = ({ onClose }) => {
             style={{
               width: "65px",
               height: "65px",
-              background: "#03204b",
+              background: "#001b42",
               color: "white",
               borderRadius: "50%",
               display: "inline-flex",
@@ -24,7 +24,7 @@ const Updates = ({ onClose }) => {
           </div>
           <h2
             style={{
-              color: "#03204b",
+              color: "#001b42",
               margin: 0,
               fontWeight: "900",
               fontSize: "1.4rem",
@@ -97,7 +97,7 @@ const Updates = ({ onClose }) => {
           <button
             onClick={onClose}
             style={{
-              background: "#03204b",
+              background: "#001b42",
               color: "white",
               border: "none",
               padding: "10px 24px",
