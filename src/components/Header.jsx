@@ -135,7 +135,7 @@ const Header = () => {
           <div className="header-actions">
             <button className="sign-btn" onClick={handleUserClick}>
               {isLoggedIn ? (
-                <FaUserCircle style={{ color: "#001b42" }} />
+                <FaUserCircle style={{ color: "#000d1f" }} />
               ) : (
                 <FaRegUserCircle />
               )}
