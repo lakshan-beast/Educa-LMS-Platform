@@ -117,7 +117,6 @@ const Login = () => {
           left: "73%",
           objectFit: "contain",
         }}
-        refferrerPolicy="no-referrer"
       />
 
       <h2>Student Login Portal </h2>
