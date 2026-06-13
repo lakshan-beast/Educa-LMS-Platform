@@ -77,7 +77,10 @@
     img {
       margin: 2rem auto;
       height: auto;
-      max-width: $container-width-default;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 2rem;
+      box-shadow: 0px 5px 12px rgb(196, 196, 196);
       object-fit: cover;
       animation: updown 10s ease-in-out infinite;
 
