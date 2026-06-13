@@ -3,40 +3,75 @@ import { FaArrowRight } from "react-icons/fa6";
 
 const Classes = () => {
   const classData = [
+    // {
+    //   id: "maths",
+    //   title: "O/L Mathematics",
+    //   subtitle: "Master Logic & Numbers",
+    //   description:
+    //     "Simplify complex theories into easy steps. We ensure every student masters the logic.",
+    //   grade: "06 - 11",
+    //   medium: "Sinhala",
+    // },
+    // {
+    //   id: "science",
+    //   title: "O/L Science",
+    //   subtitle: "Interactive Concept Mastery",
+    //   description:
+    //     "Dive deep into Science with visual explanations covering Physics, Chemistry & Biology.",
+    //   grade: "06 - 11",
+    //   medium: "English / Sinhala",
+    // },
+    // {
+    //   id: "english",
+    //   title: "O/L English",
+    //   subtitle: "Confidence in Communication",
+    //   description:
+    //     "Focus on essay writing, literature analysis & fluency to ace your exam.",
+    //   grade: "01 - 11",
+    //   medium: "English / Sinhala",
+    // },
+
+    // [
     {
       id: "maths",
       title: "O/L Mathematics",
-      subtitle: "Master Logic & Numbers",
+      subtitle: "Step-by-Step Logic & Core Numeracy",
       description:
-        "Simplify complex theories into easy steps. We ensure every student masters the logic.",
+        "Master all core mathematical theories easily from fundamental logic to advanced geometry. We simplify complex algebraic equations into clear steps, providing weekly structured papers and direct support to boost school term marks and guarantee O/L success.",
       grade: "06 - 11",
       medium: "Sinhala",
     },
     {
       id: "science",
       title: "O/L Science",
-      subtitle: "Interactive Concept Mastery",
+      subtitle: "Visualizing Physics, Chemistry & Biology",
       description:
-        "Dive deep into Science with visual explanations covering Physics, Chemistry & Biology.",
+        "Explore the amazing world of Science with modern visual diagrams and fun experiments. We cover every single theory in Physics, Chemistry, and Biology comprehensively, turning difficult classroom syllabus work into highly engaging, easy-to-remember lessons.",
       grade: "06 - 11",
-      medium: "English / Sinhala",
+      medium: "Sinhala & English",
     },
     {
       id: "english",
       title: "O/L English",
-      subtitle: "Confidence in Communication",
+      subtitle: "Advanced Writing, Language & Fluency",
       description:
-        "Focus on essay writing, literature analysis & fluency to ace your exam.",
+        "Build ultimate confidence in English communication, school textbook lessons, and grammar structure. We focus heavily on formal essay writing techniques, comprehensions, local literature appreciation, and targeted exam paper drills to secure your absolute 'A' grade .",
       grade: "01 - 11",
-      medium: "English / Sinhala",
+      medium: "English & Sinhala",
     },
+    // ],
   ];
 
   return (
     <section className="parts" id="classes">
       <h2>
-        our <span>classes</span>
+        Our Acedamic <span>Classes</span>
       </h2>
+      <p>
+        Explore our official localized schedules for Grade 6 to 11 Mathematics,
+        Science, and English. Designed to strengthen textbook theories, improve
+        term test scores, and build exam confidence step-by-step.
+      </p>
 
       <div className="class-container">
         <div className="classes-grid">
