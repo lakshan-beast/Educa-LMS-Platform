@@ -107,7 +107,7 @@
       font-size: 0.85rem;
       line-height: 1.6;
       margin-bottom: 20px;
-      height: 60px;
+      // height: 60px;
       text-align: left;
 
       @include respond(tablet) {
@@ -151,6 +151,8 @@
   box-shadow: $shadow-medium;
   padding: 0 20px;
   border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
 
   .teacher-image-column {
     @include center-everything;
@@ -165,7 +167,7 @@
   }
 
   .teacher-info-column {
-    padding: 20px 0;
+    padding: 6px 0;
 
     .subject-tag {
       padding: 5px 15px;
@@ -186,7 +188,7 @@
 
     .detail-list {
       .detail-header {
-        height: 110px;
+        // height: 110px;
       }
 
       p {
@@ -197,7 +199,7 @@
       }
       .philosophy-box {
         padding: 15px;
-        margin-top: 10px;
+        // margin-top: 10px;
         background: rgba($blue-medium, 0.1);
         color: rgba($secondary-blue, 0.7);
         font-style: italic;
@@ -211,10 +213,11 @@
   /* 👑 PREMIUM FLOATING RIBBON SOCIAL BAR */
   .teacher-socials {
     padding: 8px 20px;
-    margin: 16px auto 0 auto;
-    width: 200px;
+    margin: 6px auto 0 auto;
+    // width: 200px;
+    width: 100%;
     background: #ecf1ff;
-    border-radius: 30px;
+    // border-radius: 30px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 4px 15px rgba(26, 10, 84, 0.06);
     transition: all 0.3s ease;

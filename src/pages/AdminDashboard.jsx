@@ -9,6 +9,8 @@ import NoticeBoard from "../components/admin/NoticeVault";
 import ClassScheduleVault from "../components/admin/ClassScheduleVault";
 import PaperHubUploadVault from "../components/admin/PaperHubUploadVault";
 
+import MailBox from "../components/MailBox";
+
 import PasswordField from "../components/PasswordField";
 
 import {
@@ -25,6 +27,7 @@ import {
   FaUserShield,
   FaCalendarCheck,
 } from "react-icons/fa6";
+import { FaMailBulk } from "react-icons/fa";
 
 const AdminDashboard = () => {
   const { subject } = useParams();
@@ -252,6 +255,16 @@ const AdminDashboard = () => {
                 }}>
                 <FaFolderPlus /> <span> Paper Upload Vault</span>
               </button>
+
+              <button
+                onClick={() => setActiveVault("mail-box")}
+                style={{
+                  background:
+                    activeVault === "mail-box" ? "#ff4b2b" : "transparent",
+                }}>
+                <FaMailBulk /> <span> Mail Box</span>
+                {/* <MailBox /> */}
+              </button>
             </nav>
 
             <button className="signout-btn" onClick={handleLogout}>
@@ -262,6 +275,7 @@ const AdminDashboard = () => {
           <main>
             {/* 👑 🆕 [THE EXCLUSIVE FIX]: වෝල්ට් එක Class Schedule හෝ Paper Upload නොවන්නේ නම් පමණක් මේ මුළු හෙඩර් එකම පෙන්වයි */}
             {activeVault !== "class-shedule" &&
+              activeVault !== "mail-box" &&
               activeVault !== "paper-upload" && (
                 <header>
                   <div className="top-content">
@@ -284,6 +298,7 @@ const AdminDashboard = () => {
                       Grade 10
                     </button>
                   </div>
+
                   <div className="desc-content">
                     <FaFolderOpen className="open-folder" /> Managing:{" "}
                     <span>
@@ -332,6 +347,7 @@ const AdminDashboard = () => {
               {activeVault === "class-shedule" && <ClassScheduleVault />}
 
               {activeVault === "paper-upload" && <PaperHubUploadVault />}
+              {activeVault === "mail-box" && <MailBox />}
             </div>
           </main>{" "}
           {/* 👑 Fixed: අතහැරී තිබුණු main closing tag එක නිවැරදිව වැහුවා */}
