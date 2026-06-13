@@ -14,8 +14,8 @@
 }
 
 .login-modal-box,
-.privacy-card,
 .login-card,
+.privacy-card,
 .register-card {
   background: $white;
   width: 100%;
@@ -27,19 +27,6 @@
   margin-bottom: 30px;
   box-shadow: 0 12px 30px rgba($secondary-blue, 0.2);
   position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    right: -100px;
-    top: -100px;
-    width: 300px;
-    height: 300px;
-    background: rgba(rgb(218, 218, 218), 0.15);
-    box-shadow: 0px -1px 50px rgba(192, 192, 192, 0.8);
-    border-radius: 50%;
-    overflow: hidden;
-  }
 
   h2,
   h3 {
@@ -137,6 +124,22 @@
       @include respond(mobile) {
         gap: 15px;
       }
+    }
+  }
+
+  .login-modal-box,
+  .login-card {
+    &::after {
+      content: "";
+      position: absolute;
+      right: -100px;
+      top: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(rgb(218, 218, 218), 0.15);
+      box-shadow: 0px -1px 50px rgba(192, 192, 192, 0.8);
+      border-radius: 50%;
+      overflow: hidden;
     }
   }
 
