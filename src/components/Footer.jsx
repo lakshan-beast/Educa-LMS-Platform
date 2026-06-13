@@ -12,8 +12,6 @@ import {
   FaCaretRight,
   FaPhone,
   FaLocationDot,
-  FaUser,
-  FaKey,
 } from "react-icons/fa6";
 
 import {
@@ -24,55 +22,60 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
-// import { Privacy } from "../pages/Privacy";
-// import { Terms } from "../pages/Terms";
+import Privacy from "../pages/Privacy";
+import Terms from "../pages/Terms";
+import Updates from "../pages/Updates";
+import ComingSoon from "../pages/ComingSoon";
+import About from "../pages/About";
+import NexusLabs from "../pages/NexusLabs";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [activeModal, setActiveModal] = useState(null);
 
   // ID Generator Popup එක පාලනය කරන State
-  const [showGenModal, setShowGenModal] = useState(false);
-  // const [showPrivacyCard, setShowPrivacyCard] = useState(false);
-  // const [showTermsCard, setShowTermsCard] = useState(false);
+  // const [showGenModal, setShowGenModal] = useState(false);
+  // // const [showPrivacyCard, setShowPrivacyCard] = useState(false);
+  // // const [showTermsCard, setShowTermsCard] = useState(false);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    pin: "",
-    password: "",
-    maths: false,
-    english: false,
-    science: false,
-  });
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   pin: "",
+  //   password: "",
+  //   maths: false,
+  //   english: false,
+  //   science: false,
+  // });
 
-  const [generatedID, setGeneratedID] = useState("");
-  const [copied, setCopied] = useState(false);
+  // const [generatedID, setGeneratedID] = useState("");
+  // const [copied, setCopied] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value, type, checked } = e.target;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // };
 
   // ID එක හදන රටාව (Grade 11 විතරක් නිසා කෙලින්ම 11 දැම්මා)
-  const handleGenerate = (e) => {
-    e.preventDefault();
-    let subCode = "";
-    if (formData.maths) subCode += "m";
-    if (formData.english) subCode += "e";
-    if (formData.science) subCode += "s";
+  // const handleGenerate = (e) => {
+  //   e.preventDefault();
+  //   let subCode = "";
+  //   if (formData.maths) subCode += "m";
+  //   if (formData.english) subCode += "e";
+  //   if (formData.science) subCode += "s";
 
-    if (!subCode) {
-      alert("Please select at least one subject!");
-      return;
-    }
+  //   if (!subCode) {
+  //     alert("Please select at least one subject!");
+  //     return;
+  //   }
 
-    const cleanName = formData.name.replace(/\s+/g, "").toUpperCase();
-    const finalID = `EDU-${subCode.toUpperCase()}-11-${cleanName}-${formData.pin}`;
-    setGeneratedID(finalID);
-    setCopied(false);
-  };
+  //   const cleanName = formData.name.replace(/\s+/g, "").toUpperCase();
+  //   const finalID = `EDU-${subCode.toUpperCase()}-11-${cleanName}-${formData.pin}`;
+  //   setGeneratedID(finalID);
+  //   setCopied(false);
+  // };
 
   return (
     <footer className="footer" data-aos="fade-up">
@@ -213,38 +216,11 @@ const Footer = () => {
       <div className="footer-contents footer-bottom" id="footer-bottom">
         {/* footer legels  */}
         <div className=" footer-card footer-legels">
-          <h3>Legal</h3>
+          <h3>Legal Complaince</h3>
           <ul>
-            {/* <li>
-              <Link
-                to="/privacy"
-                onClick={() => setShowGenModal(true)}
-                onMouseEnter={(e) => (e.target.style.color = "#ff4b2b")}
-                onMouseLeave={(e) => (e.target.style.color = "#ffffff")}>
-                <FaCaretRight className="footer-icon" /> Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/terms"
-                onClick={() => setShowGenModal(true)}
-                onMouseEnter={(e) => (e.target.style.color = "#ff4b2b")}
-                onMouseLeave={(e) => (e.target.style.color = "#ffffff")}>
-                <FaCaretRight className="footer-icon" /> Terms of Services
-              </Link>
-            </li> */}
-
             <li>
               <span
-                onClick={() => setShowGenModal(true)}
-                className="secret-gen-link">
-                <FaCaretRight className="footer-icon" /> Generate Your Unique ID
-              </span>
-            </li>
-
-            <li>
-              <span
-                // onClick={() => setShowPrivacyCard(true)}
+                onClick={() => setActiveModal("PRIVACY")}
                 className="secret-gen-link">
                 <FaCaretRight className="footer-icon" /> Privacy Policy
               </span>
@@ -252,7 +228,7 @@ const Footer = () => {
 
             <li>
               <span
-                // onClick={() => setShowTermsCard(true)}
+                onClick={() => setActiveModal("TERMS")}
                 className="secret-gen-link">
                 <FaCaretRight className="footer-icon" />
                 Terms of Services
@@ -262,16 +238,55 @@ const Footer = () => {
             <li>
               <div className="contact-support">
                 <a
-                  href={
-                    `https://wa.me/94740130305?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20` +
-                    formData.name
-                  }
+                  href={`https://wa.me/94740130305?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20`}
                   target="_blank"
                   rel="noopener noreferrer">
                   <FaCaretRight className="footer-icon" /> Password Forget?
                   (Contact Support)
                 </a>
               </div>
+            </li>
+          </ul>
+        </div>
+
+        <div className=" footer-card footer-legels">
+          <h3>Platform Evolution</h3>
+          <ul>
+            <li>
+              <span
+                onClick={() => setActiveModal("UPDATES")}
+                className="secret-gen-link">
+                <FaCaretRight className="footer-icon" /> System Version Updates
+              </span>
+            </li>
+
+            <li>
+              <span
+                onClick={() => setActiveModal("COMING_SOON")}
+                className="secret-gen-link">
+                <FaCaretRight className="footer-icon" /> Coming Soon Engine
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div className=" footer-card footer-legels">
+          <h3>Corporate Identity</h3>
+          <ul>
+            <li>
+              <span
+                onClick={() => setActiveModal("ABOUT")}
+                className="secret-gen-link">
+                <FaCaretRight className="footer-icon" /> About educa. Platform
+              </span>
+            </li>
+
+            <li>
+              <span
+                onClick={() => setActiveModal("NEXUS_LABS")}
+                className="secret-gen-link">
+                <FaCaretRight className="footer-icon" /> NexusLabs Studio
+              </span>
             </li>
           </ul>
         </div>
@@ -320,303 +335,55 @@ const Footer = () => {
       </div>
 
       {/* ================= 🎁 ID GENERATOR POPUP MODAL ================= */}
-      {showGenModal && (
+
+      {/* // activeModel  */}
+      {activeModal && (
         <div
           className="login-overlay"
           onClick={() => {
-            setShowGenModal(false);
-            setGeneratedID("");
+            setActiveModal(false);
           }}>
-          <div
-            className="login-modal-box"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "white",
-              padding: "30px",
-              borderRadius: "20px",
-              maxWidth: "400px",
-              width: "100%",
-              position: "relative",
-              // display: "none",
-            }}>
+          <div onClick={(e) => e.stopPropagation()}>
             <button
               className="close-x"
-              onClick={() => {
-                // showLegelCard(false);
-                setGeneratedID("");
-              }}
+              onClick={() => setActiveModal(null)}
               style={{
                 position: "absolute",
-                top: "50px",
+                top: "20px",
                 right: "20px",
-                background: "none",
                 border: "none",
-                fontSize: "2rem",
+                background: "#f1f5f9",
+                width: "32px",
+                height: "32px",
+                borderRadius: "50%",
                 cursor: "pointer",
+                fontSize: "0.85rem",
+                fontWeight: "bold",
+                color: "#666",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}>
-              &times;
+              ✕
             </button>
 
-            <h3 style={{ color: "#26136d", marginBottom: "10px" }}>
-              Generate Student ID
-            </h3>
-            <p
-              style={{
-                fontSize: "0.8rem",
-                color: "#666",
-                marginBottom: "20px",
-              }}>
-              Enter your details. Give the generated ID to your class card
-              marker for activation.
-            </p>
-
-            <form onSubmit={handleGenerate} className="styled-form">
-              <div className="input-group" style={{ marginBottom: "15px" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "0.85rem",
-                    fontWeight: "600",
-                    marginBottom: "5px",
-                  }}>
-                  <FaUser /> Your Name (One Word)
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="ex: LAKSHAN"
-                  required
-                  onChange={handleChange}
-                  value={formData.name}
-                  style={{
-                    width: "100%",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    border: "1px solid #ddd",
-                  }}
-                />
-              </div>
-              <div
-                className="input-group select-subjects"
-                style={{ marginBottom: "15px" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "0.85rem",
-                    fontWeight: "600",
-                    marginBottom: "5px",
-                  }}>
-                  Select Enrolled Subjects
-                </label>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "15px",
-                    marginTop: "5px",
-                    fontSize: "0.9rem",
-                  }}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="maths"
-                      checked={formData.maths}
-                      onChange={handleChange}
-                    />{" "}
-                    Maths
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="english"
-                      checked={formData.english}
-                      onChange={handleChange}
-                    />{" "}
-                    English
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="science"
-                      checked={formData.science}
-                      onChange={handleChange}
-                    />{" "}
-                    Science
-                  </label>
-                </div>
-              </div>
-              <div className="input-group" style={{ marginBottom: "20px" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "0.85rem",
-                    fontWeight: "600",
-                    marginBottom: "5px",
-                  }}>
-                  <FaKey /> Create 4-Digit PIN
-                </label>
-                <input
-                  type="text"
-                  name="pin"
-                  maxLength="4"
-                  placeholder="ex: 0305"
-                  required
-                  onChange={handleChange}
-                  value={formData.pin}
-                  style={{
-                    width: "100%",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    border: "1px solid #ddd",
-                  }}
-                />
-              </div>
-              {/* Form එක ඇතුළත PIN field එකට යටින් මේ Password කොටස පේස්ට්
-              කරන්න: */}
-              <div className="input-group" style={{ marginBottom: "15px" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "0.85rem",
-                    fontWeight: "600",
-                    marginBottom: "5px",
-                  }}>
-                  <FaKey /> Create Secret Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Enter a strong password"
-                  required
-                  onChange={handleChange}
-                  value={formData.password}
-                  style={{
-                    width: "100%",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    border: "1px solid #ddd",
-                  }}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="contact-submit-btn"
-                style={{
-                  width: "100%",
-                  padding: "12px",
-                  background: "#26136d",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
-                Generate ID
-              </button>
-
-              <div
-                style={{
-                  textAlign: "right",
-                  marginTop: "5px",
-                  marginBottom: "15px",
-                }}>
-                <a
-                  href={
-                    `https://wa.me/94740130305?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20` +
-                    formData.name
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    fontSize: "0.8rem",
-                    color: "#ff4b2b",
-                    textDecoration: "none",
-                    fontWeight: "600",
-                    textAlign: "center",
-                  }}>
-                  Password Forget? (Contact Support)
-                </a>
-              </div>
-            </form>
-
-            {/* ID එක සාර්ථකව හැදුනට පස්සේ පේන කොටස */}
-            {generatedID && (
-              <div
-                style={{
-                  marginTop: "20px",
-                  padding: "15px",
-                  background: "#f4f7ff",
-                  borderRadius: "12px",
-                  border: "1px dashed #4b6bfb",
-                  textAlign: "center",
-                }}>
-                <span
-                  style={{
-                    fontSize: "0.75rem",
-                    color: "#555",
-                    fontWeight: "bold",
-                  }}>
-                  HI, YOUR STUDENT ID:
-                </span>
-
-                <div
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: "800",
-                    color: "#26136d",
-                    margin: "8px 0",
-                    letterSpacing: "0.5px",
-                  }}>
-                  {generatedID}
-                </div>
-
-                <form
-                  action="https://formspree.io"
-                  method="POST"
-                  style={{ marginTop: "10px" }}>
-                  <input
-                    type="hidden"
-                    name="Student_Name"
-                    value={formData.name}
-                  />
-                  <input
-                    type="hidden"
-                    name="Generated_ID"
-                    value={generatedID}
-                  />
-                  <input
-                    type="hidden"
-                    name="Account_Password"
-                    value={formData.password}
-                  />{" "}
-                  {/* 🆕 Password එක එකතු කළා */}
-                  <button
-                    type="submit"
-                    className="start-btn"
-                    style={{ width: "100%", padding: "10px" }}>
-                    Request Activation
-                  </button>
-                </form>
-
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(generatedID);
-                    setCopied(true);
-                    setTimeout(() => setCopied(false), 2000);
-                  }}
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    background: "#eef2ff",
-                    border: "1px solid #4b6bfb",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    fontWeight: "600",
-                    color: "#4b6bfb",
-                  }}>
-                  {copied ? "✓ Copied!" : "Copy Student ID"}
-                </button>
-              </div>
+            {activeModal === "PRIVACY" && (
+              <Privacy onClose={() => setActiveModal(null)} />
+            )}
+            {activeModal === "TERMS" && (
+              <Terms onClose={() => setActiveModal(null)} />
+            )}
+            {activeModal === "UPDATES" && (
+              <Updates onClose={() => setActiveModal(null)} />
+            )}
+            {activeModal === "COMING_SOON" && (
+              <ComingSoon onClose={() => setActiveModal(null)} />
+            )}
+            {activeModal === "ABOUT" && (
+              <About onClose={() => setActiveModal(null)} />
+            )}
+            {activeModal === "NEXUS_LABS" && (
+              <NexusLabs onClose={() => setActiveModal(null)} />
             )}
           </div>
         </div>
