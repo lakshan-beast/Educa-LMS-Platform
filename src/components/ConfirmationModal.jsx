@@ -68,7 +68,6 @@ const ConfirmationModal = ({
             right: "39%",
             objectFit: "contain",
           }}
-          refferrerPolicy="no-referrer"
         />
         <h3 style={{ margin: "0 0 10px", color: "#1a0a54", fontWeight: "800" }}>
           {title}

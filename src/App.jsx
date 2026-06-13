@@ -18,21 +18,15 @@ import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 
 import Home from "./pages/Home";
-import Tools from "./pages/Tools";
-// import DailyQuestions from "./pages/DailyQuestions";
-// import DailyQuizzes from "./pages/DailyQuizzes";
 import PaperHub from "./pages/PaperHub";
+import StudentVoices from "./components/StudentVoices";
 
 import FullTimetable from "./pages/Timetables";
 import ClassesDetails from "./pages/ClassesDetails";
 import ParentPortal from "./pages/ParentPortal";
 
-import StudentVoices from "./components/StudentVoices";
-
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
-
-// import AIChatWidget from "./components/AIChatWidget";/
 
 const App = () => {
   useEffect(() => {
@@ -44,7 +38,6 @@ const App = () => {
   return (
     <>
       <Header />
-      {/* <div className="login-overlay"></div> */}
       <div className="overlay"></div>
 
       <main>
@@ -55,13 +48,8 @@ const App = () => {
           <Route path="/privacy" element={<Privacy />} />
 
           <Route path="/" element={<Home />} />
-          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
-          {/* <Route path="/ai-chat-widget" element={<AIChatWidget />} /> */}
 
-          <Route path="/tools" element={<Tools />} />
-          {/* <Route path="/daily-questions" element={<DailyQuestions />} /> */}
-          {/* <Route path="/daily-quizzes" element={<DailyQuizzes />} /> */}
           <Route path="/paper-hub/:id" element={<PaperHub />} />
 
           <Route path="/full-timetable" element={<FullTimetable />} />
@@ -74,10 +62,7 @@ const App = () => {
         </Routes>
       </main>
 
-      {/* <Footer /> */}
       {!location.pathname.startsWith("/dashboard") && <Footer />}
-      {/* {!location.pathname.startsWith("/parent-portal") && <Footer />} */}
-      {/* {!location.pathname.startsWith("/classes-details") && <Footer />} */}
     </>
   );
 };
