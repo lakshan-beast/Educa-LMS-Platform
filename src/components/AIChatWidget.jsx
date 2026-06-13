@@ -174,90 +174,18 @@ const AIChatWidget = () => {
     <>
       {/* ==================== 📱 👑 🆕 1. THE FLOATING GLOWING BOT BUTTON ==================== */}
       {!isOpen && (
-        <div
-          onClick={() => setIsOpen(true)}
-          className="ai-floating-bubble"
-          style={{
-            position: "fixed",
-            bottom: "25px",
-            right: "25px",
-            width: "60px",
-            height: "60px",
-            background: "linear-gradient(135deg, #03204b 0%, #0265f8 100%)",
-            borderRadius: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "white",
-            fontSize: "1.8rem",
-            cursor: "pointer",
-            boxShadow: "0 8px 24px rgba(75,107,251,0.35)",
-            zIndex: 999999,
-            transition: "0.3s ease",
-          }}>
+        <div onClick={() => setIsOpen(true)} className="ai-floating-bubble">
           <RiRobot3Fill className="bot-icon-bounce" />
-          {/* සජීවීව බ්ලින්ක් වෙන කොළ පාට Online Signal එක */}
-          <span
-            style={{
-              position: "absolute",
-              bottom: "2px",
-              right: "2px",
-              width: "16px",
-              height: "16px",
-              //   background: "#2ecc71",
-              background: "#fd473a",
-              borderRadius: "50%",
-              border: "2px solid white",
-            }}></span>
+          <span></span>
         </div>
       )}
 
       {/* ==================== 🖥️ 👑 🆕 2. THE MAIN PORTABLE AI CHAT WINDOW ==================== */}
       {isOpen && (
-        <div
-          className="ai-chat-window-card"
-          style={{
-            position: "fixed",
-            bottom: "25px",
-            right: "25px",
-            width: "380px",
-            maxWidth: "100%",
-            height: "600px",
-            background: "white",
-            borderRadius: "24px",
-            boxShadow: "0 12px 40px rgba(26,10,84,0.15)",
-            display: "flex",
-            flexDirection: "column",
-            overflow: "hidden",
-            zIndex: 999999,
-            border: "1px solid #eef2ff",
-            animation: "popupFade 0.3s ease",
-          }}>
-          {/* ============================================================ */}
-          {/* 🔴 👑 🆕 [THE SECRET NETHMI HEARTS RAIN INTERFACE]: 
-              showHearts එක true වුණු සැනින් වෙන වෙනම පැතිවලින් හාට්ස් 8ක් පාවේ! */}
+        <div className="ai-chat-window-card">
           {showHearts && (
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                pointerEvents: "none",
-                zIndex: 99999,
-                overflow: "hidden",
-              }}>
-              <span
-                style={{
-                  position: "absolute",
-                  bottom: "-20px",
-                  left: "15%",
-                  fontSize: "1.5rem",
-                  animation: "heartFloatUp 2.2s ease-in-out infinite",
-                  color: "#fc2212",
-                }}>
-                {/* ❤️ */}
+            <div className="heart-container">
+              <span>
                 <TiHeartFullOutline />
               </span>
               <span
@@ -330,93 +258,32 @@ const AIChatWidget = () => {
           {/* ============================================================ */}
 
           {/* A. CHAT WINDOW HEADER CONTAINER */}
-          <div
-            style={{
-              background: "linear-gradient(135deg, #03204b 0%, #001431 100%)",
-              padding: "18px 20px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              color: "white",
-            }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <div
-                style={{
-                  width: "38px",
-                  height: "38px",
-                  background: "rgba(255, 255, 255, 0.5)",
-                  borderRadius: "50%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  fontSize: "1.3rem",
-                }}>
-                <RiRobot3Fill style={{ color: "#e9ecf0" }} />
+          <div className="chat-window-container">
+            <div className="chat-header">
+              <div className="chat-logo">
+                <RiRobot3Fill className="icon" />
               </div>
-              <div style={{ textAlign: "left" }}>
-                <h4
-                  style={{
-                    margin: 0,
-                    fontSize: "1rem",
-                    fontWeight: "800",
-                    letterSpacing: "0.3px",
-                  }}>
-                  educa. • Neti
-                </h4>
-                <small
-                  style={{
-                    color: "#2ecc71",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    fontWeight: "700",
-                    fontSize: "0.72rem",
-                    marginTop: "2px",
-                  }}>
-                  <FaCircle
-                    style={{
-                      fontSize: "0.5rem",
-                      animation: "heartBeat 1s infinite",
-                    }}
-                  />{" "}
+              <div className="chat-top">
+                <h4>educa. • Neti</h4>
+                <small>
+                  <FaCircle className="active-vall" />
                   Active Now
                 </small>
               </div>
             </div>
 
             {/* Header Control Window Buttons */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                fontSize: "1.3rem",
-                opacity: 0.8,
-              }}>
-              {/* <FaMinus
-                title="Minimize"
-                onClick={() => setIsOpen(false)}
-                style={{ cursor: "pointer" }}
-              /> */}
+            <div className="window-control">
               <FaXmark
                 title="Close Chat"
                 onClick={() => setIsOpen(false)}
-                style={{ cursor: "pointer" }}
+                className="close-mark"
               />
             </div>
           </div>
 
           {/* B. CHAT MESSAGES LOG STREAM */}
-          <div
-            style={{
-              flex: 1,
-              padding: "20px",
-              overflowY: "auto",
-              background: "#f8faff",
-              display: "flex",
-              flexDirection: "column",
-              gap: "15px",
-            }}>
+          <div className="chat-message">
             {messages.map((msg, index) => (
               <div
                 key={index}
@@ -444,7 +311,7 @@ const AIChatWidget = () => {
                         ? "0 4px 10px rgba(75,107,251,0.15)"
                         : "0 3px 10px rgba(0,0,0,0.02)",
                     textAlign: "left",
-                    whiteSpace: "pre-line", // AI එකෙන් දෙන නිව් ලයින් ලස්සනට පෙන්වයි [INDEX 4]
+                    whiteSpace: "pre-line",
                   }}>
                   {msg.text}
                 </div>
