@@ -67,18 +67,20 @@ main {
 }
 
 // resources grid styles
-.resources-grid,
-.teachers-grid {
-  padding: 4rem 0rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: $grid-gap-small $grid-gap-large;
-}
+// .resources-grid,
+// .teachers-grid {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+// padding: 16px 0;
+//   gap: $grid-gap-small $grid-gap-large;
+// }
 
 // classes grid
+.resources-grid,
+.teachers-grid,
 .classes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 10px;
-  padding: 16px 0;
+  padding: 4rem 0rem;
 }
