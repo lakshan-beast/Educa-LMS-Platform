@@ -20,15 +20,17 @@ const Hero = () => {
       <div className="columns">
         <div className="column description" data-aos="fade-right">
           <h1>
-            Master Your Core Subjects,
+            The Official Smart Student Portal For ,
             <br />
-            <span>Ace Your Exams.</span>
+            <span>Your O/L Exam Success.</span>
           </h1>
 
           <p>
-            Simplified lessons, exam-focused strategies, and a community of
-            2500+ successful students. Join the most trusted learning platform
-            in Sri Lanka to achieve your dream 'A' grade.
+            Welcome to our official digital learning center for Mathematics,
+            Science, and English. Built strictly for our registered students,
+            this private portal gives you 24/7 access to our smart "Neti AI"
+            Assistant to solve your doubts and check your exam progress
+            instantly.
           </p>
 
           <div
@@ -53,3 +55,29 @@ const Hero = () => {
 };
 
 export default Hero;
+
+{
+  /* <h1>
+            Master Your Core Subjects,
+            <br />
+            <span>Ace Your Exams.</span>
+          </h1>
+
+          <p>
+            Simplified lessons, exam-focused strategies, and a community of
+            2500+ successful students. Join the most trusted learning platform
+            in Sri Lanka to achieve your dream 'A' grade.
+          </p>
+
+          <div
+            className="home-buttons"
+            data-aos="fade-right"
+            data-aos-delay="300">
+            <a href="#resources" className="start-btn">
+              Get Started Now <FaRocket className="icon" />
+            </a>
+            <a href="#classes" className="browse-btn">
+              Browse classes <FaArrowRight className="icon" />
+            </a>
+          </div> */
+}
