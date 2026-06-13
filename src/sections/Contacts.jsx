@@ -231,7 +231,7 @@ const Contact = () => {
               <div className="styled-form" method="POST">
                 <div className="input-row">
                   <div className="input-group">
-                    <label>Full Name / සම්පූර්ණ නම</label>
+                    <label>Full Name </label>
                     <input
                       type="text"
                       name="fullName"
@@ -243,7 +243,7 @@ const Contact = () => {
                   </div>
 
                   <div className="input-group">
-                    <label>Phone Number / දුරකථන අංකය</label>
+                    <label>Phone Number</label>
                     <input
                       type="tel"
                       name="phone"
@@ -268,7 +268,7 @@ const Contact = () => {
                   </div>
 
                   <div className="input-group">
-                    <label>Your Message / ඔයාගේ ගැටලුව</label>
+                    <label>Your Message</label>
                     <textarea
                       name="messageText"
                       value={contactFormData.messageText}
@@ -281,9 +281,7 @@ const Contact = () => {
                     type="submit"
                     disabled={isSubmitting}
                     className="contact-submit-btn">
-                    {isSubmitting
-                      ? "Sending Message..."
-                      : "Send Live Message 🚀"}
+                    {isSubmitting ? "Sending Message..." : "Send Live Message"}
                   </button>
                 </div>
               </div>
