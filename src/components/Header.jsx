@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+// import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 
 import Login from "../pages/Login";
@@ -17,13 +18,43 @@ import {
 import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 
 const Header = () => {
+  // const location = useLocation();
   const navigate = useNavigate();
-  const location = useLocation();
-
   const [isActive, setIsActive] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    // 🚀 සයිට් එකේ තියෙන හැම ප්‍රධාන කොටසකම ID ලිස්ට් එක මෙන්න මචං! [INDEX 4]
+    const sectionIds = ["home", "resources", "classes", "teachers", "contacts"];
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-30% 0px -60% 0px", // ස්ක්‍රීන් එකේ මැද හරියට කොටසක් එද්දීම අල්ලා ගනී [INDEX 4]
+      threshold: 0,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id); // 🎯 දැනට ඇස් ඉස්සරහා තියෙන කොටසේ ID එක active කරයි! [INDEX 4]
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
@@ -36,11 +67,6 @@ const Header = () => {
       setShowLogin(true);
     }
     setIsActive(false);
-  };
-
-  // [THE ACTIVE CHECKER]: 'isActive' Error එක සදහටම නැති කර දමන පිරිසිදුම ක්‍රමය
-  const isLinkActive = (hashPath) => {
-    return location.pathname + location.hash === hashPath;
   };
 
   return (
@@ -60,75 +86,38 @@ const Header = () => {
           {/* 💻 DESKTOP NAVBAR (NO ICONS - EXECUTIVE LOOK) */}
           <div className="desktop-navbar-links">
             <NavHashLink
-              className="desktop-link"
+              className={`desktop-link ${activeSection === "home" ? "active" : ""}`}
               smooth
-              to="/#home"
-              style={{
-                color:
-                  isLinkActive("/#home") ||
-                  location.hash === "#home" ||
-                  location.hash === ""
-                    ? "#001b42"
-                    : "#a8abb1d0",
-                borderBottom:
-                  isLinkActive("/#home") ||
-                  location.hash === "#home" ||
-                  location.hash === ""
-                    ? "2px solid #001b42"
-                    : "2px solid transparent",
-              }}>
+              to="/#home">
               Home
             </NavHashLink>
 
             <NavHashLink
-              className="desktop-link"
+              className={`desktop-link ${activeSection === "resources" ? "active" : ""}`}
               smooth
-              to="/#resources"
-              style={{
-                color: isLinkActive("/#resources") ? "#001b42" : "#a8abb1d0",
-                borderBottom: isLinkActive("/#resources")
-                  ? "2px solid #001b42"
-                  : "2px solid transparent",
-              }}>
+              to="/#resources">
               Learning Hub
             </NavHashLink>
 
             <NavHashLink
-              className="desktop-link"
+              className={`desktop-link ${activeSection === "classes" ? "active" : ""}`}
               smooth
-              to="/#classes"
-              style={{
-                color: isLinkActive("/#classes") ? "#001b42" : "#a8abb1d0",
-                borderBottom: isLinkActive("/#classes")
-                  ? "2px solid #001b42"
-                  : "2px solid transparent",
-              }}>
-              Class Schedule
+              to="/#classes">
+              Classes Schedule
             </NavHashLink>
 
             <NavHashLink
-              className="desktop-link"
+              className={`desktop-link ${activeSection === "teachers" ? "active" : ""}`}
               smooth
-              to="/#teachers"
-              style={{
-                color: isLinkActive("/#teachers") ? "#001b42" : "#a8abb1d0",
-                borderBottom: isLinkActive("/#teachers")
-                  ? "2px solid #001b42"
-                  : "2px solid transparent",
-              }}>
+              to="/#teachers">
               Our Tutors
             </NavHashLink>
+
             <NavHashLink
-              className="desktop-link"
+              className={`desktop-link ${activeSection === "contacts" ? "active" : ""}`}
               smooth
-              to="/#contacts"
-              style={{
-                color: isLinkActive("/#contacts") ? "#001b42" : "#a8abb1d0",
-                borderBottom: isLinkActive("/#contacts")
-                  ? "2px solid #001b42"
-                  : "2px solid transparent",
-              }}>
-              Contact us
+              to="/#contacts">
+              Contacts us{" "}
             </NavHashLink>
           </div>
 
