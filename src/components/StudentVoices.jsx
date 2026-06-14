@@ -866,7 +866,7 @@ import {
 } from "firebase/firestore"; // ☁️ Cloud Advanced Tools
 
 import {
-  FaBullhorn,
+  // FaBullhorn,
   FaPlus,
   FaXmark,
   FaHeartPulse,
@@ -885,7 +885,7 @@ import { PiSealCheckFill, PiStudent } from "react-icons/pi";
 
 const StudentVoices = () => {
   // 1. Core State Management
-  const [notices, setNotices] = useState([]); // voices list
+  const [voices, setVoices] = useState([]); // voices list
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false); // Popup Controller
   const [activeFilter, setActiveFilter] = useState("ALL"); // Teacher Filters
@@ -923,7 +923,7 @@ const StudentVoices = () => {
       querySnapshot.forEach((doc) => {
         voiceList.push({ id: doc.id, ...doc.data() });
       });
-      setNotices(voiceList);
+      setVoices(voiceList);
     } catch (err) {
       console.error("Fetch Voices Error:", err);
     }
@@ -932,8 +932,8 @@ const StudentVoices = () => {
 
   // 🚀 FIXED: activeFilter එක මාරු වෙද්දී Infinite renders වැටෙන්නේ නැති වෙන්න useCallback වලින් බැන්දා
   useEffect(() => {
-    // fetchCloudVoices();
-  }, [activeFilter, fetchCloudVoices]);
+    fetchCloudVoices();
+  }, [fetchCloudVoices]);
   // ============================================================
 
   const handleInputChange = (e) => {
@@ -1035,7 +1035,7 @@ const StudentVoices = () => {
         await updateDoc(voiceDocRef, { likesCount: increment(1) });
         likedVoices.push(voiceId);
         localStorage.setItem("liked_voices", JSON.stringify(likedVoices));
-        setNotices((prev) =>
+        setVoices((prev) =>
           prev.map((v) =>
             v.id === voiceId ? { ...v, likesCount: v.likesCount + 1 } : v,
           ),
@@ -1044,7 +1044,7 @@ const StudentVoices = () => {
         await updateDoc(voiceDocRef, { likesCount: increment(-1) });
         const updatedLikes = likedVoices.filter((id) => id !== voiceId);
         localStorage.setItem("liked_voices", JSON.stringify(updatedLikes));
-        setNotices((prev) =>
+        setVoices((prev) =>
           prev.map((v) =>
             v.id === voiceId ? { ...v, likesCount: v.likesCount - 1 } : v,
           ),
@@ -1064,7 +1064,7 @@ const StudentVoices = () => {
     return <FaIdCard />;
   };
 
-  const filteredNotices = notices.filter((item) => {
+  const filteredVoices = voices.filter((item) => {
     if (activeFilter === "ALL") return true;
     return (
       item.selectedTeachers && item.selectedTeachers.includes(activeFilter)
@@ -1075,10 +1075,10 @@ const StudentVoices = () => {
     <div
       className="student-voices-wrapper page-container"
       style={{
-        padding: "40px 0",
+        padding: "40px 20px",
         width: "100%",
         fontFamily: "inherit",
-        paddingTop: "7rem",
+        paddingTop: "8rem",
       }}>
       <div className="system-container">
         {" "}
@@ -1098,24 +1098,33 @@ const StudentVoices = () => {
             alignItems: "center",
             marginBottom: "30px",
             flexWrap: "wrap",
-            gap: "15px",
+            gap: "30px",
           }}>
           <div>
             <h2
               style={{
                 color: "#001b42",
-                margin: 0,
+                margin: "1rem 0",
                 fontWeight: "800",
-                display: "flex",
-                alignItems: "center",
+                // display: "flex",
+                // alignItems: "center",
                 gap: "10px",
                 fontSize: "1.6rem",
+                // flexWrap: "wrap",
+                textAlign: "center",
               }}>
-              <FaBullhorn style={{ color: "#ff4b2b" }} /> Our Students'{" "}
-              <span>Verified Success</span>
+              Our Students'
+              <span style={{ display: "block", color: "#a8abb1d0" }}>
+                Verified Success
+              </span>
             </h2>
             <p
-              style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
+              style={{
+                color: "#a8abb1d0",
+                fontSize: "0.85rem",
+                margin: "5px 0 12px 0",
+                textAlign: "center",
+              }}>
               Read real experiences and genuine reviews shared directly by our
               students. Discover how our friendly digital lessons, interactive
               test tools, and Neti AI have helped them boost their exam grades..
@@ -1127,14 +1136,14 @@ const StudentVoices = () => {
             <div
               style={{
                 background: "#eef2ff",
-                color: "#4b6bfb",
+                color: "#001b42",
                 padding: "10px 18px",
                 borderRadius: "12px",
                 fontWeight: "800",
                 fontSize: "0.9rem",
                 border: "1px solid #d9e8ff",
               }}>
-              Total Stories Shared: {notices.length}
+              Total Stories Shared: {voices.length}
             </div>
 
             {/* 📣 ADD NEW COMMENT BUTTON */}
@@ -1177,7 +1186,7 @@ const StudentVoices = () => {
             style={{
               padding: "8px 16px",
               borderRadius: "10px",
-              border: "none",
+              border: "1px solid #001b42",
               fontWeight: "bold",
               fontSize: "0.85rem",
               cursor: "pointer",
@@ -1192,7 +1201,8 @@ const StudentVoices = () => {
             style={{
               padding: "8px 16px",
               borderRadius: "10px",
-              border: "none",
+              border: "1px solid #001b42",
+
               fontWeight: "bold",
               fontSize: "0.85rem",
               cursor: "pointer",
@@ -1207,7 +1217,8 @@ const StudentVoices = () => {
             style={{
               padding: "8px 16px",
               borderRadius: "10px",
-              border: "none",
+              border: "1px solid #001b42",
+
               fontWeight: "bold",
               fontSize: "0.85rem",
               cursor: "pointer",
@@ -1223,7 +1234,8 @@ const StudentVoices = () => {
             style={{
               padding: "8px 16px",
               borderRadius: "10px",
-              border: "none",
+              border: "1px solid #001b42",
+
               fontWeight: "bold",
               fontSize: "0.85rem",
               cursor: "pointer",
@@ -1252,8 +1264,8 @@ const StudentVoices = () => {
               gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
               gap: "20px",
             }}>
-            {filteredNotices.length > 0 ? (
-              filteredNotices.map((item) => (
+            {filteredVoices.length > 0 ? (
+              filteredVoices.map((item) => (
                 <div
                   key={item.id}
                   className="comment-box-card"
@@ -1499,16 +1511,16 @@ const StudentVoices = () => {
                   fontWeight: "800",
                   fontSize: "1.3rem",
                 }}>
-                📣 Share Your Experience
+                Share Your Experience
               </h3>
               <p
                 style={{
                   color: "#666",
                   fontSize: "0.8rem",
-                  margin: "0 0 20px",
+                  margin: "0 0 20px 0",
                 }}>
-                ඔබේ පන්ති අත්දැකීම අනෙකුත් සිසුන් සහ දෙමාපියන් සමඟ ලයිව් බෙදා
-                ගන්න [INDEX 51].
+                Share your class experience live with other students and
+                parents.
               </p>
 
               {formError && (
@@ -1533,6 +1545,7 @@ const StudentVoices = () => {
                   display: "flex",
                   flexDirection: "column",
                   gap: "14px",
+                  marginTop: "50px",
                 }}>
                 {/* 1. INPUT NAME */}
                 <div className="input-group">
@@ -1573,7 +1586,7 @@ const StudentVoices = () => {
                       display: "block",
                       marginBottom: "5px",
                     }}>
-                    👤 Select Your Role
+                    Select Your Role
                   </label>
                   <select
                     name="userRole"
@@ -1588,13 +1601,9 @@ const StudentVoices = () => {
                       background: "white",
                       fontSize: "0.85rem",
                     }}>
-                    <option value="Student">
-                      🎓 Current Scholar / Student
-                    </option>
-                    <option value="Parent">👪 Guardian / Proud Parent</option>
-                    <option value="Alumni">
-                      🚀 Distinguished Alumni (ආදි ශිෂ්‍ය)
-                    </option>
+                    <option value="Student">Current Scholar / Student</option>
+                    <option value="Parent"> Guardian / Proud Parent</option>
+                    <option value="Alumni">Distinguished Alumni</option>
                   </select>
                 </div>
 
@@ -1626,6 +1635,13 @@ const StudentVoices = () => {
                         background: "white",
                         fontSize: "0.85rem",
                       }}>
+                      <option value="2017 O/L">2017 O/L Batch</option>
+                      <option value="2018 O/L">2018 O/L Batch</option>
+                      <option value="2019 O/L">2019 O/L Batch</option>
+                      <option value="2020 O/L">2020 O/L Batch</option>
+                      <option value="2021 O/L">2021 O/L Batch</option>
+                      <option value="2022 O/L">2022 O/L Batch</option>
+                      <option value="2023 O/L">2023 O/L Batch</option>
                       <option value="2024 O/L">2024 O/L Batch</option>
                       <option value="2025 O/L">2025 O/L Batch</option>
                       <option value="2026 O/L">2026 O/L Batch</option>
@@ -1647,7 +1663,7 @@ const StudentVoices = () => {
                         display: "block",
                         marginBottom: "5px",
                       }}>
-                      👪 Your Child's Grade (ශ්‍රේණිය)
+                      Your Child's Grade
                     </label>
                     <select
                       name="parentGrade"
@@ -1713,20 +1729,12 @@ const StudentVoices = () => {
                           fontSize: "0.85rem",
                         }}>
                         <option value="Software Engineer">
-                          💻 Software Engineer
+                          Software Engineer
                         </option>
-                        <option value="Medical Doctor">
-                          🩺 Medical Doctor
-                        </option>
-                        <option value="Attorney-at-Law">
-                          ⚖️ Attorney-at-Law (නීතිඥ)
-                        </option>
-                        <option value="Civil Engineer">
-                          🛠️ Civil Engineer
-                        </option>
-                        <option value="Other">
-                          ✏️ Other Profession (වෙනත් ਰස්සාවක්)
-                        </option>
+                        <option value="Medical Doctor">Medical Doctor</option>
+                        <option value="Attorney-at-Law">Attorney-at-Law</option>
+                        <option value="Civil Engineer">Civil Engineer</option>
+                        <option value="Other">Other Profession</option>
                       </select>
                     </div>
 
@@ -1881,7 +1889,7 @@ const StudentVoices = () => {
                         checked={formData.avatarType === "boy"}
                         onChange={handleInputChange}
                       />{" "}
-                      👦 Boy
+                      Boy
                     </label>
                     <label
                       style={{
@@ -1899,7 +1907,7 @@ const StudentVoices = () => {
                         checked={formData.avatarType === "girl"}
                         onChange={handleInputChange}
                       />{" "}
-                      👧 Girl
+                      Girl
                     </label>
                     <label
                       style={{
@@ -1917,7 +1925,7 @@ const StudentVoices = () => {
                         checked={formData.avatarType === "neuter"}
                         onChange={handleInputChange}
                       />{" "}
-                      👤 Neutral
+                      Neutral
                     </label>
                   </div>
                 </div>
@@ -1942,11 +1950,15 @@ const StudentVoices = () => {
                       marginTop: "4px",
                     }}>
                     {[
-                      "#4b6bfb",
-                      "#ff4b2b",
-                      "#2ecc71",
-                      "#f1c40f",
+                      "#00115a",
+                      "#00eeff",
+                      "#00ff6a",
+                      "#df2100de",
                       "#9b59b6",
+                      "#b700ff",
+                      "#ff5100",
+                      "#ffc400",
+                      // "#ff004c",
                     ].map((color) => (
                       <div
                         key={color}
@@ -1994,7 +2006,7 @@ const StudentVoices = () => {
                   <textarea
                     name="voiceText"
                     rows="3"
-                    placeholder="පන්තිය ගැන ඔයාගේ අවංක අදහස මෙතන ලියන්න මචං..."
+                    placeholder="Type here..."
                     required
                     value={formData.voiceText}
                     onChange={handleInputChange}
@@ -2017,7 +2029,7 @@ const StudentVoices = () => {
                   style={{
                     width: "100%",
                     padding: "12px",
-                    background: "#ff4b2b",
+                    background: "#001b42",
                     color: "white",
                     border: "none",
                     borderRadius: "8px",
@@ -2026,9 +2038,7 @@ const StudentVoices = () => {
                     boxShadow: "0 4px 12px rgba(255,75,43,0.2)",
                     marginTop: "5px",
                   }}>
-                  {isSubmitting
-                    ? "⏳ Publishing Live..."
-                    : "📣 Broadcast My Voice"}
+                  {isSubmitting ? " Publishing Live..." : " Broadcast My Voice"}
                 </button>
               </form>
             </div>
