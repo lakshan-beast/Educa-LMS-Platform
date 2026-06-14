@@ -9,6 +9,8 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import ScrollToTop from "./sections/ScrollTop";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -37,6 +39,8 @@ const App = () => {
 
   return (
     <>
+      <ScrollToTop />
+
       <Header />
       <div className="overlay"></div>
 
