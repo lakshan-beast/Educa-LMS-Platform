@@ -109,6 +109,18 @@ const Teachers = () => {
           <div className="teacher-card" key={index}>
             <div className="teacher-image-column">
               <img src={teacher.img} alt={teacher.name} />
+
+              <div className="teacher-socials">
+                <a href={`tel:${teacher.facebook}`}>
+                  <FaFacebook className="facebook-icon icon" />
+                </a>
+                <a href={`tel:${teacher.whatsapp}`}>
+                  <FaWhatsapp className="whatsapp-icon icon" />
+                </a>
+                <a href={`tel:${teacher.phone}`}>
+                  <FaPhone className="call-icon icon" />
+                </a>
+              </div>
             </div>
 
             <div className="teacher-info-column">
@@ -126,18 +138,6 @@ const Teachers = () => {
                     </p>
                   </div>
                   <p className="philosophy-box">{teacher.philosophy}</p>
-                </div>
-
-                <div className="teacher-socials">
-                  <a href={`tel:${teacher.facebook}`}>
-                    <FaFacebook className="facebook-icon icon" />
-                  </a>
-                  <a href={`tel:${teacher.whatsapp}`}>
-                    <FaWhatsapp className="whatsapp-icon icon" />
-                  </a>
-                  <a href={`tel:${teacher.phone}`}>
-                    <FaPhone className="call-icon icon" />
-                  </a>
                 </div>
               </div>
             </div>
