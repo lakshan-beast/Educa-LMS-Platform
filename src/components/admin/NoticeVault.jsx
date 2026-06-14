@@ -27,7 +27,7 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
   const [notices, setNotices] = useState([]);
 
   const [formData, setFormData] = useState({
-    type: "💡 General-Notice", // Default Selector Match
+    type: " General-Notice", // Default Selector Match
     text: "",
   });
 
