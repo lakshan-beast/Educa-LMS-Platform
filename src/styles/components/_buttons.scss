@@ -109,3 +109,37 @@
     text-decoration: none;
   }
 }
+
+.login-btn {
+  background: #f4f7ff;
+  border: 1px dashed #4b6bfb;
+  border-radius: 16px;
+  padding: 18px;
+  margin-top: 20px;
+  text-align: center;
+
+  width: 100%;
+  padding: 12px;
+  background: $secondary-blue;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+
+  span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $text-medium;
+    font-weight: 700;
+  }
+
+  div {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: $dark-purple2;
+    margin: 10px 0;
+    letter-spacing: 0.5px;
+  }
+}
