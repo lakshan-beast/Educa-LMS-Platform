@@ -6,34 +6,18 @@ import {
   FaComments,
   FaChartColumn,
   FaUserShield,
-  // FaToolbox,
-  // FaRocket,
-  // FaCircleQuestion,
-  // FaPenToSquare,
 } from "react-icons/fa6";
 
 import Comments from "../assets/comments.webp";
 import Results from "../assets/results.webp";
 import Parent from "../assets/parent.webp";
-// import Tools from "../assets/study.webp";
-// import Quizes from "../assets/quizs.webp";
-// import Quetions from "../assets/questions.webp";
 
 const Resources = () => {
   return (
     <section className="parts" id="resources">
-      {/* <h2>
-        Explore Our Powerful <span>Learning Tools</span>
-      </h2>
-      <p>
-        Explore our collection of smart learning tools desgiged to make your O/L
-        preparation easy, fun, & effective.
-      </p> */}
-
       <h2>
         Our Smart <span>Learning System</span>
       </h2>
-
       <p>
         Explore the special features designed to connect parents with the
         classroom, check modern exam reports, and view verified student feedback
@@ -41,11 +25,20 @@ const Resources = () => {
       </p>
 
       <div className="resources-grid">
-        <div className="resources-card" data-aos="fade-up" id="parent-portal">
+        <div
+          className="resources-card"
+          data-aos="fade-up"
+          data-aos-delay="50"
+          id="parent-portal">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Parents Only
           </span>
-          <img src={Parent} loading="lazy" alt="Parent Portal" />
+          <img
+            src={Parent}
+            loading="lazy"
+            decoding="async"
+            alt="Parent Portal"
+          />
           <h3>
             <FaUserShield className="icon" /> Perant Portal
           </h3>
@@ -67,11 +60,17 @@ const Resources = () => {
         <div
           className="resources-card card-style result-check"
           id="result-check"
-          data-aos="fade-up">
+          data-aos="fade-up"
+          data-aos-delay="100">
           <span className="card-badge card-badge-official">
             <FaMedal className="icon" /> Official
           </span>
-          <img src={Results} loading="lazy" alt="O/L Results" />
+          <img
+            src={Results}
+            loading="lazy"
+            decoding="async"
+            alt="O/L Results"
+          />
           <h3>
             <FaChartColumn className="icon" />
             National O/L Results
@@ -94,11 +93,17 @@ const Resources = () => {
         <div
           className="resources-card card-style"
           data-aos="fade-up"
+          data-aos-delay="150"
           id="reviews">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Verified
           </span>
-          <img src={Comments} loading="lazy" alt="Student Reviews" />
+          <img
+            src={Comments}
+            loading="lazy"
+            decoding="async"
+            alt="Student Reviews"
+          />
           <h3>
             <FaComments className="icon" /> Student Voices
           </h3>
