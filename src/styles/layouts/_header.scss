@@ -1,15 +1,15 @@
 // header style
 .header {
   width: 96%;
-  height: 92px;
+  height: 100px;
   margin: 0.5rem;
   padding: 0 25px;
   position: fixed;
   top: 0;
   border-radius: 16px;
   background-color: rgba(252, 252, 252, 0.8);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.5);
   z-index: $z-index-modal;
 
@@ -21,204 +21,20 @@
 
   @include respond(desktop) {
     width: 100%;
-    height: 100px;
+    height: 120px;
     margin: $margin-none;
-    padding: 0 25px;
+    padding: 0 35px;
     position: fixed;
     top: 0;
 
     border-radius: $border-radius-styles;
     background-color: rgba(252, 252, 252, 0.8);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
     z-index: $z-index-modal;
 
-    @include flex-custom(space-between, center, row);
-  }
-}
-
-// header-log (brand name)
-.header-logo {
-  // color: $dark-purple;
-  color: $secondary-blue;
-  font-size: 2rem;
-  font-weight: bolder;
-  font-family: "Exo 2";
-  display: inline-block;
-  letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  .logo-circle {
-    width: 40px;
-    height: 40px;
-    // background: $primary-orange;
-    background: $secondary-blue3;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    box-shadow: 0 -2px 20px rgba(0, 13, 31, 0.2);
-    font-family: "Exo 2";
-  }
-
-  span {
-    color: $secondary-blue3;
-  }
-
-  &:hover {
-    transform: translate(0);
-    color: $secondary-blue;
-    text-decoration: none;
-  }
-}
-
-// header icons and links style
-.header-actions {
-  @include flex-custom(center, center, row, 0.5rem);
-
-  @include respond(desktop) {
-    gap: 0;
-  }
-
-  a {
-    padding: 8px 16px;
-    margin: 0 3px;
-    border-radius: $border-radius-large;
-    background: $secondary-blue;
-    @include flex-custom(space-between, center, row);
-    color: $white;
-
-    &:hover {
-      background-color: $secondary-blue2;
-      transform: translateY(-3px);
-    }
-  }
-  .back-btn {
-    padding: 6px 12px;
-    border-radius: $border-radius-circle;
-    width: 45px;
-    height: 45px;
-
-    i {
-      font-size: 1.2rem;
-    }
-  }
-}
-
-// header navbar style
-.header-navbar {
-  // position: fixed;
-  // top: 0;
-  // right: -100%;
-  // width: 70%;
-  // max-width: 350px;
-  // height: 100vh;
-  // padding: $padding-xlarge;
-  // background-color: $white;
-  // z-index: 1100;
-  // transition: right 0.5s ease-in-out;
-  // margin: 0;
-
-  @include flex-custom(space-around, center, column, 0, nowrap);
-
-  a {
-    margin: 0.5rem 0;
-    color: $dark-purple1;
-
-    &:hover {
-      text-decoration: underline;
-      color: $blue-medium;
-      color: $dark-purple1;
-      background: rgba($dark-purple1, 0.05);
-    }
-    &.active {
-      // color: $white;
-      // background: $dark-purple1; // තද පාට පසුබිමක්
-      // box-shadow: 0 4px 15px rgba($dark-purple1, 0.3); //
-
-      &::after {
-        // content: "";
-        position: absolute;
-        bottom: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 5px;
-        height: 5px;
-        background: $primary-orange;
-        border-radius: 50%;
-      }
-    }
-  }
-  &.nav-active {
-    right: 0;
-    margin: 0;
-    padding: 1rem 0.5rem;
-  }
-
-  @include respond(tablet) {
-    padding: 2rem 4rem;
-  }
-
-  @include respond(desktop) {
-    padding: 2.5rem 6rem;
-    position: static;
-    width: auto;
-    max-width: auto;
-    background: none;
-    white-space: nowrap;
-    @include flex-custom(center, center, row, 2rem);
-
-    a {
-      color: $dark-purple2;
-      display: block;
-      font-size: 1.1rem;
-      margin: 0;
-      padding: 0;
-    }
-  }
-
-  @include respond(large-desktop) {
-    padding: 4rem 15rem;
-    font-size: 1.2rem;
-  }
-}
-
-.header-copyrights {
-  display: block;
-  position: absolute;
-  bottom: 1rem;
-  background: $bg-soft;
-  padding: 6px 12px;
-  border-radius: 6px;
-  margin: 0 0.5rem 0 0;
-  a {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    text-align: left;
-  }
-
-  p {
-    color: $blue-medium;
-    font-size: 0.8rem;
-    margin: 6px 0;
-    a {
-      font-size: 0.8rem;
-      color: $dark-purple;
-    }
-    i {
-      margin-right: 5px;
-    }
-  }
-
-  @include respond(desktop) {
-    display: none;
+    // @include flex-custom(space-between, center, row);
   }
 }
 
@@ -241,85 +57,64 @@
   }
 }
 
-.desktop-navbar-links {
-  display: none;
-
-  @include respond(desktop) {
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  .desktop-link {
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 6px 0;
-    transition: 0.3s ease;
-  }
-}
-
-// overlay
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.274);
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.3s;
-  z-index: 600;
-}
-.overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-// index - important
-.header {
-  z-index: 999;
-}
-.overlay {
-  z-index: 600;
-}
-.header-navbar {
-  z-index: 1000 !important;
-}
-
-.sign-btn {
-  margin: 0.3rem;
-  position: relative;
-  top: 5px;
+// header-log (brand name)
+.header-logo {
+  color: $secondary-blue;
   font-size: 2rem;
-  background: none;
-  // color: $dark-purple2;
-  cursor: pointer;
+  font-weight: bolder;
+  font-family: "Exo 2";
+  display: inline-block;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-  @include respond(desktop) {
-    margin: 0 0.5rem;
+  .logo-circle {
+    width: 40px;
+    height: 40px;
+    background: $secondary-blue3;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0 -2px 20px rgba(0, 13, 31, 0.2);
+    font-family: "Exo 2";
+  }
+
+  span {
+    color: $secondary-blue3;
+    margin: 0;
+  }
+
+  &:hover {
+    transform: translate(0);
+    color: $secondary-blue;
+    text-decoration: none;
   }
 }
 
-.login-modal {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  animation: scaleUp 0.3s ease;
+// header icons and links style
+.header-actions {
+  @include flex-custom(center, center, row, 0.5rem);
 
-  .close-modal {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 1.3rem;
-    color: #333;
+  @include respond(desktop) {
+    gap: 0;
+  }
+
+  .sign-btn {
+    margin: 0.3rem;
+    position: relative;
+    top: 5px;
+    font-size: 2rem;
     background: none;
-    border: none;
     cursor: pointer;
-    z-index: 10001;
 
-    &:hover {
-      color: $primary-orange;
+    @include respond(desktop) {
+      margin: 0 0.5rem;
     }
   }
 }
@@ -343,7 +138,7 @@
   height: 100vh;
   background: $linear-left;
   background: $white;
-  background: rgba(3, 32, 75, 0.95);
+  // background: rgba(3, 32, 75, 0.95);
   background: $secondary-blue2;
   margin: 0;
 
@@ -418,7 +213,7 @@
   }
 
   // 2. Center Grid Links
-  .mobile-nav-links-grid {
+  .mobile-desktop-links-grid {
     display: grid;
     grid-template-columns: 1fr; // පැති දෙකකට කාඩ්ස් බෙදේ
     // gap: 16px;
@@ -465,6 +260,7 @@
   .mobile-nav-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 15px;
+
     p {
       font-size: 0.78rem;
       color: rgba(255, 255, 255, 0.5);
@@ -473,3 +269,43 @@
     }
   }
 }
+
+.desktop-navbar-links {
+  display: none;
+
+  @include respond(desktop) {
+    display: flex;
+    gap: 1.5rem;
+  }
+}
+
+.desktop-link {
+  color: #64748b;
+  padding: 6px 0;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+// .desktop-link.active {
+//   color: #03204b !important;
+// }
+
+// .desktop-link::after {
+//   content: "";
+//   position: absolute;
+//   bottom: -6px;
+//   left: 50%;
+//   transform: translateX(-0%) scaleX(0);
+//   width: 20px;
+//   height: 3px;
+//   background-color: #03204b;
+//   border-radius: 2px;
+//   transition: transform 0.3s ease;
+// }
+
+// .desktop-link.active::after {
+//   transform: translateX(-100%) scaleX(1) !important;
+// }
