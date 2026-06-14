@@ -1,4 +1,5 @@
 // header style
+
 .header {
   width: 96%;
   height: 100px;
@@ -138,7 +139,7 @@
   height: 100vh;
   background: $linear-left;
   background: $white;
-  // background: rgba(3, 32, 75, 0.95);
+  background: rgba(3, 32, 75, 0.95);
   background: $secondary-blue2;
   margin: 0;
 
@@ -167,6 +168,7 @@
 
   &.nav-active {
     left: 0;
+    margin: -0.5rem;
   } // මෙනු එක සීරුවට දකුණට ඇදී එයි
 
   // 1. Top Bar
@@ -194,18 +196,18 @@
     }
 
     .mobile-close-btn {
-      background: rgb(179, 205, 238);
+      color: rgb(179, 205, 238);
       border: none;
-      color: $secondary-blue;
+      background: $secondary-blue;
       font-size: 1.3rem;
       cursor: pointer;
       position: absolute;
       top: 0rem;
       right: 0rem;
-      // width: 40px;
-      // height: 40px;
+      width: 40px;
+      height: 40px;
 
-      padding: 0.5rem 1rem;
+      padding: 0.8rem 2rem;
       border-radius: 0 1rem 0 0.5rem;
       transition: $transition-fast;
       // box-shadow: -3px 3px 6px rgba(255, 255, 255, 0.8);
@@ -244,13 +246,13 @@
       }
 
       &:hover {
-        background: rgba($primary-orange, 0.1);
-        border-color: $primary-orange;
-        color: $primary-orange;
+        background: rgba($secondary-blue, 0.1);
+        border-color: $secondary-blue;
+        color: $secondary-blue;
         font-weight: 600;
 
         svg {
-          color: $primary-orange;
+          color: $secondary-blue;
         }
       }
     }
