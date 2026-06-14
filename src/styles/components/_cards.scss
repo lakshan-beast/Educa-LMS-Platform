@@ -157,12 +157,18 @@
   .teacher-image-column {
     @include center-everything;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+
     img {
       width: 200px;
       height: 200px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: $shadow-light;
+      margin-left: 1rem;
     }
   }
 
@@ -179,9 +185,9 @@
     }
 
     h3 {
-      margin: 0 0 10px 0;
+      margin: 6px 0 10px 0;
       padding-bottom: 3px;
-      font-size: 2rem;
+      font-size: 1.6rem;
       color: $secondary-blue;
       border-bottom: 2px solid rgba($secondary-blue, 0.2);
     }
@@ -196,6 +202,7 @@
         color: $text-medium;
         text-align: left;
         line-height: 1.3;
+        font-size: 0.85rem;
       }
       .philosophy-box {
         padding: 15px;
@@ -213,22 +220,28 @@
   /* 👑 PREMIUM FLOATING RIBBON SOCIAL BAR */
   .teacher-socials {
     padding: 8px 20px;
-    margin: 6px auto 0 auto;
-    // width: 200px;
-    width: 100%;
+    margin: 6px 0;
+    // width: 100%;
     background: #ecf1ff;
-    // border-radius: 30px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 4px 15px rgba(26, 10, 84, 0.06);
     transition: all 0.3s ease;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-items: flex-end;
 
-    @include center-everything;
+    // @include center-everything;
     gap: 22px;
+    border-radius: 12px 0 0 12px;
+    position: absolute;
+    right: -2px;
   }
 
   .teacher-socials:hover {
     box-shadow: 0 6px 20px rgba(26, 10, 84, 0.1);
     background: #ffffff;
+    // width: 200px;
   }
 
   .teacher-socials a {
@@ -240,8 +253,13 @@
     text-decoration: none;
     border-radius: 6px;
     transition: transform 0.4s ease;
+    // position: absolute;
 
     @include center-everything;
+
+    &:hover .icon {
+      width: 200px;
+    }
   }
 
   .teacher-socials .call-icon {
