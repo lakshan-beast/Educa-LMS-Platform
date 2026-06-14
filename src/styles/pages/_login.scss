@@ -10,23 +10,68 @@
   @include center-everything; // ඔයාගේ පොදු mixin එක
   z-index: 99999;
   padding: 20px;
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.6s ease-out;
 }
 
-.login-modal-box,
+.login-modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  animation: scaleUp 0.3s ease;
+
+  .close-modal {
+    position: absolute;
+    top: -20px;
+    right: -30px;
+    font-size: 1.2rem;
+    color: $secondary-blue;
+
+    background: none;
+    background-color: rgba($secondary-blue, 0.1);
+    padding: 9px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10001;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &:hover {
+    transform: translate(0);
+  }
+}
+
 .login-card,
-.privacy-card,
-.register-card {
-  background: $white;
+.privacy-card {
   width: 100%;
   max-width: 420px;
   padding: 35px 30px;
   animation: scaleUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   padding: 35px;
   border-radius: 24px;
-  margin-bottom: 30px;
   box-shadow: 0 12px 30px rgba($secondary-blue, 0.2);
   position: relative;
+
+  .login-card,
+  .privacy-card {
+    &::after {
+      content: "";
+      position: absolute;
+      right: -100px;
+      top: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(rgb(218, 218, 218), 0.15);
+      box-shadow: 0px -1px 50px rgba(192, 192, 192, 0.8);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
 
   h2,
   h3 {
@@ -45,150 +90,15 @@
     line-height: 1.5;
     margin-bottom: 35px;
   }
-
-  // 📝 Form elements styling
-  .styled-form {
-    .input-group {
-      margin-bottom: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-
-      label {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: $secondary-blue;
-        margin-bottom: 6px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-
-        svg {
-          color: $primary-orange;
-        }
-      }
-
-      input[type="text"],
-      input[type="password"],
-      input[type="email"],
-      select {
-        width: 100%;
-        padding: 12px 16px;
-        background: #f8faff;
-        border: 1px solid #e0e8ff;
-        border-radius: 12px;
-        font-size: 0.95rem;
-        font-family: inherit;
-        color: $dark-blue;
-        transition: all 0.3s ease;
-        display: block;
-
-        &:focus {
-          outline: none;
-          border: 2px solid $primary-orange;
-          background: $white;
-          color: $secondary-blue;
-          box-shadow: 0 0 0 4px rgba($primary-orange, 0.1);
-        }
-      }
-
-      // Checkbox alignments
-      div {
-        display: flex;
-        // align-items: center;
-        // flex-direction: column;
-        gap: 8px;
-        // padding-left: 12px;
-
-        label {
-          margin: 0;
-          cursor: pointer;
-          font-weight: 500;
-          color: $text-medium;
-
-          input[type="checkbox"] {
-            accent-color: $dark-purple1;
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-          }
-        }
-      }
-    }
-
-    .input-row {
-      display: flex;
-      gap: 0;
-      flex-direction: column;
-
-      @include respond(mobile) {
-        gap: 15px;
-      }
-    }
-  }
-
-  .login-modal-box,
-  .login-card {
-    &::after {
-      content: "";
-      position: absolute;
-      right: -100px;
-      top: -100px;
-      width: 300px;
-      height: 300px;
-      background: rgba(rgb(218, 218, 218), 0.15);
-      box-shadow: 0px -1px 50px rgba(192, 192, 192, 0.8);
-      border-radius: 50%;
-      overflow: hidden;
-    }
-  }
-
-  // 🎁 Generated ID Preview Box
-  .generated-id-box,
-  .login-btn {
-    background: #f4f7ff;
-    border: 1px dashed #4b6bfb;
-    border-radius: 16px;
-    padding: 18px;
-    margin-top: 20px;
-    text-align: center;
-
-    width: 100%;
-    padding: 12px;
-    background: $secondary-blue;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-
-    span {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: $text-medium;
-      font-weight: 700;
-    }
-
-    div {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: $dark-purple2;
-      margin: 10px 0;
-      letter-spacing: 0.5px;
-    }
-  }
 }
 
-.login-card,
-.login-modal-box {
-  display: flex;
-  justify-content: space-around;
+.privacy-card {
+  background-color: $white;
+  padding: 12px 20px;
 }
 
-.login-modal-box {
-  // height: 550px;
-  flex-direction: column;
+.card-container:hover {
+  transform: translate(0);
 }
 
 // Animations
