@@ -145,5 +145,413 @@
 //               display: "flex",
 //               flexDirection: "column",
 //               gap: "15px",
+
+//               .message-container {
+//                  display: "flex",
+//                   flexDirection: "column",
+//                   alignItems: msg.role === "user" ? "flex-end" : "flex-start",
+//                   width: "100%",
+//               }
+
+//               .message-text {
+//                  maxWidth: "82%",
+//                     fontSize: "0.86rem",
+//                     padding: "12px 16px",
+//                     lineHeight: "1.5",
+//                     fontWeight: "500",
+//                     whiteSpace: "pre-line",
+//                     textAlign: "left",
+//               }
+//     }
+
+//     // typing text
+//     .typing-container {
+//          display: "flex",
+//                   flexDirection: "column",
+//                   alignItems: "flex-start",
+//                   width: "100%",
+
+//                   .typing-content {
+//    background: "white",
+//                     padding: "12px 18px",
+//                     borderRadius: "18px 18px 18px 0",
+//                     boxShadow: "0 3px 10px rgba(0,0,0,0.02)",
+//                     display: "flex",
+//                     alignItems: "center",
+//                     gap: "5px",
+
+//                     span {
+//                          color: "#777",
+//                       fontSize: "0.78rem",
+//                       fontWeight: "bold",
+//                       marginRight: "4px",
+//                     }
+//                   }
+
+//                   .typing-dot {
+//                      width: "5px",
+//                       height: "5px",
+//                       background: "#4b6bfb",
+//                       borderRadius: "50%",
+//                       animation: "dotBounce 1.4s infinite",
+//                       animationDelay: "0s",
+//                   }
+//     }
+
+//     // suggest
+//     .suggest-conatiner {
+//         background: "white",
+//               padding: "10px 15px 5px",
+//               display: "flex",
+//               gap: "8px",
+//               overflowX: "auto",
+//               borderTop: "1px solid #f1f5f9",
+//               whiteSpace: "nowrap",
+
+//               button {
+//                  background: "#f1f5f9",
+//                 color: "#1a0a54",
+//                 border: "none",
+//                 padding: "6px 12px",
+//                 borderRadius: "20px",
+//                 fontSize: "0.75rem",
+//                 fontWeight: "bold",
+//                 cursor: "pointer",
+//                 display: "flex",
+//                 alignItems: "center",
+//                 gap: "5px",
+//               }
+//     }
+
+//     // input control
+//     form {
+//          background: "white",
+//               padding: "12px 15px",
+//               display: "flex",
+//               alignItems: "center",
+//               gap: "10px",
+//               borderTop: "1px solid #edf2f9",
+
+//               input {
+//                  flex: 1,
+//                 padding: "10px 14px",
+//                 borderRadius: "12px",
+//                 border: "1px solid #e2e8f0",
+//                 fontSize: "0.85rem",
+//                 outline: "none",
+//                 background: "#f8faff",
+//               }
+
+//               button {
+//                  background: "#4b6bfb",
+//                 color: "white",
+//                 border: "none",
+//                 width: "38px",
+//                 height: "38px",
+//                 borderRadius: "12px",
+//                 display: "flex",
+//                 justifyContent: "center",
+//                 alignItems: "center",
+//                 fontSize: "1rem",
+//                 cursor: "pointer",
+//                 boxShadow: "0 4px 10px rgba(75,107,251,0.2)",
+//                 transition: "0.2s",
+//               }
 //     }
 // }
+
+.ai-floating-bubble {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #fbfdff 0%, #001330 100%);
+  background: $primary-orange;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(75, 107, 251, 0.35);
+  z-index: 999999;
+  transition: 0.3s ease;
+
+  span {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    background: #001b42;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+}
+
+.ai-chat-window-card {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 380px;
+  max-width: 100%;
+  height: 600px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(26, 10, 84, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999999;
+  border: 1px solid #eef2ff;
+  animation: popupFade 0.3s ease;
+
+  .hearts-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99999;
+    overflow: hidden;
+
+    span {
+      position: absolute;
+      bottom: -20px;
+      left: 15%;
+      font-size: 1.5rem;
+      animation: heartFloatUp 2.2s ease-in-out infinite;
+      color: #fc2212;
+    }
+  }
+
+  .chat-window-container {
+    background: linear-gradient(135deg, #03204b 0%, #001431 100%);
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+
+      .chat-logo {
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.3rem;
+
+        .icon {
+          color: #e9ecf0;
+        }
+      }
+
+      .chat-top {
+        text-align: left;
+        flex: 1;
+
+        h4 {
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 800;
+          letter-spacing: 0.3px;
+        }
+
+        small {
+          color: #2ecc71;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-weight: 700;
+          font-size: 0.72rem;
+          margin-top: 2px;
+        }
+
+        .active-ball {
+          font-size: 0.5rem;
+          animation: heartBeat 1s infinite;
+        }
+      }
+
+      .window-control {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.3rem;
+        opacity: 0.8;
+
+        .close-mark {
+          cursor: pointer;
+          transition: transform 0.2s ease;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+  .chat-message {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8faff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      /* 👑 [THE SMART ROLE CLASSES]:
+         React එකෙන් Card එකට දාන user හරි assistant හරි class එක අනුව පැති මාරු වේ මචං! */
+      &.user {
+        align-items: flex-end;
+        .message-text {
+          background-color: #03204b;
+          color: white;
+          border-radius: 18px 18px 0 18px;
+        }
+      }
+
+      &.assistant {
+        align-items: flex-start;
+        .message-text {
+          background-color: white;
+          color: #334155;
+          border-radius: 18px 18px 18px 0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+          border: 1px solid #e2e8f0;
+        }
+      }
+    }
+
+    .message-text {
+      max-width: 82%;
+      font-size: 0.86rem;
+      padding: 12px 16px;
+      line-height: 1.5;
+      font-weight: 500;
+      white-space: pre-line;
+      text-align: left;
+    }
+  }
+
+  .typing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    .typing-content {
+      background: white;
+      padding: 12px 18px;
+      border-radius: 18px 18px 18px 0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #e2e8f0;
+
+      span {
+        color: #777;
+        font-size: 0.78rem;
+        font-weight: bold;
+        margin-right: 4px;
+      }
+    }
+
+    .typing-dot {
+      width: 5px;
+      height: 5px;
+      background: #4b6bfb;
+      border-radius: 50%;
+      animation: dotBounce 1.4s infinite;
+
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+    }
+  }
+
+  .suggest-conatiner {
+    background: white;
+    padding: 10px 15px 5px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    border-top: 1px solid #f1f5f9;
+    white-space: nowrap;
+
+    button {
+      background: #f1f5f9;
+      color: #1a0a54;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+      &:hover {
+        background: #e2e8f0;
+      }
+    }
+  }
+
+  form {
+    background: white;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #edf2f9;
+
+    input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.85rem;
+      outline: none;
+      background: #f8faff;
+    }
+
+    button {
+      background: #4b6bfb;
+      color: white;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(75, 107, 251, 0.2);
+      transition: 0.2s;
+      &:hover {
+        background: #0265f8;
+      }
+    }
+  }
+}
