@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { completeShedules } from "../data/completeShedule";
 import {
   FaBook,
   FaCalendarCheck,
-  FaArrowLeft,
+  // FaArrowLeft,
   FaPenToSquare,
   FaClockRotateLeft,
 } from "react-icons/fa6";
+
+// import LiveNoticeDisplay from "../components/LiveNotice";
 
 const ClassesDetails = () => {
   const [selectedGrade, setSelectedGrade] = useState("11");
@@ -68,26 +70,23 @@ const ClassesDetails = () => {
   );
 
   return (
-    <section
-      className="parts"
-      id="classesDetails"
-      style={{ padding: "40px 20px" }}>
+    <section className="parts" id="classesDetails">
       <div
         className="class-container"
-        style={{ maxWidth: "1200px", margin: "0 auto", paddingTop: "2rem" }}>
-        <Link
+        style={{ maxWidth: "1200px", margin: "0 auto", paddingTop: "1rem" }}>
+        {/* <Link
           to="/"
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
             marginBottom: "20px",
-            color: "#4b6bfb",
+            color: "#001b42",
             textDecoration: "none",
             fontWeight: "bold",
           }}>
-          <FaArrowLeft /> Back to Home Page
-        </Link>
+          <FaArrowLeft /> Back to Home Page */}
+        {/* </Link> */}
         <h2 style={{ textAlign: "center" }}>
           Weekly <span>Class Schedule</span>
         </h2>
@@ -122,9 +121,9 @@ const ClassesDetails = () => {
           className="class-grid"
           style={{
             display: "grid",
-            gap: "20px",
-            marginTop: "40px",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "10px",
+            padding: "1rem 0rem",
           }}>
           {filteredClasses.length > 0 ? (
             filteredClasses.map((cls) => {
@@ -162,9 +161,9 @@ const ClassesDetails = () => {
                         // color: "#1a0a54",
                         color: "white",
                         borderRadius: "6px",
-                        // borderLeft: "6px solid #4b6bfb",
+                        // borderLeft: "6px solid #001b42",
                         background:
-                          currentStatus === "Active" ? "#f77c8f" : "#a2c0ff",
+                          currentStatus === "Active" ? "#ff2c4b" : "#001c42e3",
                       }}>
                       <FaClockRotateLeft /> {cls.startTime} - {cls.endTime}
                     </p>
@@ -180,14 +179,14 @@ const ClassesDetails = () => {
                         // color: "white",
                         // borderRadius: "6px",
                         fontWeight: "600",
-                        borderBottom: "2px solid #4b6bfb",
+                        borderBottom: "2px solid #001b42",
                       }}>
                       <FaCalendarCheck /> {cls.day}
                     </span>
                   </div>
 
                   {/* Card Body */}
-                  <div className="class-body" style={{ margin: "15px 0" }}>
+                  <div className="class-body" style={{ margin: "3px 0" }}>
                     <h3 style={{ color: "#03204b" }}>{cls.subject}</h3>
                     <p
                       style={{
@@ -223,12 +222,12 @@ const ClassesDetails = () => {
                     className="class-notice"
                     style={{
                       background:
-                        currentStatus === "Canceled" ? "#f0f9ff" : "#f2f5ff",
-                      padding: "10px",
-                      borderRadius: "8px",
+                        currentStatus === "Canceled" ? "#f0f9ff" : "#f8faff",
+                      padding: "10px 0",
+                      // borderRadius: "8px",
                       borderLeft:
                         currentStatus === "Canceled"
-                          ? "4px solid #4b6bfb"
+                          ? "4px solid #001b42"
                           : "4px solid #1877f2",
                       marginBottom: "0px",
                       display: "flex",
@@ -256,7 +255,7 @@ const ClassesDetails = () => {
                       <span
                         style={{
                           display: "block",
-                          marginTop: "12px",
+                          // marginTop: "12px",
                           color:
                             currentStatus === "Canceled"
                               ? "#03204b"
@@ -274,8 +273,8 @@ const ClassesDetails = () => {
                     style={{
                       background:
                         currentStatus === "Canceled" ? "#fff0f0" : "#fff4f2",
-                      padding: "10px",
-                      borderRadius: "8px",
+                      padding: "10px 0",
+                      // borderRadius: "8px",
                       borderLeft:
                         currentStatus === "Canceled"
                           ? "4px solid #fd473a"
@@ -309,7 +308,7 @@ const ClassesDetails = () => {
                             currentStatus === "Canceled"
                               ? "#fd473a"
                               : "#dd1305",
-                          marginTop: "12px",
+                          // marginTop: "12px",
                         }}>
                         {cls.notice.specialNote}
                       </span>
