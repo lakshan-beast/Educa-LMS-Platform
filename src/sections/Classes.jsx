@@ -3,35 +3,6 @@ import { FaArrowRight } from "react-icons/fa6";
 
 const Classes = () => {
   const classData = [
-    // {
-    //   id: "maths",
-    //   title: "O/L Mathematics",
-    //   subtitle: "Master Logic & Numbers",
-    //   description:
-    //     "Simplify complex theories into easy steps. We ensure every student masters the logic.",
-    //   grade: "06 - 11",
-    //   medium: "Sinhala",
-    // },
-    // {
-    //   id: "science",
-    //   title: "O/L Science",
-    //   subtitle: "Interactive Concept Mastery",
-    //   description:
-    //     "Dive deep into Science with visual explanations covering Physics, Chemistry & Biology.",
-    //   grade: "06 - 11",
-    //   medium: "English / Sinhala",
-    // },
-    // {
-    //   id: "english",
-    //   title: "O/L English",
-    //   subtitle: "Confidence in Communication",
-    //   description:
-    //     "Focus on essay writing, literature analysis & fluency to ace your exam.",
-    //   grade: "01 - 11",
-    //   medium: "English / Sinhala",
-    // },
-
-    // [
     {
       id: "maths",
       title: "O/L Mathematics",
@@ -105,8 +76,8 @@ const Classes = () => {
         </div>
 
         <div className="more-btn" data-aos="fade-up">
-          <Link to="/classes-details" className="fullclass-btn">
-            View Full Timetable & Details
+          <Link to="/tab-controller" className="fullclass-btn">
+            View Full Timetable & Notices
           </Link>
         </div>
       </div>
