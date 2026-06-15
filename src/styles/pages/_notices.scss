@@ -1,0 +1,129 @@
+.notice-header {
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: $secondary-blue3;
+  }
+}
+
+.notice-loading {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #001b42;
+  text-align: center;
+  color: #001b42;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.notice-empty {
+  background: #f8faff;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px dashed #c7d2fe;
+  text-align: center;
+  color: #a8abb1d0;
+  font-size: 0.85rem;
+}
+
+.notice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 10px;
+  padding: 4rem 0rem;
+  // height: 400px;
+  // overflow-y: scroll;
+}
+
+.notice-card {
+  //   background: linear-gradient(135deg, #001c4238 0%, #000d1f2f 100%);
+  //   border-left: 6px solid $secondary-blue;
+  background-color: $white;
+  padding: 22px 25px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(53, 53, 53, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translate(0);
+}
+
+.notice-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  margin-bottom: 12px;
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    color: #a8abb1d0;
+    font-weight: 700;
+    // border: 1px solid #001b42;
+  }
+
+  .type-badge {
+    background: #001c4225;
+    color: #000f2c;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    // border: 1px solid #001b42;
+  }
+
+  h4 {
+    margin: 5px 0 0;
+    color: #001b42;
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+}
+
+.notice-main-text {
+  margin: 0;
+  color: #a8abb1d0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.notice-footer-meta {
+  text-align: right;
+  border-top: 1px solid #001b42;
+  padding-top: 8px;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: #a8abb1d0;
+  font-weight: 600;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    color: #001b42;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
