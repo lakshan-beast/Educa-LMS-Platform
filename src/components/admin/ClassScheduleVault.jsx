@@ -708,7 +708,7 @@ const ClassScheduleVault = () => {
                   border: "1px solid #ddd",
                   fontWeight: "bold",
                 }}>
-                {["6", "7", "8", "9", "10", "11"].map((g) => (
+                {["6", "7", "8", "9", "10", "11", "11 Paper Class"].map((g) => (
                   <option key={g} value={g}>
                     Grade {g}
                   </option>
