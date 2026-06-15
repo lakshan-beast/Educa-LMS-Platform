@@ -30,6 +30,8 @@ import ParentPortal from "./pages/ParentPortal";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 
+import TabController from "./pages/TabController";
+
 const App = () => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -61,6 +63,8 @@ const App = () => {
           <Route path="/parent-portal" element={<ParentPortal />} />
 
           <Route path="/student-voices" element={<StudentVoices />} />
+
+          <Route path="tab-controller" element={<TabController />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
