@@ -62,28 +62,6 @@
       padding: 6px 12px;
       border-radius: 6px;
     }
-
-    .signout-btn {
-      max-width: 150px;
-      width: 100%;
-      margin: 0 0 0 auto;
-      margin-top: 12px;
-      border-radius: 12px;
-      // border-color: #ff4b2b;
-      border-radius: 10px;
-      color: #fffdfd;
-      background-color: #ff0a0a;
-      box-shadow: none;
-      font-size: 1rem;
-      padding: 6px 3px;
-      font-weight: 500;
-      text-transform: uppercase;
-      @include center-everything;
-
-      .icon {
-        margin-right: 12px;
-      }
-    }
   }
 
   // loading spin
@@ -111,7 +89,7 @@
     gap: 0px;
 
     @include respond(tablet) {
-      grid-template-columns: (2.5fr 1fr);
+      grid-template-columns: (2fr 1fr);
       gap: 20px;
     }
   }
@@ -403,5 +381,75 @@
     font-weight: bold;
     text-decoration: none;
     box-shadow: 0 8px 20px rgba(255, 238, 236, 0.3);
+  }
+}
+
+// loading
+.first-loads {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+}
+.first-loading {
+  animation: loading 2s ease infinite;
+  // animation-iteration-count: 3;
+  animation-delay: 1s;
+  border-radius: 8px;
+  border: 3px solid #00ff42;
+  color: #00ff42;
+  background: transparent;
+  margin: 3px;
+  width: 25px;
+  height: 25px;
+  box-shadow: 0px 0px 8px grey;
+}
+
+.loads {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: #61616180;
+  z-index: 99;
+  cursor: pointer;
+}
+.loads p {
+  color: white;
+  display: block;
+}
+
+.loading {
+  animation: loading 2s ease-in infinite;
+  border-radius: 8px;
+  border: 3px solid #00ff42;
+  color: #00ff42;
+  margin: 3px;
+  width: 25px;
+  height: 25px;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  33% {
+    transform: rotateX(180deg) rotateY(0deg) rotateZ(0deg);
+  }
+  67% {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(0deg);
+  }
+  95% {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+  }
+  100% {
+    display: none;
   }
 }
