@@ -17,6 +17,9 @@ import {
 
 import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 
+import { TiThMenuOutline } from "react-icons/ti";
+<TiThMenuOutline />;
+
 const Header = () => {
   // const location = useLocation();
   const navigate = useNavigate();
