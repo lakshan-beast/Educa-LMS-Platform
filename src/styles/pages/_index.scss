@@ -11,6 +11,7 @@ main {
     min-width: 300px;
     width: 100%;
     margin: 0 auto;
+    margin-top: 1.5rem;
 
     .back-btn {
       display: flex;
@@ -83,4 +84,98 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 10px;
   padding: 4rem 0rem;
+}
+.classes-grid {
+  padding-bottom: 1rem;
+}
+
+/* 👑 DUAL-TAB BUTTON LAYOUT SYSTEM */
+// .schedule-tab-control-row {
+// .tab-system-wrapper {
+
+//   display: flex;
+//   justify-content: center;
+//   gap: 1rem;
+//   margin-bottom: 40px;
+// }
+
+// .tab-control-buttons {
+//   button {
+//     background-color: #f1f5f9;
+//     color: #64748b;
+//     border: none;
+//     padding: 12px 28px;
+//     border-radius: 12px;
+//     font-weight: 700;
+//     font-size: 0.95rem;
+//     cursor: pointer;
+//     transition: all 0.3s ease;
+
+//     &:hover {
+//       background-color: #e2e8f0;
+//       color: #03204b;
+//     }
+//   }
+// }
+
+// /* 🎯 ඔබන බටන් එක අපේ #03204b තද නිල් පාටින් පත්තු වී හැඩවේ මචං! */
+// .tab-toggle-btn.active {
+//   background-color: #03204b !important;
+//   color: #ffffff !important;
+//   box-shadow: 0 10px 20px rgba(3, 32, 75, 0.15);
+// }
+
+.tab-system-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 7rem;
+}
+
+.tab-control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  // margin-bottom: 50px;
+}
+
+.tab-btn {
+  background-color: #f1f5f9;
+  color: #64748b;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #e2e8f0;
+    color: #03204b;
+  }
+}
+
+/* 🎯 ළමයා බටන් එක ඔබපු සැනින් අපේ තද නිල් පාටින් පත්තු වී සෙවනැල්ලක් මතු වේ මචං! */
+.tab-btn.active {
+  background-color: #03204b !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(3, 32, 75, 0.18);
+}
+
+.tab-content-display {
+  width: 100%;
+  animation: fadeInTab 0.4s ease;
+}
+
+@keyframes fadeInTab {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
