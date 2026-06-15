@@ -13,6 +13,7 @@ import { premiumStudentsList } from "../data/approvedStudents";
 
 // import LiveNoticeDisplay from "../components/LiveNotice";
 import AIChatWidget from "../components/AIChatWidget";
+import LiveClass from "./LiveClass";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -94,10 +95,10 @@ const Dashboard = () => {
       };
     }
 
-    if (hr < 17) {
+    if (hr < 19) {
       return {
         text: "Good Evening",
-        animUrl: "https://fonts.gstatic.com/s/e/notoemoji/latest/1f307/512.gif",
+        animUrl: "https://fonts.gstatic.com/s/e/notoemoji/latest/1f3d5/512.gif",
       };
     }
 
@@ -289,12 +290,27 @@ const Dashboard = () => {
         </div>
         {/* </div> */}
 
+        <div>
+          <LiveClass />
+        </div>
         {/* <div className="notice-area">
           <LiveNoticeDisplay
             // studentGrade={loggedGrade.grade}
             studentSubjects={userSubjects}
           />
         </div> */}
+
+        <div className="first-loads">
+          <div className="first-loading">
+            {/* <div className="loads"></div> */}
+          </div>
+          <div className="first-loading"></div>
+          <div className="first-loading"></div>
+          <div className="first-loading"></div>
+          <div className="first-loading"></div>
+          <div className="first-loading"></div>
+          <div className="first-loading"></div>
+        </div>
 
         <div className="premium-tracker-zone">
           {isPremiumUser ? (
@@ -336,6 +352,7 @@ const Dashboard = () => {
             </div>
           )}
         </div>
+
         {/* ================================================================ */}
 
         <AIChatWidget />
