@@ -87,6 +87,8 @@ import Teachers from "../sections/Teachers";
 import Information from "../sections/Information";
 import Contact from "../sections/Contacts";
 
+// import TabController from "../pages/TabController";
+
 // import { messaging } from "../firebaseConfig";
 // import { getToken } from "firebase/messaging";
 
@@ -118,6 +120,8 @@ const Home = () => {
       <Hero />
       <Resources />
       <Classes />
+      {/* <TabController /> */}
+
       <Teachers />
       <Information />
       <Contact />
