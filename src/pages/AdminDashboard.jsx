@@ -267,7 +267,7 @@ const AdminDashboard = () => {
               </button>
             </nav>
 
-            <button className="signout-btn" onClick={handleLogout}>
+            <button className="signout-panel" onClick={handleLogout}>
               <FaRightFromBracket className="icon" /> Sign Out Panel
             </button>
           </aside>
