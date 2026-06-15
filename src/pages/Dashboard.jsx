@@ -11,7 +11,7 @@ import { FaCrown } from "react-icons/fa6";
 import ScoreAnalytics from "../components/ScorenAnalytics";
 import { premiumStudentsList } from "../data/approvedStudents";
 
-import LiveNoticeDisplay from "../components/LiveNotice";
+// import LiveNoticeDisplay from "../components/LiveNotice";
 import AIChatWidget from "../components/AIChatWidget";
 
 const Dashboard = () => {
@@ -150,10 +150,16 @@ const Dashboard = () => {
                 style={{ width: "50px", height: "50px", objectFit: "contain" }}
               />
             </h1>
-
-            <p className="student-id">Your ID: {studentId}</p>
-            <p>Your password is secure and encrypted.</p>
             <span> Grade 11 - {nowYear} O/L Batch</span>
+            <p className="student-id">Your ID: {studentId}</p>
+
+            <p>Your password is secure and encrypted.</p>
+
+            <div className="more-btns">
+              <Link to="/tab-controller" className="fullclasss-btn">
+                View Full Timetable & Notices
+              </Link>
+            </div>
 
             <button onClick={handleLogout} className="browse-btn signout-btn">
               <FaRightFromBracket className="icon" />
@@ -170,8 +176,8 @@ const Dashboard = () => {
                   src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
                   alt="live-emoji"
                   style={{
-                    width: "25px",
-                    height: "25px",
+                    width: "20px",
+                    height: "20px",
                     objectFit: "contain",
                   }}
                   // refferrerPolicy="no-referrer"
@@ -201,98 +207,94 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="dashboard-grids">
-          {/* 🔒 C. Core Subject Enrolment & Study Vault Redirection Area */}
+        {/* <div className="dashboard-grids"> */}
+        {/* 🔒 C. Core Subject Enrolment & Study Vault Redirection Area */}
 
-          <div className="subjects-section">
-            <h3>Your Enrolled Class Portals</h3>
-            <div className="subjects-grid">
-              {/* 1. MATHEMATICS PORTAL */}
-              <div
-                className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
-                style={{
-                  // borderLeft: "10px solid #2e78cc",
-                  opacity: hasAccess("M") ? 1 : 0.6,
-                }}>
-                {!hasAccess("M") && (
-                  <div className="locked">
-                    <FaLock className="lock-icon" /> Locked
-                  </div>
-                )}
+        <div className="subjects-section">
+          <h3>Your Enrolled Class Portals</h3>
+          <div className="subjects-grid">
+            {/* 1. MATHEMATICS PORTAL */}
+            <div
+              className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
+              style={{
+                // borderLeft: "10px solid #2e78cc",
+                opacity: hasAccess("M") ? 1 : 0.6,
+              }}>
+              {!hasAccess("M") && (
+                <div className="locked">
+                  <FaLock className="lock-icon" /> Locked
+                </div>
+              )}
 
-                <h4>Mathematics Class</h4>
-                {hasAccess("M") ? (
-                  <Link to="/paper-hub/maths" className="browse-btn paper-btn">
-                    <FaBookOpen /> Study Vault
-                  </Link>
-                ) : (
-                  <p className="not-allowed ">
-                    Not enrolled in this subject. Contact card marker.
-                  </p>
-                )}
-              </div>
+              <h4>Mathematics Class</h4>
+              {hasAccess("M") ? (
+                <Link to="/paper-hub/maths" className="browse-btn paper-btn">
+                  <FaBookOpen /> Study Vault
+                </Link>
+              ) : (
+                <p className="not-allowed ">
+                  Not enrolled in this subject. Contact card marker.
+                </p>
+              )}
+            </div>
 
-              {/* 2. SCIENCE PORTAL */}
-              <div
-                className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
-                style={{
-                  // borderLeft: "5px solid #2ecc71",
-                  opacity: hasAccess("S") ? 1 : 0.6,
-                }}>
-                {!hasAccess("S") && (
-                  <div className="locked">
-                    <FaLock className="lock-icon" />
-                  </div>
-                )}
-                <h4>Science Class</h4>
-                {hasAccess("S") ? (
-                  <Link
-                    to="/paper-hub/science"
-                    className="browse-btn paper-btn">
-                    <FaBookOpen /> Study Vault
-                  </Link>
-                ) : (
-                  <p className="not-allowed ">
-                    Not enrolled in this subject. Contact card marker.
-                  </p>
-                )}
-              </div>
+            {/* 2. SCIENCE PORTAL */}
+            <div
+              className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
+              style={{
+                // borderLeft: "5px solid #2ecc71",
+                opacity: hasAccess("S") ? 1 : 0.6,
+              }}>
+              {!hasAccess("S") && (
+                <div className="locked">
+                  <FaLock className="lock-icon" />
+                </div>
+              )}
+              <h4>Science Class</h4>
+              {hasAccess("S") ? (
+                <Link to="/paper-hub/science" className="browse-btn paper-btn">
+                  <FaBookOpen /> Study Vault
+                </Link>
+              ) : (
+                <p className="not-allowed ">
+                  Not enrolled in this subject. Contact card marker.
+                </p>
+              )}
+            </div>
 
-              {/* 3. ENGLISH PORTAL */}
-              <div
-                className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
-                style={{
-                  // borderLeft: "5px solid #ff9f43",
-                  opacity: hasAccess("E") ? 1 : 0.6,
-                }}>
-                {!hasAccess("E") && (
-                  <div className="locked">
-                    <FaLock className="lock-icon" /> Locked
-                  </div>
-                )}
-                <h4>English Class</h4>
-                {hasAccess("E") ? (
-                  <Link
-                    to="/paper-hub/english"
-                    className="browse-btn paper-btn">
-                    <FaBookOpen /> Study Vault
-                  </Link>
-                ) : (
-                  <p className="not-allowed">
-                    Not enrolled in this subject. Contact card marker.
-                  </p>
-                )}
-              </div>
+            {/* 3. ENGLISH PORTAL */}
+            <div
+              className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
+              style={{
+                // borderLeft: "5px solid #ff9f43",
+                opacity: hasAccess("E") ? 1 : 0.6,
+              }}>
+              {!hasAccess("E") && (
+                <div className="locked">
+                  <FaLock className="lock-icon" /> Locked
+                </div>
+              )}
+              <h4>English Class</h4>
+              {hasAccess("E") ? (
+                <Link to="/paper-hub/english" className="browse-btn paper-btn">
+                  <FaBookOpen /> Study Vault
+                </Link>
+              ) : (
+                <p className="not-allowed">
+                  Not enrolled in this subject. Contact card marker.
+                </p>
+              )}
             </div>
           </div>
-
-          <div className="notice-area">
-            <LiveNoticeDisplay
-              // studentGrade={loggedGrade.grade}
-              studentSubjects={userSubjects}
-            />
-          </div>
         </div>
+        {/* </div> */}
+
+        {/* <div className="notice-area">
+          <LiveNoticeDisplay
+            // studentGrade={loggedGrade.grade}
+            studentSubjects={userSubjects}
+          />
+        </div> */}
 
         <div className="premium-tracker-zone">
           {isPremiumUser ? (
