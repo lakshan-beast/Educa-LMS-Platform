@@ -175,7 +175,7 @@ const AIChatWidget = () => {
       {/* ==================== 📱 👑 🆕 1. THE FLOATING GLOWING BOT BUTTON ==================== */}
       {!isOpen && (
         <div onClick={() => setIsOpen(true)} className="ai-floating-bubble">
-          <RiRobot3Fill className="bot-icon-bounce" />
+          <RiRobot3Fill />
           <span></span>
         </div>
       )}
@@ -261,7 +261,7 @@ const AIChatWidget = () => {
           <div className="chat-window-container">
             <div className="chat-header">
               <div className="chat-logo">
-                <RiRobot3Fill className="icon" />
+                <RiRobot3Fill className="icon bot-icon-bounce" />
               </div>
               <div className="chat-top">
                 <h4>educa. • Neti</h4>
@@ -286,32 +286,24 @@ const AIChatWidget = () => {
           <div className="chat-message">
             {messages.map((msg, index) => (
               <div
+                className="message-container"
                 key={index}
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
                   alignItems: msg.role === "user" ? "flex-end" : "flex-start",
-                  width: "100%",
                 }}>
                 <div
+                  className="message-text"
                   style={{
-                    maxWidth: "82%",
-                    padding: "12px 16px",
                     borderRadius:
                       msg.role === "user"
                         ? "18px 18px 0 18px"
                         : "18px 18px 18px 0",
                     background: msg.role === "user" ? "#4b6bfb" : "white",
                     color: msg.role === "user" ? "white" : "#03204b",
-                    fontSize: "0.86rem",
-                    lineHeight: "1.5",
-                    fontWeight: "500",
                     boxShadow:
                       msg.role === "user"
                         ? "0 4px 10px rgba(75,107,251,0.15)"
                         : "0 3px 10px rgba(0,0,0,0.02)",
-                    textAlign: "left",
-                    whiteSpace: "pre-line",
                   }}>
                   {msg.text}
                 </div>
@@ -320,60 +312,22 @@ const AIChatWidget = () => {
 
             {/* ⏳ BOT IS TYPING LIVE INDICATOR ANIMATION */}
             {isTyping && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  width: "100%",
-                }}>
-                <div
-                  style={{
-                    background: "white",
-                    padding: "12px 18px",
-                    borderRadius: "18px 18px 18px 0",
-                    boxShadow: "0 3px 10px rgba(0,0,0,0.02)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                  }}>
-                  <span
-                    style={{
-                      color: "#777",
-                      fontSize: "0.78rem",
-                      fontWeight: "bold",
-                      marginRight: "4px",
-                    }}>
-                    Neti is thinking
-                  </span>
+              <div className="typing-container">
+                <div className="typing-content">
+                  <span>Neti is searching</span>
                   <div
                     className="typing-dot"
                     style={{
-                      width: "5px",
-                      height: "5px",
-                      background: "#4b6bfb",
-                      borderRadius: "50%",
-                      animation: "dotBounce 1.4s infinite",
                       animationDelay: "0s",
                     }}></div>
                   <div
                     className="typing-dot"
                     style={{
-                      width: "5px",
-                      height: "5px",
-                      background: "#4b6bfb",
-                      borderRadius: "50%",
-                      animation: "dotBounce 1.4s infinite",
                       animationDelay: "0.2s",
                     }}></div>
                   <div
                     className="typing-dot"
                     style={{
-                      width: "5px",
-                      height: "5px",
-                      background: "#4b6bfb",
-                      borderRadius: "50%",
-                      animation: "dotBounce 1.4s infinite",
                       animationDelay: "0.4s",
                     }}></div>
                 </div>
@@ -382,35 +336,13 @@ const AIChatWidget = () => {
             <div ref={messagesEndRef} />
           </div>
           {/* C. QUICK SUGGESTIONS DOCK PANEL: ළමයාට ලේසියෙන් ක්ලික් කර ප්‍රශ්න ඇසීමට */}
-          <div
-            style={{
-              background: "white",
-              padding: "10px 15px 5px",
-              display: "flex",
-              gap: "8px",
-              overflowX: "auto",
-              borderTop: "1px solid #f1f5f9",
-              whiteSpace: "nowrap",
-            }}>
+          <div className="suggest-conatiner">
             <button
               type="button"
               onClick={() => {
                 setInputText(
                   "O/L විභාගයට මාස 3ක පට්ටම ප්‍රැක්ටිකල් පාඩම් Time Table එකක් හදලා දියන් මචං.",
                 );
-              }}
-              style={{
-                background: "#f1f5f9",
-                color: "#1a0a54",
-                border: "none",
-                padding: "6px 12px",
-                borderRadius: "20px",
-                fontSize: "0.75rem",
-                fontWeight: "bold",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
               }}>
               <FaGraduationCap style={{ color: "#4b6bfb", fontSize: "1rem" }} />{" "}
               Study Plan
@@ -421,19 +353,6 @@ const AIChatWidget = () => {
                 setInputText(
                   "Maths වල ත්‍රිකෝණමිතිය සයින් නීතිය (Sine Rule) සරලව කියලා දෙන්න.",
                 );
-              }}
-              style={{
-                background: "#f1f5f9",
-                color: "#1a0a54",
-                border: "none",
-                padding: "6px 12px",
-                borderRadius: "20px",
-                fontSize: "0.75rem",
-                fontWeight: "bold",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
               }}>
               <FaLightbulb style={{ color: "#f1c40f", fontSize: "1rem" }} />{" "}
               Sine Rule
@@ -444,19 +363,6 @@ const AIChatWidget = () => {
                 setInputText(
                   "සර්ගේ 10 වසරේ පළමු පාඩමේ Science Tute එක බාගන්න ඕනේ කොහොමද කරන්නේ?",
                 );
-              }}
-              style={{
-                background: "#f1f5f9",
-                color: "#1a0a54",
-                border: "none",
-                padding: "6px 12px",
-                borderRadius: "20px",
-                fontSize: "0.75rem",
-                fontWeight: "bold",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
               }}>
               <FaCompass style={{ color: "#2ecc71", fontSize: "1rem" }} /> Tute
               Finder
@@ -464,48 +370,18 @@ const AIChatWidget = () => {
           </div>
 
           {/* D. BOTTOM INPUT CONTROL DOCK FORM */}
-          <form
-            onSubmit={handleFormSubmit}
-            style={{
-              background: "white",
-              padding: "12px 15px",
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              borderTop: "1px solid #edf2f9",
-            }}>
+          <form onSubmit={handleFormSubmit}>
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Ask anything from Neti..."
-              style={{
-                flex: 1,
-                padding: "10px 14px",
-                borderRadius: "12px",
-                border: "1px solid #e2e8f0",
-                fontSize: "0.85rem",
-                outline: "none",
-                background: "#f8faff",
-              }}
+              style={{}}
             />
             <button
               type="submit"
               disabled={inputText.trim() === "" || isTyping}
               style={{
-                background: "#4b6bfb",
-                color: "white",
-                border: "none",
-                width: "38px",
-                height: "38px",
-                borderRadius: "12px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "1rem",
-                cursor: "pointer",
-                boxShadow: "0 4px 10px rgba(75,107,251,0.2)",
-                transition: "0.2s",
                 opacity: inputText.trim() === "" || isTyping ? 0.6 : 1,
               }}>
               <FaPaperPlane />
