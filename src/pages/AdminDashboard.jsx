@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
+import AllStudents from "../components/admin/AllStudents";
 import AddStudentVault from "../components/admin/AddStudentVault";
 import ClassMarksVault from "../components/admin/ClassMarksVault";
 import PaymentsVault from "../components/admin/PaymentsVault";
@@ -15,6 +16,7 @@ import PasswordField from "../components/PasswordField";
 
 import {
   FaUserPlus,
+  FaUsers,
   FaGraduationCap,
   FaMoneyCheckDollar,
   FaUserXmark,
@@ -192,41 +194,21 @@ const AdminDashboard = () => {
 
             <nav>
               <button
+                onClick={() => setActiveVault("all-students")}
+                style={{
+                  background:
+                    activeVault === "all-students" ? "#ff4b2b" : "transparent",
+                }}>
+                <FaUsers /> <span> All Students Vault</span>
+              </button>
+
+              <button
                 onClick={() => setActiveVault("add-student")}
                 style={{
                   background:
                     activeVault === "add-student" ? "#ff4b2b" : "transparent",
                 }}>
                 <FaUserPlus /> <span> Add Student Vault</span>
-              </button>
-
-              <button
-                disabled="disable"
-                onClick={() => setActiveVault("class-marks")}
-                style={{
-                  background: "grey",
-                  cursor: "not-allowed",
-                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
-                }}>
-                <FaGraduationCap /> <span> Class Paper Marks</span>
-              </button>
-
-              <button
-                onClick={() => setActiveVault("payments")}
-                style={{
-                  background:
-                    activeVault === "payments" ? "#ff4b2b" : "transparent",
-                }}>
-                <FaMoneyCheckDollar /> <span> Payments Vault</span>
-              </button>
-
-              <button
-                onClick={() => setActiveVault("absent-mark")}
-                style={{
-                  background:
-                    activeVault === "absent-mark" ? "#ff4b2b" : "transparent",
-                }}>
-                <FaUserXmark /> <span>Today's Absent Vault</span>
               </button>
 
               <button
@@ -264,6 +246,39 @@ const AdminDashboard = () => {
                 }}>
                 <FaMailBulk /> <span> Mail Box</span>
                 {/* <MailBox /> */}
+              </button>
+
+              <button
+                disabled="disable"
+                onClick={() => setActiveVault("class-marks")}
+                style={{
+                  background: "#83838369",
+                  cursor: "not-allowed",
+                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
+                }}>
+                <FaGraduationCap /> <span> Class Paper Marks</span>
+              </button>
+
+              <button
+                disabled="disable"
+                onClick={() => setActiveVault("payments")}
+                style={{
+                  background: "#83838369",
+                  cursor: "not-allowed",
+                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
+                }}>
+                <FaMoneyCheckDollar /> <span> Payments Vault</span>
+              </button>
+
+              <button
+                disabled="disable"
+                onClick={() => setActiveVault("absent-mark")}
+                style={{
+                  background: "#83838369",
+                  cursor: "not-allowed",
+                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
+                }}>
+                <FaUserXmark /> <span>Today's Absent Vault</span>
               </button>
             </nav>
 
@@ -316,6 +331,7 @@ const AdminDashboard = () => {
                 height: "100vh",
                 overflowY: "scroll",
               }}>
+              {activeVault === "all-students" && <AllStudents />}
               {activeVault === "add-student" && (
                 <AddStudentVault
                   selectedGrade={selectedGrade}
@@ -341,9 +357,7 @@ const AdminDashboard = () => {
                 <AbsentMark selectedGrade={selectedGrade} subject={subject} />
               )}
 
-              {activeVault === "notices" && (
-                <NoticeBoard selectedGrade={selectedGrade} subject={subject} />
-              )}
+              {activeVault === "notices" && <NoticeBoard />}
               {activeVault === "class-shedule" && <ClassScheduleVault />}
 
               {activeVault === "paper-upload" && <PaperHubUploadVault />}
