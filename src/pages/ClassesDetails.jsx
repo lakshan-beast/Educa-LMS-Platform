@@ -9,10 +9,8 @@ import {
   FaClockRotateLeft,
 } from "react-icons/fa6";
 
-// import LiveNoticeDisplay from "../components/LiveNotice";
-
 const ClassesDetails = () => {
-  const [selectedGrade, setSelectedGrade] = useState("11");
+  const [selectedGrade, setSelectedGrade] = useState("6");
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
