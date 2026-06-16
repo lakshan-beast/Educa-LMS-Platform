@@ -300,9 +300,9 @@ const Dashboard = () => {
           />
         </div> */}
 
-        <div className="first-loads">
+        {/* <div className="first-loads">
           <div className="first-loading">
-            {/* <div className="loads"></div> */}
+            {/* <div className="loads"></div> 
           </div>
           <div className="first-loading"></div>
           <div className="first-loading"></div>
@@ -310,7 +310,7 @@ const Dashboard = () => {
           <div className="first-loading"></div>
           <div className="first-loading"></div>
           <div className="first-loading"></div>
-        </div>
+        </div> */}
 
         <div className="premium-tracker-zone">
           {isPremiumUser ? (
