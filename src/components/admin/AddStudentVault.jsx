@@ -18,6 +18,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
   // Form එකේ දත්ත තබා ගන්නා State
   const [formData, setFormData] = useState({
     fullName: "",
+    gender: "",
     password: "",
     pin: "",
     parentMobile: "",
@@ -84,6 +85,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     const studentCloudData = {
       id: finalID,
       fullName: formData.fullName,
+      gender: formData.gender,
       password: formData.password,
       pin: cleanPin,
       parentMobile: formData.parentMobile,
@@ -112,6 +114,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
 
       setFormData({
         fullName: "",
+        gender: "",
         password: "",
         pin: "",
         parentMobile: "",
@@ -269,6 +272,19 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               value={formData.pin}
               onChange={handleChange}
             />
+          </div>
+
+          <div className="input-group">
+            <label>Student Gender</label>
+            <select
+              value={formData.gender}
+              // onChange={(e) =>
+              //   setStudentForm({ ...studentForm, gender: e.target.value })
+              // }>
+              onChange={handleChange}>
+              <option value="boy">Boy</option>
+              <option value="girl">Girl</option>
+            </select>
           </div>
         </div>
 
