@@ -419,6 +419,15 @@ const PaperHub = ({ subject }) => {
     (item) => item.category === cloudCategory,
   );
 
+  if (isLoading) {
+    return (
+      <div className="first-loads">
+        <div className="playstore-edu-loader"></div>
+        <p>Syncing Live Campus Ledger...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="paper-hub-wrapper page-container">
       <div className="system-container">
