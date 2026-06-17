@@ -8,6 +8,8 @@ import {
   FaTriangleExclamation,
 } from "react-icons/fa6";
 
+import Loader from "../components/Loader";
+
 const LiveClass = () => {
   const [classData, setClassData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -77,11 +79,7 @@ const LiveClass = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="live-class-loading">
-        🔄 Routing Secure Institutional Lecture Hub...
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
