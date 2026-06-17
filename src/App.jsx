@@ -32,12 +32,22 @@ import Privacy from "./pages/Privacy";
 
 import TabController from "./pages/TabController";
 
+// import Loader from "../components/Loader"; // 👈 1. උඩින් පිරිසිදුව ඉම්පෝට් කරන්න මචං [INDEX 4]
+
+// 2. ⚡ පරණ දිග HTML කෝඩ් සේරම මකලා මෙන්න මේ එකම පේළිය විතරක් දමන්න බං!
+
 const App = () => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
   const location = useLocation();
+
+  //     const [isLoading, setIsLoading] = useState(true);
+
+  //   if (isLoading) {
+  //   return <Loader />;
+  // }
 
   return (
     <>
