@@ -239,10 +239,12 @@ const AdminDashboard = () => {
               </button>
 
               <button
+                disabled="disable"
                 onClick={() => setActiveVault("mail-box")}
                 style={{
-                  background:
-                    activeVault === "mail-box" ? "#ff4b2b" : "transparent",
+                  background: "#83838369",
+                  cursor: "not-allowed",
+                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
                 }}>
                 <FaMailBulk /> <span> Mail Box</span>
                 {/* <MailBox /> */}
