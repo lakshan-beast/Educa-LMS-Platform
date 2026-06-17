@@ -284,7 +284,7 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
             {/* 👑 🆕 [6-11 GRADE SELECTOR]: ටියුට් අප්ලෝඩ් එකටත් 6-11 ඩ්‍රොප්ඩවුන් එක දැම්මා */}
-            <div className="input-group">
+            {/* <div className="input-group">
               <label
                 style={{
                   fontWeight: "600",
@@ -311,7 +311,7 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
 
             <div className="input-group">
               <label
@@ -335,9 +335,9 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
                   border: "1px solid #ddd",
                   fontWeight: "bold",
                 }}>
-                <option value="classTutes">📄 Class Tutes</option>
-                <option value="pastPapers">📕 Past Papers</option>
-                <option value="formulas">🎓 Formula Guides</option>
+                <option value="classTutes"> Class Tutes</option>
+                <option value="pastPapers"> Past Papers</option>
+                <option value="formulas"> Formula Guides</option>
               </select>
             </div>
 
