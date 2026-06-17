@@ -59,13 +59,13 @@
 
 //   // 2️⃣ 💬 [THE QUICK WHATSAPP AUTOMATION HOOK]:
 //   // දෙමාපියන්ගේ නම්බර් ලැප් එකේ සේව් කර කර වද වෙන්න ඕනේ නැහැ මචං! [INDEX 4]
-//   const handleWhatsappReply = (phone, name, msgText) => {
+//   const handleWhatsappReply = (phone, fullName, massageText) => {
 //     const cleanPhone = phone.replace(/[^0-9]/g, ""); // නම්බර් එක පිරිසිදු කරයි
 //     const formattedPhone = cleanPhone.startsWith("0")
 //       ? "94" + cleanPhone.substring(1)
 //       : cleanPhone;
 
-//     const replyMessage = `educa. Academic Support (${currentAdminSubject}) 🏛️\n\nDear Parent/Student (${name}),\nRegarding your inquiry: "${msgText}"\n\n[Type your reply here]`;
+//     const replyMessage = `educa. Academic Support (${currentAdminSubject}) 🏛️\n\nDear Parent/Student (${fullName}),\nRegarding your inquiry: "${massageText}"\n\n[Type your reply here]`;
 //     const whatsappUrl = `https://wa.me${formattedPhone}?text=${encodeURIComponent(replyMessage)}`;
 
 //     window.open(whatsappUrl, "_blank"); // WhatsApp චැට් එක වෙනම ටැබ් එකක ලයිව් ඕපන් කරවයි! [INDEX 4]
@@ -253,7 +253,7 @@
 //                       fontWeight: "800",
 //                       fontSize: "1.05rem",
 //                     }}>
-//                     {msg.fullName}
+//                     {msg.fullfullName}
 //                   </h4>
 //                   <small style={{ color: "#64748b", fontWeight: "600" }}>
 //                     📞 {msg.phone}
@@ -288,7 +288,7 @@
 //                   onClick={() =>
 //                     handleWhatsappReply(
 //                       msg.phone,
-//                       msg.fullName,
+//                       msg.fullfullName,
 //                       msg.messageText,
 //                     )
 //                   }
@@ -354,6 +354,187 @@
 
 // export default AdminDashboard;
 
+// import { useState, useEffect } from "react";
+// import { db } from "../firebaseConfig";
+// import {
+//   collection,
+//   query,
+//   where,
+//   onSnapshot,
+//   doc,
+//   updateDoc,
+//   deleteDoc,
+// } from "firebase/firestore";
+// import {
+//   FaEnvelope,
+//   FaWhatsapp,
+//   // FaCheckCircle,
+//   FaTrashCan,
+//   FaFolderOpen,
+// } from "react-icons/fa6";
+// import { FaCheckCircle } from "react-icons/fa";
+
+// const AdminDashboard = () => {
+//   const [messages, setMessages] = useState([]);
+//   const [isLoading, setIsLoading] = useState(true);
+//   const [currentAdminSubject, setCurrentAdminSubject] = useState("MATHS");
+
+//   useEffect(() => {
+//     // setIsLoading(true);
+
+//     const q = query(
+//       collection(db, "contact_messages"),
+//       where("subject", "==", currentAdminSubject),
+//     );
+
+//     const unsubscribe = onSnapshot(
+//       q,
+//       (snapshot) => {
+//         const msgList = snapshot.docs.map((doc) => ({
+//           docId: doc.id,
+//           ...doc.data(),
+//         }));
+
+//         msgList.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+//         setMessages(msgList);
+//         setIsLoading(false);
+//       },
+//       (err) => {
+//         console.error("Subject Mailbox Fetch Error:", err);
+//         setIsLoading(false);
+//       },
+//     );
+
+//     return () => unsubscribe();
+//   }, [currentAdminSubject]);
+
+//   const handleWhatsappReply = (phone, fullName, massageText) => {
+//     const cleanPhone = phone.replace(/[^0-9]/g, "");
+//     const formattedPhone = cleanPhone.startsWith("0")
+//       ? "94" + cleanPhone.substring(1)
+//       : cleanPhone;
+
+//     const replyMessage = `educa. Academic Support (${currentAdminSubject}) 🏛️\n\nDear Parent/Student (${fullName}),\nRegarding your inquiry: "${massageText}"\n\n[Type your reply here]`;
+//     const whatsappUrl = `https://wa.me${formattedPhone}?text=${encodeURIComponent(replyMessage)}`;
+
+//     window.open(whatsappUrl, "_blank");
+//   };
+
+//   const handleMarkAsRead = async (docId) => {
+//     try {
+//       await updateDoc(doc(db, "contact_messages", docId), { status: "read" });
+//     } catch (err) {
+//       console.error("Mark Read Status Error:", err);
+//     }
+//   };
+
+//   const handleDeleteMessage = async (docId) => {
+//     if (
+//       window.confirm(
+//         "Are you sure you want to permanently delete this message?",
+//       )
+//     ) {
+//       try {
+//         await deleteDoc(doc(db, "contact_messages", docId));
+//       } catch (err) {
+//         console.error("Delete Document Error:", err);
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className="admin-mailbox-wrapper">
+//       <div className="admin-header">
+//         <div>
+//           <h1>Academic Admin Mailbox</h1>
+//           <p>Real-time subject-specific student inquiry management terminal.</p>
+//         </div>
+
+//         <select
+//           value={currentAdminSubject}
+//           onChange={(e) => setCurrentAdminSubject(e.target.value)}>
+//           <option value="MATHS">📐 Mathematics Admin</option>
+//           <option value="SCIENCE">🔬 Science Admin</option>
+//           <option value="ENGLISH">🔤 English Admin</option>
+//         </select>
+//       </div>
+
+//       {isLoading ? (
+//         <div className="mailbox-loading">
+//           🔄 Routing Live {currentAdminSubject} Core...
+//         </div>
+//       ) : messages.length === 0 ? (
+//         <div className="mailbox-empty">
+//           <FaFolderOpen className="empty-icon" />
+//           <p>No inquiries found inside {currentAdminSubject} cluster.</p>
+//         </div>
+//       ) : (
+//         <div className="mailbox-grid">
+//           {messages.map((msg) => (
+//             <div
+//               key={msg.docId}
+//               className="mail-card"
+//               style={{ opacity: msg.status === "read" ? 0.65 : 1 }}>
+//               {msg.status !== "read" && (
+//                 <span className="mail-badge">🔴 NEW</span>
+//               )}
+//               {msg.status === "read" && (
+//                 <span className="mail-badge" style={{ background: "#64748b" }}>
+//                   ✓ READ
+//                 </span>
+//               )}
+
+//               <div className="mail-user-block">
+//                 <div className="mail-avatar">
+//                   <FaEnvelope />
+//                 </div>
+//                 <div>
+//                   <h4>{msg.fullfullName}</h4>
+//                   <small>📞 {msg.phone}</small>
+//                 </div>
+//               </div>
+
+//               <p className="mail-text">{msg.messageText}</p>
+//               <div className="mail-actions">
+//                 <button
+//                   onClick={() =>
+//                     handleWhatsappReply(
+//                       msg.phone,
+//                       msg.fullfullName,
+//                       msg.messageText,
+//                     )
+//                   }
+//                   className="whatsapp-btn">
+//                   <FaWhatsapp /> WhatsApp Reply
+//                 </button>
+//                 <div className="control-btn-group">
+//                   {msg.status !== "read" && (
+//                     <button
+//                       onClick={() => handleMarkAsRead(msg.docId)}
+//                       title="Mark as Read"
+//                       className="read-btn">
+//                       <FaCheckCircle />
+//                     </button>
+//                   )}
+//                   <button
+//                     onClick={() => handleDeleteMessage(msg.docId)}
+//                     title="Delete Message"
+//                     className="delete-btn">
+//                     <FaTrashCan />
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default AdminDashboard;
+
 import { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
 import {
@@ -368,23 +549,28 @@ import {
 import {
   FaEnvelope,
   FaWhatsapp,
-  // FaCheckCircle,
   FaTrashCan,
   FaFolderOpen,
+  FaShieldHalved,
 } from "react-icons/fa6";
 import { FaCheckCircle } from "react-icons/fa";
 
-const AdminDashboard = () => {
+const AdminMailbox = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentAdminSubject, setCurrentAdminSubject] = useState("MATHS");
+
+  // 👑 🔐 [THE EXCLUSIVE MULTI-USER SESSION LOCK]:
+  // දැනට ලොග් වී ඉන්න ගුරුවරයාගේ විෂය කුමක්ද කියා හඳුනා ගනී (Default එක maths මචං)
+  const currentFacultyRole = localStorage.getItem("current_faculty_role") || "";
 
   useEffect(() => {
     // setIsLoading(true);
 
+    // 📡 සර්වර් මට්ටමෙන්ම තමන්ගේ විෂයට අදාළ ලා අකුරු ලේබල් (maths/science/english) විතරක් ලයිව් ෆිල්ටර් කරයි! [INDEX 51]
     const q = query(
       collection(db, "contact_messages"),
-      where("subject", "==", currentAdminSubject),
+      where("subject", "==", currentFacultyRole.toLowerCase()),
+      where("status", "==", "unread"), // 🔥 තවමත් කියවා නැති අලුත් මේල්ස් විතරක්ම ගනී මචං [INDEX 51]
     );
 
     const unsubscribe = onSnapshot(
@@ -395,27 +581,55 @@ const AdminDashboard = () => {
           ...doc.data(),
         }));
 
+        // 📅 අලුතින්ම ආපු පණිවිඩ හැම තිස්සෙම ලිස්ට් එකේ උඩින්ම පෙන්වයි
         msgList.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
         setMessages(msgList);
         setIsLoading(false);
       },
       (err) => {
-        console.error("Subject Mailbox Fetch Error:", err);
+        console.error("Secure Cloud Mailbox Sync Error:", err);
         setIsLoading(false);
       },
     );
 
     return () => unsubscribe();
-  }, [currentAdminSubject]);
+  }, [currentFacultyRole]);
 
-  const handleWhatsappReply = (phone, name, msgText) => {
+  const handleWhatsappReply = (phone, fullName, massageText) => {
     const cleanPhone = phone.replace(/[^0-9]/g, "");
     const formattedPhone = cleanPhone.startsWith("0")
       ? "94" + cleanPhone.substring(1)
       : cleanPhone;
 
-    const replyMessage = `educa. Academic Support (${currentAdminSubject}) 🏛️\n\nDear Parent/Student (${name}),\nRegarding your inquiry: "${msgText}"\n\n[Type your reply here]`;
+    //createdAt
+    // "2026-06-15T07:30:08.947Z"
+    // (string)
+
+    // fullfullName
+    // "Lakshan Sandeepa"
+    // (string)
+
+    // id
+    // "MSG-608947"
+    // (string)
+
+    // messageText
+    // "Test"
+    // (string)
+
+    // phone
+    // "+94 787030317"
+    // (string)
+
+    // status
+    // "unread"
+    // (string)
+
+    // subject
+    // "Science"
+
+    const replyMessage = `educa. Academic Support (${currentFacultyRole.toUpperCase()}) 🏛️\n\nDear Parent/Student (${fullName}),\nRegarding your inquiry: "${massageText}"\n\n[Type your reply here]`;
     const whatsappUrl = `https://wa.me${formattedPhone}?text=${encodeURIComponent(replyMessage)}`;
 
     window.open(whatsappUrl, "_blank");
@@ -423,22 +637,22 @@ const AdminDashboard = () => {
 
   const handleMarkAsRead = async (docId) => {
     try {
-      await updateDoc(doc(db, "contact_messages", docId), { status: "read" });
+      await updateDoc(doc(db, "contact_messages", docId), { status: "read" }); // Cloud එකේ status එක read කර ලිස්ට් එකෙන් පිරිසිදු කරයි [INDEX 51]
     } catch (err) {
-      console.error("Mark Read Status Error:", err);
+      console.error("Mark Read Error:", err);
     }
   };
 
   const handleDeleteMessage = async (docId) => {
     if (
       window.confirm(
-        "Are you sure you want to permanently delete this message?",
+        "Are you sure you want to permanently delete this inquiry?",
       )
     ) {
       try {
-        await deleteDoc(doc(db, "contact_messages", docId));
+        await deleteDoc(doc(db, "contact_messages", docId)); // සදහටම ක්ලවුඩ් එකෙන් මකා දමයි [INDEX 51]
       } catch (err) {
-        console.error("Delete Document Error:", err);
+        console.error("Delete Error:", err);
       }
     }
   };
@@ -447,79 +661,67 @@ const AdminDashboard = () => {
     <div className="admin-mailbox-wrapper">
       <div className="admin-header">
         <div>
-          <h1>Academic Admin Mailbox</h1>
-          <p>Real-time subject-specific student inquiry management terminal.</p>
+          <h1>
+            <FaShieldHalved /> {currentFacultyRole.toUpperCase()} Faculty Inbox
+          </h1>
+          <p>
+            Secure subject-isolated real-time incoming student inquiry
+            management terminal [INDEX 4].
+          </p>
         </div>
-
-        <select
-          value={currentAdminSubject}
-          onChange={(e) => setCurrentAdminSubject(e.target.value)}>
-          <option value="MATHS">📐 Mathematics Admin</option>
-          <option value="SCIENCE">🔬 Science Admin</option>
-          <option value="ENGLISH">🔤 English Admin</option>
-        </select>
       </div>
 
       {isLoading ? (
         <div className="mailbox-loading">
-          🔄 Routing Live {currentAdminSubject} Core...
+          🔄 Routing Secure {currentFacultyRole.toUpperCase()} Live Streams...
         </div>
       ) : messages.length === 0 ? (
         <div className="mailbox-empty">
           <FaFolderOpen className="empty-icon" />
-          <p>No inquiries found inside {currentAdminSubject} cluster.</p>
+          <p>
+            Your inbox is perfectly clean. No unread inquiries inside{" "}
+            {currentFacultyRole} cluster [INDEX 4].
+          </p>
         </div>
       ) : (
         <div className="mailbox-grid">
           {messages.map((msg) => (
-            <div
-              key={msg.docId}
-              className="mail-card"
-              style={{ opacity: msg.status === "read" ? 0.65 : 1 }}>
-              {msg.status !== "read" && (
-                <span className="mail-badge">🔴 NEW</span>
-              )}
-              {msg.status === "read" && (
-                <span className="mail-badge" style={{ background: "#64748b" }}>
-                  ✓ READ
-                </span>
-              )}
+            <div key={msg.docId} className="mail-card">
+              <span className="mail-badge">🔴 NEW</span>
 
               <div className="mail-user-block">
                 <div className="mail-avatar">
                   <FaEnvelope />
                 </div>
                 <div>
-                  <h4>{msg.fullName}</h4>
+                  <h4>{msg.fullfullName}</h4>
                   <small>📞 {msg.phone}</small>
                 </div>
               </div>
+              <p className="mail-text">{msg.messageText || msg.message}</p>
 
-              <p className="mail-text">{msg.messageText}</p>
               <div className="mail-actions">
                 <button
                   onClick={() =>
                     handleWhatsappReply(
                       msg.phone,
-                      msg.fullName,
-                      msg.messageText,
+                      msg.fullfullName,
+                      msg.messageText || msg.message,
                     )
                   }
                   className="whatsapp-btn">
                   <FaWhatsapp /> WhatsApp Reply
                 </button>
                 <div className="control-btn-group">
-                  {msg.status !== "read" && (
-                    <button
-                      onClick={() => handleMarkAsRead(msg.docId)}
-                      title="Mark as Read"
-                      className="read-btn">
-                      <FaCheckCircle />
-                    </button>
-                  )}
+                  <button
+                    onClick={() => handleMarkAsRead(msg.docId)}
+                    title="Mark as Read"
+                    className="read-btn">
+                    <FaCheckCircle />
+                  </button>
                   <button
                     onClick={() => handleDeleteMessage(msg.docId)}
-                    title="Delete Message"
+                    title="Delete Inquiry"
                     className="delete-btn">
                     <FaTrashCan />
                   </button>
@@ -533,4 +735,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default AdminMailbox;
