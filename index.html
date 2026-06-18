@@ -198,6 +198,15 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
+    <!-- 👑 🔐 [THE EXCLUSIVE VITE PREAMBLE FIX]: 
+         Vite Preamble Error එක සහමුලින්ම වඳ කර සයිට් එක පණ ගන්වයි! -->
+    <script type="module">
+      import RefreshRuntime from "http://localhost:5173/@react-refresh";
+      RefreshRuntime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+    </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
