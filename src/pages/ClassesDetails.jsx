@@ -1,18 +1,99 @@
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
-import { completeShedules } from "../data/completeShedule";
+// import { completeShedules } from "../data/completeShedule";
+
+// 📝 ඔයාගේ firebase setup එකෙන් db එක import කරගන්න
+import { db } from "../firebaseConfig";
+import { collection, onSnapshot } from "firebase/firestore";
+
 import {
   FaBook,
   FaCalendarCheck,
-  // FaArrowLeft,
   FaPenToSquare,
   FaClockRotateLeft,
 } from "react-icons/fa6";
 
 const ClassesDetails = () => {
+  // const [selectedGrade, setSelectedGrade] = useState("6");
+  // const [currentTime, setCurrentTime] = useState(new Date());
+
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrentTime(new Date());
+  //   }, 30000);
+  //   return () => clearInterval(timer);
+  // }, []);
+
+  // // 🕒 3. Auto-Time Status Calculator Logic
+  // const getClassStatus = (cls) => {
+  //   if (cls.statusOverride === "Canceled") return "Canceled";
+  //   if (cls.statusOverride === "Holiday") return "Holiday";
+
+  //   const daysOfWeek = [
+  //     "Sunday",
+  //     "Monday",
+  //     "Tuesday",
+  //     "Wednesday",
+  //     "Thursday",
+  //     "Friday",
+  //     "Saturday",
+  //   ];
+  //   const currentDayName = daysOfWeek[currentTime.getDay()];
+
+  //   if (currentDayName !== cls.day) {
+  //     return "Upcoming";
+  //   }
+
+  //   // අද පන්තිය තියෙන දවස නම්, වෙලාව බලනවා
+  //   const currentHours = currentTime.getHours();
+  //   const currentMinutes = currentTime.getMinutes();
+  //   const currentTotalMinutes = currentHours * 60 + currentMinutes;
+
+  //   const [startH, startM] = cls.startTime.split(":").map(Number);
+  //   const [endH, endM] = cls.endTime.split(":").map(Number);
+
+  //   const startTotalMinutes = startH * 60 + startM;
+  //   const endTotalMinutes = endH * 60 + endM;
+
+  //   if (
+  //     currentTotalMinutes >= startTotalMinutes &&
+  //     currentTotalMinutes <= endTotalMinutes
+  //   ) {
+  //     return "Active";
+  //   } else if (currentTotalMinutes > endTotalMinutes) {
+  //     return "Ended";
+  //   }
+
+  //   return "Upcoming";
+  // };
+
+  // const filteredClasses = completeShedules.filter(
+  //   (cls) => cls.grade === selectedGrade,
+  // );
+
   const [selectedGrade, setSelectedGrade] = useState("6");
   const [currentTime, setCurrentTime] = useState(new Date());
 
+  // ☁️ [CLOUD STATE]: Cloud එකෙන් එන හැම පන්තියකම විස්තර තියාගන්න ස්ටේට් එකක්
+  const [completeShedules, setCompleteShedules] = useState([]);
+
+  // 🔄 1. Cloud එකෙන් සම්පූර්ණ පන්ති ලැයිස්තුවම Real-time Sync කිරීම
+  useEffect(() => {
+    const schedulesRef = collection(db, "class_schedules");
+
+    // Cloud එකේ මොනවා හරි වෙනස් වුනොත් මේක auto-update වෙනවා
+    const unsubscribe = onSnapshot(schedulesRef, (querySnapshot) => {
+      const classesArray = [];
+      querySnapshot.forEach((doc) => {
+        // Document එකේ ID එකත් එක්කම data ටික array එකට දාගන්නවා
+        classesArray.push({ id: doc.id, ...doc.data() });
+      });
+      setCompleteShedules(classesArray);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // 🕒 2. වෙලාව Update වෙන Timer එක (මිනිත්තු භාගයෙන් භාගයට)
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -22,9 +103,11 @@ const ClassesDetails = () => {
 
   // 🕒 3. Auto-Time Status Calculator Logic
   const getClassStatus = (cls) => {
-    if (cls.statusOverride === "Canceled") return "Canceled";
-    if (cls.statusOverride === "Holiday") return "Holiday";
+    // 🧠 Admin panel එකෙන් අපි overrideStatus එක දැම්මේ overrideStatus විදිහටයි
+    if (cls.overrideStatus === "Canceled") return "Canceled";
+    if (cls.overrideStatus === "Holiday") return "Holiday";
 
+    // පන්තියේ overrideStatus එක 'AUTO' නම් හෝ මුකුත් නැත්නම් සාමාන්‍ය වෙලාව බලනවා
     const daysOfWeek = [
       "Sunday",
       "Monday",
@@ -36,14 +119,16 @@ const ClassesDetails = () => {
     ];
     const currentDayName = daysOfWeek[currentTime.getDay()];
 
+    // සටහන: පන්තිය තියෙන දවස (cls.day) සහ වෙලාවන් (cls.startTime/cls.endTime) Cloud එකේ තියෙන්න ඕනේ
     if (currentDayName !== cls.day) {
       return "Upcoming";
     }
 
-    // අද පන්තිය තියෙන දවස නම්, වෙලාව බලනවා
     const currentHours = currentTime.getHours();
     const currentMinutes = currentTime.getMinutes();
     const currentTotalMinutes = currentHours * 60 + currentMinutes;
+
+    if (!cls.startTime || !cls.endTime) return "Upcoming"; // වෙලාවන් නැත්නම් error නොවී බේරෙන්න
 
     const [startH, startM] = cls.startTime.split(":").map(Number);
     const [endH, endM] = cls.endTime.split(":").map(Number);
@@ -63,6 +148,7 @@ const ClassesDetails = () => {
     return "Upcoming";
   };
 
+  // 🎯 4. තෝරාගත් Grade එක අනුව පන්ති ටික Filter කිරීම
   const filteredClasses = completeShedules.filter(
     (cls) => cls.grade === selectedGrade,
   );
@@ -99,7 +185,7 @@ const ClassesDetails = () => {
             margin: "30px 0",
             flexWrap: "wrap",
           }}>
-          {["6", "7", "8", "9", "10", "11", "11 Paper Class"].map((grade) => (
+          {["6", "7", "8", "9", "10", "11", "Paper Class"].map((grade) => (
             <button
               key={grade}
               className={`grade-tab-btn ${selectedGrade === grade ? "active-tab" : ""}`}
