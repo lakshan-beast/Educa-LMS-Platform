@@ -42,7 +42,8 @@ const EventDrawer = ({ isOpen, onClose }) => {
   const handleShareEvent = (item) => {
     // 👑 🔐 [THE NATIVE CONCATENATION METHOD]:
     // ඔයාගේ AddStudent එකේ වැඩ කරන ක්‍රමයටම String එක පිරිසිදුව ගැට ගැසුවා මචං! [INDEX 4]
-    const siteUrl = window.location.origin;
+    // const siteUrl = window.location.origin;
+    const siteUrl = "https://educa-lms-platform.vercel.app/";
 
     const shareMessage =
       "⚡️ *SPECIAL INSTITUTIONAL EVENT BROADCAST* ⚡️\n\n" +
