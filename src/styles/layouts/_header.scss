@@ -413,6 +413,7 @@
   flex-direction: column;
   transform: translateX(100%); /* 🔒 මුලින් දකුණු පැත්තෙන් හැංගිලා පවතී */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  background-color: rgba($secondary-blue, 0.3);
 }
 
 /* DRAWER HEADER STRIP */
@@ -424,7 +425,8 @@
   align-items: center;
 
   h3 {
-    color: #03204b;
+    // color: #03204b;
+    color: white;
     font-weight: 900;
     margin: 0;
     font-size: 1.2rem;
@@ -434,13 +436,15 @@
 
     .bell-icon {
       color: #ff5722;
+      // color: white;
     } /* 🔔 ලස්සන තැඹිලි පාට බෙල් අයිකන් එක මචං */
   }
 
   .drawer-close-trigger {
     background: none;
     border: none;
-    color: #64748b;
+    // color: #64748b;
+    color: white;
     font-size: 1.3rem;
     cursor: pointer;
     transition: color 0.2s;
@@ -462,11 +466,13 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: rgba($secondary-blue, 0.3);
 }
 
 /* INSIDE DRAWER SOCIAL POST CARD SCROLL VIEW */
 .drawer-social-post-card {
-  background-color: #ffffff;
+  // background-color: rgba($secondary-blue, 0.3);
+  background: white;
   border: 1px solid #e2e8f0;
   padding: 20px;
   border-radius: 18px;
@@ -485,6 +491,8 @@
     font-weight: 800;
     color: #64748b;
     margin-bottom: 12px;
+    // padding-bottom: 6px;
+    // border-bottom: 2px solid $secondary-blue3;
 
     span {
       display: inline-flex;
@@ -508,16 +516,17 @@
     line-height: 1.4;
   }
   p {
-    color: #475569;
+    // color: #475569;
+    color: $secondary-blue3;
     font-size: 0.85rem;
     line-height: 1.5;
     margin: 0 0 18px 0;
-    font-weight: 500;
+    // font-weight: 500;
   }
 }
 
 /* 🟢 PREMIUM ONE-CLICK WHATSAPP SHARE BUTTON INTERNAL */
-.drawer-whatsapp-share-btn {
+.drawers-whatsapp-share-btn {
   width: 100%;
   background-color: #22c55e;
   color: #ffffff;
@@ -550,10 +559,65 @@
   background-color: #f8fafc;
   overflow: hidden;
   position: relative;
+  margin-bottom: 6px;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 6px;
+  }
+}
+
+/* 👑 DRAWER PHONE INPUT BOX GROUP LAYOUT */
+.drawer-phone-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  width: 100%;
+  padding-top: 6px;
+  border-top: 2px solid $secondary-blue3;
+}
+
+.drawer-inline-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.82rem;
+  color: #03204b;
+  font-weight: 600;
+  outline: none;
+  background-color: #f8fafc;
+
+  &:focus {
+    border-color: #03204b;
+    background-color: #ffffff;
+  }
+}
+
+.drawer-whatsapp-share-btn {
+  background-color: #22c55e; /* 🟢 WhatsApp පිරිසිදු කොළ පාට මචං */
+  color: #ffffff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2);
+  transition:
+    background 0.2s,
+    transform 0.1s;
+
+  &:hover {
+    background-color: #16a34a;
+  }
+  &:active {
+    transform: scale(0.95);
   }
 }

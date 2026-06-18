@@ -216,3 +216,95 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html> -->
+
+<!-- import React, { useState } from "react";
+import { FaBell, FaXmark, FaWhatsapp, FaCalendarDays, FaPaperPlane } from "react-icons/fa6";
+
+const EventDrawer = ({ isOpen, onClose }) => {
+  // 📞 හැම කාඩ් එකකම ලියන නම්බර් එක වෙන වෙනම මතක තබා ගන්නා ස්ටේට් එක මචං [INDEX 4]
+  const [phoneInputs, setPhoneInputs] = useState({});
+
+  const staticEventsDemo = [
+    {
+      id: "EVT-001",
+      title: "Educa. Live Musical Fest 2026 🎶🎸",
+      description: "A grand musical evening organized exclusively for our Grade 10 & 11 student community. Featuring popular guest artists and school fitness bands!",
+      date: "2026-08-25"
+    },
+    {
+      id: "EVT-002",
+      title: "O/L Mathematics Master Seminar 📐🔥",
+      description: "The ultimate final countdown seminar blueprint conducted by Janaka Sir. Covering critical local syllabus modules for absolute A-grade mastery.",
+      date: "2026-07-12"
+    }
+  ];
+
+  const handleInputChange = (id, value) => {
+    setPhoneInputs((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleDirectSend = (item) => {
+    const userPhone = phoneInputs[item.id] || "";
+    if (!userPhone.trim()) return alert("Please enter a valid mobile number first [INDEX 4]!");
+
+    // 👑 🔐 [THE GUARANTEED DIRECT CONTACT REDIRECT ENGINE]:
+    // ඔයාගේ AddStudent එකේ වැඩ කරන පිරිසිදුම රටාවට ලින්ක් එක හැදුවා මචං! [INDEX 4]
+    const sendRegistrationDetails = userPhone.trim().replace(/^0/, "94");
+    const siteUrl = "https://vercel.app";
+
+    const shareMessage = 
+      "⚡ *SPECIAL INSTITUTIONAL EVENT BROADCAST* ⚡\n\n" +
+      "🏛️ *Educa Campus - " + item.title + "*\n\n" +
+      "📢 " + item.description + "\n\n" +
+      "🔗 *View full event posters live on our official platform here:*\n" +
+      "👉 " + siteUrl + "\n\n" +
+      "*NexusLabs Software Studios* 🦾";
+
+    // 🚀 උඹේ කෝඩ් එකේ තියෙන පිරිසිදුම + ලකුණු ක්‍රමයටම ලින්ක් එක එකතු කර බ්‍රවුසර් එකට දුන්නා මචං! [INDEX 4]
+    const finalWhatsappUrl = "https://wa.me" + sendRegistrationDetails + "?text=" + encodeURIComponent(shareMessage);
+    window.open(finalWhatsappUrl, "_blank");
+  };
+
+  return (
+    <div className={campus-event-drawer-overlay ${isOpen ? "drawer-visible" : ""}}>
+      <div className="drawer-blur-dismiss-shield" onClick={onClose}></div>
+      
+      <div className="drawer-main-panel">
+        <div className="drawer-header-row">
+          <h3><FaBell className="bell-icon" /> Campus Events Feed</h3>
+          <button onClick={onClose} className="drawer-close-trigger"><FaXmark /></button>
+        </div>
+
+        <div className="drawer-scroll-feed-content">
+          {staticEventsDemo.map((item) => (
+            <div key={item.id} className="drawer-social-post-card">
+              <div className="drawer-card-meta">
+                <span><FaCalendarDays /> {item.date}</span>
+                <span className="faculty-badge">Admin</span>
+              </div>
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
+              
+              {/* 👑 🎛️ DYNAMIC NUMBER INPUT FIELD ROW */}
+              <div className="drawer-phone-input-group">
+                <input 
+                  type="text" 
+                  placeholder="Enter phone number (e.g. 0771234567)..." 
+                  value={phoneInputs[item.id] || ""}
+                  onChange={(e) => handleInputChange(item.id, e.target.value)}
+                  className="drawer-inline-input"
+                />
+                <button onClick={() => handleDirectSend(item)} className="drawer-direct-send-btn" title="Send to WhatsApp">
+                  <FaPaperPlane />
+                </button>
+              </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EventDrawer; -->

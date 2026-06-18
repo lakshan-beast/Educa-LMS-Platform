@@ -239,7 +239,7 @@ const Dashboard = () => {
               )}
 
               <h4>Mathematics Class</h4>
-              {hasAccess("M") ? (
+              {/* {hasAccess("M") ? (
                 <Link to="/paper-hub/maths" className="browse-btn paper-btn">
                   <FaBookOpen /> Study Vault
                 </Link>
@@ -247,7 +247,7 @@ const Dashboard = () => {
                 <p className="not-allowed ">
                   Not enrolled in this subject. Contact card marker.
                 </p>
-              )}
+              )} */}
             </div>
 
             {/* 2. SCIENCE PORTAL */}
