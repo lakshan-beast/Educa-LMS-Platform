@@ -3,9 +3,18 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import { FaRocket, FaArrowRight } from "react-icons/fa6";
+import {
+  FaRocket,
+  FaArrowRight,
+  // FaImage,
+  // FaCalendarDays,
+  // FaWhatsapp,
+  // FaBullhorn,
+} from "react-icons/fa6";
 
 import heroImg from "../assets/hero-image.png";
+// import EventImage from "../assets/hero-image.webp";
+// import TabController from "../pages/TabController";
 
 const Hero = () => {
   useEffect(() => {
@@ -14,6 +23,36 @@ const Hero = () => {
       once: true,
     });
   }, []);
+
+  // 👑 🔐 [THE EXCLUSIVE STATIC EVENT ADS DOCK]:
+  // ඩිසයින් එක චෙක් කරලා බලන්න මම පන්තියේ ඇඩ්ස් 2ක් කේතය ඇතුළටම දාලා හැදුවා මචං! [INDEX 4]
+  // const staticEventsDemo = [
+  //   {
+  //     id: "EVT-001",
+  //     title: "Educa. Live Musical Fest 2026 🎶🎸",
+  //     description:
+  //       "A grand musical evening organized exclusively for our Grade 10 & 11 student community. Featuring popular guest artists, school bands, and interactive talent segments to celebrate your academic journey!",
+  //     date: "2026-08-25",
+  //     // 💡 [පින්තූර ටිප් එක]: ඔයාගේ public/ ෆෝල්ඩරය ඇතුළට musical.jpg කියලා එකක් දැම්මොත් ඒක මෙතනට ලස්සනට වදියි මචං [INDEX 4]
+  //     imageUrl: { EventImage },
+  //   },
+  //   {
+  //     id: "EVT-002",
+  //     title: "O/L Mathematics Master Seminar Series 📐🔥",
+  //     description:
+  //       "The ultimate final countdown seminar blueprint conducted by Janaka Sir. Covering critical local syllabus modules, advanced paper structure breakdowns, and speed-remediation tactics for absolute A-grade mastery.",
+  //     date: "2026-07-12",
+  //     imageUrl: { EventImage },
+  //   },
+  // ];
+
+  // const handleShareEvent = (item) => {
+  //   const siteUrl = window.location.origin;
+  //   const shareMessage = `⚡ *SPECIAL INSTITUTIONAL EVENT BROADCAST* ⚡\n\n🏛️ *Educa Campus - ${item.title}*\n\n📢 ${item.description}\n\n🔗 View full event posters and class registries live on our official platform here:\n👉 ${siteUrl}`;
+
+  //   const whatsappUrl = `https://whatsapp.com${encodeURIComponent(shareMessage)}`;
+  //   window.open(whatsappUrl, "_blank");
+  // };
 
   return (
     <section id="home" className="home" data-aos="fade-up" data-aos-delay="100">
@@ -50,6 +89,69 @@ const Hero = () => {
           <img src={heroImg} loading="lazy" alt="Master O/L with Educa" />
         </div>
       </div>
+
+      {/* <div id="campus-life" className="public-events-section-wrapper">
+        <div className="section-title-header" data-aos="fade-up">
+          <h2>
+            <FaBullhorn className="title-icon" /> Campus Life &{" "}
+            <span>Official Events</span>
+          </h2>
+          <p>
+            Stay updated with our latest extra-curricular activities, seminars,
+            and student festivals.
+          </p>
+        </div> */}
+
+      {/* <div className="events-social-grid" data-aos="fade-up">
+          {staticEventsDemo.map((item) => (
+            <div key={item.id} className="event-social-post-card">
+              {/* POST IMAGE SHIELD *
+              <div className="post-image-container">
+                {item.imageUrl ? (
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div className="image-placeholder-box">
+                    <FaImage />
+                    <span>Poster Image Unassigned (Placeholder View)</span>
+                  </div>
+                )}
+              </div>
+
+              {/* POST BODY FRAME 
+              <div className="post-main-content">
+                <div className="post-meta-row">
+                  <span className="post-date-tag">
+                    <FaCalendarDays /> {item.date}
+                  </span>
+                  <span className="post-faculty-tag">Faculty Admin</span>
+                </div>
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
+              </div>
+
+              {/* POST ACTIONS FOOTER BAR 
+              <div className="post-actions-footer-bar">
+                <button
+                  onClick={() => handleShareEvent(item)}
+                  className="post-share-btn-trigger">
+                  <FaWhatsapp /> Share to WhatsApp Status
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 🏛️ 📢 [THE LIVE CAMPUS LIFE & EVENTS GRID - FACEBOOK POST STYLE] *
+
+      <section id="classes" className="public-academic-tab-section">
+        <TabController />
+      </section> */}
     </section>
   );
 };
@@ -81,3 +183,167 @@ export default Hero;
             </a>
           </div> */
 }
+
+// import React from "react";
+// import { FaWhatsapp, FaCalendarDays, FaBullhorn, FaImage } from "react-icons/fa6";
+// import TabController from "../components/TabController";
+
+// const Home = () => {
+
+//   // 👑 🔐 [THE EXCLUSIVE STATIC EVENT ADS DOCK]:
+//   // ඩිසයින් එක චෙක් කරලා බලන්න මම පන්තියේ ඇඩ්ස් 2ක් කේතය ඇතුළටම දාලා හැදුවා මචං! [INDEX 4]
+//   const staticEventsDemo = [
+//     {
+//       id: "EVT-001",
+//       title: "Educa. Live Musical Fest 2026 🎶🎸",
+//       description: "A grand musical evening organized exclusively for our Grade 10 & 11 student community. Featuring popular guest artists, school bands, and interactive talent segments to celebrate your academic journey!",
+//       date: "2026-08-25",
+//       // 💡 [පින්තූර ටිප් එක]: ඔයාගේ public/ ෆෝල්ඩරය ඇතුළට musical.jpg කියලා එකක් දැම්මොත් ඒක මෙතනට ලස්සනට වදියි මචං [INDEX 4]
+//       imageUrl: ""
+//     },
+//     {
+//       id: "EVT-002",
+//       title: "O/L Mathematics Master Seminar Series 📐🔥",
+//       description: "The ultimate final countdown seminar blueprint conducted by Janaka Sir. Covering critical local syllabus modules, advanced paper structure breakdowns, and speed-remediation tactics for absolute A-grade mastery.",
+//       date: "2026-07-12",
+//       imageUrl: ""
+//     }
+//   ];
+
+//   const handleShareEvent = (item) => {
+//     const siteUrl = window.location.origin;
+//     const shareMessage = ⚡ *SPECIAL INSTITUTIONAL EVENT BROADCAST* ⚡\n\n🏛️ *Educa Campus - ${item.title}*\n\n📢 ${item.description}\n\n🔗 View full event posters and class registries live on our official platform here:\n👉 ${siteUrl};
+
+//     const whatsappUrl = https://whatsapp.com{encodeURIComponent(shareMessage)};
+//     window.open(whatsappUrl, "_blank");
+//   };
+
+//   return (
+//     <div className="home-page-master-shell">
+
+//       {/* HERO SECTION */}
+//       <section id="home" className="hero-landing-section">
+//         <div className="hero-content-box" data-aos="fade-right">
+//           <h1>Welcome to <span>educa.</span> Campus</h1>
+//           <p>The ultimate closed-loop institutional ecosystem for advanced O/L syllabus mastery.</p>
+//         </div>
+//       </section>
+
+//       {/* 🏛️ 📢 [THE LIVE CAMPUS LIFE & EVENTS GRID - FACEBOOK POST STYLE] */}
+//       <section id="campus-life" className="public-events-section-wrapper">
+//         <div className="section-title-header" data-aos="fade-up">
+//           <h2><FaBullhorn className="title-icon" /> Campus Life & <span>Official Events</span></h2>
+//           <p>Stay updated with our latest extra-curricular activities, seminars, and student festivals.</p>
+//         </div>
+
+//         <div className="events-social-grid" data-aos="fade-up">
+//           {staticEventsDemo.map((item) => (
+//             <div key={item.id} className="event-social-post-card">
+
+//               {/* POST IMAGE SHIELD */}
+//               <div className="post-image-container">
+//                 {item.imageUrl ? (
+//                   <img src={item.imageUrl} alt={item.title} loading="lazy" decoding="async" />
+//                 ) : (
+//                   <div className="image-placeholder-box">
+//                     <FaImage />
+//                     <span>Poster Image Unassigned (Placeholder View)</span>
+//                   </div>
+//                 )}
+//               </div>
+
+//               {/* POST BODY FRAME */}
+//               <div className="post-main-content">
+//                 <div className="post-meta-row">
+//                   <span className="post-date-tag"><FaCalendarDays /> {item.date}</span>
+//                   <span className="post-faculty-tag">Faculty Admin</span>
+//                 </div>
+//                 <h4>{item.title}</h4>
+//                 <p>{item.description}</p>
+//               </div>
+
+//               {/* POST ACTIONS FOOTER BAR */}
+//               <div className="post-actions-footer-bar">
+//                 <button onClick={() => handleShareEvent(item)} className="post-share-btn-trigger">
+//                   <FaWhatsapp /> Share to WhatsApp Status
+//                 </button>
+//               </div>
+
+//             </div>
+//           ))}
+//         </div>
+//       </section>
+
+//       {/* CENTRAL TIMETABLE & NOTICES SECTION */}
+//       <section id="classes" className="public-academic-tab-section">
+//         <TabController />
+//       </section>
+
+//     </div>
+//   );
+// };
+
+// export default Home;
+
+// import React from "react";
+// import { FaBell, FaXmark, FaWhatsapp, FaCalendarDays } from "react-icons/fa6";
+
+// const EventDrawer = ({ isOpen, onClose }) => {
+
+//   const staticEventsDemo = [
+//     {
+//       id: "EVT-001",
+//       title: "Educa. Live Musical Fest 2026 🎶🎸",
+//       description: "A grand musical evening organized exclusively for our Grade 10 & 11 student community. Featuring popular guest artists and school fitness bands!",
+//       date: "2026-08-25"
+//     },
+//     {
+//       id: "EVT-002",
+//       title: "O/L Mathematics Master Seminar 📐🔥",
+//       description: "The ultimate final countdown seminar blueprint conducted by Janaka Sir. Covering critical local syllabus modules for absolute A-grade mastery.",
+//       date: "2026-07-12"
+//     }
+//   ];
+
+//   const handleShareEvent = (item) => {
+//     // 👑 🔐 [THE REAL FIX: SEPARATED URL ENCODING DOCK]:
+//     // ලින්ක් එක සහ මැසේජ් එක වෙන් වෙන්ව පිරිසිදුව එකතු කර ක්‍රෑෂ් ලෙඩේ සහ සහමුලින්ම වඳ කළා මචං!
+//     const siteUrl = window.location.origin;
+//     const rawMessage = ⚡ *SPECIAL INSTITUTIONAL EVENT BROADCAST* ⚡\n\n🏛️ *Educa Campus - ${item.title}*\n\n📢 ${item.description}\n\n🔗 View full event posters live on our official platform here:\n👉 ${siteUrl};
+
+//     // 🎯 නිල පිරිසිදු WhatsApp API Gateway එක නූලටම ලොක් කළා මචං!
+//     const finalWhatsappUrl = https://wa.me{encodeURIComponent(rawMessage)};
+//     window.open(finalWhatsappUrl, "_blank");
+//   };
+
+//   return (
+//     <div className={campus-event-drawer-overlay ${isOpen ? "drawer-visible" : ""}}>
+//       <div className="drawer-blur-dismiss-shield" onClick={onClose}></div>
+
+//       <div className="drawer-main-panel">
+//         <div className="drawer-header-row">
+//           <h3><FaBell className="bell-icon" /> Campus Events Feed</h3>
+//           <button onClick={onClose} className="drawer-close-trigger"><FaXmark /></button>
+//         </div>
+
+//         <div className="drawer-scroll-feed-content">
+//           {staticEventsDemo.map((item) => (
+//             <div key={item.id} className="drawer-social-post-card">
+//               <div className="drawer-card-meta">
+//                 <span><FaCalendarDays /> {item.date}</span>
+//                 <span className="faculty-badge">Admin</span>
+//               </div>
+//               <h4>{item.title}</h4>
+//               <p>{item.description}</p>
+//               <button onClick={() => handleShareEvent(item)} className="drawer-whatsapp-share-btn">
+//                 <FaWhatsapp /> Share to Status
+//               </button>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default EventDrawer;
