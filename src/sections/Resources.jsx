@@ -8,9 +8,9 @@ import {
   FaUserShield,
 } from "react-icons/fa6";
 
-import Comments from "../assets/comments.webp";
-import Results from "../assets/results.webp";
-import Parent from "../assets/parent.webp";
+import Comments from "../assets/comment.webp";
+import Results from "../assets/result.webp";
+import Parent from "../assets/parents.webp";
 
 const Resources = () => {
   return (
