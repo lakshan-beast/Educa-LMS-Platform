@@ -20,6 +20,9 @@ import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 import { TiThMenuOutline } from "react-icons/ti";
 <TiThMenuOutline />;
 
+import { FaBell } from "react-icons/fa6";
+import EventDrawer from "./EventDrawer"; // 👈 1. අලුත් කම්පෝනන්ට් එක උඩින් ඉම්පෝට් කරන්න මචං [INDEX 4]
+
 const Header = () => {
   // const location = useLocation();
   const navigate = useNavigate();
@@ -27,6 +30,9 @@ const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const [activeSection, setActiveSection] = useState("home");
+
+  // const [activeSection, setActiveSection] = useState("home");
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // 👈 2. මෙනු එක ඕපන් කරන ස්ටේට් එක [INDEX 4]
 
   useEffect(() => {
     // 🚀 සයිට් එකේ තියෙන හැම ප්‍රධාන කොටසකම ID ලිස්ට් එක මෙන්න මචං! [INDEX 4]
@@ -125,6 +131,12 @@ const Header = () => {
           </div>
 
           <div className="header-actions">
+            <button
+              onClick={() => setIsDrawerOpen(true)}
+              className="nav-notification-bell-btn">
+              <FaBell /> <span className="bell-alert-dot"></span>
+            </button>
+
             <button className="sign-btn" onClick={handleUserClick}>
               {isLoggedIn ? (
                 <FaUserCircle style={{ color: "#000d1f" }} />
@@ -187,6 +199,11 @@ const Header = () => {
           </div>
         </nav>
       </header>
+
+      <EventDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+      />
 
       <div
         className={`overlay ${isActive ? "active" : ""}`}
