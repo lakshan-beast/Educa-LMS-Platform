@@ -134,3 +134,181 @@
     transform: translateY(0px);
   }
 }
+
+// sliders
+/* 👑 THE PREMIUM FACEBOOK-STYLE EVENT POSTS GRID */
+.public-events-section-wrapper {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title-header {
+  text-align: center;
+  margin-bottom: 50px;
+
+  h2 {
+    color: #03204b;
+    font-weight: 900;
+    font-size: 2.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 10px 0;
+
+    .title-icon {
+      color: #ff5722;
+    } /* 🔔 ලස්සන තැඹිලි පාට */
+    span {
+      color: #ff5722;
+    }
+  }
+  p {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.events-social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 30px;
+}
+
+.event-social-post-card {
+  background-color: #ffffff;
+  border: 1px solid #eef2ff;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(3, 32, 75, 0.03);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(3, 32, 75, 0.06);
+  }
+}
+
+.post-image-container {
+  width: 100%;
+  height: 240px;
+  background-color: #f8fafc;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.image-placeholder-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #cbd5e1;
+  gap: 12px;
+  padding: 20px;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+
+  span {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.post-main-content {
+  padding: 25px;
+  flex: 1;
+  text-align: left;
+
+  .post-meta-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 0.75rem;
+    font-weight: 800;
+
+    .post-date-tag {
+      color: #64748b;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .post-faculty-tag {
+      background-color: #eff6ff;
+      color: #1e40af;
+      padding: 3px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+  }
+
+  h4 {
+    color: #03204b;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+  }
+  p {
+    color: #475569;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.post-actions-footer-bar {
+  padding: 15px 25px 25px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.post-share-btn-trigger {
+  width: 100%;
+  background-color: #22c55e; /* 🟢 WhatsApp පිරිසිදු කොළ පාට */
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 15px rgba(34, 197, 94, 0.2);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+
+  &:hover {
+    background-color: #16a34a;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.public-academic-tab-section {
+  padding: 40px 20px 80px;
+  background-color: #f8fafc;
+  width: 100%;
+}
