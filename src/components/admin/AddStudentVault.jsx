@@ -1,21 +1,16 @@
 import { useState } from "react";
-import { db } from "../../firebaseConfig"; // 👑 අපේ මධ්‍යම Firebase පාලම ගත්තා
-import { collection, addDoc } from "firebase/firestore"; // ☁️ දත්ත ඇතුළත් කරන Cloud Tools ගත්තා
-import {
-  FaUserPlus,
-  // FaKey,
-  // FaMobileScreen,
-  // FaIdCard,
-  FaCopy,
-  // FaCheck,
-  FaUserCheck,
-  FaWhatsapp,
-} from "react-icons/fa6";
+import { db } from "../../firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
+
+import { FaUserPlus, FaCopy, FaUserCheck, FaWhatsapp } from "react-icons/fa6";
 
 const AddStudentVault = ({ selectedGrade, subject }) => {
-  // 3rd code
+  const [generatedID, setGeneratedID] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [registeredData, setRegisterData] = useState(null);
 
-  // Form එකේ දත්ත තබා ගන්නා State
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "",
@@ -23,18 +18,12 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     pin: "",
     parentMobile: "",
     studentMobile: "",
-    maths: subject === "maths", // ලොග් වී ඉන්න සර්ගේ විෂය ඔටෝ ටික් වේ
+    maths: subject === "maths",
     science: subject === "science",
     english: subject === "english",
   });
 
-  const [generatedID, setGeneratedID] = useState("");
-  const [copied, setCopied] = useState(false);
-  const [error, setError] = useState(""); // 👑 🆕 ලස්සන රතු Alert එකට ස්ටේට් එක
-  const [success, setSuccess] = useState(""); // 👑 🆕 ලස්සන කොළ Alert එකට ස්ටේට් එක
-  const [registeredData, setRegisterData] = useState(null);
-
-  // 1. Input Fields වල දත්ත වෙනස් වන ලොජික් එක
+  // 1. input fields data change logic
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -43,14 +32,14 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     }));
   };
 
-  // 2. ID එක Clipboard එකට කොපි කරගන්නා ලොජික් එක (දැන් තියෙන්නේ එකයි!)
+  // 2. ID copy logic
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedID);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // 3. 🧠 ☁️ ළමයාගේ ID එක හදලා කෙලින්ම Firebase Cloud යවන ප්‍රධාන ලොජික් එක
+  // 3. Student generate id and after Firebase Cloud to send main logic
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     console.log("Button Clicked Success! form submiting...");
@@ -61,7 +50,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     if (formData.science) subCode += "S";
 
     if (!subCode) {
-      setError("කරුණාකර අවම වශයෙන් එක විෂයක්වත් තෝරන්න! ⚠️");
+      setError("කරුණාකර අවම වශයෙන් එක විෂයක්වත් තෝරන්න!");
       setSuccess("");
       return;
     }
@@ -72,7 +61,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       !formData.pin ||
       !formData.parentMobile
     ) {
-      setError("Please fill in all details correctly! ⚠️");
+      setError("Please fill in all details correctly!");
       setSuccess("");
       return;
     }
@@ -81,11 +70,12 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     const cleanPin = formData.pin.trim();
     const finalID = `EDU-${subCode}-${selectedGrade}-${cleanName}-${cleanPin}`;
 
-    // Cloud එකට යන පිරිසිදු දත්ත ව්‍යුහය
+    // Cloud data clean structure
     const studentCloudData = {
       id: finalID,
       fullName: formData.fullName,
       gender: formData.gender,
+      grade: selectedGrade,
       password: formData.password,
       pin: cleanPin,
       parentMobile: formData.parentMobile,
@@ -93,22 +83,21 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       maths: formData.maths,
       science: formData.science,
       english: formData.english,
-      grade: selectedGrade,
+
       status: "Approved",
       createdAt: new Date().toISOString(),
     };
 
     try {
-      // 🚀 Firebase 'students' Collection එකට දත්ත ලියයි
+      // 🚀 Firebase 'students' Collection
       await addDoc(collection(db, "students"), studentCloudData);
 
       setGeneratedID(finalID);
       setRegisterData(studentCloudData);
       setCopied(false);
 
-      // ලස්සන කොළ පාට Notification Card එක සක්‍රීය කරයි
       setSuccess(
-        `The student was successfully added to the Google Cloud Database! 🟢 ID: ${finalID}`,
+        `The student was successfully added to the Google Cloud Database! ID: ${finalID}`,
       );
       setError("");
 
@@ -125,24 +114,19 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       });
     } catch (err) {
       console.error("Firebase Error:", err);
-      setError("An error occurred while saving data to the Cloud Database!❌");
+      setError("An error occurred while saving data to the Cloud Database!");
       setSuccess("");
     }
 
-    // තත්පර 5කින් පණිවිඩ තීරු නිවී යයි
     setTimeout(() => {
       setSuccess("");
       setError("");
     }, 5000);
   };
 
-  // 👑 🆕 [WHATSAPP STRUCTURAL MESSAGE BUILDER]: පේමන්ට්ස් වල වගේම මැසේජ් එකක් හදන ලොජික් එක
+  // 👑 🆕 [WHATSAPP STRUCTURAL MESSAGE BUILDER]
   const sendWelcomeWhatsApp = () => {
     if (!registeredData) return;
-
-    // const formattedMobile = registeredData.studentMobile
-    //   .trim()
-    //   .replace(/^0/, "94");
 
     let subjectsList = [];
 
@@ -151,7 +135,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     if (registeredData.english) subjectsList.push("English");
 
     const message =
-      `*🎓 educa. Official Student Registration* \n\n` +
+      `*🎓 Educa. Official Student Registration* \n\n` +
       `Dear *${registeredData.fullName}*,\n` +
       `You have been successfully onboarded to the *educa. LMS Platform*.\n\n` +
       `📌 *Your Student ID:* ${registeredData.id}\n` +
@@ -166,83 +150,40 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       .trim()
       .replace(/^0/, "94");
 
-    // const whatsappUrl = `https://wa.me{sendRegistrationDetails}?text=${encodeURIComponent(message)}`;
     const whatsappUrl =
       "https://wa.me/" +
       sendRegistrationDetails +
       "?text=" +
       encodeURIComponent(message);
     window.open(whatsappUrl, "_blank");
-    // 🚀 ළමයාගේ වට්ස්ඇප් එකට මැසේජ් එක ලයිව් අරන් යයි!
   };
 
   return (
-    <div
-      className="vault-container"
-      style={{
-        background: "white",
-        padding: "30px",
-        borderRadius: "20px",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
-      }}>
-      <div style={{ marginBottom: "25px" }}>
-        <h3 style={{ color: "#1a0a54", margin: 0 }}>
+    <div className="vault-container">
+      <div className="vault-header">
+        <h3>
           <FaUserPlus /> Add New Student (Grade {selectedGrade})
         </h3>
-        <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
+        <p>
           Check the details on the form, enter the student into the system and
           create an ID.
         </p>
       </div>
 
-      {error && (
-        <div
-          style={{
-            background: "#fdedec",
-            borderLeft: "5px solid #e74c3c",
-            color: "#c0392b",
-            padding: "12px",
-            borderRadius: "8px",
-            marginBottom: "15px",
-            fontSize: "0.85rem",
-            fontWeight: "bold",
-          }}>
-          ⚠️ {error}
-        </div>
-      )}
-      {success && (
-        <div
-          style={{
-            background: "#e8f8f5",
-            borderLeft: "5px solid #2ecc71",
-            color: "#27ae60",
-            padding: "12px",
-            borderRadius: "8px",
-            marginBottom: "15px",
-            fontSize: "0.85rem",
-            fontWeight: "bold",
-          }}>
-          ✓ {success}
-        </div>
-      )}
+      {error && <div className="error-content">⚠️ {error}</div>}
+      {success && <div className="success-content">✓ {success}</div>}
 
       <form
         onSubmit={handleRegisterSubmit}
-        // onSubmit={handleFormSubmitTrigger}
-        className="styled-form"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "12px 50px",
-        }}>
+        className="styled-form add-student-form">
         {/* Left Form Column */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "0px" }}>
+        <div className="form-content">
           <div className="input-group">
             <label>Student's Full Name (In capital letters)</label>
             <input
               type="text"
               name="fullName"
-              placeholder="ex: SADUN UMAYANGA"
+              placeholder="Enter Student Name..."
               required
               value={formData.fullName}
               onChange={handleChange}
@@ -264,7 +205,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
           <div className="input-group">
             <label>Create 4-Digit Secret PIN (4-digit code)</label>
             <input
-              type="text"
+              type="number"
               name="pin"
               maxLength="4"
               placeholder="ex: 1234"
@@ -276,12 +217,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
 
           <div className="input-group">
             <label>Student Gender</label>
-            <select
-              value={formData.gender}
-              // onChange={(e) =>
-              //   setStudentForm({ ...studentForm, gender: e.target.value })
-              // }>
-              onChange={handleChange}>
+            <select value={formData.gender} onChange={handleChange}>
               <option value="boy">Boy</option>
               <option value="girl">Girl</option>
             </select>
@@ -289,19 +225,10 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
         </div>
 
         {/* Right Form Column */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "0px" }}>
+        <div className="form-content">
           <div className="input-group">
             <label>Select Enrolled Subjects (Subjects)</label>
-            <div
-              style={{
-                display: "flex",
-                gap: "20px",
-                background: "#f8faff",
-                padding: "12px",
-                borderRadius: "8px",
-                border: "1px solid #eef2ff",
-                marginTop: "5px",
-              }}>
+            <div className="subject-select">
               <label>
                 <input
                   type="checkbox"
@@ -311,14 +238,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
                 />{" "}
                 Maths
               </label>
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  cursor: "pointer",
-                  fontSize: "0.9rem",
-                }}>
+              <label>
                 <input
                   type="checkbox"
                   name="science"
@@ -327,14 +247,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
                 />{" "}
                 Science
               </label>
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  cursor: "pointer",
-                  fontSize: "0.9rem",
-                }}>
+              <label>
                 <input
                   type="checkbox"
                   name="english"
@@ -344,18 +257,6 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
                 English
               </label>
             </div>
-          </div>
-
-          <div className="input-group">
-            <label>Parent's Mobile Number </label>
-            <input
-              type="text"
-              name="parentMobile"
-              placeholder="ex: 07X-XXX XXXX"
-              required
-              value={formData.parentMobile}
-              onChange={handleChange}
-            />
           </div>
 
           <div className="input-group">
@@ -370,198 +271,65 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="start-btn"
-            style={{
-              // maxWidth: "300px",
-              width: "100%",
-              padding: "12px",
-              background: "#1a0a54",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              cursor: "pointer",
-              // marginTop: "24px",
-            }}>
+          <div className="input-group">
+            <label>Parent's Mobile Number </label>
+            <input
+              type="text"
+              name="parentMobile"
+              placeholder="ex: 07X-XXX XXXX"
+              required
+              value={formData.parentMobile}
+              onChange={handleChange}
+            />
+          </div>
+
+          <button type="submit" className="start-btn submit-button">
             Register & Generate Student ID
           </button>
         </div>
       </form>
 
       {/* DISPLAY GENERATED ID & WHATSAPP BUTTON PANEL */}
-      {/* 🚀 [FIXED]: DISPLAY GENERATED ID & WHATSAPP BUTTON PANEL */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          background: "#fdfdfd",
-          border: "2px dashed #ff4b2b",
-          borderRadius: "16px",
-          padding: "30px",
-          gap: "15px",
-          marginTop: "20px",
-        }}>
+      <div className="share-panel">
         {generatedID ? (
-          <div style={{ textAlign: "center", width: "100%" }}>
-            <div
-              style={{
-                fontSize: "3.5rem",
-                color: "#2ecc71",
-                marginBottom: "10px",
-              }}>
+          <div className="share-panel-header">
+            <div className="panel-top">
               <FaUserCheck />
             </div>
 
-            <h4 style={{ margin: "0 0 5px", color: "#1a0a54" }}>
-              Generated Student ID
-            </h4>
+            <h4>Generated Student ID</h4>
 
-            <div
-              style={{
-                background: "#f4f7ff",
-                padding: "15px",
-                borderRadius: "10px",
-                fontSize: "1.05rem",
-                fontWeight: "bold",
-                color: "#1a0a54",
-                letterSpacing: "0.5px",
-                margin: "15px 0",
-                border: "1px solid #c7d2fe",
-                wordBreak: "break-all",
-              }}>
-              {generatedID}
-            </div>
+            <div className="id-content">{generatedID}</div>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                gap: "10px",
-                width: "100%",
-                alignItems: "center",
-                marginTop: "6px",
-              }}>
-              {/* බටන් 1: WhatsApp එකෙන් ළමයට විස්තර යැවීම */}
+            <div className="share-content">
               <button
+                className="share-buton"
                 type="button"
-                onClick={sendWelcomeWhatsApp}
-                style={{
-                  width: "80%",
-                  background: "#25D366",
-                  color: "white",
-                  border: "none",
-                  padding: "12px 20px",
-                  borderRadius: "8px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                  boxShadow: "0 4px 12px rgba(37,211,102,0.2)",
-                }}>
+                onClick={sendWelcomeWhatsApp}>
                 <FaWhatsapp /> Share Credentials via WhatsApp
               </button>
 
-              {/* බටන් 2: Clipboard එකට කොපි කිරීම */}
               <button
                 type="button"
                 onClick={copyToClipboard}
-                style={{
-                  width: "80%",
-                  background: copied ? "#2ecc71" : "#1a0a54",
-                  color: "white",
-                  border: "none",
-                  padding: "12px 20px",
-                  borderRadius: "8px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                }}>
+                className="copy-button">
                 <FaCopy /> {copied ? "Copied!" : "Copy to Clipboard"}
               </button>
             </div>
           </div>
         ) : (
-          <div style={{ textAlign: "center", color: "#aaa" }}>
-            <p style={{ margin: 0, fontWeight: "bold", fontSize: "0.9rem" }}>
+          <div className="empty-content">
+            <p>
               Fill in the details and press the Register & Generate Student ID
               button.
             </p>
-            <small style={{ display: "block", marginTop: "4px" }}>
+            <small>
               Once the ID is created, the WhatsApp Share button will appear
               here.
             </small>
           </div>
         )}
       </div>
-
-      {/* ID එක සාර්ථකව හැදුනට පස්සේ පේන කොටස */}
-      {/* {generatedID && (
-        <div
-          style={{
-            marginTop: "30px",
-            padding: "20px",
-            background: "#f4f7ff",
-            borderRadius: "12px",
-            border: "1px dashed #4b6bfb",
-            textAlign: "center",
-          }}>
-          <span
-            style={{
-              fontSize: "0.8rem",
-              color: "#555",
-              fontWeight: "bold",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "6px",
-            }}>
-            <FaIdCard /> GENERATED STUDENT ID FOR BATCH:
-          </span>
-          <div
-            style={{
-              fontSize: "1.4rem",
-              fontWeight: "800",
-              color: "#1a0a54",
-              margin: "10px 0",
-              letterSpacing: "0.5px",
-            }}>
-            {generatedID}
-          </div>
-          <button
-            onClick={copyToClipboard}
-            style={{
-              padding: "8px 24px",
-              background: "#eef2ff",
-              border: "1px solid #4b6bfb",
-              borderRadius: "6px",
-              cursor: "pointer",
-              fontWeight: "600",
-              color: "#4b6bfb",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-            }}>
-            {copied ? (
-              <>
-                <FaCheck /> ID Copied!
-              </>
-            ) : (
-              <>
-                <FaCopy /> Copy ID
-              </>
-            )}
-          </button>
-        </div>
-      )} */}
     </div>
   );
 };
