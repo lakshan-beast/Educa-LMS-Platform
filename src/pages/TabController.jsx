@@ -26,12 +26,12 @@ const TabController = () => {
           <button
             onClick={() => setActiveTab("SCHEDULE")}
             className={`tab-btn ${activeTab === "SCHEDULE" ? "active" : ""}`}>
-            📅 Class Schedule
+            Class Schedule
           </button>
           <button
             onClick={() => setActiveTab("NOTICE")}
             className={`tab-btn ${activeTab === "NOTICE" ? "active" : ""}`}>
-            📢 Class Notices
+            Class Notices
           </button>
         </div>
 
