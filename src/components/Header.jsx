@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import { useNavigate, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 
@@ -21,33 +20,30 @@ import { TiThMenuOutline } from "react-icons/ti";
 <TiThMenuOutline />;
 
 import { FaBell } from "react-icons/fa6";
-import EventDrawer from "./EventDrawer"; // 👈 1. අලුත් කම්පෝනන්ට් එක උඩින් ඉම්පෝට් කරන්න මචං [INDEX 4]
+import EventDrawer from "./EventDrawer";
 
 const Header = () => {
-  // const location = useLocation();
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const [activeSection, setActiveSection] = useState("home");
 
-  // const [activeSection, setActiveSection] = useState("home");
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // 👈 2. මෙනු එක ඕපන් කරන ස්ටේට් එක [INDEX 4]
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
-    // 🚀 සයිට් එකේ තියෙන හැම ප්‍රධාන කොටසකම ID ලිස්ට් එක මෙන්න මචං! [INDEX 4]
     const sectionIds = ["home", "resources", "classes", "teachers", "contacts"];
 
     const observerOptions = {
       root: null,
-      rootMargin: "-30% 0px -60% 0px", // ස්ක්‍රීන් එකේ මැද හරියට කොටසක් එද්දීම අල්ලා ගනී [INDEX 4]
+      rootMargin: "-30% 0px -60% 0px",
       threshold: 0,
     };
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id); // 🎯 දැනට ඇස් ඉස්සරහා තියෙන කොටසේ ID එක active කරයි! [INDEX 4]
+          setActiveSection(entry.target.id);
         }
       });
     };
@@ -141,7 +137,7 @@ const Header = () => {
               {isLoggedIn ? (
                 <FaUserCircle style={{ color: "#000d1f" }} />
               ) : (
-                <FaRegUserCircle />
+                <FaRegUserCircle style={{ color: "#001b42" }} />
               )}
             </button>
           </div>
