@@ -12,14 +12,6 @@ import { FaChalkboardTeacher, FaSmileBeam } from "react-icons/fa";
 const Information = () => {
   return (
     <section className="parts" id="information">
-      {/* <h2>
-        Why <span>Choose Us?</span>
-      </h2>
-      <p>
-        Empowering the next generation of Sri Lankan Students with simplified
-        learning & proven results.
-      </p> */}
-
       <h2>
         Why Study With <span>Our Faculty?</span>
       </h2>
