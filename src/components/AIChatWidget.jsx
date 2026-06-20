@@ -2,30 +2,27 @@ import { useState, useEffect, useRef } from "react";
 import {
   FaPaperPlane,
   FaXmark,
-  // FaMinus,
   FaCircle,
   FaLightbulb,
   FaGraduationCap,
   FaCompass,
-} from "react-icons/fa6"; // 👑 🆕 අපේ ස්මාර්ට් Bot Icons ටික ගත්තා [INDEX 55]
+} from "react-icons/fa6";
 
 import { RiRobot3Fill } from "react-icons/ri";
 import { TiHeartFullOutline } from "react-icons/ti";
 
 // educa. Neti = Next-Generation Education Technology
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const AIChatWidget = () => {
   // 1. Core UI States
-  const [isOpen, setIsOpen] = useState(false); // චැට් බොක්ස් එක ඇරලාද හැංගිලාද (Toggle)
+  const [isOpen, setIsOpen] = useState(false);
   const [inputText, setInputText] = useState("");
-  const [isTyping, setIsTyping] = useState(false); // Bot ටයිප් කරන Indicator එක පාලනයට
-  const messagesEndRef = useRef(null); // අලුත් මැසේජ් එකක් ආපු ගමන් ඔටෝම පල්ලෙහාට ස්ක්‍රෝල් කිරීමට
-
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
   const [showHearts, setShowHearts] = useState(false);
 
-  // 2. 👑 🆕 [THE IN-MEMORY SESSION STATE]: උඹ ඉල්ලපු, ටැබ් එක වහද්දී මැකී යන සජීවී මතක ලැයිස්තුව!
+  // 2. 🆕 [THE IN-MEMORY SESSION STATE]:
   const [messages, setMessages] = useState([
     {
       role: "user",
@@ -37,17 +34,15 @@ const AIChatWidget = () => {
     },
   ]);
 
-  // 3. 👑 🔐 [THE MASTER SYSTEM PROMPT BLUEPRINT]:
-  // බොට් හැසිරෙන්න ඕනේ කොහොමද කියලා Google Gemini එකට දෙන රහස් උපදෙස් වැට [INDEX 4]
+  // 3. 👑 [THE MASTER SYSTEM PROMPT BLUEPRINT]:
   const SYSTEM_INSTRUCTION = `
-    You are 'educa. Neti', an expert personal tutor built by NexusLabs for Sri Lankan O/L students (Grades 10 and 11) [INDEX 4].
+    You are 'educa. Neti', an expert personal tutor built by NexusLabs for Sri Lankan O/L students (Grades 10 and 11).
     Your tone must be extremely helpful, friendly, and encouraging, like a smart peer or sister (frequently use friendly Sri Lankan terms like 'මචං' appropriately when writing in Sinhala) [INDEX 4].
     When a student asks a doubt, you MUST provide highly detailed breakdowns, step-by-step mathematical or scientific explanations, structured bullet points, and real-world examples [INDEX 4].
     Always respond in a natural mix of clear Sinhala and English (Singlish phrases are highly allowed) so local students can understand perfectly [INDEX 4].
     If they ask about class tutes or schedules, guide them to check the 'Study Materials' or 'Live Classroom' cards inside their Student Dashboard [INDEX 4].
   `;
 
-  // අලුත් මැසේජ් එකක් ආ සැනින් චැට් එක ලස්සනට පල්ලෙහාට ස්ක්‍රෝල් කරවයි
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -56,43 +51,30 @@ const AIChatWidget = () => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // 🧠 🤖 [THE GEMINI API CORE ENGINE]: ගූගල් සර්වර් එකත් එක්ක සන්නිවේදනය කර මතකය රකින ප්‍රධාන ලොජික් එක
+  //🤖 [THE GEMINI API CORE ENGINE]:
   const sendMessageToGemini = async (userMessage) => {
-    if (!userMessage.trim()) return; // Don't send empty messages
+    if (!userMessage.trim()) return;
     setIsTyping(true);
 
     try {
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-      // const apiKey = "AQ.Ab8RN6IYDIPYsioLS8VVqAn0jFID4FoS-c5nKAu7-NMxYBWZZQ";
 
-      // 2️⃣ 🤖 [THE SDK INITIALIZATION]: උඩින් import කරපු GoogleGenerativeAI එක පණ ගන්වයි! [INDEX 4]
+      //🤖 [THE SDK INITIALIZATION]
       const genAI = new GoogleGenerativeAI(apiKey);
 
-      // const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
       if (!apiKey) {
         console.error("API Key is missing!");
         return;
       }
-      // const genAI = new GoogleGenAI(); // Missing the API key argument
-      // const model = genAI.getGenerativeModel({
-      //   model: "gemini-1.5-pro",
-      //   systemInstruction: SYSTEM_INSTRUCTION, // අපේ සිංහල උපදෙස් වැට මෙතැනට ලොක් කළා මචං [INDEX 4]
-      // });
 
       const model = genAI.getGenerativeModel({
-        model: "gemini-3.5-flash", // Faster and more reliable for web widgets
+        model: "gemini-3.5-flash",
         systemInstruction: SYSTEM_INSTRUCTION,
       });
 
-      // 3️⃣ පරණ හිස්ට්‍රියම (Context Memory) ගූගල් SDK එකට ගැළපෙන පිරිසිදු ව්‍යුහයට හරවා ගනී [INDEX 4]
-      // const chatHistoryForSDK = messages.map((msg) => ({
-      //   role: msg.role === "user" ? "user" : "model",
-      //   parts: [{ text: msg.text }],
-      // }));
-
       // Change this part in your code:
       const chatHistoryForSDK = messages
-        .filter((msg) => msg.text && msg.text.trim() !== "") // Ensure no empty messages
+        .filter((msg) => msg.text && msg.text.trim() !== "")
         .map((msg) => ({
           role: msg.role === "user" ? "user" : "model",
           parts: [{ text: msg.text }],
@@ -106,19 +88,17 @@ const AIChatWidget = () => {
         chatHistoryForSDK.shift();
       }
 
-      // 4️⃣ 🚀 [THE START CHAT ENGINE]: ගූගල් නිල සන්නිවේදන පාලම ලයිව් ස්ටාර්ට් කරයි! [INDEX 4]
+      //🚀 [THE START CHAT ENGINE]:
       const chat = model.startChat({
         history: chatHistoryForSDK,
       });
 
-      // ගූගල් නිල සර්වර් එකට මැසේජ් එක ලයිව් යවා විස්තරාත්මක පිළිතුර ලබා ගනී [INDEX 4]
       const result = await chat.sendMessage(userMessage);
       const response = await result.response;
       const botReply =
         response.text() ||
         "Dude, there was a small server error. Please type the question again.";
 
-      // AI පිළිතුර සජීවීව මතක ලිස්තුවට එකතු කරයි (Append) [INDEX 4]
       setMessages((prev) => [...prev, { role: "model", text: botReply }]);
     } catch (error) {
       console.error("Gemini SDK Core Error:", error);
@@ -138,19 +118,15 @@ const AIChatWidget = () => {
     if (inputText.trim() === "") return;
 
     const userText = inputText.trim();
-    setInputText(""); // Input Field එක ක්ලියර් කරයි
-
-    // ළමයා ගැසූ මැසේජ් එක ක්ෂණිකව චැට් එකට දමයි [INDEX 4]
+    setInputText("");
     setMessages((prev) => [...prev, { role: "user", text: userText }]);
 
-    // ============================================================
-    // 🚀 🔐 [THE MASTER NETHMI BYPASS TRIGGER]: උඹ රහස් වචනය ගැසූ සැනින් හාට්ස් පත්තු කරයි!
+    // 🚀 [THE MASTER NETHMI BYPASS TRIGGER]
     if (userText.toLowerCase() === "nethmi-chubby") {
-      setShowHearts(true); // 🔴 හාට්ස් ඇනිමේෂන් එක පත්තු කරයි
+      setShowHearts(true);
       setInputText("");
 
       setTimeout(() => {
-        // තත්පර 2ක් ඇතුළත බොට් විසින් උඹට විතරක් තේරෙන රහස් පණිවිඩය ලියයි මචං [INDEX 4]
         setMessages((prev) => [
           ...prev,
           {
@@ -161,18 +137,15 @@ const AIChatWidget = () => {
         setIsTyping(false);
       }, 1000);
 
-      // තත්පර 3කින් හාට්ස් වැස්ස ඔටෝම නිවා දමයි
       setTimeout(() => setShowHearts(false), 8000);
-      return; // 🚀 Gemini API එකට මැසේජ් එක යැවීම වළක්0වයි (Bypass)
+      return;
     }
 
-    // ගූගල් සර්වර් එකට ලයිව් යවයි [INDEX 4]
     await sendMessageToGemini(userText);
   };
 
   return (
     <>
-      {/* ==================== 📱 👑 🆕 1. THE FLOATING GLOWING BOT BUTTON ==================== */}
       {!isOpen && (
         <div onClick={() => setIsOpen(true)} className="ai-floating-bubble">
           <RiRobot3Fill />
@@ -411,7 +384,11 @@ const AIChatWidget = () => {
           0%, 100% { transform: translateY(0); opacity: 0.4; }
           50% { transform: translateY(-6px) opacity: 1; }
         }
-@keyframes heartFloatUp { 0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; } 15% { opacity: 0.9; } 85% { opacity: 0.9; } 100% { transform: translateY(-420px) scale(1.3) rotate(30deg); opacity: 0; } }
+        @keyframes heartFloatUp { 
+          0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; } 
+          15% { opacity: 0.9; } 85% { opacity: 0.9; } 
+          100% { transform: translateY(-420px) scale(1.3) rotate(30deg); opacity: 0; } 
+        }
       `}</style>
     </>
   );
