@@ -602,33 +602,6 @@ const AdminMailbox = () => {
       ? "94" + cleanPhone.substring(1)
       : cleanPhone;
 
-    //createdAt
-    // "2026-06-15T07:30:08.947Z"
-    // (string)
-
-    // fullfullName
-    // "Lakshan Sandeepa"
-    // (string)
-
-    // id
-    // "MSG-608947"
-    // (string)
-
-    // messageText
-    // "Test"
-    // (string)
-
-    // phone
-    // "+94 787030317"
-    // (string)
-
-    // status
-    // "unread"
-    // (string)
-
-    // subject
-    // "Science"
-
     const replyMessage = `educa. Academic Support (${currentFacultyRole.toUpperCase()}) 🏛️\n\nDear Parent/Student (${fullName}),\nRegarding your inquiry: "${massageText}"\n\n[Type your reply here]`;
     const whatsappUrl = `https://wa.me${formattedPhone}?text=${encodeURIComponent(replyMessage)}`;
 
