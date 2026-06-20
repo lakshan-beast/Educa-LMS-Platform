@@ -4,45 +4,6 @@ import tutor from "../assets/teacher.webp";
 
 const Teachers = () => {
   const teacherData = [
-    // {
-    //   name: "Sir 01",
-    //   subject: "Mathematics Teacher",
-    //   img: tutor,
-    //   background: "B.Sc. (Physical Science) / Trained Mathematics Educator.",
-    //   expertise:
-    //     "15+ Years of experience in producing 'A' passes for O/L Mathematics.",
-    //   approach:
-    //     "Step-by-step simplification of complex theories with logic-based shortcuts.",
-    //   philosophy:
-    //     "Mastering the fundamentals to turn math-phobia into math-mastery through daily practice.",
-    //   phone: "+9471XXXXXXX",
-    // },
-    // {
-    //   name: "Sir 02",
-    //   subject: "Science Teacher",
-    //   img: tutor,
-    //   background: "B.Sc. in Biological Science",
-    //   expertise: "10+ Years of proven success in O/L Science.",
-    //   approach:
-    //     "Visualization of theories with real-world practical applications.",
-    //   philosophy:
-    //     "Specializes in simplifying Physics & Chemistry through interactive memory techniques.",
-    //   phone: "+94787030317",
-    // },
-    // {
-    //   name: "Sir 03",
-    //   subject: "English Teacher",
-    //   img: tutor,
-    //   background: "B.A. in English Language & Literature / Trained Educator.",
-    //   expertise:
-    //     "Expert in O/L English Syllabus & Spoken Fluency for 10+ Years.",
-    //   approach:
-    //     "Interactive language immersion focused on exam writing & fluency.",
-    //   philosophy:
-    //     "Helps students master O/L English paper structure and creative essay writing.",
-    //   phone: "+94787030317",
-    // },
-
     {
       name: "Mathematics Faculty Lead",
       subject: "Mathematics Specialist",
