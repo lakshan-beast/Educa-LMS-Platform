@@ -75,7 +75,7 @@
   }
 
   img {
-    width: 100%;
+    width: $container-width-default;
     height: 250px;
     object-fit: cover;
     border-radius: $border-radius-small;
