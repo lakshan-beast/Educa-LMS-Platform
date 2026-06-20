@@ -28,7 +28,7 @@ const NotificationCenter = ({ notifications, onClose }) => {
             </div>
           ))
         ) : (
-          <p className="empty-msg">No new notifications!</p>
+          <p className="empty-msg">No new notifications !</p>
         )}
       </div>
     </div>
