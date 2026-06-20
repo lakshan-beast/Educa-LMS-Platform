@@ -33,50 +33,6 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [activeModal, setActiveModal] = useState(null);
 
-  // ID Generator Popup එක පාලනය කරන State
-  // const [showGenModal, setShowGenModal] = useState(false);
-  // // const [showPrivacyCard, setShowPrivacyCard] = useState(false);
-  // // const [showTermsCard, setShowTermsCard] = useState(false);
-
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   pin: "",
-  //   password: "",
-  //   maths: false,
-  //   english: false,
-  //   science: false,
-  // });
-
-  // const [generatedID, setGeneratedID] = useState("");
-  // const [copied, setCopied] = useState(false);
-
-  // const handleChange = (e) => {
-  //   const { name, value, type, checked } = e.target;
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [name]: type === "checkbox" ? checked : value,
-  //   }));
-  // };
-
-  // ID එක හදන රටාව (Grade 11 විතරක් නිසා කෙලින්ම 11 දැම්මා)
-  // const handleGenerate = (e) => {
-  //   e.preventDefault();
-  //   let subCode = "";
-  //   if (formData.maths) subCode += "m";
-  //   if (formData.english) subCode += "e";
-  //   if (formData.science) subCode += "s";
-
-  //   if (!subCode) {
-  //     alert("Please select at least one subject!");
-  //     return;
-  //   }
-
-  //   const cleanName = formData.name.replace(/\s+/g, "").toUpperCase();
-  //   const finalID = `EDU-${subCode.toUpperCase()}-11-${cleanName}-${formData.pin}`;
-  //   setGeneratedID(finalID);
-  //   setCopied(false);
-  // };
-
   return (
     <footer className="footer" data-aos="fade-up">
       <div className="footer-contents">
@@ -323,7 +279,6 @@ const Footer = () => {
             Designed & Engineered <FaHeart /> by
             <a
               className="author-link"
-              // href="http://github.com/lakshan-beast"
               href="https://lakshan-sandeepa-dev.vercel.app/"
               target="_blank"
               rel="noopener noreferrer">
