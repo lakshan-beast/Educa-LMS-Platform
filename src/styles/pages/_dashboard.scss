@@ -1,10 +1,9 @@
 // --- Grade 11 Student Dashboard Styles ---
 .dashboard-wrapper {
-  // background-color: #f8faff;
   min-height: 95vh;
-  padding: 40px 20px;
-  margin-top: 5rem;
-  max-width: $container-width-large;
+  padding: 6.5rem 20px 1.5rem 20px;
+  // margin-top: 5rem;
+  max-width: $container-width-large-m;
   min-width: $container-width-small;
   width: $container-width-default;
 
@@ -13,8 +12,8 @@
     background: $secondary-blue;
     color: $white;
     padding: 35px;
-    border-radius: 24px;
-    margin-bottom: 30px;
+    border-radius: $border-radius-small-m;
+    // margin-bottom: 30px;
     box-shadow: 0 12px 30px rgba(0, 7, 37, 0.205);
     position: relative;
     overflow: hidden;
@@ -23,7 +22,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      margin: 0;
+      margin: $margin-none;
     }
 
     &::after {
@@ -35,20 +34,19 @@
       height: 200px;
       background: rgba($white, 0.15);
       box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.8);
-      border-radius: 50%;
+      border-radius: $border-radius-circle;
     }
 
     h2 {
       font-size: 2.2rem;
-      font-weight: 800;
+      font-weight: $font-weight-800;
       margin-bottom: 15px;
       letter-spacing: -0.5px;
     }
     .student-id {
-      font-size: 0.95rem;
+      font-size: $font-size-body;
       opacity: 0.8;
       margin-top: 5px;
-      font-size: 0.95rem;
       border-bottom: 2px solid;
       padding-bottom: 6px;
       margin-bottom: 6px;
@@ -56,11 +54,11 @@
     .motivation-text {
       margin-top: 15px;
       font-style: italic;
-      font-size: 0.9rem;
-      background-color: #fffbf0;
+      font-size: $font-size-body;
+      background-color: $bg-light;
       color: $blue-soft;
       padding: 6px 12px;
-      border-radius: 6px;
+      border-radius: $border-radius-small-m;
     }
   }
 
@@ -98,15 +96,15 @@
   .countdown-card {
     background: rgba($white, 0.7);
     padding: 25px;
-    margin: 20px 0;
-    border-radius: 20px;
+    // margin: 20px 0;
+    border-radius: $border-radius-small-m;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     border: 1px solid #edf2f9;
     text-align: center;
     background: rgba($secondary-blue, 0.09);
 
     @include respond(desktop) {
-      margin: 0;
+      margin: $margin-none;
 
       display: flex;
       justify-content: space-around;
@@ -114,8 +112,8 @@
 
     h4 {
       color: $secondary-blue;
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-size: $font-size-h3-mm;
+      font-weight: $font-weight-700;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -134,32 +132,32 @@
       }
 
       div {
-        background: #f4f7ff;
-        padding: 12px;
-        border-radius: 14px;
+        background: $bg-light;
+        padding: $padding-small-m;
+        border-radius: $border-radius-medium;
         border: 1px solid #eef2ff;
 
         h3 {
-          font-size: 1.5rem;
-          font-weight: 800;
+          font-size: $font-size-h2-mm;
+          font-weight: $font-weight-800;
           color: $secondary-blue;
-          margin: 0;
+          margin: $margin-none;
         }
         .seconds {
-          color: #ff4b2b;
+          color: $red-color;
           font-size: 2.3rem;
           animation: popup 0.5s ease-in infinite;
         }
         small {
-          font-size: 0.75rem;
+          font-size: $font-size-body-mm;
           color: $text-medium;
-          font-weight: 600;
-          text-transform: uppercase;
+          font-weight: $font-weight-600;
+          text-transform: $text-transform-uppercase;
         }
       }
     }
     p {
-      font-size: 0.8rem;
+      font-size: 0.8rem$font-size-body-m;
       text-align: right;
     }
   }
@@ -167,11 +165,11 @@
   // 🔒 C. Subject Portals & Locking Design
   .subjects-section,
   .notice-area {
-    background: grey;
+    background: $secondary-blue3;
     background: rgba($white, 0.7);
-    padding: 25px;
+    padding: $padding-large;
     margin: 20px 0;
-    border-radius: 20px;
+    border-radius: $border-radius-small-m;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     border: 1px solid #edf2f9;
     text-align: center;
@@ -180,8 +178,8 @@
     h3 {
       color: $secondary-blue;
 
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-size: $font-size-h3-mm;
+      font-weight: $font-weight-700;
       margin-bottom: 20px;
       text-align: center;
     }
@@ -198,8 +196,8 @@
       }
       .subject-portal-card {
         background: $white;
-        padding: 24px 16px;
-        border-radius: 10px;
+        padding: $padding-large $padding-medium;
+        border-radius: $border-radius-small-m;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         border: 1px solid #edf2f9;
         transition: all 0.3s ease;
@@ -211,28 +209,28 @@
         border: none;
 
         h4 {
-          color: $dark-purple2;
+          color: $secondary-blue2;
           color: rgba($secondary-blue, 0.7);
 
-          font-size: 1.2rem;
-          font-weight: 700;
+          font-size: $font-size-h3-mm;
+          font-weight: $font-weight-700;
           display: inline;
         }
         p {
           margin: 5px 0 15px;
-          font-size: 0.85rem;
+          font-size: $font-size-body-m;
           color: $text-medium;
         }
 
         .not-allowed {
-          font-size: 0.8rem;
-          font-weight: bold;
-          color: #cc0000;
+          font-size: $font-size-body-m;
+          font-weight: $font-weight-bold;
+          color: $red-color;
         }
 
         .paper-btn {
           padding: 6px 10px;
-          font-size: 0.85rem;
+          font-size: $font-size-body-m;
           text-decoration: none;
           display: flex;
           align-items: center;
@@ -244,7 +242,7 @@
 
         // 🔒 විෂය ලොක් වී ඇති විට ලැබෙන පෙනුම
         &.locked {
-          background: #fdfdfe;
+          background: $bg-light;
           border-left-color: #e74c3c !important; // රතු පාට ඉරක්
           cursor: not-allowed;
           display: flex;
@@ -252,25 +250,24 @@
           flex-direction: column;
           align-items: center;
           background: #ff7e7e;
-          color: white;
-          padding: 4px 10px;
-          border-radius: 10px;
-          font-weight: bold;
-          padding: 24px 16px;
+          color: $white;
+          border-radius: $border-radius-small-m;
+          font-weight: $font-weight-bold;
+          padding: $padding-large $padding-medium;
           opacity: 0.5;
           text-align: center;
 
           h4 {
             font-size: 0.65rem;
-            margin: 0 16px;
-            color: white;
+            margin: $margin-none $margin-medium;
+            color: $white;
             border-left: 2px solid;
             padding-left: 6px;
             text-align: center;
           }
           .lock-icon {
-            font-size: 2rem;
-            color: red;
+            font-size: $font-size-h1-mm;
+            color: $red-color;
             display: block;
             align-items: center;
           }
@@ -286,8 +283,8 @@
 
   .premium-lock-card {
     background: linear-gradient(135deg, #fffdfd 0%, #001b42 100%);
-    padding: 30px;
-    border-radius: 24px;
+    padding: $padding-xlarge;
+    border-radius: $border-radius-small-m;
     border: 2px solid #001b42;
     text-align: center;
     box-shadow: 0 10px 25px rgba(241, 196, 15, 0.15);
@@ -299,14 +296,14 @@
     position: absolute;
     top: -20px;
     left: -20px;
-    background: #001b42;
-    color: #ffffff;
-    padding: 30px;
+    background: $secondary-blue;
+    color: $white;
+    padding: $padding-xlarge;
     transform: rotate(-45deg);
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: $border-radius-circle;
 
     .crown {
       font-size: 3rem;
@@ -317,68 +314,68 @@
     margin: 0 auto 20px;
     width: 70px;
     height: 70px;
-    background: #001b42;
-    color: white;
-    border-radius: 50%;
+    background: $secondary-blue;
+    color: $white;
+    border-radius: $border-radius-circle;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: $font-size-h3-m;
     box-shadow: 0 8px 15px rgba(255, 240, 239, 0.8);
   }
 
   h3 {
-    color: #03204b;
-    font-size: 1.6rem;
-    font-weight: 800;
+    color: $secondary-blue;
+    font-size: $font-size-h2-m;
+    font-weight: $font-weight-800;
     margin: 0 0 10px;
   }
   .premium-desc {
     color: $white;
     max-width: 500px;
     margin: 0 auto 25px;
-    font-size: 0.92rem;
+    font-size: $font-size-body;
     line-height: 1.6;
   }
 
   .offer-content {
-    background: white;
+    background: $white;
     display: inline-block;
     padding: 10px 30px;
-    border-radius: 15px;
+    border-radius: $border-radius-medium;
     border: 1px dashed #001b42;
     margin-bottom: 25px;
 
     .offer-text {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      color: #777;
-      font-weight: bold;
+      font-size: $font-size-body-m;
+      text-transform: $text-transform-uppercase;
+      color: $secondary-blue3;
+      font-weight: $font-weight-bold;
     }
 
     h2 {
       margin: 5px 0 0;
-      color: #001b42;
-      font-weight: 900;
-      font-size: 2rem;
+      color: $secondary-blue;
+      font-weight: $font-weight-900;
+      font-size: 2re$font-size-h1-mm;
     }
 
     .old-price {
-      font-size: 1rem;
-      color: #aaa;
+      font-size: $font-size-default;
+      color: $secondary-blue3;
       text-decoration: line-through;
-      font-weight: normal;
+      font-weight: $font-weight-500;
     }
   }
   .claim-btn {
-    background: #03204b;
-    color: white;
+    background: $secondary-blue;
+    color: $white;
     padding: 14px 30px;
-    border-radius: 12px;
+    border-radius: $border-radius-small-m;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     text-decoration: none;
     box-shadow: 0 8px 20px rgba(255, 238, 236, 0.3);
   }
