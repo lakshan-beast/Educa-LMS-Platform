@@ -78,7 +78,7 @@ const ClassesDetails = () => {
 
   // 🔄 1. Cloud එකෙන් සම්පූර්ණ පන්ති ලැයිස්තුවම Real-time Sync කිරීම
   useEffect(() => {
-    const schedulesRef = collection(db, "class_schedules");
+    const schedulesRef = collection(db, "schedules");
 
     // Cloud එකේ මොනවා හරි වෙනස් වුනොත් මේක auto-update වෙනවා
     const unsubscribe = onSnapshot(schedulesRef, (querySnapshot) => {
