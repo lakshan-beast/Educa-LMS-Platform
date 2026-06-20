@@ -1,7 +1,5 @@
 // main part div style
 main {
-  // margin-bottom: $margin-xlarge;
-
   @include flex-custom;
 }
 
@@ -9,8 +7,8 @@ main {
   .system-container {
     max-width: 1400px;
     min-width: 300px;
-    width: 100%;
-    margin: 0 auto;
+    width: $container-width-default;
+    margin: $margin-center;
     margin-top: 1.5rem;
 
     .back-btn {
@@ -18,9 +16,9 @@ main {
       align-items: center;
       gap: 8px;
       margin-bottom: 20px;
-      color: #7b808f;
+      color: $secondary-blue3;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: $font-weight-bold;
       text-align: center;
     }
   }
@@ -29,23 +27,23 @@ main {
 // parts
 .parts {
   margin: 3rem auto;
-  padding: 0rem 1rem;
-  width: 100%;
+  padding: $padding-none $padding-medium;
+  width: $container-width-default;
   max-width: 1140px;
   background: transparent;
   position: relative;
   flex-wrap: nowrap;
 
   @include respond(tablet) {
-    padding: 2rem;
-    margin: 0 2rem;
+    padding: $padding-xlarge;
+    margin: $margin-none $margin-xlarge;
   }
   @include respond(desktop) {
     padding: 3rem 0rem;
   }
 
   h2 {
-    margin: 1rem 0;
+    margin: $margin-large $margin-none;
     margin-bottom: 1rem;
     color: $secondary-blue;
     font-weight: $font-weight-bold;
@@ -62,21 +60,11 @@ main {
   p {
     color: $text-medium;
     line-height: 1.2;
-    padding: 0 1rem;
+    padding: $padding-none $padding-medium;
     text-align: center;
   }
 }
 
-// resources grid styles
-// .resources-grid,
-// .teachers-grid {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-// padding: 16px 0;
-//   gap: $grid-gap-small $grid-gap-large;
-// }
-
-// classes grid
 .resources-grid,
 .teachers-grid,
 .classes-grid {
@@ -86,50 +74,14 @@ main {
   padding: 4rem 0rem;
 }
 .classes-grid {
-  padding-bottom: 5rem;
+  padding-bottom: 1rem;
 }
 
 /* 👑 DUAL-TAB BUTTON LAYOUT SYSTEM */
-// .schedule-tab-control-row {
-// .tab-system-wrapper {
-
-//   display: flex;
-
-//   justify-content: center;
-//   gap: 1rem;
-//   margin-bottom: 40px;
-// }
-
-// .tab-control-buttons {
-//   button {
-//     background-color: #f1f5f9;
-//     color: #64748b;
-//     border: none;
-//     padding: 12px 28px;
-//     border-radius: 12px;
-//     font-weight: 700;
-//     font-size: 0.95rem;
-//     cursor: pointer;
-//     transition: all 0.3s ease;
-
-//     &:hover {
-//       background-color: #e2e8f0;
-//       color: #03204b;
-//     }
-//   }
-// }
-
-// /* 🎯 ඔබන බටන් එක අපේ #03204b තද නිල් පාටින් පත්තු වී හැඩවේ මචං! */
-// .tab-toggle-btn.active {
-//   background-color: #03204b !important;
-//   color: #ffffff !important;
-//   box-shadow: 0 10px 20px rgba(3, 32, 75, 0.15);
-// }
-
 .tab-system-wrapper {
-  width: 100%;
+  width: $container-width-default;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: $margin-center;
   padding: 20px;
   margin-top: 7rem;
 }
@@ -138,35 +90,34 @@ main {
   display: flex;
   justify-content: center;
   gap: 1.2rem;
-  // margin-bottom: 50px;
 }
 
 .tab-btn {
-  background-color: #f1f5f9;
-  color: #64748b;
+  background-color: $bg-light;
+  color: $secondary-blue3;
   border: none;
   padding: 14px 35px;
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 1rem;
+  border-radius: $border-radius-medium;
+  font-weight: $font-weight-700;
+  font-size: $font-size-default;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #e2e8f0;
+    background-color: $navbar-white;
     color: #03204b;
   }
 }
 
 /* 🎯 ළමයා බටන් එක ඔබපු සැනින් අපේ තද නිල් පාටින් පත්තු වී සෙවනැල්ලක් මතු වේ මචං! */
 .tab-btn.active {
-  background-color: #03204b !important;
-  color: #ffffff !important;
+  background-color: $secondary-blue !important;
+  color: $white !important;
   box-shadow: 0 10px 25px rgba(3, 32, 75, 0.18);
 }
 
 .tab-content-display {
-  width: 100%;
+  width: $container-width-default;
   animation: fadeInTab 0.4s ease;
 }
 
