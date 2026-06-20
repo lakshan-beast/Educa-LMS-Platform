@@ -1,24 +1,21 @@
 // all btns, button and buttons
 .start-btn,
 .browse-btn {
-  display: block;
-  text-align: center;
+  color: $white;
   background-size: 200% auto;
   box-shadow: 0px 0px 6px rgb(153, 153, 153);
+  text-align: center;
   border: none;
   outline: none;
   transition: all 0.5s ease;
-  color: $white;
+  display: block;
 }
 
+// start button style
 .start-btn {
   background-image: linear-gradient(
     to right,
-    // #fd473a 0%,
-    // #330fff 51%,
-    // #d7def7 100%
     #c4c4c4 0%,
-    // #000d1f 51%,
     #001b42 51%,
     #ffffff 100%
   );
@@ -28,16 +25,17 @@
     transform: scale(1.05);
     text-decoration: none;
     background-position: right center;
-    box-shadow: 0px 0px 8px rgb(203, 203, 241);
+    box-shadow: 0px 0px 8px $secondary-blue3;
   }
 }
 
+// browse button
 .browse-btn,
 .contact-btn {
-  margin: 0 auto;
+  margin: $margin-center;
   padding: 6px 10px;
   max-width: 200px;
-  width: 100%;
+  width: $container-width-default;
   color: $secondary-blue2;
   border: 1px solid $secondary-blue;
   border-radius: $border-radius-xlarge;
@@ -46,122 +44,122 @@
   &:hover {
     color: $white;
     background: rgba($secondary-blue2, 0.9);
-    border: none;
     text-decoration: none;
+    border: none;
   }
 }
 
+// contact button
 .contact-btn {
   margin: 6px auto;
 }
 
+// more button
 .more-btn {
   @include flex-custom(center, center, row);
+
   margin-top: 0;
   margin-bottom: 1rem;
 
   .fullclass-btn {
     min-width: 350px;
-    width: 100%;
+    width: $container-width-default;
   }
 }
 
+// class button ans full class button
 .class-btns,
 .fullclass-btn {
-  width: 100%;
+  width: $container-width-default;
   padding: 8px 12px;
-
-  border-radius: 12px;
-  font-weight: 500;
+  font-weight: $font-weight-500;
   text-decoration: none;
   letter-spacing: 0.5px;
+  border-radius: $border-radius-small;
   transition: 0.3s;
 
   @include center-everything;
   gap: 10px;
 }
 
+// class button
 .class-btns {
   color: $white;
-  // background: $secondary-blue;
   background: rgba($secondary-blue, 0.6);
 
   &:hover {
     color: $white;
     background: rgba($secondary-blue, 0.8);
     text-decoration: none;
-    gap: 20px;
     transform: translate(0);
+    gap: 20px;
   }
 }
 
+// full class button
 .fullclass-btn {
   max-width: 320px;
-  width: 100%;
+  width: $container-width-default;
   color: rgba($secondary-blue, 0.6);
   background-color: transparent;
   border: 2px solid;
 
   &:hover {
-    background-color: rgba($secondary-blue, 0.7);
     color: $white;
+    background-color: rgba($secondary-blue, 0.7);
+    text-decoration: none;
     border: 2px solid;
     transform: translate(0) scale(1.05);
-    text-decoration: none;
   }
 }
 
+// login button
 .login-btn {
-  background: #f4f7ff;
+  background: $secondary-blue3;
   border: 1px dashed #4b6bfb;
-  border-radius: 16px;
-  padding: 18px;
   margin-top: 20px;
   text-align: center;
-
-  width: 100%;
-  padding: 12px;
+  width: $container-width-default;
+  padding: $padding-medium;
   background: $secondary-blue;
-  color: white;
+  color: $white;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: $border-radius-small;
+  font-weight: $font-weight-bold;
   cursor: pointer;
 
   span {
-    font-size: 0.75rem;
+    font-size: $font-size-body-mm;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: $text-medium;
-    font-weight: 700;
+    font-weight: $font-weight-700;
   }
 
   div {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: $dark-purple2;
+    font-size: $font-size-h3-m;
+    font-weight: $font-weight-700;
+    color: $secondary-blue2;
     margin: 10px 0;
     letter-spacing: 0.5px;
   }
 }
 
-// signout
+// signout button and panel
 .signout-btn,
 .signout-panel {
-  // max-width: 150px;
-  width: 100%;
+  width: $container-width-default;
   margin: 0 0 0 auto;
   margin-top: 12px;
-  border-radius: 12px;
-  // border-color: #ff4b2b;
-  border-radius: 10px;
-  color: #fffdfd;
-  background-color: #ff0a0a;
-  box-shadow: none;
-  font-size: 1rem;
   padding: 6px 3px;
-  font-weight: 500;
+  color: $bg-light;
+  background-color: $red-color;
+  font-size: $font-size-default;
+  font-weight: $font-weight-500;
   text-transform: uppercase;
+  border-radius: $border-radius-small-m;
+  box-shadow: none;
+
   @include center-everything;
 
   .icon {
@@ -169,10 +167,12 @@
   }
 }
 
+// signout button
 .signout-btn {
   max-width: 150px;
 }
 
+// signout panel
 .signout-panel {
   max-width: 200px;
 }
