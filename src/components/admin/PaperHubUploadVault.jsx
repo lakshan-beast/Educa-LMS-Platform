@@ -20,8 +20,6 @@ import {
   FaCircleExclamation,
   FaFileCircleCheck,
 } from "react-icons/fa6";
-
-// import { CgSpinnerTwoAlt } from "react-icons/cg";
 import { ImSpinner } from "react-icons/im";
 import { GoRocket } from "react-icons/go";
 
@@ -205,136 +203,32 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
   };
 
   return (
-    <div
-      className="vault-container"
-      style={{ background: "white", padding: "30px", borderRadius: "20px" }}>
-      <div style={{ marginBottom: "25px" }}>
-        <h3
-          style={{
-            color: "#1a0a54",
-            margin: 0,
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}>
+    <div className="vault-container">
+      <div className="vault-header">
+        <h3>
           <FaFolderPlus /> Paper Hub Upload Vault ({subject?.toUpperCase()})
         </h3>
-        <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
+        <p>
           Upload the required Tutes, Past Papers and Formulas for Paper Hub
           according to grades (6-11) here.
         </p>
       </div>
 
-      {error && (
-        <div
-          style={{
-            background: "#fdedec",
-            borderLeft: "5px solid #e74c3c",
-            color: "#c0392b",
-            padding: "12px",
-            borderRadius: "8px",
-            marginBottom: "20px",
-            fontSize: "0.88rem",
-            fontWeight: "bold",
-          }}>
-          ⚠️ {error}
-        </div>
-      )}
-      {success && (
-        <div
-          style={{
-            background: "#e8f8f5",
-            borderLeft: "5px solid #2ecc71",
-            color: "#27ae60",
-            padding: "12px",
-            borderRadius: "8px",
-            marginBottom: "20px",
-            fontSize: "0.88rem",
-            fontWeight: "bold",
-          }}>
-          ✓ {success}
-        </div>
-      )}
+      {error && <div className="error-content">⚠️ {error}</div>}
+      {success && <div className="success-content">✓ {success}</div>}
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.5fr",
-          gap: "50px",
-        }}>
-        <div
-          style={{
-            background: "#f8faff",
-            padding: "20px",
-            borderRadius: "16px",
-            border: "1px solid #eef2ff",
-            height: "fit-content",
-          }}>
-          <h4
-            style={{
-              margin: "0 0 15px",
-              color: "#1a0a54",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}>
+      <div className="paper-upload">
+        <div className="upload-content">
+          <h2>
             <FaFolderPlus /> Upload New Material
-          </h4>
-          <form
-            onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-            {/* 👑 🆕 [6-11 GRADE SELECTOR]: ටියුට් අප්ලෝඩ් එකටත් 6-11 ඩ්‍රොප්ඩවුන් එක දැම්මා */}
-            {/* <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Select School Grade
-              </label>
-              <select
-                value={localGrade}
-                onChange={(e) => setLocalGrade(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                  fontWeight: "bold",
-                }}>
-                {["6", "7", "8", "9", "10", "11"].map((g) => (
-                  <option key={g} value={g}>
-                    Grade {g}
-                  </option>
-                ))}
-              </select>
-            </div> */}
-
+          </h2>
+          <form onSubmit={handleSubmit} className="styled-form">
             <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Material Category
-              </label>
+              <label>Material Category</label>
               <select
                 name="category"
                 value={formData.category}
-                onChange={handleInputChange}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                  fontWeight: "bold",
-                }}>
+                onChange={handleInputChange}>
                 <option value="classTutes"> Class Tutes</option>
                 <option value="pastPapers"> Past Papers</option>
                 <option value="formulas"> Formula Guides</option>
@@ -342,16 +236,7 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
             </div>
 
             <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Material Title
-              </label>
+              <label>Material Title</label>
               <input
                 type="text"
                 name="materialTitle"
@@ -359,26 +244,11 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
                 required
                 value={formData.materialTitle}
                 onChange={handleInputChange}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                }}
               />
             </div>
 
             <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Google Drive URL Link
-              </label>
+              <label>Google Drive URL Link</label>
               <input
                 type="url"
                 name="driveUrl"
@@ -386,32 +256,10 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
                 required
                 value={formData.driveUrl}
                 onChange={handleInputChange}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                  color: "#4b6bfb",
-                  fontWeight: "bold",
-                }}
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="start-btn"
-              style={{
-                width: "100%",
-                padding: "12px",
-                background: "#1a0a54",
-                color: "white",
-                border: "none",
-                borderRadius: "8px",
-                fontWeight: "bold",
-                cursor: "pointer",
-                marginTop: "5px",
-              }}>
+            <button type="submit" disabled={isSubmitting} className="start-btn">
               <GoRocket style={{ marginRight: "8px" }} />
               Upload Academic Material
             </button>
