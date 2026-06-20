@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { db } from "../../firebaseConfig";
 import {
   collection,
@@ -9,6 +10,7 @@ import {
   deleteDoc,
   where,
 } from "firebase/firestore";
+
 import {
   FaUsers,
   FaUserPen,
@@ -46,8 +48,6 @@ const AllStudents = () => {
   const facultyFieldLock = currentFacultySubject.toLowerCase();
 
   useEffect(() => {
-    // setIsLoading(true);
-
     const q = query(
       collection(db, "students"),
       where(facultyFieldLock, "==", true),
@@ -189,7 +189,7 @@ const AllStudents = () => {
 
       {isLoading ? (
         <div className="registry-loading">
-          🔄 Syncing Secure Student Cloud Ledger...
+          Syncing Secure Student Cloud Ledger...
         </div>
       ) : filteredStudents.length === 0 ? (
         <div className="registry-empty">
