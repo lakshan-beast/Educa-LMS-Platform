@@ -1,6 +1,6 @@
 .home {
-  max-width: $container-width-large;
-  min-width: $container-width-small;
+  max-width: $container-width-large-m;
+  min-width: $container-width-large;
   width: $container-width-default;
   height: auto;
   min-height: 100svh;
@@ -24,15 +24,14 @@
     h1 {
       margin-bottom: $margin-small;
       color: $secondary-blue;
-      font-weight: $font-weight-semi-bold;
+      font-weight: $font-weight-bold;
       text-shadow: 0px 0px 3px $secondary-blue;
       transition: $transition-fast;
 
       span {
         display: block;
-        // color: $primary-orange;
         color: $secondary-blue3;
-        font-weight: bold;
+        font-weight: $font-weight-bold;
         text-shadow: none;
       }
     }
@@ -48,9 +47,7 @@
 
       display: flex;
       flex-direction: row;
-      // align-content: flex-start;
       align-items: center;
-      // flex-wrap: wrap;
 
       @include respond(tablet) {
         display: flex;
@@ -62,7 +59,7 @@
       a {
         width: $container-width-default;
         max-width: 200px;
-        padding: 10px 10px;
+        padding: $padding-small-m;
         margin-right: 6px;
         border-radius: $border-radius-xlarge;
         height: 50px;
@@ -79,15 +76,13 @@
 
     // hero image
     img {
-      margin: 2rem auto;
+      margin: $margin-xlarge auto;
       height: auto;
       max-width: 500px;
-      width: 100%;
+      width: $container-width-default;
       border-radius: 1rem;
       object-fit: cover;
       animation: updown 10s ease-in-out infinite;
-      // box-shadow: 0px 5px 12px rgb(196, 196, 196);
-      // background-color: rgb(243, 243, 243);
 
       @include center-everything;
     }
@@ -102,10 +97,10 @@
     p {
       color: $text-medium;
       line-height: 1.2;
-      text-transform: none;
+      text-transform: $text-transform-none;
 
       &::first-letter {
-        font-size: 1.5rem;
+        font-size: $font-size-h2-mm;
         color: rgba($secondary-blue, 0.6);
       }
 
@@ -139,10 +134,10 @@
 /* 👑 THE PREMIUM FACEBOOK-STYLE EVENT POSTS GRID */
 .public-events-section-wrapper {
   padding: 80px 20px;
-  background-color: #ffffff;
-  width: 100%;
+  background-color: $white;
+  width: $container-width-default;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: $margin-center;
 }
 
 .section-title-header {
@@ -150,8 +145,8 @@
   margin-bottom: 50px;
 
   h2 {
-    color: #03204b;
-    font-weight: 900;
+    color: $secondary-blue;
+    font-weight: $font-weight-900;
     font-size: 2.2rem;
     display: flex;
     justify-content: center;
@@ -161,16 +156,16 @@
 
     .title-icon {
       color: #ff5722;
-    } /* 🔔 ලස්සන තැඹිලි පාට */
+    }
     span {
       color: #ff5722;
     }
   }
   p {
-    color: #64748b;
-    font-size: 0.95rem;
-    margin: 0;
-    font-weight: 500;
+    color: $secondary-blue3;
+    font-size: $font-size-body;
+    margin: $margin-none;
+    font-weight: $font-weight-500;
   }
 }
 
@@ -181,9 +176,9 @@
 }
 
 .event-social-post-card {
-  background-color: #ffffff;
+  background-color: $white;
   border: 1px solid #eef2ff;
-  border-radius: 24px;
+  border-radius: $border-radius-xlarge;
   box-shadow: 0 12px 35px rgba(3, 32, 75, 0.03);
   overflow: hidden;
   display: flex;
@@ -197,37 +192,37 @@
 }
 
 .post-image-container {
-  width: 100%;
+  width: $container-width-default;
   height: 240px;
-  background-color: #f8fafc;
+  background-color: $secondary-blue3;
   overflow: hidden;
   position: relative;
 
   img {
-    width: 100%;
+    width: $container-width-default;
     height: 100%;
     object-fit: cover;
   }
 }
 
 .image-placeholder-box {
-  width: 100%;
+  width: $container-width-default;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #cbd5e1;
+  color: $secondary-blue3;
   gap: 12px;
   padding: 20px;
-  font-size: 2.5rem;
+  font-size: $font-size-h1;
   background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
 
   span {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #94a3b8;
-    text-transform: uppercase;
+    font-size: $font-size-body-mm;
+    font-weight: $font-weight-700;
+    color: $secondary-blue3;
+    text-transform: $text-transform-uppercase;
     letter-spacing: 0.5px;
   }
 }
@@ -241,11 +236,11 @@
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
-    font-size: 0.75rem;
-    font-weight: 800;
+    font-size: $font-size-body-mm;
+    font-weight: $font-weight-800;
 
     .post-date-tag {
-      color: #64748b;
+      color: $secondary-blue3;
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -254,24 +249,24 @@
       background-color: #eff6ff;
       color: #1e40af;
       padding: 3px 10px;
-      border-radius: 6px;
-      text-transform: uppercase;
+      border-radius: $border-radius-small-m;
+      text-transform: $text-transform-uppercase;
     }
   }
 
   h4 {
-    color: #03204b;
-    font-size: 1.25rem;
-    font-weight: 800;
+    color: $secondary-blue;
+    font-size: $font-size-h3-m;
+    font-weight: $font-weight-800;
     margin: 0 0 12px 0;
     line-height: 1.4;
   }
   p {
-    color: #475569;
-    font-size: 0.88rem;
+    color: $secondary-blue3;
+    font-size: $font-size-body-m;
     line-height: 1.6;
-    margin: 0;
-    font-weight: 500;
+    margin: $margin-none;
+    font-weight: $font-weight-500;
   }
 }
 
@@ -281,18 +276,16 @@
 }
 
 .post-share-btn-trigger {
-  width: 100%;
+  width: $container-width-default;
   background-color: #22c55e; /* 🟢 WhatsApp පිරිසිදු කොළ පාට */
-  color: #ffffff;
+  color: $white;
   border: none;
-  padding: 14px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 0.9rem;
+  padding: $padding-medium;
+  border-radius: $border-radius-small-m;
+  font-weight: $font-weight-700;
+  font-size: $font-size-body;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include center-everything;
   gap: 8px;
   box-shadow: 0 6px 15px rgba(34, 197, 94, 0.2);
   transition:
@@ -310,5 +303,5 @@
 .public-academic-tab-section {
   padding: 40px 20px 80px;
   background-color: #f8fafc;
-  width: 100%;
+  width: $container-width-default;
 }
