@@ -2,37 +2,37 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba($secondary-blue, 0.3); // පසුබිම අඳුරු කිරීම
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px); // ලස්සන Blur Effect එකක්
-  @include center-everything; // ඔයාගේ පොදු mixin එක
-  z-index: 99999;
   padding: 20px;
+  width: $container-width-default;
+  height: 100vh;
+  background: rgba($secondary-blue, 0.3);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  z-index: 99999;
   animation: fadeIn 0.6s ease-out;
+
+  @include center-everything;
 }
 
 .login-modal {
-  position: relative;
-  width: 100%;
   max-width: 420px;
+  width: $container-width-default;
   animation: scaleUp 0.3s ease;
+  position: relative;
 
   .close-modal {
     position: absolute;
     top: -20px;
     right: -30px;
-    font-size: 1.2rem;
+    padding: 9px;
+    height: 40px;
+    width: 40px;
     color: $secondary-blue;
-
+    font-size: $font-size-h3-m;
     background: none;
     background-color: rgba($secondary-blue, 0.1);
-    padding: 9px;
-    width: 40px;
-    height: 40px;
     border: none;
-    border-radius: 50%;
+    border-radius: $border-radius-circle;
     cursor: pointer;
     z-index: 10001;
 
@@ -48,12 +48,11 @@
 
 .login-card,
 .privacy-card {
-  width: 100%;
+  width: $container-width-default;
   max-width: 420px;
   padding: 35px 30px;
   animation: scaleUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  padding: 35px;
-  border-radius: 24px;
+  border-radius: $border-radius-xlarge;
   box-shadow: 0 12px 30px rgba($secondary-blue, 0.2);
   position: relative;
 
@@ -68,17 +67,16 @@
       height: 300px;
       background: rgba(rgb(218, 218, 218), 0.15);
       box-shadow: 0px -1px 50px rgba(192, 192, 192, 0.8);
-      border-radius: 50%;
+      border-radius: $border-radius-circle;
       overflow: hidden;
     }
   }
 
   h2,
   h3 {
-    color: $dark-purple;
     color: $secondary-blue;
-    font-size: 1.8rem;
-    font-weight: 800;
+    font-size: $font-size-h1-m;
+    font-weight: $font-weight-800;
     margin-bottom: 12px;
     letter-spacing: -0.2px;
     text-align: center;
@@ -86,7 +84,7 @@
 
   p {
     color: rgba($secondary-blue, 0.5);
-    font-size: 0.88rem;
+    font-size: $font-size-body-m;
     line-height: 1.5;
     margin-bottom: 35px;
   }
