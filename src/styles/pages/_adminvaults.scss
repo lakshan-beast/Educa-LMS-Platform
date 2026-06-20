@@ -1,0 +1,200 @@
+// .vault-container {
+//      background: "white",
+//         padding: "30px",
+//         borderRadius: "20px",
+//         boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
+
+//         .vault-header {
+// marginBottom: "25px"
+
+// h3 {
+//     color: $secondary-blue, margin: 0,  display: "flex",
+//             alignItems: "center",
+//             gap: "10px",
+// }
+// p {
+// color: "#666", fontSize: "0.85rem", margin: "5px 0 0"
+// }
+//         }
+
+//         .error-content {
+//              background: "#fdedec",
+//             borderLeft: "5px solid #e74c3c",
+//             color: "#c0392b",
+//             padding: "12px",
+//             borderRadius: "8px",
+//             marginBottom: "15px",
+//             fontSize: "0.85rem",
+//             fontWeight: "bold",
+//         }
+
+//         .success-content {
+//             background: "#e8f8f5",
+//             borderLeft: "5px solid #2ecc71",
+//             color: "#27ae60",
+//             padding: "12px",
+//             borderRadius: "8px",
+//             marginBottom: "15px",
+//             fontSize: "0.85rem",
+//             fontWeight: "bold",
+//         }
+
+//         // add student form
+//         .add-student-form {
+//             display: "grid",
+//           gridTemplateColumns: "1fr 1fr",
+//           gap: "12px 50px",
+
+//           .form-content {
+//             display: "flex", flexDirection: "column", gap: "0px"
+
+//             .subject-select {
+//                   display: "flex",
+//                 gap: "20px",
+//                 background: "#f8faff",
+//                 padding: "12px",
+//                 borderRadius: "8px",
+//                 border: "1px solid #eef2ff",
+//                 marginTop: "5px",
+//             }
+//           }
+//           .submit-button {
+//              // maxWidth: "300px",
+//               width: "100%",
+//               padding: "12px",
+//               background: "$secondary-blue",
+//               color: "white",
+//               border: "none",
+//               borderRadius: "8px",
+//               fontWeight: "bold",
+//               cursor: "pointer",
+//               // marginTop: "24px",
+//           }
+//         }
+
+//         // generate id and whatsapp panel
+//         .share-panel {
+//             display: "flex",
+//           flexDirection: "column",
+//           justifyContent: "center",
+//           alignItems: "center",
+//           background: "#fdfdfd",
+//           border: "2px dashed #ff4b2b",
+//           borderRadius: "16px",
+//           padding: "30px",
+//           gap: "15px",
+//           marginTop: "20px",
+
+//           .share-panel-header {
+//          textAlign: "center", width: "100%"
+
+// .panel-top {
+// fontSize: "3.5rem",
+//                 color: "#2ecc71",
+//                 marginBottom: "10px",
+// }
+//  h4 {
+//     margin: "0 0 5px", color: "$secondary-blue"
+//  }
+//           }
+
+//           .id-content {
+//             background: "#f4f7ff",
+//                 padding: "15px",
+//                 borderRadius: "10px",
+//                 fontSize: "1.05rem",
+//                 fontWeight: "bold",
+//                 color: "$secondary-blue",
+//                 letterSpacing: "0.5px",
+//                 margin: "15px 0",
+//                 border: "1px solid #c7d2fe",
+//                 wordBreak: "break-all",
+//           }
+
+//           .share-content {
+//              display: "flex",
+//                 flexDirection: "row",
+//                 gap: "10px",
+//                 width: "100%",
+//                 alignItems: "center",
+//                 marginTop: "6px",
+
+//                 .share-buton {
+//                      width: "80%",
+//                   background: "#25D366",
+//                   color: "white",
+//                   border: "none",
+//                   padding: "12px 20px",
+//                   borderRadius: "8px",
+//                   fontWeight: "bold",
+//                   cursor: "pointer",
+//                   display: "inline-flex",
+//                   alignItems: "center",
+//                   justifyContent: "center",
+//                   gap: "8px",
+//                   boxShadow: "0 4px 12px rgba(37,211,102,0.2)",
+//                 }
+
+//                 .copy-button {
+//                     width: "80%",
+//                   background: copied ? "#2ecc71" : "$secondary-blue",
+//                   color: "white",
+//                   border: "none",
+//                   padding: "12px 20px",
+//                   borderRadius: "8px",
+//                   fontWeight: "bold",
+//                   cursor: "pointer",
+//                   display: "inline-flex",
+//                   alignItems: "center",
+//                   justifyContent: "center",
+//                   gap: "8px",
+//                 }
+//           }
+
+//           .empty-content {
+// textAlign: "center", color: "#aaa"
+
+// p {
+// margin: 0, fontWeight: "bold", fontSize: "0.9rem"
+// }
+// small {
+//      display: "block", marginTop: "4px"
+// }
+//           }
+
+//         }
+
+//         // zoom link
+//         .zoom-condition {
+//            background: "#fff9e6",
+//                   borderLeft: "4px solid #f39c12",
+//                   padding: "10px",
+//                   borderRadius: "6px",
+//                   fontSize: "0.8rem",
+//                   color: "#7d5a00",
+//                   fontWeight: "600",
+//         }
+
+//         // schedule form
+//         .schedule-form, .paper-upload {
+//            display: "grid",
+//           gridTemplateColumns: "1fr 1.5fr",
+//           gap: "50px",
+
+// .schedule-content, .upload-content {
+//   background: "#f8faff",
+//             padding: "25px",
+//             borderRadius: "16px",
+//             border: "1px solid #eef2ff",
+//             height: "fit-content",
+
+//             h2 {
+//                 margin: "0 0 20px",
+//               color: "$secondary-blue",
+//               display: "flex",
+//               alignItems: "center",
+//               gap: "8px",
+//             }
+// }
+//         }
+// }
