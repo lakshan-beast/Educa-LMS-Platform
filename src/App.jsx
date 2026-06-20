@@ -1,28 +1,24 @@
 import { useEffect } from "react";
-import {
-  // BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 import ScrollToTop from "./sections/ScrollTop";
+import TabController from "./pages/TabController";
+
+import NotFound from "./pages/NotFound";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import NotFound from "./pages/NotFound";
-
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 import AdminDashboard from "./pages/AdminDashboard";
 
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import PaperHub from "./pages/PaperHub";
-import StudentVoices from "./components/StudentVoices";
 
+import StudentVoices from "./components/StudentVoices";
 import FullTimetable from "./pages/Timetables";
 import ClassesDetails from "./pages/ClassesDetails";
 import ParentPortal from "./pages/ParentPortal";
@@ -30,24 +26,12 @@ import ParentPortal from "./pages/ParentPortal";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 
-import TabController from "./pages/TabController";
-
-// import Loader from "../components/Loader"; // 👈 1. උඩින් පිරිසිදුව ඉම්පෝට් කරන්න මචං [INDEX 4]
-
-// 2. ⚡ පරණ දිග HTML කෝඩ් සේරම මකලා මෙන්න මේ එකම පේළිය විතරක් දමන්න බං!
-
 const App = () => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
   const location = useLocation();
-
-  //     const [isLoading, setIsLoading] = useState(true);
-
-  //   if (isLoading) {
-  //   return <Loader />;
-  // }
 
   return (
     <>
