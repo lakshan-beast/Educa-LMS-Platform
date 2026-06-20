@@ -5,24 +5,12 @@ import {
   FaArrowLeft,
   FaLock,
   FaRightFromBracket,
-  // FaSquare,
-  // FaBrain,
-  // FaAtom,
-  // FaDiamond,
-  // FaAward,
-  // FaRulerCombined,
-  // FaMedal,
-  // FaGlasses,
-  // FaFlask,
-  // FaCompass,
 } from "react-icons/fa6";
 import { FaCrown } from "react-icons/fa6";
-// import { FaDiamond } from "react-icons/fa";
 
 import ScoreAnalytics from "../components/ScorenAnalytics";
 import { premiumStudentsList } from "../data/approvedStudents";
 
-// import LiveNoticeDisplay from "../components/LiveNotice";
 import AIChatWidget from "../components/AIChatWidget";
 import LiveClass from "./LiveClass";
 
@@ -35,7 +23,7 @@ const Dashboard = () => {
     studentId.trim().toUpperCase(),
   );
 
-  // 2. Countdown State (2026 O/L Exam - Target Date: Dec 1, 2026)
+  // 2. Countdown State (2026 O/L Exam - Target Date: Dec 8, 2026)
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -229,7 +217,6 @@ const Dashboard = () => {
             <div
               className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
               style={{
-                // borderLeft: "10px solid #2e78cc",
                 opacity: hasAccess("M") ? 1 : 0.6,
               }}>
               {!hasAccess("M") && (
@@ -239,15 +226,6 @@ const Dashboard = () => {
               )}
 
               <h4>Mathematics Class</h4>
-              {/* {hasAccess("M") ? (
-                <Link to="/paper-hub/maths" className="browse-btn paper-btn">
-                  <FaBookOpen /> Study Vault
-                </Link>
-              ) : (
-                <p className="not-allowed ">
-                  Not enrolled in this subject. Contact card marker.
-                </p>
-              )} */}
             </div>
 
             {/* 2. SCIENCE PORTAL */}
@@ -299,7 +277,6 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        {/* </div> */}
 
         <div>
           <LiveClass />
@@ -438,12 +415,9 @@ if (isLoading) {
 
         <div className="premium-tracker-zone">
           {isPremiumUser ? (
-            // 🔓 A. ළමයා Premium නම්: කෙලින්ම Graph පද්ධතිය වැඩ කරනවා
             <ScoreAnalytics />
           ) : (
-            // 🔒 B. ළමයා සාමාන්‍ය කෙනෙක් නම්: පේන ලස්සන Paid Lock Wall එක
             <div className="premium-lock-card">
-              {/* රන් පාට ඔටුන්න සහ ලොක් එක */}
               <div className="premium-crown-logo">
                 <FaCrown className="crown" />
               </div>
@@ -476,8 +450,6 @@ if (isLoading) {
             </div>
           )}
         </div>
-
-        {/* ================================================================ */}
 
         <AIChatWidget />
       </div>
