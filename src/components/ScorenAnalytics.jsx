@@ -14,7 +14,6 @@ import {
   FaCirclePlus,
   FaChartLine,
   FaTriangleExclamation,
-  //   FaFileGraduation,
 } from "react-icons/fa6";
 
 // Chart.js අවශ්‍ය කොටස් පද්ධතියට හඳුන්වා දීම
