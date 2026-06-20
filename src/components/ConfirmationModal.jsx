@@ -15,99 +15,25 @@ const ConfirmationModal = ({
   if (!isOpen) return null;
 
   return (
-    <div
-      className="modal-overlay"
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        background: "rgba(26, 10, 84, 0.4)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 9999,
-        backdropFilter: "blur(4px)",
-      }}>
-      <div
-        className="modal-card"
-        style={{
-          background: "white",
-          padding: "30px",
-          borderRadius: "20px",
-          maxWidth: "420px",
-          width: "90%",
-          textAlign: "center",
-          boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-          animation: "scaleUp 0.3s ease",
-        }}>
-        {/* Type Icon Dynamic Styling */}
+    <div className="modal-overlay">
+      <div className="modal-card">
         <div
+          className="modal-header"
           style={{
-            fontSize: "3rem",
             color: type === "danger" ? "#e74c3c" : "#f39c12",
-            marginBottom: "15px",
           }}>
           <FaCircleExclamation />
-
-          {/* <picture>
-  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5d1_fe0f/512.webp" type="image/webp">
-  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5d1_fe0f/512.gif" alt="🗑" width="32" height="32">
-</picture> */}
         </div>
-        <img
-          src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5d1_fe0f/512.gif"
-          alt="live-emoji"
-          style={{
-            width: "60px",
-            height: "60px",
-            zIndex: "9999",
-            position: "absolute",
-            top: "28%",
-            right: "39%",
-            objectFit: "contain",
-          }}
-        />
-        <h3 style={{ margin: "0 0 10px", color: "#1a0a54", fontWeight: "800" }}>
-          {title}
-        </h3>
-        <p
-          style={{
-            margin: "0 0 25px",
-            color: "#666",
-            fontSize: "0.9rem",
-            lineHeight: "1.5",
-          }}>
-          {message}
-        </p>
+
+        <h3>{title}</h3>
+        <p>{message}</p>
 
         {/* Action Buttons */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "15px" }}>
-          <button
-            onClick={onCancel}
-            style={{
-              background: "#f4f6f9",
-              color: "#555",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}>
+        <div className="actions-buttons">
+          <button onClick={onCancel} className="cancel-button">
             <FaCircleXmark /> No, Cancel
           </button>
-          <button
-            onClick={onConfirm}
-            style={{
-              background: type === "danger" ? "#e74c3c" : "#1a0a54",
-              color: "white",
-              border: "none",
-              padding: "10px 22px",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}>
+          <button onClick={onConfirm} className="confirm-button">
             <FaCircleCheck /> Yes, Confirm
           </button>
         </div>
