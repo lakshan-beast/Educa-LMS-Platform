@@ -13,6 +13,7 @@ import PaperHubUploadVault from "../components/admin/PaperHubUploadVault";
 import MailBox from "../components/MailBox";
 
 import PasswordField from "../components/PasswordField";
+// import Loader from "../components/Loader";
 
 import {
   FaUserPlus,
@@ -34,6 +35,7 @@ import { FaMailBulk } from "react-icons/fa";
 const AdminDashboard = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
+  // const [isLoading, setIsLoading] = useState(true);
 
   const adminCredentials = {
     maths: { username: "MATHS-ADMIN", password: "Maths@Securepass" },
@@ -92,9 +94,11 @@ const AdminDashboard = () => {
         setLoginError("");
       } else {
         setLoginError("Invalid Admin Username or Password!");
+        // setIsLoading(false);
       }
     } else {
       setLoginError("Invalid Subject Dashboard Route!");
+      // setIsLoading(false);
     }
   };
 
@@ -104,6 +108,10 @@ const AdminDashboard = () => {
     setPassword("");
     navigate("/");
   };
+
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
 
   return (
     <>
@@ -126,11 +134,6 @@ const AdminDashboard = () => {
                   required
                   value={inputUsername}
                   onChange={(e) => setInputUsername(e.target.value)}
-                  // style={{
-                  //   padding: "12px",
-                  //   borderRadius: "10px",
-                  //   border: "1px solid #ddd",
-                  // }}
                 />
               </div>
 
@@ -146,7 +149,6 @@ const AdminDashboard = () => {
                   className="legel-checkbox"
                   type="checkbox"
                   id="adminLegalAgree"
-                  // checked="checked"
                   checked={isAgreed}
                   onChange={(e) => setIsAgreed(e.target.checked)}
                   style={{
@@ -157,18 +159,17 @@ const AdminDashboard = () => {
                   I am here as a legal obligor for data handling.
                   <Link className="legel-link" to="/terms" target="_blank">
                     Terms of Service
-                  </Link>{" "}
+                  </Link>
                   &
                   <Link className="legel-link" to="/privacy" target="_blank">
                     Privacy Policy
-                  </Link>{" "}
+                  </Link>
                   I have read and agree to the terms and conditions.
                 </label>
               </div>
 
               {loginError && <p className="error-message">{loginError}</p>}
 
-              {/* 👑 Checkbox එක ටික් කරනකන් බටන් එක ඔබන්න බැරි වෙන්න Lock කර ඇත */}
               <button
                 type="submit"
                 className="start-btn admin-btn"
@@ -185,7 +186,7 @@ const AdminDashboard = () => {
         </div>
       ) : (
         <div className="admin-dashboard-wrapper">
-          {/* 🏢 1. LEFT SIDEBAR (වම් පැත්තේ මෙනු තීරුව) */}
+          {/* 🏢 1. LEFT SIDEBAR */}
           <aside className="admin-sidebar">
             <div className="sidebar-header">
               <h3>{subject?.toUpperCase()} Control</h3>
@@ -244,7 +245,6 @@ const AdminDashboard = () => {
                 style={{
                   background: "#83838369",
                   cursor: "not-allowed",
-                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
                 }}>
                 <FaMailBulk /> <span> Mail Box</span>
                 {/* <MailBox /> */}
@@ -256,7 +256,6 @@ const AdminDashboard = () => {
                 style={{
                   background: "#83838369",
                   cursor: "not-allowed",
-                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
                 }}>
                 <FaGraduationCap /> <span> Class Paper Marks</span>
               </button>
@@ -267,7 +266,6 @@ const AdminDashboard = () => {
                 style={{
                   background: "#83838369",
                   cursor: "not-allowed",
-                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
                 }}>
                 <FaMoneyCheckDollar /> <span> Payments Vault</span>
               </button>
@@ -278,7 +276,6 @@ const AdminDashboard = () => {
                 style={{
                   background: "#83838369",
                   cursor: "not-allowed",
-                  // activeVault === "class-marks" ? "#ff4b2b" : "transparent",
                 }}>
                 <FaUserXmark /> <span>Today's Absent Vault</span>
               </button>
@@ -290,7 +287,7 @@ const AdminDashboard = () => {
           </aside>
           {/* 💻 2. RIGHT MAIN CONTENT SCREEN (දකුණු පැත්තේ ප්‍රධාන තිරය) */}
           <main>
-            {/* 👑 🆕 [THE EXCLUSIVE FIX]: වෝල්ට් එක Class Schedule හෝ Paper Upload නොවන්නේ නම් පමණක් මේ මුළු හෙඩර් එකම පෙන්වයි */}
+            {/* 👑 🆕 [THE EXCLUSIVE FIX]:  */}
             {activeVault !== "class-shedule" &&
               activeVault !== "mail-box" &&
               activeVault !== "paper-upload" && (
@@ -325,7 +322,7 @@ const AdminDashboard = () => {
                 </header>
               )}
 
-            {/* 📋 DYNAMIC CONTENT VIEWS (ඔබන බටන් එක අනුව පිටු මාරු වන කොටස) */}
+            {/* 📋 DYNAMIC CONTENT VIEWS  */}
             <div
               className="dynamic-content"
               style={{
@@ -365,8 +362,7 @@ const AdminDashboard = () => {
               {activeVault === "paper-upload" && <PaperHubUploadVault />}
               {activeVault === "mail-box" && <MailBox />}
             </div>
-          </main>{" "}
-          {/* 👑 Fixed: අතහැරී තිබුණු main closing tag එක නිවැරදිව වැහුවා */}
+          </main>
         </div>
       )}
     </>
