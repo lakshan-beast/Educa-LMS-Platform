@@ -24,32 +24,25 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     const cleanId = studentId.trim().toUpperCase();
-    const cleanPassword = password.trim(); // 🆕 Password එක ගත්තා
+    const cleanPassword = password.trim();
 
     try {
-      // 1. ☁️ Firebase 'students' Collection එක පීරලා මේ නිශ්චිත ID එක තියෙන ළමයාව සොයයි
       const q = query(collection(db, "students"), where("id", "==", cleanId));
       const querySnapshot = await getDocs(q);
-      // 🚀 ඔන්න සැබෑ Cloud GET (getDocs) එක!
 
       if (!querySnapshot.empty) {
-        // 2. 👦 ID එක Cloud එකේ තිබේ නම්, ඒ ළමයාගේ දත්ත පේළිය කියවයි
         const studentDoc = querySnapshot.docs[0];
         const studentData = studentDoc.data();
         // 3. 🔐 Cloud එකේ සේව් වී ඇති Password එක සහ ළමයා ගහපු Password එක සමානද බලයි
 
         if (studentData.password === cleanPassword) {
-          // 4. 💾 [THE EXCLUSIVE STORAGE MATCH]: ළමයාගේ සියලුම විස්තර බ්‍රවුසර් මතකයට (localStorage) දමයි
           localStorage.setItem("user_id", cleanId);
           localStorage.setItem("isLoggedIn", "true");
-          // 👑 🆕 ඊයේ අපි ළමයාගේ නම Dashboard එකට ගන්න කතා වුණු 'studentUser' Object එක මෙතනදී සේව් කරයි!
           localStorage.setItem("studentUser", JSON.stringify(studentData));
-          // ID එකෙන් Subject Code එක වෙන් කර ගැනීම (ex: EDU-MES-11-LAKSHAN -> MES)
 
           const idParts = cleanId.split("-");
           const subjectCode = idParts[1] || "M";
           localStorage.setItem("user_subjects", subjectCode);
-          // 🚀 සාර්ථකව Dashboard එකට කැඳවාගෙන යයි!
 
           navigate("/dashboard");
           window.location.reload();
@@ -57,7 +50,6 @@ const Login = () => {
           setError("Incorrect Password!");
         }
       } else {
-        // ID එක Firestore එකේ නැත්නම් දෙන පණිවිඩය
         setError(
           "Your ID is Not Approved or Invalid! Please check with your class card marker.",
         );
@@ -117,7 +109,7 @@ const Login = () => {
         )}
 
         <button type="submit" className="login-btn" disabled={loading}>
-          {loading ? "Logging In..." : "Access Dashboard"}
+          {loading ? "Logging..." : "Access Dashboard"}
         </button>
       </form>
     </div>
