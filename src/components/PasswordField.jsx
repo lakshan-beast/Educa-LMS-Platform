@@ -12,7 +12,6 @@ const PasswordField = ({
   return (
     <div className="input-group">
       <label>{label}</label>
-
       <div
         style={{
           position: "relative",
