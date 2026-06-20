@@ -1,0 +1,234 @@
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Educa | Premium O/L LMS Campus</title>
+
+    <meta name="title" content="Educa - Smart Learning Platform" />
+    <meta
+      name="description"
+      content="Educa is a modern learning platform for O/L students. Access teaching philosophy, quizzes, past papers, and interactive tools to improve your exam performance." />
+    <meta
+      name="keywords"
+      content="O/L classes Sri Lanka, online learning, maths science english tuition, past papers, study philosophy, student platform, educa lms" />
+    <meta name="author" content="Lakshan Engineering" />
+
+    <!- Open Graph / Facebook Meta Tags -
+    <meta property="og:title" content="Educa - Smart Learning Platform" />
+    <meta
+      property="og:description"
+      content="Learn smarter with structured teaching philosophy, interactive quizzes, and premium past papers designed for O/L success." />
+    <meta
+      property="og:image"
+      content="https://educa-lms-platform.vercel.app/og-images.webp" />
+    <meta property="og:url" content="https://educa-lms-platform.vercel.app/" />
+    <meta property="og:type" content="website" />
+
+    <!- Twitter Meta Tags -
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://educa-lms-platform.vercel.app/" />
+    <meta name="twitter:title" content="Educa - O/L Learning Platform" />
+    <meta
+      name="twitter:description"
+      content="Access teaching philosophy, dynamic quizzes, and interactive study tools for absolute O/L success." />
+    <meta
+      name="twitter:image"
+      content="https://educa-lms-platform.vercel.app/og-images.webp" />
+
+    <!- Premium Clean Favicon Configuration -
+    <link rel="icon" href="/logo.jpg" type="image/jpeg" />
+
+    <!- Search Engine Robots Control -
+    <meta name="robots" content="index, follow" />
+
+    <!- FontAwesome 6 Pro CDN Interface -
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!- Google Typography Interface Direct Core -
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" />
+
+    <!- Animate On Scroll (AOS) Kinematics Library --
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html> -->
+
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Educa | Premium O/L Institutional Campus Portal</title>
+
+    <meta name="title" content="Educa - Premium Institutional Campus Portal" />
+    <meta
+      name="description"
+      content="Educa is an elite, closed-loop institutional student campus for O/L mastery. Streamlining real-time academic inquiries, live subject notice boards, and high-availability class schedules." />
+    <meta
+      name="keywords"
+      content="O/L tuition Sri Lanka, educa lms, student portal, live class schedules, local syllabus modules, maths science english tuition, academic notice board" />
+    <meta name="author" content="Lakshan Engineering" />
+
+    <!- Open Graph / Facebook / WhatsApp Meta Tags --
+<meta
+  property="og:title"
+  content="Educa - Premium Institutional Campus Portal" />
+<meta
+  property="og:description"
+  content="Access your high-availability student dashboard featuring dynamic subject notice streams, live institutional timetables, and unified academic inquiry routing." />
+<meta
+  property="og:image"
+  content="https://educa-lms-platform.vercel.app/og-images.webp" />
+<meta property="og:url" content="https://educa-lms-platform.vercel.app/" />
+<meta property="og:type" content="website" />
+
+<!- Twitter Meta Tags --
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://vercel.app" />
+<meta
+  name="twitter:title"
+  content="Educa - Premium Institutional Campus Portal" />
+<meta
+  name="twitter:description"
+  content="Streamlining real-time academic inquiry grids, localized faculty notice streams, and structured class schedules for O/L success." />
+<meta name="twitter:image" content="https://vercel.app" />
+
+<!- Premium Clean Favicon Configuration -->
+<!-- <link rel="icon" href="/public/favicon-32x32.png" type="image/png" /> --
+
+    <-- Search Engine Robots Control --
+    <meta name="robots" content="index, follow" />
+
+    <-- FontAwesome 6 Pro CDN Interface --
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!- Google Typography Interface Direct Core -
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" />
+
+    <!- Animate On Scroll (AOS) Kinematics Library -
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  </head>
+  <body>
+    <-- 👑 🔐 [THE EXCLUSIVE VITE PREAMBLE FIX]: 
+         Vite Preamble Error එක සහමුලින්ම වඳ කර සයිට් එක පණ ගන්වයි! -
+    <script type="module">
+      import RefreshRuntime from "http://localhost:5173/@react-refresh";
+      RefreshRuntime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+    </script>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html> -->
+
+<!-- import React, { useState } from "react";
+import { FaBell, FaXmark, FaWhatsapp, FaCalendarDays, FaPaperPlane } from "react-icons/fa6";
+
+const EventDrawer = ({ isOpen, onClose }) => {
+  // 📞 හැම කාඩ් එකකම ලියන නම්බර් එක වෙන වෙනම මතක තබා ගන්නා ස්ටේට් එක මචං [INDEX 4]
+  const [phoneInputs, setPhoneInputs] = useState({});
+
+  const staticEventsDemo = [
+    {
+      id: "EVT-001",
+      title: "Educa. Live Musical Fest 2026 🎶🎸",
+      description: "A grand musical evening organized exclusively for our Grade 10 & 11 student community. Featuring popular guest artists and school fitness bands!",
+      date: "2026-08-25"
+    },
+    {
+      id: "EVT-002",
+      title: "O/L Mathematics Master Seminar 📐🔥",
+      description: "The ultimate final countdown seminar blueprint conducted by Janaka Sir. Covering critical local syllabus modules for absolute A-grade mastery.",
+      date: "2026-07-12"
+    }
+  ];
+
+  const handleInputChange = (id, value) => {
+    setPhoneInputs((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleDirectSend = (item) => {
+    const userPhone = phoneInputs[item.id] || "";
+    if (!userPhone.trim()) return alert("Please enter a valid mobile number first [INDEX 4]!");
+
+    // 👑 🔐 [THE GUARANTEED DIRECT CONTACT REDIRECT ENGINE]:
+    // ඔයාගේ AddStudent එකේ වැඩ කරන පිරිසිදුම රටාවට ලින්ක් එක හැදුවා මචං! [INDEX 4]
+    const sendRegistrationDetails = userPhone.trim().replace(/^0/, "94");
+    const siteUrl = "https://vercel.app";
+
+    const shareMessage = 
+      "⚡ *SPECIAL INSTITUTIONAL EVENT BROADCAST* ⚡\n\n" +
+      "🏛️ *Educa Campus - " + item.title + "*\n\n" +
+      "📢 " + item.description + "\n\n" +
+      "🔗 *View full event posters live on our official platform here:*\n" +
+      "👉 " + siteUrl + "\n\n" +
+      "*NexusLabs Software Studios* 🦾";
+
+    // 🚀 උඹේ කෝඩ් එකේ තියෙන පිරිසිදුම + ලකුණු ක්‍රමයටම ලින්ක් එක එකතු කර බ්‍රවුසර් එකට දුන්නා මචං! [INDEX 4]
+    const finalWhatsappUrl = "https://wa.me" + sendRegistrationDetails + "?text=" + encodeURIComponent(shareMessage);
+    window.open(finalWhatsappUrl, "_blank");
+  };
+
+  return (
+    <div className={campus-event-drawer-overlay ${isOpen ? "drawer-visible" : ""}}>
+      <div className="drawer-blur-dismiss-shield" onClick={onClose}></div>
+      
+      <div className="drawer-main-panel">
+        <div className="drawer-header-row">
+          <h3><FaBell className="bell-icon" /> Campus Events Feed</h3>
+          <button onClick={onClose} className="drawer-close-trigger"><FaXmark /></button>
+        </div>
+
+        <div className="drawer-scroll-feed-content">
+          {staticEventsDemo.map((item) => (
+            <div key={item.id} className="drawer-social-post-card">
+              <div className="drawer-card-meta">
+                <span><FaCalendarDays /> {item.date}</span>
+                <span className="faculty-badge">Admin</span>
+              </div>
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
+              
+              {/* 👑 🎛️ DYNAMIC NUMBER INPUT FIELD ROW */}
+              <div className="drawer-phone-input-group">
+                <input 
+                  type="text" 
+                  placeholder="Enter phone number (e.g. 0771234567)..." 
+                  value={phoneInputs[item.id] || ""}
+                  onChange={(e) => handleInputChange(item.id, e.target.value)}
+                  className="drawer-inline-input"
+                />
+                <button onClick={() => handleDirectSend(item)} className="drawer-direct-send-btn" title="Send to WhatsApp">
+                  <FaPaperPlane />
+                </button>
+              </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EventDrawer; -->

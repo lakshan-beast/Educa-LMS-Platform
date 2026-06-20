@@ -1,0 +1,59 @@
+{/* ID එක සාර්ථකව හැදුනට පස්සේ පේන කොටස */}
+      {/* {generatedID && (
+        <div
+          style={{
+            marginTop: "30px",
+            padding: "20px",
+            background: "#f4f7ff",
+            borderRadius: "12px",
+            border: "1px dashed #4b6bfb",
+            textAlign: "center",
+          }}>
+          <span
+            style={{
+              fontSize: "0.8rem",
+              color: "#555",
+              fontWeight: "bold",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "6px",
+            }}>
+            <FaIdCard /> GENERATED STUDENT ID FOR BATCH:
+          </span>
+          <div
+            style={{
+              fontSize: "1.4rem",
+              fontWeight: "800",
+              color: "#1a0a54",
+              margin: "10px 0",
+              letterSpacing: "0.5px",
+            }}>
+            {generatedID}
+          </div>
+          <button
+            onClick={copyToClipboard}
+            style={{
+              padding: "8px 24px",
+              background: "#eef2ff",
+              border: "1px solid #4b6bfb",
+              borderRadius: "6px",
+              cursor: "pointer",
+              fontWeight: "600",
+              color: "#4b6bfb",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+            }}>
+            {copied ? (
+              <>
+                <FaCheck /> ID Copied!
+              </>
+            ) : (
+              <>
+                <FaCopy /> Copy ID
+              </>
+            )}
+          </button>
+        </div>
+      )} */}
