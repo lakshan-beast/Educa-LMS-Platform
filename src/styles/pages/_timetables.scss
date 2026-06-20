@@ -1,13 +1,13 @@
 .timetable {
-  width: 100%;
+  width: $container-width-default;
   border-collapse: collapse;
   margin-top: 20px;
 
   thead {
-    background: $dark-purple1;
+    background: $secondary-blue;
     color: $white;
     th {
-      padding: 15px;
+      padding: $padding-medium;
       text-align: left;
     }
   }
@@ -20,7 +20,7 @@
       }
 
       td {
-        padding: 15px;
+        padding: $padding-medium;
         color: $dark-blue;
         svg {
           color: $primary-orange;
