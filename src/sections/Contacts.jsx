@@ -3,7 +3,6 @@ import { db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 
 import { FaMobile, FaEnvelope } from "react-icons/fa6";
-// import { FaPaperPlane } from "react-icons/fa6";
 
 const Contact = () => {
   const classContacts = [
@@ -26,53 +25,6 @@ const Contact = () => {
       address: "No, 123/2, High Level Road, Colombo.",
     },
   ];
-
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   email: "",
-  //   mobile: "",
-  //   subject: "",
-  //   content: "",
-  //   message: "",
-  // });
-
-  // const handleInputChange = (e) => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("Form Submitted:", formData);
-  //   alert("Thank you! We received your message. We'll get back to you soon.");
-  // };
-
-  // const [];
-
-  // const handleContactSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
-  //   setFormSuccess("");
-
-  //   const docId = "MSG-" + Date.now().toString().slice(-6);
-
-  //   const contactData = {
-  //     id: docId,
-  //     fullName: contactFormData.fullName.trim(),
-  //     phone: contactFormData.phone.trim(),
-  //     messageText: contactFormData.messageText.trim(),
-  //     status: "unread",
-  //     createdAt: new Date().toISOString(),
-  //   };
-
-  //   try {
-  //     await setDoc(doc(db, "contact_messages", docId), contactData);
-  //     setFormSuccess("Your message was sent successfully! 🚀");
-  //     setContactFormData({ fullName: "", phone: "", messageText: "" });
-  //   } catch (err) {
-  //     console.error("Cloud Contact Save Error:", err);
-  //   }
-  //   setIsSubmitting(false);
-  // };
 
   const [contactFormData, setContactFormData] = useState({
     fullName: "",
@@ -156,66 +108,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* <div
-            className="contact-form-card styled-form"
-            data-aos="fade-left"
-            id="contact-form">
-            <h2>Contact Form</h2>
-            <form
-              onSubmit={handleContactSubmit}
-              className="styled-form"
-              method="POST"
-              // action="https://formspree.io/f/mqenwpgk"
-            >
-              <div className="input-row">
-                <div className="input-group">
-                  <label>Email Address *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="name@example.com"
-                    required
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="input-group">
-                  <label>Whatsapp Number</label>
-                  <input
-                    type="tel"
-                    name="mobile"
-                    placeholder="07X XXX XXXX"
-                    required
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="input-group">
-                  <label>Subject</label>
-                  <select name="subject" required onChange={handleInputChange}>
-                    <option value="">Select Subject</option>
-                    <option value="Maths">Mathematics</option>
-                    <option value="Science">Science</option>
-                    <option value="English">English</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="input-group">
-                <label>Your Message</label>
-                <textarea
-                  name="message"
-                  rows="4"
-                  placeholder="Describe your requirement..."
-                  required
-                  onChange={handleInputChange}></textarea>
-              </div>
-
-              <button type="submit" className="contact-submit-btn">
-                Send My Message <FaPaperPlane />
-              </button>
-            </form>
-          </div> */}
-
           <div
             className="contact-form-card styled-form"
             data-aos="fade-left"
@@ -239,7 +131,7 @@ const Contact = () => {
                       name="fullName"
                       value={contactFormData.fullName}
                       onChange={handleInputChange}
-                      placeholder="E.g., Nuwan Perera"
+                      placeholder="Your Name..."
                       required
                     />
                   </div>
@@ -251,7 +143,7 @@ const Contact = () => {
                       name="phone"
                       value={contactFormData.phone}
                       onChange={handleInputChange}
-                      placeholder="E.g., 0771234567"
+                      placeholder="E.g., 077 *** ****"
                       required
                     />
                   </div>
@@ -275,7 +167,7 @@ const Contact = () => {
                       name="messageText"
                       value={contactFormData.messageText}
                       onChange={handleInputChange}
-                      placeholder="Type your inquiry here..."
+                      placeholder="Type here..."
                       rows="4"
                       required></textarea>
                   </div>
@@ -283,13 +175,12 @@ const Contact = () => {
                     type="submit"
                     disabled={isSubmitting}
                     className="contact-submit-btn">
-                    {isSubmitting ? "Sending Message..." : "Send Live Message"}
+                    {isSubmitting ? "Sending Message..." : "Send My Message"}
                   </button>
                 </div>
               </div>
             </form>
           </div>
-          {/* </div> */}
         </div>
       </div>
     </section>
