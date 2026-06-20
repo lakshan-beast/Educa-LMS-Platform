@@ -9,24 +9,24 @@
 }
 
 .notice-loading {
-  background: white;
+  background: $white;
   padding: 20px;
-  border-radius: 16px;
-  border: 1px solid #001b42;
+  border-radius: $border-radius-medium;
+  border: 1px solid $secondary-blue;
   text-align: center;
-  color: #001b42;
-  font-weight: 600;
-  font-size: 0.85rem;
+  color: $secondary-blue;
+  font-weight: $font-weight-600;
+  font-size: $font-size-body-m;
 }
 
 .notice-empty {
-  background: #f8faff;
+  background: $bg-light;
   padding: 20px;
-  border-radius: 16px;
+  border-radius: $border-radius-medium;
   border: 1px dashed #c7d2fe;
   text-align: center;
-  color: #a8abb1d0;
-  font-size: 0.85rem;
+  color: $secondary-blue3;
+  font-size: $font-size-body-m;
 }
 
 .notice-grid {
@@ -43,13 +43,13 @@
   //   border-left: 6px solid $secondary-blue;
   background-color: $white;
   padding: 22px 25px;
-  border-radius: 18px;
+  border-radius: $border-radius-medium;
   box-shadow: 0 6px 18px rgba(53, 53, 53, 0.2);
   display: flex;
   flex-direction: column;
   gap: 12px;
   text-align: left;
-  width: 100%;
+  width: $container-width-default;
   position: relative;
   overflow: hidden;
 }
@@ -62,7 +62,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: $container-width-default;
   flex-direction: row;
   margin-bottom: 12px;
 
@@ -70,58 +70,57 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    background: white;
+    background: $white;
     padding: 5px 12px;
-    border-radius: 10px;
-    font-size: 0.78rem;
-    color: #a8abb1d0;
-    font-weight: 700;
-    // border: 1px solid #001b42;
+    border-radius: $border-radius-small-m;
+    font-size: $font-size-body-mm;
+    color: $secondary-blue3;
+    font-weight: $font-weight-700;
+    // border: 1px solid $secondary-blue;
   }
 
   .type-badge {
-    background: #001c4225;
-    color: #000f2c;
+    background: $secondary-blue3;
+    color: $secondary-blue;
     padding: 4px 10px;
-    border-radius: 8px;
-    font-weight: 800;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    // border: 1px solid #001b42;
+    border-radius: $border-radius-small-m;
+    font-weight: $font-weight-800;
+    font-size: $font-size-body-mm;
+    text-transform: $text-transform-uppercase;
   }
 
   h4 {
     margin: 5px 0 0;
-    color: #001b42;
-    font-weight: 800;
-    font-size: 1.1rem;
+    color: $secondary-blue;
+    font-weight: $font-weight-800;
+    font-size: $font-size-h3-mm;
     line-height: 1.4;
   }
 }
 
 .notice-main-text {
-  margin: 0;
-  color: #a8abb1d0;
-  font-size: 0.88rem;
+  margin: $margin-none;
+  color: $secondary-blue3;
+  font-size: $font-size-body-m;
   line-height: 1.5;
-  font-weight: 500;
+  font-weight: $font-weight-500;
 }
 
 .notice-footer-meta {
   text-align: right;
-  border-top: 1px solid #001b42;
+  border-top: 1px solid $secondary-blue;
   padding-top: 8px;
   margin-top: 4px;
-  font-size: 0.78rem;
-  color: #a8abb1d0;
-  font-weight: 600;
+  font-size: $font-size-body-mm;
+  color: $secondary-blue3;
+  font-weight: $font-weight-600;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   span {
-    color: #001b42;
+    color: $secondary-blue;
     display: inline-flex;
     align-items: center;
     gap: 4px;
