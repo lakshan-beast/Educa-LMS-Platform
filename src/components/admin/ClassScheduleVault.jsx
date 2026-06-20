@@ -47,7 +47,7 @@ const ClassScheduleVault = () => {
     if (!subject || !localGrade) return;
 
     // Firestore එකේ document path එක නිර්මාණය කිරීම: schedules/grade_subject
-    const docRef = doc(db, "class_schedules", `${localGrade}_${subject}`);
+    const docRef = doc(db, "schedules", `${localGrade}_${subject}`);
 
     // Cloud එකේ වෙනස්කම් සිදු වූ සැනින් App එකට Update වේ
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
@@ -141,104 +141,30 @@ const ClassScheduleVault = () => {
   };
 
   return (
-    <div
-      className="vault-container"
-      style={{ background: "white", padding: "30px", borderRadius: "20px" }}>
-      <div style={{ marginBottom: "25px" }}>
-        <h3
-          style={{
-            color: "#1a0a54",
-            margin: 0,
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}>
+    <div className="vault-container">
+      <div className="vault-header">
+        <h3>
           <FaCalendarDays /> Class Schedule Vault ({subject?.toUpperCase()})
         </h3>
-        <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
+        <p>
           Control the date, time, lesson, and Zoom link for classes by grade
           (6-11).
         </p>
       </div>
-      {error && (
-        <div
-          style={{
-            background: "#fdedec",
-            borderLeft: "5px solid #e74c3c",
-            color: "#c0392b",
-            padding: "12px",
-            borderRadius: "8px",
-            marginBottom: "20px",
-            fontSize: "0.88rem",
-            fontWeight: "bold",
-          }}>
-          ⚠️ {error}
-        </div>
-      )}
-      {success && (
-        <div
-          style={{
-            background: "#e8f8f5",
-            borderLeft: "5px solid #2ecc71",
-            color: "#27ae60",
-            padding: "12px",
-            borderRadius: "8px",
-            marginBottom: "20px",
-            fontSize: "0.88rem",
-            fontWeight: "bold",
-          }}>
-          ✓ {success}
-        </div>
-      )}
+      {error && <div className="error-content">⚠️ {error}</div>}
+      {success && <div className="success-content">✓ {success}</div>}
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.5fr",
-          gap: "50px",
-        }}>
-        <div
-          style={{
-            background: "#f8faff",
-            padding: "25px",
-            borderRadius: "16px",
-            border: "1px solid #eef2ff",
-          }}>
-          <h4
-            style={{
-              margin: "0 0 20px",
-              color: "#1a0a54",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}>
+      <div className="schedule-form">
+        <div className="schedule-content">
+          <h4>
             <FaPenToSquare /> Update Class Details
           </h4>
-          <form
-            onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-            {/* 👑 🆕 [THE 6-11 DROPDOWN INPUT]: පෝම් එක ඇතුළතම තියෙන ශ්‍රේණි තෝරන කොටස */}
+          <form onSubmit={handleSubmit} className="styled-form">
             <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Select School Grade
-              </label>
+              <label>Select School Grade</label>
               <select
                 value={localGrade}
-                onChange={(e) => setLocalGrade(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                  fontWeight: "bold",
-                }}>
+                onChange={(e) => setLocalGrade(e.target.value)}>
                 {["6", "7", "8", "9", "10", "11", "11 Paper Class"].map((g) => (
                   <option key={g} value={g}>
                     Grade {g}
@@ -248,70 +174,29 @@ const ClassScheduleVault = () => {
             </div>
 
             <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Class Date & Start Time
-              </label>
+              <label>Class Date & Start Time</label>
               <input
                 type="datetime-local"
                 name="targetDateTime"
                 required
                 value={formData.targetDateTime}
                 onChange={handleInputChange}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                  fontWeight: "bold",
-                }}
               />
             </div>
 
             <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Class Week
-              </label>
+              <label>Class Week</label>
               <input
                 type="week"
                 name="weekPicker"
                 required
                 value={formData.weekPicker}
                 onChange={handleInputChange}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                  fontWeight: "bold",
-                }}
               />
             </div>
 
             <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Current Lesson
-              </label>
+              <label>Current Lesson</label>
               <input
                 type="text"
                 name="currentLesson"
@@ -319,53 +204,23 @@ const ClassScheduleVault = () => {
                 required
                 value={formData.currentLesson}
                 onChange={handleInputChange}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                }}
               />
             </div>
 
             <div className="input-group">
-              <label
-                style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Special Notes
-              </label>
+              <label>Special Notes</label>
               <input
                 type="text"
                 name="specialNotes"
                 placeholder="ex: Bring previous week tutes..."
                 value={formData.specialNotes}
                 onChange={handleInputChange}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                }}
               />
             </div>
 
             {(localGrade === "10" || localGrade === "11") && (
               <div className="input-group">
-                <label
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "0.85rem",
-                    color: "#1a0a54",
-                    display: "block",
-                    marginBottom: "5px",
-                  }}>
-                  Live Zoom Link
-                </label>
+                <label>Live Zoom Link</label>
                 <input
                   type="url"
                   name="zoomLink"
@@ -373,53 +228,24 @@ const ClassScheduleVault = () => {
                   required
                   value={formData.zoomLink}
                   onChange={handleInputChange}
-                  style={{
-                    width: "100%",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    border: "1px solid #ddd",
-                    color: "#4b6bfb",
-                    fontWeight: "bold",
-                  }}
                 />
               </div>
             )}
 
             {localGrade !== "10" && localGrade !== "11" && (
-              <div
-                style={{
-                  background: "#fff9e6",
-                  borderLeft: "4px solid #f39c12",
-                  padding: "10px",
-                  borderRadius: "6px",
-                  fontSize: "0.8rem",
-                  color: "#7d5a00",
-                  fontWeight: "600",
-                }}>
-                {" "}
+              <div className="zoom-condition">
                 ℹ️ Zoom links are currently not available for grades 6 - 9. Only
                 class details are displayed on the home page.
               </div>
             )}
 
-            <button
-              type="submit"
-              className="start-btn"
-              style={{
-                width: "100%",
-                padding: "12px",
-                background: "#1a0a54",
-                color: "white",
-                border: "none",
-                borderRadius: "8px",
-                fontWeight: "bold",
-                cursor: "pointer",
-                marginTop: "5px",
-              }}>
-              💾 Save & Reset to Auto Countdown
+            <button type="submit" className="start-btn">
+              Save & Reset to Auto Countdown
             </button>
           </form>
         </div>
+
+        {/* // classes actions  */}
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div
             style={{
