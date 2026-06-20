@@ -1,29 +1,26 @@
-// variables.scss
-
-// stores colors and other variables used in the project
-
 // brand colors
 $primary-orange: #fd473a;
-// $secondary-blue: #1d10ac;
-// $secondary-blue: #1a0a54;
-
-$orange: rgb(255, 72, 0);
 
 $secondary-blue: #001b42;
-$secondary-blue3: #a8abb1d0;
+$secondary-blue3: #8e9196d0;
 $secondary-blue2: #000d1f;
+
 $blue-light: #c6d4fa;
 $blue-medium: #4e6ab9;
 $blue-soft: #4b6bfb;
 
+$orange: rgb(255, 72, 0);
 $linear-left: linear-gradient(135deg, #4e4ef1da 0%, #000b3b 100%);
-$white: #ffffff;
-$bg-light: #e0e8ff;
+$white: #fff7f7;
+$bg-light: #f4f7ff;
+
 $bg-soft: #7f91ec14;
 $navbar-white: #ebebeb;
 $dark-blue: #303030;
 // $footer-dark: #000118;
 $footer-dark: #000713;
+
+$red-color: #ff0a0a;
 
 // text colors
 $text-light: #f7f7f7;
@@ -31,9 +28,9 @@ $text-medium: #7b808f;
 $text-blue: #7f91ec;
 
 // purple colors
-$dark-purple1: #484aee;
-$dark-purple2: #5454d9;
-$dark-purple: #26136d;
+// $dark-purple1: #484aee;
+// $dark-purple2: #5454d9;
+// $dark-purple: #26136d;
 
 // shadow
 $link-shadow: #ddddff;
@@ -45,6 +42,7 @@ $font-secondary: "Exo 2", sans-serif;
 // font-sizes
 $font-size-h1: 2.5rem;
 $font-size-h1-m: 1.85rem;
+$font-size-h1-mm: 2rem;
 
 $font-size-h2-m: 1.7rem;
 $font-size-h2-mm: 1.55rem;
@@ -53,18 +51,29 @@ $font-size-h3: 1.35rem;
 $font-size-h3-m: 1.2rem;
 $font-size-h3-mm: 1.1rem;
 
+$font-size-default: 1rem;
 $font-size-body: 0.95rem;
 $font-size-body-m: 0.85rem;
+$font-size-body-mm: 0.75rem;
 
 // font-weights
-$font-weight-medium: 500;
-$font-weight-semi-bold: 600;
-$font-weight-bold: 700;
-$font-weight-extra-bold: 800;
+$font-weight-500: 500;
+$font-weight-600: 600;
+$font-weight-700: 700;
+$font-weight-800: 800;
+$font-weight-bold: bold;
+$font-weight-900: 900;
+$font-weight-800: 800;
 
 // font-styles
 $font-style-normal: normal;
 $font-style-italic: italic;
+
+// text transform
+$text-transform-lowercase: lowercase;
+$text-transform-uppercase: uppercase;
+$text-transform-capitalize: capitalize;
+$text-transform-none: none;
 
 // transitions
 $transition-fast: 0.3s ease;
@@ -78,6 +87,7 @@ $breakpoint-large-desktop: 1400px;
 
 // border-radius
 $border-radius-small: 0.5rem;
+$border-radius-small-m: 0.7rem;
 $border-radius-medium: 1rem;
 $border-radius-large: 1.5rem;
 $border-radius-xlarge: 2rem;
@@ -107,27 +117,30 @@ $z-index-negative: -1;
 
 // paddings
 $padding-small: 0.5rem;
+$padding-small-m: 0.7rem;
 $padding-medium: 1rem;
 $padding-large: 1.5rem;
 $padding-xlarge: 2rem;
 $padding-xsmall: 0.3rem;
 $padding-xxsmall: 0.1rem;
 $padding-none: 0;
-// $padding-styles: 0 ;
 
 // margins
 $margin-small: 0.5rem;
+$margin-small-m: 0.7rem;
 $margin-medium: 1rem;
 $margin-large: 1.5rem;
 $margin-xlarge: 2rem;
 $margin-xsmall: 0.3rem;
 $margin-xxsmall: 0.1rem;
 $margin-none: 0;
+$margin-center: 0 auto;
 
 // container widths
-$container-width-small: 350px;
-$container-width-medium: 800px;
-$container-width-large: 1400px;
+$container-width-small: 200px;
+$container-width-medium: 250px;
+$container-width-large: 300px;
+$container-width-large-m: 1400px;
 $container-width-xlarge: 1600px;
 $container-width-xxlarge: 2000px;
 $container-width-default: 100%;
