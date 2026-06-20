@@ -292,171 +292,59 @@ const Terms = ({ onClose }) => {
   return (
     <div>
       <div className="privacy-card">
-        {/* Header Area */}
-        <div style={{ textAlign: "center", marginBottom: "25px" }}>
-          <div
-            style={{
-              width: "65px",
-              height: "65px",
-              background: "#001b42",
-              color: "white",
-              borderRadius: "50%",
-              display: "inline-flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontSize: "1.8rem",
-              marginBottom: "12px",
-              boxShadow: "0 8px 20px rgba(3,32,75,0.15)",
-            }}>
+        <div className="privacy-top">
+          <div className="privacy-header">
             <FaFileContract />
           </div>
-          <h2
-            style={{
-              color: "#001b42",
-              margin: 0,
-              fontWeight: "900",
-              fontSize: "1.4rem",
-              letterSpacing: "-0.5px",
-            }}>
-            Terms of Service
-          </h2>
-          <p
-            style={{
-              color: "#64748b",
-              fontSize: "0.82rem",
-              marginTop: "4px",
-              fontWeight: "600",
-            }}>
-            Operational Guidelines & End-User License Agreement
-          </p>
+          <h2>Terms of Service</h2>
+          <p>Operational Guidelines & End-User License Agreement</p>
         </div>
 
-        {/* Premium Core Legal Content */}
-        <div
-          className="legal-content"
-          style={{
-            maxHeight: "300px",
-            overflowY: "auto",
-            padding: "20px",
-            background: "#f8fafc",
-            borderRadius: "16px",
-            border: "1px solid #e2e8f0",
-            fontSize: "0.85rem",
-            lineHeight: "1.6",
-            color: "#334155",
-          }}>
-          <h4
-            style={{
-              color: "#001b42",
-              marginTop: 0,
-              fontSize: "0.9rem",
-              fontWeight: "800",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}>
-            <FaScaleBalanced style={{ color: "#001b42" }} /> 1. Intellectual
-            Property Ownership
+        <div className="privacy-container">
+          <h4>
+            <FaScaleBalanced className="icon" /> Intellectual Property Ownership
           </h4>
-          <p style={{ marginTop: "6px", marginBottom: "16px" }}>
+          <p>
             The entire source code, user interface designs, visual assets, and
-            underlying software architecture of the <strong>educa.</strong>{" "}
-            platform are the exclusive intellectual property of{" "}
-            <strong>Lakshan (The Lead Architect)</strong> [INDEX 4]. Users and
-            faculties are granted a limited, non-transferable license to access
-            the system. Any unauthorized copying, distribution, or
-            reverse-engineering of this software is strictly prohibited by law
-            [INDEX 4].
+            underlying software architecture of the <strong>educa.</strong>
+            platform are the exclusive intellectual property of
+            <strong>Lakshan (The Lead Architect)</strong> . Users and faculties
+            are granted a limited, non-transferable license to access the
+            system. Any unauthorized copying, distribution, or
+            reverse-engineering of this software is strictly prohibited by law .
           </p>
 
-          <h4
-            style={{
-              color: "#001b42",
-              fontSize: "0.9rem",
-              fontWeight: "800",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}>
-            <FaShieldHalved style={{ color: "#001b42" }} /> 2. SaaS Subscription
-            & Maintenance Agreement
+          <h4>
+            <FaShieldHalved className="icon" /> SaaS Subscription & Maintenance
+            Agreement
           </h4>
-          <p style={{ marginTop: "6px", marginBottom: "16px" }}>
+          <p>
             This platform operates under a Fixed Monthly Subscription Service
-            level agreement [INDEX 4]. Partnered teaching faculties are strictly
-            bound to settle the agreed monthly maintenance tokens to ensure
-            uninterrupted cloud hosting, database synchronization, and server
-            operations [INDEX 4, 51]. Failure to settle dues within the
-            designated cycle may result in temporary administration panel
-            deployment suspension [INDEX 4].
+            level agreement. Partnered teaching faculties are strictly bound to
+            settle the agreed monthly maintenance tokens to ensure uninterrupted
+            cloud hosting, database synchronization, and server operations.
+            Failure to settle dues within the designated cycle may result in
+            temporary administration panel deployment suspension.
           </p>
 
-          <h4
-            style={{
-              color: "#001b42",
-              fontSize: "0.9rem",
-              fontWeight: "800",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}>
-            <FaFileContract style={{ color: "#001b42" }} /> 3. Permitted
-            Academic Usage
+          <h4>
+            <FaFileContract className="icon" /> Permitted Academic Usage
           </h4>
-          <p style={{ marginTop: "6px", marginBottom: "0" }}>
+          <p className="last-content">
             The administrative portals, class logs, and score registries are
-            explicitly reserved for authorized card-marker staff and teachers
-            [INDEX 4]. Data entries must belong strictly to registered
-            institutional students [INDEX 4]. Any misuse of system parameters,
-            script injections, or brute-force logins will result in permanent
-            programmatic IP restriction [INDEX 4].
+            explicitly reserved for authorized card-marker staff and teachers .
+            Data entries must belong strictly to registered institutional
+            students. Any misuse of system parameters, script injections, or
+            brute-force logins will result in permanent programmatic IP
+            restriction.
           </p>
         </div>
-        {/* Action Button Footer Area */}
-        <div
-          style={{
-            marginTop: "25px",
-            borderTop: "1px solid #e2e8f0",
-            paddingTop: "20px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "15px",
-          }}>
-          <button
-            onClick={onClose}
-            style={{
-              background: "#fee2e2",
-              color: "#ef4444",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "12px",
-              fontWeight: "700",
-              cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              fontSize: "0.85rem",
-              transition: "0.2s",
-            }}>
+
+        <div className="privacy-actions">
+          <button onClick={onClose} className="actions-button">
             <FaCircleXmark /> Decline / Cancel
           </button>
-          <button
-            onClick={handleAccept}
-            style={{
-              background: "#001b42",
-              color: "white",
-              border: "none",
-              padding: "10px 24px",
-              borderRadius: "12px",
-              fontWeight: "700",
-              cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              fontSize: "0.85rem",
-              transition: "0.2s",
-            }}>
+          <button onClick={handleAccept} className="close-button">
             <FaCircleCheck /> I Accept Terms
           </button>
         </div>
