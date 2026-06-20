@@ -21,14 +21,14 @@
     margin-top: 0.8rem;
     padding: 3px 0 6px 0;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.3rem$font-size-h3;
     font-weight: 0;
     border-bottom: 2px solid rgba($blue-light, 0.6);
   }
 
   p {
-    font-size: 0.8rem;
-    margin: 0.5rem 0;
+    font-size: $font-size-body-m;
+    margin: $margin-small $margin-none;
   }
 
   .icon {
@@ -45,9 +45,9 @@
   right: 0px;
   color: $white;
   background: $primary-orange;
-  font-size: 0.75rem;
+  font-size: $font-size-body-mm;
   font-weight: $font-weight-bold;
-  border-radius: 20px 0 0 20px;
+  border-radius: $border-radius-input;
   z-index: 10;
 
   display: block;
@@ -55,7 +55,7 @@
   .icon {
     margin-right: 6px;
     padding-top: 1px;
-    font-size: 0.85rem;
+    font-size: $font-size-body-m;
   }
 }
 
@@ -68,12 +68,6 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba($secondary-blue, 0.1);
   overflow: hidden;
-
-  // .card-container {
-  //   h3 {
-  //     margin-top: 0;
-  //   }
-  // }
 
   &:hover {
     transform: translateY(-6px);
@@ -89,31 +83,27 @@
 
       h3 {
         color: $secondary-blue;
-        // color: $secondary-blue;
-        font-size: 1.5rem;
+        font-size: $font-size-h2-mm;
         text-shadow: 0px 0px 4px rgba($secondary-blue, 0.6);
-        // margin-bottom: 5px;
       }
       h4 {
         background: rgba($secondary-blue, 0.9);
-        font-size: 0.85rem;
-        font-weight: 600;
+        font-size: $font-size-body-m;
+        font-weight: $font-weight-600;
         text-transform: uppercase;
         letter-spacing: 1px;
         color: $white;
         padding: 5px 0 5px 12px;
-        border-radius: 6px;
+        border-radius: $border-radius-small;
         margin: 3px 0;
       }
     }
 
     .class-desc {
-      // color: $text-medium;
       color: rgba($secondary-blue, 0.5);
-      font-size: 0.85rem;
+      font-size: $font-size-body-m;
       line-height: 1.6;
       margin-bottom: 20px;
-      // height: 60px;
       text-align: left;
 
       @include respond(tablet) {
@@ -124,9 +114,9 @@
     .class-meta {
       display: flex;
       justify-content: space-between;
-      background: #f4f4f5;
+      background: rgba($secondary-blue3, 0.1);
       padding: 12px;
-      border-radius: 15px;
+      border-radius: $border-radius-small-m;
       margin-bottom: 12px;
 
       .meta-item {
@@ -134,13 +124,13 @@
         flex-direction: column;
 
         .label {
-          font-size: 0.75rem;
-          color: #999;
+          font-size: $font-size-body-mm;
+          color: $secondary-blue3;
           margin-bottom: 2px;
         }
         .value {
-          font-size: 0.9rem;
-          font-weight: 700;
+          font-size: $font-size-body;
+          font-weight: $font-weight-700;
           color: $secondary-blue;
         }
       }
@@ -152,11 +142,11 @@
 .teacher-card {
   gap: 10px;
   background: $white;
-  border-radius: 30px;
+  border-radius: $border-radius-xlarge;
   overflow: hidden;
   box-shadow: $shadow-medium;
   padding: 0 20px;
-  border-radius: 12px;
+  border-radius: $border-radius-small-m;
   display: flex;
   justify-content: space-between;
 
@@ -172,7 +162,7 @@
       width: 200px;
       height: 200px;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: $border-radius-circle;
       box-shadow: $shadow-light;
       margin-left: 1rem;
     }
@@ -185,40 +175,35 @@
       padding: 5px 15px;
       background: rgba($secondary-blue, 0.1);
       color: $secondary-blue;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 0.8rem;
+      border-radius: $border-radius-large;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-body-m;
     }
 
     h3 {
       margin: 6px 0 10px 0;
       padding-bottom: 3px;
-      font-size: 1.6rem;
+      font-size: $font-size-h2-mm;
       color: $secondary-blue;
       border-bottom: 2px solid rgba($secondary-blue, 0.2);
     }
 
     .detail-list {
-      .detail-header {
-        // height: 110px;
-      }
-
       p {
         margin-bottom: 6px;
         color: $text-medium;
         text-align: left;
         line-height: 1.3;
-        font-size: 0.85rem;
+        font-size: $font-size-body-m;
       }
       .philosophy-box {
         padding: 15px;
-        // margin-top: 10px;
         background: rgba($blue-medium, 0.1);
         color: rgba($secondary-blue, 0.7);
         font-style: italic;
-        font-size: 0.8rem;
-        font-weight: 500;
-        border-radius: 12px;
+        font-size: $font-size-body-m;
+        font-weight: $font-weight-500;
+        border-radius: $border-radius-small-m;
       }
     }
   }
@@ -227,7 +212,6 @@
   .teacher-socials {
     padding: 8px 20px;
     margin: 6px 0;
-    // width: 100%;
     background: #ecf1ff;
     border: 1px solid #e2e8f0;
     box-shadow: 0 4px 15px rgba(26, 10, 84, 0.06);
@@ -236,18 +220,15 @@
     gap: 16px;
     flex-direction: column;
     align-items: flex-end;
-
-    // @include center-everything;
     gap: 22px;
-    border-radius: 12px 0 0 12px;
+    border-radius: $border-radius-input;
     position: absolute;
     right: -2px;
   }
 
   .teacher-socials:hover {
     box-shadow: 0 6px 20px rgba(26, 10, 84, 0.1);
-    background: #ffffff;
-    // width: 200px;
+    background: $white;
   }
 
   .teacher-socials a {
@@ -255,11 +236,10 @@
     width: 32px;
     color: $white;
     background-color: $secondary-blue;
-    font-size: 1.5rem;
+    font-size: $font-size-h2-mm;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: $border-radius-small;
     transition: transform 0.4s ease;
-    // position: absolute;
 
     @include center-everything;
 
@@ -269,12 +249,120 @@
   }
 
   .teacher-socials .call-icon {
-    font-size: 1.15rem;
+    font-size: $font-size-h3-m;
   }
 
   .teacher-socials a:hover {
     color: $white;
-    border-radius: 8px;
+    border-radius: $border-radius-small-m;
     transform: scale(1.05);
   }
 }
+
+// privacy-card - about,  update, coming-soon, legel, nexuslabs, terms
+// .privacy-card {
+//   .privacy-top {
+//     textAlign: "center", marginBottom: "25px"
+
+//     .privay-header {
+//       width: "65px",
+//               height: "65px",
+//               background: "#001b42",
+//               color: "$white",
+//               borderRadius: "50%",
+//               display: "inline-flex",
+//               justifyContent: "center",
+//               alignItems: "center",
+//               fontSize: "1.8rem",
+//               marginBottom: "12px",
+//               boxShadow: "0 8px 20px rgba(3,32,75,0.15)",
+
+//               h2 {
+//                 color: "#001b42",
+//               margin: 0,
+//               fontWeight: "900",
+//               fontSize: "1.4rem",
+//               letterSpacing: "-0.5px",
+//               }
+
+//               p {
+//                  color: "#64748b",
+//               fontSize: "0.82rem",
+//               marginTop: "4px",
+//               fontWeight: "600",
+//               }
+//     }
+//   }
+//   .privacy-container {
+// maxHeight: "300px",
+//             overflowY: "auto",
+//             padding: "20px",
+//             background: "#f8fafc",
+//             borderRadius: "16px",
+//             border: "1px solid #e2e8f0",
+//             fontSize: "0.88rem",
+//             lineHeight: "1.7",
+//             color: "#334155",
+//             textAlign: "justify",
+
+//             // container parts
+//             h4 {
+//                color: "#001b42",
+//               marginTop: 0,
+//               fontSize: "0.9rem",
+//               fontWeight: "800",
+//               display: "flex",
+//               alignItems: "center",
+//               gap: "8px",
+
+//               icon {
+//                 color: "#001b42"
+//               }
+//             }
+//             p {
+//               marginTop: "6px", marginBottom: "16px"
+//             }
+
+//             .last-content {
+//               margin-bottom: 0;
+//             }
+
+//             ul {
+//                margin: 0,
+//               paddingLeft: "15px",
+//               display: "flex",
+//               flexDirection: "column",
+//               gap: "12px",
+//             }
+//           }
+
+//             .privacy-actions {
+//               marginTop: "25px",
+//             borderTop: "1px solid #e2e8f0",
+//             paddingTop: "20px",
+//             textAlign: "right",
+
+//             button {
+//               border: "none",
+//               padding: "10px 24px",
+//               borderRadius: "12px",
+//               fontWeight: "700",
+//               cursor: "pointer",
+//               display: "inline-flex",
+//               alignItems: "center",
+//               gap: "8px",
+//               fontSize: "0.85rem",
+//               transition: "0.2s",
+//             }
+//             .close-button {
+
+//               color: "white",
+//               background: "#001b42",
+//             }
+//             .action-button {
+//                 background: "#fee2e2",
+//               color: "#ef4444",
+//             }
+//             }
+
+// }
