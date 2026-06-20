@@ -1,53 +1,8 @@
-// // src/firebaseConfig.js
-// import { initializeApp } from "firebase/app";
-// import { getFirestore } from "firebase/firestore";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCgPqfSwT9haDFJRrzJPC0nrp-T2AEabC0",
-//   authDomain: "educa-lms-abee5.firebaseapp.com",
-//   projectId: "educa-lms-abee5",
-//   storageBucket: "educa-lms-abee5.firebasestorage.app",
-//   messagingSenderId: "242875493480",
-//   appId: "1:242875493480:web:98e78bb1d178d69d6f1fdd",
-//   measurementId: "G-2C5P5XNST9",
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-
-// // export const db = getFirestore(app);
-// // import { initializeFirestore } from "firebase/firestore";
-
-// export const db = initializeFirestore(app, {
-//   experimentalForceLongPolling: true, // 🚀 Network RPC Errors එන එක 100%ක්ම නවත්වයි
-// });
-
-// import { initializeApp } from "firebase/app";
-// import { getFirestore } from "firebase/firestore";
-// import { getAuth } from "firebase/auth";
-// import { getMessaging } from "firebase/messaging";
-
-// // const firebaseConfig = {
-// //   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-// //   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-// //   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-// //   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-// //   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-// //   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-// // };
-
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
-// const auth = getAuth(app);
-// const messaging = getMessaging(app);
-
-// export { db, auth, messaging };
-
-// src/firebaseConfig.js
 import { initializeApp } from "firebase/app";
-import { initializeFirestore } from "firebase/firestore"; // 👑 for Fixed Network Errors
+// 👑 for Fixed Network Errors
+import { initializeFirestore } from "firebase/firestore";
 
-// ⚠️ Firebase වෙබ් අඩවියෙන් ලැබුණු ඔයාගේම ප්‍රොජෙක්ට් එකේ රහස් කේත ටික මෙතනට දාන්න:
+// firebase config code
 const firebaseConfig = {
   apiKey: "AIzaSyCgPqfSwT9haDFJRrzJPC0nrp-T2AEabC0",
   authDomain: "educa-lms-abee5.firebaseapp.com",
@@ -61,7 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// 🚀 ලංකාවේ Internet ISP බ්ලොක්ස් (RPC Errors) සදහටම නැති කරන සුපිරි Cloud Connection එක
+// 🚀 Cloud Connection
 export const db = initializeFirestore(app, {
   experimentalForceLongPolling: true,
 });
