@@ -1,92 +1,92 @@
-// contact form in about section
-.form-containers {
-  margin-top: 2rem;
-  min-width: 300px;
-  max-width: 400px;
-  width: $container-width-default;
-  background-color: $bg-soft;
-  box-shadow: $shadow-medium;
-  border-radius: $border-radius-medium;
+// // contact form in about section
+// .form-containers {
+//   margin-top: 2rem;
+//   min-width: 300px;
+//   max-width: 400px;
+//   width: $container-width-default;
+//   background-color: $bg-soft;
+//   box-shadow: $shadow-medium;
+//   border-radius: $border-radius-medium;
 
-  @include respond(desktop) {
-    margin: $margin-none;
-  }
+//   @include respond(desktop) {
+//     margin: $margin-none;
+//   }
 
-  form {
-    padding: 0.6rem 1rem;
-    margin: $margin-none;
-    width: $container-width-default;
-    background: $white;
-    border-radius: $border-radius-medium;
+//   form {
+//     padding: 0.6rem 1rem;
+//     margin: $margin-none;
+//     width: $container-width-default;
+//     background: $white;
+//     border-radius: $border-radius-medium;
 
-    h3 {
-      margin-bottom: 24px;
-      padding: 6px;
-      text-align: center;
+//     h3 {
+//       margin-bottom: 24px;
+//       padding: 6px;
+//       text-align: center;
 
-      span {
-        display: block;
-      }
-    }
+//       span {
+//         display: block;
+//       }
+//     }
 
-    legend {
-      color: $secondary-blue;
-      text-align: center;
-      font-weight: $font-weight-700;
-      margin-bottom: 2rem;
-    }
+//     legend {
+//       color: $secondary-blue;
+//       text-align: center;
+//       font-weight: $font-weight-700;
+//       margin-bottom: 2rem;
+//     }
 
-    label,
-    input,
-    select,
-    textarea {
-      display: block;
-      width: $container-width-default;
-      color: $secondary-blue;
-      padding: 3px 10px;
-      margin: $margin-none;
-      background-color: transparent;
-    }
+//     label,
+//     input,
+//     select,
+//     textarea {
+//       display: block;
+//       width: $container-width-default;
+//       color: $secondary-blue;
+//       padding: 3px 10px;
+//       margin: $margin-none;
+//       background-color: transparent;
+//     }
 
-    label {
-      color: $text-blue;
-      padding: $padding-none;
-      margin-top: 8px;
-    }
+//     label {
+//       color: $text-blue;
+//       padding: $padding-none;
+//       margin-top: 8px;
+//     }
 
-    input,
-    textarea {
-      background-color: rgba(162, 173, 233, 0.08);
-      border-bottom: 2px solid $link-shadow;
+//     input,
+//     textarea {
+//       background-color: rgba(162, 173, 233, 0.08);
+//       border-bottom: 2px solid $link-shadow;
 
-      &:focus {
-        border-bottom: none;
-        background-color: $link-shadow;
-        border-radius: $border-radius-small;
-      }
-    }
+//       &:focus {
+//         border-bottom: none;
+//         background-color: $link-shadow;
+//         border-radius: $border-radius-small;
+//       }
+//     }
 
-    select {
-      background-color: rgba(162, 173, 233, 0.08);
-      border-bottom: 2px solid $link-shadow;
-      color: $text-medium;
+//     select {
+//       background-color: rgba(162, 173, 233, 0.08);
+//       border-bottom: 2px solid $link-shadow;
+//       color: $text-medium;
 
-      &:focus {
-        background-color: $text-light;
-      }
-    }
-  }
+//       &:focus {
+//         background-color: $text-light;
+//       }
+//     }
+//   }
 
-  textarea {
-    resize: none;
-    width: $container-width-default;
-    min-width: 300px;
-    max-width: 350px;
-    margin: $margin-center;
-    height: 100px;
-    overflow: scroll;
-  }
-}
+//   textarea {
+//     resize: none;
+//     width: $container-width-default;
+//     min-width: 300px;
+//     max-width: 350px;
+//     margin: $margin-center;
+//     height: 100px;
+//     overflow: scroll;
+//   }
+// }
 
 // styled form
 .styled-form {
@@ -113,7 +113,9 @@
     input[type="password"],
     input[type="email"],
     input[type="number"],
-    select {
+    input[type="tel"],
+    select,
+    textarea {
       padding: 12px 16px;
       width: $container-width-default;
       color: $secondary-blue;

@@ -128,39 +128,39 @@ a {
     }
   }
 
-  .input-group {
-    display: block;
-    margin: 0$margin-none;
+  // .input-group {
+  //   display: block;
+  //   margin: 0$margin-none;
 
-    label {
-      display: block;
-      align-items: center;
-      gap: 8px;
-      font-size: $font-size-body;
-      font-weight: $font-weight-600;
-      margin: 8px 0;
-      color: $secondary-blue;
-    }
+  //   label {
+  //     display: block;
+  //     align-items: center;
+  //     gap: 8px;
+  //     font-size: $font-size-body;
+  //     font-weight: $font-weight-600;
+  //     margin: 8px 0;
+  //     color: $secondary-blue;
+  //   }
 
-    input,
-    select,
-    textarea {
-      min-width: 250px;
-      width: $container-width-default;
-      padding: 6px 15px;
-      background: $bg-light;
-      border: 1px solid #e0e8ff;
-      border-radius: $border-radius-small-m;
-      font-family: inherit;
-      transition: 0.3s;
-      &:focus {
-        outline: none;
-        border-color: $secondary-blue;
-        background: $white;
-        box-shadow: 0 0 10px rgba($secondary-blue, 0.1);
-      }
-    }
-  }
+  // input,
+  // select,
+  // textarea {
+  //   min-width: 250px;
+  //   width: $container-width-default;
+  //   padding: 6px 15px;
+  //   background: $bg-light;
+  //   border: 1px solid #e0e8ff;
+  //   border-radius: $border-radius-small-m;
+  //   font-family: inherit;
+  //   transition: 0.3s;
+  //   &:focus {
+  //     outline: none;
+  //     border-color: $secondary-blue;
+  //     background: $white;
+  //     box-shadow: 0 0 10px rgba($secondary-blue, 0.1);
+  //   }
+  // }
+  // }
 
   .contact-submit-btn {
     width: $container-width-default;

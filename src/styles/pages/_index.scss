@@ -83,7 +83,26 @@ main {
   max-width: 1200px;
   margin: $margin-center;
   padding: 20px;
-  margin-top: 7rem;
+  margin-top: 6rem;
+
+  section {
+    padding: 1rem 0;
+
+    .classes-container {
+      padding-top: 0;
+    }
+  }
+  .parts h2 {
+    margin-top: 0;
+  }
+
+  .notice-board-wrapper {
+    padding: 1.5rem 0;
+  }
+
+  .notice-grid {
+    padding: 2rem 0;
+  }
 }
 
 .tab-control-buttons {

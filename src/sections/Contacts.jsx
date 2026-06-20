@@ -143,7 +143,8 @@ const Contact = () => {
                       name="phone"
                       value={contactFormData.phone}
                       onChange={handleInputChange}
-                      placeholder="E.g., 077 *** ****"
+                      placeholder="077 *** ****"
+                      value="+94"
                       required
                     />
                   </div>

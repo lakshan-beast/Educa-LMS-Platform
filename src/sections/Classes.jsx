@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa6";
+// import { FaArrowRight } from "react-icons/fa6";
 
 const Classes = () => {
   const classData = [
@@ -67,15 +67,15 @@ const Classes = () => {
                   </div>
                 </div>
 
-                <Link to="/classes-details" className="class-btns">
+                {/* <Link to="/classes-details" className="class-btns">
                   View Class Details <FaArrowRight />
-                </Link>
+                </Link> */}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="more-btn" data-aos="fade-up">
+        <div className="more-btn">
           <Link to="/tab-controller" className="fullclass-btn">
             View Full Timetable & Notices
           </Link>
