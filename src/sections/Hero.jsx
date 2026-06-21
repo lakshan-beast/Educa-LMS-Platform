@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -43,6 +44,10 @@ const Hero = () => {
             <a href="#classes" className="browse-btn">
               Browse classes <FaArrowRight className="icon" />
             </a>
+
+            <Link to="/result-hub" className="browse-btn">
+              Results (2025)
+            </Link>
           </div>
         </div>
 

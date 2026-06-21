@@ -1,0 +1,397 @@
+.secure-results-wrapper-shell {
+  padding: 6.5rem 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  //   margin-top: 6rem;
+}
+
+.falling-grades-matrix-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.falling-grade-token {
+  position: absolute;
+  top: -50px;
+  font-weight: 900;
+  opacity: 0;
+  font-family: "Exo 2", sans-serif;
+  animation: gradeRainDrop linear infinite;
+
+  &.token-a {
+    color: rgba(251, 191, 36, 0.08);
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.2);
+  }
+  &.token-b {
+    color: rgba(3, 32, 75, 0.06);
+    text-shadow: 0 0 8px rgba(3, 32, 75, 0.1);
+  }
+}
+
+@keyframes gradeRainDrop {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.results-header-block,
+.results-core-split-layout {
+  position: relative;
+  z-index: 1;
+}
+
+.results-header-block {
+  text-align: center;
+  margin-bottom: 40px;
+  h2 {
+    color: #03204b;
+    font-weight: 900;
+    font-size: 2.2rem;
+    span {
+      color: #ff5722;
+    }
+  }
+  p {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-top: 5px;
+  }
+}
+
+.results-core-split-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.secure-submission-form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(3, 32, 75, 0.02);
+  text-align: left;
+  h3 {
+    color: #03204b;
+    margin: 0 0 20px 0;
+    font-weight: 800;
+  }
+}
+
+.form-field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  label {
+    font-size: 0.82rem;
+    color: #64748b;
+    font-weight: 700;
+  }
+  input,
+  textarea,
+  select {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.88rem;
+    color: #03204b;
+    font-weight: 600;
+    outline: none;
+    background-color: #f8fafc;
+  }
+}
+
+.grades-selector-triple-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+  .grade-drop {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #64748b;
+    }
+    select {
+      padding: 8px;
+      width: 100%;
+    }
+  }
+}
+
+.submit-verify-btn {
+  width: 100%;
+  background-color: #03204b;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.subject-matrix-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  button {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    &.active {
+      background-color: #03204b !important;
+      color: white !important;
+    }
+  }
+}
+
+.secure-cards-grid-isolation-shield {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  -webkit-user-select: none;
+  user-select: none !important;
+}
+
+.secure-student-honors-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  padding: 25px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(3, 32, 75, 0.02);
+  &:hover {
+    cursor: none !important;
+    .anti-screenshot-watermark {
+      opacity: 0.15;
+    }
+  }
+}
+
+.anti-screenshot-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: 0.65rem;
+  color: #03204b;
+  font-weight: 900;
+  width: 150%;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-top-profile-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  .profile-meta {
+    text-align: left;
+    flex: 1;
+    h4 {
+      margin: 0;
+      color: #03204b;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+    small {
+      color: #64748b;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    p {
+      margin: 2px 0 0 0;
+      color: #94a3b8;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.secure-avatar-img {
+  width: 46px;
+  height: 46px;
+  background-color: #e2e8f0;
+  border-radius: 50%;
+  -webkit-user-drag: none;
+}
+.triple-subject-cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+.subject-mini-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  .sub-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+  .sub-grade {
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-top: 2px;
+  }
+}
+
+.subject-mini-card.grade-a {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-color: #fde68a;
+  .sub-label,
+  .sub-grade {
+    color: #b45309;
+  }
+}
+.subject-mini-card.grade-b {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-color: #bfdbfe;
+  .sub-label,
+  .sub-grade {
+    color: #1e40af;
+  }
+}
+.subject-mini-card.grade-c {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-color: #bbf7d0;
+  .sub-label,
+  .sub-grade {
+    color: #15803d;
+  }
+}
+
+.student-testimonial-quote {
+  margin: 15px 0;
+  color: #475569;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.5;
+  font-weight: 500;
+  text-align: left;
+}
+.faculty-badge-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+  span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 600;
+    strong {
+      color: #475569;
+    }
+  }
+}
+
+.card-live-like-trigger-btn {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecdd3 100%);
+  color: #ef4444;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #fca5a5 0%, #f43f5e 100%);
+    color: #ffffff;
+  }
+}
+
+.secure-student-honors-card.elite-9a-shimmer {
+  border: 2px solid #fbbf24 !important;
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15) !important;
+  background: #ffffff;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(251, 191, 36, 0.12) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: goldCardShimmering 3.5s ease-in-out infinite;
+  }
+}
+
+.gold-medal-tag {
+  background-color: #fbbf24;
+  color: #03204b;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+@keyframes goldCardShimmering {
+  0% {
+    left: -150%;
+  }
+  30% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
