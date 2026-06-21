@@ -17,6 +17,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 
 import Dashboard from "./pages/Dashboard";
 import PaperHub from "./pages/PaperHub";
+import ResultHub from "./pages/ResultHub";
 
 import StudentVoices from "./components/StudentVoices";
 import FullTimetable from "./pages/Timetables";
@@ -55,6 +56,7 @@ const App = () => {
           <Route path="/full-timetable" element={<FullTimetable />} />
           <Route path="/classes-details" element={<ClassesDetails />} />
           <Route path="/parent-portal" element={<ParentPortal />} />
+          <Route path="/result-hub" element={<ResultHub />} />
 
           <Route path="/student-voices" element={<StudentVoices />} />
 
