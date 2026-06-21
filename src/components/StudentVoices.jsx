@@ -587,7 +587,7 @@ const StudentVoices = () => {
                   borderRadius: "15px",
                   border: "1px dashed #ccc",
                 }}>
-                No comments shared for this category yet. [INDEX 51]
+                No comments shared for this category yet.
               </div>
             )}
           </div>

@@ -1,6 +1,7 @@
 .secure-results-wrapper-shell {
   padding: 6.5rem 20px;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -63,15 +64,15 @@
   text-align: center;
   margin-bottom: 40px;
   h2 {
-    color: #03204b;
+    color: $secondary-blue;
     font-weight: 900;
     font-size: 2.2rem;
     span {
-      color: #ff5722;
+      color: $secondary-blue3;
     }
   }
   p {
-    color: #64748b;
+    color: $secondary-blue3;
     font-size: 0.95rem;
     margin-top: 5px;
   }
@@ -79,7 +80,8 @@
 
 .results-core-split-layout {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  // grid-template-columns: 420px 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
   align-items: start;
 }
@@ -91,6 +93,11 @@
   border: 1px solid #e2e8f0;
   box-shadow: 0 10px 30px rgba(3, 32, 75, 0.02);
   text-align: left;
+  max-width: 450px;
+  width: 100%;
+  // height: 600px;
+  overflow-y: scroll;
+
   h3 {
     color: #03204b;
     margin: 0 0 20px 0;
@@ -98,29 +105,29 @@
   }
 }
 
-.form-field-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-  label {
-    font-size: 0.82rem;
-    color: #64748b;
-    font-weight: 700;
-  }
-  input,
-  textarea,
-  select {
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 1px solid #cbd5e1;
-    font-size: 0.88rem;
-    color: #03204b;
-    font-weight: 600;
-    outline: none;
-    background-color: #f8fafc;
-  }
-}
+// .form-field-row {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 6px;
+//   margin-bottom: 16px;
+//   label {
+//     font-size: 0.82rem;
+//     color: #64748b;
+//     font-weight: 700;
+//   }
+//   input,
+//   textarea,
+//   select {
+//     padding: 10px 14px;
+//     border-radius: 10px;
+//     border: 1px solid #cbd5e1;
+//     font-size: 0.88rem;
+//     color: #03204b;
+//     font-weight: 600;
+//     outline: none;
+//     background-color: #f8fafc;
+//   }
+// }
 
 .grades-selector-triple-grid {
   display: grid;
