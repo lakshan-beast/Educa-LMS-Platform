@@ -553,7 +553,7 @@ const ResultsHub = () => {
                               <span
                                 className={`table-overall-badge ${is9A ? "gold-medal-tag" : ""}`}>
                                 {is9A
-                                  ? " 9A ELITE"
+                                  ? "⭐ 9A ELITE"
                                   : student.overallResult?.toUpperCase()}
                               </span>
                             </td>
