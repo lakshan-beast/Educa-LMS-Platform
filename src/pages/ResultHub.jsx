@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { useState, useEffect, useMemo } from "react";
+
 import { db } from "../firebaseConfig";
 import {
   collection,
@@ -11,21 +12,17 @@ import {
   updateDoc,
   increment,
 } from "firebase/firestore";
+
 import {
-  FaShieldHalved,
-  //   FaSchool,
-  //   FaAward,
-  //   IoIosArrowBack ,
-  //   FaArrowRight,
   FaPaperPlane,
   FaHeart,
   FaCircleCheck,
   FaCommentDots,
+  FaPlus,
 } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-{
-  /* <IoIosArrowBack />; */
-}
+
+import Loader from "../components/Loader";
 
 const ResultsHub = () => {
   const [results, setResults] = useState([]);
@@ -33,6 +30,7 @@ const ResultsHub = () => {
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [isUploading, setIsUploading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // Popup එක පාලනය කිරීමට
+  const [isModalOpen, setIsModalOpen] = useState(false); // Popup Controller
 
   // 📝 Form එකේ State එක (පින්තූර/කමෙන්ට් අයින් කර සර්ලාගේ Dropdowns දමා ඇත)
   const [form, setForm] = useState({
@@ -235,184 +233,241 @@ const ResultsHub = () => {
           <Link className="back-btn" to="/">
             <IoIosArrowBack /> Back to Home
           </Link>
-          <Link className="back-btn" to="/dashboard">
-            Back to Dashboard <IoIosArrowForward />
+          <Link className="back-btn" to="/students-reviews">
+            Go to Comments <span className="bell-alert-dot"></span>
+            <IoIosArrowForward />
           </Link>
         </div>
-
-        <div className="results-header-block">
+        <div className="results-container parts">
           <h2>
-            <FaShieldHalved /> Verified O/L <span>Honors Portal</span>
+            Verified O/L <span>Honors Portal</span>
           </h2>
           <p>
             Showcase the true reward of your hard work; a live-updating official
             directory of ordinary level achievers.
           </p>
         </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "15px",
+            marginBottom: "0.5rem",
+          }}>
+          {/* 💬 ALL COMMENTS COUNT BADGE */}
+          <div
+            style={{
+              background: "#eef2ff",
+              color: "#001b42",
+              padding: "10px 18px",
+              borderRadius: "12px",
+              fontWeight: "800",
+              fontSize: "0.9rem",
+              border: "1px solid #d9e8ff",
+            }}>
+            Total Results: {results.length}
+          </div>
 
+          {/* 📣 ADD NEW COMMENT BUTTON */}
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(true)}
+            style={{
+              background: "#ff4b2b",
+              color: "white",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "12px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              boxShadow: "0 4px 12px rgba(255,75,43,0.2)",
+            }}>
+            <FaPlus /> Share Your Results
+          </button>
+        </div>
         {/* 📈 LIVE ANALYTICS DASHBOARD CARD LAYER */}
         <div className="analytics-summary-dashboard-grid">
-          <div className="analytic-mini-card">
-            <span>👥 Total Candidates</span>
+          {/* <div className="parts-grid"> */}
+          <div className="analytic-mini-card card-row">
+            <span> Total Candidates</span>
             <strong>{analytics.total}</strong>
           </div>
-          <div className="analytic-mini-card">
-            <span>✅ Total Passed Students</span>
+          <div className="analytic-mini-card card-row">
+            <span> Total Passed Students</span>
             <strong>{analytics.passed}</strong>
           </div>
-          <div className="analytic-mini-card percentage-card">
-            <span>📊 Overall Pass Rate</span>
+          <div className="analytic-mini-card percentage-card card-row">
+            <span> Overall Pass Rate</span>
             <strong>{analytics.rate}%</strong>
           </div>
-          <div className="analytic-mini-card teacher-card">
-            <span>📐 Amila Sir (Maths)</span>
+          {/* </div> */}
+          {/* <div className="parts-grid"> */}
+          <div className="analytic-mini-card teacher-cards">
+            <span> Maths Sir (Maths)</span>
             <small>
-              A: {analytics.amilaMathsA} | B: {analytics.amilaMathsB}
+              A: {analytics.amilaMathsA} | B: {analytics.amilaMathsB} | c:{" "}
+              {analytics.amilaMathsc}
             </small>
           </div>
-          <div className="analytic-mini-card teacher-card">
-            <span>🔬 Nimal Sir (Science)</span>
+          <div className="analytic-mini-card teacher-cards">
+            <span> Science Sir (Science)</span>
             <small>
-              A: {analytics.nimalScienceA} | B: {analytics.nimalScienceB}
+              A: {analytics.nimalScienceA} | B: {analytics.nimalScienceB} | c:{" "}
+              {analytics.amilaMathsc}
             </small>
           </div>
+          <div className="analytic-mini-card teacher-cards">
+            <span> English Sir (Science)</span>
+            <small>
+              A: {analytics.nimalScienceA} | B: {analytics.nimalScienceB} | c:{" "}
+              {analytics.amilaMathsc}
+            </small>
+          </div>
+          {/* </div> */}
         </div>
+        {isModalOpen && (
+          <div className="results-core-split-layouts">
+            {/* FORM SIDE */}
+            <form
+              onSubmit={handleSubmitResult}
+              className="secure-submission-form styled-form ">
+              <h3>Submit O/L Records</h3>
 
-        <div className="results-core-split-layout">
-          {/* FORM SIDE */}
-          <form
-            onSubmit={handleSubmitResult}
-            className="secure-submission-form styled form ">
-            <h3>Submit O/L Records</h3>
-
-            <div className="form-field-row">
-              <label>Full Name</label>
-              <input
-                type="text"
-                value={form.fullName}
-                onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-                placeholder="e.g. Imesh Lakshan"
-                required
-              />
-            </div>
-
-            <div className="form-field-row">
-              <label>Index Number</label>
-              <input
-                type="text"
-                value={form.indexNumber}
-                onChange={(e) =>
-                  setForm({ ...form, indexNumber: e.target.value })
-                }
-                placeholder="e.g. 6089412"
-                required
-              />
-            </div>
-            <div className="form-field-row">
-              <label>🏫 Attended School Name</label>
-              <input
-                type="text"
-                value={form.schoolName}
-                onChange={(e) =>
-                  setForm({ ...form, schoolName: e.target.value })
-                }
-                placeholder="e.g. Royal College"
-                required
-              />
-            </div>
-
-            <div className="form-field-row">
-              <label>🏆 Overall Examination Result</label>
-              <input
-                type="text"
-                value={form.overallResult}
-                onChange={(e) =>
-                  setForm({ ...form, overallResult: e.target.value })
-                }
-                placeholder="e.g. 9A or 8A, 1B"
-                required
-              />
-            </div>
-
-            {/* TEACHERS SELECTION DROPDOWNS */}
-            <div className="form-field-row">
-              <label>📐 Maths Teacher Name</label>
-              <select
-                value={form.mathsTeacher}
-                onChange={(e) =>
-                  setForm({ ...form, mathsTeacher: e.target.value })
-                }>
-                <option value="Amila Sir">Amila Sir</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div className="form-field-row">
-              <label>🔬 Science Teacher Name</label>
-              <select
-                value={form.scienceTeacher}
-                onChange={(e) =>
-                  setForm({ ...form, scienceTeacher: e.target.value })
-                }>
-                <option value="Nimal Sir">Nimal Sir</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div className="grades-selector-triple-grid">
-              <div className="grade-drop">
-                <label>📐 Maths</label>
-                <select
-                  value={form.mathsGrade}
+              <div className="input-group">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  value={form.fullName}
                   onChange={(e) =>
-                    setForm({ ...form, mathsGrade: e.target.value })
+                    setForm({ ...form, fullName: e.target.value })
+                  }
+                  placeholder="e.g. Imesh Lakshan"
+                  required
+                />
+              </div>
+
+              <div className="input-group">
+                <label>Index Number</label>
+                <input
+                  type="text"
+                  value={form.indexNumber}
+                  onChange={(e) =>
+                    setForm({ ...form, indexNumber: e.target.value })
+                  }
+                  placeholder="e.g. 6089412"
+                  required
+                />
+              </div>
+              <div className="input-group">
+                <label>Attended School Name</label>
+                <input
+                  type="text"
+                  value={form.schoolName}
+                  onChange={(e) =>
+                    setForm({ ...form, schoolName: e.target.value })
+                  }
+                  placeholder="e.g. Royal College"
+                  required
+                />
+              </div>
+
+              <div className="input-group">
+                <label>Overall Examination Result</label>
+                <input
+                  type="text"
+                  value={form.overallResult}
+                  onChange={(e) =>
+                    setForm({ ...form, overallResult: e.target.value })
+                  }
+                  placeholder="e.g. 9A or 8A, 1B"
+                  required
+                />
+              </div>
+
+              {/* TEACHERS SELECTION DROPDOWNS */}
+              <div className="input-group">
+                <label>Maths Teacher Name</label>
+                <select
+                  value={form.mathsTeacher}
+                  onChange={(e) =>
+                    setForm({ ...form, mathsTeacher: e.target.value })
                   }>
-                  <option>A</option>
-                  <option>B</option>
-                  <option>C</option>
-                  <option>S</option>
-                  <option>F</option>
+                  <option value="Amila Sir">Amila Sir</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
-              <div className="grade-drop">
-                <label>🔬 Science</label>
+
+              <div className="input-group">
+                <label>Science Teacher Name</label>
                 <select
-                  value={form.scienceGrade}
+                  value={form.scienceTeacher}
                   onChange={(e) =>
-                    setForm({ ...form, scienceGrade: e.target.value })
+                    setForm({ ...form, scienceTeacher: e.target.value })
                   }>
-                  <option>A</option>
-                  <option>B</option>
-                  <option>C</option>
-                  <option>S</option>
-                  <option>F</option>
+                  <option value="Nimal Sir">Nimal Sir</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
-              <div className="grade-drop">
-                <label>🔤 English</label>
-                <select
-                  value={form.englishGrade}
-                  onChange={(e) =>
-                    setForm({ ...form, englishGrade: e.target.value })
-                  }>
-                  <option>A</option>
-                  <option>B</option>
-                  <option>C</option>
-                  <option>S</option>
-                  <option>F</option>
-                </select>
+
+              <div className="grades-selector-triple-grid">
+                <div className="grade-drop">
+                  <label>Maths</label>
+                  <select
+                    value={form.mathsGrade}
+                    onChange={(e) =>
+                      setForm({ ...form, mathsGrade: e.target.value })
+                    }>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>S</option>
+                    <option>F</option>
+                  </select>
+                </div>
+                <div className="grade-drop">
+                  <label>Science</label>
+                  <select
+                    value={form.scienceGrade}
+                    onChange={(e) =>
+                      setForm({ ...form, scienceGrade: e.target.value })
+                    }>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>S</option>
+                    <option>F</option>
+                  </select>
+                </div>
+                <div className="grade-drop">
+                  <label>English</label>
+                  <select
+                    value={form.englishGrade}
+                    onChange={(e) =>
+                      setForm({ ...form, englishGrade: e.target.value })
+                    }>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>S</option>
+                    <option>F</option>
+                  </select>
+                </div>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              className="submit-verify-btn"
-              disabled={isUploading}>
-              <FaPaperPlane />{" "}
-              {isUploading ? "Uploading..." : "Verify & Submit Records"}
-            </button>
-          </form>
-
+              <button
+                type="submit"
+                className="submit-verify-btn "
+                disabled={isUploading}>
+                <FaPaperPlane />{" "}
+                {isUploading ? "Uploading..." : "Verify & Submit Records"}
+              </button>
+            </form>
+          </div>
+        )}
+        <div>
           {/* DISPLAY SIDE (TABLE LAYOUT) */}
           <div className="secure-results-display-terminal">
             <div className="subject-matrix-tabs">
@@ -436,29 +491,33 @@ const ResultsHub = () => {
                 className={activeFilter === "SCIENCE_A" ? "active" : ""}>
                 Science A
               </button>
+              <button
+                onClick={() => setActiveFilter("ENGLISH_A")}
+                className={activeFilter === "ENGLISH_A" ? "active" : ""}>
+                English A
+              </button>
             </div>
 
             {/* 📋 RESPONSIVE TABLE SHIELD */}
             <div className="secure-table-isolation-shield">
               {isLoading ? (
-                <div className="vault-loading-center">
-                  Streaming Verified Cloud Records...
-                </div>
+                <Loader />
               ) : filteredResults.length === 0 ? (
                 <div className="vault-empty-lock">
-                  🔒 Secured Faculty Cluster Node Encrypted.
+                  Secured Faculty Cluster Node Encrypted.
                 </div>
               ) : (
                 <div className="table-responsive-wrapper">
+                  <h2>Full O/L Exam Results - 2025 </h2>
                   <table className="secure-honors-ledger-table">
                     <thead>
                       <tr>
                         <th>Full Name & Index</th>
                         <th>School</th>
                         <th>Overall</th>
-                        <th>📐 Maths</th>
-                        <th>🔬 Science</th>
-                        <th>🔤 English</th>
+                        <th>Maths</th>
+                        <th>Science</th>
+                        <th>English</th>
                         <th>Appreciate</th>
                       </tr>
                     </thead>
@@ -474,8 +533,7 @@ const ResultsHub = () => {
                             key={student.docId}
                             className={is9A ? "elite-9a-gold-row-shimmer" : ""}>
                             <td>
-                              {/* 1. මඟහැරුණු ආරම්භක div ටැග් එක මෙතනට දැම්මා */}
-                              <div>
+                              <div className="details-content">
                                 <span className="student-name-text">
                                   {student.fullName}
                                 </span>
@@ -484,33 +542,37 @@ const ResultsHub = () => {
                                 </small>
                               </div>
                             </td>
+
                             <td>
                               <span className="table-school-tag">
                                 {student.schoolName}
                               </span>
                             </td>
+
                             <td>
-                              {/* 2. මෙතනට Backticks (  ) ලකුණු නිවැරදිව එකතු කළා */}
                               <span
-                                className={`table-overall-badge ${is9A ? "gold-medal-text" : ""}`}>
+                                className={`table-overall-badge ${is9A ? "gold-medal-tag" : ""}`}>
                                 {is9A
-                                  ? "🏆 9A ELITE"
+                                  ? " 9A ELITE"
                                   : student.overallResult?.toUpperCase()}
                               </span>
                             </td>
-                            {/* 3. මේ subject සේල් වලටත් Backticks (  ) ලකුණු නිවැරදිව දැම්මා */}
+
                             <td
                               className={`table-grade-cell grade-${student.mathsGrade?.toLowerCase()}`}>
                               <strong>{student.mathsGrade}</strong>
                             </td>
+
                             <td
                               className={`table-grade-cell grade-${student.scienceGrade?.toLowerCase()}`}>
                               <strong>{student.scienceGrade}</strong>
                             </td>
+
                             <td
                               className={`table-grade-cell grade-${student.englishGrade?.toLowerCase()}`}>
                               <strong>{student.englishGrade}</strong>
                             </td>
+
                             <td>
                               <button
                                 onClick={() =>
@@ -529,10 +591,8 @@ const ResultsHub = () => {
               )}
             </div>
           </div>
-        </div>
+        </div>{" "}
         {/* results-core-split-layout END */}
-
-        {/* 💬 🔗 MODAL POPUP MESSAGE LAYER */}
         {/* 💬 🔗 MODAL POPUP MESSAGE LAYER */}
         {showPopup && (
           <div className="custom-modal-blur-overlay">
@@ -541,7 +601,6 @@ const ResultsHub = () => {
                 <FaCircleCheck />
               </div>
 
-              {/* 🇬🇧 Popup එකේ විස්තර ඉංග්‍රීසි භාෂාවට හරවන ලදී */}
               <h4>Records Submitted Successfully!</h4>
               <p>
                 Your results have been sent for verification and will be live on
@@ -551,8 +610,6 @@ const ResultsHub = () => {
               </p>
 
               <div className="popup-action-row-buttons">
-                {/* <a href="/comments" className="popup-redirect-btn"><FaCommentDots /> Go to Comments Board</a> */}
-
                 <Link className="popup-redirect-btn" to="/students-reviews">
                   <FaCommentDots /> Go to Comments Board
                 </Link>

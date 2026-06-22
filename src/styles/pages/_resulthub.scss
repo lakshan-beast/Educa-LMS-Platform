@@ -7,16 +7,16 @@
   //   font-family:
   // -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   //   min-height: 100vh;
-  padding: 30px 20px;
-  position: relative;
-  overflow: hidden;
-  padding: 6.5rem 20px;
+  //   padding: 30px 20px;
+  //   position: relative;
+  //   overflow: hidden;
   // max-width: 1200px;
+  //   margin-top: 6rem;
+  padding: 6.5rem 20px;
   width: 100%;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  //   margin-top: 6rem;
 }
 
 /* 🌧️ A & B Falling Grades Matrix Background */
@@ -63,79 +63,126 @@
 /* ==========================================================================
    🏛️ HEADER BLOCK & LIVE ANALYTICS DASHBOARD
    ========================================================================== */
-.results-header-block {
-  text-align: center;
-  margin-bottom: 35px;
-  position: relative;
-  z-index: 2;
-}
+// .results-header-block {
+//   text-align: center;
+//   margin-bottom: 35px;
+//   position: relative;
+//   z-index: 2;
+// }
 
-.results-header-block h2 {
-  font-size: 2.2rem;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 10px;
-}
+// .results-header-block h2 {
+//   font-size: 2.2rem;
+//   color: #ffffff;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 12px;
+//   margin-bottom: 10px;
+// }
 
-.results-header-block h2 span {
-  color: #ffd700;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-}
+// .results-header-block h2 span {
+//   color: #ffd700;
+//   text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+// }
 
-.results-header-block p {
-  color: #8b949e;
-  font-size: 1.05rem;
-}
+// .results-header-block p {
+//   color: #8b949e;
+//   font-size: 1.05rem;
+// }
 
 /* 📈 Live Analytics Summary Dashboard */
 .analytics-summary-dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  //   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  margin-bottom: 30px;
+  margin: 30px auto;
   position: relative;
   z-index: 2;
 }
 
+// .parts-grid {
+//   display: flex;
+//   //   flex-direction: row;
+//   gap: 6px;
+// }
+
 .analytic-mini-card {
-  //   background: #161b22;
+  background: $secondary-blue;
+  background: linear-gradient(25deg, #a0f7f3 0%, #001b42 50%);
   border: 1px solid #30363d;
-  padding: 18px;
+  padding: 18px 6px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   transition: transform 0.2s;
 }
 
-.analytic-mini-card:hover {
-  transform: translateY(-2px);
-}
+//   &::after {
+//     content: "";
+//     position: relative;
+//     right: -50px;
+//     bottom: -50px;
+//     width: 100px;
+//     height: 100px;
+//     background: rgba($white, 0.15);
+//     box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.8);
+//     border-radius: $border-radius-circle;
+//     // overflow: hidden;
+//   }
+
+// .analytic-mini-card:hover {
+//   transform: translateY(-2px);
+// }
 
 .analytic-mini-card span {
   font-size: 0.85rem;
-  color: #8b949e;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  padding-bottom: 3px;
 }
 
 .analytic-mini-card strong {
-  font-size: 1.8rem;
+  font-size: 3rem;
+  font-weight: 700;
   color: #58a6ff;
+  text-shadow: 1px 1px 6px #c9ffd3;
+  color: #00ff2f;
+  //   color: $primary-orange;
   margin-top: 8px;
+  text-align: center;
 }
 
 .percentage-card strong {
-  color: #2ea043; /* Pass Rate එක කොළ පාටින් */
+  color: #00ff2f; /* Pass Rate එක කොළ පාටින් */
 }
 
-.teacher-card small {
-  font-size: 0.95rem;
-  color: #ff79c6;
+.teacher-cards span {
+  border-bottom: 5px solid rgba($secondary-blue3, 0.5);
+  border-width: 100%;
+}
+.teacher-cards small {
+  font-size: 1.2rem;
+  color: #00ff2f;
   margin-top: 8px;
   font-weight: 600;
+  text-align: center;
+  //   display: flex;
+  //   justify-content: space-between;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  .analytic-mini-card span {
+    border-bottom: none;
+  }
 }
 
 /* ==========================================================================
@@ -155,53 +202,54 @@
   }
 }
 
-.secure-submission-form {
-  //   background: #161b22;
-  border: 1px solid #30363d;
-  padding: 25px;
-  border-radius: 10px;
-  height: fit-content;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
+// .secure-submission-form {
+//   //   background: #161b22;
+//   border: 1px solid #30363d;
+//   padding: 25px;
+//   border-radius: 10px;
+//   height: fit-content;
+//   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+// }
 
-.secure-submission-form h3 {
-  color: #ffffff;
-  margin-bottom: 20px;
-  font-size: 1.3rem;
-  border-bottom: 1px solid #30363d;
-  padding-bottom: 10px;
-}
+// .secure-submission-form h3 {
+//   color: #ffffff;
+//   margin-bottom: 20px;
+//   font-size: 1.3rem;
+//   border-bottom: 1px solid #30363d;
+//   padding-bottom: 10px;
+// }
 
-.form-field-row {
-  margin-bottom: 18px;
-}
+// .form-field-row {
+//   margin-bottom: 18px;
+// }
 
-.form-field-row label {
-  display: block;
-  font-size: 0.9rem;
-  color: #c9d1d9;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
+// .form-field-row label {
+//   display: block;
+//   font-size: 0.9rem;
+//   color: #c9d1d9;
+//   margin-bottom: 8px;
+//   font-weight: 500;
+// }
 
-.secure-submission-form input[type="text"],
-.secure-submission-form select {
-  width: 100%;
-  padding: 10px 12px;
-  background: #0d1117;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  color: #ffffff;
-  font-size: 0.95rem;
-  outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s;
-}
+// .secure-submission-form input[type="text"],
+// .secure-submission-form select {
+//   width: 100%;
+//   padding: 10px 12px;
+//   background: #0d1117;
+//   border: 1px solid #30363d;
+//   border-radius: 6px;
+//   color: #ffffff;
+//   font-size: 0.95rem;
+//   outline: none;
+//   box-sizing: border-box;
+//   transition: border-color 0.2s;
+// }
 
-.secure-submission-form input[type="text"]:focus,
-.secure-submission-form select:focus {
-  border-color: #58a6ff;
-}
+// .secure-submission-form input[type="text"]:focus,
+// .secure-submission-form select:focus {
+//   border-color: #58a6ff;
+// }
+
 /* Triple Dropdown Grid (Maths, Science, English) */
 .grades-selector-triple-grid {
   display: grid;
@@ -210,33 +258,33 @@
   margin-bottom: 22px;
 }
 
-.grade-drop label {
-  display: block;
-  font-size: 0.8rem;
-  color: #8b949e;
-  margin-bottom: 6px;
-}
+// .grade-drop label {
+//   display: block;
+//   font-size: 0.8rem;
+//   color: #8b949e;
+//   margin-bottom: 6px;
+// }
 
-.submit-verify-btn {
-  width: 100%;
-  background: #2ea043;
-  color: #ffffff;
-  border: none;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: background 0.2s;
-}
+// .submit-verify-btn {
+//   width: 100%;
+//   background: #2ea043;
+//   color: #ffffff;
+//   border: none;
+//   padding: 12px;
+//   border-radius: 6px;
+//   font-size: 1rem;
+//   font-weight: 600;
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 8px;
+//   transition: background 0.2s;
+// // }
 
-.submit-verify-btn:hover:not(:disabled) {
-  background: #3fb950;
-}
+// .submit-verify-btn:hover:not(:disabled) {
+//   background: #3fb950;
+// }
 
 .submit-verify-btn:disabled {
   opacity: 0.6;
@@ -254,17 +302,24 @@
 /* Filter Matrix Tabs */
 .subject-matrix-tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 15px;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: 2rem 0;
   overflow-x: auto;
-  padding-bottom: 5px;
+  padding: 6px 6px 16px 6px;
+  background: rgba($secondary-blue, 0.2);
+  border-radius: 12px;
+  background: #f4f7ff;
+  border: 1px solid #e2e8f0;
 }
 
 .subject-matrix-tabs button {
-  //   background: #161b22;
-  border: 1px solid #30363d;
-  color: #c9d1d9;
-  padding: 8px 16px;
+  //   background: transparent;
+  border: 1px solid #001b42;
+  color: rgba($secondary-blue3, 0.5);
+  color: $secondary-blue;
+  padding: 8px 26px;
   border-radius: 20px;
   font-size: 0.88rem;
   cursor: pointer;
@@ -277,16 +332,16 @@
 }
 
 .subject-matrix-tabs button.active {
-  background: #21262d;
-  border-color: #58a6ff;
-  color: #58a6ff;
+  background: $secondary-blue;
+  border-color: rgba($secondary-blue, 0.5);
+  color: white;
   font-weight: 600;
 }
 
 /* 🔒 Table Container Isolation Shield */
 .secure-table-isolation-shield {
   //   background: #161b22;
-  border: 1px solid #30363d;
+  //   border: 1px solid #30363d;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -296,6 +351,12 @@
   overflow-x: auto;
   overflow-y: hidden;
   //   -webkit-overflow-scrolling: touch;
+
+  h2 {
+    text-align: center;
+    margin: 2rem auto;
+    color: $secondary-blue;
+  }
 }
 
 .secure-honors-ledger-table {
@@ -303,30 +364,40 @@
   border-collapse: collapse;
   text-align: left;
   font-size: 0.95rem;
-  min-width: 750px; /* Mobile වලදී Scroll එක ක්‍රියාත්මක වීමට අවම පළලක් */
+  min-width: 850px; /* Mobile වලදී Scroll එක ක්‍රියාත්මක වීමට අවම පළලක් */
+
+  //   height: 600px;
+  overflow: scroll;
 }
 
 /* 📌 Heading එක උඩම හිරවෙන Sticky Header */
 .secure-honors-ledger-table th {
-  //   background: #161b22;
+  background: $secondary-blue;
   color: #c9d1d9;
   padding: 14px 16px;
   font-weight: 600;
-  border-bottom: 2px solid #30363d;
+  border-bottom: 2px solid $secondary-blue;
   position: sticky;
   top: 0;
   z-index: 10;
   -webkit-user-select: none;
   user-select: none;
 }
-
+table tr {
+  margin: 13px 0;
+}
 .secure-honors-ledger-table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid #21262d;
+  padding: 0px 16px;
+  border-bottom: 1px solid $secondary-blue;
   color: #e6edf3;
   vertical-align: middle;
+  //   background-color: red;
 }
-
+.details-content {
+  display: flex;
+  gap: 3px;
+  flex-direction: column;
+}
 /* Student Identity Stack */
 .table-student-identity {
   display: flex;
@@ -335,23 +406,23 @@
 
 .student-name-text {
   font-weight: 600;
-  color: #ffffff;
+  color: rgba($secondary-blue, 0.8);
 }
 
 .student-index-subtext {
-  font-size: 0.8rem;
-  color: #8b949e;
+  font-size: 0.9rem;
+  color: rgba($secondary-blue, 0.7);
   margin-top: 3px;
 }
 
 .table-school-tag {
-  color: #c9d1d9;
+  color: rgba($secondary-blue, 0.8);
   font-size: 0.9rem;
 }
 
 .table-overall-badge {
-  background: #21262d;
-  padding: 4px 8px;
+  background: rgba($secondary-blue, 0.9);
+  padding: 4px 16px;
   border-radius: 4px;
   font-size: 0.85rem;
   font-weight: bold;
@@ -364,20 +435,24 @@
 }
 .table-grade-cell strong {
   display: inline-block;
-  width: 28px;
-  height: 28px;
+  width: 48px;
+  height: 48px;
   line-height: 28px;
-  border-radius: 50%;
+  //   border-radius: 50%;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
 }
 .table-grade-cell.grade-a strong {
-  background: rgba(46, 160, 67, 0.15);
-  color: #3fb950;
-  border: 1px solid rgba(46, 160, 67, 0.3);
+  background: rgba(204, 176, 18, 0.15);
+  color: #e4b109;
+  border: 1px solid rgba(160, 130, 46, 0.3);
 }
 .table-grade-cell.grade-b strong {
   background: rgba(218, 165, 32, 0.15);
-  color: #d4af37;
+  color: #33ff00;
   border: 1px solid rgba(218, 165, 32, 0.3);
 }
 .table-grade-cell.grade-c strong {
@@ -399,7 +474,7 @@
 /* Live Cloud Like Trigger Button */
 .table-like-trigger-btn {
   background: transparent;
-  border: 1px solid #30363d;
+  border: 1px solid $secondary-blue;
   color: #8b949e;
   padding: 6px 12px;
   border-radius: 6px;
@@ -408,6 +483,7 @@
   align-items: center;
   gap: 6px;
   transition: all 0.2s;
+  font-size: 1.2rem;
 }
 
 .table-like-trigger-btn:hover {
@@ -425,14 +501,39 @@
    ✨ ELITE 9A GOLD ROW SHIMMER ANIMATION
    ========================================================================== */
 .elite-9a-gold-row-shimmer {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 215, 0, 0.03) 0%,
-    rgba(255, 239, 153, 0.09) 50%,
-    rgba(255, 215, 0, 0.03) 100%
-  ) !important;
-  background-size: 200% 100%;
-  animation: goldShimmerEffect 3s infinite linear;
+  //   background: linear-gradient(
+  //     90deg,
+  //     rgba(255, 217, 0, 0.24) 0%,
+  //     rgba(255, 239, 153, 0.59) 50%,
+  //     rgba(255, 215, 0, 0.24) 100%
+  //   ) !important;
+  //   background-size: 200% 100%;
+  //   animation: goldShimmerEffect 3s infinite linear;
+
+  border: 4px solid #fbbf24 !important;
+  border-radius: 1rem;
+  //   border-top: 4px dotted #fbbf24 !important;
+  //   border-bottom: 4px dotted #fbbf24 !important;
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15) !important;
+  background: #fff6d7;
+
+  //   &::before {
+  //     content: "";
+  //     position: absolute;
+  //     top: 0;
+  //     left: -150%;
+  //     // width: 150%;
+  //     // height: 100%;
+  //     background: linear-gradient(
+  //       to right,
+  //       rgba(255, 255, 255, 0) 0%,
+  //       rgba(251, 190, 36, 0.562) 50%,
+  //       rgba(255, 255, 255, 0) 100%
+  //     );
+  //     transform: skewX(-20deg);
+  //     animation: goldCardShimmering 2.5s ease-in-out infinite;
+  // animation: goldShimmerEffect 2.5s ease-in-out infinite;
+  //   }
 }
 
 .elite-9a-gold-row-shimmer td {
@@ -447,12 +548,37 @@
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
 }
 
+.gold-medal-tag {
+  background-color: #fbbf24;
+  color: $secondary-blue;
+  box-shadow: 0px 3px 6px rgba($secondary-blue3, 0.5);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 @keyframes goldShimmerEffect {
   0% {
     background-position: 200% 0;
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+@keyframes goldCardShimmering {
+  0% {
+    left: -150%;
+  }
+  30% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
   }
 }
 
