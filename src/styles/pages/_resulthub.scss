@@ -1,4 +1,15 @@
+/* ==========================================================================
+   🌐 GENERAL WRAPPER & BACKDROP MATRIX
+   ========================================================================== */
 .secure-results-wrapper-shell {
+  //   background-color: #0d1117;
+  //   color: #c9d1d9;
+  //   font-family:
+  // -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  //   min-height: 100vh;
+  padding: 30px 20px;
+  position: relative;
+  overflow: hidden;
   padding: 6.5rem 20px;
   // max-width: 1200px;
   width: 100%;
@@ -8,6 +19,7 @@
   //   margin-top: 6rem;
 }
 
+/* 🌧️ A & B Falling Grades Matrix Background */
 .falling-grades-matrix-backdrop {
   position: absolute;
   top: 0;
@@ -15,533 +27,564 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
+  z-index: 1;
 }
 
 .falling-grade-token {
   position: absolute;
   top: -50px;
-  font-weight: 900;
-  opacity: 0;
-  font-family: "Exo 2", sans-serif;
-  animation: gradeRainDrop linear infinite;
-
-  &.token-a {
-    color: rgba(255, 189, 21, 0.521);
-    text-shadow: 0 0 8px rgba(251, 191, 36, 0.2);
-  }
-  &.token-b {
-    color: rgba(3, 32, 75, 0.562);
-    text-shadow: 0 0 8px rgba(3, 32, 75, 0.288);
-  }
+  font-weight: 800;
+  opacity: 0.15;
+  animation: fallAnimation linear infinite;
+  color: #58a6ff;
 }
 
-@keyframes gradeRainDrop {
+.falling-grade-token.token-a {
+  color: #2ea043;
+} /* A අකුරු ලා කොළ පාටින් */
+.falling-grade-token.token-b {
+  color: #ffd700;
+} /* B අකුරු රන් පැහැයෙන් */
+
+@keyframes fallAnimation {
   0% {
     transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
+    opacity: 0.15;
   }
   90% {
-    opacity: 0.8;
+    opacity: 0.1;
   }
   100% {
-    transform: translateY(100vh) rotate(360deg);
+    transform: translateY(105vh) rotate(360deg);
     opacity: 0;
   }
 }
 
-.results-header-block,
-.results-core-split-layout {
-  position: relative;
-  z-index: 1;
-}
-
+/* ==========================================================================
+   🏛️ HEADER BLOCK & LIVE ANALYTICS DASHBOARD
+   ========================================================================== */
 .results-header-block {
   text-align: center;
-  margin-bottom: 40px;
-  h2 {
-    color: $secondary-blue;
-    font-weight: 900;
-    font-size: 2.2rem;
-    span {
-      color: $secondary-blue3;
-    }
-  }
-  p {
-    color: $secondary-blue3;
-    font-size: 0.95rem;
-    margin-top: 5px;
-  }
+  margin-bottom: 35px;
+  position: relative;
+  z-index: 2;
 }
 
+.results-header-block h2 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.results-header-block h2 span {
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.results-header-block p {
+  color: #8b949e;
+  font-size: 1.05rem;
+}
+
+/* 📈 Live Analytics Summary Dashboard */
+.analytics-summary-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.analytic-mini-card {
+  //   background: #161b22;
+  border: 1px solid #30363d;
+  padding: 18px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.analytic-mini-card:hover {
+  transform: translateY(-2px);
+}
+
+.analytic-mini-card span {
+  font-size: 0.85rem;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analytic-mini-card strong {
+  font-size: 1.8rem;
+  color: #58a6ff;
+  margin-top: 8px;
+}
+
+.percentage-card strong {
+  color: #2ea043; /* Pass Rate එක කොළ පාටින් */
+}
+
+.teacher-card small {
+  font-size: 0.95rem;
+  color: #ff79c6;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   ⚔️ RECORE SPLIT LAYOUT & SECURE FORM
+   ========================================================================== */
 .results-core-split-layout {
   display: grid;
-  // grid-template-columns: 420px 1fr;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .results-core-split-layout {
+    grid-template-columns: 380px 1fr; /* Desktop වලදී Form එක පැත්තකින් */
+  }
 }
 
 .secure-submission-form {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 24px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px rgba(3, 32, 75, 0.02);
-  text-align: left;
-  max-width: 450px;
-  width: 100%;
-  // height: 600px;
-  overflow-y: scroll;
-
-  h3 {
-    color: #03204b;
-    margin: 0 0 20px 0;
-    font-weight: 800;
-  }
+  //   background: #161b22;
+  border: 1px solid #30363d;
+  padding: 25px;
+  border-radius: 10px;
+  height: fit-content;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-// .form-field-row {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 6px;
-//   margin-bottom: 16px;
-//   label {
-//     font-size: 0.82rem;
-//     color: #64748b;
-//     font-weight: 700;
-//   }
-//   input,
-//   textarea,
-//   select {
-//     padding: 10px 14px;
-//     border-radius: 10px;
-//     border: 1px solid #cbd5e1;
-//     font-size: 0.88rem;
-//     color: #03204b;
-//     font-weight: 600;
-//     outline: none;
-//     background-color: #f8fafc;
-//   }
-// }
+.secure-submission-form h3 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 10px;
+}
 
+.form-field-row {
+  margin-bottom: 18px;
+}
+
+.form-field-row label {
+  display: block;
+  font-size: 0.9rem;
+  color: #c9d1d9;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.secure-submission-form input[type="text"],
+.secure-submission-form select {
+  width: 100%;
+  padding: 10px 12px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.secure-submission-form input[type="text"]:focus,
+.secure-submission-form select:focus {
+  border-color: #58a6ff;
+}
+/* Triple Dropdown Grid (Maths, Science, English) */
 .grades-selector-triple-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 22px;
+}
 
-  .grade-drop {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #64748b;
-    }
-    select {
-      padding: 8px;
-      width: 100%;
-    }
-  }
+.grade-drop label {
+  display: block;
+  font-size: 0.8rem;
+  color: #8b949e;
+  margin-bottom: 6px;
 }
 
 .submit-verify-btn {
   width: 100%;
-  background-color: #03204b;
-  color: white;
+  background: #2ea043;
+  color: #ffffff;
   border: none;
   padding: 12px;
-  border-radius: 10px;
-  font-weight: 700;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  transition: background 0.2s;
 }
 
+.submit-verify-btn:hover:not(:disabled) {
+  background: #3fb950;
+}
+
+.submit-verify-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   📋 DISPLAY TERMINAL & RESPONSIVE LEDGER TABLE
+   ========================================================================== */
+.secure-results-display-terminal {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Filter Matrix Tabs */
 .subject-matrix-tabs {
   display: flex;
-  gap: 10px;
-  margin: 12px 0 25px 0;
-
-  button {
-    background-color: #f1f5f9;
-    color: #64748b;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
-
-    &.active {
-      background-color: #03204b !important;
-      color: white !important;
-    }
-  }
-}
-
-.secure-cards-grid-isolation-shield {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
-  -webkit-user-select: none;
-  user-select: none !important;
-}
-
-.secure-student-honors-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 1px solid #e2e8f0;
-  padding: 25px;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-  box-shadow: 0 4px 20px rgba(3, 32, 75, 0.02);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  &:hover {
-    cursor: none !important;
-    .anti-screenshot-watermark {
-      opacity: 0.15;
-    }
-  }
-}
-
-.anti-screenshot-watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-25deg);
-  font-size: 0.65rem;
-  color: #002152;
-  font-weight: 900;
-  width: 150%;
-  text-align: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card-top-profile-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  position: relative;
-
-  .profile-meta {
-    text-align: left;
-    flex: 1;
-
-    h4 {
-      margin: 0;
-      color: #03204b;
-      font-weight: 800;
-      font-size: 1.15rem;
-      text-shadow: 0px 2px 2px rgb(156, 156, 156);
-    }
-    small {
-      color: rgba($secondary-blue, 0.5);
-      font-size: 0.78rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    p {
-      margin: 2px 0 0 0;
-      color: rgba($secondary-blue, 0.5);
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-  }
-}
-
-.secure-avatar-img {
-  width: 46px;
-  height: 46px;
-  background-color: #e2e8f0;
-  border-radius: 50%;
-  -webkit-user-drag: none;
-}
-.triple-subject-cards-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin: 10px 0;
-}
-.subject-mini-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 8px 10px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 6px 6px 6px rgba(104, 104, 104, 0.199) !important;
-
-  .sub-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: #64748b;
-    text-transform: uppercase;
-  }
-  .sub-grade {
-    font-size: 1.2rem;
-    font-weight: 900;
-    margin-top: 2px;
-  }
-}
-
-.subject-mini-card.grade-a {
-  background: linear-gradient(135deg, #ffffff 0%, #f7da68 100%);
-  border-color: #fde68a;
-  .sub-label,
-  .sub-grade {
-    color: #ff6f00;
-  }
-}
-.subject-mini-card.grade-b {
-  background: linear-gradient(145deg, #ffffff 0%, #9fa3a8 100%);
-  border-color: #c6cacf;
-  .sub-label,
-  .sub-grade {
-    color: #898b8f;
-  }
-}
-.subject-mini-card.grade-c {
-  background: linear-gradient(135deg, #ffffff 0%, #2aff75 100%);
-  border-color: #bbf7d0;
-  .sub-label,
-  .sub-grade {
-    color: #009900;
-  }
-}
-
-.student-testimonial-quote {
-  // margin: 15px 0;
-  color: #475569;
-  font-size: 0.85rem;
-  font-style: italic;
-  line-height: 1.5;
-  font-weight: 500;
-  text-align: left;
-  background-color: #d6d6d6;
-  height: 60px;
-  overflow-y: scroll;
-  padding: 8px 12px;
-  border-radius: 6px;
-  background: rgba($secondary-blue3, 0.1);
-}
-
-.faculty-badge-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #f1f5f9;
-  padding: 8px 22px;
-  border-radius: 2rem;
-  margin: 5px 0 0 0;
-  background: rgba($secondary-blue3, 0.1);
-  box-shadow: 4px 4px 6px rgba(104, 104, 104, 0.199) !important;
-
-  span {
-    font-size: 0.75rem;
-    color: #94a3b8;
-    font-weight: 600;
-    strong {
-      color: #475569;
-    }
-  }
-}
-
-.card-live-like-trigger-btn {
-  // background: linear-gradient(
-  //   135deg,
-  //   rgba($secondary-blue, 0.2) 0%,
-  //   rgba($secondary-blue, 0.4) 100%
-  // );
-  // background: linear-gradient(135deg, #ff9494 0%, #f01616 100%);
-  background-color: transparent;
-  color: #ee3535;
-  // color: $white;
-  // color: $secondary-blue;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-weight: 800;
-  font-size: 1.5rem;
-  display: inline-flex;
-  align-items: center;
   gap: 8px;
-  cursor: pointer !important;
-  pointer-events: auto !important;
-  transition: transform 0.5s;
-
-  .heart {
-    animation: likePopup 1.5s ease-in-out infinite;
-  }
-
-  span {
-    color: #ee3535;
-    border-right: 1px solid;
-    padding-right: 6px;
-  }
-
-  &:hover {
-    transform: scale(1.1);
-    background: linear-gradient(135deg, #fca5a5 0%, #f43f5e 100%);
-    color: #ffffff;
-
-    span {
-      color: white;
-    }
-  }
+  margin-bottom: 15px;
+  overflow-x: auto;
+  padding-bottom: 5px;
 }
 
-.secure-student-honors-card.elite-9a-shimmer {
-  border: 4px solid #fbbf24 !important;
-  border-top: 4px dotted #fbbf24 !important;
-  border-bottom: 4px dotted #fbbf24 !important;
-  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15) !important;
-  background: #fff6d7;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 150%;
-    height: 100%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(251, 190, 36, 0.562) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    transform: skewX(-20deg);
-    animation: goldCardShimmering 2.5s ease-in-out infinite;
-  }
-
-  h4 {
-    color: #fbbf24;
-    text-shadow: 0px 2px 2px rgb(196, 196, 196);
-    letter-spacing: 1.1px;
-    font-size: 1.3rem;
-  }
-  small {
-    color: rgba($secondary-blue, 0.5);
-  }
-  p {
-    color: rgba($secondary-blue, 0.5);
-  }
-
-  .faculty-badge-footer,
-  .student-testimonial-quote {
-    box-shadow: 4px 4px 6px rgba(104, 104, 104, 0.199) !important;
-    // background: linear-gradient(90deg, #ffffff 0%, #f5d061 100%);
-    background-color: white;
-    // border-color: #fde68a;
-    margin: 5px 0 0 0;
-  }
+.subject-matrix-tabs button {
+  //   background: #161b22;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
 }
 
-.gold-medal-tag {
-  background-color: #fbbf24;
-  color: $secondary-blue;
-  box-shadow: 0px 3px 6px rgba($secondary-blue3, 0.5);
+.subject-matrix-tabs button:hover {
+  border-color: #8b949e;
+}
+
+.subject-matrix-tabs button.active {
+  background: #21262d;
+  border-color: #58a6ff;
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+/* 🔒 Table Container Isolation Shield */
+.secure-table-isolation-shield {
+  //   background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 📱 ජංගම දුරකථන වලදී වගුව විතරක් වමට/දකුණට Scroll කරවන කොටස */
+.table-responsive-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  //   -webkit-overflow-scrolling: touch;
+}
+
+.secure-honors-ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+  min-width: 750px; /* Mobile වලදී Scroll එක ක්‍රියාත්මක වීමට අවම පළලක් */
+}
+
+/* 📌 Heading එක උඩම හිරවෙන Sticky Header */
+.secure-honors-ledger-table th {
+  //   background: #161b22;
+  color: #c9d1d9;
+  padding: 14px 16px;
+  font-weight: 600;
+  border-bottom: 2px solid #30363d;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.secure-honors-ledger-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #21262d;
+  color: #e6edf3;
+  vertical-align: middle;
+}
+
+/* Student Identity Stack */
+.table-student-identity {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-name-text {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.student-index-subtext {
+  font-size: 0.8rem;
+  color: #8b949e;
+  margin-top: 3px;
+}
+
+.table-school-tag {
+  color: #c9d1d9;
+  font-size: 0.9rem;
+}
+
+.table-overall-badge {
+  background: #21262d;
   padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border: 1px solid #30363d;
+}
+
+/* Individual Grade Cell Colors (Color Coding) */
+.table-grade-cell {
+  text-align: center;
+}
+.table-grade-cell strong {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+.table-grade-cell.grade-a strong {
+  background: rgba(46, 160, 67, 0.15);
+  color: #3fb950;
+  border: 1px solid rgba(46, 160, 67, 0.3);
+}
+.table-grade-cell.grade-b strong {
+  background: rgba(218, 165, 32, 0.15);
+  color: #d4af37;
+  border: 1px solid rgba(218, 165, 32, 0.3);
+}
+.table-grade-cell.grade-c strong {
+  background: rgba(88, 166, 255, 0.15);
+  color: #58a6ff;
+  border: 1px solid rgba(88, 166, 255, 0.3);
+}
+.table-grade-cell.grade-s strong {
+  background: rgba(139, 148, 158, 0.15);
+  color: #8b949e;
+  border: 1px solid rgba(139, 148, 158, 0.3);
+}
+.table-grade-cell.grade-f strong {
+  background: rgba(248, 81, 73, 0.15);
+  color: #f85149;
+  border: 1px solid rgba(248, 81, 73, 0.3);
+}
+
+/* Live Cloud Like Trigger Button */
+.table-like-trigger-btn {
+  background: transparent;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  padding: 6px 12px;
   border-radius: 6px;
-  font-size: 0.7rem;
-  font-weight: 900;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
+  transition: all 0.2s;
 }
 
-@keyframes goldCardShimmering {
+.table-like-trigger-btn:hover {
+  border-color: #f85149;
+  color: #f85149;
+  background: rgba(248, 81, 73, 0.05);
+}
+
+.table-like-trigger-btn span {
+  font-weight: 600;
+  color: #c9d1d9;
+}
+
+/* ==========================================================================
+   ✨ ELITE 9A GOLD ROW SHIMMER ANIMATION
+   ========================================================================== */
+.elite-9a-gold-row-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 0, 0.03) 0%,
+    rgba(255, 239, 153, 0.09) 50%,
+    rgba(255, 215, 0, 0.03) 100%
+  ) !important;
+  background-size: 200% 100%;
+  animation: goldShimmerEffect 3s infinite linear;
+}
+
+.elite-9a-gold-row-shimmer td {
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.gold-medal-text {
+  color: #ffd700 !important;
+  font-weight: bold;
+  background: rgba(255, 215, 0, 0.1) !important;
+  border: 1px solid rgba(255, 215, 0, 0.4) !important;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes goldShimmerEffect {
   0% {
-    left: -150%;
-  }
-  30% {
-    left: 150%;
+    background-position: 200% 0;
   }
   100% {
-    left: 150%;
+    background-position: -200% 0;
   }
 }
 
-@keyframes likePopup {
-  0% {
-    scale: 0.9;
+// /* ==========================================================================
+//    💬 MODAL POPUP MESSAGE BLUR OVERLAY
+//    ========================================================================== */
+// .custom-modal-blur-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(0, 0, 0, 0.75);
+//   backdrop-filter: blur(5px); /* පිටුපස ඇති දේවල් ලස්සනට බ්ලර් කරවයි */
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   z-index: 9999;
+// }
+
+// .custom-secure-popup-box {
+//   background: #161b22;
+//   border: 1px solid #30363d;
+//   padding: 30px;
+//   border-radius: 12px;
+//   max-width: 460px;
+
+/* ==========================================================================
+   💬 MODAL POPUP MESSAGE BLUR OVERLAY
+   ========================================================================== */
+.custom-modal-blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px); /* පිටුපස ඇති දේවල් ලස්සනට බ්ලර් කරවයි */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.custom-secure-popup-box {
+  //   background: #161b22;
+  border: 1px solid #30363d;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 460px;
+  width: 85%;
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  animation: popupReveal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popupReveal {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
   }
-  50% {
-    scale: 1.2;
-  }
-  100% {
-    scale: 0.9;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-// const handleSubmitResult = async (e) => {
-//   e.preventDefault();
-//   if (!form.fullName  !form.indexNumber  !form.schoolName  !form.studentComment  !form.overallResult) {
-//     return alert("Please populate all cryptographic validation layers first!");
-//   }
-//   if (!imageFile) {
-//     return alert("Please upload your verification photograph to proceed!");
-//   }
+.popup-success-icon-shield {
+  font-size: 3.2rem;
+  color: #2ea043;
+  margin-bottom: 15px;
+}
 
-//   try {
-//     setIsUploading(true);
+.custom-secure-popup-box h4 {
+  color: #ffffff;
+  font-size: 1.35rem;
+  margin: 0 0 12px 0;
+}
 
-//     // 1. ෆොටෝ එක Cloud Storage එකට අප්ලෝඩ් කිරීම
-//     const storageRef = ref(storage, student_photos/${form.indexNumber}_${Date.now()});
-//     const snapshot = await uploadBytes(storageRef, imageFile);
-//     const photoUrl = await getDownloadURL(snapshot.ref);
+.custom-secure-popup-box p {
+  color: #8b949e;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
 
-//     // 2. ෆොටෝ ලින්ක් එකත් සමඟ දත්ත Firestore එකේ සේව් කිරීම
-//     await addDoc(collection(db, "ol_results_2025"), {
-//       ...form,
-//       studentPhoto: photoUrl, // 👈 ඇත්තම ෆොටෝ ලින්ක් එක
-//       status: "pending",
-//       likes: 0,
-//       createdAt: new Date().toISOString()
-//     });
+.popup-action-row-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-//     alert("Verification successful! Your results will be live after the faculty audit.");
-//     setForm({ fullName: "", indexNumber: "", schoolName: "", mathsGrade: "A", scienceGrade: "A", englishGrade: "A", overallResult: "", studentComment: "" });
-//     setImageFile(null);
-//   } catch (err) {
-//     console.error("Cloud Save Error:", err);
-//     alert("Something went wrong during cloud verification.");
-//   } finally {
-//     setIsUploading(false);
-//   }
-// };
+.popup-redirect-btn {
+  background: #2ea043;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
 
-// import { db, storage } from "../firebase/config"; // 👈 'storage' එකතු කරන්න
-// import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // 👈 මේ functions එකතු කරන්න
+.popup-redirect-btn:hover {
+  background: #3fb950;
+}
 
-// // ResultsHub ඇතුළත පැරණි form state එකෙන් 'avatarSeed' අයින් කර imageFile state එකක් දාන්න:
-// const [imageFile, setImageFile] = useState(null);
-// const [isUploading, setIsUploading] = useState(false);
+.popup-close-btn {
+  background: transparent;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
 
-// const [form, setForm] = useState({
-//   fullName: "",
-//   indexNumber: "",
-//   schoolName: "",
-//   mathsGrade: "A",
-//   scienceGrade: "A",
-//   englishGrade: "A",
-//   overallResult: "",
-//   studentComment: "" // 👈 avatarSeed අයින් කළා
-// });
+.popup-close-btn:hover {
+  background: #21262d;
+}
+
+/* Vault Loading & Empty Errors */
+.vault-loading-center,
+.vault-empty-lock {
+  padding: 40px;
+  text-align: center;
+  color: #8b949e;
+  font-weight: 500;
+}

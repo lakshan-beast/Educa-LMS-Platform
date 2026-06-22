@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import { FaRocket, FaArrowRight } from "react-icons/fa6";
+import { FaRocket } from "react-icons/fa6";
 
 import heroImg from "../assets/hero-img.jpg";
 

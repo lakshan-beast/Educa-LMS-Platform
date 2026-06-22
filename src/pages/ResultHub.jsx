@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-
-import { db, storage } from "../firebaseConfig";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db } from "../firebaseConfig";
 import {
   collection,
   addDoc,
@@ -13,29 +11,30 @@ import {
   updateDoc,
   increment,
 } from "firebase/firestore";
-
 import {
-  // FaShieldHalved,
-  // FaSchool,
-  FaAward,
+  FaShieldHalved,
+  //   FaSchool,
+  //   FaAward,
+  //   IoIosArrowBack ,
+  //   FaArrowRight,
   FaPaperPlane,
   FaHeart,
-  FaArrowLeft,
-  FaArrowRight,
-  FaPlus,
-  FaXmark,
+  FaCircleCheck,
+  FaCommentDots,
 } from "react-icons/fa6";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+{
+  /* <IoIosArrowBack />; */
+}
 
 const ResultsHub = () => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("ALL");
-  const [fallingLetters, setFallingLetters] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Popup Controller
-
-  const [imageFile, setImageFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); // Popup එක පාලනය කිරීමට
 
+  // 📝 Form එකේ State එක (පින්තූර/කමෙන්ට් අයින් කර සර්ලාගේ Dropdowns දමා ඇත)
   const [form, setForm] = useState({
     fullName: "",
     indexNumber: "",
@@ -44,11 +43,25 @@ const ResultsHub = () => {
     scienceGrade: "A",
     englishGrade: "A",
     overallResult: "",
-    studentComment: "",
+    mathsTeacher: "Amila Sir", // Default ගුරුවරුන්
+    scienceTeacher: "Nimal Sir",
   });
 
+  // 🌧️ React Cascading Renders Warning එක මඟහැරවූ අකුරු වැස්සේ එන්ජිම
+  const fallingLetters = useMemo(() => {
+    const letters = ["A", "B", "A", "A", "B"];
+    return Array.from({ length: 25 }).map((_, i) => ({
+      id: i,
+      text: letters[Math.floor(Math.random() * letters.length)],
+      left: Math.random() * 100 + "%",
+      delay: Math.random() * 5 + "s",
+      duration: Math.random() * 4 + 3 + "s",
+      fontSize: Math.random() * 1.5 + 1 + "rem",
+    }));
+  }, []);
+
   useEffect(() => {
-    // 📡 2025 O/L සජීවී සර්වර් ස්ට්‍රීම් එක මචං [INDEX 51]
+    // 📡 සජීවී සර්වර් ස්ට්‍රීම් එක (Live Sync)
     const q = query(
       collection(db, "ol_results_2025"),
       where("status", "==", "approved"),
@@ -69,40 +82,12 @@ const ResultsHub = () => {
       },
     );
 
-    // 🌧️ A සහ B අකුරු වැස්සේ එන්ජිම මචං [INDEX 4]
-    // const letters = ["A", "B", "A", "A", "B"];
-    // const generatedParticles = Array.from({ length: 25 }).map((_, i) => ({
-    //   id: i,
-    //   text: letters[Math.floor(Math.random() * letters.length)],
-    //   left: Math.random() * 100 + "%",
-    //   delay: Math.random() * 5 + "s",
-    //   duration: Math.random() * 4 + 3 + "s",
-    //   fontSize: Math.random() * 1.5 + 1 + "rem",
-    // }));
-    // setFallingLetters(generatedParticles);
-
-    // 🌧️ වඩාත් ආරක්ෂිත A සහ B අකුරු වැස්සේ එන්ජිම
-    const letters = ["A", "B"];
-    const generatedParticles = Array.from({ length: 25 }).map((_, i) => {
-      const randomLetter =
-        letters[Math.floor(Math.random() * letters.length)] || "A"; // Default එකක් එකතු කළා
-      return {
-        id: i,
-        text: randomLetter,
-        left: `${Math.random() * 100}%`,
-        delay: `${Math.random() * 3}s`,
-        duration: `${Math.random() * 4 + 2}s`,
-        fontSize: `${Math.random() * 2 + 1.3}rem`,
-      };
-    });
-    setFallingLetters(generatedParticles);
-
-    // 🔏 RIGHT-CLICK & DEVTOOLS (F12) සහමුලින්ම ලොක් කිරීම [INDEX 4]
+    // 🔏 RIGHT-CLICK & DEVTOOLS LOCK
     const handleContextMenu = (e) => e.preventDefault();
     const handleKeyDown = (e) => {
       if (
-        e.key ===
-          "F12"(e.ctrlKey && e.shiftKey && e.key === "I" && e.key === "J") ||
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
         (e.ctrlKey && e.key === "U")
       ) {
         e.preventDefault();
@@ -119,7 +104,7 @@ const ResultsHub = () => {
     };
   }, []);
 
-  // ❤️ REAL-TIME CLOUD LIKE ENGINE [INDEX 51]
+  // ❤️ REAL-TIME CLOUD LIKE ENGINE
   const handleLikeAppreciation = async (docId) => {
     try {
       const docRef = doc(db, "ol_results_2025", docId);
@@ -129,77 +114,68 @@ const ResultsHub = () => {
     }
   };
 
+  // 📈 LIVE ANALYTICS COUNTERS (සර්ලා මට්ටමේ A/B සාමාර්ථ ගණනය කිරීම්)
+  const analytics = useMemo(() => {
+    const total = results.length;
+    // ගණිතය සාමාර්ථය F නොවන අය සමත් ලෙස ගණන් ගනී
+    const passed = results.filter((item) =>
+      ["A", "B", "C", "S"].includes(item.mathsGrade?.toUpperCase()),
+    ).length;
+    const rate = total > 0 ? ((passed / total) * 100).toFixed(1) : "0.0";
+
+    // 📐 Amila Sir (Maths) ගේ පන්තියේ A සහ B ප්‍රමාණය
+    const amilaMathsA = results.filter(
+      (item) => item.mathsTeacher === "Amila Sir" && item.mathsGrade === "A",
+    ).length;
+    const amilaMathsB = results.filter(
+      (item) => item.mathsTeacher === "Amila Sir" && item.mathsGrade === "B",
+    ).length;
+
+    // 🔬 Nimal Sir (Science) ගේ පන්තියේ A සහ B ප්‍රමාණය
+    const nimalScienceA = results.filter(
+      (item) =>
+        item.scienceTeacher === "Nimal Sir" && item.scienceGrade === "A",
+    ).length;
+    const nimalScienceB = results.filter(
+      (item) =>
+        item.scienceTeacher === "Nimal Sir" && item.scienceGrade === "B",
+    ).length;
+
+    return {
+      total,
+      passed,
+      rate,
+      amilaMathsA,
+      amilaMathsB,
+      nimalScienceA,
+      nimalScienceB,
+    };
+  }, [results]);
+
+  // 🚀 SUBMIT DATA ENGINE
   const handleSubmitResult = async (e) => {
     e.preventDefault();
     if (
       !form.fullName ||
       !form.indexNumber ||
       !form.schoolName ||
-      !form.studentComment ||
       !form.overallResult
     ) {
-      return alert(
-        "Please populate all cryptographic validation layers first!",
-      );
-    }
-
-    if (!imageFile) {
-      return alert("Please upload your verification photo to proceed!");
+      return alert("Please populate all validation layers first!");
     }
 
     try {
       setIsUploading(true);
 
-      // // 1. ෆොටෝ එක Cloud Storage එකට අප්ලෝඩ් කිරීම
-      // const storageRef = ref(
-      //   storage,
-      //   `student_photos/${form.indexNumber}_${Date.now()}`,
-      // );
-      // const snapshot = await uploadBytes(storageRef, imageFile);
-      // const photoUrl = await getDownloadURL(snapshot.ref);
-
-      // await addDoc(collection(db, "ol_results_2025"), {
-      //   ...form,
-      //   studentPhoto: photoUrl,
-      //   status: "approved",
-      //   likes: 0,
-      //   createdAt: new Date().toISOString(),
-      // });
-      // alert(
-      //   "Verification successful! Your results will be live after the faculty audit.",
-      // );
-
-      // 2. ImgBB එකට පින්තූරය යැවීමට සූදානම් කිරීම
-      const formData = new FormData();
-      formData.append("image", imageFile[0]);
-
-      const YOUR_IMGBB_API_KEY = "6e53d2c56d770a98dd6b9553dfe17cdc";
-
-      // 3. නොමිලේ පින්තූර සේව් කරන ImgBB API එකට පින්තූරය යැවීම
-      const response = await fetch(
-        `https://api.imgbb.com/1/upload?key=${YOUR_IMGBB_API_KEY}`,
-        {
-          method: "POST",
-          body: formData,
-        },
-      );
-
-      const resData = await response.json();
-
-      // 4. පින්තූරය සාර්ථකව සේව් වුණාම ලැබෙන ලින්ක් එක (URL) ලබාගැනීම
-      const photoUrl = resData.data.url;
-
-      // 5. එම ලින්ක් එක Firestore Database එකේ සේව් කිරීම
+      // Firestore Cloud එකට දත්ත යැවීම
       await addDoc(collection(db, "ol_results_2025"), {
         ...form,
-        studentPhoto: photoUrl, // 👈 පින්තූර ලින්ක් එක Database එකට යනවා
         status: "approved",
         likes: 0,
         createdAt: new Date().toISOString(),
       });
 
-      alert("Successful! Your results will be live after the faculty audit.");
-
+      // Form එක සාර්ථකව Reset කර Popup එක Open කිරීම
       setForm({
         fullName: "",
         indexNumber: "",
@@ -208,13 +184,13 @@ const ResultsHub = () => {
         scienceGrade: "A",
         englishGrade: "A",
         overallResult: "",
-        studentComment: "",
-        // avatarSeed: "male",
+        mathsTeacher: "Amila Sir",
+        scienceTeacher: "Nimal Sir",
       });
-      setImageFile(null);
+      setShowPopup(true);
     } catch (err) {
       console.error("Cloud Save Error:", err);
-      // alert("Something went wrong during cloud verification.");
+      alert("Something went wrong during submission.");
     } finally {
       setIsUploading(false);
     }
@@ -225,19 +201,19 @@ const ResultsHub = () => {
     return num.slice(0, 3) + "****";
   };
 
+  // Filter Tabs වලට අනුව වගුවේ දත්ත පෙන්නන්න කලින් වෙන් කරගන්නා තැන
   const filteredResults = results.filter((item) => {
     if (activeFilter === "ALL") return true;
     if (activeFilter === "9A")
       return item.overallResult?.toUpperCase().replace(/\s/g, "") === "9A";
     if (activeFilter === "MATHS_A") return item.mathsGrade === "A";
     if (activeFilter === "SCIENCE_A") return item.scienceGrade === "A";
-    if (activeFilter === "ENGLISH_A") return item.englishGrade === "A";
     return true;
   });
 
   return (
     <div className="secure-results-wrapper-shell page-container">
-      {/* 🌧️ BACKGROUND RAIN CONTAINER */}
+      {/* 🌧️ BACKGROUND ANIMATION */}
       <div className="falling-grades-matrix-backdrop">
         {fallingLetters.map((p) => (
           <div
@@ -257,432 +233,337 @@ const ResultsHub = () => {
       <div className="system-container">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Link className="back-btn" to="/">
-            <FaArrowLeft /> Back to Home
+            <IoIosArrowBack /> Back to Home
           </Link>
           <Link className="back-btn" to="/dashboard">
-            Back to Dashboard <FaArrowRight />
+            Back to Dashboard <IoIosArrowForward />
           </Link>
         </div>
 
         <div className="results-header-block">
           <h2>
-            Verified O/L <span>Honors Registry</span>
+            <FaShieldHalved /> Verified O/L <span>Honors Portal</span>
           </h2>
           <p>
-            Cryptographically protected institutional ledger monitoring
-            structural subject competencies.
+            Showcase the true reward of your hard work; a live-updating official
+            directory of ordinary level achievers.
           </p>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-          {/* 💬 ALL COMMENTS COUNT BADGE */}
-          <div
-            style={{
-              background: "#eef2ff",
-              color: "#001b42",
-              padding: "10px 18px",
-              borderRadius: "12px",
-              fontWeight: "800",
-              fontSize: "0.9rem",
-              border: "1px solid #d9e8ff",
-            }}>
-            Total Results: {results.length}
+        {/* 📈 LIVE ANALYTICS DASHBOARD CARD LAYER */}
+        <div className="analytics-summary-dashboard-grid">
+          <div className="analytic-mini-card">
+            <span>👥 Total Candidates</span>
+            <strong>{analytics.total}</strong>
           </div>
-
-          {/* 📣 ADD NEW COMMENT BUTTON */}
-          <button
-            type="button"
-            onClick={() => setIsModalOpen(true)}
-            style={{
-              background: "#ff4b2b",
-              color: "white",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "12px",
-              fontWeight: "bold",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              boxShadow: "0 4px 12px rgba(255,75,43,0.2)",
-            }}>
-            <FaPlus /> Share Your Results
-          </button>
-        </div>
-
-        {/* DISPLAY SIDE */}
-        <div className="secure-results-display-terminal">
-          <div className="subject-matrix-tabs">
-            <button
-              onClick={() => setActiveFilter("ALL")}
-              className={activeFilter === "ALL" ? "active" : ""}>
-              All Honors
-            </button>
-            <button
-              onClick={() => setActiveFilter("9A")}
-              className={activeFilter === "9A" ? "active" : ""}>
-              ⭐ 9A Elite
-            </button>
-            <button
-              onClick={() => setActiveFilter("MATHS_A")}
-              className={activeFilter === "MATHS_A" ? "active" : ""}>
-              Maths A
-            </button>
-            <button
-              onClick={() => setActiveFilter("SCIENCE_A")}
-              className={activeFilter === "SCIENCE_A" ? "active" : ""}>
-              Science A
-            </button>
-            <button
-              onClick={() => setActiveFilter("ENGLISH_A")}
-              className={activeFilter === "ENGLISH_A" ? "active" : ""}>
-              English A
-            </button>
+          <div className="analytic-mini-card">
+            <span>✅ Total Passed Students</span>
+            <strong>{analytics.passed}</strong>
           </div>
-
-          <div className="secure-cards-grid-isolation-shield">
-            {isLoading ? (
-              <div className="vault-loading-center">
-                Streaming Verified Cloud Records...
-              </div>
-            ) : filteredResults.length === 0 ? (
-              <div className="vault-empty-lock">
-                🔒 Secured Faculty Cluster Node Encrypted.
-              </div>
-            ) : (
-              filteredResults.map((student) => {
-                const is9A =
-                  student.overallResult?.toUpperCase().replace(/\s/g, "") ===
-                  "9A";
-
-                return (
-                  <div
-                    key={student.docId}
-                    className={
-                      "secure-student-honors-card " +
-                      (is9A ? "elite-9a-shimmer" : "")
-                    }>
-                    <div className="anti-screenshot-watermark">
-                      PROPRIETARY PROPERTY - COPYING PROHIBITED
-                    </div>
-
-                    <div className="top">
-                      <div className="card-top-profile-row">
-                        {/* <img
-                        src={"https://dicebear.com" + student.avatarSeed}
-                        alt="Student"
-                        className="secure-avatar-img"
-                      /> */}
-                        {/* 🖼️ CARD එක ඇතුළේ තියෙන <img> ටැග් එක මේකට replace කරන්න */}
-                        {/* <img
-                        src={`https://dicebear.com{student.fullName}&features=${student.avatarSeed === "female" ? "w01" : "m01"}`}
-                        alt="Student Avatar"
-                        className="secure-avatar-img"
-                      /> */}
-
-                        <img
-                          src={student.studentPhoto || "https://placehold.co"}
-                          alt="Student"
-                          className="secure-avatar-img"
-                          style={{ objectFit: "cover" }}
-                        />
-
-                        <div className="profile-meta">
-                          <h4>{student.fullName}</h4>
-                          <small>{student.schoolName}</small>
-                          <p>ID: {maskIndexNumber(student.indexNumber)}</p>
-                        </div>
-                        {is9A && (
-                          <div className="gold-medal-tag">
-                            <FaAward /> 9A ELITE
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="triple-subject-cards-row">
-                        <div
-                          className={
-                            "subject-mini-card grade-" +
-                            student.mathsGrade?.toLowerCase()
-                          }>
-                          <span className="sub-label">Maths</span>
-                          <strong className="sub-grade">
-                            {student.mathsGrade}
-                          </strong>
-                        </div>
-                        <div
-                          className={
-                            "subject-mini-card grade-" +
-                            student.scienceGrade?.toLowerCase()
-                          }>
-                          <span className="sub-label">Science</span>
-                          <strong className="sub-grade">
-                            {student.scienceGrade}
-                          </strong>
-                        </div>
-
-                        <div
-                          className={
-                            "subject-mini-card grade-" +
-                            student.englishGrade?.toLowerCase()
-                          }>
-                          <span className="sub-label">English</span>
-                          <strong className="sub-grade">
-                            {student.englishGrade}
-                          </strong>
-                        </div>
-                      </div>
-
-                      <p className="student-testimonial-quote">
-                        {student.studentComment}
-                      </p>
-                    </div>
-
-                    <div className="faculty-badge-footer">
-                      <span>
-                        Summary Ledger:{" "}
-                        <strong>{student.overallResult?.toUpperCase()}</strong>
-                      </span>
-                      <button
-                        onClick={() => handleLikeAppreciation(student.docId)}
-                        className="card-live-like-trigger-btn">
-                        <span>{student.likes || 0}</span>
-                        <FaHeart className="heart" />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })
-            )}
+          <div className="analytic-mini-card percentage-card">
+            <span>📊 Overall Pass Rate</span>
+            <strong>{analytics.rate}%</strong>
+          </div>
+          <div className="analytic-mini-card teacher-card">
+            <span>📐 Amila Sir (Maths)</span>
+            <small>
+              A: {analytics.amilaMathsA} | B: {analytics.amilaMathsB}
+            </small>
+          </div>
+          <div className="analytic-mini-card teacher-card">
+            <span>🔬 Nimal Sir (Science)</span>
+            <small>
+              A: {analytics.nimalScienceA} | B: {analytics.nimalScienceB}
+            </small>
           </div>
         </div>
 
-        {isModalOpen && (
-          <div
-            className="results-core-split-layout "
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100vw",
-              height: "100vh",
-              background: "rgba(26, 10, 84, 0.4)",
-              backdropFilter: "blur(4px)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-              zIndex: 99999,
-            }}>
-            {/* <div
-              style={{
-                background: "white",
-                padding: "30px",
-                borderRadius: "24px",
-                maxWidth: "460px",
-                width: "90%",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                position: "relative",
-                textAlign: "left",
-                maxHeight: "90vh",
-                overflowY: "auto",
-              }}> */}
-            {/* Close Cross Button */}
-            <button
-              type="button"
-              onClick={() => setIsModalOpen(false)}
-              style={{
-                position: "absolute",
-                top: "20px",
-                right: "20px",
-                background: "#f1f5f9",
-                border: "none",
-                width: "32px",
-                height: "32px",
-                borderRadius: "50%",
-                cursor: "pointer",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                color: "#555",
-              }}>
-              <FaXmark />
-            </button>
+        <div className="results-core-split-layout">
+          {/* FORM SIDE */}
+          <form
+            onSubmit={handleSubmitResult}
+            className="secure-submission-form styled form ">
+            <h3>Submit O/L Records</h3>
 
-            {/* <h3
-              style={{
-                color: "#001b42",
-                margin: "0 0 5px",
-                fontWeight: "800",
-                fontSize: "1.3rem",
-              }}>
-              Share Your Experience
-            </h3>
-            <p
-              style={{
-                color: "#666",
-                fontSize: "0.8rem",
-                margin: "0 0 20px 0",
-              }}>
-              Share your class experience live with other students and parents.
-            </p> */}
+            <div className="form-field-row">
+              <label>Full Name</label>
+              <input
+                type="text"
+                value={form.fullName}
+                onChange={(e) => setForm({ ...form, fullName: e.target.value })}
+                placeholder="e.g. Imesh Lakshan"
+                required
+              />
+            </div>
 
-            {/* {formError && (
-                          <div
-                            style={{
-                              background: "#fdedec",
-                              borderLeft: "4px solid #e74c3c",
-                              color: "#c0392b",
-                              padding: "10px",
-                              borderRadius: "6px",
-                              fontSize: "0.8rem",
-                              fontWeight: "bold",
-                              marginBottom: "15px",
-                            }}>
-                            ⚠️ {formError} */}
-            {/* </div> */}
-            {/* )} */}
-            {/* FORM SIDE */}
-            <form
-              onSubmit={handleSubmitResult}
-              className="secure-submission-form styled-form">
-              <h3>Submit O/L Records</h3>
+            <div className="form-field-row">
+              <label>Index Number</label>
+              <input
+                type="text"
+                value={form.indexNumber}
+                onChange={(e) =>
+                  setForm({ ...form, indexNumber: e.target.value })
+                }
+                placeholder="e.g. 6089412"
+                required
+              />
+            </div>
+            <div className="form-field-row">
+              <label>🏫 Attended School Name</label>
+              <input
+                type="text"
+                value={form.schoolName}
+                onChange={(e) =>
+                  setForm({ ...form, schoolName: e.target.value })
+                }
+                placeholder="e.g. Royal College"
+                required
+              />
+            </div>
 
-              <div className="input-row">
-                <div className="input-group">
-                  <label>Full Name</label>
-                  <input
-                    type="text"
-                    value={form.fullName}
-                    onChange={(e) =>
-                      setForm({ ...form, fullName: e.target.value })
-                    }
-                    placeholder="e.g. Imesh Lakshan"
-                  />
-                </div>
+            <div className="form-field-row">
+              <label>🏆 Overall Examination Result</label>
+              <input
+                type="text"
+                value={form.overallResult}
+                onChange={(e) =>
+                  setForm({ ...form, overallResult: e.target.value })
+                }
+                placeholder="e.g. 9A or 8A, 1B"
+                required
+              />
+            </div>
 
-                <div className="input-group">
-                  <label>Index Number</label>
-                  <input
-                    type="text"
-                    value={form.indexNumber}
-                    onChange={(e) =>
-                      setForm({ ...form, indexNumber: e.target.value })
-                    }
-                    placeholder="e.g. 6089412"
-                  />
-                </div>
+            {/* TEACHERS SELECTION DROPDOWNS */}
+            <div className="form-field-row">
+              <label>📐 Maths Teacher Name</label>
+              <select
+                value={form.mathsTeacher}
+                onChange={(e) =>
+                  setForm({ ...form, mathsTeacher: e.target.value })
+                }>
+                <option value="Amila Sir">Amila Sir</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
-                <div className="input-group">
-                  <label> Attended School Name</label>
-                  <input
-                    type="text"
-                    value={form.schoolName}
-                    onChange={(e) =>
-                      setForm({ ...form, schoolName: e.target.value })
-                    }
-                    placeholder="e.g. Royal College"
-                  />
-                </div>
+            <div className="form-field-row">
+              <label>🔬 Science Teacher Name</label>
+              <select
+                value={form.scienceTeacher}
+                onChange={(e) =>
+                  setForm({ ...form, scienceTeacher: e.target.value })
+                }>
+                <option value="Nimal Sir">Nimal Sir</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
-                <div className="input-group">
-                  <label> Overall Examination Result</label>
-                  <input
-                    type="text"
-                    value={form.overallResult}
-                    onChange={(e) =>
-                      setForm({ ...form, overallResult: e.target.value })
-                    }
-                    placeholder="e.g. 9A or 8A, 1B"
-                  />
-                </div>
-
-                <div className="grades-selector-triple-grid">
-                  <div className="grade-drop">
-                    <label> Maths</label>
-                    <select
-                      value={form.mathsGrade}
-                      onChange={(e) =>
-                        setForm({ ...form, mathsGrade: e.target.value })
-                      }>
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
-                      <option>S</option>
-                    </select>
-                  </div>
-                  <div className="grade-drop">
-                    <label> Science</label>
-                    <select
-                      value={form.scienceGrade}
-                      onChange={(e) =>
-                        setForm({ ...form, scienceGrade: e.target.value })
-                      }>
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
-                      <option>S</option>
-                    </select>
-                  </div>
-                  <div className="grade-drop">
-                    <label> English</label>
-                    <select
-                      value={form.englishGrade}
-                      onChange={(e) =>
-                        setForm({ ...form, englishGrade: e.target.value })
-                      }>
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
-                      <option>S</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* <div className="input-group">
-                  <label>Select Profile Avatar</label>
-                  <select
-                    value={form.avatarSeed}
-                    onChange={(e) =>
-                      setForm({ ...form, avatarSeed: e.target.value })
-                    }>
-                    <option value="male"> Boy Avatar</option>
-                    <option value="female"> Girl Avatar</option>
-                  </select>
-                </div> */}
-
-                <div className="input-group">
-                  <label> Upload Verification Image</label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setImageFile(e.target.files[0])}
-                    required
-                  />
-                </div>
-
-                <div className="input-group">
-                  <label>Testimonial Comment</label>
-                  <textarea
-                    value={form.studentComment}
-                    onChange={(e) =>
-                      setForm({ ...form, studentComment: e.target.value })
-                    }
-                    placeholder="Write your genuine review..."
-                    rows="4"></textarea>
-                </div>
+            <div className="grades-selector-triple-grid">
+              <div className="grade-drop">
+                <label>📐 Maths</label>
+                <select
+                  value={form.mathsGrade}
+                  onChange={(e) =>
+                    setForm({ ...form, mathsGrade: e.target.value })
+                  }>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                  <option>S</option>
+                  <option>F</option>
+                </select>
               </div>
+              <div className="grade-drop">
+                <label>🔬 Science</label>
+                <select
+                  value={form.scienceGrade}
+                  onChange={(e) =>
+                    setForm({ ...form, scienceGrade: e.target.value })
+                  }>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                  <option>S</option>
+                  <option>F</option>
+                </select>
+              </div>
+              <div className="grade-drop">
+                <label>🔤 English</label>
+                <select
+                  value={form.englishGrade}
+                  onChange={(e) =>
+                    setForm({ ...form, englishGrade: e.target.value })
+                  }>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                  <option>S</option>
+                  <option>F</option>
+                </select>
+              </div>
+            </div>
 
+            <button
+              type="submit"
+              className="submit-verify-btn"
+              disabled={isUploading}>
+              <FaPaperPlane />{" "}
+              {isUploading ? "Uploading..." : "Verify & Submit Records"}
+            </button>
+          </form>
+
+          {/* DISPLAY SIDE (TABLE LAYOUT) */}
+          <div className="secure-results-display-terminal">
+            <div className="subject-matrix-tabs">
               <button
-                type="submit"
-                className="submit-verify-btn"
-                disabled={isUploading}>
-                <FaPaperPlane />{" "}
-                {isUploading ? "Uploading..." : "Verify & Submit Records"}
+                onClick={() => setActiveFilter("ALL")}
+                className={activeFilter === "ALL" ? "active" : ""}>
+                All Honors
               </button>
-            </form>
+              <button
+                onClick={() => setActiveFilter("9A")}
+                className={activeFilter === "9A" ? "active" : ""}>
+                ⭐ 9A Elite
+              </button>
+              <button
+                onClick={() => setActiveFilter("MATHS_A")}
+                className={activeFilter === "MATHS_A" ? "active" : ""}>
+                Maths A
+              </button>
+              <button
+                onClick={() => setActiveFilter("SCIENCE_A")}
+                className={activeFilter === "SCIENCE_A" ? "active" : ""}>
+                Science A
+              </button>
+            </div>
+
+            {/* 📋 RESPONSIVE TABLE SHIELD */}
+            <div className="secure-table-isolation-shield">
+              {isLoading ? (
+                <div className="vault-loading-center">
+                  Streaming Verified Cloud Records...
+                </div>
+              ) : filteredResults.length === 0 ? (
+                <div className="vault-empty-lock">
+                  🔒 Secured Faculty Cluster Node Encrypted.
+                </div>
+              ) : (
+                <div className="table-responsive-wrapper">
+                  <table className="secure-honors-ledger-table">
+                    <thead>
+                      <tr>
+                        <th>Full Name & Index</th>
+                        <th>School</th>
+                        <th>Overall</th>
+                        <th>📐 Maths</th>
+                        <th>🔬 Science</th>
+                        <th>🔤 English</th>
+                        <th>Appreciate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredResults.map((student) => {
+                        const is9A =
+                          student.overallResult
+                            ?.toUpperCase()
+                            .replace(/\s/g, "") === "9A";
+
+                        return (
+                          <tr
+                            key={student.docId}
+                            className={is9A ? "elite-9a-gold-row-shimmer" : ""}>
+                            <td>
+                              {/* 1. මඟහැරුණු ආරම්භක div ටැග් එක මෙතනට දැම්මා */}
+                              <div>
+                                <span className="student-name-text">
+                                  {student.fullName}
+                                </span>
+                                <small className="student-index-subtext">
+                                  ID: {maskIndexNumber(student.indexNumber)}
+                                </small>
+                              </div>
+                            </td>
+                            <td>
+                              <span className="table-school-tag">
+                                {student.schoolName}
+                              </span>
+                            </td>
+                            <td>
+                              {/* 2. මෙතනට Backticks (  ) ලකුණු නිවැරදිව එකතු කළා */}
+                              <span
+                                className={`table-overall-badge ${is9A ? "gold-medal-text" : ""}`}>
+                                {is9A
+                                  ? "🏆 9A ELITE"
+                                  : student.overallResult?.toUpperCase()}
+                              </span>
+                            </td>
+                            {/* 3. මේ subject සේල් වලටත් Backticks (  ) ලකුණු නිවැරදිව දැම්මා */}
+                            <td
+                              className={`table-grade-cell grade-${student.mathsGrade?.toLowerCase()}`}>
+                              <strong>{student.mathsGrade}</strong>
+                            </td>
+                            <td
+                              className={`table-grade-cell grade-${student.scienceGrade?.toLowerCase()}`}>
+                              <strong>{student.scienceGrade}</strong>
+                            </td>
+                            <td
+                              className={`table-grade-cell grade-${student.englishGrade?.toLowerCase()}`}>
+                              <strong>{student.englishGrade}</strong>
+                            </td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  handleLikeAppreciation(student.docId)
+                                }
+                                className="table-like-trigger-btn">
+                                <FaHeart /> <span>{student.likes || 0}</span>
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
-          // </div>
+        </div>
+        {/* results-core-split-layout END */}
+
+        {/* 💬 🔗 MODAL POPUP MESSAGE LAYER */}
+        {/* 💬 🔗 MODAL POPUP MESSAGE LAYER */}
+        {showPopup && (
+          <div className="custom-modal-blur-overlay">
+            <div className="custom-secure-popup-box">
+              <div className="popup-success-icon-shield">
+                <FaCircleCheck />
+              </div>
+
+              {/* 🇬🇧 Popup එකේ විස්තර ඉංග්‍රීසි භාෂාවට හරවන ලදී */}
+              <h4>Records Submitted Successfully!</h4>
+              <p>
+                Your results have been sent for verification and will be live on
+                the ledger shortly. Please take a moment to share your valuable
+                feedback and thoughts about our classes on our main commentary
+                board.
+              </p>
+
+              <div className="popup-action-row-buttons">
+                {/* <a href="/comments" className="popup-redirect-btn"><FaCommentDots /> Go to Comments Board</a> */}
+
+                <Link className="popup-redirect-btn" to="/students-reviews">
+                  <FaCommentDots /> Go to Comments Board
+                </Link>
+                <button
+                  onClick={() => setShowPopup(false)}
+                  className="popup-close-btn">
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
