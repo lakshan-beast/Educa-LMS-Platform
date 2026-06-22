@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 // 👑 for Fixed Network Errors
 import { initializeFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 // firebase config code
 const firebaseConfig = {
@@ -20,3 +21,142 @@ const app = initializeApp(firebaseConfig);
 export const db = initializeFirestore(app, {
   experimentalForceLongPolling: true,
 });
+
+//  Cloud Storage Connection
+export const storage = getStorage(app);
+
+// import { initializeApp } from "firebase/app";
+// // 👑 for Fixed Network Errors
+// import { initializeFirestore } from "firebase/firestore";
+// import { getStorage } from "firebase/storage"; // 👈 1. මේ Import එක අලුතින් එකතු කරන්න
+
+// // firebase config code
+// const firebaseConfig = {
+//   // ඔයාගේ Firebase Credentials ටික මෙතන තියෙන්න ඕනේ...
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+
+// // 🚀 Cloud Connection
+// export const db = initializeFirestore(app, {
+//   experimentalForceLongPolling: true,
+// });
+
+// // 📸 Cloud Storage Connection
+// export const storage = getStorage(app); // 👈 2. මේ රේඛාව අලුතින් එකතු කර Export කරන්න
+
+// imgbb api key
+// 6e53d2c56d770a98dd6b9553dfe17cdc
+
+// const handleSubmitResult = async (e) => {
+//   e.preventDefault();
+
+//   // 1. හිස්ව තියෙනවද බලන Check එක
+//   if (!form.fullName  !form.indexNumber  !form.schoolName  !form.studentComment  !form.overallResult) {
+//     return alert("Please populate all validation layers first!");
+//   }
+//   if (!imageFile) {
+//     return alert("Please upload your verification photograph to proceed!");
+//   }
+
+//   try {
+//     setIsUploading(true); // 👈 මෙන්න මෙතනදී බටන් එක "Uploading..." වෙනවා
+
+//     // 2. ImgBB එකට පින්තූරය යැවීමට සූදානම් කිරීම
+//     const formData = new FormData();
+//     formData.append("image", imageFile);
+
+//     // 3. නොමිලේ පින්තූර සේව් කරන ImgBB API එකට පින්තූරය යැවීම
+//     const response = await fetch("https://imgbb.com", {
+//       method: "POST",
+//       body: formData,
+//     });
+
+//     const resData = await response.json();
+
+//     // 4. පින්තූරය සාර්ථකව සේව් වුණාම ලැබෙන ලින්ක් එක (URL) ලබාගැනීම
+//     const photoUrl = resData.data.url;
+
+//     // 5. එම ලින්ක් එක Firestore Database එකේ සේව් කිරීම
+//     await addDoc(collection(db, "ol_results_2025"), {
+//       ...form,
+//       studentPhoto: photoUrl, // 👈 පින්තූර ලින්ක් එක Database එකට යනවා
+//       status: "pending",
+//       likes: 0,
+//       createdAt: new Date().toISOString()
+//     });
+
+//     alert("Successful! Your results will be live after the faculty audit.");
+
+//     // Form එක සහ File Input එක Reset කිරීම
+//     setForm({ fullName: "", indexNumber: "", schoolName: "", mathsGrade: "A", scienceGrade: "A", englishGrade: "A", overallResult: "", studentComment: "" });
+//     setImageFile(null);
+
+//   } catch (err) {
+//     console.error("Upload Error:", err);
+//     alert("Something went wrong during image uploading.");
+//   } finally {
+//     setIsUploading(false); // 👈 වැඩේ ඉවර වුණාම බටන් එක සාමාන්‍ය තත්ත්වයට පත්වෙනවා
+//   }
+// };
+
+// const handleSubmitResult = async (e) => {
+//   e.preventDefault();
+
+//   // 1. Inputs හිස්දැයි පරික්ෂා කිරීම
+//   if (!form.fullName  !form.indexNumber  !form.schoolName  !form.studentComment  !form.overallResult) {
+//     return alert("Please populate all validation layers first!");
+//   }
+//   if (!imageFile) {
+//     return alert("Please upload your verification photograph to proceed!");
+//   }
+
+//   try {
+//     setIsUploading(true); // බටන් එක "Uploading..." තත්ත්වයට පත් කිරීම
+
+//     // 2. FormData එකක් සාදා තෝරාගත් පින්තූරය ඊට ඇතුළත් කිරීම
+//     const formData = new FormData();
+//     formData.append("image", imageFile[0]); // 👈 වැදගත්: 'imageFile[0]' ලෙස පළමු පින්තූරය පමණක් ලබාගන්න
+
+//     // 3. ඔයා ලබාගත් ImgBB API Key එක මෙතනට දාන්න
+//     const YOUR_IMGBB_API_KEY = "මෙතනට_ඔයාගේ_API_KEY_එක_PASTE_කරන්න";
+
+//     // 4. Fetch මඟින් ImgBB සර්වර් එකට පින්තූරය POST කිරීම
+//     const response = await fetch(https://api.imgbb.com/1/upload?key=${YOUR_IMGBB_API_KEY}, {
+//       method: "POST",
+//       body: formData, // දත්ත පැකේජය යැවීම
+//     });
+
+//     // 5. සර්වර් එකෙන් ලැබෙන පිළිතුර JSON ආකාරයට හැරවීම
+//     const resData = await response.json();
+
+//     if (!resData.success) {
+//       throw new Error("ImgBB Upload Failed");
+//     }
+
+//     // 6. පින්තූරය සාර්ථකව සේව් වුණාම ImgBB එකෙන් දෙන සැබෑ රූප ලින්ක් එක (URL)
+//     const photoUrl = resData.data.url;
+
+//     // 7. දැන් එම ලින්ක් එක Firestore Database එකේ සේව් කිරීම
+//     await addDoc(collection(db, "ol_results_2025"), {
+//       ...form,
+//       studentPhoto: photoUrl, // 👈 පින්තූරයේ ලින්ක් එක database එකට එකතු විය
+//       status: "pending",
+//       likes: 0,
+//       createdAt: new Date().toISOString()
+//     });
+
+//     alert("Successful! Your results will be live after the faculty audit.");
+
+//     // Form එක සහ File Input එක බිංදුවට පත් කිරීම (Reset)
+//     setForm({ fullName: "", indexNumber: "", schoolName: "", mathsGrade: "A", scienceGrade: "A", englishGrade: "A", overallResult: "", studentComment: "" });
+//     setImageFile(null);
+
+//   } catch (err) {
+//     console.error("Upload Error:", err);
+//     alert("Something went wrong during image uploading. Check Console.");
+//   } finally {
+//     setIsUploading(false); // වැඩේ අවසන් වූ පසු බටන් එක සාමාන්‍ය තත්ත්වයට පත් කිරීම
+//   }
+// };

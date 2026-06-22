@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { db } from "../firebaseConfig";
+import { db, storage } from "../firebaseConfig";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   collection,
   addDoc,
@@ -15,7 +16,7 @@ import {
 
 import {
   // FaShieldHalved,
-  FaSchool,
+  // FaSchool,
   FaAward,
   FaPaperPlane,
   FaHeart,
@@ -29,8 +30,11 @@ const ResultsHub = () => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("ALL");
-  // const [fallingLetters, setFallingLetters] = useState([]);
+  const [fallingLetters, setFallingLetters] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // Popup Controller
+
+  const [imageFile, setImageFile] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   const [form, setForm] = useState({
     fullName: "",
@@ -41,7 +45,6 @@ const ResultsHub = () => {
     englishGrade: "A",
     overallResult: "",
     studentComment: "",
-    avatarSeed: "1",
   });
 
   useEffect(() => {
@@ -79,19 +82,20 @@ const ResultsHub = () => {
     // setFallingLetters(generatedParticles);
 
     // 🌧️ වඩාත් ආරක්ෂිත A සහ B අකුරු වැස්සේ එන්ජිම
-    // const letters = ["A", "B"];
-    // const generatedParticles = Array.from({ length: 25 }).map((_, i) => {
-    //   const randomLetter = letters[Math.floor(Math.random() * letters.length)] || "A"; // Default එකක් එකතු කළා
-    //   return {
-    //     id: i,
-    //     text: randomLetter,
-    //     left: `${ Math.random() * 100}%`,
-    //     delay: `${Math.random() * 5}s`,
-    //     duration: `${Math.random() * 4 + 3}s`,
-    //     fontSize: `${Math.random() * 1.5 + 1}rem`
-    //   };
-    // });
-    // setFallingLetters(generatedParticles);
+    const letters = ["A", "B"];
+    const generatedParticles = Array.from({ length: 25 }).map((_, i) => {
+      const randomLetter =
+        letters[Math.floor(Math.random() * letters.length)] || "A"; // Default එකක් එකතු කළා
+      return {
+        id: i,
+        text: randomLetter,
+        left: `${Math.random() * 100}%`,
+        delay: `${Math.random() * 3}s`,
+        duration: `${Math.random() * 4 + 2}s`,
+        fontSize: `${Math.random() * 2 + 1.3}rem`,
+      };
+    });
+    setFallingLetters(generatedParticles);
 
     // 🔏 RIGHT-CLICK & DEVTOOLS (F12) සහමුලින්ම ලොක් කිරීම [INDEX 4]
     const handleContextMenu = (e) => e.preventDefault();
@@ -139,16 +143,63 @@ const ResultsHub = () => {
       );
     }
 
+    if (!imageFile) {
+      return alert("Please upload your verification photo to proceed!");
+    }
+
     try {
+      setIsUploading(true);
+
+      // // 1. ෆොටෝ එක Cloud Storage එකට අප්ලෝඩ් කිරීම
+      // const storageRef = ref(
+      //   storage,
+      //   `student_photos/${form.indexNumber}_${Date.now()}`,
+      // );
+      // const snapshot = await uploadBytes(storageRef, imageFile);
+      // const photoUrl = await getDownloadURL(snapshot.ref);
+
+      // await addDoc(collection(db, "ol_results_2025"), {
+      //   ...form,
+      //   studentPhoto: photoUrl,
+      //   status: "approved",
+      //   likes: 0,
+      //   createdAt: new Date().toISOString(),
+      // });
+      // alert(
+      //   "Verification successful! Your results will be live after the faculty audit.",
+      // );
+
+      // 2. ImgBB එකට පින්තූරය යැවීමට සූදානම් කිරීම
+      const formData = new FormData();
+      formData.append("image", imageFile[0]);
+
+      const YOUR_IMGBB_API_KEY = "6e53d2c56d770a98dd6b9553dfe17cdc";
+
+      // 3. නොමිලේ පින්තූර සේව් කරන ImgBB API එකට පින්තූරය යැවීම
+      const response = await fetch(
+        `https://api.imgbb.com/1/upload?key=${YOUR_IMGBB_API_KEY}`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      const resData = await response.json();
+
+      // 4. පින්තූරය සාර්ථකව සේව් වුණාම ලැබෙන ලින්ක් එක (URL) ලබාගැනීම
+      const photoUrl = resData.data.url;
+
+      // 5. එම ලින්ක් එක Firestore Database එකේ සේව් කිරීම
       await addDoc(collection(db, "ol_results_2025"), {
         ...form,
+        studentPhoto: photoUrl, // 👈 පින්තූර ලින්ක් එක Database එකට යනවා
         status: "approved",
         likes: 0,
         createdAt: new Date().toISOString(),
       });
-      alert(
-        "Verification successful! Your results will be live after the faculty audit.",
-      );
+
+      alert("Successful! Your results will be live after the faculty audit.");
+
       setForm({
         fullName: "",
         indexNumber: "",
@@ -158,10 +209,14 @@ const ResultsHub = () => {
         englishGrade: "A",
         overallResult: "",
         studentComment: "",
-        avatarSeed: "1",
+        // avatarSeed: "male",
       });
+      setImageFile(null);
     } catch (err) {
       console.error("Cloud Save Error:", err);
+      // alert("Something went wrong during cloud verification.");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -176,14 +231,14 @@ const ResultsHub = () => {
       return item.overallResult?.toUpperCase().replace(/\s/g, "") === "9A";
     if (activeFilter === "MATHS_A") return item.mathsGrade === "A";
     if (activeFilter === "SCIENCE_A") return item.scienceGrade === "A";
-    if (activeFilter === "ENGLISH_A") return item.scienceGrade === "A";
+    if (activeFilter === "ENGLISH_A") return item.englishGrade === "A";
     return true;
   });
 
   return (
     <div className="secure-results-wrapper-shell page-container">
       {/* 🌧️ BACKGROUND RAIN CONTAINER */}
-      {/* <div className="falling-grades-matrix-backdrop">
+      <div className="falling-grades-matrix-backdrop">
         {fallingLetters.map((p) => (
           <div
             key={p.id}
@@ -197,7 +252,7 @@ const ResultsHub = () => {
             {p.text}
           </div>
         ))}
-      </div> */}
+      </div>
 
       <div className="system-container">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -278,6 +333,11 @@ const ResultsHub = () => {
               className={activeFilter === "SCIENCE_A" ? "active" : ""}>
               Science A
             </button>
+            <button
+              onClick={() => setActiveFilter("ENGLISH_A")}
+              className={activeFilter === "ENGLISH_A" ? "active" : ""}>
+              English A
+            </button>
           </div>
 
           <div className="secure-cards-grid-isolation-shield">
@@ -306,73 +366,88 @@ const ResultsHub = () => {
                       PROPRIETARY PROPERTY - COPYING PROHIBITED
                     </div>
 
-                    <div className="card-top-profile-row">
-                      <img
+                    <div className="top">
+                      <div className="card-top-profile-row">
+                        {/* <img
                         src={"https://dicebear.com" + student.avatarSeed}
                         alt="Student"
                         className="secure-avatar-img"
-                      />
-                      <div className="profile-meta">
-                        <h4>{student.fullName}</h4>
-                        <small>
-                          <FaSchool /> {student.schoolName}
-                        </small>
-                        <p>ID: {maskIndexNumber(student.indexNumber)}</p>
-                      </div>
-                      {is9A && (
-                        <div className="gold-medal-tag">
-                          <FaAward /> 9A ELITE
+                      /> */}
+                        {/* 🖼️ CARD එක ඇතුළේ තියෙන <img> ටැග් එක මේකට replace කරන්න */}
+                        {/* <img
+                        src={`https://dicebear.com{student.fullName}&features=${student.avatarSeed === "female" ? "w01" : "m01"}`}
+                        alt="Student Avatar"
+                        className="secure-avatar-img"
+                      /> */}
+
+                        <img
+                          src={student.studentPhoto || "https://placehold.co"}
+                          alt="Student"
+                          className="secure-avatar-img"
+                          style={{ objectFit: "cover" }}
+                        />
+
+                        <div className="profile-meta">
+                          <h4>{student.fullName}</h4>
+                          <small>{student.schoolName}</small>
+                          <p>ID: {maskIndexNumber(student.indexNumber)}</p>
                         </div>
-                      )}
-                    </div>
+                        {is9A && (
+                          <div className="gold-medal-tag">
+                            <FaAward /> 9A ELITE
+                          </div>
+                        )}
+                      </div>
 
-                    <div className="triple-subject-cards-row">
-                      <div
-                        className={
-                          "subject-mini-card grade-" +
-                          student.mathsGrade?.toLowerCase()
-                        }>
-                        <span className="sub-label">Maths</span>
-                        <strong className="sub-grade">
-                          {student.mathsGrade}
-                        </strong>
-                      </div>
-                      <div
-                        className={
-                          "subject-mini-card grade-" +
-                          student.scienceGrade?.toLowerCase()
-                        }>
-                        <span className="sub-label">Science</span>
-                        <strong className="sub-grade">
-                          {student.scienceGrade}
-                        </strong>
-                      </div>
-                      <div
-                        className={
-                          "subject-mini-card grade-" +
-                          student.englishGrade?.toLowerCase()
-                        }>
-                        <span className="sub-label">English</span>
-                        <strong className="sub-grade">
-                          {student.englishGrade}
-                        </strong>
-                      </div>
-                    </div>
+                      <div className="triple-subject-cards-row">
+                        <div
+                          className={
+                            "subject-mini-card grade-" +
+                            student.mathsGrade?.toLowerCase()
+                          }>
+                          <span className="sub-label">Maths</span>
+                          <strong className="sub-grade">
+                            {student.mathsGrade}
+                          </strong>
+                        </div>
+                        <div
+                          className={
+                            "subject-mini-card grade-" +
+                            student.scienceGrade?.toLowerCase()
+                          }>
+                          <span className="sub-label">Science</span>
+                          <strong className="sub-grade">
+                            {student.scienceGrade}
+                          </strong>
+                        </div>
 
-                    <p className="student-testimonial-quote">
-                      "{student.studentComment}"
-                    </p>
+                        <div
+                          className={
+                            "subject-mini-card grade-" +
+                            student.englishGrade?.toLowerCase()
+                          }>
+                          <span className="sub-label">English</span>
+                          <strong className="sub-grade">
+                            {student.englishGrade}
+                          </strong>
+                        </div>
+                      </div>
+
+                      <p className="student-testimonial-quote">
+                        {student.studentComment}
+                      </p>
+                    </div>
 
                     <div className="faculty-badge-footer">
                       <span>
                         Summary Ledger:{" "}
                         <strong>{student.overallResult?.toUpperCase()}</strong>
                       </span>
-
                       <button
                         onClick={() => handleLikeAppreciation(student.docId)}
                         className="card-live-like-trigger-btn">
-                        <FaHeart /> <span>{student.likes || 0}</span>
+                        <span>{student.likes || 0}</span>
+                        <FaHeart className="heart" />
                       </button>
                     </div>
                   </div>
@@ -564,16 +639,26 @@ const ResultsHub = () => {
                   </div>
                 </div>
 
-                <div className="input-group">
+                {/* <div className="input-group">
                   <label>Select Profile Avatar</label>
                   <select
                     value={form.avatarSeed}
                     onChange={(e) =>
                       setForm({ ...form, avatarSeed: e.target.value })
                     }>
-                    <option value="1"> Boy Avatar</option>
-                    <option value="2"> Girl Avatar</option>
+                    <option value="male"> Boy Avatar</option>
+                    <option value="female"> Girl Avatar</option>
                   </select>
+                </div> */}
+
+                <div className="input-group">
+                  <label> Upload Verification Image</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setImageFile(e.target.files[0])}
+                    required
+                  />
                 </div>
 
                 <div className="input-group">
@@ -588,8 +673,12 @@ const ResultsHub = () => {
                 </div>
               </div>
 
-              <button type="submit" className="submit-verify-btn">
-                <FaPaperPlane /> Verify & Submit Records
+              <button
+                type="submit"
+                className="submit-verify-btn"
+                disabled={isUploading}>
+                <FaPaperPlane />{" "}
+                {isUploading ? "Uploading..." : "Verify & Submit Records"}
               </button>
             </form>
           </div>

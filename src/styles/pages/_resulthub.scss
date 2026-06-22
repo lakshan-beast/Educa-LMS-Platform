@@ -1,6 +1,6 @@
 .secure-results-wrapper-shell {
   padding: 6.5rem 20px;
-  max-width: 1200px;
+  // max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -28,12 +28,12 @@
   animation: gradeRainDrop linear infinite;
 
   &.token-a {
-    color: rgba(251, 191, 36, 0.08);
+    color: rgba(255, 189, 21, 0.521);
     text-shadow: 0 0 8px rgba(251, 191, 36, 0.2);
   }
   &.token-b {
-    color: rgba(3, 32, 75, 0.06);
-    text-shadow: 0 0 8px rgba(3, 32, 75, 0.1);
+    color: rgba(3, 32, 75, 0.562);
+    text-shadow: 0 0 8px rgba(3, 32, 75, 0.288);
   }
 }
 
@@ -134,10 +134,12 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-bottom: 16px;
+
   .grade-drop {
     display: flex;
     flex-direction: column;
     gap: 4px;
+
     label {
       font-size: 0.78rem;
       font-weight: 700;
@@ -168,7 +170,8 @@
 .subject-matrix-tabs {
   display: flex;
   gap: 10px;
-  margin-bottom: 25px;
+  margin: 12px 0 25px 0;
+
   button {
     background-color: #f1f5f9;
     color: #64748b;
@@ -177,6 +180,7 @@
     border-radius: 12px;
     font-weight: 700;
     cursor: pointer;
+
     &.active {
       background-color: #03204b !important;
       color: white !important;
@@ -186,7 +190,7 @@
 
 .secure-cards-grid-isolation-shield {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 20px;
   -webkit-user-select: none;
   user-select: none !important;
@@ -201,6 +205,10 @@
   overflow: hidden;
   text-align: left;
   box-shadow: 0 4px 20px rgba(3, 32, 75, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   &:hover {
     cursor: none !important;
     .anti-screenshot-watermark {
@@ -215,7 +223,7 @@
   left: 50%;
   transform: translate(-50%, -50%) rotate(-25deg);
   font-size: 0.65rem;
-  color: #03204b;
+  color: #002152;
   font-weight: 900;
   width: 150%;
   text-align: center;
@@ -226,28 +234,32 @@
 
 .card-top-profile-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   position: relative;
+
   .profile-meta {
     text-align: left;
     flex: 1;
+
     h4 {
       margin: 0;
       color: #03204b;
       font-weight: 800;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
+      text-shadow: 0px 2px 2px rgb(156, 156, 156);
     }
     small {
-      color: #64748b;
+      color: rgba($secondary-blue, 0.5);
       font-size: 0.78rem;
+      font-weight: 500;
       display: inline-flex;
       align-items: center;
       gap: 4px;
     }
     p {
       margin: 2px 0 0 0;
-      color: #94a3b8;
+      color: rgba($secondary-blue, 0.5);
       font-size: 0.75rem;
       font-weight: 700;
     }
@@ -265,7 +277,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin: 18px 0;
+  margin: 10px 0;
 }
 .subject-mini-card {
   display: flex;
@@ -274,6 +286,8 @@
   padding: 8px 10px;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
+  box-shadow: 6px 6px 6px rgba(104, 104, 104, 0.199) !important;
+
   .sub-label {
     font-size: 0.65rem;
     font-weight: 700;
@@ -288,45 +302,57 @@
 }
 
 .subject-mini-card.grade-a {
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f7da68 100%);
   border-color: #fde68a;
   .sub-label,
   .sub-grade {
-    color: #b45309;
+    color: #ff6f00;
   }
 }
 .subject-mini-card.grade-b {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-  border-color: #bfdbfe;
+  background: linear-gradient(145deg, #ffffff 0%, #9fa3a8 100%);
+  border-color: #c6cacf;
   .sub-label,
   .sub-grade {
-    color: #1e40af;
+    color: #898b8f;
   }
 }
 .subject-mini-card.grade-c {
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #2aff75 100%);
   border-color: #bbf7d0;
   .sub-label,
   .sub-grade {
-    color: #15803d;
+    color: #009900;
   }
 }
 
 .student-testimonial-quote {
-  margin: 15px 0;
+  // margin: 15px 0;
   color: #475569;
   font-size: 0.85rem;
   font-style: italic;
   line-height: 1.5;
   font-weight: 500;
   text-align: left;
+  background-color: #d6d6d6;
+  height: 60px;
+  overflow-y: scroll;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba($secondary-blue3, 0.1);
 }
+
 .faculty-badge-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid #f1f5f9;
-  padding-top: 12px;
+  padding: 8px 22px;
+  border-radius: 2rem;
+  margin: 5px 0 0 0;
+  background: rgba($secondary-blue3, 0.1);
+  box-shadow: 4px 4px 6px rgba(104, 104, 104, 0.199) !important;
+
   span {
     font-size: 0.75rem;
     color: #94a3b8;
@@ -338,59 +364,109 @@
 }
 
 .card-live-like-trigger-btn {
-  background: linear-gradient(135deg, #fee2e2 0%, #fecdd3 100%);
-  color: #ef4444;
+  // background: linear-gradient(
+  //   135deg,
+  //   rgba($secondary-blue, 0.2) 0%,
+  //   rgba($secondary-blue, 0.4) 100%
+  // );
+  // background: linear-gradient(135deg, #ff9494 0%, #f01616 100%);
+  background-color: transparent;
+  color: #ee3535;
+  // color: $white;
+  // color: $secondary-blue;
   border: none;
   padding: 6px 14px;
-  border-radius: 20px;
+  border-radius: 8px;
   font-weight: 800;
-  font-size: 0.82rem;
+  font-size: 1.5rem;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   cursor: pointer !important;
   pointer-events: auto !important;
-  transition: transform 0.2s;
+  transition: transform 0.5s;
+
+  .heart {
+    animation: likePopup 1.5s ease-in-out infinite;
+  }
+
+  span {
+    color: #ee3535;
+    border-right: 1px solid;
+    padding-right: 6px;
+  }
+
   &:hover {
     transform: scale(1.1);
     background: linear-gradient(135deg, #fca5a5 0%, #f43f5e 100%);
     color: #ffffff;
+
+    span {
+      color: white;
+    }
   }
 }
 
 .secure-student-honors-card.elite-9a-shimmer {
-  border: 2px solid #fbbf24 !important;
+  border: 4px solid #fbbf24 !important;
+  border-top: 4px dotted #fbbf24 !important;
+  border-bottom: 4px dotted #fbbf24 !important;
   box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15) !important;
-  background: #ffffff;
+  background: #fff6d7;
+
   &::before {
     content: "";
     position: absolute;
     top: 0;
     left: -150%;
-    width: 50%;
+    width: 150%;
     height: 100%;
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0) 0%,
-      rgba(251, 191, 36, 0.12) 50%,
+      rgba(251, 190, 36, 0.562) 50%,
       rgba(255, 255, 255, 0) 100%
     );
-    transform: skewX(-25deg);
-    animation: goldCardShimmering 3.5s ease-in-out infinite;
+    transform: skewX(-20deg);
+    animation: goldCardShimmering 2.5s ease-in-out infinite;
+  }
+
+  h4 {
+    color: #fbbf24;
+    text-shadow: 0px 2px 2px rgb(196, 196, 196);
+    letter-spacing: 1.1px;
+    font-size: 1.3rem;
+  }
+  small {
+    color: rgba($secondary-blue, 0.5);
+  }
+  p {
+    color: rgba($secondary-blue, 0.5);
+  }
+
+  .faculty-badge-footer,
+  .student-testimonial-quote {
+    box-shadow: 4px 4px 6px rgba(104, 104, 104, 0.199) !important;
+    // background: linear-gradient(90deg, #ffffff 0%, #f5d061 100%);
+    background-color: white;
+    // border-color: #fde68a;
+    margin: 5px 0 0 0;
   }
 }
 
 .gold-medal-tag {
   background-color: #fbbf24;
-  color: #03204b;
+  color: $secondary-blue;
+  box-shadow: 0px 3px 6px rgba($secondary-blue3, 0.5);
   padding: 4px 8px;
   border-radius: 6px;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 900;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 12px;
 }
+
 @keyframes goldCardShimmering {
   0% {
     left: -150%;
@@ -402,3 +478,70 @@
     left: 150%;
   }
 }
+
+@keyframes likePopup {
+  0% {
+    scale: 0.9;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 0.9;
+  }
+}
+
+// const handleSubmitResult = async (e) => {
+//   e.preventDefault();
+//   if (!form.fullName  !form.indexNumber  !form.schoolName  !form.studentComment  !form.overallResult) {
+//     return alert("Please populate all cryptographic validation layers first!");
+//   }
+//   if (!imageFile) {
+//     return alert("Please upload your verification photograph to proceed!");
+//   }
+
+//   try {
+//     setIsUploading(true);
+
+//     // 1. ෆොටෝ එක Cloud Storage එකට අප්ලෝඩ් කිරීම
+//     const storageRef = ref(storage, student_photos/${form.indexNumber}_${Date.now()});
+//     const snapshot = await uploadBytes(storageRef, imageFile);
+//     const photoUrl = await getDownloadURL(snapshot.ref);
+
+//     // 2. ෆොටෝ ලින්ක් එකත් සමඟ දත්ත Firestore එකේ සේව් කිරීම
+//     await addDoc(collection(db, "ol_results_2025"), {
+//       ...form,
+//       studentPhoto: photoUrl, // 👈 ඇත්තම ෆොටෝ ලින්ක් එක
+//       status: "pending",
+//       likes: 0,
+//       createdAt: new Date().toISOString()
+//     });
+
+//     alert("Verification successful! Your results will be live after the faculty audit.");
+//     setForm({ fullName: "", indexNumber: "", schoolName: "", mathsGrade: "A", scienceGrade: "A", englishGrade: "A", overallResult: "", studentComment: "" });
+//     setImageFile(null);
+//   } catch (err) {
+//     console.error("Cloud Save Error:", err);
+//     alert("Something went wrong during cloud verification.");
+//   } finally {
+//     setIsUploading(false);
+//   }
+// };
+
+// import { db, storage } from "../firebase/config"; // 👈 'storage' එකතු කරන්න
+// import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // 👈 මේ functions එකතු කරන්න
+
+// // ResultsHub ඇතුළත පැරණි form state එකෙන් 'avatarSeed' අයින් කර imageFile state එකක් දාන්න:
+// const [imageFile, setImageFile] = useState(null);
+// const [isUploading, setIsUploading] = useState(false);
+
+// const [form, setForm] = useState({
+//   fullName: "",
+//   indexNumber: "",
+//   schoolName: "",
+//   mathsGrade: "A",
+//   scienceGrade: "A",
+//   englishGrade: "A",
+//   overallResult: "",
+//   studentComment: "" // 👈 avatarSeed අයින් කළා
+// });

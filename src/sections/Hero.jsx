@@ -41,9 +41,9 @@ const Hero = () => {
             <a href="#resources" className="start-btn">
               Get Started Now <FaRocket className="icon" />
             </a>
-            <a href="#classes" className="browse-btn">
+            {/* <a href="#classes" className="browse-btn">
               Browse classes <FaArrowRight className="icon" />
-            </a>
+            </a> */}
 
             <Link to="/result-hub" className="browse-btn">
               Results (2025)
