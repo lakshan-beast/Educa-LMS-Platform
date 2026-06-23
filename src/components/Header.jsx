@@ -19,7 +19,7 @@ import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 import { TiThMenuOutline } from "react-icons/ti";
 <TiThMenuOutline />;
 
-import { FaBell } from "react-icons/fa6";
+// import { FaBell } from "react-icons/fa6";
 import EventDrawer from "./EventDrawer";
 
 const Header = () => {
@@ -127,11 +127,11 @@ const Header = () => {
           </div>
 
           <div className="header-actions">
-            <button
+            {/* <button
               onClick={() => setIsDrawerOpen(true)}
               className="nav-notification-bell-btn">
               <FaBell /> <span className="bell-alert-dot"></span>
-            </button>
+            </button> */}
 
             <button className="sign-btn" onClick={handleUserClick}>
               {isLoggedIn ? (

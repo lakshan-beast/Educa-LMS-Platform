@@ -1,33 +1,34 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  FaBookOpen,
-  FaArrowLeft,
-  FaLock,
-  FaRightFromBracket,
-} from "react-icons/fa6";
+
+import { db } from "../firebaseConfig";
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+import AIChatWidget from "../components/AIChatWidget";
+
 import { FaCrown } from "react-icons/fa6";
-// import { HiOutlineHome } from "react-icons/hi";
-// <HiOutlineHome />;
-import { IoCalendarOutline } from "react-icons/io5";
-
-import { IoHomeOutline } from "react-icons/io5";
-
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-
-import { IoBarChartOutline } from "react-icons/io5";
-import { IoLogOutOutline } from "react-icons/io5";
+import { BiError } from "react-icons/bi";
+import { PiSealCheckFill } from "react-icons/pi";
+import { IoIosCheckmarkCircle } from "react-icons/io";
+import { FaBookOpen, FaLock } from "react-icons/fa6";
+import {
+  IoCalendarOutline,
+  IoHomeOutline,
+  IoBarChartOutline,
+  IoChatbubbleEllipsesOutline,
+  IoLogOutOutline,
+} from "react-icons/io5";
 
 import ScoreAnalytics from "../components/ScorenAnalytics";
 import { premiumStudentsList } from "../data/approvedStudents";
-
-import AIChatWidget from "../components/AIChatWidget";
-// import LiveClass from "./LiveClass";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const studentId = localStorage.getItem("user_id") || "";
   const userSubjects = localStorage.getItem("user_subjects") || "";
+  // const [students, setStudents] = useState([]);
+
+  const nowYear = new Date().getFullYear();
 
   const isPremiumUser = premiumStudentsList.includes(
     studentId.trim().toUpperCase(),
@@ -40,8 +41,6 @@ const Dashboard = () => {
     mins: 0,
     secs: 0,
   });
-
-  const nowYear = new Date().getFullYear();
 
   useEffect(() => {
     if (!localStorage.getItem("isLoggedIn")) {
@@ -117,33 +116,53 @@ const Dashboard = () => {
     };
   };
 
+  const [studentData, setStudentData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // 1. දැනට ලොග් වී සිටින ශිෂ්‍යයාගේ ID එක (උදාහරණයක් ලෙස)
+  // සත්‍ය වශයෙන්ම ලොග් වන විට ලැබෙන ID එක මෙතනට ආදේශ කරන්න
+  // const loggedInId = "EDU-MES-11-SADUNNIMSARA-0803";
+
+  // 2. Firebase එකෙන් දත්ත සොයා ගන්නා Function එක
+  async function getStudentByField(id) {
+    try {
+      const studentRef = collection(db, "students");
+      const q = query(studentRef, where("id", "==", id));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        // පළමු ලේඛනයේ (Document) දත්ත ලබාගෙන return කිරීම
+        return querySnapshot.docs[0].data();
+      } else {
+        console.log("No such student was found.");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return null;
+    }
+  }
+
+  // 3. පිටුව (Page) load වන විටම function එක run කිරීම
+  useEffect(() => {
+    async function loadData() {
+      setLoading(true);
+      const data = await getStudentByField(studentId); // මෙතනදී function එක call වේ
+      setStudentData(data);
+      setLoading(false);
+    }
+    loadData();
+  }, [studentId]);
+
+  // 4. දත්ත screen එකේ පෙන්වීම
+  if (loading) return <p>(Loading...)</p>;
+  if (!studentData) return <p>No such student's Details was found.</p>;
+
   const greeting = getGreetings();
 
   return (
     <div className="dashboard-wrapper page-container">
       <div className="system-container">
-        {/* <Link className="back-btn" to="/">
-          <FaArrowLeft /> Back to Home Page
-        </Link> */}
-
-        {/* <div className="quick-actions">
-          <Link>
-            <IoHomeOutline className="icons" />
-          </Link>
-          <Link>
-            <IoCalendarOutline className="icons" />
-          </Link>
-          <Link>
-            <IoChatbubbleEllipsesOutline className="icons" />
-          </Link>
-          <Link>
-            <IoBarChartOutline className="icons" />
-          </Link>
-          <Link>
-            <IoLogOutOutline className="icons" />
-          </Link>
-        </div> */}
-
         <div className="dashboard-grid">
           <div className="welcome-banner">
             <img
@@ -178,18 +197,49 @@ const Dashboard = () => {
                 style={{ width: "50px", height: "50px", objectFit: "contain" }}
               />
             </h1>
-            <span> Grade 11 - {nowYear} O/L Batch</span>
-            <p className="student-id">
-              <span className="id">{studentId}</span>{" "}
-            </p>
 
-            {/* <p>Your password is secure and encrypted.</p> */}
+            <div>
+              <p>
+                {studentData.fullName}{" "}
+                <span>
+                  {studentData.status === "approved" ? (
+                    <BiError />
+                  ) : (
+                    <PiSealCheckFill />
+                  )}
+                </span>
+              </p>
+              <p>
+                Grade {studentData.grade} - {nowYear} O/L Batch
+              </p>
+              <hr />
 
-            {/* <div className="more-btns">
-              <Link to="/tab-controller" className="fullclasss-btn">
-                View Full Timetable & Notices
-              </Link>
-            </div> */}
+              <p>Student Id : {studentData.id}</p>
+              <p>Your Password : {studentData.password}</p>
+
+              <hr />
+              <p>Your Number : {studentData.studentMobile}</p>
+              <p>Parent Mobile : {studentData.parentMobile}</p>
+
+              <h3>Your Enroll Subjects:</h3>
+              <ul>
+                {studentData.maths && (
+                  <li>
+                    Maths <IoIosCheckmarkCircle />
+                  </li>
+                )}
+                {studentData.science && (
+                  <li>
+                    Science <IoIosCheckmarkCircle />
+                  </li>
+                )}
+                {studentData.english && (
+                  <li>
+                    English <IoIosCheckmarkCircle />
+                  </li>
+                )}
+              </ul>
+            </div>
 
             <div className="quick-actions">
               <Link>
@@ -204,15 +254,10 @@ const Dashboard = () => {
               <Link>
                 <IoBarChartOutline className="icons" />
               </Link>
-              <Link>
+              <button onClick={handleLogout}>
                 <IoLogOutOutline className="icons signout" />
-              </Link>
+              </button>
             </div>
-
-            {/* <button onClick={handleLogout} className="browse-btn signout-btn">
-              <FaRightFromBracket className="icon" />
-              Sign Out
-            </button> */}
           </div>
 
           <div className="side-dash-content">
