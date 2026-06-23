@@ -13,6 +13,14 @@ import Results from "../assets/result.webp";
 import Parent from "../assets/parents.webp";
 
 const Resources = () => {
+  // const resourcesData = [
+  //   {
+  //     badgeName: "",
+  //     heading: "",
+  //     description: "",
+  //   }
+  // ]
+
   return (
     <section className="parts" id="resources">
       <h2>
@@ -25,11 +33,7 @@ const Resources = () => {
       </p>
 
       <div className="resources-grid">
-        <div
-          className="resources-card"
-          data-aos="fade-up"
-          data-aos-delay="50"
-          id="parent-portal">
+        <div className="resources-card" id="parent-portal" data-aos="fade-up">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Parents Only
           </span>
@@ -60,8 +64,7 @@ const Resources = () => {
         <div
           className="resources-card card-style result-check"
           id="result-check"
-          data-aos="fade-up"
-          data-aos-delay="100">
+          data-aos="fade-up">
           <span className="card-badge card-badge-official">
             <FaMedal className="icon" /> Official
           </span>
@@ -92,9 +95,8 @@ const Resources = () => {
         {/* 2. Student Reviews Card */}
         <div
           className="resources-card card-style"
-          data-aos="fade-up"
-          data-aos-delay="150"
-          id="reviews">
+          id="reviews"
+          data-aos="fade-up">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Verified
           </span>

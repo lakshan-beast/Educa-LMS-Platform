@@ -67,11 +67,11 @@ const Teachers = () => {
 
       <div className="teachers-container teachers-grid">
         {teacherData.map((teacher, index) => (
-          <div className="teacher-card" key={index}>
+          <div className="teacher-card" key={index} data-aos="fade-up">
             <div className="teacher-image-column">
-              <img src={teacher.img} alt={teacher.name} />
+              <img src={teacher.img} alt={teacher.name} data-aos="zoom-in" />
 
-              <div className="teacher-socials">
+              <div className="teacher-socials" data-aos="fade-left">
                 <a href={`tel:${teacher.facebook}`}>
                   <FaFacebook className="facebook-icon icon" />
                 </a>
@@ -85,7 +85,7 @@ const Teachers = () => {
             </div>
 
             <div className="teacher-info-column">
-              <div className="info-content">
+              <div className="info-content" data-aos="fade-up">
                 <span className="subject-tag">{teacher.subject}</span>
                 <h3>{teacher.name}</h3>
 

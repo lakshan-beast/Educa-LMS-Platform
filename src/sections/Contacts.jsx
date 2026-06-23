@@ -110,8 +110,8 @@ const Contact = () => {
 
           <div
             className="contact-form-card styled-form"
-            data-aos="fade-left"
-            id="contact-form">
+            id="contact-form"
+            data-aos="fade-left">
             <h2>Contact Academic Support</h2>
             <p>
               Please complete this official form to establish a direct cloud
@@ -122,7 +122,7 @@ const Contact = () => {
             {formSuccess && <div className="success-card">{formSuccess}</div>}
 
             <form onSubmit={handleContactSubmit}>
-              <div className="styled-form" method="POST">
+              <div className="styled-form" method="POST" data-aos="fade-up">
                 <div className="input-row">
                   <div className="input-group">
                     <label>Full Name </label>
@@ -172,8 +172,10 @@ const Contact = () => {
                       rows="4"
                       required></textarea>
                   </div>
+
                   <button
                     type="submit"
+                    data-aos="fade-up"
                     disabled={isSubmitting}
                     className="contact-submit-btn">
                     {isSubmitting ? "Sending Message..." : "Send My Message"}

@@ -50,18 +50,20 @@ const Classes = () => {
             <div className="class-card " key={index} data-aos="fade-up">
               <div className="class-info">
                 <div className="class-header">
-                  <h3>{item.title}</h3>
+                  <h3 data-aos="fade-right">{item.title}</h3>
                   <h4>{item.subtitle}</h4>
                 </div>
 
-                <p className="class-desc">{item.description}</p>
+                <p className="class-desc" data-aos="fade-up">
+                  {item.description}
+                </p>
 
                 <div className="class-meta">
-                  <div className="meta-item">
+                  <div className="meta-item" data-aos="fade-right">
                     <span className="label">Grade : </span>
                     <span className="value">{item.grade}</span>
                   </div>
-                  <div className="meta-item">
+                  <div className="meta-item" data-aos="fade-left">
                     <span className="label">Medium : </span>
                     <span className="value">{item.medium}</span>
                   </div>
@@ -76,7 +78,10 @@ const Classes = () => {
         </div>
 
         <div className="more-btn">
-          <Link to="/tab-controller" className="fullclass-btn">
+          <Link
+            to="/tab-controller"
+            className="fullclass-btn"
+            data-aos="fade-down">
             View Full Timetable & Notices
           </Link>
         </div>

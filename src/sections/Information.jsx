@@ -24,7 +24,7 @@ const Information = () => {
 
       <div className="about-container info-column" id="about">
         {/* Left Content */}
-        <div className="info-left card" data-aos="fade-right">
+        <div className="info-left card" data-aos="fade-left">
           <p data-aos="fade-up">
             We firmly believe that every child absorbs information differently.
             Our core mission is to bridge the gap between heavy textbook
