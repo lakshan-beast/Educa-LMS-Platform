@@ -43,8 +43,8 @@ const Hero = () => {
               Browse classes <FaArrowRight className="icon" />
             </a> */}
 
-            <Link to="/result-hub" className="browse-btn">
-              Results (2025)<span className="bell-alert-dot"></span>
+            <Link to="/result-hub" className="browse-btn result-btn">
+              Results (2025)
             </Link>
           </div>
         </div>

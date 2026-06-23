@@ -54,12 +54,12 @@ const Teachers = () => {
     },
   ];
   return (
-    <section className="parts teachers-section" id="teachers">
-      <h2>
+    <section className="parts" id="teachers">
+      <h2 data-aos="fade-up">
         Meet Our Expert <span>Faculty Leads</span>
       </h2>
 
-      <p>
+      <p data-aos="fade-up">
         Learn from our highly experienced and friendly educators dedicated to
         your success. We combine proven exam methods with structured papers to
         guide you toward a guaranteed 'A' grade.
@@ -85,20 +85,24 @@ const Teachers = () => {
             </div>
 
             <div className="teacher-info-column">
-              <div className="info-content" data-aos="fade-up">
-                <span className="subject-tag">{teacher.subject}</span>
-                <h3>{teacher.name}</h3>
+              <div className="info-content">
+                <span className="subject-tag" data-aos="fade-down">
+                  {teacher.subject}
+                </span>
+                <h3 data-aos="fade-right">{teacher.name}</h3>
 
                 <div className="detail-list">
                   <div className="detail-header">
-                    <p>
+                    <p data-aos="fade-right">
                       <b>Academic:</b> {teacher.background}
                     </p>
-                    <p>
+                    <p data-aos="fade-right">
                       <b>Experience:</b> {teacher.expertise}
                     </p>
                   </div>
-                  <p className="philosophy-box">{teacher.philosophy}</p>
+                  <p className="philosophy-box" data-aos="fade-up">
+                    {teacher.philosophy}
+                  </p>
                 </div>
               </div>
             </div>

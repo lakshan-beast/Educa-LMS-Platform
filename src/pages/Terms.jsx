@@ -306,9 +306,9 @@ const Terms = ({ onClose }) => {
           </h4>
           <p>
             The entire source code, user interface designs, visual assets, and
-            underlying software architecture of the <strong>educa.</strong>
+            underlying software architecture of the <strong>educa. </strong>
             platform are the exclusive intellectual property of
-            <strong>Lakshan (The Lead Architect)</strong> . Users and faculties
+            <strong> Lakshan (The Lead Architect)</strong> . Users and faculties
             are granted a limited, non-transferable license to access the
             system. Any unauthorized copying, distribution, or
             reverse-engineering of this software is strictly prohibited by law .

@@ -23,10 +23,10 @@ const Resources = () => {
 
   return (
     <section className="parts" id="resources">
-      <h2>
+      <h2 data-aos="fade-up">
         Our Smart <span>Learning System</span>
       </h2>
-      <p>
+      <p data-aos="fade-up">
         Explore the special features designed to connect parents with the
         classroom, check modern exam reports, and view verified student feedback
         instantly.
@@ -34,7 +34,7 @@ const Resources = () => {
 
       <div className="resources-grid">
         <div className="resources-card" id="parent-portal" data-aos="fade-up">
-          <span className="card-badge card-badge-verified">
+          <span className="card-badge card-badge-verified" data-aos="fade-left">
             <FaCircleCheck className="icon" /> Parents Only
           </span>
           <img
@@ -55,7 +55,7 @@ const Resources = () => {
           {/* <Link to="/parent-portal" className="browse-btn">
             View Details
           </Link> */}
-          <button disabled="disabled" className="browse-btn">
+          <button disabled="disabled" className="browse-btn" data-aos="fade-up">
             Coming Soon
           </button>
         </div>
@@ -65,7 +65,7 @@ const Resources = () => {
           className="resources-card card-style result-check"
           id="result-check"
           data-aos="fade-up">
-          <span className="card-badge card-badge-official">
+          <span className="card-badge card-badge-official" data-aos="fade-left">
             <FaMedal className="icon" /> Official
           </span>
           <img
@@ -87,7 +87,8 @@ const Resources = () => {
             href="https://www.doenets.lk/examresults"
             className="browse-btn"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+            data-aos="fade-up">
             Check Your Results
           </a>
         </div>
@@ -97,7 +98,7 @@ const Resources = () => {
           className="resources-card card-style"
           id="reviews"
           data-aos="fade-up">
-          <span className="card-badge card-badge-verified">
+          <span className="card-badge card-badge-verified" data-aos="fade-left">
             <FaCircleCheck className="icon" /> Verified
           </span>
           <img
@@ -114,7 +115,7 @@ const Resources = () => {
             top-performing Ordinary Level students who achieved their dream
             results with us .
           </p>
-          <Link to="/student-voices" className="browse-btn">
+          <Link to="/student-voices" className="browse-btn" data-aos="fade-up">
             Read Reviews
           </Link>
         </div>

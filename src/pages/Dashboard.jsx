@@ -7,12 +7,22 @@ import {
   FaRightFromBracket,
 } from "react-icons/fa6";
 import { FaCrown } from "react-icons/fa6";
+// import { HiOutlineHome } from "react-icons/hi";
+// <HiOutlineHome />;
+import { IoCalendarOutline } from "react-icons/io5";
+
+import { IoHomeOutline } from "react-icons/io5";
+
+import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+
+import { IoBarChartOutline } from "react-icons/io5";
+import { IoLogOutOutline } from "react-icons/io5";
 
 import ScoreAnalytics from "../components/ScorenAnalytics";
 import { premiumStudentsList } from "../data/approvedStudents";
 
 import AIChatWidget from "../components/AIChatWidget";
-import LiveClass from "./LiveClass";
+// import LiveClass from "./LiveClass";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -112,9 +122,27 @@ const Dashboard = () => {
   return (
     <div className="dashboard-wrapper page-container">
       <div className="system-container">
-        <Link className="back-btn" to="/">
+        {/* <Link className="back-btn" to="/">
           <FaArrowLeft /> Back to Home Page
-        </Link>
+        </Link> */}
+
+        {/* <div className="quick-actions">
+          <Link>
+            <IoHomeOutline className="icons" />
+          </Link>
+          <Link>
+            <IoCalendarOutline className="icons" />
+          </Link>
+          <Link>
+            <IoChatbubbleEllipsesOutline className="icons" />
+          </Link>
+          <Link>
+            <IoBarChartOutline className="icons" />
+          </Link>
+          <Link>
+            <IoLogOutOutline className="icons" />
+          </Link>
+        </div> */}
 
         <div className="dashboard-grid">
           <div className="welcome-banner">
@@ -151,20 +179,40 @@ const Dashboard = () => {
               />
             </h1>
             <span> Grade 11 - {nowYear} O/L Batch</span>
-            <p className="student-id">Your ID: {studentId}</p>
+            <p className="student-id">
+              <span className="id">{studentId}</span>{" "}
+            </p>
 
-            <p>Your password is secure and encrypted.</p>
+            {/* <p>Your password is secure and encrypted.</p> */}
 
-            <div className="more-btns">
+            {/* <div className="more-btns">
               <Link to="/tab-controller" className="fullclasss-btn">
                 View Full Timetable & Notices
               </Link>
+            </div> */}
+
+            <div className="quick-actions">
+              <Link>
+                <IoHomeOutline className="icons" />
+              </Link>
+              <Link>
+                <IoCalendarOutline className="icons" />
+              </Link>
+              <Link>
+                <IoChatbubbleEllipsesOutline className="icons" />
+              </Link>
+              <Link>
+                <IoBarChartOutline className="icons" />
+              </Link>
+              <Link>
+                <IoLogOutOutline className="icons signout" />
+              </Link>
             </div>
 
-            <button onClick={handleLogout} className="browse-btn signout-btn">
+            {/* <button onClick={handleLogout} className="browse-btn signout-btn">
               <FaRightFromBracket className="icon" />
               Sign Out
-            </button>
+            </button> */}
           </div>
 
           <div className="side-dash-content">
@@ -277,10 +325,10 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-
+        {/* 
         <div>
           <LiveClass />
-        </div>
+        </div> */}
         {/* <div className="notice-area">
           <LiveNoticeDisplay
             // studentGrade={loggedGrade.grade}

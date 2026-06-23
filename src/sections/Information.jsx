@@ -12,11 +12,11 @@ import { FaChalkboardTeacher, FaSmileBeam } from "react-icons/fa";
 const Information = () => {
   return (
     <section className="parts" id="information">
-      <h2>
+      <h2 data-aos="fade-up">
         Why Study With <span>Our Faculty?</span>
       </h2>
 
-      <p>
+      <p data-aos="fade-up">
         Discover how we combine expert local teachers, friendly step-by-step
         lessons, and a modern online tracking portal to help every student boost
         their confidence and score top exam results.
@@ -24,7 +24,7 @@ const Information = () => {
 
       <div className="about-container info-column" id="about">
         {/* Left Content */}
-        <div className="info-left card" data-aos="fade-left">
+        <div className="info-left card">
           <p data-aos="fade-up">
             We firmly believe that every child absorbs information differently.
             Our core mission is to bridge the gap between heavy textbook

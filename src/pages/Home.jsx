@@ -82,7 +82,7 @@ export default Hero; */
 // Folder paths ඔයාගේ project එකේ විදිහට නිවැරදිද කියලා බලන්න
 import Hero from "../sections/Hero";
 import Resources from "../sections/Resources";
-import ResultHub from "./ResultHub";
+// import ResultHub from "./ResultHub";
 import Classes from "../sections/Classes";
 import Teachers from "../sections/Teachers";
 import Information from "../sections/Information";
@@ -122,7 +122,7 @@ const Home = () => {
       <Resources />
       <Classes />
       {/* <TabController /> */}
-      <ResultHub />
+      {/* <ResultHub /> */}
       <Teachers />
       <Information />
       <Contact />

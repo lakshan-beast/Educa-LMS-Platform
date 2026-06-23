@@ -260,109 +260,125 @@
 }
 
 // privacy-card - about,  update, coming-soon, legel, nexuslabs, terms
-// .privacy-card {
-//   .privacy-top {
-//     textAlign: "center", marginBottom: "25px"
+// 🔒 SCSS විදිහට නිවැරදිව සකස් කරන ලද Privacy Card එක
 
-//     .privay-header {
-//       width: "65px",
-//               height: "65px",
-//               background: "#001b42",
-//               color: "$white",
-//               borderRadius: "50%",
-//               display: "inline-flex",
-//               justifyContent: "center",
-//               alignItems: "center",
-//               fontSize: "1.8rem",
-//               marginBottom: "12px",
-//               boxShadow: "0 8px 20px rgba(3,32,75,0.15)",
+.privacy-card {
+  border-radius: 1rem;
+  // 🔝 ඉහළ ශීර්ෂ කොටස
+  .privacy-top {
+    text-align: center; // JavaScript කොමා (,) සහ Quotes ("") ඉවත් කරන ලදී
+    margin-bottom: 25px;
 
-//               h2 {
-//                 color: "#001b42",
-//               margin: 0,
-//               fontWeight: "900",
-//               fontSize: "1.4rem",
-//               letterSpacing: "-0.5px",
-//               }
+    // 🛡️ Icon එක තියෙන පොඩි නිල් පාට රවුම
+    .privacy-header {
+      width: 65px;
+      height: 65px;
+      background: #001b42;
+      color: $white; // SCSS Variable එක
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      box-shadow: 0 8px 20px rgba(3, 32, 75, 0.15);
+    } // 🛠️ Nesting Fix: රවුම මෙතනින් වැහුවා, දැන් h2 සහ p මීට යටින් පිරිසිදුවට තියෙනවා
 
-//               p {
-//                  color: "#64748b",
-//               fontSize: "0.82rem",
-//               marginTop: "4px",
-//               fontWeight: "600",
-//               }
-//     }
-//   }
-//   .privacy-container {
-// maxHeight: "300px",
-//             overflowY: "auto",
-//             padding: "20px",
-//             background: "#f8fafc",
-//             borderRadius: "16px",
-//             border: "1px solid #e2e8f0",
-//             fontSize: "0.88rem",
-//             lineHeight: "1.7",
-//             color: "#334155",
-//             textAlign: "justify",
+    h2 {
+      color: #001b42;
+      margin: 0;
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+    }
 
-//             // container parts
-//             h4 {
-//                color: "#001b42",
-//               marginTop: 0,
-//               fontSize: "0.9rem",
-//               fontWeight: "800",
-//               display: "flex",
-//               alignItems: "center",
-//               gap: "8px",
+    p {
+      color: #64748b;
+      font-size: 0.82rem;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+  }
 
-//               icon {
-//                 color: "#001b42"
-//               }
-//             }
-//             p {
-//               marginTop: "6px", marginBottom: "16px"
-//             }
+  // 📜 කොන්දේසි කියවන, ස්ක්‍රෝල් වන මැද කොටස
+  .privacy-container {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #334155;
+    text-align: center;
 
-//             .last-content {
-//               margin-bottom: 0;
-//             }
+    h4 {
+      color: #001b42;
+      margin-top: 0;
+      font-size: 0.9rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
 
-//             ul {
-//                margin: 0,
-//               paddingLeft: "15px",
-//               display: "flex",
-//               flexDirection: "column",
-//               gap: "12px",
-//             }
-//           }
+      // 🛠️ HTML icon ටැග් එකක් හෝ Class එකක් සඳහා (.icon ලෙස නිවැරදි කළා)
+      .icon {
+        color: #001b42;
+      }
+    }
 
-//             .privacy-actions {
-//               marginTop: "25px",
-//             borderTop: "1px solid #e2e8f0",
-//             paddingTop: "20px",
-//             textAlign: "right",
+    p {
+      margin-top: 6px;
+      margin-bottom: 16px;
+    }
 
-//             button {
-//               border: "none",
-//               padding: "10px 24px",
-//               borderRadius: "12px",
-//               fontWeight: "700",
-//               cursor: "pointer",
-//               display: "inline-flex",
-//               alignItems: "center",
-//               gap: "8px",
-//               fontSize: "0.85rem",
-//               transition: "0.2s",
-//             }
-//             .close-button {
+    .last-content {
+      margin-bottom: 0;
+    }
 
-//               color: "white",
-//               background: "#001b42",
-//             }
-//             .action-button {
-//                 background: "#fee2e2",
-//               color: "#ef4444",
-//             }
-//             }
+    ul {
+      margin: 0;
+      padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
 
-// }
+  // 🎛️ පහළ බටන් තියෙන කොටස
+  .privacy-actions {
+    margin-top: 25px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+    text-align: right;
+
+    button {
+      border: none;
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      transition: 0.2s;
+
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+    }
+
+    .close-button {
+      color: white;
+      background: #001b42;
+    }
+
+    .actions-button {
+      background: #fee2e2;
+      color: #ef4444;
+    }
+  }
+}
