@@ -233,7 +233,7 @@ const ResultsHub = () => {
           <Link className="back-btn" to="/">
             <IoIosArrowBack /> Back to Home
           </Link>
-          <Link className="back-btn" to="/students-reviews">
+          <Link className="back-btn" to="/student-voices">
             Go to Comments <span className="bell-alert-dot"></span>
             <IoIosArrowForward />
           </Link>
