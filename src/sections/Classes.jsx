@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import { FaArrowRight } from "react-icons/fa6";
 
 const Classes = () => {
   const classData = [
