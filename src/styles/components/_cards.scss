@@ -96,6 +96,8 @@
         padding: 5px 0 5px 12px;
         border-radius: $border-radius-small;
         margin: 3px 0;
+        word-spacing: 3px;
+        letter-spacing: 2px;
       }
     }
 
@@ -105,6 +107,7 @@
       line-height: 1.6;
       margin-bottom: 20px;
       text-align: left;
+      height: 180px;
 
       @include respond(tablet) {
         text-align: center;

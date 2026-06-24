@@ -1,30 +1,139 @@
 // --- Grade 11 Student Dashboard Styles ---
 .dashboard-wrapper {
   min-height: 95vh;
-  padding: 6.5rem 20px 1.5rem 20px;
-  // margin-top: 5rem;
+  padding: 6.5rem 20px 0.5rem 20px;
   max-width: $container-width-large-m;
   min-width: $container-width-small;
   width: $container-width-default;
 
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    @include respond(tablet) {
+      grid-template-columns: 1fr 1.2fr;
+      gap: 20px;
+      margin-bottom: 0;
+    }
+  }
+
   // 👑 A. Premium Welcome Banner
+  // .welcome-banner {
+  //   background: $secondary-blue;
+  //   color: $white;
+  //   padding: 35px;
+  //   padding-bottom: 12px;
+  //   border-radius: $border-radius-small-m;
+  //   // margin-bottom: 30px;
+  //   box-shadow: 0 12px 30px rgba(0, 7, 37, 0.205);
+  //   position: relative;
+  //   overflow: hidden;
+
+  //   @include respond(desktop) {
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: space-evenly;
+  //     margin: $margin-none;
+  //   }
+
+  //   &::after {
+  //     content: "";
+  //     position: absolute;
+  //     right: -50px;
+  //     top: -50px;
+  //     width: 200px;
+  //     height: 200px;
+  //     background: rgba($white, 0.15);
+  //     box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.8);
+  //     border-radius: $border-radius-circle;
+  //   }
+  //   h1 {
+  //     display: flex;
+  //     align-items: center;
+  //     gap: 12px;
+  //     margin: 0;
+  //   }
+  //   h2 {
+  //     font-size: 2.2rem;
+  //     font-weight: $font-weight-800;
+  //     margin-bottom: 15px;
+  //     letter-spacing: -0.5px;
+  //   }
+  //   .student-id {
+  //     font-size: $font-size-body;
+  //     opacity: 0.8;
+  //     margin-top: 5px;
+  //     border-bottom: 2px solid;
+  //     padding-bottom: 6px;
+  //     margin-bottom: 6px;
+
+  //     span {
+  //       display: block;
+  //       // text-align: center;
+  //     }
+  //   }
+  //   .motivation-text {
+  //     margin-top: 15px;
+  //     font-style: italic;
+  //     font-size: $font-size-body;
+  //     background-color: $bg-light;
+  //     color: $blue-soft;
+  //     padding: 6px 12px;
+  //     border-radius: $border-radius-small-m;
+  //   }
+
+  //   .approved-badge {
+  //     color: rgb(0, 255, 76);
+  //   }
+  //   .user-security,
+  //   .user-number {
+  //     margin-top: 6px;
+  //     display: flex;
+  //     justify-content: space-between;
+  //     flex-direction: column;
+  //     border-top: 2px solid rgba($secondary-blue3, 0.5);
+  //     margin-top: 6px;
+  //     padding: 6px 0;
+
+  //     @include respond(desktop) {
+  //       align-items: center;
+  //       flex-direction: row;
+  //     }
+  //   }
+
+  //   .user-subjects {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     flex-direction: row;
+  //     gap: 1rem;
+  //     border-top: 2px solid rgba($secondary-blue3, 0.5);
+  //     margin-top: 6px;
+  //     padding: 6px 0;
+
+  //     .check-icon {
+  //       color: rgb(0, 255, 76);
+  //       padding-top: 6px;
+  //       font-size: 1.5rem;
+  //       position: relative;
+  //       top: 3px;
+  //     }
+  //   }
+  // }
+
+  // 🪐 DASHBOARD WELCOME BANNER - MODERN SASS STYLES
+
   .welcome-banner {
     background: $secondary-blue;
-    color: $white;
-    padding: 35px;
-    padding-bottom: 12px;
-    border-radius: $border-radius-small-m;
-    // margin-bottom: 30px;
-    box-shadow: 0 12px 30px rgba(0, 7, 37, 0.205);
+    border: 1px solid #30363d;
+    padding: 30px;
+    border-radius: 20px;
     position: relative;
     overflow: hidden;
-
-    @include respond(desktop) {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      margin: $margin-none;
-    }
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin-bottom: 25px;
 
     &::after {
       content: "";
@@ -38,244 +147,558 @@
       border-radius: $border-radius-circle;
     }
 
-    h2 {
-      font-size: 2.2rem;
-      font-weight: $font-weight-800;
-      margin-bottom: 15px;
-      letter-spacing: -0.5px;
-    }
-    .student-id {
-      font-size: $font-size-body;
-      opacity: 0.8;
-      margin-top: 5px;
-      border-bottom: 2px solid;
-      padding-bottom: 6px;
-      margin-bottom: 6px;
-
-      span {
-        display: block;
-        // text-align: center;
-      }
-    }
-    .motivation-text {
-      margin-top: 15px;
-      font-style: italic;
-      font-size: $font-size-body;
-      background-color: $bg-light;
-      color: $blue-soft;
-      padding: 6px 12px;
-      border-radius: $border-radius-small-m;
-    }
-  }
-
-  // loading spin
-  .loading-spin {
-    animation: spin 1s linear infinite;
-  }
-
-  // 🎚️ Dashboard Layout Grid
-  .dashboard-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 20px;
-
-    @include respond(tablet) {
-      grid-template-columns: (1fr 1.2fr);
-      gap: 20px;
-      margin-bottom: 0;
-    }
-  }
-
-  .dashboard-grids {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0px;
-
-    @include respond(tablet) {
-      grid-template-columns: (2fr 1fr);
-      gap: 20px;
-    }
-  }
-
-  // ⏰ D. 2026 O/L Exam Countdown Card
-  .countdown-card {
-    background: rgba($white, 0.7);
-    padding: 25px;
-    // margin: 20px 0;
-    border-radius: $border-radius-small-m;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    border: 1px solid #edf2f9;
-    text-align: center;
-    background: rgba($secondary-blue, 0.09);
-
-    @include respond(desktop) {
-      margin: $margin-none;
-
-      display: flex;
-      justify-content: space-around;
+    // 🛸 1. පසුබිමෙන් පෙනෙන Flying GIF ඇනිමේෂන් එක
+    > img[alt="live-emoji"] {
+      width: 250px;
+      height: 250px;
+      position: absolute;
+      top: 5%;
+      left: 15%;
+      z-index: 99;
+      object-fit: contain;
+      pointer-events: none;
+      opacity: 0.15; // පසුබිමට ගැලපෙන්න තරමක් ලා කළා
     }
 
-    h4 {
-      color: $secondary-blue;
-      font-size: $font-size-h3-mm;
-      font-weight: $font-weight-700;
+    // 🗣️ 2. ආචාර කරන ප්‍රධාන ශීර්ෂය (Greeting Header)
+    h1 {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
+      gap: 14px;
+      margin: 0 0 25px 0;
+      font-size: 2.2rem;
+      color: #ffffff;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
+
+      span {
+        background: linear-gradient(90deg, #58a6ff, #ffd700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        animation: waveEffect 2s infinite ease-in-out;
+      }
     }
 
+    // 📝 3. ශිෂ්‍යයාගේ සියලුම විස්තර අඩංගු කාඩ්පත
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: $secondary-blue;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #21262d;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+
+      p {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #c9d1d9;
+        font-size: 1rem;
+
+        svg {
+          color: #58a6ff;
+          font-size: 1.2rem;
+        }
+      }
+
+      // ශිෂ්‍යයාගේ සම්පූර්ණ නම සහ Badge එක
+      .user-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+
+        span {
+          display: inline-flex;
+          align-items: center;
+
+          .approved-badge {
+            color: #2ea043;
+            font-size: 1.4rem;
+            filter: drop-shadow(0 0 6px rgba(46, 160, 67, 0.4));
+          }
+        }
+      }
+
+      // ID සහ Password (Security Rows)
+      .user-security,
+      .user-number {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, 1fr); // Desktop වලදී පේළියට දෙක ගානේ
+        }
+
+        p {
+          background: #0d1117;
+          padding: 8px 12px;
+          border-radius: 6px;
+          border: 1px solid #21262d;
+          font-family: "IBM Plex Sans", sans-serif;
+          font-size: 0.9rem;
+        }
+      }
+
+      // විෂයන් තෝරාගෙන ඇති ආකාරය (Subjects Chips)
+      .user-subjects {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 5px;
+
+        span {
+          background: rgba(88, 166, 255, 0.1);
+          border: 1px solid rgba(88, 166, 255, 0.25);
+          color: #58a6ff;
+          padding: 6px 14px;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          transition: all 0.2s;
+
+          &:hover {
+            background: rgba(88, 166, 255, 0.18);
+            border-color: #58a6ff;
+          }
+
+          .check-icon {
+            color: #2ea043;
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+
+    // ⚡ 4. ඉක්මන් ක්‍රියාකාරී බටන් පේළිය (Quick Navigation Actions)
+    .quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+      border-top: 1px solid #21262d;
+      padding-top: 20px;
+
+      // Link Tags සහ Logout බටන් එකට එකම ස්ටයිල් එකක් දීම
+      a,
+      button {
+        background: #21262d;
+        border: 1px solid #30363d;
+        color: #c9d1d9;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+          background: #30363d;
+          color: #ffffff;
+          transform: translateY(-3px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .icons {
+          font-size: 1.4rem;
+
+          // Signout බටන් එක රතු පාට කිරීමට
+          &.signout {
+            color: #f85149;
+          }
+        }
+
+        // Signout බටන් එක hover වුණාම රතු පාටින් දිලිසීමට
+        &:has(.signout):hover {
+          background: rgba(248, 81, 73, 0.15);
+          border-color: #f85149;
+          box-shadow: 0 5px 15px rgba(248, 81, 73, 0.2);
+        }
+      }
+    }
+  }
+
+  // 🌊 5. මූණේ ඉරියව්ව (Waving Emoji) හෙලවෙන ලස්සන ඇනිමේෂන් එකක්
+  @keyframes waveEffect {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(12deg) scale(1.05);
+    }
+  }
+
+  .card-container.countdown-card {
+    background: $secondary-blue;
+    border: 1px solid #30363d;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+
+    // 🔔 1. කාඩ් එකෙහි ප්‍රධාන ශීර්ෂය (Card Header)
+    h4 {
+      margin: 0 0 20px 0;
+      font-size: 1.1rem;
+      color: #ffffff;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      // ⏳ කැරකෙන Hourglass GIF එක
+      img[alt="live-emoji"] {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+    }
+
+    // 🎛️ 2. දින, පැය, මිනිත්තු, තත්පර පෙන්වන කොටු පේළිය (Tiles Grid)
     .countdown-tiles {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin: 20px 0;
+      grid-template-columns: repeat(4, 1fr); // කොටු 4 පේළියට සමානව බෙදීම
+      gap: 10px;
+      margin-bottom: 18px;
 
-      @include respond(desktop) {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        margin: 12px 0;
-      }
-
+      // එක් එක් කුඩා කොටුවක් (Individual Tile)
       div {
-        background: $bg-light;
-        padding: $padding-small-m;
-        border-radius: $border-radius-medium;
-        border: 1px solid #eef2ff;
+        background: #0d1117;
+        border: 1px solid #21262d;
+        padding: 12px 6px;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.2s;
 
+        &:hover {
+          border-color: #30363d;
+        }
+
+        // ඉලක්කම් පෙන්වන තැන (Numbers)
         h3 {
-          font-size: $font-size-h2-mm;
-          font-weight: $font-weight-800;
-          color: $secondary-blue;
-          margin: $margin-none;
+          margin: 0;
+          font-size: 1.6rem;
+          font-family: "IBM Plex Sans", sans-serif;
+          font-weight: 700;
+          color: #58a6ff; // Default නිල් පාට
+
+          // ⚡ තත්පර පෙන්වන කොටුව විතරක් Neon කොළ පාටින් දිලිසීමට (Live Blink Effect)
+          &.seconds {
+            color: #3fb950;
+            text-shadow: 0 0 8px rgba(63, 185, 80, 0.4);
+            animation: neonPulse 1s infinite alternate;
+          }
         }
-        .seconds {
-          color: $red-color;
-          font-size: 2.3rem;
-          animation: popup 0.5s ease-in infinite;
-        }
+
+        // යටින් තියෙන ලේබල් (Days, Hours, Mins, Secs)
         small {
-          font-size: $font-size-body-mm;
-          color: $text-medium;
-          font-weight: $font-weight-600;
-          text-transform: $text-transform-uppercase;
+          font-size: 0.75rem;
+          color: #8b949e;
+          margin-top: 4px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
       }
     }
+
+    // 🎯 3. විභාගය පැවැත්වෙන අවසාන දිනය (Target Date Note)
     p {
-      font-size: 0.8rem$font-size-body-m;
-      text-align: right;
+      margin: 0;
+      font-size: 0.82rem;
+      color: #ffd700; // රන් පැහැයෙන්
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      opacity: 0.9;
+    }
+  }
+
+  // 🟢 4. තත්පර ගාන ලස්සනට දිලිසෙන්න හදපු Neon Animation එක
+  @keyframes neonPulse {
+    from {
+      text-shadow: 0 0 4px rgba(63, 185, 80, 0.3);
+    }
+    to {
+      text-shadow: 0 0 12px rgba(63, 185, 80, 0.6);
     }
   }
 
   // 🔒 C. Subject Portals & Locking Design
-  .subjects-section,
-  .notice-area {
-    background: $secondary-blue3;
-    background: rgba($white, 0.7);
-    padding: $padding-large;
-    margin: 20px 0;
-    border-radius: $border-radius-small-m;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    border: 1px solid #edf2f9;
-    text-align: center;
-    background: rgba($secondary-blue, 0.09);
+  // .subjects-section,
+  // .notice-area {
+  //   background: $secondary-blue3;
+  //   background: rgba($white, 0.7);
+  //   padding: $padding-large;
+  //   margin: 20px 0;
+  //   border-radius: $border-radius-small-m;
+  //   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  //   border: 1px solid #edf2f9;
+  //   text-align: center;
+  //   background: rgba($secondary-blue, 0.09);
 
+  //   h3 {
+  //     color: $secondary-blue;
+
+  //     font-size: $font-size-h3-mm;
+  //     font-weight: $font-weight-700;
+  //     margin-bottom: 20px;
+  //     text-align: center;
+  //   }
+
+  //   .subjects-grid {
+  //     display: grid;
+  //     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  //     gap: 8px;
+  //     padding: 1rem 0 2rem 0;
+
+  //     @include respond(desktop) {
+  //       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  //       padding: 0;
+  //     }
+  //     .subject-portal-card {
+  //       background: $white;
+  //       padding: $padding-large $padding-medium;
+  //       border-radius: $border-radius-small-m;
+  //       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  //       border: 1px solid #edf2f9;
+  //       transition: all 0.3s ease;
+  //       display: flex;
+  //       flex-direction: column;
+  //       justify-content: space-between;
+  //       align-items: center;
+  //       gap: 20px;
+  //       border: none;
+
+  //       h4 {
+  //         color: $secondary-blue2;
+  //         color: rgba($secondary-blue, 0.7);
+
+  //         font-size: $font-size-h3-mm;
+  //         font-weight: $font-weight-700;
+  //         display: inline;
+  //       }
+  //       p {
+  //         margin: 5px 0 15px;
+  //         font-size: $font-size-body-m;
+  //         color: $text-medium;
+  //       }
+
+  //       .not-allowed {
+  //         font-size: $font-size-body-m;
+  //         font-weight: $font-weight-bold;
+  //         color: $red-color;
+  //       }
+
+  //       .paper-btn {
+  //         padding: 6px 10px;
+  //         font-size: $font-size-body-m;
+  //         text-decoration: none;
+  //         display: flex;
+  //         align-items: center;
+  //         justify-content: center;
+  //         gap: 8px;
+  //         width: 150px;
+  //         margin: 6px 0 0 0;
+  //       }
+
+  //       // 🔒 විෂය ලොක් වී ඇති විට ලැබෙන පෙනුම
+  //       &.locked {
+  //         background: $bg-light;
+  //         border-left-color: #e74c3c !important; // රතු පාට ඉරක්
+  //         cursor: not-allowed;
+  //         display: flex;
+  //         justify-content: space-around;
+  //         flex-direction: column;
+  //         align-items: center;
+  //         background: #ff7e7e;
+  //         color: $white;
+  //         border-radius: $border-radius-small-m;
+  //         font-weight: $font-weight-bold;
+  //         padding: $padding-large $padding-medium;
+  //         opacity: 0.5;
+  //         text-align: center;
+
+  //         h4 {
+  //           font-size: 0.65rem;
+  //           margin: $margin-none $margin-medium;
+  //           color: $white;
+  //           border-left: 2px solid;
+  //           padding-left: 6px;
+  //           text-align: center;
+  //         }
+  //         .lock-icon {
+  //           font-size: $font-size-h1-mm;
+  //           color: $red-color;
+  //           display: block;
+  //           align-items: center;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  // 📚 ENROLLED SUBJECT CLASS PORTALS - NEON & LOCKED SCSS STYLES
+
+  .subjects-section {
+    // margin-top: 30px;
+    position: relative;
+    z-index: 2;
+
+    // 🏛️ Section එකේ ප්‍රධාන ශීර්ෂය
     h3 {
-      color: $secondary-blue;
-
-      font-size: $font-size-h3-mm;
-      font-weight: $font-weight-700;
+      font-size: 1.4rem;
+      color: #ffffff;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
       margin-bottom: 20px;
-      text-align: center;
+      letter-spacing: -0.3px;
     }
 
+    // 🎛️ විෂයන් 3 බෙදී යන Responsive Grid එක
     .subjects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 8px;
-      padding: 1rem 0 2rem 0;
+      // display: grid;
+      // grid-template-columns: repeat(
+      //   auto-fit,
+      //   minmax(250px, 1fr)
+      // ); // Mobile වලදී පිරිසිදුව බෙදේ
+      // gap: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 1rem;
 
       @include respond(desktop) {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        padding: 0;
+        flex-direction: row;
       }
-      .subject-portal-card {
-        background: $white;
-        padding: $padding-large $padding-medium;
-        border-radius: $border-radius-small-m;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        border: 1px solid #edf2f9;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    }
+
+    // 🃏 පොදු විෂය කාඩ්පත (Subject Card Base)
+    .subject-portal-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 25px;
+      border-radius: 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 160px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      max-width: 300px;
+      width: 100%;
+
+      // Hover වීමේදී ලස්සනට ඉස්සී Glow වීම (Enrolled අයට පමණි)
+      &:not(.locked):hover {
+        transform: translateY(-5px);
+        border-color: #58a6ff;
+        box-shadow: 0 10px 25px rgba(88, 166, 255, 0.15);
+      }
+
+      h4 {
+        margin: 0 0 15px 0;
+        font-size: 1.25rem;
+        color: #ffffff;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 700;
+      }
+
+      // 📖 Study Vault එකට යන්න තියෙන ලස්සන බටන් එක (Link Button)
+      .browse-btn.paper-btn {
+        background: rgba(88, 166, 255, 0.1);
+        border: 1px solid rgba(88, 166, 255, 0.3);
+        color: #58a6ff;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
         align-items: center;
-        gap: 20px;
-        border: none;
+        justify-content: center;
+        gap: 8px;
+        width: fit-content;
+        transition: all 0.2s;
+
+        &:hover {
+          background: #58a6ff;
+          color: #ffffff;
+          border-color: #58a6ff;
+          box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+        }
+      }
+
+      // ⛔ පන්තියට අවසර නැති අයට පෙන්වන Warning Message එක
+      .not-allowed {
+        margin: 15px 0 0 0;
+        font-size: 0.8rem;
+        color: #f85149;
+        background: rgba(248, 81, 73, 0.08);
+        border: 1px solid rgba(248, 81, 73, 0.2);
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      // ==========================================================================
+      // 🔒 පන්තිය ලොක් වී ඇති විට (Locked State Modifier)
+      // ==========================================================================
+      &.locked {
+        background: rgba(22, 27, 34, 0.5) !important;
+        border-color: #21262d !important;
+        opacity: 0.55 !important; // Inline style එක SCSS එකට ගත්තා
+        box-shadow: none;
+        // user-select: none;
 
         h4 {
-          color: $secondary-blue2;
-          color: rgba($secondary-blue, 0.7);
-
-          font-size: $font-size-h3-mm;
-          font-weight: $font-weight-700;
-          display: inline;
-        }
-        p {
-          margin: 5px 0 15px;
-          font-size: $font-size-body-m;
-          color: $text-medium;
+          color: #8b949e;
         }
 
-        .not-allowed {
-          font-size: $font-size-body-m;
-          font-weight: $font-weight-bold;
-          color: $red-color;
-        }
-
-        .paper-btn {
-          padding: 6px 10px;
-          font-size: $font-size-body-m;
-          text-decoration: none;
+        // උඩින්ම මැදින් වැටෙන ලස්සන Lock Badge එක
+        div.locked {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background: rgba(248, 81, 73, 0.12);
+          border: 1px solid rgba(248, 81, 73, 0.25);
+          color: #f85149;
+          padding: 4px 10px;
+          border-radius: 20px;
+          font-size: 0.78rem;
+          font-weight: 700;
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 8px;
-          width: 150px;
-          margin: 6px 0 0 0;
-        }
+          gap: 6px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
 
-        // 🔒 විෂය ලොක් වී ඇති විට ලැබෙන පෙනුම
-        &.locked {
-          background: $bg-light;
-          border-left-color: #e74c3c !important; // රතු පාට ඉරක්
-          cursor: not-allowed;
-          display: flex;
-          justify-content: space-around;
-          flex-direction: column;
-          align-items: center;
-          background: #ff7e7e;
-          color: $white;
-          border-radius: $border-radius-small-m;
-          font-weight: $font-weight-bold;
-          padding: $padding-large $padding-medium;
-          opacity: 0.5;
-          text-align: center;
-
-          h4 {
-            font-size: 0.65rem;
-            margin: $margin-none $margin-medium;
-            color: $white;
-            border-left: 2px solid;
-            padding-left: 6px;
-            text-align: center;
-          }
           .lock-icon {
-            font-size: $font-size-h1-mm;
-            color: $red-color;
-            display: block;
-            align-items: center;
+            font-size: 0.85rem;
           }
         }
       }
@@ -387,39 +810,40 @@
   }
 }
 
-.quick-actions {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 1rem 0;
-  background: rgba($secondary-blue3, 0.5);
-  padding: 0.3rem 0.5rem;
-  border-radius: 0.5rem;
+// .quick-actions {
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+//   margin: 1rem 0;
+//   background: rgba($secondary-blue3, 0.5);
+//   // padding: 0.3rem 0.5rem;
+//   border-radius: 0.5rem;
 
-  Link,
-  button,
-  a {
-    font-size: 1.5rem;
-    color: $white;
-    font-weight: 800;
-    opacity: 1;
-    width: 40px;
-    height: 40px;
-    padding: 5px 7px;
-    border-radius: 6px;
-    background-color: rgba($secondary-blue, 0.5);
-    transition: all 0.5s ease;
+//   Link,
+//   button,
+//   a {
+//     font-size: 1.5rem;
+//     color: $white;
+//     font-weight: 800;
+//     opacity: 1;
+//     // width: 40px;
+//     // height: 40px;
+//     // padding: 5px 7px;
+//     // border-radius: 6px;
+//     // background-color: rgba($secondary-blue, 0.5);
+//     transition: all 0.5s ease;
 
-    .signout {
-      color: red;
-      font-weight: 800;
-      font-size: 1.9rem;
-    }
+//     .signout {
+//       color: red;
+//       font-weight: 800;
+//       // font-size: 1.9rem;
+//       background-color: red;
+//     }
 
-    &:hover {
-      transform: translate(0) scale(1.05);
-      background-color: rgba($secondary-blue3, 0.5);
-      border-radius: 1rem;
-    }
-  }
-}
+//     &:hover {
+//       transform: translate(0) scale(1.05);
+//       background-color: rgba($secondary-blue3, 0.5);
+//       border-radius: 1rem;
+//     }
+//   }
+// }

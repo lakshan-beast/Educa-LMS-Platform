@@ -6,11 +6,17 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 
 import AIChatWidget from "../components/AIChatWidget";
 
-import { FaCrown } from "react-icons/fa6";
+import { FaCrown, FaUser } from "react-icons/fa6";
 import { BiError } from "react-icons/bi";
-import { PiSealCheckFill } from "react-icons/pi";
+import { FcApproval } from "react-icons/fc";
+import { PiPassword } from "react-icons/pi";
+import { FaMobile } from "react-icons/fa";
+import { BiSolidPhoneCall } from "react-icons/bi";
+import { ImFire } from "react-icons/im";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FaBookOpen, FaLock } from "react-icons/fa6";
+import { FaGraduationCap } from "react-icons/fa6";
+
 import {
   IoCalendarOutline,
   IoHomeOutline,
@@ -180,13 +186,7 @@ const Dashboard = () => {
               }}
             />
 
-            <h1
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                margin: 0,
-              }}>
+            <h1>
               <span>
                 {greeting.text}, {studentFirstName}!
               </span>
@@ -198,60 +198,71 @@ const Dashboard = () => {
               />
             </h1>
 
-            <div>
-              <p>
-                {studentData.fullName}{" "}
+            <div className="user-details">
+              <p className="user-name">
+                <FaUser /> {studentData.fullName}{" "}
                 <span>
                   {studentData.status === "approved" ? (
                     <BiError />
                   ) : (
-                    <PiSealCheckFill />
+                    <FcApproval className="approved-badge" />
                   )}
                 </span>
               </p>
+
               <p>
-                Grade {studentData.grade} - {nowYear} O/L Batch
+                <FaGraduationCap /> Grade {studentData.grade} - {nowYear} O/L
+                Batch
               </p>
-              <hr />
 
-              <p>Student Id : {studentData.id}</p>
-              <p>Your Password : {studentData.password}</p>
+              <div className="user-security">
+                <p>
+                  <ImFire /> {studentData.id}
+                </p>
+                <p>
+                  <PiPassword /> {studentData.password}
+                </p>
+              </div>
+              <div className="user-number">
+                <p>
+                  <FaMobile /> Your Number : {studentData.studentMobile}
+                </p>
+                <p>
+                  <BiSolidPhoneCall /> Parent Number :{" "}
+                  {studentData.parentMobile}
+                </p>
+              </div>
 
-              <hr />
-              <p>Your Number : {studentData.studentMobile}</p>
-              <p>Parent Mobile : {studentData.parentMobile}</p>
-
-              <h3>Your Enroll Subjects:</h3>
-              <ul>
+              <div className="user-subjects">
                 {studentData.maths && (
-                  <li>
-                    Maths <IoIosCheckmarkCircle />
-                  </li>
+                  <span>
+                    Maths <IoIosCheckmarkCircle className="check-icon" />
+                  </span>
                 )}
                 {studentData.science && (
-                  <li>
-                    Science <IoIosCheckmarkCircle />
-                  </li>
+                  <span>
+                    Science <IoIosCheckmarkCircle className="check-icon" />
+                  </span>
                 )}
                 {studentData.english && (
-                  <li>
-                    English <IoIosCheckmarkCircle />
-                  </li>
+                  <span>
+                    English <IoIosCheckmarkCircle className="check-icon" />
+                  </span>
                 )}
-              </ul>
+              </div>
             </div>
 
             <div className="quick-actions">
-              <Link>
+              <Link smooth to="/">
                 <IoHomeOutline className="icons" />
               </Link>
-              <Link>
+              <Link smooth to="/classes-details">
                 <IoCalendarOutline className="icons" />
               </Link>
-              <Link>
+              <Link smooth to="/student-voices">
                 <IoChatbubbleEllipsesOutline className="icons" />
               </Link>
-              <Link>
+              <Link smooth to="/result-hub">
                 <IoBarChartOutline className="icons" />
               </Link>
               <button onClick={handleLogout}>
@@ -260,251 +271,116 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="side-dash-content">
-            {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
-            <div className="card-container countdown-card">
-              <h4>
-                {/* <FaHourglassHalf /> */}
-                <img
-                  src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
-                  alt="live-emoji"
+          <div className="sub-grid">
+            <div className="subjects-section">
+              <div className="subjects-grid">
+                {/* 1. MATHEMATICS PORTAL */}
+                <div
+                  className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
                   style={{
-                    width: "20px",
-                    height: "20px",
-                    objectFit: "contain",
-                  }}
-                  // refferrerPolicy="no-referrer"
-                />{" "}
-                2026 - O/L Exam Countdown
-              </h4>
-              <div className="countdown-tiles">
-                <div>
-                  <h3>{countdown.days}</h3>
-                  <small>Days</small>
+                    opacity: hasAccess("M") ? 1 : 0.6,
+                  }}>
+                  {!hasAccess("M") && (
+                    <div className="locked">
+                      <FaLock className="lock-icon" /> Locked
+                    </div>
+                  )}
+                  <h4>Mathematics Class</h4>
                 </div>
-                <div>
-                  <h3>{countdown.hours}</h3>
-                  <small>Hours</small>
+
+                {/* 2. SCIENCE PORTAL */}
+                <div
+                  className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
+                  style={{
+                    // borderLeft: "5px solid #2ecc71",
+                    opacity: hasAccess("S") ? 1 : 0.6,
+                  }}>
+                  {!hasAccess("S") && (
+                    <div className="locked">
+                      <FaLock className="lock-icon" />
+                    </div>
+                  )}
+                  <h4>Science Class</h4>
+                  {hasAccess("S") ? (
+                    <Link
+                      to="/paper-hub/science"
+                      className="browse-btn paper-btn">
+                      <FaBookOpen /> Study Vault
+                    </Link>
+                  ) : (
+                    <p className="not-allowed ">
+                      Not enrolled in this subject. Contact card marker.
+                    </p>
+                  )}
                 </div>
-                <div>
-                  <h3>{countdown.mins}</h3>
-                  <small>Mins</small>
-                </div>
-                <div>
-                  <h3 className="seconds">{countdown.secs}</h3>
-                  <small>Secs</small>
+
+                {/* 3. ENGLISH PORTAL */}
+                <div
+                  className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
+                  style={{
+                    // borderLeft: "5px solid #ff9f43",
+                    opacity: hasAccess("E") ? 1 : 0.6,
+                  }}>
+                  {!hasAccess("E") && (
+                    <div className="locked">
+                      <FaLock className="lock-icon" /> Locked
+                    </div>
+                  )}
+                  <h4>English Class</h4>
+                  {hasAccess("E") ? (
+                    <Link
+                      to="/paper-hub/english"
+                      className="browse-btn paper-btn">
+                      <FaBookOpen /> Study Vault
+                    </Link>
+                  ) : (
+                    <p className="not-allowed">
+                      Not enrolled in this subject. Contact card marker.
+                    </p>
+                  )}
                 </div>
               </div>
-              <p>* Target Date: December 08, 2026</p>
             </div>
-          </div>
-        </div>
 
-        {/* <div className="dashboard-grids"> */}
-        {/* 🔒 C. Core Subject Enrolment & Study Vault Redirection Area */}
-
-        <div className="subjects-section">
-          <h3>Your Enrolled Class Portals</h3>
-          <div className="subjects-grid">
-            {/* 1. MATHEMATICS PORTAL */}
-            <div
-              className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
-              style={{
-                opacity: hasAccess("M") ? 1 : 0.6,
-              }}>
-              {!hasAccess("M") && (
-                <div className="locked">
-                  <FaLock className="lock-icon" /> Locked
+            <div className="side-dash-content">
+              <div className="card-container countdown-card">
+                <h4>
+                  {/* <FaHourglassHalf /> */}
+                  <img
+                    src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
+                    alt="live-emoji"
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      objectFit: "contain",
+                    }}
+                    // refferrerPolicy="no-referrer"
+                  />{" "}
+                  2026 - O/L Exam Countdown
+                </h4>
+                <div className="countdown-tiles">
+                  <div>
+                    <h3>{countdown.days}</h3>
+                    <small>Days</small>
+                  </div>
+                  <div>
+                    <h3>{countdown.hours}</h3>
+                    <small>Hours</small>
+                  </div>
+                  <div>
+                    <h3>{countdown.mins}</h3>
+                    <small>Mins</small>
+                  </div>
+                  <div>
+                    <h3 className="seconds">{countdown.secs}</h3>
+                    <small>Secs</small>
+                  </div>
                 </div>
-              )}
-
-              <h4>Mathematics Class</h4>
-            </div>
-
-            {/* 2. SCIENCE PORTAL */}
-            <div
-              className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
-              style={{
-                // borderLeft: "5px solid #2ecc71",
-                opacity: hasAccess("S") ? 1 : 0.6,
-              }}>
-              {!hasAccess("S") && (
-                <div className="locked">
-                  <FaLock className="lock-icon" />
-                </div>
-              )}
-              <h4>Science Class</h4>
-              {hasAccess("S") ? (
-                <Link to="/paper-hub/science" className="browse-btn paper-btn">
-                  <FaBookOpen /> Study Vault
-                </Link>
-              ) : (
-                <p className="not-allowed ">
-                  Not enrolled in this subject. Contact card marker.
-                </p>
-              )}
-            </div>
-
-            {/* 3. ENGLISH PORTAL */}
-            <div
-              className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
-              style={{
-                // borderLeft: "5px solid #ff9f43",
-                opacity: hasAccess("E") ? 1 : 0.6,
-              }}>
-              {!hasAccess("E") && (
-                <div className="locked">
-                  <FaLock className="lock-icon" /> Locked
-                </div>
-              )}
-              <h4>English Class</h4>
-              {hasAccess("E") ? (
-                <Link to="/paper-hub/english" className="browse-btn paper-btn">
-                  <FaBookOpen /> Study Vault
-                </Link>
-              ) : (
-                <p className="not-allowed">
-                  Not enrolled in this subject. Contact card marker.
-                </p>
-              )}
+                <p>* Target Date: December 08, 2026</p>
+              </div>
             </div>
           </div>
         </div>
-        {/* 
-        <div>
-          <LiveClass />
-        </div> */}
-        {/* <div className="notice-area">
-          <LiveNoticeDisplay
-            // studentGrade={loggedGrade.grade}
-            studentSubjects={userSubjects}
-          />
-        </div> */}
-
-        {/* <div className="first-loads">
-          <div className="first-loading">
-            {/* <div className="loads"></div> 
-          </div>
-          <div className="first-loading"></div>
-          <div className="first-loading"></div>
-          <div className="first-loading"></div>
-          <div className="first-loading"></div>
-          <div className="first-loading"></div>
-          <div className="first-loading"></div>
-        </div> */}
-
-        {/* if (isLoading) {
-  return (
-    <div className="first-loads">
-      <div className="first-loading"></div>
-    </div>
-  );
-} */}
-
-        {/* if (isLoading) {
-  return (
-    <div className="first-loads">
-      <div className="playstore-edu-loader"></div>
-      <p>Syncing Live Campus Ledger...</p>
-    </div>
-  );
-} */}
-
-        {/* if (isLoading) {
-  return (
-    <div className="first-loads-fullscreen-overlay">
-      <div className="shape-burst-loader-hub">
-        <div className="burst-particle" style={{ "--x": "0px", "--y": "-35px" }}></div>
-        <div className="burst-particle" style={{ "--x": "32px", "--y": "-12px" }}></div>
-        <div className="burst-particle" style={{ "--x": "20px", "--y": "28px" }}></div>
-        <div className="burst-particle" style={{ "--x": "-20px", "--y": "28px" }}></div>
-        <div className="burst-particle" style={{ "--x": "-32px", "--y": "-12px" }}></div>
-      </div>
-      <span>Syncing Live Campus Portal...</span>
-    </div>
-  );
-} */}
-
-        {/* import { FaSquare, FaCircle, FaPlay, FaDiamond, FaAward } from "react-icons/fa6"; // 👈 උඩින් ඉම්පෝට් කරගන්න මචං [INDEX 4]
-
-if (isLoading) {
-  return (
-    <div className="first-loads-fullscreen-overlay">
-      <div className="shape-burst-loader-hub">
-        {/* 👑 🗛 REACT ICONS DIRECTLY INJECTED AS 3D PARTICLES 
-        <div className="burst-particle-icon" style={{ "--x": "0px", "--y": "-38px" }}><FaSquare /></div>
-        <div className="burst-particle-icon" style={{ "--x": "35px", "--y": "-12px" }}><FaCircle /></div>
-        <div className="burst-particle-icon" style={{ "--x": "22px", "--y": "30px" }}><FaPlay style={{ transform: "rotate(-90deg)" }} /></div>
-        <div className="burst-particle-icon" style={{ "--x": "-22px", "--y": "30px" }}><FaDiamond /></div>
-        <div className="burst-particle-icon" style={{ "--x": "-35px", "--y": "-12px" }}><FaAward /></div>
-      </div>
-      <span>Syncing Live Campus Portal...</span>
-    </div>
-  );
-} */}
-
-        {/* <div className="first-loads">
-          <div className="first-loading"></div>
-          <p>loading</p>
-        </div>
-
-        <div className="first-loads">
-          <div className="playstore-edu-loader"></div>
-          <p>Syncing Live Campus Ledger...</p>
-        </div>
-
-        <div className="first-loads-fullscreen-overlay">
-          <div className="shape-burst-loader-hub">
-            <div
-              className="burst-particle"
-              style={{ "--x": "0px", "--y": "-35px" }}></div>
-            <div
-              className="burst-particle"
-              style={{ "--x": "32px", "--y": "-12px" }}></div>
-            <div
-              className="burst-particle"
-              style={{ "--x": "20px", "--y": "28px" }}></div>
-            <div
-              className="burst-particle"
-              style={{ "--x": "-20px", "--y": "28px" }}></div>
-            <div
-              className="burst-particle"
-              style={{ "--x": "-32px", "--y": "-12px" }}></div>
-          </div>
-          <span>Syncing Live Campus Portal...</span>
-        </div>
-
-        <div className="first-loads-fullscreen-overlay">
-          <div className="shape-burst-loader-hub">
-            {/* 👑 🗛 REACT ICONS DIRECTLY INJECTED AS 3D PARTICLES *
-            <div
-              className="burst-particle-icon"
-              style={{ "--x": "0px", "--y": "-38px" }}>
-              <FaBookOpen />
-            </div>
-            <div
-              className="burst-particle-icon"
-              style={{ "--x": "35px", "--y": "-12px" }}>
-              <FaFlask />
-            </div>
-            <div
-              className="burst-particle-icon"
-              style={{ "--x": "22px", "--y": "30px" }}>
-              <FaBrain style={{ transform: "rotate(-90deg)" }} />
-            </div>
-            <div
-              className="burst-particle-icon"
-              style={{ "--x": "-22px", "--y": "30px" }}>
-              <FaCompass />
-            </div>
-            <div
-              className="burst-particle-icon"
-              style={{ "--x": "-35px", "--y": "-12px" }}>
-              <FaAward />
-            </div>
-          </div>
-          <span>Syncing Live Campus Portal...</span>
-        </div> */}
 
         <div className="premium-tracker-zone">
           {isPremiumUser ? (

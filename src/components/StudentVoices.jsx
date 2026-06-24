@@ -13,18 +13,25 @@ import {
   orderBy,
 } from "firebase/firestore"; // ☁️ Cloud Advanced Tools
 
+import { GoHeartFill } from "react-icons/go";
 import {
   FaPlus,
   FaXmark,
-  FaHeartPulse,
-  FaUsersGear,
-  FaUsers,
+  // FaUsersGear,
+  FaUser,
   FaChalkboardUser,
-  FaIdCard,
+  // FaIdCard,
+  FaUserTie,
   FaArrowLeft,
   FaArrowRight,
+  FaUserGraduate,
+  FaUserSecret,
+  FaRibbon,
+  FaHatCowboy,
 } from "react-icons/fa6";
-import { PiSealCheckFill, PiStudent } from "react-icons/pi";
+import { PiSealCheckFill } from "react-icons/pi";
+// import { MdGirl } from "react-icons/m
+import { FaUserMd } from "react-icons/fa";
 
 import Loader from "./Loader";
 
@@ -202,11 +209,14 @@ const StudentVoices = () => {
 
   // 👑 🆕 [THE ROLE ICON MAPPER]: Role එක අනුව Premium filled icon එකක් පින්තාරු කරයි [INDEX 55]
   const renderRoleIcon = (type) => {
-    if (type === "boy") return <PiStudent />;
-    if (type === "girl") return <FaUsersGear />;
-    if (type === "parent") return <FaUsers />;
-    if (type === "teacher") return <FaChalkboardUser />;
-    return <FaIdCard />;
+    if (type === "boy") return <FaHatCowboy />;
+    if (type === "girl") return <FaRibbon />;
+    if (type === "neuter") return <FaUser />;
+    if (type === "Attorney-at-Law") return <FaChalkboardUser />;
+    if (type === "Medical Doctor") return <FaUserMd />;
+    if (type === "Other") return <FaUserGraduate />;
+    if (type === "Software Engineer") return <FaUserSecret />;
+    return <FaUserTie />;
   };
 
   const filteredVoices = voices.filter((item) => {
@@ -234,8 +244,8 @@ const StudentVoices = () => {
           <Link className="back-btn" to="/">
             <FaArrowLeft /> Back to Home
           </Link>
-          <Link className="back-btn" to="/dashboard">
-            Back to Dashboard <FaArrowRight />
+          <Link className="back-btn" to="/result-hub">
+            Back to Results <FaArrowRight />
           </Link>
         </div>
         <div
@@ -356,7 +366,7 @@ const StudentVoices = () => {
               background: activeFilter === "maths" ? "#001b42" : "transparent",
               color: activeFilter === "maths" ? "white" : "#555",
             }}>
-            Janaka Sir (Maths)
+            Maths Sir
           </button>
           <button
             type="button"
@@ -373,7 +383,7 @@ const StudentVoices = () => {
                 activeFilter === "science" ? "#001b42" : "transparent",
               color: activeFilter === "science" ? "white" : "#555",
             }}>
-            Amila Sir (Science)
+            Science Sir
           </button>
           <button
             type="button"
@@ -390,7 +400,7 @@ const StudentVoices = () => {
                 activeFilter === "english" ? "#001b42" : "transparent",
               color: activeFilter === "english" ? "white" : "#555",
             }}>
-            English Class
+            English Sir
           </button>
         </div>
         {/* ==================== 📄 CONTENT ZONE: COMMENTS CONTAINER GRID ==================== */}
@@ -412,8 +422,8 @@ const StudentVoices = () => {
                     background: "white",
                     padding: "25px",
                     borderRadius: "20px",
-                    border: "1px solid #edf2f9",
-                    boxShadow: "0 4px 15px rgba(0,0,0,0.01)",
+                    border: "1px solid #d4e4fa",
+                    boxShadow: "0 4px 15px  rgb(0 40 79 / 13%)",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
@@ -552,26 +562,32 @@ const StudentVoices = () => {
                       type="button"
                       onClick={() => handleLikeIncrement(item.id)}
                       style={{
-                        background: "#fff0f2",
-                        color: "#ff4b2b",
+                        background: "#f1f6fd",
+                        color: "#001b42",
                         border: "none",
                         padding: "6px 12px",
                         borderRadius: "10px",
                         fontWeight: "bold",
-                        fontSize: "0.8rem",
+                        fontSize: "1rem",
                         cursor: "pointer",
                         display: "flex",
                         alignItems: "center",
-                        gap: "6px",
+                        gap: "16px",
                       }}
                       onMouseEnter={(e) =>
-                        (e.currentTarget.style.background = "#ffdce2")
+                        (e.currentTarget.style.background = "#d1e5ff")
                       }
                       onMouseLeave={(e) =>
-                        (e.currentTarget.style.background = "#fff0f2")
+                        (e.currentTarget.style.background = "#e6f0ff")
                       }>
-                      <FaHeartPulse className="pulse-animation" />
-                      <span>{item.likesCount}</span>
+                      <GoHeartFill className="pulse-animation" />
+                      <span
+                        style={{
+                          borderLeft: "2px solid #c2dbff",
+                          paddingLeft: "12px",
+                        }}>
+                        {item.likesCount}
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -1089,14 +1105,14 @@ const StudentVoices = () => {
                       marginTop: "4px",
                     }}>
                     {[
-                      "#00115a",
-                      "#00eeff",
-                      "#00ff6a",
-                      "#df2100de",
-                      "#9b59b6",
-                      "#b700ff",
-                      "#ff5100",
-                      "#ffc400",
+                      "#00115a7e",
+                      "#00eeff8c",
+                      "#00ff6a85",
+                      "#df21009a",
+                      "#9c59b68a",
+                      "#b700ff88",
+                      "#ff510083",
+                      "#ffc4008c",
                       // "#ff004c",
                     ].map((color) => (
                       <div

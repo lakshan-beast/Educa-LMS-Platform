@@ -450,7 +450,6 @@ const PaperHub = ({ subject }) => {
               right: "3%",
               objectFit: "contain",
             }}
-            refferrerPolicy="no-referrer"
           />
 
           <h2>

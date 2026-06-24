@@ -115,22 +115,27 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/tool">
+              <Link to="/result-hub">
+                <FaCaretRight className="footer-icon" /> Results (2025)
+              </Link>
+            </li>
+            <li>
+              <Link to="/">
                 <FaCaretRight className="footer-icon" /> Smart Study Tools
               </Link>
             </li>
             <li>
-              <Link to="/quizze">
+              <Link to="/">
                 <FaCaretRight className="footer-icon" /> Interactive Quizzes
               </Link>
             </li>
             <li>
-              <Link to="/paper-hub">
+              <Link to="/">
                 <FaCaretRight className="footer-icon" /> Past & Target Papers
               </Link>
             </li>
             <li>
-              <Link to="/daily-question">
+              <Link to="/">
                 <FaCaretRight className="footer-icon" /> Daily Learning Mission
               </Link>
             </li>
