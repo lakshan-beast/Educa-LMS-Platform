@@ -36,23 +36,24 @@
   font-weight: 800;
   opacity: 0.15;
   animation: fallAnimation linear infinite;
-  color: #58a6ff;
+  color: #0077ff;
+  // font-size: ;
 }
 
 .falling-grade-token.token-a {
-  color: #2ea043;
+  color: #ff8800;
 } /* A අකුරු ලා කොළ පාටින් */
 .falling-grade-token.token-b {
-  color: #ffd700;
+  color: #00ff15;
 } /* B අකුරු රන් පැහැයෙන් */
 
 @keyframes fallAnimation {
   0% {
     transform: translateY(0) rotate(0deg);
-    opacity: 0.15;
+    opacity: 0.1;
   }
   90% {
-    opacity: 0.1;
+    opacity: 0.4;
   }
   100% {
     transform: translateY(105vh) rotate(360deg);
@@ -90,13 +91,18 @@
 //   font-size: 1.05rem;
 // }
 
+.results-container {
+  padding: 0 0 1rem 0;
+  margin: 0 auto;
+}
+
 /* 📈 Live Analytics Summary Dashboard */
 .analytics-summary-dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   //   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  margin: 30px auto;
+  margin: 10px auto;
   position: relative;
   z-index: 2;
 }
@@ -305,9 +311,9 @@
   gap: 10px;
   flex-wrap: wrap;
   width: fit-content;
-  margin: 2rem 0;
+  margin: 0.5rem 0;
   overflow-x: auto;
-  padding: 6px 6px 16px 6px;
+  padding: 6px;
   background: rgba($secondary-blue, 0.2);
   border-radius: 12px;
   background: #f4f7ff;
@@ -351,12 +357,6 @@
   overflow-x: auto;
   overflow-y: hidden;
   //   -webkit-overflow-scrolling: touch;
-
-  h2 {
-    text-align: center;
-    margin: 2rem auto;
-    color: $secondary-blue;
-  }
 }
 
 .secure-honors-ledger-table {
@@ -368,6 +368,7 @@
 
   //   height: 600px;
   overflow: scroll;
+  margin: 2rem auto;
 }
 
 /* 📌 Heading එක උඩම හිරවෙන Sticky Header */
@@ -382,6 +383,15 @@
   z-index: 10;
   -webkit-user-select: none;
   user-select: none;
+  text-align: center;
+}
+table caption {
+  text-align: center;
+  margin: 0.5rem auto;
+  color: $secondary-blue;
+}
+table thead {
+  margin: 1rem 0;
 }
 table tr {
   margin: 13px 0;
@@ -392,6 +402,7 @@ table tr {
   color: #e6edf3;
   vertical-align: middle;
   //   background-color: red;
+  text-align: center;
 }
 .details-content {
   display: flex;
@@ -432,11 +443,12 @@ table tr {
 /* Individual Grade Cell Colors (Color Coding) */
 .table-grade-cell {
   text-align: center;
+  margin: 0 auto;
 }
 .table-grade-cell strong {
   display: inline-block;
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
   line-height: 28px;
   //   border-radius: 50%;
   font-size: 0.9rem;
@@ -444,6 +456,9 @@ table tr {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 3px;
 }
 .table-grade-cell.grade-a strong {
   background: rgba(204, 176, 18, 0.15);
@@ -451,9 +466,9 @@ table tr {
   border: 1px solid rgba(160, 130, 46, 0.3);
 }
 .table-grade-cell.grade-b strong {
-  background: rgba(218, 165, 32, 0.15);
+  background: rgba(51, 255, 0, 0.15);
   color: #33ff00;
-  border: 1px solid rgba(218, 165, 32, 0.3);
+  border: 1px solid rgba(51, 255, 0, 0.3);
 }
 .table-grade-cell.grade-c strong {
   background: rgba(88, 166, 255, 0.15);
@@ -475,26 +490,29 @@ table tr {
 .table-like-trigger-btn {
   background: transparent;
   border: 1px solid $secondary-blue;
-  color: #8b949e;
+  border-color: #f85149;
+  color: #fcbbb8;
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 16px;
   transition: all 0.2s;
   font-size: 1.2rem;
+  margin: 0 auto;
 }
 
 .table-like-trigger-btn:hover {
-  border-color: #f85149;
-  color: #f85149;
+  color: #ff857e;
   background: rgba(248, 81, 73, 0.05);
 }
 
 .table-like-trigger-btn span {
   font-weight: 600;
-  color: #c9d1d9;
+  color: #f85149;
+  border-left: 3px solid rgb(255, 180, 180);
+  padding-left: 6px;
 }
 
 /* ==========================================================================
@@ -558,6 +576,7 @@ table tr {
   font-weight: 900;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
 }
 
