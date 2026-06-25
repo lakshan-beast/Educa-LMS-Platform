@@ -187,7 +187,7 @@
   // 1. Top Bar
   .mobile-nav-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-bottom: 6px solid rgba(255, 244, 244, 0.233);
     padding: 25px;
@@ -233,6 +233,7 @@
     grid-template-columns: 1fr; // පැති දෙකකට කාඩ්ස් බෙදේ
     // gap: 16px;
     // margin: 40px 0;
+    justify-items: center;
 
     .mob-nav-card {
       background: rgba(3, 32, 75, 0.075);
