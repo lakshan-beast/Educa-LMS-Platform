@@ -1,7 +1,7 @@
 // --- Grade 11 Student Dashboard Styles ---
 .dashboard-wrapper {
   min-height: 95vh;
-  padding: 6.5rem 20px 0.5rem 20px;
+  padding: 7rem 10px 1rem 10px;
   max-width: $container-width-large-m;
   min-width: $container-width-small;
   width: $container-width-default;
@@ -127,37 +127,37 @@
 
   .welcome-banner {
     background: $secondary-blue;
-    border: 1px solid #30363d;
-    padding: 30px;
-    border-radius: 20px;
+    border: 1px solid $secondary-blue;
+    padding: 30px 20px 6px 20px;
+    border-radius: 12px;
     position: relative;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 
     &::after {
       content: "";
       position: absolute;
       right: -50px;
-      top: -50px;
-      width: 200px;
-      height: 200px;
-      background: rgba($white, 0.15);
-      box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.8);
+      bottom: -50px;
+      width: 175px;
+      height: 175px;
+      background: rgba($white, 0.1);
+      box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.5);
       border-radius: $border-radius-circle;
     }
 
     // 🛸 1. පසුබිමෙන් පෙනෙන Flying GIF ඇනිමේෂන් එක
     > img[alt="live-emoji"] {
-      width: 250px;
-      height: 250px;
+      width: 350px;
+      height: 350px;
       position: absolute;
       top: 5%;
       left: 15%;
       z-index: 99;
       object-fit: contain;
       pointer-events: none;
-      opacity: 0.15; // පසුබිමට ගැලපෙන්න තරමක් ලා කළා
+      // opacity: 0.15; // පසුබිමට ගැලපෙන්න තරමක් ලා කළා
     }
 
     // 🗣️ 2. ආචාර කරන ප්‍රධාන ශීර්ෂය (Greeting Header)
@@ -168,7 +168,6 @@
       margin: 0 0 25px 0;
       font-size: 2.2rem;
       color: #ffffff;
-      font-family: "Plus Jakarta Sans", sans-serif;
       font-weight: 800;
 
       span {
@@ -189,11 +188,12 @@
     .user-details {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      background: $secondary-blue;
+
+      // gap: 6px;
+      background: rgba($secondary-blue3, 0.4);
       padding: 20px;
-      border-radius: 14px;
-      border: 1px solid #21262d;
+      border-radius: 10px;
+      border: 1px solid #323841;
       -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
 
@@ -201,14 +201,16 @@
         margin: 0;
         display: flex;
         align-items: center;
+        // justify-content: space-between;
+        align-items: center;
         gap: 10px;
-        color: #c9d1d9;
+        color: #abb3bb;
         font-size: 1rem;
 
-        svg {
-          color: #58a6ff;
-          font-size: 1.2rem;
-        }
+        // svg {
+        //   color: #bcdcff;
+        //   font-size: 1.2rem;
+        // }
       }
 
       // ශිෂ්‍යයාගේ සම්පූර්ණ නම සහ Badge එක
@@ -217,37 +219,50 @@
         font-weight: 700;
         color: #ffffff;
 
+        p {
+          display: flex;
+          justify-content: flex-start;
+        }
+
         span {
           display: inline-flex;
           align-items: center;
 
           .approved-badge {
-            color: #2ea043;
+            color: #0cec35;
             font-size: 1.4rem;
-            filter: drop-shadow(0 0 6px rgba(46, 160, 67, 0.4));
+            filter: drop-shadow(0 0 6px rgba(28, 150, 51, 0.4));
           }
         }
       }
 
       // ID සහ Password (Security Rows)
-      .user-security,
-      .user-number {
+      .user-security
+      // .user-number
+      {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 3px;
+        margin-top: 16px;
 
-        @media (min-width: 640px) {
+        @include respond(desktop) {
           grid-template-columns: repeat(2, 1fr); // Desktop වලදී පේළියට දෙක ගානේ
         }
 
         p {
-          background: #0d1117;
+          background: rgba($secondary-blue, 0.5);
+          color: rgba($white, 0.9);
           padding: 8px 12px;
-          border-radius: 6px;
-          border: 1px solid #21262d;
-          font-family: "IBM Plex Sans", sans-serif;
-          font-size: 0.9rem;
+          border-radius: 0.5rem;
+          border: 1px solid $secondary-blue;
+          font-size: 0.85rem;
         }
+      }
+
+      .user-number {
+        margin: 12px 0;
+        padding-top: 6px;
+        border-top: 2px solid rgba($secondary-blue, 0.5);
       }
 
       // විෂයන් තෝරාගෙන ඇති ආකාරය (Subjects Chips)
@@ -259,8 +274,8 @@
 
         span {
           background: rgba(88, 166, 255, 0.1);
-          border: 1px solid rgba(88, 166, 255, 0.25);
-          color: #58a6ff;
+          border: 1px solid rgba(164, 207, 255, 0.411);
+          color: #9fccff;
           padding: 6px 14px;
           border-radius: 20px;
           font-size: 0.85rem;
@@ -276,7 +291,7 @@
           }
 
           .check-icon {
-            color: #2ea043;
+            color: #0fd834;
             font-size: 1.1rem;
           }
         }
@@ -287,19 +302,19 @@
     .quick-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 25px;
-      border-top: 1px solid #21262d;
-      padding-top: 20px;
+      gap: 5px;
+      margin-top: 5px;
+      // border-top: 1px solid #21262d;
+      // padding-top: 5px;
 
       // Link Tags සහ Logout බටන් එකට එකම ස්ටයිල් එකක් දීම
       a,
       button {
-        background: #21262d;
-        border: 1px solid #30363d;
-        color: #c9d1d9;
-        width: 48px;
-        height: 48px;
+        background: rgba($secondary-blue3, 0.1);
+        border: 1px solid rgba($white, 0.3);
+        color: #ffffff;
+        width: 38px;
+        height: 38px;
         border-radius: 12px;
         display: inline-flex;
         align-items: center;
@@ -309,13 +324,14 @@
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:hover {
-          background: #30363d;
+          background: rgba($secondary-blue, 0.5);
           color: #ffffff;
           transform: translateY(-3px);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         .icons {
           font-size: 1.4rem;
+          font-weight: 700;
 
           // Signout බටන් එක රතු පාට කිරීමට
           &.signout {
@@ -329,6 +345,11 @@
           border-color: #f85149;
           box-shadow: 0 5px 15px rgba(248, 81, 73, 0.2);
         }
+      }
+
+      button {
+        margin: 6px 0 0 0;
+        padding: 0;
       }
     }
   }
@@ -347,8 +368,8 @@
   .card-container.countdown-card {
     background: $secondary-blue;
     border: 1px solid #30363d;
-    padding: 22px;
-    border-radius: 16px;
+    padding: 32px 22px;
+    border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
@@ -358,7 +379,6 @@
       margin: 0 0 20px 0;
       font-size: 1.1rem;
       color: #ffffff;
-      font-family: "Plus Jakarta Sans", sans-serif;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -376,12 +396,12 @@
     .countdown-tiles {
       display: grid;
       grid-template-columns: repeat(4, 1fr); // කොටු 4 පේළියට සමානව බෙදීම
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 18px;
 
       // එක් එක් කුඩා කොටුවක් (Individual Tile)
       div {
-        background: #0d1117;
+        background: rgba($secondary-blue3, 0.3);
         border: 1px solid #21262d;
         padding: 12px 6px;
         border-radius: 10px;
@@ -400,22 +420,21 @@
         h3 {
           margin: 0;
           font-size: 1.6rem;
-          font-family: "IBM Plex Sans", sans-serif;
           font-weight: 700;
           color: #58a6ff; // Default නිල් පාට
 
           // ⚡ තත්පර පෙන්වන කොටුව විතරක් Neon කොළ පාටින් දිලිසීමට (Live Blink Effect)
           &.seconds {
-            color: #3fb950;
-            text-shadow: 0 0 8px rgba(63, 185, 80, 0.4);
-            animation: neonPulse 1s infinite alternate;
+            color: $primary-orange;
+            // text-shadow: 0 0 8px rgba(63, 185, 80, 0.4);
+            animation: neonPulse 1.2s infinite alternate;
           }
         }
 
         // යටින් තියෙන ලේබල් (Days, Hours, Mins, Secs)
         small {
           font-size: 0.75rem;
-          color: #8b949e;
+          color: $secondary-blue3;
           margin-top: 4px;
           font-weight: 600;
           text-transform: uppercase;
@@ -428,20 +447,24 @@
     p {
       margin: 0;
       font-size: 0.82rem;
-      color: #ffd700; // රන් පැහැයෙන්
+      color: $secondary-blue3;
       font-weight: 600;
       letter-spacing: 0.2px;
       opacity: 0.9;
+      border-top: 2px solid $secondary-blue3;
+      text-align: right;
     }
   }
 
   // 🟢 4. තත්පර ගාන ලස්සනට දිලිසෙන්න හදපු Neon Animation එක
   @keyframes neonPulse {
-    from {
-      text-shadow: 0 0 4px rgba(63, 185, 80, 0.3);
+    0% {
+      // transform: scale(0.3);
     }
-    to {
-      text-shadow: 0 0 12px rgba(63, 185, 80, 0.6);
+
+    100% {
+      text-shadow: 0 0 12px rgba(224, 11, 11, 0.836);
+      // transform: scale(1.6);
     }
   }
 
@@ -570,7 +593,6 @@
     h3 {
       font-size: 1.4rem;
       color: #ffffff;
-      font-family: "Plus Jakarta Sans", sans-serif;
       font-weight: 800;
       margin-bottom: 20px;
       letter-spacing: -0.3px;
@@ -578,12 +600,6 @@
 
     // 🎛️ විෂයන් 3 බෙදී යන Responsive Grid එක
     .subjects-grid {
-      // display: grid;
-      // grid-template-columns: repeat(
-      //   auto-fit,
-      //   minmax(250px, 1fr)
-      // ); // Mobile වලදී පිරිසිදුව බෙදේ
-      // gap: 20px;
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -591,30 +607,45 @@
       align-items: center;
       margin-bottom: 1rem;
 
+      background: $secondary-blue;
+      border: 1px solid $secondary-blue;
+      padding: 30px 20px 12px 20px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      margin-bottom: 15px;
+
       @include respond(desktop) {
         flex-direction: row;
+      }
+
+      h2 {
+        color: $white;
+        text-shadow: 0px 3px 6px white;
+        margin-bottom: 1rem;
       }
     }
 
     // 🃏 පොදු විෂය කාඩ්පත (Subject Card Base)
     .subject-portal-card {
-      background: #161b22;
-      border: 1px solid #30363d;
+      background: $secondary-blue;
+      border: 2px solid $secondary-blue3;
       padding: 25px;
-      border-radius: 16px;
+      border-radius: 12px;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       min-height: 160px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 20px rgba(48, 48, 48, 0.199);
       max-width: 300px;
       width: 100%;
 
       // Hover වීමේදී ලස්සනට ඉස්සී Glow වීම (Enrolled අයට පමණි)
       &:not(.locked):hover {
-        transform: translateY(-5px);
+        // transform: translateY(-5px);
         border-color: #58a6ff;
         box-shadow: 0 10px 25px rgba(88, 166, 255, 0.15);
       }
@@ -623,7 +654,6 @@
         margin: 0 0 15px 0;
         font-size: 1.25rem;
         color: #ffffff;
-        font-family: "Plus Jakarta Sans", sans-serif;
         font-weight: 700;
       }
 
@@ -645,10 +675,11 @@
         transition: all 0.2s;
 
         &:hover {
-          background: #58a6ff;
+          background: #0156b6;
           color: #ffffff;
           border-color: #58a6ff;
           box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+          transform: translateY(-4px);
         }
       }
 
@@ -669,24 +700,28 @@
       // 🔒 පන්තිය ලොක් වී ඇති විට (Locked State Modifier)
       // ==========================================================================
       &.locked {
-        background: rgba(22, 27, 34, 0.5) !important;
+        background: rgba(222, 225, 230, 0.5) !important;
         border-color: #21262d !important;
         opacity: 0.55 !important; // Inline style එක SCSS එකට ගත්තා
         box-shadow: none;
         // user-select: none;
 
+        &:hover {
+          border-color: red;
+        }
+
         h4 {
-          color: #8b949e;
+          color: $white;
         }
 
         // උඩින්ම මැදින් වැටෙන ලස්සන Lock Badge එක
         div.locked {
           position: absolute;
-          top: 15px;
+          bottom: 15px;
           right: 15px;
-          background: rgba(248, 81, 73, 0.12);
-          border: 1px solid rgba(248, 81, 73, 0.25);
-          color: #f85149;
+          background: rgba(255, 255, 255, 0.459);
+          border: 1px solid rgb(255, 35, 23);
+          color: #ff3328;
           padding: 4px 10px;
           border-radius: 20px;
           font-size: 0.78rem;

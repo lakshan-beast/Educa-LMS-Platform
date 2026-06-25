@@ -175,8 +175,8 @@ const Dashboard = () => {
               src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif"
               alt="live-emoji"
               style={{
-                width: "250px",
-                height: "250px",
+                width: "350px",
+                height: "350px",
                 zIndex: "999",
                 position: "absolute",
                 top: "5%",
@@ -194,13 +194,17 @@ const Dashboard = () => {
               <img
                 src={greeting.animUrl}
                 alt="live-emoji"
-                style={{ width: "50px", height: "50px", objectFit: "contain" }}
+                style={{
+                  width: "75px",
+                  height: "75px",
+                  objectFit: "contain",
+                }}
               />
             </h1>
 
             <div className="user-details">
               <p className="user-name">
-                <FaUser /> {studentData.fullName}{" "}
+                {studentData.fullName}{" "}
                 <span>
                   {studentData.status === "approved" ? (
                     <BiError />
@@ -211,8 +215,7 @@ const Dashboard = () => {
               </p>
 
               <p>
-                <FaGraduationCap /> Grade {studentData.grade} - {nowYear} O/L
-                Batch
+                Grade {studentData.grade} - {nowYear} O/L Batch
               </p>
 
               <div className="user-security">
@@ -224,13 +227,8 @@ const Dashboard = () => {
                 </p>
               </div>
               <div className="user-number">
-                <p>
-                  <FaMobile /> Your Number : {studentData.studentMobile}
-                </p>
-                <p>
-                  <BiSolidPhoneCall /> Parent Number :{" "}
-                  {studentData.parentMobile}
-                </p>
+                <p>Your Number : {studentData.studentMobile}</p>
+                <p>Parent Number :{studentData.parentMobile}</p>
               </div>
 
               <div className="user-subjects">
@@ -274,6 +272,7 @@ const Dashboard = () => {
           <div className="sub-grid">
             <div className="subjects-section">
               <div className="subjects-grid">
+                <h2>Your Study Vault</h2>
                 {/* 1. MATHEMATICS PORTAL */}
                 <div
                   className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
