@@ -46,8 +46,9 @@
       padding: $padding-none;
 
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      // align-items: center;
+      gap: 3px;
 
       @include respond(tablet) {
         display: flex;
@@ -58,11 +59,12 @@
 
       a {
         width: $container-width-default;
-        max-width: 200px;
+        max-width: 250px;
         padding: $padding-small-m;
         margin-right: 6px;
         border-radius: $border-radius-xlarge;
-        height: 50px;
+        height: 55px;
+        font-size: 1.05rem;
 
         @include respond(tablet) {
           margin-top: $margin-small;
@@ -315,6 +317,7 @@
   background: #fff6d7;
   color: #ff4800;
   font-weight: 500;
+  margin: 0;
 
   animation: scaleText 2s ease-in-out infinite;
 
