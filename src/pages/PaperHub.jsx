@@ -459,7 +459,7 @@ const PaperHub = ({ subject }) => {
           </h2>
           <p style={{ margin: "5px 0 0", fontSize: "0.88rem" }}>
             Grade {studentGrade} • All structural tutes, past papers and
-            materials are dynamically fetched from Live Cloud [INDEX 51].
+            materials are dynamically fetched from Live Cloud.
           </p>
         </div>
 
@@ -630,7 +630,6 @@ const PaperHub = ({ subject }) => {
               </p>
               <small>
                 The admin panel has not added any tutorials to this section yet.
-                [INDEX 51].
               </small>
             </div>
           )}

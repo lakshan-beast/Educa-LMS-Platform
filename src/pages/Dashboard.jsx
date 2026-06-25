@@ -254,7 +254,7 @@ const Dashboard = () => {
               <Link smooth to="/">
                 <IoHomeOutline className="icons" />
               </Link>
-              <Link smooth to="/classes-details">
+              <Link smooth to="/tab-controller">
                 <IoCalendarOutline className="icons" />
               </Link>
               <Link smooth to="/student-voices">
@@ -285,6 +285,15 @@ const Dashboard = () => {
                     </div>
                   )}
                   <h4>Mathematics Class</h4>
+                  {hasAccess("M") ? (
+                    <Link
+                      to="/paper-hub/maths"
+                      className="browse-btn paper-btn">
+                      <FaBookOpen /> Study Vault
+                    </Link>
+                  ) : (
+                    <p className="not-allowed">Not enrolled in this subject.</p>
+                  )}
                 </div>
 
                 {/* 2. SCIENCE PORTAL */}
@@ -308,7 +317,7 @@ const Dashboard = () => {
                     </Link>
                   ) : (
                     <p className="not-allowed ">
-                      Not enrolled in this subject. Contact card marker.
+                      Not enrolled in this subject.
                     </p>
                   )}
                 </div>
@@ -333,9 +342,7 @@ const Dashboard = () => {
                       <FaBookOpen /> Study Vault
                     </Link>
                   ) : (
-                    <p className="not-allowed">
-                      Not enrolled in this subject. Contact card marker.
-                    </p>
+                    <p className="not-allowed">Not enrolled in this subject.</p>
                   )}
                 </div>
               </div>

@@ -47,14 +47,14 @@ const ResultsHub = () => {
 
   // 🌧️ React Cascading Renders Warning එක මඟහැරවූ අකුරු වැස්සේ එන්ජිම
   const fallingLetters = useMemo(() => {
-    const letters = ["A", "B", "A", "A", "B"];
+    const letters = ["A", "B", "A", "A", "B", "A", "B", "A", "A", "B"];
     return Array.from({ length: 25 }).map((_, i) => ({
       id: i,
       text: letters[Math.floor(Math.random() * letters.length)],
       left: Math.random() * 100 + "%",
-      delay: Math.random() * 5 + "s",
+      delay: Math.random() * 2 + "s",
       duration: Math.random() * 4 + 3 + "s",
-      fontSize: Math.random() * 1.5 + 1 + "rem",
+      fontSize: Math.random() * 2.5 + 1 + "rem",
     }));
   }, []);
 
@@ -206,6 +206,7 @@ const ResultsHub = () => {
       return item.overallResult?.toUpperCase().replace(/\s/g, "") === "9A";
     if (activeFilter === "MATHS_A") return item.mathsGrade === "A";
     if (activeFilter === "SCIENCE_A") return item.scienceGrade === "A";
+    if (activeFilter === "ENGLISH_A") return item.englishGrade === "A";
     return true;
   });
 
@@ -508,8 +509,8 @@ const ResultsHub = () => {
                 </div>
               ) : (
                 <div className="table-responsive-wrapper">
-                  <h2>Full O/L Exam Results - 2025 </h2>
                   <table className="secure-honors-ledger-table">
+                    <caption>Full O/L Exam Results - 2025</caption>
                     <thead>
                       <tr>
                         <th>Full Name & Index</th>
