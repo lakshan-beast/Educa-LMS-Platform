@@ -376,6 +376,18 @@
   pointer-events: auto !important;
 
   @include center-everything;
+  flex-direction: column;
+}
+
+/* LOADING TEXT BLINK */
+.first-loads-fullscreen-overlay span {
+  color: $secondary-blue;
+  font-size: $font-size-body;
+  font-weight: $font-weight-800;
+  letter-spacing: 1px;
+  text-transform: $text-transform-uppercase;
+  animation: textPulseFade 1.5s ease-in-out infinite;
+  text-align: center;
 }
 
 /* MULTI-SHAPE BURST CONTAINER HUB */
@@ -393,8 +405,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   margin: -10px 0 0 -10px;
   font-size: $font-size-h3;
   animation: iconScatterBurst 2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
@@ -435,16 +447,6 @@
     filter: drop-shadow(0 0 6px rgba(156, 39, 176, 0.4));
     animation-delay: 0.8s;
   }
-}
-
-/* LOADING TEXT BLINK */
-.first-loads-fullscreen-overlay span {
-  color: $secondary-blue;
-  font-size: $font-size-body;
-  font-weight: $font-weight-800;
-  letter-spacing: 1px;
-  text-transform: $text-transform-uppercase;
-  animation: textPulseFade 1.5s ease-in-out infinite;
 }
 
 /* KEYFRAMES ENGINES */
