@@ -607,7 +607,7 @@
       align-items: center;
       margin-bottom: 1rem;
 
-      background: $secondary-blue;
+      background: rgba($secondary-blue, 0.5);
       border: 1px solid $secondary-blue;
       padding: 30px 20px 12px 20px;
       border-radius: 12px;
@@ -618,12 +618,17 @@
 
       @include respond(desktop) {
         flex-direction: row;
+        padding: 10px;
       }
 
       h2 {
         color: $white;
         text-shadow: 0px 3px 6px white;
         margin-bottom: 1rem;
+
+        @include respond(desktop) {
+          display: none;
+        }
       }
     }
 
@@ -701,8 +706,8 @@
       // ==========================================================================
       &.locked {
         background: rgba(222, 225, 230, 0.5) !important;
-        border-color: #21262d !important;
-        opacity: 0.55 !important; // Inline style එක SCSS එකට ගත්තා
+        // border-color: #21262d !important;
+        // opacity: 0.55 !important; // Inline style එක SCSS එකට ගත්තා
         box-shadow: none;
         // user-select: none;
 
