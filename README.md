@@ -161,11 +161,9 @@ Fully secure architecture conforming to strict programmatic data collection regu
 
 Developed with absolute passion by Lakshan 🦾 -->
 
-# educa. - Full-Stack Production-Grade O/L Learning Management System (SaaS)
+# Educa. - Full-Stack Production-Grade O/L Learning Management System (SaaS)
 
 An enterprise-grade, hyper-optimized Learning Management System (LMS) designed for Grade 6 to Grade 11 Sri Lankan national curriculum teachers and students, featuring a specialized module for Grade 11 Paper Classes. Built with a highly sophisticated serverless frontend architecture, custom embedded AI tutoring capabilities, and strict parameterized conditional resource boundaries.
-
-🚀 Live System Link: [(https://educa-lms-platform.vercel.app/)]
 
 ---
 
@@ -173,7 +171,7 @@ An enterprise-grade, hyper-optimized Learning Management System (LMS) designed f
 
 - Cryptographic Parameter Access Control (MES Prefix Isolation): Engineered an automated data-boundary lock mechanism within student identity nodes. Based on unique authorization strings inserted in the student profile (M for Mathematics, S for Science, E for English), the runtime system automatically unlocks or restricts structural file paths for class tutes, papers, and formula guides.
 - Dynamic Grade & Paper Class Multitenancy: Implemented modular, state-driven navigation grids separating institutional content across Grades 6, 7, 8, 9, 10, 11, and a dedicated hyper-focused Grade 11 Paper Class Hub.
-- Embedded Generative AI Tutor Bot: Implemented a standalone local AI Learning Assistant directly inside the student dashboard. Students can query complex math formulas, science concepts, or language logic during independent study hours and receive instantaneous, contextual academic responses.
+- Embedded Generative AI Tutor Bot (Neti AI): Implemented a standalone local AI Learning Assistant directly inside the student dashboard. Students can query complex math formulas, science concepts, or language logic during independent study hours and receive instantaneous, contextual academic responses.
 - Real-Time Cross-Role Access Securing: Implemented a zero-collision secure gate processing 4-digit tokenized parent validation keys, custom student string credentials, and robust administrative authorization tokens with native local session persistence handlers.
 - Adaptive Breakpoint Interface & Navigation Shields: Configured smart media-queries rendering fluid App-Style bottom grids for mobile student environments while isolating sensitive data modification vaults exclusively to Desktop/Laptop display parameters.
 
