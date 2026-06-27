@@ -79,6 +79,17 @@
     margin-bottom: 25px;
   }
 
+  .legel-link {
+    display: inline-block;
+    margin: 0 6px;
+
+    &:hover {
+      transform: translate(0);
+      color: rgba($secondary-blue3, 0.8);
+      text-decoration: none;
+    }
+  }
+
   .error-message {
     font-weight: $font-weight-600;
     color: $red-color;
@@ -88,7 +99,9 @@
   .admin-btn {
     width: $container-width-default;
     padding: $padding-medium;
+    margin-top: 1rem;
     background: $secondary-blue;
+
     color: $white;
     border: none;
     border-radius: $border-radius-small-m;

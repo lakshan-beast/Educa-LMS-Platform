@@ -28,6 +28,7 @@
   background-color: $secondary-blue;
   border-bottom-left-radius: 2rem;
 }
+
 html {
   width: $container-width-default;
   background: $white;
@@ -101,4 +102,8 @@ a {
   @include respond(desktop) {
     font-size: $font-size-body;
   }
+}
+
+a:hover {
+  color: transparent;
 }
