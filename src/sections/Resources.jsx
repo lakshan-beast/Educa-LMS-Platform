@@ -13,14 +13,6 @@ import Results from "../assets/result.webp";
 import Parent from "../assets/parents.webp";
 
 const Resources = () => {
-  // const resourcesData = [
-  //   {
-  //     badgeName: "",
-  //     heading: "",
-  //     description: "",
-  //   }
-  // ]
-
   return (
     <section className="parts" id="resources">
       <h2 data-aos="fade-up">
@@ -51,10 +43,7 @@ const Resources = () => {
             histories, and direct urgent announcements safely in one unified
             space.
           </p>
-          {/* රහස් පේජ් එකට යන ලින්ක් එක */}
-          {/* <Link to="/parent-portal" className="browse-btn">
-            View Details
-          </Link> */}
+
           <button disabled="disabled" className="browse-btn" data-aos="fade-up">
             Coming Soon
           </button>

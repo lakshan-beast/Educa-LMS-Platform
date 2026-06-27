@@ -77,7 +77,7 @@ const LiveClass = () => {
 
   // if (isLoading) {
   //   return <Loader />;
-  // }
+  // }Lo
 
   return (
     <div className="live-class-panel-wrapper">

@@ -33,7 +33,6 @@ const Login = () => {
       if (!querySnapshot.empty) {
         const studentDoc = querySnapshot.docs[0];
         const studentData = studentDoc.data();
-        // 3. 🔐 Cloud එකේ සේව් වී ඇති Password එක සහ ළමයා ගහපු Password එක සමානද බලයි
 
         if (studentData.password === cleanPassword) {
           localStorage.setItem("user_id", cleanId);

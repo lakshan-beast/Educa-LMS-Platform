@@ -36,26 +36,8 @@ const Hero = () => {
 
           <div className="home-buttons" data-aos="fade-right">
             <a href="#resources" className="start-btn">
-              {/* <img
-                src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif"
-                alt="live-emoji"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  zIndex: "9999",
-                  position: "absolute",
-                  bottom: "16%",
-                  right: "4%",
-                  objectFit: "contain",
-                  margin: "0",
-                }}
-              /> */}
               Get Started Now <FaRocket className="icon" />
             </a>
-
-            {/* <a href="#classes" className="browse-btn">
-              Browse classes <FaArrowRight className="icon" />
-            </a> */}
 
             <Link to="/result-hub" className="browse-btn result-btn">
               <img

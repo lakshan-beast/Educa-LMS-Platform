@@ -67,10 +67,6 @@ const Classes = () => {
                     <span className="value">{item.medium}</span>
                   </div>
                 </div>
-
-                {/* <Link to="/classes-details" className="class-btns">
-                  View Class Details <FaArrowRight />
-                </Link> */}
               </div>
             </div>
           ))}
