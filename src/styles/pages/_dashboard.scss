@@ -584,6 +584,12 @@
 
   // 📚 ENROLLED SUBJECT CLASS PORTALS - NEON & LOCKED SCSS STYLES
 
+  .sub-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
   .subjects-section {
     // margin-top: 30px;
     position: relative;
@@ -722,8 +728,8 @@
         // උඩින්ම මැදින් වැටෙන ලස්සන Lock Badge එක
         div.locked {
           position: absolute;
-          bottom: 15px;
-          right: 15px;
+          bottom: 3px;
+          right: 3px;
           background: rgba(255, 255, 255, 0.459);
           border: 1px solid rgb(255, 35, 23);
           color: #ff3328;

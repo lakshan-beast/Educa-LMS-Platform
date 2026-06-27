@@ -55,15 +55,16 @@
         flex-direction: row;
         flex-wrap: nowrap;
         align-content: center;
+        gap: 3px;
       }
 
       a {
         width: $container-width-default;
-        max-width: 250px;
-        padding: $padding-small-m;
+        max-width: 220px;
+        padding: $padding-small;
         margin-right: 6px;
         border-radius: $border-radius-xlarge;
-        height: 55px;
+        height: 50px;
         font-size: 1.05rem;
 
         @include respond(tablet) {
