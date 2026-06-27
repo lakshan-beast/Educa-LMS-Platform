@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 
-import { db } from "../firebaseConfig"; // 👑 අපේ මධ්‍යම Firebase පාලම ගත්තා
+import { db } from "../firebaseConfig";
 import {
   collection,
   getDocs,
@@ -17,10 +17,8 @@ import { GoHeartFill } from "react-icons/go";
 import {
   FaPlus,
   FaXmark,
-  // FaUsersGear,
   FaUser,
   FaChalkboardUser,
-  // FaIdCard,
   FaUserTie,
   FaArrowLeft,
   FaArrowRight,
@@ -30,19 +28,18 @@ import {
   FaHatCowboy,
 } from "react-icons/fa6";
 import { PiSealCheckFill } from "react-icons/pi";
-// import { MdGirl } from "react-icons/m
 import { FaUserMd } from "react-icons/fa";
 
 import Loader from "./Loader";
 
 const StudentVoices = () => {
   // 1. Core State Management
-  const [voices, setVoices] = useState([]); // voices list
+  const [voices, setVoices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Popup Controller
-  const [activeFilter, setActiveFilter] = useState("ALL"); // Teacher Filters
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("ALL");
 
-  // 2. 👑 🆕 [THE ULTIMATE DYNAMIC FORM STATE]: උඹ කියපු හැම ස්මාර්ට් විචල්‍යයක්ම මෙතනට ලොක් කළා
+  //  [THE ULTIMATE DYNAMIC FORM STATE]:
   const [formData, setFormData] = useState({
     studentName: "",
     userRole: "Student", // Default Role: Student, Parent, Alumni
@@ -61,8 +58,7 @@ const StudentVoices = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
 
-  // ============================================================
-  // 📥 👑 [LIVE CLOUD FETCH ENGINE]: සජීවීව Cloud එකෙන් දත්ත ඇදලා ගන්නා පාලම
+  //  [LIVE CLOUD FETCH ENGINE]
   const fetchCloudVoices = useCallback(async () => {
     setTimeout(() => setIsLoading(true), 0);
     try {
@@ -82,11 +78,10 @@ const StudentVoices = () => {
     setTimeout(() => setIsLoading(false), 0);
   }, []);
 
-  // 🚀 FIXED: activeFilter එක මාරු වෙද්දී Infinite renders වැටෙන්නේ නැති වෙන්න useCallback වලින් බැන්දා
+  // 🚀 FIXED: activeFilter
   useEffect(() => {
     fetchCloudVoices();
   }, [fetchCloudVoices]);
-  // ============================================================
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -96,7 +91,7 @@ const StudentVoices = () => {
     }));
   };
 
-  // 🧠 ☁️ [THE DYNAMIC SUBMIT ENGINE]: භූමිකාව අනුව නිවැරදි identityClaim එක හදා Cloud යවන හැටි
+  // 🧠 ☁️ [THE DYNAMIC SUBMIT ENGINE]
   const handleVoiceSubmit = async (e) => {
     e.preventDefault();
     setFormError("");
@@ -122,7 +117,7 @@ const StudentVoices = () => {
       return;
     }
 
-    // 👑 🔐 [THE IDENTITY CLAIM COMPOSER]: භූමිකාව අනුව සැබෑ නිල බැජ් වචනය මෙතැනදී තීරණය වේ
+    // 👑 🔐 [THE IDENTITY CLAIM COMPOSER]
     let finalIdentity = "Verified Member";
     if (formData.userRole === "Student")
       `finalIdentity = ${formData.olBatch} Student`;
@@ -141,7 +136,7 @@ const StudentVoices = () => {
       id: docId,
       studentName: formData.studentName.trim(),
       userRole: formData.userRole,
-      identityClaim: finalIdentity || "Alumni", // 🚀 නිල පාලම සැකසුණා මචං
+      identityClaim: finalIdentity || "Alumni",
       avatarType: formData.avatarType,
       avatarColor: formData.avatarColor,
       selectedTeachers: selectedTeachers,
@@ -170,7 +165,7 @@ const StudentVoices = () => {
       fetchCloudVoices();
     } catch (err) {
       console.error("Cloud Save Error:", err);
-      setFormError("Technical error occurred while publishing! ❌");
+      setFormError("Technical error occurred while publishing!");
     }
     setIsSubmitting(false);
   };
@@ -207,7 +202,7 @@ const StudentVoices = () => {
     }
   };
 
-  // 👑 🆕 [THE ROLE ICON MAPPER]: Role එක අනුව Premium filled icon එකක් පින්තාරු කරයි [INDEX 55]
+  // 👑 🆕 [THE ROLE ICON MAPPER]
   const renderRoleIcon = (type) => {
     if (type === "boy") return <FaHatCowboy />;
     if (type === "girl") return <FaRibbon />;
@@ -248,6 +243,7 @@ const StudentVoices = () => {
             Back to Results <FaArrowRight />
           </Link>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -263,11 +259,8 @@ const StudentVoices = () => {
                 color: "#001b42",
                 margin: "1rem 0",
                 fontWeight: "800",
-                // display: "flex",
-                // alignItems: "center",
                 gap: "10px",
                 fontSize: "1.6rem",
-                // flexWrap: "wrap",
                 textAlign: "center",
               }}>
               Our Students'
@@ -634,7 +627,7 @@ const StudentVoices = () => {
                 boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
                 position: "relative",
                 textAlign: "left",
-                maxHeight: "90vh",
+                // maxHeight: "90vh",
                 overflowY: "auto",
               }}>
               {/* Close Cross Button */}
@@ -756,7 +749,7 @@ const StudentVoices = () => {
                       background: "white",
                       fontSize: "0.85rem",
                     }}>
-                    <option value="Student">Current Scholar / Student</option>
+                    <option value="Student">Student</option>
                     <option value="Parent"> Guardian / Proud Parent</option>
                     <option value="Alumni">Distinguished Alumni</option>
                   </select>
