@@ -19,6 +19,7 @@ import {
   FaCircleCheck,
   FaCommentDots,
   FaPlus,
+  FaXmark,
 } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -29,7 +30,7 @@ const ResultsHub = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [isUploading, setIsUploading] = useState(false);
-  const [showPopup, setShowPopup] = useState(false); // Popup එක පාලනය කිරීමට
+  const [showPopup, setShowPopup] = useState(false); // Popup Comment
   const [isModalOpen, setIsModalOpen] = useState(false); // Popup Controller
 
   // 📝 Form එකේ State එක (පින්තූර/කමෙන්ට් අයින් කර සර්ලාගේ Dropdowns දමා ඇත)
@@ -41,8 +42,9 @@ const ResultsHub = () => {
     scienceGrade: "A",
     englishGrade: "A",
     overallResult: "",
-    mathsTeacher: "Amila Sir", // Default ගුරුවරුන්
-    scienceTeacher: "Nimal Sir",
+    mathsTeacher: "Maths Sir",
+    scienceTeacher: "Science Sir",
+    englishTeacher: "English Sir",
   });
 
   // 🌧️ React Cascading Renders Warning එක මඟහැරවූ අකුරු වැස්සේ එන්ජිම
@@ -115,38 +117,63 @@ const ResultsHub = () => {
   // 📈 LIVE ANALYTICS COUNTERS (සර්ලා මට්ටමේ A/B සාමාර්ථ ගණනය කිරීම්)
   const analytics = useMemo(() => {
     const total = results.length;
-    // ගණිතය සාමාර්ථය F නොවන අය සමත් ලෙස ගණන් ගනී
     const passed = results.filter((item) =>
       ["A", "B", "C", "S"].includes(item.mathsGrade?.toUpperCase()),
     ).length;
     const rate = total > 0 ? ((passed / total) * 100).toFixed(1) : "0.0";
 
-    // 📐 Amila Sir (Maths) ගේ පන්තියේ A සහ B ප්‍රමාණය
-    const amilaMathsA = results.filter(
-      (item) => item.mathsTeacher === "Amila Sir" && item.mathsGrade === "A",
+    // 📐 Maths Sir (Maths)
+    const sirMathsA = results.filter(
+      (item) => item.mathsTeacher === "Maths Sir" && item.mathsGrade === "A",
     ).length;
-    const amilaMathsB = results.filter(
-      (item) => item.mathsTeacher === "Amila Sir" && item.mathsGrade === "B",
+    const sirMathsB = results.filter(
+      (item) => item.mathsTeacher === "Maths Sir" && item.mathsGrade === "B",
+    ).length;
+    const sirMathsC = results.filter(
+      (item) => item.mathsTeacher === "Maths Sir" && item.mathsGrade === "C",
     ).length;
 
-    // 🔬 Nimal Sir (Science) ගේ පන්තියේ A සහ B ප්‍රමාණය
-    const nimalScienceA = results.filter(
+    // 🔬 Science Sir (Science)
+    const sirScienceA = results.filter(
       (item) =>
-        item.scienceTeacher === "Nimal Sir" && item.scienceGrade === "A",
+        item.scienceTeacher === "Science Sir" && item.scienceGrade === "A",
     ).length;
-    const nimalScienceB = results.filter(
+    const sirScienceB = results.filter(
       (item) =>
-        item.scienceTeacher === "Nimal Sir" && item.scienceGrade === "B",
+        item.scienceTeacher === "Science Sir" && item.scienceGrade === "B",
+    ).length;
+    const sirScienceC = results.filter(
+      (item) =>
+        item.scienceTeacher === "Science Sir" && item.scienceGrade === "C",
+    ).length;
+
+    // 🔬 English Sir (English)
+    const sirEnglishA = results.filter(
+      (item) =>
+        item.englishTeacher === "English Sir" && item.englishGrade === "A",
+    ).length;
+    const sirEnglishB = results.filter(
+      (item) =>
+        item.englishTeacher === "English Sir" && item.englishGrade === "B",
+    ).length;
+    const sirEnglishC = results.filter(
+      (item) =>
+        item.englishTeacher === "English Sir" && item.englishGrade === "C",
     ).length;
 
     return {
       total,
       passed,
       rate,
-      amilaMathsA,
-      amilaMathsB,
-      nimalScienceA,
-      nimalScienceB,
+      sirMathsA,
+      sirMathsB,
+      sirMathsC,
+      sirScienceA,
+      sirScienceB,
+      sirScienceC,
+      sirEnglishA,
+      sirEnglishB,
+      sirEnglishC,
     };
   }, [results]);
 
@@ -172,6 +199,7 @@ const ResultsHub = () => {
         likes: 0,
         createdAt: new Date().toISOString(),
       });
+      setIsModalOpen(false);
 
       // Form එක සාර්ථකව Reset කර Popup එක Open කිරීම
       setForm({
@@ -182,8 +210,9 @@ const ResultsHub = () => {
         scienceGrade: "A",
         englishGrade: "A",
         overallResult: "",
-        mathsTeacher: "Amila Sir",
-        scienceTeacher: "Nimal Sir",
+        mathsTeacher: "Maths Sir",
+        scienceTeacher: "Science Sir",
+        englishTeacher: "English Sir",
       });
       setShowPopup(true);
     } catch (err) {
@@ -235,19 +264,23 @@ const ResultsHub = () => {
             <IoIosArrowBack /> Back to Home
           </Link>
           <Link className="back-btn" to="/student-voices">
-            Go to Comments <span className="bell-alert-dot"></span>
+            Go to Comments
             <IoIosArrowForward />
           </Link>
         </div>
+
         <div className="results-container parts">
-          <h2>
-            Verified O/L <span>Honors Portal</span>
-          </h2>
-          <p>
-            Showcase the true reward of your hard work; a live-updating official
-            directory of ordinary level achievers.
-          </p>
+          <div>
+            <h2>
+              Verified O/L <span>Honors Portal</span>
+            </h2>
+            <p>
+              Showcase the true reward of your hard work; a live-updating
+              official directory of ordinary level achievers.
+            </p>
+          </div>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -289,185 +322,47 @@ const ResultsHub = () => {
             <FaPlus /> Share Your Results
           </button>
         </div>
+        {/* </div> */}
+
         {/* 📈 LIVE ANALYTICS DASHBOARD CARD LAYER */}
         <div className="analytics-summary-dashboard-grid">
-          {/* <div className="parts-grid"> */}
-          <div className="analytic-mini-card card-row">
-            <span> Total Candidates</span>
-            <strong>{analytics.total}</strong>
+          <div className="summary-top">
+            <div className="analytic-mini-card card-row">
+              <h3> Total Candidates</h3>
+              <strong>{analytics.total}</strong>
+            </div>
+            <div className="analytic-mini-card card-row">
+              <h3> Total Passed Students</h3>
+              <strong>{analytics.passed}</strong>
+            </div>
+            <div className="analytic-mini-card percentage-card card-row">
+              <h3> Overall Pass Rate</h3>
+              <strong>{analytics.rate}%</strong>
+            </div>
           </div>
-          <div className="analytic-mini-card card-row">
-            <span> Total Passed Students</span>
-            <strong>{analytics.passed}</strong>
+
+          <div className="summary-footer">
+            <div className="analytic-mini-card teacher-cards">
+              <h3> Maths Sir (Maths)</h3>
+              <span className="score"> A : {analytics.sirMathsA}</span>
+              <span className="score"> B : {analytics.sirMathsB}</span>
+              <span className="score"> C : {analytics.sirMathsC}</span>
+            </div>
+            <div className="analytic-mini-card teacher-cards">
+              <h3> Science Sir (Science)</h3>
+              <span className="score"> A : {analytics.sirScienceA} </span>
+              <span className="score"> B : {analytics.sirScienceB}</span>
+              <span className="score"> C : {analytics.sirScienceC}</span>
+            </div>
+            <div className="analytic-mini-card teacher-cards">
+              <h3> English Sir (Science)</h3>
+              <span className="score"> A : {analytics.sirEnglishA}</span>
+              <span className="score"> B : {analytics.sirEnglishB}</span>
+              <span className="score"> C : {analytics.sirEnglishC}</span>
+            </div>
           </div>
-          <div className="analytic-mini-card percentage-card card-row">
-            <span> Overall Pass Rate</span>
-            <strong>{analytics.rate}%</strong>
-          </div>
-          {/* </div> */}
-          {/* <div className="parts-grid"> */}
-          <div className="analytic-mini-card teacher-cards">
-            <span> Maths Sir (Maths)</span>
-            <small>
-              A: {analytics.amilaMathsA} | B: {analytics.amilaMathsB} | c:{" "}
-              {analytics.amilaMathsc}
-            </small>
-          </div>
-          <div className="analytic-mini-card teacher-cards">
-            <span> Science Sir (Science)</span>
-            <small>
-              A: {analytics.nimalScienceA} | B: {analytics.nimalScienceB} | c:{" "}
-              {analytics.amilaMathsc}
-            </small>
-          </div>
-          <div className="analytic-mini-card teacher-cards">
-            <span> English Sir (Science)</span>
-            <small>
-              A: {analytics.nimalScienceA} | B: {analytics.nimalScienceB} | c:{" "}
-              {analytics.amilaMathsc}
-            </small>
-          </div>
-          {/* </div> */}
         </div>
-        {isModalOpen && (
-          <div className="results-core-split-layouts">
-            {/* FORM SIDE */}
-            <form
-              onSubmit={handleSubmitResult}
-              className="secure-submission-form styled-form ">
-              <h3>Submit O/L Records</h3>
 
-              <div className="input-group">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  value={form.fullName}
-                  onChange={(e) =>
-                    setForm({ ...form, fullName: e.target.value })
-                  }
-                  placeholder="e.g. Imesh Lakshan"
-                  required
-                />
-              </div>
-
-              <div className="input-group">
-                <label>Index Number</label>
-                <input
-                  type="text"
-                  value={form.indexNumber}
-                  onChange={(e) =>
-                    setForm({ ...form, indexNumber: e.target.value })
-                  }
-                  placeholder="e.g. 6089412"
-                  required
-                />
-              </div>
-              <div className="input-group">
-                <label>Attended School Name</label>
-                <input
-                  type="text"
-                  value={form.schoolName}
-                  onChange={(e) =>
-                    setForm({ ...form, schoolName: e.target.value })
-                  }
-                  placeholder="e.g. Royal College"
-                  required
-                />
-              </div>
-
-              <div className="input-group">
-                <label>Overall Examination Result</label>
-                <input
-                  type="text"
-                  value={form.overallResult}
-                  onChange={(e) =>
-                    setForm({ ...form, overallResult: e.target.value })
-                  }
-                  placeholder="e.g. 9A or 8A, 1B"
-                  required
-                />
-              </div>
-
-              {/* TEACHERS SELECTION DROPDOWNS */}
-              <div className="input-group">
-                <label>Maths Teacher Name</label>
-                <select
-                  value={form.mathsTeacher}
-                  onChange={(e) =>
-                    setForm({ ...form, mathsTeacher: e.target.value })
-                  }>
-                  <option value="Amila Sir">Amila Sir</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div className="input-group">
-                <label>Science Teacher Name</label>
-                <select
-                  value={form.scienceTeacher}
-                  onChange={(e) =>
-                    setForm({ ...form, scienceTeacher: e.target.value })
-                  }>
-                  <option value="Nimal Sir">Nimal Sir</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div className="grades-selector-triple-grid">
-                <div className="grade-drop">
-                  <label>Maths</label>
-                  <select
-                    value={form.mathsGrade}
-                    onChange={(e) =>
-                      setForm({ ...form, mathsGrade: e.target.value })
-                    }>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>S</option>
-                    <option>F</option>
-                  </select>
-                </div>
-                <div className="grade-drop">
-                  <label>Science</label>
-                  <select
-                    value={form.scienceGrade}
-                    onChange={(e) =>
-                      setForm({ ...form, scienceGrade: e.target.value })
-                    }>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>S</option>
-                    <option>F</option>
-                  </select>
-                </div>
-                <div className="grade-drop">
-                  <label>English</label>
-                  <select
-                    value={form.englishGrade}
-                    onChange={(e) =>
-                      setForm({ ...form, englishGrade: e.target.value })
-                    }>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>S</option>
-                    <option>F</option>
-                  </select>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="submit-verify-btn "
-                disabled={isUploading}>
-                <FaPaperPlane />{" "}
-                {isUploading ? "Uploading..." : "Verify & Submit Records"}
-              </button>
-            </form>
-          </div>
-        )}
         <div>
           {/* DISPLAY SIDE (TABLE LAYOUT) */}
           <div className="secure-results-display-terminal">
@@ -513,13 +408,13 @@ const ResultsHub = () => {
                     <caption>Full O/L Exam Results - 2025</caption>
                     <thead>
                       <tr>
+                        <th>Appreciate</th>
                         <th>Full Name & Index</th>
                         <th>School</th>
                         <th>Overall</th>
                         <th>Maths</th>
                         <th>Science</th>
                         <th>English</th>
-                        <th>Appreciate</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -533,6 +428,15 @@ const ResultsHub = () => {
                           <tr
                             key={student.docId}
                             className={is9A ? "elite-9a-gold-row-shimmer" : ""}>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  handleLikeAppreciation(student.docId)
+                                }
+                                className="table-like-trigger-btn">
+                                <FaHeart /> <span>{student.likes || 0}</span>
+                              </button>
+                            </td>
                             <td>
                               <div className="details-content">
                                 <span className="student-name-text">
@@ -554,7 +458,7 @@ const ResultsHub = () => {
                               <span
                                 className={`table-overall-badge ${is9A ? "gold-medal-tag" : ""}`}>
                                 {is9A
-                                  ? "⭐ 9A ELITE"
+                                  ? "9A ELITE"
                                   : student.overallResult?.toUpperCase()}
                               </span>
                             </td>
@@ -573,16 +477,6 @@ const ResultsHub = () => {
                               className={`table-grade-cell grade-${student.englishGrade?.toLowerCase()}`}>
                               <strong>{student.englishGrade}</strong>
                             </td>
-
-                            <td>
-                              <button
-                                onClick={() =>
-                                  handleLikeAppreciation(student.docId)
-                                }
-                                className="table-like-trigger-btn">
-                                <FaHeart /> <span>{student.likes || 0}</span>
-                              </button>
-                            </td>
                           </tr>
                         );
                       })}
@@ -592,8 +486,235 @@ const ResultsHub = () => {
               )}
             </div>
           </div>
-        </div>{" "}
+        </div>
         {/* results-core-split-layout END */}
+
+        {isModalOpen && (
+          <div
+            className="results-core-split-layout"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              background: "rgba(26, 10, 84, 0.4)",
+              backdropFilter: "blur(4px)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 99999,
+            }}>
+            <div
+              style={{
+                background: "white",
+                padding: "30px",
+                borderRadius: "24px",
+                maxWidth: "460px",
+                width: "90%",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                position: "relative",
+                textAlign: "left",
+                maxHeight: "90vh",
+                overflowY: "auto",
+              }}>
+              {/* Close Cross Button */}
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                style={{
+                  position: "absolute",
+                  top: "20px",
+                  right: "20px",
+                  background: "#f1f5f9",
+                  border: "none",
+                  width: "32px",
+                  height: "32px",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: "#555",
+                }}>
+                <FaXmark />
+              </button>
+
+              {/* {formError && (
+                <div
+                  style={{
+                    background: "#fdedec",
+                    borderLeft: "4px solid #e74c3c",
+                    color: "#c0392b",
+                    padding: "10px",
+                    borderRadius: "6px",
+                    fontSize: "0.8rem",
+                    fontWeight: "bold",
+                    marginBottom: "15px",
+                  }}>
+                  ⚠️ {formError}
+                </div>
+              )} */}
+
+              <form
+                onSubmit={handleSubmitResult}
+                className="secure-submission-form styled-form ">
+                <h3>Submit O/L Records</h3>
+                <p>
+                  Enter your examination details accurately to log your
+                  achievements into the live registry.
+                </p>
+
+                <div className="input-group">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    value={form.fullName}
+                    onChange={(e) =>
+                      setForm({ ...form, fullName: e.target.value })
+                    }
+                    placeholder="e.g. Imesh Lakshan"
+                    required
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Index Number</label>
+                  <input
+                    type="text"
+                    value={form.indexNumber}
+                    onChange={(e) =>
+                      setForm({ ...form, indexNumber: e.target.value })
+                    }
+                    placeholder="e.g. 6089412"
+                    required
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Attended School Name</label>
+                  <input
+                    type="text"
+                    value={form.schoolName}
+                    onChange={(e) =>
+                      setForm({ ...form, schoolName: e.target.value })
+                    }
+                    placeholder="e.g. Royal College"
+                    required
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Overall Examination Result</label>
+                  <input
+                    type="text"
+                    value={form.overallResult}
+                    onChange={(e) =>
+                      setForm({ ...form, overallResult: e.target.value })
+                    }
+                    placeholder="e.g. 9A or 8A, 1B"
+                    required
+                  />
+                </div>
+                {/* TEACHERS SELECTION DROPDOWNS */}
+                <div className="input-group">
+                  <label>Maths Teacher Name</label>
+                  <select
+                    value={form.mathsTeacher}
+                    onChange={(e) =>
+                      setForm({ ...form, mathsTeacher: e.target.value })
+                    }>
+                    <option value="Maths Sir">Maths Sir</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div className="input-group">
+                  <label>Science Teacher Name</label>
+                  <select
+                    value={form.scienceTeacher}
+                    onChange={(e) =>
+                      setForm({ ...form, scienceTeacher: e.target.value })
+                    }>
+                    <option value="Science Sir">Science Sir</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div className="input-group">
+                  <label>English Teacher Name</label>
+                  <select
+                    value={form.englishTeacher}
+                    onChange={(e) =>
+                      setForm({ ...form, englishTeacher: e.target.value })
+                    }>
+                    <option value="English Sir">English Sir</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div className="grades-selector-triple-grid">
+                  <div className="grade-drop">
+                    <label>Maths</label>
+                    <select
+                      value={form.mathsGrade}
+                      onChange={(e) =>
+                        setForm({ ...form, mathsGrade: e.target.value })
+                      }>
+                      <option>A</option>
+                      <option>B</option>
+                      <option>C</option>
+                      <option>S</option>
+                      <option>F</option>
+                    </select>
+                  </div>
+                  <div className="grade-drop">
+                    <label>Science</label>
+                    <select
+                      value={form.scienceGrade}
+                      onChange={(e) =>
+                        setForm({ ...form, scienceGrade: e.target.value })
+                      }>
+                      <option>A</option>
+                      <option>B</option>
+                      <option>C</option>
+                      <option>S</option>
+                      <option>F</option>
+                    </select>
+                  </div>
+                  <div className="grade-drop">
+                    <label>English</label>
+                    <select
+                      value={form.englishGrade}
+                      onChange={(e) =>
+                        setForm({ ...form, englishGrade: e.target.value })
+                      }>
+                      <option>A</option>
+                      <option>B</option>
+                      <option>C</option>
+                      <option>S</option>
+                      <option>F</option>
+                    </select>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    background: "#001b42",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "8px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 12px rgba(255,75,43,0.2)",
+                    marginTop: "5px",
+                  }}
+                  className="submit-verify-btn "
+                  disabled={isUploading}>
+                  <FaPaperPlane />{" "}
+                  {isUploading ? "Uploading..." : "Verify & Submit Records"}
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+
         {/* 💬 🔗 MODAL POPUP MESSAGE LAYER */}
         {showPopup && (
           <div className="custom-modal-blur-overlay">
@@ -614,6 +735,7 @@ const ResultsHub = () => {
                 <Link className="popup-redirect-btn" to="/students-reviews">
                   <FaCommentDots /> Go to Comments Board
                 </Link>
+
                 <button
                   onClick={() => setShowPopup(false)}
                   className="popup-close-btn">
