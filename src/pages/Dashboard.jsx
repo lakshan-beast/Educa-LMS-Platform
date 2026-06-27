@@ -6,16 +6,12 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 
 import AIChatWidget from "../components/AIChatWidget";
 
-import { FaCrown, FaUser } from "react-icons/fa6";
 import { BiError } from "react-icons/bi";
 import { FcApproval } from "react-icons/fc";
 import { PiPassword } from "react-icons/pi";
-import { FaMobile } from "react-icons/fa";
-import { BiSolidPhoneCall } from "react-icons/bi";
 import { ImFire } from "react-icons/im";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { FaBookOpen, FaLock } from "react-icons/fa6";
-import { FaGraduationCap } from "react-icons/fa6";
+import { FaBookOpen, FaLock, FaCrown } from "react-icons/fa6";
 
 import {
   IoCalendarOutline,
@@ -25,14 +21,13 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 
-import ScoreAnalytics from "../components/ScorenAnalytics";
+import ScoreAnalytics from "../text/ScorenAnalytics";
 import { premiumStudentsList } from "../data/approvedStudents";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const studentId = localStorage.getItem("user_id") || "";
   const userSubjects = localStorage.getItem("user_subjects") || "";
-  // const [students, setStudents] = useState([]);
 
   const nowYear = new Date().getFullYear();
 
@@ -125,11 +120,7 @@ const Dashboard = () => {
   const [studentData, setStudentData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // 1. දැනට ලොග් වී සිටින ශිෂ්‍යයාගේ ID එක (උදාහරණයක් ලෙස)
-  // සත්‍ය වශයෙන්ම ලොග් වන විට ලැබෙන ID එක මෙතනට ආදේශ කරන්න
-  // const loggedInId = "EDU-MES-11-SADUNNIMSARA-0803";
-
-  // 2. Firebase එකෙන් දත්ත සොයා ගන්නා Function එක
+  // 2. Firebase Function එ
   async function getStudentByField(id) {
     try {
       const studentRef = collection(db, "students");
@@ -137,7 +128,6 @@ const Dashboard = () => {
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        // පළමු ලේඛනයේ (Document) දත්ත ලබාගෙන return කිරීම
         return querySnapshot.docs[0].data();
       } else {
         console.log("No such student was found.");
@@ -149,18 +139,18 @@ const Dashboard = () => {
     }
   }
 
-  // 3. පිටුව (Page) load වන විටම function එක run කිරීම
+  // 3. load function run
   useEffect(() => {
     async function loadData() {
       setLoading(true);
-      const data = await getStudentByField(studentId); // මෙතනදී function එක call වේ
+      const data = await getStudentByField(studentId);
       setStudentData(data);
       setLoading(false);
     }
     loadData();
   }, [studentId]);
 
-  // 4. දත්ත screen එකේ පෙන්වීම
+  // 4. load screen
   if (loading) return <p>(Loading...)</p>;
   if (!studentData) return <p>No such student's Details was found.</p>;
 
@@ -351,7 +341,6 @@ const Dashboard = () => {
             <div className="side-dash-content">
               <div className="card-container countdown-card">
                 <h4>
-                  {/* <FaHourglassHalf /> */}
                   <img
                     src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
                     alt="live-emoji"
@@ -360,7 +349,6 @@ const Dashboard = () => {
                       height: "20px",
                       objectFit: "contain",
                     }}
-                    // refferrerPolicy="no-referrer"
                   />{" "}
                   2026 - O/L Exam Countdown
                 </h4>
