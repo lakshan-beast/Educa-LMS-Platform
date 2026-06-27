@@ -165,7 +165,7 @@ Developed with absolute passion by Lakshan 🦾 -->
 
 An enterprise-grade, hyper-optimized Learning Management System (LMS) designed for Grade 6 to Grade 11 Sri Lankan national curriculum teachers and students, featuring a specialized module for Grade 11 Paper Classes. Built with a highly sophisticated serverless frontend architecture, custom embedded AI tutoring capabilities, and strict parameterized conditional resource boundaries.
 
-🚀 Live System Link: [educa-ol-learning-platform.vercel.app]
+🚀 Live System Link: [(https://educa-lms-platform.vercel.app/)]
 
 ---
 
