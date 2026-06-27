@@ -153,7 +153,7 @@ const AIChatWidget = () => {
         </div>
       )}
 
-      {/* ==================== 🖥️ 👑 🆕 2. THE MAIN PORTABLE AI CHAT WINDOW ==================== */}
+      {/* THE MAIN PORTABLE AI CHAT WINDOW */}
       {isOpen && (
         <div className="ai-chat-window-card">
           {showHearts && (
@@ -228,7 +228,6 @@ const AIChatWidget = () => {
               </span>
             </div>
           )}
-          {/* ============================================================ */}
 
           {/* A. CHAT WINDOW HEADER CONTAINER */}
           <div className="chat-window-container">
@@ -308,7 +307,8 @@ const AIChatWidget = () => {
             )}
             <div ref={messagesEndRef} />
           </div>
-          {/* C. QUICK SUGGESTIONS DOCK PANEL: ළමයාට ලේසියෙන් ක්ලික් කර ප්‍රශ්න ඇසීමට */}
+
+          {/* C. QUICK SUGGESTIONS DOCK PANEL */}
           <div className="suggest-conatiner">
             <button
               type="button"
@@ -363,7 +363,7 @@ const AIChatWidget = () => {
         </div>
       )}
 
-      {/* ==================== 👑 KEYFRAMES ANIMATIONS CSS CONTROL ==================== */}
+      {/* 👑 KEYFRAMES ANIMATIONS CSS CONTROL */}
       <style>{`
         @keyframes popupFade {
           from { transform: translateY(20px) scale(0.95); opacity: 0; }

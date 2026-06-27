@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 
-import { FaBullhorn, FaCalendarCheck, FaLayerGroup } from "react-icons/fa6";
+import { FaCalendarCheck, FaLayerGroup } from "react-icons/fa6";
 
 import Loader from "../components/Loader";
 
@@ -43,7 +43,7 @@ const LiveNoticeDisplay = () => {
     <div className="notice-board-wrapper parts">
       <div className="notice-header">
         <h2>
-          <FaBullhorn className="icon" /> Institutional{" "}
+          Institutional
           <span>Announcements</span>
         </h2>
         <p>

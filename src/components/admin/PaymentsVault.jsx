@@ -17,7 +17,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
       id: 1,
       studentId: "EDU-MES-11-User-****",
       studentName: "User",
-      month: "May",
+      month: "January",
       amount: 1000,
       maths_fees: "Paid",
       science_fees: "Pending",

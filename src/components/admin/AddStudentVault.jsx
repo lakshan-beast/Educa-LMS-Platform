@@ -50,7 +50,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     if (formData.science) subCode += "S";
 
     if (!subCode) {
-      setError("කරුණාකර අවම වශයෙන් එක විෂයක්වත් තෝරන්න!");
+      setError("Please select at least one subject!");
       setSuccess("");
       return;
     }
