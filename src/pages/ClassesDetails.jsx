@@ -28,6 +28,8 @@ const ClassesDetails = () => {
         classesArray.push({ id: doc.id, ...doc.data() });
       });
       setCompleteShedules(classesArray);
+
+      console.log(classesArray);
     });
 
     return () => unsubscribe();
@@ -231,7 +233,7 @@ const ClassesDetails = () => {
                               ? "#03204b"
                               : "#062853",
                         }}>
-                        {cls.notice.lesson}
+                        {cls.notice.currentLesson}
                       </span>
                     </p>
                   </div>
