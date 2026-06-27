@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-// import { completeShedules } from "../data/completeShedule";
 
-// 📝 ඔයාගේ firebase setup එකෙන් db එක import කරගන්න
 import { db } from "../firebaseConfig";
 import { collection, onSnapshot } from "firebase/firestore";
 
@@ -13,78 +11,20 @@ import {
 } from "react-icons/fa6";
 
 const ClassesDetails = () => {
-  // const [selectedGrade, setSelectedGrade] = useState("6");
-  // const [currentTime, setCurrentTime] = useState(new Date());
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrentTime(new Date());
-  //   }, 30000);
-  //   return () => clearInterval(timer);
-  // }, []);
-
-  // // 🕒 3. Auto-Time Status Calculator Logic
-  // const getClassStatus = (cls) => {
-  //   if (cls.statusOverride === "Canceled") return "Canceled";
-  //   if (cls.statusOverride === "Holiday") return "Holiday";
-
-  //   const daysOfWeek = [
-  //     "Sunday",
-  //     "Monday",
-  //     "Tuesday",
-  //     "Wednesday",
-  //     "Thursday",
-  //     "Friday",
-  //     "Saturday",
-  //   ];
-  //   const currentDayName = daysOfWeek[currentTime.getDay()];
-
-  //   if (currentDayName !== cls.day) {
-  //     return "Upcoming";
-  //   }
-
-  //   // අද පන්තිය තියෙන දවස නම්, වෙලාව බලනවා
-  //   const currentHours = currentTime.getHours();
-  //   const currentMinutes = currentTime.getMinutes();
-  //   const currentTotalMinutes = currentHours * 60 + currentMinutes;
-
-  //   const [startH, startM] = cls.startTime.split(":").map(Number);
-  //   const [endH, endM] = cls.endTime.split(":").map(Number);
-
-  //   const startTotalMinutes = startH * 60 + startM;
-  //   const endTotalMinutes = endH * 60 + endM;
-
-  //   if (
-  //     currentTotalMinutes >= startTotalMinutes &&
-  //     currentTotalMinutes <= endTotalMinutes
-  //   ) {
-  //     return "Active";
-  //   } else if (currentTotalMinutes > endTotalMinutes) {
-  //     return "Ended";
-  //   }
-
-  //   return "Upcoming";
-  // };
-
-  // const filteredClasses = completeShedules.filter(
-  //   (cls) => cls.grade === selectedGrade,
-  // );
-
   const [selectedGrade, setSelectedGrade] = useState("6");
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  // ☁️ [CLOUD STATE]: Cloud එකෙන් එන හැම පන්තියකම විස්තර තියාගන්න ස්ටේට් එකක්
+  // ☁️ [CLOUD STATE]
   const [completeShedules, setCompleteShedules] = useState([]);
 
-  // 🔄 1. Cloud එකෙන් සම්පූර්ණ පන්ති ලැයිස්තුවම Real-time Sync කිරීම
+  // 1. Cloud Real-time Sync
   useEffect(() => {
     const schedulesRef = collection(db, "schedules");
 
-    // Cloud එකේ මොනවා හරි වෙනස් වුනොත් මේක auto-update වෙනවා
+    // Cloud auto-update
     const unsubscribe = onSnapshot(schedulesRef, (querySnapshot) => {
       const classesArray = [];
       querySnapshot.forEach((doc) => {
-        // Document එකේ ID එකත් එක්කම data ටික array එකට දාගන්නවා
         classesArray.push({ id: doc.id, ...doc.data() });
       });
       setCompleteShedules(classesArray);
@@ -93,7 +33,7 @@ const ClassesDetails = () => {
     return () => unsubscribe();
   }, []);
 
-  // 🕒 2. වෙලාව Update වෙන Timer එක (මිනිත්තු භාගයෙන් භාගයට)
+  // 2.Update Timer
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -103,11 +43,9 @@ const ClassesDetails = () => {
 
   // 🕒 3. Auto-Time Status Calculator Logic
   const getClassStatus = (cls) => {
-    // 🧠 Admin panel එකෙන් අපි overrideStatus එක දැම්මේ overrideStatus විදිහටයි
     if (cls.overrideStatus === "Canceled") return "Canceled";
     if (cls.overrideStatus === "Holiday") return "Holiday";
 
-    // පන්තියේ overrideStatus එක 'AUTO' නම් හෝ මුකුත් නැත්නම් සාමාන්‍ය වෙලාව බලනවා
     const daysOfWeek = [
       "Sunday",
       "Monday",
@@ -119,7 +57,6 @@ const ClassesDetails = () => {
     ];
     const currentDayName = daysOfWeek[currentTime.getDay()];
 
-    // සටහන: පන්තිය තියෙන දවස (cls.day) සහ වෙලාවන් (cls.startTime/cls.endTime) Cloud එකේ තියෙන්න ඕනේ
     if (currentDayName !== cls.day) {
       return "Upcoming";
     }
@@ -128,8 +65,7 @@ const ClassesDetails = () => {
     const currentMinutes = currentTime.getMinutes();
     const currentTotalMinutes = currentHours * 60 + currentMinutes;
 
-    if (!cls.startTime || !cls.endTime) return "Upcoming"; // වෙලාවන් නැත්නම් error නොවී බේරෙන්න
-
+    if (!cls.startTime || !cls.endTime) return "Upcoming";
     const [startH, startM] = cls.startTime.split(":").map(Number);
     const [endH, endM] = cls.endTime.split(":").map(Number);
 
@@ -148,7 +84,7 @@ const ClassesDetails = () => {
     return "Upcoming";
   };
 
-  // 🎯 4. තෝරාගත් Grade එක අනුව පන්ති ටික Filter කිරීම
+  //  4.  Grade Filter
   const filteredClasses = completeShedules.filter(
     (cls) => cls.grade === selectedGrade,
   );
@@ -158,24 +94,11 @@ const ClassesDetails = () => {
       <div
         className="class-container"
         style={{ maxWidth: "1200px", margin: "0 auto", paddingTop: "1rem" }}>
-        {/* <Link
-          to="/"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "20px",
-            color: "#001b42",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}>
-          <FaArrowLeft /> Back to Home Page */}
-        {/* </Link> */}
         <h2 style={{ textAlign: "center" }}>
           Weekly <span>Class Schedule</span>
         </h2>
 
-        {/* 🎓 4. Grade Selector Tabs (6-11 ශ්‍රේණි තෝරන්න බටන්ස් - ටැග් එක නිවැරදි කළා) */}
+        {/* 🎓 4. Grade Selector Tabs */}
         <div
           className="grade-filter-tabs"
           style={{
@@ -200,7 +123,6 @@ const ClassesDetails = () => {
           ))}
         </div>
 
-        {/* ਪන්ਤੀ කාඩ්ස් පද්ධතිය */}
         <div
           className="class-grid"
           style={{
@@ -211,7 +133,7 @@ const ClassesDetails = () => {
           }}>
           {filteredClasses.length > 0 ? (
             filteredClasses.map((cls) => {
-              const currentStatus = getClassStatus(cls); // Status එක හැදෙනවා
+              const currentStatus = getClassStatus(cls);
 
               return (
                 <div
@@ -224,17 +146,7 @@ const ClassesDetails = () => {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      // marginBottom: "15px",
                     }}>
-                    {/* status part */}
-                    {/* <span
-                      className={`status-badge ${currentStatus.toLowerCase()}`}>
-                      {currentStatus === "Active" && "● Live Now"}
-                      {currentStatus === "Upcoming" && "Upcoming"}
-                      {currentStatus === "Ended" && "Class Ended"}
-                      {currentStatus === "Canceled" && "Postponed"}
-                    </span> */}
-
                     <p
                       style={{
                         display: "flex",
@@ -242,10 +154,8 @@ const ClassesDetails = () => {
                         gap: "8px",
                         margin: 0,
                         padding: " 6px",
-                        // color: "#1a0a54",
                         color: "white",
                         borderRadius: "6px",
-                        // borderLeft: "6px solid #001b42",
                         background:
                           currentStatus === "Active" ? "#ff2c4b" : "#001c42e3",
                       }}>
@@ -260,8 +170,6 @@ const ClassesDetails = () => {
                         margin: 0,
                         padding: " 6px",
                         color: "#03204b",
-                        // color: "white",
-                        // borderRadius: "6px",
                         fontWeight: "600",
                         borderBottom: "2px solid #001b42",
                       }}>
@@ -280,25 +188,6 @@ const ClassesDetails = () => {
                       }}>
                       Teacher: <b>{cls.teacher}</b>
                     </p>
-                    {/* <p>
-                      <FaClock /> {cls.startTime} - {cls.endTime}
-                    </p> */}
-
-                    {/* <span
-                      className={`status-badge ${currentStatus.toLowerCase()}`}>
-                      {currentStatus === "Active" && "● Live Now"}
-                      {currentStatus === "Upcoming" && "Upcoming"}
-                      {currentStatus === "Ended" && "Class Ended"}
-                      {currentStatus === "Canceled" && "Postponed"}
-                    </span> */}
-                    {/* <p
-                      style={{
-                        marginTop: "5px",
-                        fontSize: "0.9rem",
-                        color: "#555",
-                      }}>
-                      <b>Current Lesson:</b> {cls.notice.lesson}
-                    </p> */}
                   </div>
 
                   {/* Lesson Notice Section */}
@@ -308,7 +197,6 @@ const ClassesDetails = () => {
                       background:
                         currentStatus === "Canceled" ? "#f0f9ff" : "#f8faff",
                       padding: "10px 0",
-                      // borderRadius: "8px",
                       borderLeft:
                         currentStatus === "Canceled"
                           ? "4px solid #001b42"
@@ -323,7 +211,6 @@ const ClassesDetails = () => {
                         color: "#03204b",
                         textAlign: "left",
                         margin: 0,
-                        // textTransform: "uppercase",
                         fontWeight: "600",
                       }}>
                       <FaBook
@@ -339,12 +226,10 @@ const ClassesDetails = () => {
                       <span
                         style={{
                           display: "block",
-                          // marginTop: "12px",
                           color:
                             currentStatus === "Canceled"
                               ? "#03204b"
                               : "#062853",
-                          // borderTop: "2px solid",
                         }}>
                         {cls.notice.lesson}
                       </span>
@@ -358,7 +243,6 @@ const ClassesDetails = () => {
                       background:
                         currentStatus === "Canceled" ? "#fff0f0" : "#fff4f2",
                       padding: "10px 0",
-                      // borderRadius: "8px",
                       borderLeft:
                         currentStatus === "Canceled"
                           ? "4px solid #fd473a"
@@ -392,7 +276,6 @@ const ClassesDetails = () => {
                             currentStatus === "Canceled"
                               ? "#fd473a"
                               : "#dd1305",
-                          // marginTop: "12px",
                         }}>
                         {cls.notice.specialNote}
                       </span>
@@ -402,27 +285,6 @@ const ClassesDetails = () => {
                   {/* Card Footer (Active Class Link Logic) */}
                   <div className="class-footer">
                     {currentStatus === "Active" ? (
-                      // <a
-                      //   href={cls.link}
-                      //   target="_blank"
-                      //   rel="noopener noreferrer"
-                      //   className="start-btn"
-                      //   style={{
-                      //     width: "100%",
-                      //     display: "flex",
-                      //     justifyContent: "center",
-                      //     alignItems: "center",
-                      //     gap: "8px",
-                      //     textDecoration: "none",
-                      //     background:
-                      //       "linear-gradient(to right, #ff4b2b, #ff416c)",
-                      //     color: "white",
-                      //     padding: "10px",
-                      //     borderRadius: "8px",
-                      //     fontWeight: "bold",
-                      //   }}>
-                      //   <FaVideo /> Join Live Class Now
-                      // </a>
                       <span
                         style={{
                           width: "100%",
@@ -440,9 +302,6 @@ const ClassesDetails = () => {
                         }}
                         className={`status-badge ${currentStatus.toLowerCase()}`}>
                         {currentStatus === "Active" && "● Live Now"}
-                        {/* {currentStatus === "Upcoming" && "Upcoming"}
-                        {currentStatus === "Ended" && "Class Ended"}
-                        {currentStatus === "Canceled" && "Postponed"} */}
                       </span>
                     ) : (
                       <button
