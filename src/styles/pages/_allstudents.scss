@@ -12,8 +12,8 @@
   flex-wrap: wrap;
   gap: 20px;
   border-bottom: 2px solid #e2e8f0;
-  padding-bottom: 25px;
-  margin-bottom: 35px;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
 
   h1 {
     color: $secondary-blue;
@@ -58,7 +58,7 @@
   width: $container-width-default;
   overflow-x: auto;
   background-color: $white;
-  border-radius: $border-radius-large;
+  border-radius: $border-radius-small;
   border: 1px solid #e2e8f0;
   box-shadow: 0 10px 25px rgba(3, 32, 75, 0.02);
 }
@@ -75,13 +75,15 @@
     padding: 16px 20px;
     font-weight: $font-weight-800;
     border-bottom: 2px solid #e2e8f0;
+    text-align: center;
   }
 
   td {
-    padding: 16px 20px;
-    color: $secondary-blue3;
+    padding: 2px 8px;
+    color: $secondary-blue;
     border-bottom: 1px solid #f1f5f9;
     font-weight: $font-weight-500;
+    text-align: center;
 
     input {
       padding: 6px 12px;
@@ -118,6 +120,13 @@
   transition: all 0.2s;
 }
 
+.check-btn {
+  background-color: #000000;
+  color: $white;
+  &:hover {
+    background-color: #8d8d8d;
+  }
+}
 .edit-btn {
   background-color: #f1f5f9;
   color: $secondary-blue;
@@ -151,10 +160,11 @@
 /* 👑 MULTI-LEVEL FILTER CONTROL DOCK */
 .master-filter-control-dock {
   display: flex;
+  justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 1rem;
   background-color: #f8fafc;
-  padding: 18px 25px;
+  padding: 18px 15px;
   border-radius: $border-radius-medium;
   border: 1px solid #e2e8f0;
   flex-wrap: wrap;
@@ -216,20 +226,20 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  font-family: "Courier New", Courier, monospace;
   font-weight: $font-weight-700;
   letter-spacing: 0.5px;
 }
 
 .mask-toggle-trigger {
-  background: none;
+  background: $secondary-blue;
   border: none;
-  color: $secondary-blue3;
+  color: $white;
   cursor: pointer;
   font-size: $font-size-default;
   display: flex;
   align-items: center;
   transition: color 0.2s;
+
   &:hover {
     color: $secondary-blue;
   }
@@ -242,21 +252,23 @@
   flex-wrap: wrap;
 }
 .sub-badge-tag {
-  font-size: $font-size-body-mm;
+  font-size: $font-size-default !important;
   font-weight: $font-weight-800;
-  padding: 3px 8px;
-  border-radius: $border-radius-small;
+  padding: 2px 2px 0px 2px !important;
+  border-radius: $border-radius-circle;
   color: $white;
   text-transform: $text-transform-uppercase;
+  opacity: 1 !important;
 
   &.maths {
-    background-color: #003994;
+    background-color: #0062ff;
   }
   &.science {
-    background-color: #008311;
+    background-color: #00ff22;
+    // color: $secondary-blue;
   }
   &.english {
-    background-color: #b47200;
+    background-color: #ff7b00;
   }
 }
 
@@ -266,4 +278,8 @@
   border: 1px solid #cbd5e1;
   font-weight: $font-weight-600;
   color: $secondary-blue;
+}
+
+.rows-btn {
+  display: flex;
 }
