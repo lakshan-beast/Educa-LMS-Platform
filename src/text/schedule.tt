@@ -1,0 +1,293 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { db } from "../../firebaseConfig";
+import { doc, setDoc, onSnapshot } from "firebase/firestore";
+import NotificationToast from "../NotificationToast"; // 👈 අපේ අලුත් Toast Component එක සම්බන්ධ කළා
+
+import {
+  FaCalendarDays,
+  FaClock,
+  FaCircleXmark,
+  FaPause,
+  FaVideo,
+  FaPenToSquare,
+} from "react-icons/fa6";
+
+const ClassScheduleVault = () => {
+  const { subject } = useParams();
+
+  // 👑 [LOCAL GRADE STATE]: 6 සිට 11 සහ 11 Paper Class පාලනය කිරීමට
+  const [localGrade, setLocalGrade] = useState("11");
+
+  // ☁️ [CLOUD CURRENT SCHEDULE STATE]: Cloud එකෙන් එන දත්ත තබා ගැනීමට
+  const [currentSchedule, setCurrentSchedule] = useState(null);
+
+  const [formData, setFormData] = useState({
+    targetDateTime: "",
+    weekPicker: "",
+    currentLesson: "",
+    specialNotes: "",
+    zoomLink: "",
+  });
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  // 🔄 1. Cloud එකෙන් Real-time Data Sync කිරීම (onSnapshot)
+  useEffect(() => {
+    // 🛠️ 1. මඟහැරුණු || (OR) ලකුණු නිවැරදි කළා
+    if (!subject || !localGrade) return;
+
+    // Firestore එකේ document path එක නිර්මාණය කිරීම: schedules/grade_subject
+    const docRef = doc(db, "schedules", ${localGrade.replace(/\s+/g, "-")}_${subject});
+
+    // Cloud එකේ වෙනස්කම් සිදු වූ සැනින් App එකට Update වේ
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const cloudData = docSnap.data();
+        setCurrentSchedule(cloudData);
+        setFormData({
+          // 🛠️ 2. මඟහැරුණු || (OR) ලකුණු නිවැරදි කළා
+          weekPicker: cloudData.weekPicker || "",
+          targetDateTime: cloudData.targetDateTime || "",
+          currentLesson: cloudData.currentLesson || "",
+          specialNotes: cloudData.specialNotes || "",
+          zoomLink: cloudData.zoomLink || "",
+        });
+      } else {
+        setCurrentSchedule(null);
+        setFormData({
+          weekPicker: "",
+          targetDateTime: "",
+          currentLesson: "",
+          specialNotes: "",
+          zoomLink: "",
+        });
+      }
+    });
+
+    return () => unsubscribe();
+  }, [localGrade, subject]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // ☁️ 2. Class Situation Override එක Cloud Update කිරීම
+  const handleStatusOverride = async (statusType) => {
+    if (!currentSchedule) {
+      setError("Please enter the class details first and save! ⚠️");
+      return;
+    }
+
+    try {
+      // 🛠️ 3. මඟහැරුණු Backticks (  ) නිවැරදි කළා
+      const docRef = doc(db, "schedules", ${localGrade.replace(/\s+/g, "-")}_${subject});
+      await setDoc(docRef, { overrideStatus: statusType }, { merge: true });
+
+      setSuccess(The class situation was successfully changed to ${statusType}! 🟢);
+    } catch {
+      setError("Cloud update failed! Please try again. 🔴");
+    }
+  };
+
+  // ☁️ 3. Form එක Submit කරන විට සම්පූර්ණ Data එක Cloud එකට යැවීම
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newRecord = {
+      grade: localGrade,
+      subject: subject,
+      className: Grade ${localGrade} ${subject?.toUpperCase()},
+      teacherName:
+        subject === "maths"
+          ? "Janaka Sir"
+          : subject === "science"
+            ? "Science Sir"
+            : "English Teacher",
+      targetDateTime: formData.targetDateTime,
+      currentLesson: formData.currentLesson,
+      specialNotes: formData.specialNotes,
+      zoomLink: formData.zoomLink,
+      weekPicker: formData.weekPicker,
+      overrideStatus: currentSchedule?.overrideStatus || "AUTO", // කලින් status එකක් තිබ්බොත් ඒකම ගන්නවා, නැත්නම් AUTO
+    };
+
+    try {
+      // 🛠️ 4. මඟහැරුණු Backticks (  ) නිවැරදි කළා
+      const docRef = doc(db, "schedules", ${localGrade.replace(/\s+/g, "-")}_${subject});
+      await setDoc(docRef, newRecord);
+      setSuccess(Grade ${localGrade} Schedule was successfully updated in Cloud! 🟢);
+    } catch {
+      setError("Failed to save data to Cloud! 🔴");
+    }
+  };
+
+  // 🎥 Zoom Link එක පෙන්විය යුතු ශ්‍රේණි ද කියා පරික්ෂා කරන සරල Function එකක්
+  const isZoomRequired = ["10", "11", "11 Paper Class"].includes(localGrade);
+
+  return (
+    <div className="vault-container">
+      <div className="vault-header">
+        <h3>
+          <FaCalendarDays /> Class Schedule Vault ({subject?.toUpperCase()})
+        </h3>
+        <p>Control the date, time, lesson, and Zoom link for classes by grade (6-11).</p>
+      </div>
+
+      <div className="schedule-form">
+        <div className="schedule-content">
+          <h4>
+            <FaPenToSquare /> Update Class Details
+          </h4>
+          
+          <form onSubmit={handleSubmit} className="styled-form">
+            <div className="input-group">
+              <label>Select School Grade</label>
+              <select
+                value={localGrade}
+                onChange={(e) => setLocalGrade(e.target.value)}>
+                {["6", "7", "8", "9", "10", "11", "11 Paper Class"].map((g) => (
+                  <option key={g} value={g}>
+                    Grade {g}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="input-group">
+              <label>Class Date & Start Time</label>
+              <input
+                type="datetime-local"
+                name="targetDateTime"
+                required
+                value={formData.targetDateTime}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="input-group">
+              <label>Class Week</label>
+              <input
+                type="week"
+                name="weekPicker"
+                required
+                value={formData.weekPicker}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="input-group">
+              <label>Current Lesson</label>
+              <input
+                type="text"
+                name="currentLesson"
+                placeholder="ex: Lesson 01 - Core Concept"
+                required
+                value={formData.currentLesson}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="input-group">
+              <label>Special Notes</label>
+              <input
+                type="text"
+                name="specialNotes"
+                placeholder="ex: Bring previous week tutes..."
+                value={formData.specialNotes}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            {/* 🎥 5. CONDITIONAL RENDERING: 10, 11 සහ Paper Class වලට විතරක් සජීවීව Zoom input එක මතු වේ */}
+            {isZoomRequired && (
+              <div className="input-group" style={{ animation: "slideDown 0.25s ease" }}>
+                <label style={{ color: "#2563eb", fontWeight: "600" }}>🎥 Virtual Zoom Meeting Link</label>
+                <input
+                  type="url"
+                  name="zoomLink"
+                  placeholder="https://zoom.us..."
+                  required={isZoomRequired}
+                  value={formData.zoomLink}
+                  onChange={handleInputChange}
+                />
+              </div>
+            )}
+
+            <button type="submit" className="submit-button" style={{ marginTop: "15px" }}>
+              Save & Broadcast Schedule
+            </button>
+          </form> {/* 🛠️ 6. මඟහැරුණු Form Closing Tag එක එකතු කළා */}
+        </div>
+
+        {/* 🎛️ 6. ADMIN OVERRIDE TRIGGERS (FORCE LIVE, POSTPONE, CLOSE CONTROLLER PANEL) */}
+        <div className="schedule-content status-override-panel" style={{ height: "fit-content" }}>
+          <h4>⚡ Live Remote Broadcast Controls</h4>
+          <p style={{ fontSize: "0.85rem", color: "#666", marginBottom: "15px" }}>
+            හදිසි අවස්ථාවකදී පන්තියේ සජීවී තත්ත්වය මෙතනින් සැනින් වෙනස් කළ හැක.
+          </p>
+
+          <div className="override-buttons-grid" style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "20px" }}>
+            <button 
+              type="button" 
+              onClick={() => handleStatusOverride("FORCE_ACTIVE")}
+              className="override-btn live"
+              style={{ display: "flex", alignItems: "center", gap: "10px", padding: "12px", background: "#e8f8f5", border: "1px solid #2ecc71", color: "#27ae60", borderRadius: "8px", fontWeight: "bold", cursor: "pointer" }}
+            >
+              <FaVideo /> FORCE LIVE NOW (LIVE NOW Badge)
+            </button>
+
+            <button 
+              type="button" 
+              onClick={() => handleStatusOverride("POSTPONED")}
+              className="override-btn postpone"
+              style={{ display: "flex", alignItems: "center", gap: "10px", padding: "12px", background: "#fff9e6", border: "1px solid #f39c12", color: "#d35400", borderRadius: "8px", fontWeight: "bold", cursor: "pointer" }}
+            >
+              <FaPause /> POSTPONE CLASS (CLASS POSTPONED)
+            </button>
+
+            <button 
+              type="button" 
+              onClick={() => handleStatusOverride("CLOSED")}
+              className="override-btn close"
+              style={{ display: "flex", alignItems: "center", gap: "10px", padding: "12px", background: "#fdedec", border: "1px solid #e74c3c", color: "#c0392b", borderRadius: "8px", fontWeight: "bold", cursor: "pointer" }}
+            >
+              <FaCircleXmark /> CLOSE CLASS TERMINAL (AUTO COUNTDOWN)
+            </button>
+          </div>
+
+          <div
+            style={{
+              background: "#f4f7ff",
+              padding: "15px",
+              borderRadius: "12px",
+              border: "1px solid #c7d2fe",
+              fontSize: "0.85rem",
+              fontWeight: "bold",
+              color: "#1e1b4b",
+            }}>
+            📢 Grade {localGrade} Currently live status:{" "}
+            <div style={{ background: "#f4f7ff", padding: "15px", borderRadius: "12px", border: "1px solid #c7d2fe", fontSize: "0.85rem", fontWeight: "bold", color: "#1e1b4b", }}> 📢 Grade {localGrade} Currently live status:{" "} 
+Use code with caution.
+<span
+style={{
+color:
+currentSchedule?.overrideStatus === "CLOSED"
+? "red"
+: currentSchedule?.overrideStatus === "POSTPONED"
+? "orange"
+: "green",
+}}>
+{currentSchedule?.overrideStatus || "AUTO COUNTDOWN"}
+
+
+
+{/* 🔔 7. AUTOMATED AUTO-DISMISS NOTIFICATION TOASTS */}
+<NotificationToast message={success} type="success" onClose={() => setSuccess("")} />
+<NotificationToast message={error} type="error" onClose={() => setError("")} />
+
+);
+};
+export default ClassScheduleVault;

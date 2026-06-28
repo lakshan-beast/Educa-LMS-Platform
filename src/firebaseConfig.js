@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 // 👑 for Fixed Network Errors
 import { initializeFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getMessaging, getToken } from "firebase/messaging"; // 👈 මේක එකතු කළා
 
 // firebase config code
 const firebaseConfig = {
@@ -24,6 +25,30 @@ export const db = initializeFirestore(app, {
 
 //  Cloud Storage Connection
 export const storage = getStorage(app);
+
+// 🚀 Messaging Connection
+export const messaging = getMessaging(app);
+
+// 🔑 ළමයාගේ බ්‍රවුසර් එකෙන් Push Token එක ඉල්ලලා දෙන සුපිරි Function එක
+export const requestNotificationPermission = async () => {
+  try {
+    const permission = await Notification.requestPermission();
+    if (permission === "granted") {
+      // ⚠️ වැදගත්: ඔයාගේ Firebase Console -> Project Settings -> Cloud Messaging එකේ තියෙන VAPID Key එක මෙතනට දාන්න
+      const token = await getToken(messaging, {
+        vapidKey: "yFbZWAG8SelVaZH45PLWxqQHnP4Aw0ntCgKAUz_IgRw",
+      });
+      console.log("FCM Token Generated Successfully: ", token);
+      return token; // 👈 මේ ලැබෙන ටෝකන් එක තමයි ළමයාගේ ලිපිනය (Address)
+    } else {
+      console.log("Notification permission denied.");
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching token:", error);
+    return null;
+  }
+};
 
 // import { initializeApp } from "firebase/app";
 // // 👑 for Fixed Network Errors
