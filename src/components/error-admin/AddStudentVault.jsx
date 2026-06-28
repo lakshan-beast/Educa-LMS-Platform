@@ -290,6 +290,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       </form>
 
       {/* DISPLAY GENERATED ID & WHATSAPP BUTTON PANEL */}
+      {/* <div className="custom-modal-blur-overlay"> */}
       <div className="share-panel">
         {generatedID ? (
           <div className="share-panel-header">
@@ -315,6 +316,11 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
                 className="copy-button">
                 <FaCopy /> {copied ? "Copied!" : "Copy to Clipboard"}
               </button>
+
+              {/* // 🛠️ React Code එකේ Copy Button එක මේ විදිහට Modify කරන්න: */}
+              {/* <button className={`copy-button ${copied ? '--copied' : ''}`} onClick={...} >
+  {copied ? 'Copied!' : 'Copy ID'}
+</button> */}
             </div>
           </div>
         ) : (
@@ -330,6 +336,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
           </div>
         )}
       </div>
+      {/* </div> */}
     </div>
   );
 };

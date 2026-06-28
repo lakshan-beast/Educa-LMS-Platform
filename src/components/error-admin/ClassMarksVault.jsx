@@ -476,14 +476,7 @@ const ClassMarksVault = ({ selectedGrade, subject }) => {
   };
 
   return (
-    <div
-      className="vault-container"
-      style={{
-        background: "white",
-        padding: "30px",
-        borderRadius: "20px",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
-      }}>
+    <div className="vault-container">
       <div style={{ marginBottom: "25px" }}>
         <h3 style={{ color: "#1a0a54", margin: 0 }}>
           <FaGraduationCap /> Class Paper Marks Vault ({subject?.toUpperCase()})

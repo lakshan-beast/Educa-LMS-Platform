@@ -173,9 +173,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
   };
 
   return (
-    <div
-      className="vault-container"
-      style={{ background: "white", padding: "30px", borderRadius: "20px" }}>
+    <div className="vault-container">
       <div style={{ marginBottom: "25px" }}>
         <h3
           style={{

@@ -11,7 +11,6 @@ import {
 } from "firebase/firestore";
 
 import {
-  FaFolderPlus,
   FaFilePdf,
   FaArrowDown,
   FaTrashCan,
@@ -38,7 +37,7 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
   });
 
   // 👑 🆕 [LOCAL GRADE STATE]: 6 සිට 11 දක්වා ටියුට්ස් අප්ලෝඩ් පාලනයට වෙනම ස්ටේට් එකක් ගත්තා
-  const [localGrade, setLocalGrade] = useState("11");
+  // const [localGrade, setLocalGrade] = useState("11");
 
   const [uploadedMaterials, setUploadedMaterials] = useState([]);
 
@@ -205,9 +204,7 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
   return (
     <div className="vault-container">
       <div className="vault-header">
-        <h3>
-          <FaFolderPlus /> Paper Hub Upload Vault ({subject?.toUpperCase()})
-        </h3>
+        <h3>Paper Hub Upload Vault ({subject?.toUpperCase()})</h3>
         <p>
           Upload the required Tutes, Past Papers and Formulas for Paper Hub
           according to grades (6-11) here.
@@ -219,9 +216,7 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
 
       <div className="paper-upload">
         <div className="upload-content">
-          <h2>
-            <FaFolderPlus /> Upload New Material
-          </h2>
+          <h2>Upload New Material</h2>
           <form onSubmit={handleSubmit} className="styled-form">
             <div className="input-group">
               <label>Material Category</label>
@@ -282,13 +277,11 @@ const PaperHubUploadVault = ({ selectedGrade, subject }) => {
                 padding: "40px 0",
                 fontSize: "0.9rem",
               }}>
-              {" "}
-              {/* <ImSpinner /> */}
               <ImSpinner
                 className="loading-spin"
                 style={{ marginRight: "12px" }}
               />
-              Loading Materials from Cloud...{" "}
+              Loading Materials from Cloud...
             </div>
           ) : (
             <table

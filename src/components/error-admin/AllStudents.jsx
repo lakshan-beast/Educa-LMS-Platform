@@ -12,7 +12,6 @@ import {
 } from "firebase/firestore";
 
 import {
-  FaUsers,
   FaUserPen,
   FaUserMinus,
   FaCheck,
@@ -21,6 +20,7 @@ import {
   FaEye,
   FaEyeSlash,
 } from "react-icons/fa6";
+import { IoCheckmarkCircle } from "react-icons/io5";
 
 const AllStudents = () => {
   const [students, setStudents] = useState([]);
@@ -34,6 +34,7 @@ const AllStudents = () => {
   const [editingId, setEditingId] = useState(null);
   const [editForm, setEditForm] = useState({
     fullName: "",
+    password: "",
     studentMobile: "",
     parentMobile: "",
     grade: "",
@@ -76,6 +77,7 @@ const AllStudents = () => {
     setEditingId(student.docId);
     setEditForm({
       fullName: student.fullName || "",
+      password: student.password || "",
       studentMobile: student.studentMobile || "",
       parentMobile: student.parentMobile || "",
       grade: student.grade || "",
@@ -113,7 +115,7 @@ const AllStudents = () => {
 
   const maskString = (str) => {
     if (!str) return "**";
-    return "**" + str.slice(-4);
+    return "**" + str.slice(8);
   };
 
   const filteredStudents = students.filter((student) => {
@@ -130,12 +132,11 @@ const AllStudents = () => {
   });
 
   return (
-    <div className="all-students-wrapper">
+    // <div className="all-students-wrapper">
+    <div className="vault-container">
       <div className="students-header">
         <div>
-          <h1>
-            <FaUsers /> {currentFacultySubject} Faculty Registry
-          </h1>
+          <h1>{currentFacultySubject} Faculty Registry</h1>
           <p>
             Secure subject-isolated student database core managing Grade 10 & 11
             frameworks.
@@ -201,11 +202,12 @@ const AllStudents = () => {
             <thead>
               <tr>
                 <th>Student ID</th>
+                <th>Student Password</th>
+                <th>Enrolled Classes</th>
                 <th>Full Name</th>
                 <th>Student Phone</th>
                 <th>Guardian Phone</th>
                 <th>Grade</th>
-                <th>Enrolled Classes</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -231,6 +233,18 @@ const AllStudents = () => {
                         <td>
                           <input
                             type="text"
+                            value={editForm.password}
+                            onChange={(e) =>
+                              setEditForm({
+                                ...editForm,
+                                password: e.target.value,
+                              })
+                            }
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
                             value={editForm.fullName}
                             onChange={(e) =>
                               setEditForm({
@@ -252,6 +266,7 @@ const AllStudents = () => {
                             }
                           />
                         </td>
+
                         <td>
                           <input
                             type="text"
@@ -335,6 +350,34 @@ const AllStudents = () => {
                       </>
                     ) : (
                       <>
+                        <td>
+                          <div className="masked-data-cell">
+                            <span>
+                              {isRevealed
+                                ? student.password
+                                : maskString(student.password)}
+                            </span>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="subject-badge-container-cell">
+                            {student.maths && (
+                              <span className="sub-badge-tag maths">
+                                <IoCheckmarkCircle />
+                              </span>
+                            )}
+                            {student.science && (
+                              <span className="sub-badge-tag science">
+                                <IoCheckmarkCircle />
+                              </span>
+                            )}
+                            {student.english && (
+                              <span className="sub-badge-tag english">
+                                <IoCheckmarkCircle />
+                              </span>
+                            )}
+                          </div>
+                        </td>
                         <td>{student.fullName}</td>
                         <td>
                           <div className="masked-data-cell">
@@ -343,13 +386,9 @@ const AllStudents = () => {
                                 ? student.studentMobile
                                 : maskString(student.studentMobile)}
                             </span>
-                            <button
-                              onClick={() => toggleMasking(student.docId)}
-                              className="mask-toggle-trigger">
-                              {isRevealed ? <FaEyeSlash /> : <FaEye />}
-                            </button>
                           </div>
                         </td>
+
                         <td>
                           <div className="masked-data-cell">
                             <span>
@@ -359,40 +398,31 @@ const AllStudents = () => {
                             </span>
                           </div>
                         </td>
-                        <td>Grade {student.grade}</td>
+                        <td>{student.grade}</td>
+
                         <td>
-                          <div className="subject-badge-container-cell">
-                            {student.maths && (
-                              <span className="sub-badge-tag maths">Maths</span>
-                            )}
-                            {student.science && (
-                              <span className="sub-badge-tag science">
-                                Science
-                              </span>
-                            )}
-                            {student.english && (
-                              <span className="sub-badge-tag english">
-                                English
-                              </span>
-                            )}
+                          <div className="rows-btn">
+                            <button
+                              onClick={() => toggleMasking(student.docId)}
+                              className="mask-toggle-trigger action-btn check-btn">
+                              {isRevealed ? <FaEyeSlash /> : <FaEye />}
+                            </button>
+                            <button
+                              onClick={() => startEdit(student)}
+                              className="action-btn edit-btn">
+                              <FaUserPen />
+                            </button>
+                            <button
+                              onClick={() =>
+                                handleDeleteStudent(
+                                  student.docId,
+                                  student.fullName,
+                                )
+                              }
+                              className="action-btn delete-btn">
+                              <FaUserMinus />
+                            </button>
                           </div>
-                        </td>
-                        <td>
-                          <button
-                            onClick={() => startEdit(student)}
-                            className="action-btn edit-btn">
-                            <FaUserPen />
-                          </button>
-                          <button
-                            onClick={() =>
-                              handleDeleteStudent(
-                                student.docId,
-                                student.fullName,
-                              )
-                            }
-                            className="action-btn delete-btn">
-                            <FaUserMinus />
-                          </button>
                         </td>
                       </>
                     )}

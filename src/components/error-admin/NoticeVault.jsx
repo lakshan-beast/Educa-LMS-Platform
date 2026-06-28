@@ -13,12 +13,14 @@ import {
 
 import { FaTrashCan, FaCalendarDays, FaUserPen } from "react-icons/fa6";
 
-const ClassNoticeVault = ({ selectedGrade }) => {
+const ClassNoticeVault = () => {
   const [notices, setNotices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const [selectedGrade, setSelectedGrade] = useState("6");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectNoticeId, setSelectNoticeId] = useState(null);
@@ -69,7 +71,7 @@ const ClassNoticeVault = ({ selectedGrade }) => {
     setIsSubmitting(true);
 
     if (formData.text.trim() === "") {
-      setError("Please enter the announcement message! ⚠️");
+      setError("Please enter the announcement message!");
       setIsSubmitting(false);
       return;
     }
@@ -94,13 +96,13 @@ const ClassNoticeVault = ({ selectedGrade }) => {
     try {
       await setDoc(doc(db, "class_notices", docId), noticeCloudData);
       setSuccess(
-        "The announcement was successfully broadcast live to the entire site!",
+        `The announcement was successfully broadcast live to Grade ${selectedGrade}!`,
       );
       setError("");
       setFormData({ type: "General-Notice", text: "" });
     } catch (err) {
       console.error("Cloud Save Notice Error:", err);
-      setError("නිවේදනය Cloud එකට සේව් කිරීමේදී දෝෂයක් සිදු විය!");
+      setError("An error occurred while saving the announcement to the cloud!");
     }
     setIsSubmitting(false);
   };
@@ -123,47 +125,70 @@ const ClassNoticeVault = ({ selectedGrade }) => {
       setError("");
     } catch (err) {
       console.error("Delete Notice Error:", err);
-      setError("නිවේදනය Cloudෙන් මැකීමේදී දෝෂයක් සිදු විය!");
+      setError("An error occurred while deleting the announcement cloud!");
     }
     setIsLoading(false);
   };
 
   return (
-    <div className="notice-vault-container">
-      {/* ⚠️ DELETE CONFIRMATION MODAL POPUP */}
+    <div className="vault-container">
       {isModalOpen && (
-        <div className="admin-modal-overlay">
-          <div className="admin-modal-card">
+        <div className="modal-overlay">
+          <div className="modal-card">
             <h3>Confirm Action</h3>
             <p>
               Are you sure you want to permanently remove this notice from
-              Google Cloud? [INDEX 4, 51]
+              Google Cloud?
             </p>
-            <div className="modal-btn-row">
-              <button
-                onClick={confirmRemoveNotice}
-                className="modal-confirm-btn">
-                Yes, Delete
-              </button>
+            <div className="actions-buttons">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="modal-cancel-btn">
+                className="cancel-button">
                 Cancel
+              </button>
+              <button onClick={confirmRemoveNotice} className="confirm-button">
+                Yes, Delete
               </button>
             </div>
           </div>
         </div>
       )}
 
+      {/* <div className="modal-overlay">
+        <div className="modal-card">
+          {error && <div className="error-content">⚠️ {error}</div>}
+          {success && <div className="success-content">✓ {success}</div>}
+        </div>
+      </div> */}
+
       <div className="notice-vault-grid">
         {/* 📝 FORM PORTAL */}
-        <form onSubmit={handleSubmit} className="vault-publish-form">
-          <h3>Broadcast to Grade {selectedGrade}</h3>
+        <form
+          onSubmit={handleSubmit}
+          className="vault-publish-form styled-form">
+          <h3>
+            Broadcast to Grade (
+            {selectedGrade === "11-Paper" ? "11 Paper Class" : selectedGrade})
+          </h3>
 
-          {error && <div className="form-alert error-alert">{error}</div>}
-          {success && <div className="form-alert success-alert">{success}</div>}
+          <div className="input-group">
+            <label>Select Grade Class</label>
+            <select
+              value={selectedGrade}
+              onChange={(e) => setSelectedGrade(e.target.value)}>
+              <option value="6">Grade 6 </option>
+              <option value="7">Grade 7 </option>
+              <option value="8">Grade 8 </option>
+              <option value="9">Grade 9 </option>
+              <option value="10">Grade 10 </option>
+              <option value="11">Grade 11 Theory/Revision</option>
+              <option value="11-Paper">
+                Grade 11 Premium Paper Class
+              </option>{" "}
+            </select>
+          </div>
 
-          <div className="vault-field">
+          <div className="input-group">
             <label>Notice Type / Event Tag</label>
             <select
               name="type"
@@ -177,7 +202,7 @@ const ClassNoticeVault = ({ selectedGrade }) => {
             </select>
           </div>
 
-          <div className="vault-field">
+          <div className="input-group">
             <label>Message Text Description</label>
             <textarea
               name="text"
@@ -186,18 +211,17 @@ const ClassNoticeVault = ({ selectedGrade }) => {
               placeholder="Type the announcement details..."
               rows="5"></textarea>
           </div>
+          {error && <div className="error-content"> {error}</div>}
+          {success && <div className="success-content"> {success}</div>}
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="vault-submit-btn">
+          <button type="submit" disabled={isSubmitting} className="login-btn">
             {isSubmitting ? "Broadcasting..." : "Publish to Class Portal"}
           </button>
         </form>
 
         {/* 📢 LIVE NOTICES STREAM VIEW */}
         <div className="vault-live-feed">
-          <h3>Active Grade {selectedGrade} Notices</h3>
+          <h3>Active Grade ({selectedGrade}) Notices</h3>
 
           {isLoading ? (
             <div className="vault-loading">Streaming Live Cloud Vault...</div>
@@ -208,15 +232,15 @@ const ClassNoticeVault = ({ selectedGrade }) => {
           ) : (
             <div className="vault-scroll-list">
               {notices.map((item) => (
-                <div key={item.id} className="vault-notice-card">
-                  <div className="vault-card-top">
+                <div key={item.id} className="notice-card">
+                  <div className="notice-top-meta">
                     <span className="badge-type-tag">{item.type}</span>
                     <small>
                       <FaCalendarDays /> {item.date}
                     </small>
                   </div>
-                  <p className="vault-card-text">{item.text}</p>
-                  <div className="vault-card-footer">
+                  <p className="notice-main-text">{item.text}</p>
+                  <div className="notice-footer">
                     <span>
                       <FaUserPen /> {item.author}
                     </span>
