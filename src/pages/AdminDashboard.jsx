@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import AllStudents from "../components/admin/AllStudents";
-import AddStudentVault from "../components/admin/AddStudentVault";
-import ClassMarksVault from "../components/admin/ClassMarksVault";
-import PaymentsVault from "../components/admin/PaymentsVault";
-import AbsentMark from "../components/admin/AbsentVault";
-import NoticeBoard from "../components/admin/NoticeVault";
-import ClassScheduleVault from "../components/admin/ClassScheduleVault";
-import PaperHubUploadVault from "../components/admin/PaperHubUploadVault";
+import AllStudents from "../components/error-admin/AllStudents";
+import AddStudentVault from "../components/error-admin/AddStudentVault";
+import ClassMarksVault from "../components/error-admin/ClassMarksVault";
+import PaymentsVault from "../components/error-admin/PaymentsVault";
+import AbsentMark from "../components/error-admin/AbsentVault";
+import NoticeBoard from "../components/error-admin/NoticeVault";
+import ClassScheduleVault from "../components/error-admin/ClassScheduleVault";
+import PaperHubUploadVault from "../components/error-admin/PaperHubUploadVault";
 
 import MailBox from "../components/MailBox";
 
@@ -40,7 +40,7 @@ const AdminDashboard = () => {
   const adminCredentials = {
     maths: { username: "MATHS-ADMIN", password: "Maths@Securepass" },
     science: { username: "SCIENCE-ADMIN", password: "science@securepass" },
-    english: { username: "ENGLISH-ADMIN", password: "english@securepass" },
+    english: { username: "e", password: "s" },
   };
 
   // 🎛️ States
@@ -290,6 +290,8 @@ const AdminDashboard = () => {
             {/* 👑 🆕 [THE EXCLUSIVE FIX]:  */}
             {activeVault !== "class-shedule" &&
               activeVault !== "mail-box" &&
+              activeVault !== "all-students" &&
+              activeVault !== "notices" &&
               activeVault !== "paper-upload" && (
                 <header>
                   <div className="top-content">
@@ -330,12 +332,20 @@ const AdminDashboard = () => {
                 height: "100vh",
                 overflowY: "scroll",
               }}>
-              {activeVault === "all-students" && <AllStudents />}
               {activeVault === "add-student" && (
                 <AddStudentVault
                   selectedGrade={selectedGrade}
                   subject={subject}
                 />
+              )}
+              {activeVault === "notices" && <NoticeBoard />}
+              {activeVault === "class-shedule" && <ClassScheduleVault />}
+
+              {activeVault === "paper-upload" && <PaperHubUploadVault />}
+              {activeVault === "mail-box" && <MailBox />}
+
+              {activeVault === "all-students" && (
+                <AllStudents selectedGrade={selectedGrade} subject={subject} />
               )}
 
               {activeVault === "class-marks" && (
@@ -355,12 +365,6 @@ const AdminDashboard = () => {
               {activeVault === "absent-mark" && (
                 <AbsentMark selectedGrade={selectedGrade} subject={subject} />
               )}
-
-              {activeVault === "notices" && <NoticeBoard />}
-              {activeVault === "class-shedule" && <ClassScheduleVault />}
-
-              {activeVault === "paper-upload" && <PaperHubUploadVault />}
-              {activeVault === "mail-box" && <MailBox />}
             </div>
           </main>
         </div>

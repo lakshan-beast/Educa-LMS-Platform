@@ -77,7 +77,7 @@ const LiveNoticeDisplay = () => {
 
               <p className="notice-main-text">{item.text}</p>
 
-              <div className="notice-footer-meta">
+              <div className="notice-footer">
                 <span>
                   Published by:{" "}
                   <strong>{item.author || "Faculty Admin"}</strong>
