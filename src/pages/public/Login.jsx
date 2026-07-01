@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { db } from "../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
-import PasswordField from "../components/PasswordField";
+import PasswordField from "../../components/ui/PasswordField";
 
 const Login = () => {
   const [studentId, setStudentId] = useState("");

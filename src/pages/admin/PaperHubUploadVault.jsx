@@ -22,7 +22,7 @@ import {
 import { ImSpinner } from "react-icons/im";
 import { GoRocket } from "react-icons/go";
 
-import ConfirmationModal from "../ConfirmationModal";
+import ConfirmationModal from "../../components/ui/ConfirmationModal";
 
 const uniqueMaterialId = "Paper-" + Date.now().toString().slice(-8);
 

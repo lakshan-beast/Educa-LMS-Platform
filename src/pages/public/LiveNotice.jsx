@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { db } from "../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 
 import { FaCalendarCheck, FaLayerGroup } from "react-icons/fa6";
 
-import Loader from "../components/Loader";
+import Loader from "../../components/ui/Loader";
 
 const LiveNoticeDisplay = () => {
   const [notices, setNotices] = useState(null);

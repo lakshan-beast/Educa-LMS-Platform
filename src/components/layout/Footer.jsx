@@ -22,12 +22,12 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
-import Privacy from "../pages/Privacy";
-import Terms from "../pages/Terms";
-import Updates from "../pages/Updates";
-import ComingSoon from "../pages/ComingSoon";
-import About from "../pages/About";
-import NexusLabs from "../pages/NexusLabs";
+import Privacy from "../../pages/public/Privacy";
+import Terms from "../../pages/public/Terms";
+import Updates from "../../pages/public/Updates";
+import ComingSoon from "../../pages/public/ComingSoon";
+import About from "../../pages/public/About";
+import NexusLabs from "../../pages/public/NexusLabs";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

@@ -20,7 +20,7 @@ const ComingSoon = ({ onClose }) => {
 
         <div className="privacy-container">
           <h4>
-            <FaSquarePollVertical className="icon" /> 1. Enterprise Parent
+            <FaSquarePollVertical className="icon" /> Enterprise Parent
             Gateway (Target: July 2026)
           </h4>
           <p>
@@ -31,7 +31,7 @@ const ComingSoon = ({ onClose }) => {
           </p>
 
           <h4>
-            <FaLightbulb className="icon" /> 2. AI Study Studio Hub (Target:
+            <FaLightbulb className="icon" /> AI Study Studio Hub (Target:
             August 2026)
           </h4>
           <p className="last-bottom">

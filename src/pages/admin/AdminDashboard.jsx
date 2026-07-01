@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import AllStudents from "../components/error-admin/AllStudents";
-import AddStudentVault from "../components/error-admin/AddStudentVault";
-import ClassMarksVault from "../components/error-admin/ClassMarksVault";
-import PaymentsVault from "../components/error-admin/PaymentsVault";
-import AbsentMark from "../components/error-admin/AbsentVault";
-import NoticeBoard from "../components/error-admin/NoticeVault";
-import ClassScheduleVault from "../components/error-admin/ClassScheduleVault";
-import PaperHubUploadVault from "../components/error-admin/PaperHubUploadVault";
+import AllStudents from "./AllStudents";
+import AddStudentVault from "../../forms/AddStudentVault";
+import ClassMarksVault from "./ClassMarksVault";
+import PaymentsVault from "./PaymentsVault";
+import AbsentMark from "./AbsentVault";
+import NoticeBoard from "./NoticeVault";
+import ClassScheduleVault from "./ClassScheduleVault";
+import PaperHubUploadVault from "./PaperHubUploadVault";
 
-import MailBox from "../components/MailBox";
+// import MailBox from "";
 
-import PasswordField from "../components/PasswordField";
+import PasswordField from "../../components/ui/PasswordField";
 // import Loader from "../components/Loader";
 
 import {
@@ -39,7 +39,7 @@ const AdminDashboard = () => {
 
   const adminCredentials = {
     maths: { username: "MATHS-ADMIN", password: "Maths@Securepass" },
-    science: { username: "SCIENCE-ADMIN", password: "science@securepass" },
+    science: { username: "s", password: "s" },
     english: { username: "e", password: "s" },
   };
 
@@ -342,7 +342,7 @@ const AdminDashboard = () => {
               {activeVault === "class-shedule" && <ClassScheduleVault />}
 
               {activeVault === "paper-upload" && <PaperHubUploadVault />}
-              {activeVault === "mail-box" && <MailBox />}
+              {/* {activeVault === "mail-box" && <MailBox />} */}
 
               {activeVault === "all-students" && (
                 <AllStudents selectedGrade={selectedGrade} subject={subject} />

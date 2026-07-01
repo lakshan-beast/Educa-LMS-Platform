@@ -1,10 +1,10 @@
-import Todo from "../components/tools/Todo";
-import Calculator from "../components/tools/Calculator";
-import Pomodoro from "../components/tools/Pomodoro";
-import UnitConverter from "../components/tools/UnitConverter";
-import GradeCalculator from "../components/tools/GradeCalculator";
-import Motivation from "../components/tools/Motivation";
-import ExamCountdown from "../components/tools/ExamCounter";
+import Todo from "./tools/Todo";
+import Calculator from "./tools/Calculator";
+import Pomodoro from "./tools/Pomodoro";
+import UnitConverter from "./tools/UnitConverter";
+import GradeCalculator from "./tools/GradeCalculator";
+import Motivation from "./tools/Motivation";
+import ExamCountdown from "./tools/ExamCounter";
 
 const Tools = () => {
   return (

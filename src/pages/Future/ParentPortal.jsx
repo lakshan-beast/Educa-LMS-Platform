@@ -5,9 +5,9 @@ import {
   // parentGeneralNotices,
   parentFeesTable,
   parentAttendanceTable,
-} from "../data/parentPortalData";
+} from "../../data/parentPortalData";
 
-import PasswordField from "../components/PasswordField";
+import PasswordField from "../../components/ui/PasswordField";
 
 import {
   FaUserShield,
@@ -20,9 +20,9 @@ import {
   FaArrowLeft,
 } from "react-icons/fa6";
 
-import { allApprovedStudents } from "../data/approvedStudents";
+import { allApprovedStudents } from "../../data/approvedStudents";
 // import { NoticeBoard } from "../components/admin/NoticeVault";
-import LiveNoticeDisplay from "../components/LiveNotice";
+import LiveNoticeDisplay from "../public/LiveNotice";
 
 const ParentPortal = () => {
   // Gate Security States

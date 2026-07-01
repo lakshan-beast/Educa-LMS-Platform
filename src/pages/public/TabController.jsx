@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import ClassesDetails from "./ClassesDetails";
-import LiveNoticeDisplay from "../components/LiveNotice";
+import ClassesDetails from "../public/ClassesDetails";
+import LiveNoticeDisplay from "../public/LiveNotice";
 
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 

@@ -32,6 +32,7 @@ const Contact = () => {
     messageText: "",
     subject: "MATHS",
   });
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSuccess, setFormSuccess] = useState("");
 

@@ -30,7 +30,7 @@ import {
 import { PiSealCheckFill } from "react-icons/pi";
 import { FaUserMd } from "react-icons/fa";
 
-import Loader from "./Loader";
+import Loader from "../components/ui/Loader";
 
 const StudentVoices = () => {
   // 1. Core State Management

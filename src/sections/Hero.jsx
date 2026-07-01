@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import { FaRocket } from "react-icons/fa6";
+// import { FaRocket } from "react-icons/fa6";
 
 import heroImg from "../assets/hero-img.jpg";
 
@@ -36,7 +36,8 @@ const Hero = () => {
 
           <div className="home-buttons" data-aos="fade-right">
             <a href="#resources" className="start-btn">
-              Get Started Now <FaRocket className="icon" />
+              Get Started Now
+              {/* <FaRocket className="icon" /> */}
             </a>
 
             <Link to="/result-hub" className="browse-btn result-btn">

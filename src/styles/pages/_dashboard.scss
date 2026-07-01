@@ -246,7 +246,8 @@
         margin-top: 16px;
 
         @include respond(desktop) {
-          grid-template-columns: repeat(2, 1fr); // Desktop වලදී පේළියට දෙක ගානේ
+          grid-template-columns: 1.5fr 1fr; // Desktop වලදී පේළියට දෙක ගානේ
+          gap: 12px;
         }
 
         p {

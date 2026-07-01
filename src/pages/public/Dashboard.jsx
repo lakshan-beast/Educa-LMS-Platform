@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import { db } from "../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-import AIChatWidget from "../components/AIChatWidget";
+import AIChatWidget from "../../components/common/AIChatWidget";
 
 import { BiError } from "react-icons/bi";
 import { FcApproval } from "react-icons/fc";
@@ -21,8 +21,8 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 
-import ScoreAnalytics from "../text/ScorenAnalytics";
-import { premiumStudentsList } from "../data/approvedStudents";
+import ScoreAnalytics from "../Future/ScorenAnalytics";
+import { premiumStudentsList } from "../../data/approvedStudents";
 
 const Dashboard = () => {
   const navigate = useNavigate();

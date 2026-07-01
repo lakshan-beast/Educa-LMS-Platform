@@ -2,7 +2,7 @@ import { useState } from "react";
 import { allApprovedStudents } from "../../data/approvedStudents";
 // import { parentAttendanceTable } from "../../data/parentPortalData";
 
-import ConfirmationModal from "../ConfirmationModal";
+import ConfirmationModal from "../../components/ui/ConfirmationModal";
 
 import {
   FaUserXmark,

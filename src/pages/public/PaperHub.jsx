@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import { db } from "../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
-import Loader from "../components/Loader";
+import Loader from "../../components/ui/Loader";
 
 import {
   FaFilePdf,

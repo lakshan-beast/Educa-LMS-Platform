@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 
-import Login from "../pages/Login";
+import Login from "../../pages/public/Login";
 
 import {
   FaBarsStaggered,
@@ -20,7 +20,7 @@ import { TiThMenuOutline } from "react-icons/ti";
 <TiThMenuOutline />;
 
 // import { FaBell } from "react-icons/fa6";
-import EventDrawer from "./EventDrawer";
+import EventDrawer from "../../pages/Future/EventDrawer";
 
 const Header = () => {
   const navigate = useNavigate();

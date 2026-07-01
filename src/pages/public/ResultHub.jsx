@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 
-import { db } from "../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import {
   collection,
   addDoc,
@@ -23,7 +23,7 @@ import {
 } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import Loader from "../components/Loader";
+import Loader from "../../components/ui/Loader";
 
 const ResultsHub = () => {
   const [results, setResults] = useState([]);
