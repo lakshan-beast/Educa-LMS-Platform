@@ -78,7 +78,7 @@ const AdminLayout = () => {
  Analytics Hub
           </Link>
           <Link
-            to={`/admin/${subject}/students`}
+            to={`/admin/${subject}/all-students`}
             style={{
               display: "flex",
               alignItems: "center",

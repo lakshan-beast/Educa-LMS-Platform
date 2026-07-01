@@ -99,8 +99,20 @@ import StudentVoices from "./sections/StudentVoices";
 
 import TabController from "./pages/public/TabController";
 
-/* 👑 ADMIN SHIELDED COMPONENTS (ඇඩ්මින් පිටු) */
+
+import AllStudents from "./pages/admin/AllStudents";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+
+// import AddStudentVault from "../../forms/AddStudentVault";
+// import ClassMarksVault from "./ClassMarksVault";
+// import PaymentsVault from "./PaymentsVault";
+// import AbsentMark from "./AbsentVault";
+// import NoticeBoard from "./NoticeVault";
+// import ClassScheduleVault from "./ClassScheduleVault";
+// import PaperHubUploadVault from "./PaperHubUploadVault";
+
+/* 👑 ADMIN SHIELDED COMPONENTS (ඇඩ්මින් පිටු) */
+// import AdminDashboard from "./pages/admin/AdminDashboard";
 // සටහන: ඉදිරියේදී අපි හදන අලුත් Admin පිටු (StudentManager, NoticeManager) මෙතනට Import වේ.
 
 const App = () => {
@@ -137,6 +149,7 @@ const App = () => {
         <Route path="/admin/:subject" element={<AdminLayout />}>
           {/* /admin/maths/dashboard වැනි ලින්ක් එකකින් Analytics Hub එකට කෙලින්ම යයි */}
           <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="all-students" element={<AllStudents />} />
 
           {/* 🛠️ ඊළඟ පියවරවල් වලදී අපි හදන අලුත් පිරිසිදු ඇඩ්මින් පිටු ලින්ක් වෙන්නේ මෙතනටයි: */}
           {/* <Route path="students" element={<StudentManager />} /> */}
