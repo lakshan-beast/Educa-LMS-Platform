@@ -88,6 +88,7 @@ import AdminLayout from "./layouts/AdminLayout";
 import Home from "./pages/public/Home";
 import Dashboard from "./pages/public/Dashboard";
 import PaperHub from "./pages/public/PaperHub";
+import StudentGuildChat from "./pages/student/StudentGuildChat";
 import ResultHub from "./pages/public/ResultHub";
 import FullTimetable from "./pages/public/Timetables";
 import ClassesDetails from "./pages/public/ClassesDetails";
@@ -99,9 +100,17 @@ import StudentVoices from "./sections/StudentVoices";
 
 import TabController from "./pages/public/TabController";
 
-
 import AllStudents from "./pages/admin/AllStudents";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+
+import StaffRegistryManager from "./pages/admin/StaffRegisterManager";
+
+// 1. App.jsx එකේ ඉහළින්ම import කරන්න:
+import NoticeManager from "./pages/admin/NoticeManager";
+import ClassScheduleVault from "./pages/admin/ClassScheduleVault";
+import PaperManager from "./pages/admin/PaperHubUploadVault";
+
+// 2. Admin routes Group එක ඇතුළේ ලින්ක් එක අන්-කමෙන්ට් කරන්න:
 
 // import AddStudentVault from "../../forms/AddStudentVault";
 // import ClassMarksVault from "./ClassMarksVault";
@@ -141,6 +150,7 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/student-voices" element={<StudentVoices />} />
+          <Route path="/student-guild" element={<StudentGuildChat />} />
         </Route>
 
         {/* ==========================================================================
@@ -150,12 +160,15 @@ const App = () => {
           {/* /admin/maths/dashboard වැනි ලින්ක් එකකින් Analytics Hub එකට කෙලින්ම යයි */}
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="all-students" element={<AllStudents />} />
+          <Route path="notices" element={<NoticeManager />} />
+          <Route path="schedules" element={<ClassScheduleVault />} />
+          <Route path="student-guild" element={<StudentGuildChat />} />
+          <Route path="staff-registry" element={<StaffRegistryManager />} />
 
           {/* 🛠️ ඊළඟ පියවරවල් වලදී අපි හදන අලුත් පිරිසිදු ඇඩ්මින් පිටු ලින්ක් වෙන්නේ මෙතනටයි: */}
           {/* <Route path="students" element={<StudentManager />} /> */}
-          {/* <Route path="schedules" element={<ScheduleManager />} /> */}
           {/* <Route path="notices" element={<NoticeManager />} /> */}
-          {/* <Route path="papers" element={<PaperManager />} /> */}
+          <Route path="papers" element={<PaperManager />} />
         </Route>
 
         {/* ==========================================================================
