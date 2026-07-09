@@ -9,10 +9,10 @@ import Loader from "../../components/ui/Loader";
 import {
   FaFilePdf,
   FaArrowDown,
-  FaArrowLeft,
   FaFileLines,
   FaGraduationCap,
 } from "react-icons/fa6";
+import { IoIosArrowBack } from "react-icons/io";
 
 const PaperHub = ({ subject }) => {
   // 👑 🆕 [LIVE CLOUD MATERIALS STATE]:
@@ -74,7 +74,7 @@ const PaperHub = ({ subject }) => {
     <div className="paper-hub-wrapper page-container">
       <div className="system-container">
         <Link className="back-btn" to="/dashboard">
-          <FaArrowLeft /> Back to Dashboard
+          <IoIosArrowBack /> Back to Dashboard
         </Link>
 
         <div className="subject-vault-header">
