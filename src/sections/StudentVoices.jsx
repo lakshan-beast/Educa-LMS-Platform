@@ -226,16 +226,9 @@ const StudentVoices = () => {
   }
 
   return (
-    <div
-      className="student-voices-wrapper page-container"
-      style={{
-        padding: "40px 20px",
-        width: "100%",
-        fontFamily: "inherit",
-        paddingTop: "6rem",
-      }}>
+    <div className="student-voices-wrapper page-container">
       <div className="system-container">
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className="back-buttons">
           <Link className="back-btn" to="/">
             <FaArrowLeft /> Back to Home
           </Link>
