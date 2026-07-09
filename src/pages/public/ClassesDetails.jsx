@@ -371,8 +371,6 @@ import {
 import Loader from "../../components/ui/Loader";
 import {
   FaCalendarCheck,
-  FaClock,
-  FaBookOpen,
   FaNoteSticky,
   FaLock,
   FaBullhorn,
@@ -478,18 +476,17 @@ const ClassesDetails = () => {
   if (isLoading) return <Loader />;
 
   return (
-    <section className="classes-public-timetable-section parts" id="classesDetails">
-      <div
-        className="class-container"
-        style={{padding: "40px 20px" }}>
+    <section
+      className="classes-public-timetable-section parts"
+      id="classesDetails">
+      <div className="class-container" style={{ padding: "40px 20px" }}>
         <div
           className="section-title-zone"
           style={{ textAlignment: "center", marginBottom: "40px" }}>
           <h2>
             Weekly <span>Class Schedules</span>
           </h2>
-          <p
-           >
+          <p>
             Monitor live operations, structured counts, and sync terminal
             schedules in real-time .
           </p>
@@ -512,7 +509,7 @@ const ClassesDetails = () => {
                 padding: "10px 20px",
                 borderRadius: "20px",
                 border: "none",
-                background: selectedGrade === grade ? "#0056ff" : "#f4f6fa",
+                background: selectedGrade === grade ? "#00f1d1" : "#f4f6fa",
                 color: selectedGrade === grade ? "white" : "#001b42",
                 fontWeight: "bold",
                 cursor: "pointer",
@@ -528,9 +525,12 @@ const ClassesDetails = () => {
         <div
           className="class-grid"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-            gap: "25px",
+            // display: "grid",
+            // gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+            // gap: "25px",
+            display: "flex",
+            gap: "12px",
+            justifyContent: "center",
           }}>
           {filteredClasses.length > 0 ? (
             filteredClasses.map((cls) => {
@@ -583,50 +583,52 @@ const ClassesDetails = () => {
                     </small>
                   </div>
 
-                  {/* MAIN CARD BODY */}
-                  <div className="card-body-details">
-                    <span className="faculty-tag-title">
-                      {cls.teacherName || "Official Faculty"}
-                    </span>
-                    <h3 className="subject-core-title">
-                      {cls.className || "Academic View"}
-                    </h3>
-
-                    <div className="parameter-data-row">
-                      <FaBookOpen className="icon-v" />{" "}
-                      <p>
-                        <span>Active Lesson:</span>{" "}
-                        {cls.currentLesson || "Not Specified"}
-                      </p>
-                    </div>
-                    <div className="parameter-data-row">
-                      <FaClock className="icon-v" />{" "}
-                      <p>
-                        <span>Start Target:</span>{" "}
-                        {cls.targetDateTime
-                          ? new Date(cls.targetDateTime).toLocaleString()
-                          : "No Date Set"}
-                      </p>
-                    </div>
-
-                    {cls.specialNotes && (
-                      <div className="special-instruction-box">
-                        <FaNoteSticky /> <span>Notice:</span> {cls.specialNotes}
-                      </div>
-                    )}
-                  </div>
-
                   {/* ⏳ CORE REAL-TIME LIVE COUNTDOWN HUB */}
                   {!isLive && !isPaused && !isClosed && cls.targetDateTime && (
                     <div className="live-countdown-timer-dock">
                       <span className="countdown-label">
-                        T-Minus to Live Terminal:
+                        {/* T-Minus to Live Terminal: */}
                       </span>
                       <code className="countdown-clock-digits">
                         {calculateCountdown(cls.targetDateTime)}
                       </code>
                     </div>
                   )}
+
+                  {/* MAIN CARD BODY */}
+                  <div className="card-body-details">
+                    <h3 className="subject-core-title">
+                      {cls.className || "Academic View"}
+                    </h3>
+                    <span className="faculty-tag-title">
+                      {cls.teacherName || "Official Faculty"}
+                    </span>
+
+                    <div className="parameter-data-row">
+                      {/* <FaBookOpen className="icon-v" /> */}
+                      <p>
+                        Active Lesson:
+                        <span>{cls.currentLesson || "Not Specified"}</span>
+                      </p>
+                    </div>
+                    <div className="parameter-data-row">
+                      {/* <FaClock className="icon-v" />{" "} */}
+                      <p>
+                        Start Target:
+                        <span>
+                          {cls.targetDateTime
+                            ? new Date(cls.targetDateTime).toLocaleString()
+                            : "No Date Set"}
+                        </span>
+                      </p>
+                    </div>
+
+                    {cls.specialNotes && (
+                      <div className="special-instruction-box">
+                         <p>Notice :</p> <span>{cls.specialNotes}</span>
+                      </div>
+                    )}
+                  </div>
 
                   {/* 📢 LATEST CLASS NOTICE FEED LINK */}
                   {latestNotice && (
@@ -638,42 +640,29 @@ const ClassesDetails = () => {
                     </div>
                   )}
 
-                  {/* ✅ බ්‍රවුසර් එකෙන් Block නොවී ආරක්ෂිතව Google Calendar open වන හැටි */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const calendarUrl = buildGoogleCalendarUrl(cls);
-                      if (calendarUrl !== "#") {
-                        window.open(
-                          calendarUrl,
-                          "_blank",
-                          "noopener,noreferrer",
-                        );
-                      }
-                    }}
-                    className="google-calendar-anchor-link"
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      color: "#8b949e",
-                      fontSize: "0.8rem",
-                      fontWeight: "bold",
-                      margin: "0 auto",
-                      padding: "5px",
-                    }}
-                    title="Sync Reminder to Google Calendar">
-                    <FaGoogle /> Add Reminder
-                  </button>
-
                   {/* 👟 CARD FOOTER ACTION ZONE */}
                   <div className="card-action-footer-matrix">
+                    {/* ✅ බ්‍රවුසර් එකෙන් Block නොවී ආරක්ෂිතව Google Calendar open වන හැටි */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const calendarUrl = buildGoogleCalendarUrl(cls);
+                        if (calendarUrl !== "#") {
+                          window.open(
+                            calendarUrl,
+                            "_blank",
+                            "noopener,noreferrer",
+                          );
+                        }
+                      }}
+                      className="google-calendar-anchor-link"
+                      title="Sync Reminder to Google Calendar">
+                      <FaGoogle /> Add Reminder
+                    </button>
+
                     {isLive ? (
                       <Link
-                        to="/login"
+                        to="dashboard"
                         className="action-button-gate live-join-btn">
                         <FaLock /> Access Dashboard to Join Zoom
                       </Link>
