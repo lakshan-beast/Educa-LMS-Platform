@@ -1,8 +1,8 @@
 // import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../components/layout/header"; // 👈 ඔයාගේ ෆෝල්ඩර් path එක
-import Footer from "../components/layout/footer"; // 👈 ඔයාගේ ෆෝල්ඩර් path එක
-import ScrollTop from "../components/layout/scrolltop";
+import Header from "../components/layout/Header"; // 👈 ඔයාගේ ෆෝල්ඩර් path එක
+import Footer from "../components/layout/Footer"; // 👈 ඔයාගේ ෆෝල්ඩර් path එක
+import ScrollTop from "../components/layout/ScrollTop";
 
 const PublicLayout = () => {
   return (
