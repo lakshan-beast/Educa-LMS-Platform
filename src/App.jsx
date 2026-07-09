@@ -152,7 +152,7 @@ import ClassScheduleVault from "./pages/admin/ClassScheduleVault";
 import PaperManager from "./pages/admin/PaperHubUploadVault";
 
 import AdminProtectedRoute from "./components/ui/AdminProtectedRoute";
-import SecurityLockdownGate from "./components/ui/SecurityLockdownGate";
+// import SecurityLockdownGate from "./components/ui/SecurityLockDownGate";
 
 const App = () => {
   useEffect(() => {
@@ -185,7 +185,7 @@ const App = () => {
 
       <Routes>
         {/* 🔴 හොලිවුඩ් ස්ටයිල් සජීවී ඇලර්ට් ස්ක්‍රීන් එකේ රූට් එක */}
-        <Route path="/security-lockdown" element={<SecurityLockdownGate />} />
+        {/* <Route path="/security-lockdown" element={<SecurityLockdownGate />} /> */}
 
         {/* ==========================================================================
            🌐 GROUP A: PUBLIC FACING ECOSYSTEM (හෙඩර් සහ ෆුටර් සහිත පොදු පිටු)

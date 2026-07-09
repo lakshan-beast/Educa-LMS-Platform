@@ -972,6 +972,7 @@ const SecurityLockdownGate = () => {
       oscillator.stop(audioCtx.currentTime + duration);
     } catch (e) {
       // Browser audio context safety policy catch block
+      
     }
   };
 
