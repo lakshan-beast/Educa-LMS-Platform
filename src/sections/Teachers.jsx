@@ -1,4 +1,5 @@
 import { FaFacebook, FaWhatsapp, FaPhone } from "react-icons/fa6";
+import { CiShare1 } from "react-icons/ci";
 
 import tutor from "../assets/teacher.webp";
 
@@ -70,18 +71,6 @@ const Teachers = () => {
           <div className="teacher-card" key={index} data-aos="fade-up">
             <div className="teacher-image-column">
               <img src={teacher.img} alt={teacher.name} data-aos="zoom-in" />
-
-              <div className="teacher-socials" data-aos="fade-left">
-                <a href={`tel:${teacher.facebook}`}>
-                  <FaFacebook className="facebook-icon icon" />
-                </a>
-                <a href={`tel:${teacher.whatsapp}`}>
-                  <FaWhatsapp className="whatsapp-icon icon" />
-                </a>
-                <a href={`tel:${teacher.phone}`}>
-                  <FaPhone className="call-icon icon" />
-                </a>
-              </div>
             </div>
 
             <div className="teacher-info-column">
@@ -94,15 +83,38 @@ const Teachers = () => {
                 <div className="detail-list">
                   <div className="detail-header">
                     <p data-aos="fade-right">
-                      <b>Academic:</b> {teacher.background}
+                      <b>Academic:</b> <span> {teacher.background}</span>
                     </p>
                     <p data-aos="fade-right">
-                      <b>Experience:</b> {teacher.expertise}
+                      <b>Experience:</b> <span>{teacher.expertise}</span>
                     </p>
                   </div>
-                  <p className="philosophy-box" data-aos="fade-up">
-                    {teacher.philosophy}
-                  </p>
+                </div>
+
+                <div className="teacher-btns">
+                  <button class="btn-cssbuttons">
+                    <span>Get in Touch</span>
+                    <span>
+                      <CiShare1 className="share-icon" />
+                    </span>
+                    <ul>
+                      <li>
+                        <a href={`tel:${teacher.facebook}`}>
+                          <FaFacebook className="facebook-icon icon" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`tel:${teacher.whatsapp}`}>
+                          <FaWhatsapp className="whatsapp-icon icon" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`tel:${teacher.phone}`}>
+                          <FaPhone className="call-icon icon" />
+                        </a>
+                      </li>
+                    </ul>
+                  </button>
                 </div>
               </div>
             </div>
