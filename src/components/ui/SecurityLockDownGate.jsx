@@ -1043,6 +1043,7 @@ const SecurityLockdownGate = () => {
 
     return () => clearInterval(alertTimer);
   }, []);
+  
   // ⌨️ D. CUSTOM REAL-TIME TYPING INFILTRATOR LOGIC (Hacker Typer Effect!) [INDEX 4]
   const handleTerminalKeyDown = () => {
     // ළමයා කීබෝඩ් එකේ මොන අකුර එබුවත්, සැබෑ හැකර් කේත පේළියක් ඔටෝම තිරයට එකතු වේ! [INDEX 4]
