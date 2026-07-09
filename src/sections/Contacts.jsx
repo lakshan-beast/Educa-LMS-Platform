@@ -145,7 +145,7 @@ const Contact = () => {
                       value={contactFormData.phone}
                       onChange={handleInputChange}
                       placeholder="077 *** ****"
-                      value="+94"
+                     
                       required
                     />
                   </div>
@@ -176,7 +176,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    data-aos="fade-up"
+                    // data-aos="fade-up"
                     disabled={isSubmitting}
                     className="contact-submit-btn">
                     {isSubmitting ? "Sending Message..." : "Send My Message"}
