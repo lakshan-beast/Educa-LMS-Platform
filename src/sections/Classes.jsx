@@ -232,7 +232,7 @@ const Classes = () => {
 
       <div className="more-btn">
         <Link
-          to="/tab-controller"
+          to="tab-controller"
           className="fullclass-btn"
           data-aos="fade-down">
           View Full Timetable & Notices
