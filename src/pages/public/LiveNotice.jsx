@@ -61,7 +61,7 @@ const LiveNoticeDisplay = () => {
       ) : (
         <div className="notice-grid">
           {notices.map((item) => (
-            <div key={item.docId} className="notice-card card">
+            <div key={item.docId} className="notice-card">
               <div className="notice-top-meta">
                 <div className="meta-item">
                   <FaCalendarCheck />
@@ -79,7 +79,7 @@ const LiveNoticeDisplay = () => {
 
               <div className="notice-footer">
                 <span>
-                  Published by:{" "}
+                  Published by:
                   <strong>{item.author || "Faculty Admin"}</strong>
                 </span>
                 <span className="subject-tag">
