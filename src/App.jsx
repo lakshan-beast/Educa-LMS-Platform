@@ -140,12 +140,10 @@ import Privacy from "./pages/public/Privacy";
 import NotFound from "./pages/public/NotFound";
 import StudentVoices from "./sections/StudentVoices";
 
-// import TabController from "./pages/public/TabController";
-
 import AllStudents from "./pages/admin/AllStudents";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 
-import StaffRegistryManager from "./pages/admin/StaffRegisterManager"; // Filename fallback check
+import StaffRegistryManager from "./pages/admin/StaffRegisterManager";
 
 import NoticeManager from "./pages/admin/NoticeManager";
 import ClassScheduleVault from "./pages/admin/ClassScheduleVault";
@@ -184,12 +182,9 @@ const App = () => {
       <div className="overlay"></div>
 
       <Routes>
-        {/* 🔴 හොලිවුඩ් ස්ටයිල් සජීවී ඇලර්ට් ස්ක්‍රීන් එකේ රූට් එක */}
         {/* <Route path="/security-lockdown" element={<SecurityLockdownGate />} /> */}
 
-        {/* ==========================================================================
-           🌐 GROUP A: PUBLIC FACING ECOSYSTEM (හෙඩර් සහ ෆුටර් සහිත පොදු පිටු)
-           ========================================================================== */}
+        {/* 🌐 GROUP A: PUBLIC FACING ECOSYSTEM */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -204,9 +199,7 @@ const App = () => {
           <Route path="/student-guild" element={<StudentGuildChat />} />
         </Route>
 
-        {/* ==========================================================================
-           🔐 GROUP B: PROTECTED ADMINISTRATIVE VAULTS (ආරක්ෂක වැටෙන් සහමුලින්ම ලොක් කළා) [INDEX 4]
-           ========================================================================== */}
+        {/* 🔐 GROUP B: PROTECTED ADMINISTRATIVE VAULTS  */}
         <Route element={<AdminProtectedRoute />}>
           <Route path="/admin/:subject" element={<AdminLayout />}>
             <Route path="dashboard" element={<AdminDashboard />} />
@@ -215,14 +208,11 @@ const App = () => {
             <Route path="schedules" element={<ClassScheduleVault />} />
             <Route path="student-guild" element={<StudentGuildChat />} />
             <Route path="guild-chat" element={<StudentGuildChat />} />{" "}
-            {/* Redirect route fallback alias */}
             <Route path="staff-registry" element={<StaffRegistryManager />} />
             <Route path="papers" element={<PaperManager />} />
           </Route>
         </Route>
-        {/* ==========================================================================
-           🚨 GROUP C: GLOBAL EXCEPTION HANDLER (වැරදි URL සඳහා)
-           ========================================================================== */}
+        {/* 🚨 GROUP C: GLOBAL EXCEPTION HANDLER (වැරදි URL සඳහා) */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

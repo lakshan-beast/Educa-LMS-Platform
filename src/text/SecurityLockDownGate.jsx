@@ -951,7 +951,7 @@ const SecurityLockdownGate = () => {
     "⚡ NETILEARN BLOCK INTEGRITY MODULES READY...\n[💡 TIP: CLICK SCREEN AND TYPE ANY KEYS ON YOUR KEYBOARD TO DISPATCH VIRAL INFILTRATION SCRIPTS]\n\n",
   );
   const [activeAlerts, setActiveAlerts] = useState([]);
-  const [systemIntel, setSystemIntel] = useState({});
+  // const [systemIntel, setSystemIntel] = useState({});
   const textareaRef = useRef(null);
 
   // 🔊 AUDIO FREQUENCY BEEP INJECTOR LOGIC (ජාවාස්ක්‍රිප්ට් එකෙන්ම සයිබර් සවුන්ඩ් හදයි) [INDEX 4]
@@ -992,26 +992,26 @@ const SecurityLockdownGate = () => {
     logIntrusionAttempt();
 
     // B. DYNAMIC LOCAL SYSTEM INTEL EXTRACTOR LOGIC (ළමයාගේ සැබෑ පරිගණක දත්ත කියවයි!) [INDEX 4]
-    setSystemIntel({
-      os: navigator.userAgent.includes("Windows")
-        ? "Windows NT Ledger Core"
-        : navigator.userAgent.includes("Mac")
-          ? "macOS Terminal Junction"
-          : "Linux / Android Stack",
+    // setSystemIntel({
+    //   os: navigator.userAgent.includes("Windows")
+    //     ? "Windows NT Ledger Core"
+    //     : navigator.userAgent.includes("Mac")
+    //       ? "macOS Terminal Junction"
+    //       : "Linux / Android Stack",
 
-      // මෙතන Backticks (``) සහ නිවැරදිව String එකක් භාවිතා කර ඇත
-      resolution: `${window.screen.width}x${window.screen.height} Matrix`,
+    //   // මෙතන Backticks (``) සහ නිවැරදිව String එකක් භාවිතා කර ඇත
+    //   resolution: `${window.screen.width}x${window.screen.height} Matrix`,
 
-      browser:
-        navigator.userAgent.includes("Chrome") &&
-        !navigator.userAgent.includes("Edg")
-          ? "Google Chrome Architecture"
-          : navigator.userAgent.includes("Firefox")
-            ? "Mozilla Firefox Engine"
-            : "Standard Web Architecture",
+    //   browser:
+    //     navigator.userAgent.includes("Chrome") &&
+    //     !navigator.userAgent.includes("Edg")
+    //       ? "Google Chrome Architecture"
+    //       : navigator.userAgent.includes("Firefox")
+    //         ? "Mozilla Firefox Engine"
+    //         : "Standard Web Architecture",
 
-      localTime: new Date().toLocaleTimeString(),
-    });
+    //   localTime: new Date().toLocaleTimeString(),
+    // });
 
     // C. DYNAMIC RANDOM ALERT POPUPS & BEEP SYNCHRONIZER LAYER [INDEX 4]
     const alertTimer = setInterval(() => {
@@ -1187,7 +1187,7 @@ const SecurityLockdownGate = () => {
           }}>
           📡 TARGET TELEMETRY EXTRACTED
         </strong>
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {/* <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
           <div>
             &gt; HOST SYSTEM:{" "}
             <span style={{ color: "#ffffff" }}>{systemIntel.os}</span>
@@ -1204,7 +1204,7 @@ const SecurityLockdownGate = () => {
             &gt; INTRUSION TIME:{" "}
             <span style={{ color: "#ffffff" }}>{systemIntel.localTime}</span>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* 👑 PERSISTENT MAIN ESCAPE CONTROLLER CENTER */}
       <div
