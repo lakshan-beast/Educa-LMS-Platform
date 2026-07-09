@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { FaTriangleExclamation } from "react-icons/fa6";
-import { FaHome } from "react-icons/fa";
 
 const NotFound = () => {
   return (
@@ -14,7 +13,7 @@ const NotFound = () => {
           Don't worry, let's get you back to class!
         </p>
         <Link to="/" className="browse-btn">
-          <FaHome /> Back to Homepage
+          Back to Homepage
         </Link>
       </div>
     </div>
