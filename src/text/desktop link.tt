@@ -1,0 +1,50 @@
+import React from "react";
+import { NavHashLink } from "react-router-hash-link"; // ඔයා පාවිච්චි කරන ලිබ්රරිය
+
+const NavbarLinks = ({ activeSection }) => {
+  return (
+    <div className="desktop-navbar-links">
+      <NavHashLink
+        className={desktop-link ${activeSection === "home" ? "active" : ""}}
+        smooth
+        to="/#home"
+      >
+        Home
+      </NavHashLink>
+
+      <NavHashLink
+        className={desktop-link ${activeSection === "resources" ? "active" : ""}}
+        smooth
+        to="/#resources"
+      >
+        Learning Hub
+      </NavHashLink>
+
+      <NavHashLink
+        className={desktop-link ${activeSection === "classes" ? "active" : ""}}
+        smooth
+        to="/#classes"
+      >
+        Classes Schedule
+      </NavHashLink>
+
+      <NavHashLink
+        className={desktop-link ${activeSection === "teachers" ? "active" : ""}}
+        smooth
+        to="/#teachers"
+      >
+        Our Tutors
+      </NavHashLink>
+
+      <NavHashLink
+        className={desktop-link ${activeSection === "contacts" ? "active" : ""}}
+        smooth
+        to="/#contacts"
+      >
+        Contact Us
+      </NavHashLink>
+    </div>
+  );
+};
+
+export default NavbarLinks;
