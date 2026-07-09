@@ -972,7 +972,7 @@ const SecurityLockdownGate = () => {
       oscillator.stop(audioCtx.currentTime + duration);
     } catch (e) {
       // Browser audio context safety policy catch block
-      
+      console.log("Audio error :", e);
     }
   };
 
@@ -998,10 +998,18 @@ const SecurityLockdownGate = () => {
         : navigator.userAgent.includes("Mac")
           ? "macOS Terminal Junction"
           : "Linux / Android Stack",
+
+      // මෙතන Backticks (``) සහ නිවැරදිව String එකක් භාවිතා කර ඇත
       resolution: `${window.screen.width}x${window.screen.height} Matrix`,
-      browser: navigator.userAgent.includes("Chrome")
-        ? "Google Chrome Architecture"
-        : "Mozilla Firefox Engine",
+
+      browser:
+        navigator.userAgent.includes("Chrome") &&
+        !navigator.userAgent.includes("Edg")
+          ? "Google Chrome Architecture"
+          : navigator.userAgent.includes("Firefox")
+            ? "Mozilla Firefox Engine"
+            : "Standard Web Architecture",
+
       localTime: new Date().toLocaleTimeString(),
     });
 
