@@ -22,17 +22,17 @@ const Information = () => {
         their confidence and score top exam results.
       </p>
 
+      <p data-aos="fade-up">
+        We firmly believe that every child absorbs information differently. Our
+        core mission is to bridge the gap between heavy textbook theories and
+        direct exam success by providing clear, highly engaging, and supportive
+        learning frameworks structured carefully for local secondary school
+        benchmarks.
+      </p>
+
       <div className="about-container info-column" id="about">
         {/* Left Content */}
         <div className="info-left card">
-          <p data-aos="fade-up">
-            We firmly believe that every child absorbs information differently.
-            Our core mission is to bridge the gap between heavy textbook
-            theories and direct exam success by providing clear, highly
-            engaging, and supportive learning frameworks structured carefully
-            for local secondary school benchmarks.
-          </p>
-
           <div className="about-info" data-aos="fade-up">
             <h4>
               <FaBrain className="icon" /> Simplified Concept Mapping
