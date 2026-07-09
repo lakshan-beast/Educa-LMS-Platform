@@ -1,62 +1,68 @@
-// header style
-.header {
-  width: 96%;
-  height: 100px;
-  margin: 0.5rem;
-  padding: 0 25px;
+/* ========================================================
+   1. VARIABLES & MIXINS (Compile Errors නැති කිරීමට අගයන් දුන්නා)
+   ======================================================== */
+// $footer-dark: #0f172a; // Deep slate dark color
+// $secondary-blue: #2563eb; // Executive Blue
+// $secondary-blue2: #1e3a8a; // Mobile menu base dark
+// $secondary-blue3: #00f1d1; // 2026 Neon Teal Accent
+// $white: #ffffff;
+
+// Desktop Navbar එකට අවශ්‍ය වුණු Variables ටික
+$text-muted: #64748b;
+$text-main: #f8fafc; // Dark bg එකට ගැලපෙන පිරිසිදු ලයිට් text
+$neon-accent: #00f1d1;
+$active-blue: #00f1d1; // Active එකත් Neon Teal කළා පට්ටම ලස්සන නිසා
+
+$z-index-modal: 1000;
+$margin-none: 0;
+$padding-none: 0;
+$border-radius-styles: 24px; // Floating Panel එකට ගැළපෙන radius එක
+$transition-fast: 0.2s ease;
+
+/* ========================================================
+   2. MAIN HEADER (2026 Dynamic Floating Glass Look)
+   ======================================================== */
+.header-section {
+  width: 100%;
   position: fixed;
   top: 0;
-  border-radius: 16px;
-  background-color: rgba(252, 252, 252, 0.8);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.5);
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: $z-index-modal;
+  padding: 1rem 0; // Screen එකේ උඩින් පොඩ්ඩක් ගැලවී තිබීමට
+}
+
+.header {
+  width: 94%; // Screen එක දෙපැත්තෙන් ඉඩ තබා Floating Panel එකක් කළා
+  height: 85px; // Executive Look එකක් එන්න උස පොඩ්ඩක් අඩු කළා
+  padding: 0 25px;
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba($secondary-blue, 0.15); // තද ග්ලාස් පෙනුම
+  backdrop-filter: blur(16px); // 2026 Ultra blur effect
+  border: 1px solid rgba(255, 255, 255, 0.08); // සිහින් invisible border එක
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
 
   @include flex-custom(space-between, center, row);
+  transition: all 0.4s ease;
 
   @include respond(tablet) {
-    width: 98%;
+    width: 96%;
   }
 
   @include respond(desktop) {
-    width: 100%;
-    height: 120px;
-    margin: $margin-none;
+    width: 98%; // Desktop වලදී තවත් පිළිවෙළට මැද පාවේ
+    height: 90px;
     padding: 0 35px;
-    position: fixed;
-    top: 0;
-
     border-radius: $border-radius-styles;
-    background-color: rgba(252, 252, 252, 0.8);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
-    z-index: $z-index-modal;
-
-    // @include flex-custom(space-between, center, row);
   }
 }
 
-// menu btn
-#menu-btn {
-  @include flex-custom(center, center);
-
-  margin: $margin-none;
-  padding: $padding-none;
-  width: 30px;
-  height: 30px;
-  color: $secondary-blue;
-  background: transparent;
-  font-size: 2rem;
-  cursor: pointer;
-  display: block;
-
-  @include respond(desktop) {
-    display: none;
-  }
-}
-
+/* ========================================================
+   3. LOGO & ACTIONS
+   ======================================================== */
 // header-log (brand name)
 .header-logo {
   color: $secondary-blue;
@@ -86,7 +92,8 @@
   }
 
   span {
-    color: $secondary-blue3;
+    color: $primary-green;
+    font-size: 2rem;
     margin: 0;
   }
 
@@ -97,50 +104,207 @@
   }
 }
 
-// header icons and links style
+// Menu Mobile Trigger Button
+#menu-btn {
+  @include flex-custom(center, center);
+  margin: $margin-none;
+  padding: $padding-none;
+  width: 32px;
+  height: 32px;
+  color: $primary-green; // Dark bg එකට පේන්න සුදු කළා
+  background: transparent;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: block;
+  border: none;
+  transition: $transition-fast;
+
+  &:hover {
+    color: $secondary-blue3;
+  }
+
+  @include respond(desktop) {
+    display: none; /* Desktop එකේදී මුළුමනින්ම සැඟවේ */
+  }
+}
+
 .header-actions {
   @include flex-custom(center, center, row, 0.5rem);
 
-  @include respond(desktop) {
-    gap: 0.5rem;
-  }
-
   .sign-btn {
-    margin: 0.3rem;
-    position: relative;
-    top: 5px;
-    font-size: 2rem;
+    border: none;
     background: none;
+    font-size: 1.8rem;
     cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
 
-    @include respond(desktop) {
-      margin: 0 0.5rem;
+    &:hover {
+      transform: scale(1.08);
     }
   }
 }
 
-@keyframes scaleUp {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* ========================================================
+   DESKTOP NAVBAR LINKS (100% ක්ම Screen එකේ මතු වන ලෙස නිවැරදි කළා)
+   ======================================================== */
+
+// .desktop-navbar-links {
+//   display: none; // Mobile වලදී සඟවා තැබීමට
+// }
+
+// // 💻 සාමාන්‍ය CSS Media Query එකක් පාවිච්චි කළා (Screen එක 1024px වලට වඩා වැඩි නම්)
+// @media (min-width: 1024px) {
+//   .desktop-navbar-links {
+//     display: flex !important; // Desktop වලදී අනිවාර්යයෙන්ම මතු කරයි
+//     gap: 2.5rem; // ලින්ක් අතර ඉඩ ලස්සනට තැබීමට
+//     align-items: center;
+//   }
+
+//   .desktop-link {
+//     color: #94a3b8 !important; // සාමාන්‍ය වෙලාවට පෙනෙන ලස්සන Slate Gray පාට
+//     padding: 8px 0;
+//     font-size: 1.2rem;
+//     text-decoration: none !important;
+//     font-weight: 600;
+//     position: relative;
+//     letter-spacing: -0.01em;
+//     transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+//     cursor: pointer;
+
+//     // 1. HOVER EFFECT (මවුස් එක ලින්ක් එක උඩට ගෙනිච්චම)
+//     &:hover {
+//       color: #ffffff !important; // අකුරු සුදු පාට වේ
+//       text-decoration: none !important;
+
+//       &::after {
+//         transform: translateX(-50%) scaleX(1) !important;
+//         opacity: 1 !important;
+//       }
+//     }
+
+//     // 2. 2026 TREND UNDERLINE INDICATOR (මැද සිට දෙපැත්තට විහිදෙන ඉර)
+//     &::after {
+//       content: "";
+//       position: absolute;
+//       bottom: -6px; // ලින්ක් එකට යටින් නිසි දුර තැබුවා
+//       left: 50%; // හරියටම මැද ලක්ෂ්‍යය
+//       transform: translateX(-50%) scaleX(0); // මුලින් මැද කුඩාවට තියෙයි
+//       width: 24px;
+//       height: 3px;
+//       background-color: #00f1d1 !important; // Neon Teal පාට
+//       border-radius: 99px;
+//       opacity: 0;
+//       transition:
+//         transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+//         opacity 0.35s ease;
+//     }
+//   }
+
+//   /* ========================================================
+//      ACTIVE LINK STYLE (Scroll වෙද්දී පත්තුවෙන Neon Glow එක)
+//      ======================================================== */
+//   .desktop-link.active {
+//     color: #00f1d1 !important; // Active වුණු ලින්ක් එකේ අකුරු Neon Teal වේ
+//     font-weight: 700;
+
+//     &::after {
+//       transform: translateX(-50%) scaleX(1) !important;
+//       background-color: #00f1d1 !important;
+//       opacity: 1 !important;
+//       box-shadow: rgba(0, 241, 209, 0.6) 0px 4px 12px; // යටින් ලස්සන Neon Glow එකක් එනවා
+//     }
+//   }
+// }
+
+/* ========================================================
+   DESKTOP NAVBAR LINKS (ඉරි කෑල්ල හැමවෙලාවෙම පෙනීමේ ලෙඩේ 100% ක්ම හැදුවා)
+   ======================================================== */
+
+.desktop-navbar-links {
+  display: none;
 }
 
-.overlay {
+@media (min-width: 1024px) {
+  .desktop-navbar-links {
+    display: flex !important;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .desktop-link {
+    color: $secondary-blue !important; /* සාමාන්‍ය වෙලාවට පෙනෙන Slate Gray පාට */
+    padding: 8px 0;
+    font-size: 1.25rem;
+    text-decoration: none !important;
+    // font-weight: 600;
+    position: relative;
+    letter-spacing: -0.01em;
+    transition: color 0.25s ease;
+    cursor: pointer;
+
+    .desktop-link.active {
+      color: $primary-green !important;
+
+      &::after {
+        width: 24px; /* Active එකට විතරක් ඉර ස්ථාවරව පවතී */
+        opacity: 1 !important;
+        box-shadow: rgba(0, 241, 209, 0.6) 0px 4px 12px;
+      }
+    }
+
+    // 1. HOVER EFFECT (මවුස් එක ලින්ක් එකක් උඩට ගෙනිච්චම විතරක් වැඩ කරයි)
+    &:hover {
+      color: $primary-green !important;
+      transform: translate(0);
+      font-weight: 500;
+
+      &::after {
+        width: 100% !important; /* Hover වෙද්දී විතරක් ඉර දිග වේ */
+        opacity: 1 !important;
+      }
+    }
+
+    // 2. UNDERLINE INDICATOR (මුලින්ම පළල බිංදුවක් කරලා සඟවා තබයි)
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%); /* හරියටම මැද තබා ගැනීමට පමණක් */
+      width: 0 !important; /* 👈 ප්‍රධානම වෙනස: මුලින් ඉරක් ඇත්තෙම නැත (Width 0)! */
+      height: 3px;
+      background-color: #00f1d1; /* Neon Teal පාට */
+      border-radius: 99px;
+      opacity: 0;
+      transition:
+        width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.3s ease;
+    }
+  }
+
+  /* ========================================================
+     ACTIVE LINK STYLE (Scroll වෙද්දී පත්තුවෙන කොටස)
+     ======================================================== */
+}
+
+/* ========================================================
+   5. MOBILE APP-STYLE MENU & OVERLAY
+   ======================================================== */
+.header-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba($secondary-blue, 0.3);
+  background: rgba(0, 0, 0, 0.5); // 2026 එකට කළු පාට Shadow එකක් දුන්නා
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
-  transition: 0.3s;
-  z-index: 600;
+  transition: 0.3s ease;
+  z-index: 9999;
 }
 .overlay.active {
   opacity: 1;
@@ -149,186 +313,106 @@
 
 .header-navbar {
   position: fixed;
-  top: 0px;
+  top: 0;
   left: -100%;
-  width: 90%;
+  width: 280px; // Mobile එකට ක්‍ෂේත්‍රයේ ස්ථාවර පළලක් දුන්නා ඇද නොවෙන්න
   height: 100vh;
-  background: $secondary-blue2;
+  background: rgba($secondary-blue2, 0.8); // iOS App Style Glass Base
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
   margin: 0;
-
-  z-index: 999999;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   padding: 30px 20px;
   transition: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
-  // border-radius: 0rem 2rem 2rem 0rem;
-
-  @include respond(desktop) {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 85%;
-    height: 100vh;
-    background: $footer-dark;
-    z-index: 999999;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 30px 24px;
-    transition: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
-  }
 
   &.nav-active {
     left: 0;
-    margin: -0.5rem;
-  } // මෙනු එක සීරුවට දකුණට ඇදී එයි
+  }
 
-  // 1. Top Bar
+  @include respond(desktop) {
+    display: none; /* Desktop එකේදී Mobile Menu එක background එකෙන් මුළුමනින්ම ඉවත් කළා */
+  }
+
+  // 1. Mobile Menu Top Header
   .mobile-nav-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 6px solid rgba(255, 244, 244, 0.233);
-    padding: 25px;
-    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); // මහත රේඛාව වෙනුවට සිහින් ලයින් එකක් දැම්මා
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    position: relative;
 
-    .header-logo {
-      color: $white;
-      z-index: 999;
-    }
-
-    .logo-circle {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: $white;
-
-      span {
-        color: $primary-orange;
-      }
-    }
+    // .header-logo {
+    //   color: $white;
+    // }
 
     .mobile-close-btn {
-      color: rgb(179, 205, 238);
+      color: $white;
       border: none;
-      background: transparent;
-      font-size: 1.3rem;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 1rem;
       cursor: pointer;
-      position: absolute;
-      top: 0rem;
-      right: 0rem;
-      // width: 40px;
-      // height: 40px;
-
-      padding: 1rem;
-      border-radius: 0 1rem 0 0.5rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%; // රවුම් Close button එකක් කළා Premium පෙනෙන්න
+      display: flex;
+      justify-content: center;
+      align-items: center;
       transition: $transition-fast;
-      // box-shadow: -3px 3px 6px rgba(255, 255, 255, 0.8);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: $secondary-blue3;
+      }
     }
   }
 
-  // 2. Center Grid Links
+  // 2. Mobile Menu Cards Grid (Premium Glass Cards)
   .mobile-nav-links-grid {
-    display: grid;
-    grid-template-columns: 1fr; // පැති දෙකකට කාඩ්ස් බෙදේ
-    // gap: 16px;
-    // margin: 40px 0;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
 
     .mob-nav-card {
-      background: rgba(3, 32, 75, 0.075);
-      background: $white;
-
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 20px;
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04); // 2026 Glass Card
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 16px 20px;
+      border-radius: 14px;
       display: flex;
-      flex-direction: row;
       align-items: center;
       gap: 16px;
-      // color: rgba(4, 18, 95, 0.8);
-      color: #03204b;
+      color: #e2e8f0;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       font-size: 0.95rem;
-      transition: 0.3s;
-      width: 250px;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
 
       svg {
-        font-size: 1.3rem;
-        color: $secondary-blue;
+        font-size: 1.2rem;
+        color: $secondary-blue3; // අයිකන්ස් Neon Teal කළා පට්ට ලස්සනයි
+        transition: transform 0.3s ease;
       }
 
       &:hover {
-        background: rgba($secondary-blue, 0.1);
-        border-color: $secondary-blue3;
-        color: $secondary-blue3;
-        font-weight: 600;
-
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba($secondary-blue3, 0.3);
+        color: $white;
+        transform: translateX(
+          4px
+        ); // පොඩ්ඩක් දකුණට Slide වෙන Animation එකක් දුන්නා
         svg {
-          color: $secondary-blue3;
+          transform: scale(1.1);
         }
       }
     }
   }
-
-  // 3. Bottom Footer
-  .mobile-nav-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 15px;
-
-    p {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.5);
-      line-height: 1.6;
-      margin: 0;
-    }
-  }
-}
-
-.desktop-navbar-links {
-  display: none;
-
-  @include respond(desktop) {
-    display: flex;
-    gap: 1.5rem;
-  }
-}
-
-.desktop-link {
-  color: #64748b;
-  padding: 6px 0;
-  font-size: 1.1rem;
-  text-decoration: none;
-  font-weight: 600;
-  position: relative;
-  transition: color 0.3s ease;
-
-  &:hover {
-    text-decoration: none;
-    transform: translate(0);
-  }
-}
-
-.desktop-link.active {
-  color: #03204b !important;
-}
-
-// .desktop-link::after {
-//   content: "";
-//   position: absolute;
-//   bottom: -6px;
-//   left: 50%;
-//   transform: translateX(-0%) scaleX(0);
-//   width: 20px;
-//   height: 3px;
-//   background-color: #03204b;
-//   border-radius: 2px;
-//   transition: transform 0.3s ease;
-// }
-
-.desktop-link.active::after {
-  transform: translateX(-100%) scaleX(1) !important;
 }
 
 // notification
