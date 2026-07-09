@@ -2,14 +2,22 @@ import { useState } from "react";
 import { db } from "../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 
-import { FaUserPlus, FaCopy, FaUserCheck, FaWhatsapp } from "react-icons/fa6";
+import {
+  FaUserPlus,
+  FaCopy,
+  FaUserCheck,
+  FaWhatsapp,
+  FaXmark,
+} from "react-icons/fa6";
 
-const AddStudentVault = ({ selectedGrade, subject }) => {
+const AddStudentVault = ({ selectedGrade, onClose, isOpen, subject }) => {
   const [generatedID, setGeneratedID] = useState("");
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [registeredData, setRegisterData] = useState(null);
+
+  // const [selectedGrade, setSelectedGrade] = useState("11");
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -75,7 +83,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       id: finalID,
       fullName: formData.fullName,
       gender: formData.gender,
-      grade: selectedGrade,
+      grade: String(selectedGrade),
       password: formData.password,
       pin: cleanPin,
       parentMobile: formData.parentMobile,
@@ -95,6 +103,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       setGeneratedID(finalID);
       setRegisterData(studentCloudData);
       setCopied(false);
+      onClose();
 
       setSuccess(
         `The student was successfully added to the Google Cloud Database! ID: ${finalID}`,
@@ -158,9 +167,50 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     window.open(whatsappUrl, "_blank");
   };
 
+  if (!isOpen) return null;
+
   return (
-    <div className="vault-container">
-      <div className="vault-header">
+    <div
+      className="admin-modal-overlay"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "rgba(0,0,0,0.5)",
+        backdropFilter: "blur(4px)",
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        zIndex: 10000,
+      }}>
+      <div
+        className="admin-modal-card"
+        style={{
+          background: "white",
+          padding: "30px",
+          borderRadius: "12px",
+          width: "500px",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+          position: "relative",
+        }}>
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            background: "none",
+            border: "none",
+            fontSize: "1.2rem",
+            cursor: "pointer",
+            color: "#8b949e",
+          }}>
+          <FaXmark />
+        </button>
+
         <h3>
           <FaUserPlus /> Add New Student (Grade {selectedGrade})
         </h3>
@@ -168,99 +218,162 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
           Check the details on the form, enter the student into the system and
           create an ID.
         </p>
-      </div>
+        {/* </div> */}
 
-      {error && <div className="error-content">⚠️ {error}</div>}
-      {success && <div className="success-content">✓ {success}</div>}
+        {error && <div className="error-content">⚠️ {error}</div>}
+        {success && <div className="success-content">✓ {success}</div>}
 
-      <form
-        onSubmit={handleRegisterSubmit}
-        className="styled-form add-student-form">
-        {/* Left Form Column */}
-        <div className="form-content">
-          <div className="input-group">
-            <label>Student's Full Name (In capital letters)</label>
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Enter Student Name..."
-              required
-              value={formData.fullName}
-              onChange={handleChange}
-            />
+        <form
+          onSubmit={handleRegisterSubmit}
+          // className="styled-form "
+          style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+          {/* Left Form Column */}
+          <div
+            // className="form-content"
+            style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+            <div className="input-group">
+              <label
+                style={{
+                  fontSize: "0.85rem",
+                  fontWeight: "600",
+                  color: "#001b42",
+                }}>
+                Student's Full Name (In capital letters)
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Enter Student Name..."
+                required
+                value={formData.fullName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="input-group">
+              <label
+                style={{
+                  fontSize: "0.85rem",
+                  fontWeight: "600",
+                  color: "#001b42",
+                }}>
+                Create Password (For the student)
+              </label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Create secret password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="input-group">
+              <label
+                style={{
+                  fontSize: "0.85rem",
+                  fontWeight: "600",
+                  color: "#001b42",
+                }}>
+                Create 4-Digit Secret PIN (4-digit code)
+              </label>
+              <input
+                type="number"
+                name="pin"
+                maxLength="4"
+                placeholder="ex: 1234"
+                required
+                value={formData.pin}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="input-group">
+              <label
+                style={{
+                  fontSize: "0.85rem",
+                  fontWeight: "600",
+                  color: "#001b42",
+                }}>
+                Student Gender
+              </label>
+              <select value={formData.gender} onChange={handleChange}>
+                <option value="boy">Boy</option>
+                <option value="girl">Girl</option>
+              </select>
+            </div>
           </div>
+          {/* <div className="input-group">
+          <label>Select Grade Class</label>
+          <select
+            value={selectedGrade}
+            onChange={(e) => setSelectedGrade(e.target.value)}>
+            <option value="10">Grade 10 </option>
+            <option value="11">Grade 11 Theory/Revision</option>
+            <option value="11-Paper">Grade 11 Premium Paper Class</option>
+          </select>
+        </div> */}
 
-          <div className="input-group">
-            <label>Create Password (For the student)</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Create secret password"
-              required
-              value={formData.password}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="input-group">
-            <label>Create 4-Digit Secret PIN (4-digit code)</label>
-            <input
-              type="number"
-              name="pin"
-              maxLength="4"
-              placeholder="ex: 1234"
-              required
-              value={formData.pin}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="input-group">
-            <label>Student Gender</label>
-            <select value={formData.gender} onChange={handleChange}>
-              <option value="boy">Boy</option>
-              <option value="girl">Girl</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Right Form Column */}
-        <div className="form-content">
+          {/* Right Form Column */}
+          {/* <div className="form-content"> */}
           <div className="input-group">
             <label>Select Enrolled Subjects (Subjects)</label>
             <div className="subject-select">
-              <label>
+              <label
+                style={{
+                  fontSize: "0.85rem",
+                  fontWeight: "600",
+                  color: "#001b42",
+                }}>
                 <input
                   type="checkbox"
                   name="maths"
                   checked={formData.maths}
                   onChange={handleChange}
-                />{" "}
+                />
                 Maths
               </label>
-              <label>
+              <label
+                style={{
+                  fontSize: "0.85rem",
+                  fontWeight: "600",
+                  color: "#001b42",
+                }}>
                 <input
                   type="checkbox"
                   name="science"
                   checked={formData.science}
                   onChange={handleChange}
-                />{" "}
+                />
                 Science
               </label>
-              <label>
+              <label
+                style={{
+                  fontSize: "0.85rem",
+                  fontWeight: "600",
+                  color: "#001b42",
+                }}>
                 <input
                   type="checkbox"
                   name="english"
                   checked={formData.english}
                   onChange={handleChange}
-                />{" "}
+                />
                 English
               </label>
             </div>
           </div>
 
           <div className="input-group">
-            <label>Student's Mobile Number</label>
+            <label
+              style={{
+                fontSize: "0.85rem",
+                fontWeight: "600",
+                color: "#001b42",
+              }}>
+              Student's Mobile Number
+            </label>
             <input
               type="text"
               name="studentMobile"
@@ -272,7 +385,14 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
           </div>
 
           <div className="input-group">
-            <label>Parent's Mobile Number </label>
+            <label
+              style={{
+                fontSize: "0.85rem",
+                fontWeight: "600",
+                color: "#001b42",
+              }}>
+              Parent's Mobile Number{" "}
+            </label>
             <input
               type="text"
               name="parentMobile"
@@ -286,57 +406,57 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
           <button type="submit" className="start-btn submit-button">
             Register & Generate Student ID
           </button>
-        </div>
-      </form>
+          {/* </div> */}
+        </form>
 
-      {/* DISPLAY GENERATED ID & WHATSAPP BUTTON PANEL */}
-      {/* <div className="custom-modal-blur-overlay"> */}
-      <div className="share-panel">
-        {generatedID ? (
-          <div className="share-panel-header">
-            <div className="panel-top">
-              <FaUserCheck />
-            </div>
+        {/* DISPLAY GENERATED ID & WHATSAPP BUTTON PANEL */}
+        {/* <div className="custom-modal-blur-overlay"> */}
+        <div className="share-panel">
+          {generatedID ? (
+            <div className="share-panel-header">
+              <div className="panel-top">
+                <FaUserCheck />
+              </div>
 
-            <h4>Generated Student ID</h4>
+              <h4>Generated Student ID</h4>
 
-            <div className="id-content">{generatedID}</div>
+              <div className="id-content">{generatedID}</div>
 
-            <div className="share-content">
-              <button
-                className="share-buton"
-                type="button"
-                onClick={sendWelcomeWhatsApp}>
-                <FaWhatsapp /> Share Credentials via WhatsApp
-              </button>
+              <div className="share-content">
+                <button
+                  className="share-buton"
+                  type="button"
+                  onClick={sendWelcomeWhatsApp}>
+                  <FaWhatsapp /> Share Credentials via WhatsApp
+                </button>
 
-              <button
-                type="button"
-                onClick={copyToClipboard}
-                className="copy-button">
-                <FaCopy /> {copied ? "Copied!" : "Copy to Clipboard"}
-              </button>
+                <button
+                  type="button"
+                  onClick={copyToClipboard}
+                  className="copy-button">
+                  <FaCopy /> {copied ? "Copied!" : "Copy to Clipboard"}
+                </button>
 
-              {/* // 🛠️ React Code එකේ Copy Button එක මේ විදිහට Modify කරන්න: */}
-              {/* <button className={`copy-button ${copied ? '--copied' : ''}`} onClick={...} >
+                {/* // 🛠️ React Code එකේ Copy Button එක මේ විදිහට Modify කරන්න: */}
+                {/* <button className={`copy-button ${copied ? '--copied' : ''}`} onClick={...} >
   {copied ? 'Copied!' : 'Copy ID'}
 </button> */}
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="empty-content">
-            <p>
-              Fill in the details and press the Register & Generate Student ID
-              button.
-            </p>
-            <small>
-              Once the ID is created, the WhatsApp Share button will appear
-              here.
-            </small>
-          </div>
-        )}
+          ) : (
+            <div className="empty-content">
+              <p>
+                Fill in the details and press the Register & Generate Student ID
+                button.
+              </p>
+              <small>
+                Once the ID is created, the WhatsApp Share button will appear
+                here.
+              </small>
+            </div>
+          )}
+        </div>
       </div>
-      {/* </div> */}
     </div>
   );
 };
