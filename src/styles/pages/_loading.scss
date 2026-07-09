@@ -367,9 +367,9 @@
   height: 100vh;
 
   /* 💎 BACKGROUND OPACITY REDUCED + APPLE BLUR ACTIVE */
-  background-color: rgba(248, 250, 252, 0.88);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 22, 44, 0.445);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 
   gap: 25px;
   z-index: 9999999;
@@ -398,6 +398,7 @@
   transform-style: preserve-3d;
   perspective: 200px;
   animation: masterHubRotate 4s linear infinite;
+  // background-color: white;
 }
 
 /* 👑 REACT ICONS 3D BURST LAYER:*/
