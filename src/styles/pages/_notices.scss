@@ -70,7 +70,7 @@
 .notice-card {
   //   background: linear-gradient(135deg, #001c4238 0%, #000d1f2f 100%);
   //   border-left: 6px solid $secondary-blue;
-  background-color: $white;
+  background-color: transparent;
   padding: 22px 25px;
   border-radius: $border-radius-medium;
   box-shadow: 0 6px 18px rgba(53, 53, 53, 0.2);
@@ -82,10 +82,40 @@
   width: $container-width-default;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(white, 0.3);
+  text-align: left;
 }
 
-.card:hover {
+.notice-card:hover {
   transform: translate(0);
+  border: 1px solid $primary-green;
+  box-shadow: 0px 1px 6px $primary-green;
+  transition: all 0.3s ease;
+
+  .notice-top-meta {
+    background-color: transparent;
+  }
+
+  .meta-item {
+    color: white;
+  }
+
+  .type-badge {
+    background-color: $primary-green;
+    color: $white;
+  }
+
+  span {
+    color: rgba(white, 0.3);
+
+    strong {
+      color: white;
+    }
+  }
+
+  .subject-tag {
+    color: rgba($primary-green, 0.5);
+  }
 }
 
 .notice-top-meta {
@@ -95,6 +125,11 @@
   width: $container-width-default;
   flex-direction: row;
   margin-bottom: 12px;
+  // border-bottom: 4px solid rgba($secondary-blue, 0.3);
+  // padding-bottom: 4px;
+  background-color: rgba(white, 0.2);
+  padding: 6px ;
+  border-radius: 3px ;
 
   .meta-item {
     display: flex;
@@ -106,7 +141,6 @@
     font-size: $font-size-body-mm;
     color: $secondary-blue3;
     font-weight: $font-weight-700;
-    // border: 1px solid $secondary-blue;
   }
 
   .type-badge {
@@ -118,32 +152,30 @@
     font-size: $font-size-body-mm;
     text-transform: $text-transform-uppercase;
   }
-
-  h4 {
-    margin: 5px 0 0;
-    color: $secondary-blue;
-    font-weight: $font-weight-800;
-    font-size: $font-size-h3-mm;
-    line-height: 1.4;
-  }
+}
+h4 {
+  margin: 5px 0 0;
+  color: rgba($primary-green, 0.9);
+  font-weight: $font-weight-800;
+  font-size: $font-size-h3-mm;
+  line-height: 1.4;
 }
 
 .notice-main-text {
   margin: $margin-none;
   color: $secondary-blue3;
-  font-size: $font-size-body-m;
+  font-size: $font-size-body-m !important;
   line-height: 1.5;
   font-weight: $font-weight-500;
+  text-align:  left !important;
 }
 
 .notice-footer {
-  text-align: right;
-  border-top: 1px solid $secondary-blue;
+  border-top: 1px solid rgba($secondary-blue, 0.6);
   padding-top: 8px;
   margin-top: 4px;
   font-size: $font-size-body-mm;
-  color: $secondary-blue3;
-  font-weight: $font-weight-600;
+  color: $secondary-blue;
 
   display: flex;
   justify-content: space-between;
@@ -154,5 +186,9 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
+
+    strong {
+      padding-left: 6px;
+    }
   }
 }
