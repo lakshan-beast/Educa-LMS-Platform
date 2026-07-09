@@ -298,7 +298,7 @@ const Footer = () => {
       {/* // activeModel  */}
       {activeModal && (
         <div
-          className="login-overlay"
+          className="logins-overlay"
           onClick={() => {
             setActiveModal(false);
           }}>
