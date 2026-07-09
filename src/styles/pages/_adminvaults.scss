@@ -1,9 +1,8 @@
 .vault-container {
   background: white; // 🛠️ JavaScript කොමා (,) සහ Quotes ("") සහමුලින්ම ඉවත් කළා
-  padding: 1rem 4rem;
+  padding: 1rem;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  margin-top: 1rem;
 
   .vault-header {
     margin-bottom: 25px;
@@ -47,39 +46,39 @@
   }
 
   /* ➕ Add Student Form Matrix */
-  .add-student-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 80px;
+  // .add-student-form {
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  //   gap: 12px 80px;
 
-    .form-content {
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
+  //   .form-content {
+  //     display: flex;
+  //     flex-direction: column;
+  //     gap: 0px;
 
-      .subject-select {
-        display: flex;
-        gap: 20px;
-        background: #f8faff;
-        padding: 12px;
-        border-radius: 8px;
-        border: 1px solid #eef2ff;
-        margin-top: 5px;
-      }
-    }
+  //     .subject-select {
+  //       display: flex;
+  //       gap: 20px;
+  //       background: #f8faff;
+  //       padding: 12px;
+  //       border-radius: 8px;
+  //       border: 1px solid #eef2ff;
+  //       margin-top: 5px;
+  //     }
+  //   }
 
-    .submit-button {
-      height: 70px;
-      width: 100%;
-      padding: 12px;
-      background: $secondary-blue;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  }
+  //   .submit-button {
+  //     height: 70px;
+  //     width: 100%;
+  //     padding: 12px;
+  //     background: $secondary-blue;
+  //     color: white;
+  //     border: none;
+  //     border-radius: 8px;
+  //     font-weight: bold;
+  //     cursor: pointer;
+  //   }
+  // }
 
   /* 🔗 Generate ID & WhatsApp Share Panel */
   .share-panel {
@@ -238,3 +237,28 @@
 //   justify-content: center;
 //   z-index: 9999;
 // }
+
+/* 🗂️ BASE SIDEBAR STYLE (සාමාන්‍ය වෙලාවට කුඩාවට Icons විතරක් පේන හැටි) */
+.admin-sidebar {
+  width: 70px;
+  min-height: 100vh;
+  background: #001b42;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  white-space: nowrap; /* 👈 අකුරු එළියට පැනීම වැළැක්වීමට */
+}
+
+/* 🔥 HOVER MATRIX (Mouse එක උඩට ගිය සැනින් පිරිසිදුව දිග ඇරෙන හැටි) */
+.admin-sidebar:hover {
+  width: 260px;
+}
+
+/* 📝 LINK NAV TEXTS (සාමාන්‍ය වෙලාවට අකුරු නොපෙනී, Hover වෙද්දී විතරක් පෙනෙන හැටි) */
+.admin-sidebar .nav-text {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.admin-sidebar:hover .nav-text {
+  opacity: 1;
+}
