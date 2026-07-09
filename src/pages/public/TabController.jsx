@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ClassesDetails from "../public/ClassesDetails";
 import LiveNoticeDisplay from "../public/LiveNotice";
 
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const TabController = () => {
   const [activeTab, setActiveTab] = useState("SCHEDULE");
@@ -12,12 +12,12 @@ const TabController = () => {
   return (
     <div className="tab-system-wrapper page-container">
       <div className="system-container">
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className="back-buttons">
           <Link className="back-btn" to="/">
-            <FaArrowLeft /> Back to Home
+            <IoIosArrowBack /> Back to Home
           </Link>
           <Link className="back-btn" to="/dashboard">
-            Back to Dashboard <FaArrowRight />
+            Back to Dashboard <IoIosArrowForward />
           </Link>
         </div>
 
