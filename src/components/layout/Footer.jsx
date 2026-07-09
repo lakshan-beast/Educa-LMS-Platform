@@ -265,7 +265,7 @@ const Footer = () => {
           </p>
           <p>
             <FaLaptopCode className="footer-icon" />
-            last updated :<span> 2026 June</span>
+            last updated :<span> 2026 July</span>
           </p>
           <p>
             <FaUsers className="footer-icon" />
