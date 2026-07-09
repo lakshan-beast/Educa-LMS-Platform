@@ -18,7 +18,8 @@
 @import "./pages/bot";
 @import "./pages/contact";
 @import "./pages/comments";
-@import "./pages/dashboard";
+// @import "./pages/dashboard";
+@import "./pages/dash";
 @import "./pages/hero";
 @import "./pages/index";
 @import "./pages/information";
@@ -31,3 +32,11 @@
 @import "./pages/papers";
 // @import "./pages/timetables";
 @import "./pages/resulthub";
+@import "./pages/schedule";
+@import "./pages/classdetails";
+@import "./pages/paperup";
+@import "./pages/admindashobard";
+@import "./pages/chatroom";
+@import "./components//classcard";
+@import "./components/resourcescard";
+@import "./components/teachercard";
