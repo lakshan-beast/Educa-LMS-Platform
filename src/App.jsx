@@ -159,25 +159,25 @@ const App = () => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  useEffect(() => {
-    // 👑 AUTO TIME-BASED THEME ENGINE LOGIC [INDEX 4]
-    const checkSystemTimeAndSetTheme = () => {
-      const currentHour = new Date().getHours();
+  // useEffect(() => {
+  //   // 👑 AUTO TIME-BASED THEME ENGINE LOGIC [INDEX 4]
+  //   const checkSystemTimeAndSetTheme = () => {
+  //     const currentHour = new Date().getHours();
 
-      // සවස 7 (19:00) සිට උදේ 5:59 වෙනකම් ඔටෝම Dark Mode සක්‍රීය වේ [INDEX 4]
-      if (currentHour >= 19 || currentHour < 6) {
-        document.documentElement.setAttribute("data-theme", "dark");
-      } else {
-        document.documentElement.setAttribute("data-theme", "light");
-      }
-    };
+  // සවස 7 (19:00) සිට උදේ 5:59 වෙනකම් ඔටෝම Dark Mode සක්‍රීය වේ [INDEX 4]
+  //     if (currentHour >= 19 || currentHour < 6) {
+  //       document.documentElement.setAttribute("data-theme", "dark");
+  //     } else {
+  //       document.documentElement.setAttribute("data-theme", "light");
+  //     }
+  //   };
 
-    checkSystemTimeAndSetTheme(); // පිටුව ලෝඩ් වෙද්දීම රන් වේ [INDEX 4]
+  //   checkSystemTimeAndSetTheme(); // පිටුව ලෝඩ් වෙද්දීම රන් වේ [INDEX 4]
 
-    // හැම විනාඩියකටම වරක්ම සිස්ටම් වෙලාව පරික්ශා කර බලයි (Auto-sync) [INDEX 4]
-    const themeSyncInterval = setInterval(checkSystemTimeAndSetTheme, 60000);
-    return () => clearInterval(themeSyncInterval);
-  }, []);
+  //   // හැම විනාඩියකටම වරක්ම සිස්ටම් වෙලාව පරික්ශා කර බලයි (Auto-sync) [INDEX 4]
+  //   const themeSyncInterval = setInterval(checkSystemTimeAndSetTheme, 60000);
+  //   return () => clearInterval(themeSyncInterval);
+  // }, []);
 
   return (
     <>
