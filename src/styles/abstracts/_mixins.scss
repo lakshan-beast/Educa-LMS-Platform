@@ -66,8 +66,8 @@
   @include flex-custom(flex-start, stretch, column, 6px, nowrap);
 
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: $shadow-dark;
+    // transform: translateY(-6px);
+    // box-shadow: $shadow-dark;
 
     img {
       transform: scale(1.05);
