@@ -5,13 +5,13 @@ import { db } from "../../firebaseConfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 import AIChatWidget from "../../components/common/AIChatWidget";
+import StudentToolkit from "./StudentLToolKit";
 
 import { BiError } from "react-icons/bi";
-import { FcApproval } from "react-icons/fc";
 import { PiPassword } from "react-icons/pi";
 import { ImFire } from "react-icons/im";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { FaBookOpen, FaLock, FaCrown } from "react-icons/fa6";
+import { FaBookOpen, FaLock } from "react-icons/fa6";
 
 import {
   IoCalendarOutline,
@@ -21,8 +21,8 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 
-import ScoreAnalytics from "../Future/ScorenAnalytics";
-import { premiumStudentsList } from "../../data/approvedStudents";
+// import ScoreAnalytics from "../Future/ScorenAnalytics";
+// import { premiumStudentsList } from "../../data/approvedStudents";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -31,9 +31,9 @@ const Dashboard = () => {
 
   const nowYear = new Date().getFullYear();
 
-  const isPremiumUser = premiumStudentsList.includes(
-    studentId.trim().toUpperCase(),
-  );
+  // const isPremiumUser = premiumStudentsList.includes(
+  //   studentId.trim().toUpperCase(),
+  // );
 
   // 2. Countdown State (2026 O/L Exam - Target Date: Dec 8, 2026)
   const [countdown, setCountdown] = useState({
@@ -158,111 +158,120 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-wrapper page-container">
-      <div className="system-container">
-        <div className="dashboard-grid">
-          <div className="welcome-banner">
+      <div className="system-container-dashboard">
+        <div className="welcome-banner">
+          <h1>
+            <span>
+              {greeting.text}, {studentFirstName}!
+            </span>
+
             <img
-              src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif"
+              src={greeting.animUrl}
               alt="live-emoji"
               style={{
-                width: "350px",
-                height: "350px",
-                zIndex: "999",
-                position: "absolute",
-                top: "5%",
-                left: "15%",
+                width: "75px",
+                height: "75px",
                 objectFit: "contain",
-                display: "none",
               }}
             />
+          </h1>
 
-            <h1>
-              <span>
-                {greeting.text}, {studentFirstName}!
-              </span>
-
-              <img
-                src={greeting.animUrl}
-                alt="live-emoji"
-                style={{
-                  width: "75px",
-                  height: "75px",
-                  objectFit: "contain",
-                }}
-              />
-            </h1>
-
-            <div className="user-details">
+          <div className="user-details">
+            <div className="user-info">
               <p className="user-name">
-                {studentData.fullName}{" "}
+                {studentData.fullName}
                 <span>
                   {studentData.status === "approved" ? (
                     <BiError />
                   ) : (
-                    <FcApproval className="approved-badge" />
+                    <IoIosCheckmarkCircle className="check-icon" />
                   )}
                 </span>
               </p>
-
-              <p>
+              <span className="user-batch">
                 Grade {studentData.grade} - {nowYear} O/L Batch
-              </p>
-
-              <div className="user-security">
-                <p>
-                  <ImFire /> {studentData.id}
-                </p>
-                <p>
-                  <PiPassword /> {studentData.password}
-                </p>
-              </div>
-              <div className="user-number">
-                <p>Your Number : {studentData.studentMobile}</p>
-                <p>Parent Number :{studentData.parentMobile}</p>
-              </div>
-
-              <div className="user-subjects">
-                {studentData.maths && (
-                  <span>
-                    Maths <IoIosCheckmarkCircle className="check-icon" />
-                  </span>
-                )}
-                {studentData.science && (
-                  <span>
-                    Science <IoIosCheckmarkCircle className="check-icon" />
-                  </span>
-                )}
-                {studentData.english && (
-                  <span>
-                    English <IoIosCheckmarkCircle className="check-icon" />
-                  </span>
-                )}
-              </div>
+              </span>
             </div>
 
-            <div className="quick-actions">
-              <Link smooth to="/">
-                <IoHomeOutline className="icons" />
-              </Link>
-              <Link smooth to="/tab-controller">
-                <IoCalendarOutline className="icons" />
-              </Link>
-              <Link smooth to="/student-voices">
-                <IoChatbubbleEllipsesOutline className="icons" />
-              </Link>
-              <Link smooth to="/result-hub">
-                <IoBarChartOutline className="icons" />
-              </Link>
-              <button onClick={handleLogout}>
-                <IoLogOutOutline className="icons signout" />
-              </button>
+            <div className="user-number">
+              <p>Your Number : {studentData.studentMobile}</p>
+              <p>Parent Number :{studentData.parentMobile}</p>
+            </div>
+
+            <div className="user-subjects">
+              {studentData.maths && (
+                <span>
+                  Maths <IoIosCheckmarkCircle className="check-icon" />
+                </span>
+              )}
+              {studentData.science && (
+                <span>
+                  Science <IoIosCheckmarkCircle className="check-icon" />
+                </span>
+              )}
+              {studentData.english && (
+                <span>
+                  English <IoIosCheckmarkCircle className="check-icon" />
+                </span>
+              )}
+            </div>
+
+            <div className="user-security">
+              <p>
+                <ImFire /> {studentData.id}
+              </p>
+              <p>
+                <PiPassword /> {studentData.password}
+              </p>
             </div>
           </div>
 
-          <div className="sub-grid">
+          <div className="student-tools">
+            <StudentToolkit />
+          </div>
+
+          <div>
+            <div className="side-dash-content">
+              <div className="card-container countdown-card">
+                <h4>
+                  <img
+                    src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
+                    alt="live-emoji"
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      objectFit: "contain",
+                    }}
+                  />{" "}
+                  2026 - O/L Exam Countdown
+                </h4>
+                <div className="countdown-tiles">
+                  <div>
+                    <h3>{countdown.days}</h3>
+                    <small>Days</small>
+                  </div>
+                  <div>
+                    <h3>{countdown.hours}</h3>
+                    <small>Hours</small>
+                  </div>
+                  <div>
+                    <h3>{countdown.mins}</h3>
+                    <small>Mins</small>
+                  </div>
+                  <div>
+                    <h3 className="seconds">{countdown.secs}</h3>
+                    <small>Secs</small>
+                  </div>
+                </div>
+                <p>* Target Date: December 08, 2026</p>
+              </div>
+            </div>
+          </div>
+
+          {/* <div className="sub-grid"> */}
             <div className="subjects-section">
               <div className="subjects-grid">
-                <h2>Your Study Vault</h2>
+                {/* <h2>Your Study Vault</h2> */}
                 {/* 1. MATHEMATICS PORTAL */}
                 <div
                   className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
@@ -337,46 +346,29 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="side-dash-content">
-              <div className="card-container countdown-card">
-                <h4>
-                  <img
-                    src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
-                    alt="live-emoji"
-                    style={{
-                      width: "20px",
-                      height: "20px",
-                      objectFit: "contain",
-                    }}
-                  />{" "}
-                  2026 - O/L Exam Countdown
-                </h4>
-                <div className="countdown-tiles">
-                  <div>
-                    <h3>{countdown.days}</h3>
-                    <small>Days</small>
-                  </div>
-                  <div>
-                    <h3>{countdown.hours}</h3>
-                    <small>Hours</small>
-                  </div>
-                  <div>
-                    <h3>{countdown.mins}</h3>
-                    <small>Mins</small>
-                  </div>
-                  <div>
-                    <h3 className="seconds">{countdown.secs}</h3>
-                    <small>Secs</small>
-                  </div>
-                </div>
-                <p>* Target Date: December 08, 2026</p>
-              </div>
-            </div>
+          <div className="quick-actions">
+            <Link smooth to="/">
+              <IoHomeOutline className="icons" />
+            </Link>
+            <Link smooth to="/tab-controller">
+              <IoCalendarOutline className="icons" />
+            </Link>
+            <Link smooth to="/student-voices">
+              <IoChatbubbleEllipsesOutline className="icons" />
+            </Link>
+            <Link smooth to="/result-hub">
+              <IoBarChartOutline className="icons" />
+            </Link>
+            <button onClick={handleLogout}>
+              <IoLogOutOutline className="icons signout" />
+            </button>
           </div>
         </div>
+      {/* </div> */}
 
-        <div className="premium-tracker-zone">
+      {/* <div className="premium-tracker-zone">
           {isPremiumUser ? (
             <ScoreAnalytics />
           ) : (
@@ -396,7 +388,7 @@ const Dashboard = () => {
                 of your O/L subjects individually (Line Graph).
               </p>
 
-              {/* විශේෂ දීමනාව */}
+              {/* විශේෂ දීමනාව 
               <div className="offer-content">
                 <span className="offer-text">Limited Lifetime Offer</span>
                 <h2>
@@ -404,7 +396,7 @@ const Dashboard = () => {
                 </h2>
               </div>
 
-              {/* WhatsApp Payment Trigger Button */}
+              {/* WhatsApp Payment Trigger Button 
               <div>
                 <button type="button" className="claim-btn start-btn">
                   Waiting...
@@ -412,10 +404,9 @@ const Dashboard = () => {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
 
-        <AIChatWidget />
-      </div>
+      <AIChatWidget />
     </div>
   );
 };
