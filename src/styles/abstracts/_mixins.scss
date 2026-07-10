@@ -30,6 +30,11 @@
       @content; // 350px
     }
   }
+  @if $breakpoint == medium-mobile {
+    @media only screen and (min-width: $breakpoint-small-m-mobile) {
+      @content; // 350px
+    }
+  }
   @if $breakpoint == mobile {
     @media only screen and (min-width: $breakpoint-mobile) {
       @content; // 600px
