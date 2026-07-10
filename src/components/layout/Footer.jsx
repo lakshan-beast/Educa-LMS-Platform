@@ -171,6 +171,27 @@ const Footer = () => {
             </p>
           </div>
         </div>
+
+        {/* footer badge level */}
+        <div className="footer-card badge-levelup">
+          <h3>Biuld for Sri Lankan | O/L Students</h3>
+          <p>
+            <FaRocket className="footer-icon" />
+            Version 1.5 Production
+          </p>
+          <p>
+            <FaSquareCheck className="footer-icon" />
+            Verified Academic Links
+          </p>
+          <p>
+            <FaLaptopCode className="footer-icon" />
+            last updated :<span> 2026 July</span>
+          </p>
+          <p>
+            <FaUsers className="footer-icon" />
+            Community Reviewed & Approved
+          </p>
+        </div>
       </div>
 
       {/* footer bottom section  */}
@@ -253,7 +274,7 @@ const Footer = () => {
         </div>
 
         {/* footer badge level */}
-        <div className="footer-card badge-levelup">
+        {/* <div className="footer-card badge-levelup">
           <h3>Biuld for Sri Lankan | O/L Students</h3>
           <p>
             <FaRocket className="footer-icon" />
@@ -271,7 +292,7 @@ const Footer = () => {
             <FaUsers className="footer-icon" />
             Community Reviewed & Approved
           </p>
-        </div>
+        </div> */}
 
         {/* footer copyright info */}
         <div className="footer-card footer-copyrights">
@@ -291,6 +312,10 @@ const Footer = () => {
             </a>
           </p>
         </div>
+      </div>
+
+      <div className="footer-grand-branding" data-aos="zoom-in">
+        Educa<span>.</span>
       </div>
 
       {/* ================= 🎁 ID GENERATOR POPUP MODAL ================= */}
