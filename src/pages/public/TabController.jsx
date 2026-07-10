@@ -11,6 +11,7 @@ const TabController = () => {
 
   return (
     <div className="tab-system-wrapper page-container">
+      
       <div className="system-container">
         <div className="back-buttons">
           <Link className="back-btn" to="/">
