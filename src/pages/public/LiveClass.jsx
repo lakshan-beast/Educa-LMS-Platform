@@ -75,9 +75,6 @@ const LiveClass = () => {
     }
   };
 
-  // if (isLoading) {
-  //   return <Loader />;
-  // }Lo
 
   return (
     <div className="live-class-panel-wrapper">
@@ -89,7 +86,7 @@ const LiveClass = () => {
             <h2>Terminal Access Suspended</h2>
             <p>
               You attempted to switch apps or minimize the dashboard during an
-              active lecture framework [INDEX 4].
+              active lecture framework .
             </p>
             <button
               onClick={() => setIsCheatingAttempted(false)}
