@@ -259,7 +259,7 @@ const ResultsHub = () => {
       </div>
 
       <div className="system-container">
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className="back-buttons">
           <Link className="back-btn" to="/">
             <IoIosArrowBack /> Back to Home
           </Link>
@@ -269,7 +269,7 @@ const ResultsHub = () => {
           </Link>
         </div>
 
-        <div className="results-container parts">
+        <div className="results-containers parts">
           <div>
             <h2>
               Verified O/L <span>Honors Portal</span>
