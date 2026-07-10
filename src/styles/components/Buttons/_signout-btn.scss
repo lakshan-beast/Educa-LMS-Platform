@@ -1,0 +1,31 @@
+// signout button and panel
+.signout-btn,
+.signout-panel {
+  width: $container-width-default;
+  margin: 0 0 0 auto;
+  margin-top: 12px;
+  padding: 6px 3px;
+  color: $bg-light;
+  background-color: $red-color;
+  font-size: $font-size-default;
+  font-weight: $font-weight-500;
+  text-transform: uppercase;
+  border-radius: $border-radius-small-m;
+  box-shadow: none;
+
+  @include center-everything;
+
+  .icon {
+    margin-right: 12px;
+  }
+}
+
+// signout button
+.signout-btn {
+  max-width: 150px;
+}
+
+// signout panel
+.signout-panel {
+  max-width: 200px;
+}
