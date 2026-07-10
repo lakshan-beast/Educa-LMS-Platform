@@ -32,7 +32,6 @@ import PaperManager from "./pages/admin/PaperHubUploadVault";
 import TabController from "./pages/public/TabController";
 
 import AdminProtectedRoute from "./components/ui/AdminProtectedRoute";
-// import SecurityLockdownGate from "./components/ui/SecurityLockDownGate";
 
 const App = () => {
   useEffect(() => {
