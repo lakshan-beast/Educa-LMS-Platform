@@ -527,6 +527,21 @@
 //   }
 // }
 
+.class-container {
+  padding: 0px;
+}
+.class-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  @include respond(tablet) {
+    flex-direction: row;
+    align-items:stretch;
+  }
+}
 /* ========================================================
    PUBLIC TIMETABLE CARD - FULL DETAIL MATRIX STYLES (DARK)
    ======================================================== */
@@ -547,8 +562,9 @@
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   box-sizing: border-box;
-  max-width: 350px;
+  max-width: 400px;
   width: 100%;
+  // margin: 0 auto;
 
   &:hover {
     transform: translateY(-5px);
@@ -606,7 +622,7 @@
   .card-body-details {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 3px;
 
     .faculty-tag-title {
       font-size: 0.8rem;
