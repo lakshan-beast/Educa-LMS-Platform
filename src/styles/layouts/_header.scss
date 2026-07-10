@@ -31,16 +31,16 @@ $transition-fast: 0.2s ease;
   justify-content: center;
   align-items: center;
   z-index: $z-index-modal;
-  padding: 1rem 0; // Screen එකේ උඩින් පොඩ්ඩක් ගැලවී තිබීමට
+  padding: 0.5rem 0; // Screen එකේ උඩින් පොඩ්ඩක් ගැලවී තිබීමට
 }
 
 .header {
-  width: 94%; // Screen එක දෙපැත්තෙන් ඉඩ තබා Floating Panel එකක් කළා
+  width: 96%; // Screen එක දෙපැත්තෙන් ඉඩ තබා Floating Panel එකක් කළා
   height: 85px; // Executive Look එකක් එන්න උස පොඩ්ඩක් අඩු කළා
   padding: 0 25px;
-  border-radius: 20px;
+  border-radius: 16px;
   -webkit-backdrop-filter: blur(16px);
-  background-color: rgba($secondary-blue, 0.15); // තද ග්ලාස් පෙනුම
+  background-color: rgba($secondary-blue, 0.2); // තද ග්ලාස් පෙනුම
   backdrop-filter: blur(16px); // 2026 Ultra blur effect
   border: 1px solid rgba(255, 255, 255, 0.08); // සිහින් invisible border එක
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
@@ -49,14 +49,14 @@ $transition-fast: 0.2s ease;
   transition: all 0.4s ease;
 
   @include respond(tablet) {
-    width: 96%;
+    width: 98%;
   }
 
   @include respond(desktop) {
-    width: 98%; // Desktop වලදී තවත් පිළිවෙළට මැද පාවේ
+    width: 99%; // Desktop වලදී තවත් පිළිවෙළට මැද පාවේ
     height: 90px;
     padding: 0 35px;
-    border-radius: $border-radius-styles;
+    border-radius: 12px;
   }
 }
 
