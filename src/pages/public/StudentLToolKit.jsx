@@ -158,7 +158,7 @@ const StudentToolkit = () => {
         gap: "25px",
       }}>
       {/* 🎛️ 1. CORE UTILITY LAUNCH DOCK BUTTONS */}
-      <div className="utility-trigger-buttons-dock">
+      <div className="utility-trigger-buttons-dock" style={{display: "flex", flexDirection: "column"}}>
         <button
           onClick={() => setActiveModal("calc")}
           className="guild-chat-portal-link"
