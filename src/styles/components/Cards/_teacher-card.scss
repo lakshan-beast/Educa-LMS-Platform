@@ -1,0 +1,127 @@
+.teacher-card {
+  gap: 10px;
+  background: $white;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 25px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 32px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid rgba($primary-green, 0.3);
+
+  @include respond(desktop) {
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  &::before {
+    content: "";
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: -12%;
+    left: -12%;
+    border-radius: 50%;
+    border: 35px solid rgba(0, 241, 209, 0.1);
+    transition: all 0.8s ease;
+    filter: blur(0.9rem);
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 3px solid $primary-green;
+    border-radius: 2rem;
+
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(0, 241, 209, 0.25) 0%,
+      transparent 70%
+    );
+
+    &::before {
+      width: 160px;
+      height: 160px;
+      top: 22%;
+      left: 70%;
+      filter: blur(0.05rem);
+    }
+  }
+
+  .teacher-image-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+
+    img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin: 0;
+
+      @include respond(desktop) {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .teacher-info-column {
+    padding: 6px 0;
+    width: 100%;
+    z-index: 2;
+
+    .subject-tag {
+      display: inline-block;
+      padding: 5px 15px;
+      background: rgba($primary-green, 0.5);
+      color: $secondary-blue;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    h3 {
+      margin: 10px 0;
+      padding-bottom: 5px;
+      font-size: 1.35rem;
+      color: $secondary-blue;
+      border-bottom: 2px solid rgba($secondary-blue, 0.2);
+    }
+
+    .detail-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      p {
+        margin: 0;
+        line-height: 1.4;
+        font-size: 0.9rem;
+        color: rgba($secondary-blue, 0.8);
+        text-align: center;
+
+        @include respond(dekstop) {
+          text-align: left;
+        }
+
+        b {
+          color: white;
+        }
+        span {
+          margin: 0 3px;
+          color: rgba($secondary-blue, 0.6);
+          padding: 2px 6px;
+          border-radius: 6px;
+          background-color: rgba($secondary-blue, 0.03);
+        }
+      }
+    }
+  }
+}
