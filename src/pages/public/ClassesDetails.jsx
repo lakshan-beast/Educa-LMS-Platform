@@ -370,7 +370,7 @@ import {
 } from "firebase/firestore";
 import Loader from "../../components/ui/Loader";
 import {
-  FaCalendarCheck,
+  // FaCalendarCheck,
   // FaNoteSticky,
   FaLock,
   FaBullhorn,
@@ -553,20 +553,168 @@ const ClassesDetails = () => {
                 (cls.overrideStatus === "POSTPONED" && !isClosed);
 
               return (
+                // <div
+                //   key={cls.id}
+                //   disabled={isClosed || isPaused}
+
+                //   className={`public-schedule-card ${isLive ? "pulse-neon-live" : isPaused ? "card-postponed" : ""}`}>
+
+                //   <div className="card-top-bar-meta">
+                //     <span
+                //       className={`status-tag-pill ${isLive ? "live" : isPaused ? "postponed" : isClosed ? "closed" : "upcoming"}`}>
+                //       {isLive
+                //         ? "🔴 LIVE NOW"
+                //         : isPaused
+                //           ? "⚠️ POSTPONED"
+                //           : isClosed
+                //             ? "🏁 SESSION ENDED" // 👈 FIXED: Close කළ සැනින් උඩ Badge එකත් ලස්සනට මාරු වේ!
+                //             : "🕒 UPCOMING"}
+                //     </span>
+                //     <small className="timeline-week-marker">
+                //       <FaCalendarCheck /> {cls.weekPicker || "Week N/A"}
+                //     </small>
+                //   </div>
+
+                //   {/* ⏳ CORE REAL-TIME LIVE COUNTDOWN HUB */}
+                //   {!isLive && !isPaused && !isClosed && cls.targetDateTime && (
+                //     <div className="live-countdown-timer-dock">
+                //       <span className="countdown-label">
+                //       </span>
+                //       <code className="countdown-clock-digits">
+                //         {calculateCountdown(cls.targetDateTime)}
+                //       </code>
+                //     </div>
+                //   )}
+
+                //   {/* MAIN CARD BODY */}
+                //   <div className="card-body-details">
+                //     <h3 className="subject-core-title">
+                //       {cls.className || "Academic View"}
+                //     </h3>
+                //     <span className="faculty-tag-title">
+                //       {cls.teacherName || "Official Faculty"}
+                //     </span>
+
+                //     <div className="parameter-data-row">
+                //       {/* <FaBookOpen className="icon-v" /> */}
+                //       <p>
+                //         Active Lesson:
+                //         <span>{cls.currentLesson || "Not Specified"}</span>
+                //       </p>
+                //     </div>
+                //     <div className="parameter-data-row">
+                //       <p>
+                //         Start Target:
+                //         <span>
+                //           {cls.targetDateTime
+                //             ? new Date(cls.targetDateTime).toLocaleString()
+                //             : "No Date Set"}
+                //         </span>
+                //       </p>
+                //     </div>
+
+                //     {cls.specialNotes && (
+                //       <div className="special-instruction-box">
+                //         <p>Notice :</p> <span>{cls.specialNotes}</span>
+                //       </div>
+                //     )}
+                //   </div>
+
+                //   {/* 📢 LATEST CLASS NOTICE FEED LINK */}
+                //   {latestNotice && (
+                //     <div className="latest-notice-broadcast-banner">
+                //       <div className="notice-banner-header">
+                //         <FaBullhorn /> <span>Latest Bulletin Board Alert:</span>
+                //       </div>
+                //       <p>"{latestNotice.text}"</p>
+                //     </div>
+                //   )}
+
+                //   {/* 👟 CARD FOOTER ACTION ZONE */}
+                //   <div className="card-action-footer-matrix">
+                //     {/* ✅ බ්‍රවුසර් එකෙන් Block නොවී ආරක්ෂිතව Google Calendar open වන හැටි */}
+                //     <button
+                //       type="button"
+                //       onClick={() => {
+                //         const calendarUrl = buildGoogleCalendarUrl(cls);
+                //         if (calendarUrl !== "#") {
+                //           window.open(
+                //             calendarUrl,
+                //             "_blank",
+                //             "noopener,noreferrer",
+                //           );
+                //         }
+                //       }}
+                //       className="google-calendar-anchor-link"
+                //       title="Sync Reminder to Google Calendar">
+                //       <FaGoogle /> Add Reminder
+                //     </button>
+
+                //     {isLive ? (
+                //       <Link
+                //         to="dashboard"
+                //         className="action-button-gate live-join-btn">
+                //         <FaLock /> Access Dashboard to Join Zoom
+                //       </Link>
+                //     ) : (
+                //       <div className="disabled-action-flow-wrapper">
+                //         {cls.targetDateTime && (
+                //           // <a
+                //           //   href={buildGoogleCalendarUrl(cls)}
+                //           //   target="_blank"
+                //           //   rel="noreferrer"
+                //           //   className="google-calendar-anchor-link"
+                //           //   title="Sync Reminder to Google Calendar">
+                //           //   <FaGoogle /> Add Reminder
+                //           // </a>
+
+                //           // <button
+                //           //   type="button"
+                //           //   onClick={() => {
+                //           //     const calendarUrl = buildGoogleCalendarUrl(cls);
+                //           //     if (calendarUrl !== "#") {
+                //           //       window.open(
+                //           //         calendarUrl,
+                //           //         "_blank",
+                //           //         "noopener,noreferrer",
+                //           //       );
+                //           //     }
+                //           //   }}
+                //           //   className="google-calendar-anchor-link"
+                //           //   style={{
+                //           //     background: "none",
+                //           //     border: "none",
+                //           //     cursor: "pointer",
+                //           //     display: "flex",
+                //           //     alignItems: "center",
+                //           //     gap: "8px",
+                //           //     color: "#8b949e",
+                //           //     fontSize: "0.8rem",
+                //           //     fontWeight: "bold",
+                //           //     margin: "0 auto",
+                //           //     padding: "5px",
+                //           //   }}
+                //           //   title="Sync Reminder to Google Calendar">
+                //           //   <FaGoogle /> Add Reminder
+                //           // </button>
+
+                //           <button
+                //             disabled
+                //             className="action-button-gate disabled-btn">
+                //             {isPaused
+                //               ? "Class Session Postponed"
+                //               : "Room Locked"}
+                //           </button>
+                //         )}
+                //       </div>
+                //     )}
+                //   </div>
+                // </div>
+
                 <div
-                  key={cls.id}
                   disabled={isClosed || isPaused}
-                  // style={{
-                  //   opacity: isClosed ? "0.4" : "0.6",
-                  //   cursor: "not-allowed",
-                  // }}
-                  className={`public-schedule-card ${isLive ? "pulse-neon-live" : isPaused ? "card-postponed" : ""}`}>
+                  className={`public-schedule-card ${isLive ? "pulse-neon-live" : isPaused ? "card-postponed" : isClosed ? "card-session-ended" : "card-upcoming"}`}>
                   {/* CARD TOP META BAR */}
-                  {/* {isClosed
-                    ? "Class Session Ended"
-                    : isPaused
-                      ? "Class Session Postponed"
-                      : "Portal Room Locked"} */}
                   <div className="card-top-bar-meta">
                     <span
                       className={`status-tag-pill ${isLive ? "live" : isPaused ? "postponed" : isClosed ? "closed" : "upcoming"}`}>
@@ -575,20 +723,18 @@ const ClassesDetails = () => {
                         : isPaused
                           ? "⚠️ POSTPONED"
                           : isClosed
-                            ? "🏁 SESSION ENDED" // 👈 FIXED: Close කළ සැනින් උඩ Badge එකත් ලස්සනට මාරු වේ!
+                            ? "🏁 SESSION ENDED"
                             : "🕒 UPCOMING"}
                     </span>
                     <small className="timeline-week-marker">
-                      <FaCalendarCheck /> {cls.weekPicker || "Week N/A"}
+                       {cls.weekPicker || "Week N/A"}
                     </small>
                   </div>
 
                   {/* ⏳ CORE REAL-TIME LIVE COUNTDOWN HUB */}
                   {!isLive && !isPaused && !isClosed && cls.targetDateTime && (
                     <div className="live-countdown-timer-dock">
-                      <span className="countdown-label">
-                        {/* T-Minus to Live Terminal: */}
-                      </span>
+                      <span className="countdown-label"></span>
                       <code className="countdown-clock-digits">
                         {calculateCountdown(cls.targetDateTime)}
                       </code>
@@ -605,21 +751,17 @@ const ClassesDetails = () => {
                     </span>
 
                     <div className="parameter-data-row">
-                      {/* <FaBookOpen className="icon-v" /> */}
                       <p>
-                        Active Lesson:
-                        <span>{cls.currentLesson || "Not Specified"}</span>
+                        <span>Active Lesson:</span>
+                        {cls.currentLesson || "Not Specified"}
                       </p>
                     </div>
                     <div className="parameter-data-row">
-                      {/* <FaClock className="icon-v" />{" "} */}
                       <p>
-                        Start Target:
-                        <span>
-                          {cls.targetDateTime
-                            ? new Date(cls.targetDateTime).toLocaleString()
-                            : "No Date Set"}
-                        </span>
+                        <span>Start Target:</span>
+                        {cls.targetDateTime
+                          ? new Date(cls.targetDateTime).toLocaleString()
+                          : "No Date Set"}
                       </p>
                     </div>
 
@@ -642,7 +784,6 @@ const ClassesDetails = () => {
 
                   {/* 👟 CARD FOOTER ACTION ZONE */}
                   <div className="card-action-footer-matrix">
-                    {/* ✅ බ්‍රවුසර් එකෙන් Block නොවී ආරක්ෂිතව Google Calendar open වන හැටි */}
                     <button
                       type="button"
                       onClick={() => {
@@ -662,52 +803,13 @@ const ClassesDetails = () => {
 
                     {isLive ? (
                       <Link
-                        to="dashboard"
+                        to="/dashboard"
                         className="action-button-gate live-join-btn">
                         <FaLock /> Access Dashboard to Join Zoom
                       </Link>
                     ) : (
                       <div className="disabled-action-flow-wrapper">
                         {cls.targetDateTime && (
-                          // <a
-                          //   href={buildGoogleCalendarUrl(cls)}
-                          //   target="_blank"
-                          //   rel="noreferrer"
-                          //   className="google-calendar-anchor-link"
-                          //   title="Sync Reminder to Google Calendar">
-                          //   <FaGoogle /> Add Reminder
-                          // </a>
-
-                          // <button
-                          //   type="button"
-                          //   onClick={() => {
-                          //     const calendarUrl = buildGoogleCalendarUrl(cls);
-                          //     if (calendarUrl !== "#") {
-                          //       window.open(
-                          //         calendarUrl,
-                          //         "_blank",
-                          //         "noopener,noreferrer",
-                          //       );
-                          //     }
-                          //   }}
-                          //   className="google-calendar-anchor-link"
-                          //   style={{
-                          //     background: "none",
-                          //     border: "none",
-                          //     cursor: "pointer",
-                          //     display: "flex",
-                          //     alignItems: "center",
-                          //     gap: "8px",
-                          //     color: "#8b949e",
-                          //     fontSize: "0.8rem",
-                          //     fontWeight: "bold",
-                          //     margin: "0 auto",
-                          //     padding: "5px",
-                          //   }}
-                          //   title="Sync Reminder to Google Calendar">
-                          //   <FaGoogle /> Add Reminder
-                          // </button>
-
                           <button
                             disabled
                             className="action-button-gate disabled-btn">
