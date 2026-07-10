@@ -237,37 +237,13 @@ const StudentVoices = () => {
           </Link>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "12px",
-            flexWrap: "wrap",
-            gap: "30px",
-          }}>
+        <div className="voices-container parts">
           <div>
-            <h2
-              style={{
-                color: "#001b42",
-                margin: "1rem 0",
-                fontWeight: "800",
-                gap: "10px",
-                fontSize: "1.6rem",
-                textAlign: "center",
-              }}>
+            <h2>
               Our Students'
-              <span style={{ display: "block", color: "#a8abb1d0" }}>
-                Verified Success
-              </span>
+              <span>Verified Success</span>
             </h2>
-            <p
-              style={{
-                color: "#a8abb1d0",
-                fontSize: "0.85rem",
-                margin: "5px 0 12px 0",
-                textAlign: "center",
-              }}>
+            <p>
               Read real experiences and genuine reviews shared directly by our
               students. Discover how our friendly digital lessons, interactive
               test tools, and Neti AI have helped them boost their exam grades..
