@@ -1,7 +1,7 @@
-// import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../components/layout/Header"; // 👈 ඔයාගේ ෆෝල්ඩර් path එක
-import Footer from "../components/layout/Footer"; // 👈 ඔයාගේ ෆෝල්ඩර් path එක
+
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 import ScrollTop from "../components/layout/ScrollTop";
 
 const PublicLayout = () => {
@@ -9,15 +9,12 @@ const PublicLayout = () => {
     <div
       className="public-app-container"
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      {/* 👑 පොදු Header එක මෙතන විතරක් රන් වේ */}
       <Header />
 
-      {/* 📄 මීට යටින් ඇති සියලුම සාමාන්‍ය පිටු (Home, About, Student Dashboard) Outlet එක ඇතුළෙන් ලෝඩ් වේ */}
       <main style={{ flexGrow: 1 }}>
         <Outlet />
       </main>
 
-      {/* 👟 පොදු Footer එක සහ Scroll Top බටන් එක */}
       <ScrollTop />
       <Footer />
     </div>
