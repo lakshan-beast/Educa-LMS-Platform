@@ -1,200 +1,16 @@
-// // contact form in about section
-// .form-containers {
-//   margin-top: 2rem;
-//   min-width: 300px;
-//   max-width: 400px;
-//   width: $container-width-default;
-//   background-color: $bg-soft;
-//   box-shadow: $shadow-medium;
-//   border-radius: $border-radius-medium;
-
-//   @include respond(desktop) {
-//     margin: $margin-none;
-//   }
-
-//   form {
-//     padding: 0.6rem 1rem;
-//     margin: $margin-none;
-//     width: $container-width-default;
-//     background: $white;
-//     border-radius: $border-radius-medium;
-
-//     h3 {
-//       margin-bottom: 24px;
-//       padding: 6px;
-//       text-align: center;
-
-//       span {
-//         display: block;
-//       }
-//     }
-
-//     legend {
-//       color: $secondary-blue;
-//       text-align: center;
-//       font-weight: $font-weight-700;
-//       margin-bottom: 2rem;
-//     }
-
-//     label,
-//     input,
-//     select,
-//     textarea {
-//       display: block;
-//       width: $container-width-default;
-//       color: $secondary-blue;
-//       padding: 3px 10px;
-//       margin: $margin-none;
-//       background-color: transparent;
-//     }
-
-//     label {
-//       color: $text-blue;
-//       padding: $padding-none;
-//       margin-top: 8px;
-//     }
-
-//     input,
-//     textarea {
-//       background-color: rgba(162, 173, 233, 0.08);
-//       border-bottom: 2px solid $link-shadow;
-
-//       &:focus {
-//         border-bottom: none;
-//         background-color: $link-shadow;
-//         border-radius: $border-radius-small;
-//       }
-//     }
-
-//     select {
-//       background-color: rgba(162, 173, 233, 0.08);
-//       border-bottom: 2px solid $link-shadow;
-//       color: $text-medium;
-
-//       &:focus {
-//         background-color: $text-light;
-//       }
-//     }
-//   }
-
-//   textarea {
-//     resize: none;
-//     width: $container-width-default;
-//     min-width: 300px;
-//     max-width: 350px;
-//     margin: $margin-center;
-//     height: 100px;
-//     overflow: scroll;
-//   }
-// }
-
-// // styled form
-// .styled-form {
-//   .input-group {
-//     margin-bottom: 8px;
-//     display: flex;
-//     flex-direction: column;
-
-//     label {
-//       font-size: $font-size-body-m;
-//       font-weight: $font-weight-600;
-//       color: $secondary-blue;
-//       margin-bottom: 6px;
-//       display: flex;
-//       align-items: center;
-//       gap: 8px;
-
-//       svg {
-//         color: $primary-orange;
-//       }
-//     }
-
-//     input[type="text"],
-//     input[type="password"],
-//     input[type="email"],
-//     input[type="number"],
-//     input[type="tel"],
-//     select,
-//     textarea {
-//       padding: 12px 16px;
-//       width: $container-width-default;
-//       color: $secondary-blue;
-//       background: $white;
-//       border: 1px solid #e0e8ff;
-//       border-radius: $border-radius-small;
-//       font-size: $font-size-body;
-//       font-family: inherit;
-//       transition: all 0.3s ease;
-//       display: block;
-
-//       &:focus {
-//         color: $secondary-blue;
-//         background: $white;
-//         outline: none;
-//         border: 1px solid $secondary-blue;
-//         box-shadow: 0 0 0 4px rgba($secondary-blue, 0.1);
-//       }
-//     }
-
-//     textarea {
-//       resize: none;
-//       min-width: 300px;
-//       width: $container-width-default;
-//       margin: $margin-center;
-//       height: 100px;
-//       overflow: scroll;
-//     }
-
-//     // Checkbox alignments
-//     div {
-//       display: flex;
-//       gap: 8px;
-
-//       label {
-//         margin: $margin-none;
-//         color: $text-medium;
-//         font-weight: $font-weight-500;
-//         cursor: pointer;
-
-//         input[type="checkbox"] {
-//           width: 16px;
-//           height: 16px;
-//           accent-color: $secondary-blue;
-//           cursor: pointer;
-//         }
-//       }
-//     }
-//   }
-// }
-
-
-/* ========================================================
-   2026 CYBERPUNK GLASS INTELLIGENT FORM SYSTEM
-   ======================================================== */
-// $footer-dark: #0f172a;       // Deep Slate Dark Base
-// $secondary-blue: #2563eb;    // Executive Blue
-// $secondary-blue3: #00f1d1;   // Neon Teal Accent
-// $primary-orange: #f97316;    // Warning Cyber Orange
-// $white: #ffffff;
-// $text-light: #f8fafc;
-// $text-medium: #94a3b8;
-// $text-muted: #64748b;
-
 .styled-form {
   width: 100%;
   box-sizing: border-box;
 
   .input-group {
-    margin-bottom: 16px; // Input අතර පරතරය තවත් පිළිවෙළක් කළා
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; // Label සහ Inputs වමට පෙළගැසීමට
-
-    // 1. INPUT LABELS (අකුරු පිරිසිදු සුදු කර Neon Teal Glow එකක් දුන්නා)
+    align-items: flex-start;
     label {
       font-size: 0.88rem;
       font-weight: 600;
-      color: #e2e8f0; // Dark mode එකට ගැළපෙන ලයිට් වර්ණය
+      color: #e2e8f0;
       margin-bottom: 8px;
       display: flex;
       align-items: center;
@@ -202,13 +18,13 @@
       letter-spacing: 0.3px;
 
       svg {
-        color: $secondary-blue3 !important; // Orange වෙනුවට Neon Teal කර පත්තු කළා
+        color: $secondary-blue3 !important;
         filter: drop-shadow(0 0 5px $secondary-blue3);
         font-size: 1rem;
       }
     }
 
-    // 2. UNIVERSAL INPUT FIELDS (තද සුදු වෙනුවට 2026 Cyber Glass Layers)
+    // 2. UNIVERSAL INPUT FIELDS)
     input[type="text"],
     input[type="password"],
     input[type="email"],
@@ -216,47 +32,43 @@
     input[type="tel"],
     select,
     textarea {
-      padding: 14px 16px; // තව පොඩ්ඩක් පෑඩින් වැඩි කළා Premium පෙනෙන්න
-      width: 100% !important; // හැම තැනකදීම auto-responsive වීමට 100% කළා
+      padding: 14px 16px;
+      width: 100% !important;
       max-width: 100%;
-      color: white !important; // ඇතුළේ ලියන අකුරු පිරිසිදු සුදු පාට වේ
-      
+      color: white !important;
+
       // 👈 2026 Main Shift: Transparent Dark Glass Background
-      background: rgba(255, 255, 255, 0.03) !important; 
-      border: 1px solid rgba(255, 255, 255, 0.08); 
-      border-radius: 12px; // ඝන බෝඩර් වෙනුවට වඩාත් සුමට රේඩියස් එකක්
-      
+      background: rgba(255, 255, 255, 0.03) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+
       font-size: 0.92rem;
       font-family: inherit;
       box-sizing: border-box;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: block;
 
-      // Input එකක් ඇතුළත ක්ලික් කළ විට (Focus State - පිස්සු හැදෙන Neon Light Animation එක)
       &:focus {
         color: white !important;
         background: rgba(255, 255, 255, 0.06) !important;
         outline: none;
-        
-        // බෝඩර් එක සහ වටේ Shadow එක නියමෙටම Neon Teal පාටින් පත්තුවේ
+
         border-color: $secondary-blue3 !important;
-        box-shadow: 
+        box-shadow:
           0 0 0 1px $secondary-blue3,
           rgba($secondary-blue3, 0.15) 0px 0px 14px;
       }
 
-      // Placeholder (ලාවට පෙනෙන අකුරු)
       &::placeholder {
         color: $text-muted;
         opacity: 0.8;
       }
     }
 
-    // Select Box (Dropdown arrow එක සුදු කිරීමට)
     select {
       cursor: pointer;
       option {
-        background-color: $footer-dark; // Dropdown ලිස්ට් එකේ පසුබිම කළු කරයි
+        background-color: $footer-dark;
         color: white;
       }
     }
@@ -267,9 +79,8 @@
       width: 100% !important;
       min-width: 100%;
       height: 110px;
-      overflow-y: auto; // Scrollbar එක අවශ්‍ය විට පමණක් පේන්න
+      overflow-y: auto;
 
-      // Webkit scrollbar එක සුපිරියටම සඟවා පිරිසිදු කළා
       &::-webkit-scrollbar {
         width: 6px;
       }
@@ -298,7 +109,7 @@
         input[type="checkbox"] {
           width: 18px;
           height: 18px;
-          accent-color: $secondary-blue3; // Check කළ විට Neon Teal පාට වේ
+          accent-color: $secondary-blue3;
           cursor: pointer;
           border-radius: 4px;
           border: 1px solid rgba(255, 255, 255, 0.2);
