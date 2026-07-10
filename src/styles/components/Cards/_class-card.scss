@@ -1,0 +1,244 @@
+.parent-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 6px;
+  padding: 2rem 0rem 1rem 0rem;
+  perspective: 1200px;
+}
+
+/* 2. MAIN CYBER CARD (.class-cardz) */
+.class-cardz {
+  height: 420px;
+  position: relative;
+  border-radius: 40px;
+  background: rgba($footer-dark, 0.6);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: rotateX(-8deg);
+    transform: rotateY(10deg);
+    transform: translateZ(-25px);
+    border-width: 2px;
+    border-color: rgba($primary-green, 0.4);
+    box-shadow:
+      0 30px 60px rgba(0, 0, 0, 0.4),
+      rgba($white, 0.15) 0px 0px 30px;
+
+    .content {
+      .title {
+        color: $primary-green;
+      }
+    }
+
+    .bottom .meta-container.social-buttons-container .meta-item {
+      transform: translate3d(0, 0, 50px);
+
+      .social-button {
+        border-color: rgba($secondary-blue3, 0.3);
+        color: $primary-green;
+        background: rgba($secondary-blue3, 0.05);
+      }
+    }
+
+    .logo {
+      .circle2 {
+        transform: translate3d(0, 0, 45px);
+        background: rgba(0, 241, 209, 0.28);
+      }
+      .circle3 {
+        transform: translate3d(0, 0, 65px);
+        background: rgba(0, 241, 209, 0.29);
+      }
+      .circle4 {
+        transform: translate3d(0, 0, 85px);
+        background: rgba(0, 241, 209, 0.3);
+      }
+      .circle5 {
+        transform: translate3d(0, 0, 110px);
+        background: rgba(0, 241, 209, 1);
+        scale: 1.05;
+      }
+    }
+  }
+
+  /* Modern Interface Glass Layer */
+  .glass {
+    transform-style: preserve-3d;
+    position: absolute;
+    inset: 8px;
+    border-radius: 35px;
+    border-top-right-radius: 100%;
+
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(0, 241, 209, 0.02) 100%
+    );
+
+    transform: translate3d(0px, 0px, 25px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+  }
+
+  /* Content Text Area (Syllabus Texts) */
+  .content {
+    padding: 160px 25px 0px 25px;
+    transform: translate3d(0, 0, 26px);
+
+    .title {
+      display: block;
+      color: white;
+      font-weight: 800;
+      font-size: 21px;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
+    }
+
+    .text {
+      display: block;
+      color: rgba($secondary-blue, 0.6);
+      font-size: 13.5px;
+      margin-top: 15px;
+      line-height: 1.5;
+      text-align: left;
+    }
+  }
+
+  /* Bottom Controls (Badges) */
+  .bottom {
+    padding: 10px 12px;
+    transform-style: preserve-3d;
+    position: absolute;
+    bottom: 8px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate3d(0, 0, 26px);
+    margin-top: 1rem;
+
+    .meta-container.social-buttons-container {
+      display: flex;
+      gap: 8px;
+      transform-style: preserve-3d;
+
+      .meta-item {
+        transform-style: preserve-3d;
+
+        .social-button {
+          padding: 6px 14px;
+          background: rgba(255, 255, 255, 0.04); // Transparent
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 20px;
+          border: none;
+          display: grid;
+          place-content: center;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+          font-size: 11px;
+          font-weight: 700;
+          color: $text-light;
+          white-space: nowrap;
+
+          // Transitions & Delays remain original
+          &:first-child {
+            transition:
+              transform 0.2s ease-in-out 0.4s,
+              box-shadow 0.2s ease-in-out 0.4s;
+          }
+          &:nth-child(2) {
+            transition:
+              transform 0.2s ease-in-out 0.6s,
+              box-shadow 0.2s ease-in-out 0.6s;
+          }
+        }
+      }
+    }
+  }
+
+  /* 
+  📍 FLOATING 3D CIRCLES
+      */
+  .logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-style: flat !important;
+    z-index: 5;
+    width: 170px;
+    height: 170px;
+
+    .circle {
+      display: block;
+      position: absolute;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      top: 0;
+      right: 0;
+      box-shadow: rgba(0, 0, 0, 0.2) -10px 10px 25px 0px;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      background: rgba(0, 241, 209, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    // Original Thickness & Layers
+    .circle1 {
+      width: 170px;
+      transform: translate3d(0, 0, 20px);
+      top: 8px;
+      right: 8px;
+    }
+    .circle2 {
+      width: 140px;
+      transform: translate3d(0, 0, 30px);
+      top: 10px;
+      right: 10px;
+      transition-delay: 0.1s;
+    }
+    .circle3 {
+      width: 110px;
+      transform: translate3d(0, 0, 40px);
+      top: 17px;
+      right: 17px;
+      transition-delay: 0.2s;
+    }
+    .circle4 {
+      width: 80px;
+      transform: translate3d(0, 0, 50px);
+      top: 23px;
+      right: 23px;
+      transition-delay: 0.3s;
+    }
+
+    .circle5 {
+      width: 50px;
+      transform: translate3d(0, 0, 60px);
+      top: 30px;
+      right: 30px;
+      display: grid;
+      place-content: center;
+      transition-delay: 0.4s;
+      background: linear-gradient(
+        135deg,
+        $secondary-blue,
+        rgba($primary-green, 0.2)
+      );
+      box-shadow: rgba($secondary-blue, 0.4) 0px 4px 15px;
+      font-size: 1.6rem;
+
+      .svg {
+        width: 20px;
+        fill: white;
+      }
+    }
+  }
+}
