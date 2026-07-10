@@ -1610,7 +1610,7 @@
 .parent-card {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 30px; // කාඩ්ස් අතර ඉඩ පොඩ්ඩක් වැඩි කළා පිරිසිදු පෙනුමට
+  gap: 6px; // කාඩ්ස් අතර ඉඩ පොඩ්ඩක් වැඩි කළා පිරිසිදු පෙනුමට
   padding: 2rem 0rem 1rem 0rem;
   perspective: 1200px; // 3D ගැඹුර තවත් සුමට කළා
 }
