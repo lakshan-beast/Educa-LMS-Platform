@@ -1,0 +1,153 @@
+// socail buttons
+.teacher-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.teacher-share-btn {
+  position: relative;
+  padding: 16px 32px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  color: white !important;
+  background: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 99px;
+
+  filter: drop-shadow(0 4px 12px rgba(37, 99, 235, 0.3));
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  margin: 15px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Background Slide Mask
+.teacher-share-btn::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  // background: $primary-green;
+  border-radius: 99px;
+  transition: 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+// Text & Icons Inner Elements
+.teacher-share-btn span,
+.teacher-share-btn span span {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  transition: 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.teacher-share-btn span {
+  transition-delay: 0.05s;
+}
+
+.teacher-share-btn span:first-child {
+  padding-right: 0px;
+}
+
+.teacher-share-btn span .share-icon {
+  margin-left: 8px;
+  font-size: 1.1rem;
+  transition-delay: 0.1s;
+}
+
+/* --- SOCIAL LINK LISTS AREA --- */
+.teacher-share-btn ul {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0 15px;
+  list-style-type: none;
+  transform: translateY(-50%);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.teacher-share-btn ul li {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+// Individual Social Link Icon Base
+.teacher-share-btn ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transform: translateY(55px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 1.25rem;
+  color: white !important;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.teacher-share-btn ul li a:hover {
+  opacity: 1 !important;
+  transform: scale(1.18) !important;
+
+  // Facebook Icon Hover
+  .facebook-icon {
+    color: #1877f2 !important;
+    filter: drop-shadow(0 0 8px #1877f2);
+  }
+  // Whatsapp Icon Hover
+  .whatsapp-icon {
+    color: #25d366 !important;
+    filter: drop-shadow(0 0 8px #25d366);
+  }
+  // Call/Phone Icon Hover
+  .call-icon {
+    color: #04c9ae !important; // Neon Teal
+    filter: drop-shadow(0 0 8px #00f1d1);
+  }
+}
+
+.teacher-share-btn:hover {
+//   filter: drop-shadow(0 6px 20px rgba(0, 241, 209, 0.35));
+}
+
+.teacher-share-btn:hover::before {
+  background: $white;
+//   border: 2px solid rgba(0, 241, 209, 1);
+}
+
+.teacher-share-btn:hover span,
+.teacher-share-btn:hover span span {
+  transform: translateY(-55px);
+}
+
+.teacher-share-btn:hover ul li a {
+  transform: translateY(0);
+}
+
+.teacher-share-btn:hover ul li:nth-child(1) a {
+  transition-delay: 0.15s;
+}
+.teacher-share-btn:hover ul li:nth-child(2) a {
+  transition-delay: 0.2s;
+}
+.teacher-share-btn:hover ul li:nth-child(3) a {
+  transition-delay: 0.25s;
+}
