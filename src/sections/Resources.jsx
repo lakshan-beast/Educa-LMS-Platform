@@ -8,12 +8,6 @@ import {
   FaUserShield,
 } from "react-icons/fa6";
 
-import Comments from "../assets/comment.webp";
-import Results from "../assets/result.webp";
-import Parent from "../assets/parents.webp";
-
-// import { FaSquarePollVertical } from "react-icons/fa6";
-
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { RiShieldFlashFill } from "react-icons/ri";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -42,13 +36,6 @@ const Resources = () => {
               <FaCircleCheck className="icon" /> Parents Only
             </span>
             <div className="resources-card__image-container color-parent">
-              {/* <img
-                class="resources-card__image"
-                src={Parent}
-                loading="lazy"
-                decoding="async"
-                alt="Parent Portal"
-              /> */}
               <RiShieldFlashFill className="hub-main-icon " />
             </div>
             <div className="resources-card__text">
@@ -89,16 +76,8 @@ const Resources = () => {
               <FaMedal className="icon-title" /> Official
             </span>
             <div className="resources-card__image-container color-results">
-              {/* <img
-                class="resources-card__image"
-                src={Results}
-                loading="lazy"
-                decoding="async"
-                alt="O/L Results"
-              /> */}
               <FaArrowTrendUp className="hub-main-icon " />
             </div>
-            {/* <FaSquarePollVertical /> */}
             <div className="resources-card__text">
               <h3 className="resources-card__title">
                 <FaChartColumn className="icon" />
@@ -139,13 +118,6 @@ const Resources = () => {
               <FaCircleCheck className="icon-title" /> Verified
             </span>
             <div className="resources-card__image-container color-comments">
-              {/* <img
-                class="resources-card__image"
-                src={Comments}
-                loading="lazy"
-                decoding="async"
-                alt="Student Reviews"
-              /> */}
               <FaQuoteLeft className="hub-main-icon " />
             </div>
             <div className="resources-card__text">
