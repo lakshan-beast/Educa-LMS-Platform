@@ -12,10 +12,9 @@ import { FiLayout } from "react-icons/fi";
 
 const AdminLayout = () => {
   const navigate = useNavigate();
-  const { subject } = useParams(); // URL එකෙන් active විෂය (maths/science) අල්ලා ගැනීමට
+  const { subject } = useParams();
 
   const handleLogout = () => {
-    // 🔐 Admin Session එක ක්ලීන් කර ලොග් අවුට් කිරීම
     localStorage.removeItem("admin_auth_token");
     localStorage.removeItem("admin_faculty_subject");
     navigate("/login");
@@ -25,7 +24,7 @@ const AdminLayout = () => {
     <div
       className="admin-panel-root-wrapper"
       style={{ display: "flex", minHeight: "100vh", background: "#f8faff" }}>
-      {/* 🗂️ SIDEBAR NAVIGATION PANEL */}
+
       <aside
         className="admin-sidebar"
         style={{
