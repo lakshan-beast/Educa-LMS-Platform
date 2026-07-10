@@ -288,15 +288,20 @@ $primary-green: #00f1d1;
    3. RIGHT SIDE: CONTACT FORM MAIN CARD
    ======================================================== */
 .contact-form-card {
-  background: rgba($footer-dark, 0.4); // Dark Glass Background
+  background: rgba(white, 0.02); // Dark Glass Background
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  padding: 35px;
+  padding: 35px 12px;
   border-radius: 24px;
-  border: 1px solid rgba(white, 0.06);
+  border: 2px solid rgba(white, 0.3);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   width: 100%;
   box-sizing: border-box;
+
+  @include respond(tablet) {
+    padding: 35px;
+  }
+
   h2 {
     font-size: 1.5rem;
     font-weight: 800;
