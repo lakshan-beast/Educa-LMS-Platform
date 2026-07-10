@@ -92,7 +92,7 @@ const Teachers = () => {
                 </div>
 
                 <div className="teacher-btns">
-                  <button class="btn-cssbuttons">
+                  <button class="teacher-share-btn">
                     <span>Get in Touch</span>
                     <span>
                       <CiShare1 className="share-icon" />
