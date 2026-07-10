@@ -282,14 +282,18 @@ footer {
 /* --- Footer Grid Layout --- */
 .footer-contents {
   width: 100%;
-  padding: 30px 8%;
+  padding: 60px 5% !important;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(250px, 1fr)
+    minmax(200px, 1fr)
   ); // Responsive බිඳෙන්නේ නැති වෙන්න හැදුවා
-  gap: 40px;
+  gap: 20px;
+
+  @include respond(desktop) {
+    padding: 60px 3%;
+  }
 
   .footer-card {
     margin: 1rem 0;
@@ -405,8 +409,7 @@ footer {
 /* --- Footer Bottom Section (Bento Grid Style) --- */
 #footer-bottom {
   // border-top: 2px solid rgba(255, 255, 255, 0.16);
-  padding-top: 50px;
-  padding-bottom: 30px;
+  padding: 60px 3%;
   margin-top: 20px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   // row-gap: 30px;
@@ -496,6 +499,41 @@ footer {
     &:hover {
       // text-decoration: underline !important;
       transform: translateY(-1px) !important;
+    }
+  }
+
+  .footer-grand-branding {
+    width: 100%;
+    text-align: center;
+    font-family: "Exo 2", ;
+    font-weight: 900;
+    font-size: 14vw;
+    line-height: 0.8;
+    margin: 2rem 0 1.5rem 0;
+    color: rgba(255, 254, 254, 0.25);
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+    // user-select: none;
+    pointer-events: none;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    // position: relative;
+    // top: 10rem;
+    span {
+      color: rgba(0, 241, 209, 0.15);
+      text-shadow: 0 0 20px rgba(0, 241, 209, 0.2);
+    }
+
+    // footer:hover & {
+    //   color: rgba(255, 255, 255, 0.45);
+    //   letter-spacing: -0.01em;
+    //   span {
+    //     color: rgba(0, 241, 209, 0.4) !important;
+    //     text-shadow: 0 0 30px rgba(0, 241, 209, 0.6);
+    //   }
+    // }
+    @media (max-width: 600px) {
+      font-size: 16vw;
     }
   }
 }
