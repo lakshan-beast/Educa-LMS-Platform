@@ -371,14 +371,14 @@ import {
 import Loader from "../../components/ui/Loader";
 import {
   FaCalendarCheck,
-  FaNoteSticky,
+  // FaNoteSticky,
   FaLock,
   FaBullhorn,
   FaGoogle,
 } from "react-icons/fa6";
 
 const ClassesDetails = () => {
-  const [selectedGrade, setSelectedGrade] = useState("11");
+  const [selectedGrade, setSelectedGrade] = useState("6");
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isLoading, setIsLoading] = useState(true);
 
@@ -479,7 +479,7 @@ const ClassesDetails = () => {
     <section
       className="classes-public-timetable-section parts"
       id="classesDetails">
-      <div className="class-container" style={{ padding: "40px 20px" }}>
+      <div className="class-container">
         <div
           className="section-title-zone"
           style={{ textAlignment: "center", marginBottom: "40px" }}>
@@ -562,11 +562,11 @@ const ClassesDetails = () => {
                   // }}
                   className={`public-schedule-card ${isLive ? "pulse-neon-live" : isPaused ? "card-postponed" : ""}`}>
                   {/* CARD TOP META BAR */}
-                  {isClosed
+                  {/* {isClosed
                     ? "Class Session Ended"
                     : isPaused
                       ? "Class Session Postponed"
-                      : "Portal Room Locked"}
+                      : "Portal Room Locked"} */}
                   <div className="card-top-bar-meta">
                     <span
                       className={`status-tag-pill ${isLive ? "live" : isPaused ? "postponed" : isClosed ? "closed" : "upcoming"}`}>
@@ -625,7 +625,7 @@ const ClassesDetails = () => {
 
                     {cls.specialNotes && (
                       <div className="special-instruction-box">
-                         <p>Notice :</p> <span>{cls.specialNotes}</span>
+                        <p>Notice :</p> <span>{cls.specialNotes}</span>
                       </div>
                     )}
                   </div>
