@@ -1,0 +1,34 @@
+// more button
+.more-btn {
+  @include flex-custom(center, center, row);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+
+// full class button
+.fullclass-btn {
+  max-width: 320px;
+  width: $container-width-default;
+  color: $primary-green;
+  background-color: transparent;
+  border: 2px solid;
+  width: $container-width-default;
+  padding: 8px 12px;
+  font-weight: $font-weight-500;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border-radius: $border-radius-small;
+  transition: 0.3s;
+
+  @include center-everything;
+  gap: 10px;
+
+  &:hover {
+    color: $secondary-blue;
+    background-color: rgba($primary-green, 0.5);
+    text-decoration: none;
+    border: 2px solid $primary-green;
+    transform: translate(0) scale(1.05);
+  }
+}
