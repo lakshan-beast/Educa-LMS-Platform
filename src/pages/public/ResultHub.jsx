@@ -322,7 +322,6 @@ const ResultsHub = () => {
             <FaPlus /> Share Your Results
           </button>
         </div>
-        {/* </div> */}
 
         {/* 📈 LIVE ANALYTICS DASHBOARD CARD LAYER */}
         <div className="analytics-summary-dashboard-grid">
