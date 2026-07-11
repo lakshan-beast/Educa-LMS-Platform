@@ -1,0 +1,264 @@
+.vault-container {
+  background: white; // 🛠️ JavaScript කොමා (,) සහ Quotes ("") සහමුලින්ම ඉවත් කළා
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+  .vault-header {
+    margin-bottom: 25px;
+
+    h3 {
+      color: $secondary-blue;
+      margin: 0;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: ce nter;
+      gap: 10px;
+    }
+    p {
+      color: #666;
+      font-size: 0.85rem;
+      //   margin: 5px 0 0;
+    }
+  }
+
+  /* 🚨 Error & Success Content Banners */
+  .error-content {
+    background: #fdedec;
+    border-left: 5px solid #e74c3c;
+    color: #c0392b;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+
+  .success-content {
+    background: #e8f8f5;
+    border-left: 5px solid #2ecc71;
+    color: #27ae60;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+
+  /* ➕ Add Student Form Matrix */
+  // .add-student-form {
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  //   gap: 12px 80px;
+
+  //   .form-content {
+  //     display: flex;
+  //     flex-direction: column;
+  //     gap: 0px;
+
+  //     .subject-select {
+  //       display: flex;
+  //       gap: 20px;
+  //       background: #f8faff;
+  //       padding: 12px;
+  //       border-radius: 8px;
+  //       border: 1px solid #eef2ff;
+  //       margin-top: 5px;
+  //     }
+  //   }
+
+  //   .submit-button {
+  //     height: 70px;
+  //     width: 100%;
+  //     padding: 12px;
+  //     background: $secondary-blue;
+  //     color: white;
+  //     border: none;
+  //     border-radius: 8px;
+  //     font-weight: bold;
+  //     cursor: pointer;
+  //   }
+  // }
+
+  /* 🔗 Generate ID & WhatsApp Share Panel */
+  .share-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fdfdfd;
+    border: 2px dashed #ff4b2b;
+    border-radius: 16px;
+    padding: 30px;
+    gap: 15px;
+    margin-top: 20px;
+    display: none;
+
+    .share-panel-header {
+      text-align: center;
+      width: 100%;
+
+      .panel-top {
+        font-size: 3.5rem;
+        color: #2ecc71;
+        margin-bottom: 10px;
+      }
+      h4 {
+        margin: 0 0 5px;
+        color: $secondary-blue;
+      }
+    }
+
+    .id-content {
+      background: #f4f7ff;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: $secondary-blue;
+      letter-spacing: 0.5px;
+      margin: 15px 0;
+      border: 1px solid #c7d2fe;
+      word-break: break-all;
+    }
+
+    .share-content {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      width: 100%;
+      align-items: center;
+      margin-top: 6px;
+
+      /* 🛠️ Spelling Fix: share-buton -> share-button */
+      .share-button {
+        width: 80%;
+        background: #25d366;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+      }
+
+      .copy-button {
+        width: 80%;
+        background: $secondary-blue; // Default පාට
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: background 0.2s;
+
+        /* 🛠️ JavaScript 'copied' වෙනුවට SCSS Modifier Class එකක් දැම්මා */
+        &.--copied {
+          background: #2ecc71;
+        }
+      }
+    }
+
+    /* 🛠️ Nesting Fix: empty-content එක share-content එකෙන් එළියට ගත්තා */
+    .empty-content {
+      text-align: center;
+      color: #aaa;
+
+      p {
+        margin: 0;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+      small {
+        display: block;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  /* 🎥 Zoom Live Warning */
+  .zoom-condition {
+    background: #fff9e6;
+    border-left: 4px solid #f39c12;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: #7d5a00;
+    font-weight: 600;
+  }
+
+  /* 📅 Class Schedule & Paper Upload Form */
+  .schedule-form,
+  .paper-upload {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+
+    .schedule-content,
+    .upload-content {
+      background: #f8faff;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #eef2ff;
+      height: fit-content;
+
+      h2 {
+        margin: 0 0 20px;
+        color: $secondary-blue;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+  }
+}
+
+// .custom-modal-blur-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(0, 0, 0, 0.75);
+//   -webkit-backdrop-filter: blur(5px);
+//   backdrop-filter: blur(5px); /* පිටුපස ඇති දේවල් ලස්සනට බ්ලර් කරවයි */
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   z-index: 9999;
+// }
+
+/* 🗂️ BASE SIDEBAR STYLE (සාමාන්‍ය වෙලාවට කුඩාවට Icons විතරක් පේන හැටි) */
+.admin-sidebar {
+  width: 70px;
+  min-height: 100vh;
+  background: #001b42;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  white-space: nowrap; /* 👈 අකුරු එළියට පැනීම වැළැක්වීමට */
+}
+
+/* 🔥 HOVER MATRIX (Mouse එක උඩට ගිය සැනින් පිරිසිදුව දිග ඇරෙන හැටි) */
+.admin-sidebar:hover {
+  width: 260px;
+}
+
+/* 📝 LINK NAV TEXTS (සාමාන්‍ය වෙලාවට අකුරු නොපෙනී, Hover වෙද්දී විතරක් පෙනෙන හැටි) */
+.admin-sidebar .nav-text {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.admin-sidebar:hover .nav-text {
+  opacity: 1;
+}
