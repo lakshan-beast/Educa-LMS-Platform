@@ -311,109 +311,110 @@ $transition-fast: 0.2s ease;
   pointer-events: all;
 }
 
-.header-navbar {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 280px; // Mobile එකට ක්‍ෂේත්‍රයේ ස්ථාවර පළලක් දුන්නා ඇද නොවෙන්න
-  height: 100vh;
-  background: rgba($secondary-blue2, 0.8); // iOS App Style Glass Base
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-  margin: 0;
-  z-index: 10000;
-  display: flex;
-  flex-direction: column;
-  padding: 30px 20px;
-  transition: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+// .header-navbar {
+//   position: fixed;
+//   top: 0;
+//   left: -100%;
+//   width: 280px; // Mobile එකට ක්‍ෂේත්‍රයේ ස්ථාවර පළලක් දුන්නා ඇද නොවෙන්න
+//   height: 100vh;
+//   background: rgba($secondary-blue2, 0.8); // iOS App Style Glass Base
+//   -webkit-backdrop-filter: blur(20px);
+//   backdrop-filter: blur(20px);
+//   border-right: 1px solid rgba(255, 255, 255, 0.05);
+//   margin: 0;
+//   z-index: 10000;
+//   display: flex;
+//   flex-direction: column;
+//   padding: 30px 20px;
+//   transition: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
 
-  &.nav-active {
-    left: 0;
-  }
+//   &.nav-active {
+//     left: -1rem;
+//     top: -1rem;
+//   }
 
-  @include respond(desktop) {
-    display: none; /* Desktop එකේදී Mobile Menu එක background එකෙන් මුළුමනින්ම ඉවත් කළා */
-  }
+//   @include respond(desktop) {
+//     display: none; /* Desktop එකේදී Mobile Menu එක background එකෙන් මුළුමනින්ම ඉවත් කළා */
+//   }
 
-  // 1. Mobile Menu Top Header
-  .mobile-nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08); // මහත රේඛාව වෙනුවට සිහින් ලයින් එකක් දැම්මා
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-    position: relative;
+//   // 1. Mobile Menu Top Header
+//   .mobile-nav-header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     border-bottom: 1px solid rgba(255, 255, 255, 0.08); // මහත රේඛාව වෙනුවට සිහින් ලයින් එකක් දැම්මා
+//     padding-bottom: 20px;
+//     margin-bottom: 30px;
+//     position: relative;
 
-    // .header-logo {
-    //   color: $white;
-    // }
+//     // .header-logo {
+//     //   color: $white;
+//     // }
 
-    .mobile-close-btn {
-      color: $white;
-      border: none;
-      background: rgba(255, 255, 255, 0.05);
-      font-size: 1rem;
-      cursor: pointer;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%; // රවුම් Close button එකක් කළා Premium පෙනෙන්න
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: $transition-fast;
+//     .mobile-close-btn {
+//       color: $white;
+//       border: none;
+//       background: rgba(255, 255, 255, 0.05);
+//       font-size: 1rem;
+//       cursor: pointer;
+//       width: 36px;
+//       height: 36px;
+//       border-radius: 50%; // රවුම් Close button එකක් කළා Premium පෙනෙන්න
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       transition: $transition-fast;
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: $secondary-blue3;
-      }
-    }
-  }
+//       &:hover {
+//         background: rgba(255, 255, 255, 0.1);
+//         color: $secondary-blue3;
+//       }
+//     }
+//   }
 
-  // 2. Mobile Menu Cards Grid (Premium Glass Cards)
-  .mobile-nav-links-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
+//   // 2. Mobile Menu Cards Grid (Premium Glass Cards)
+//   .mobile-nav-links-grid {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 12px;
+//     width: 100%;
 
-    .mob-nav-card {
-      background: rgba(255, 255, 255, 0.04); // 2026 Glass Card
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 16px 20px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      color: #e2e8f0;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      width: 100%;
-      box-sizing: border-box;
+//     .mob-nav-card {
+//       background: rgba(255, 255, 255, 0.04); // 2026 Glass Card
+//       border: 1px solid rgba(255, 255, 255, 0.06);
+//       padding: 16px 20px;
+//       border-radius: 14px;
+//       display: flex;
+//       align-items: center;
+//       gap: 16px;
+//       color: #e2e8f0;
+//       text-decoration: none;
+//       font-weight: 600;
+//       font-size: 0.95rem;
+//       transition: all 0.3s ease;
+//       width: 100%;
+//       box-sizing: border-box;
 
-      svg {
-        font-size: 1.2rem;
-        color: $secondary-blue3; // අයිකන්ස් Neon Teal කළා පට්ට ලස්සනයි
-        transition: transform 0.3s ease;
-      }
+//       svg {
+//         font-size: 1.2rem;
+//         color: $secondary-blue3; // අයිකන්ස් Neon Teal කළා පට්ට ලස්සනයි
+//         transition: transform 0.3s ease;
+//       }
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba($secondary-blue3, 0.3);
-        color: $white;
-        transform: translateX(
-          4px
-        ); // පොඩ්ඩක් දකුණට Slide වෙන Animation එකක් දුන්නා
-        svg {
-          transform: scale(1.1);
-        }
-      }
-    }
-  }
-}
+//       &:hover {
+//         background: rgba(255, 255, 255, 0.08);
+//         border-color: rgba($secondary-blue3, 0.3);
+//         color: $white;
+//         transform: translateX(
+//           4px
+//         ); // පොඩ්ඩක් දකුණට Slide වෙන Animation එකක් දුන්නා
+//         svg {
+//           transform: scale(1.1);
+//         }
+//       }
+//     }
+//   }
+// }
 
 // notification
 /* 👑 🔔 NAVBAR NOTIFICATION BELL TRIGGER BUTTON */
