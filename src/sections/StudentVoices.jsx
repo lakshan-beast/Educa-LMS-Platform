@@ -20,8 +20,6 @@ import {
   FaUser,
   FaChalkboardUser,
   FaUserTie,
-  FaArrowLeft,
-  FaArrowRight,
   FaUserGraduate,
   FaUserSecret,
   FaRibbon,
@@ -29,6 +27,7 @@ import {
 } from "react-icons/fa6";
 import { PiSealCheckFill } from "react-icons/pi";
 import { FaUserMd } from "react-icons/fa";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import Loader from "../components/ui/Loader";
 
@@ -230,10 +229,10 @@ const StudentVoices = () => {
       <div className="system-container">
         <div className="back-buttons">
           <Link className="back-btn" to="/">
-            <FaArrowLeft /> Back to Home
+            <IoIosArrowBack /> Back to Home
           </Link>
           <Link className="back-btn" to="/result-hub">
-            Back to Results <FaArrowRight />
+            Go to Results <IoIosArrowForward />
           </Link>
         </div>
 
@@ -250,118 +249,51 @@ const StudentVoices = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            {/* 💬 ALL COMMENTS COUNT BADGE */}
-            <div
-              style={{
-                background: "#eef2ff",
-                color: "#001b42",
-                padding: "10px 18px",
-                borderRadius: "12px",
-                fontWeight: "800",
-                fontSize: "0.9rem",
-                border: "1px solid #d9e8ff",
-              }}>
-              Total Stories Shared: {voices.length}
-            </div>
+          <div className="reviews-header-zone">
+            {/* 🎛️ TOP ROW: BADGE & ACTIONS */}
+            <div className="reviews-top-action-bar">
+              {/* 💬 ALL COMMENTS COUNT BADGE */}
+              <div className="total-stories-badge">
+                Total Stories Shared: {voices.length}
+              </div>
 
-            {/* 📣 ADD NEW COMMENT BUTTON */}
-            <button
-              type="button"
-              onClick={() => setIsModalOpen(true)}
-              style={{
-                background: "#ff4b2b",
-                color: "white",
-                border: "none",
-                padding: "10px 20px",
-                borderRadius: "12px",
-                fontWeight: "bold",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                boxShadow: "0 4px 12px rgba(255,75,43,0.2)",
-              }}>
-              <FaPlus /> Share Your Voice
-            </button>
+              {/* 📣 ADD NEW COMMENT BUTTON */}
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+                className="share-voice-btn">
+                <FaPlus /> Share Your Voice
+              </button>
+            </div>
           </div>
         </div>
         {/* ==================== 🎛️ CENTER CONTAINER: DYNAMIC TEACHER FILTERS ==================== */}
-        <div
-          style={{
-            display: "flex",
-            gap: "10px",
-            marginBottom: "25px",
-            flexWrap: "wrap",
-            background: "#f4f7ff",
-            padding: "8px",
-            borderRadius: "14px",
-            border: "1px solid #e2e8f0",
-            width: "fit-content",
-          }}>
+        <div className="teacher-filters-row">
           <button
             type="button"
             onClick={() => setActiveFilter("ALL")}
-            style={{
-              padding: "8px 16px",
-              borderRadius: "10px",
-              border: "1px solid #001b42",
-              fontWeight: "bold",
-              fontSize: "0.85rem",
-              cursor: "pointer",
-              background: activeFilter === "ALL" ? "#001b42" : "transparent",
-              color: activeFilter === "ALL" ? "white" : "#555",
-            }}>
+            className={`filter-tab-btn ${activeFilter === "ALL" ? "filter-active" : ""}`}>
             All Voices
           </button>
+
           <button
             type="button"
             onClick={() => setActiveFilter("maths")}
-            style={{
-              padding: "8px 16px",
-              borderRadius: "10px",
-              border: "1px solid #001b42",
-
-              fontWeight: "bold",
-              fontSize: "0.85rem",
-              cursor: "pointer",
-              background: activeFilter === "maths" ? "#001b42" : "transparent",
-              color: activeFilter === "maths" ? "white" : "#555",
-            }}>
+            className={`filter-tab-btn ${activeFilter === "maths" ? "filter-active" : ""}`}>
             Maths Sir
           </button>
+
           <button
             type="button"
             onClick={() => setActiveFilter("science")}
-            style={{
-              padding: "8px 16px",
-              borderRadius: "10px",
-              border: "1px solid #001b42",
-
-              fontWeight: "bold",
-              fontSize: "0.85rem",
-              cursor: "pointer",
-              background:
-                activeFilter === "science" ? "#001b42" : "transparent",
-              color: activeFilter === "science" ? "white" : "#555",
-            }}>
+            className={`filter-tab-btn ${activeFilter === "science" ? "filter-active" : ""}`}>
             Science Sir
           </button>
+
           <button
             type="button"
             onClick={() => setActiveFilter("english")}
-            style={{
-              padding: "8px 16px",
-              borderRadius: "10px",
-              border: "1px solid #001b42",
-
-              fontWeight: "bold",
-              fontSize: "0.85rem",
-              cursor: "pointer",
-              background:
-                activeFilter === "english" ? "#001b42" : "transparent",
-              color: activeFilter === "english" ? "white" : "#555",
-            }}>
+            className={`filter-tab-btn ${activeFilter === "english" ? "filter-active" : ""}`}>
             English Sir
           </button>
         </div>
@@ -369,202 +301,90 @@ const StudentVoices = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-              gap: "20px",
-            }}>
+          <div className="voices-grid-wrapper">
             {filteredVoices.length > 0 ? (
               filteredVoices.map((item) => (
-                <div
-                  key={item.id}
-                  className="comment-box-card"
-                  style={{
-                    background: "white",
-                    padding: "25px",
-                    borderRadius: "20px",
-                    border: "1px solid #d4e4fa",
-                    boxShadow: "0 4px 15px  rgb(0 40 79 / 13%)",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    gap: "15px",
-                    position: "relative",
-                    textAlign: "left",
-                  }}>
-                  <div>
+                <div key={item.id} className="comment-box-card">
+                  <div className="card-top-content">
                     {/* Card Header Info */}
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        marginBottom: "12px",
-                      }}>
+                    <div className="card-profile-header">
+                      {/* DYNAMIC AVATAR BUFFER CONTAINER */}
                       <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "10px",
-                        }}>
-                        {/* 🎨 👑 [THE DYNAMIC AVATAR]: ළමයා තෝරපු නිල පාටින් සහ Role Icon එකෙන් හැඩවන රවුම */}
-                        <div
-                          style={{
-                            width: "45px",
-                            height: "45px",
-                            borderRadius: "50%",
-                            background: item.avatarColor || "#001b42",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            fontSize: "1.3rem",
-                            color: "white",
-                          }}>
-                          {renderRoleIcon(item.avatarType)}
-                        </div>
+                        className="dynamic-avatar-circle"
+                        style={{ background: item.avatarColor || "#001b42" }}>
+                        {renderRoleIcon(item.avatarType)}
+                      </div>
 
-                        <div>
-                          <h4
-                            style={{
-                              margin: 0,
-                              color: "#001b42",
-                              fontWeight: "800",
-                              fontSize: "0.95rem",
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "6px",
-                            }}>
-                            {item.studentName}
-                            <span
-                              style={{
-                                color: "#4b6bfb",
-                                display: "flex",
-                                alignItems: "center",
-                              }}>
-                              <PiSealCheckFill
-                                style={{ fontSize: "0.85rem" }}
-                              />
-                            </span>
-                          </h4>
-                          {/* ⚡ 👑 [THE EXCLUSIVE IDENTITY CLAIM BADGE]: ළමයා, දෙමාපියන් හෝ Alumni බව පෙන්වන නිල පේළිය */}
-                          <small
-                            style={{
-                              color: "#666",
-                              display: "block",
-                              marginTop: "3px",
-                              fontWeight: "700",
-                              fontSize: "0.78rem",
-                            }}>
-                            Status: {item.identityClaim || "Verified Member"}
-                          </small>
-                        </div>
+                      <div className="profile-text-labels">
+                        <h4 className="student-name-title">
+                          {item.studentName}
+                          <span className="verified-seal-badge">
+                            <PiSealCheckFill />
+                          </span>
+                        </h4>
+                        <small>
+                          Status: {item.identityClaim || "Verified Member"}
+                        </small>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Main Voice Comment Text */}
-                    <p
-                      style={{
-                        margin: 0,
-                        color: "#444",
-                        fontSize: "0.88rem",
-                        lineHeight: "1.6",
-                        fontWeight: "500",
-                        fontStyle: "italic",
-                      }}>
-                      "{item.voiceText}"
-                    </p>
+                  <div className="voice-message-body">
+                    <p>"{item.voiceText}"</p>
                   </div>
 
                   {/* Card Footer: Teacher Tags & Premium Like Button */}
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      borderTop: "1px solid #f1f5f9",
-                      paddingTop: "12px",
-                      marginTop: "5px",
-                    }}>
-                    <div
-                      style={{ display: "flex", gap: "5px", flexWrap: "wrap" }}>
-                      {item.selectedTeachers &&
-                        item.selectedTeachers.map((t, i) => (
-                          <span
-                            key={i}
-                            style={{
-                              background:
-                                t === "maths"
-                                  ? "#eef2ff"
-                                  : t === "science"
-                                    ? "#fff0f0"
-                                    : "#e8f8f5",
-                              color:
-                                t === "maths"
-                                  ? "#4b6bfb"
-                                  : t === "science"
-                                    ? "#ff4b2b"
-                                    : "#2ecc71",
-                              padding: "2px 8px",
-                              borderRadius: "6px",
-                              fontSize: "0.7rem",
-                              fontWeight: "bold",
-                            }}>
-                            {t === "maths"
-                              ? "Maths"
-                              : t === "science"
-                                ? "Science"
-                                : "English"}
-                          </span>
-                        ))}
-                    </div>
+                  <div className="card-bottom-actions">
+                    {/* <div> */}
+                      <div>
+                        {item.selectedTeachers &&
+                          item.selectedTeachers.map((t, i) => (
+                            <span
+                              key={i}
+                              style={{
+                                background:
+                                  t === "maths"
+                                    ? "#eef2ff"
+                                    : t === "science"
+                                      ? "#fff0f0"
+                                      : "#e8f8f5",
+                                color:
+                                  t === "maths"
+                                    ? "#4b6bfb"
+                                    : t === "science"
+                                      ? "#ff4b2b"
+                                      : "#2ecc71",
+                                padding: "2px 8px",
+                                borderRadius: "6px",
+                                fontSize: "0.7rem",
+                                fontWeight: "bold",
+                              }}>
+                              {t === "maths"
+                                ? "Maths"
+                                : t === "science"
+                                  ? "Science"
+                                  : "English"}
+                            </span>
+                          ))}
+                      </div>
+                      {/* </div> */}
 
-                    {/* ❤️ HIGH-TECH PULSE LIKE BUTTON (Toggle Logic) */}
-                    <button
-                      type="button"
-                      onClick={() => handleLikeIncrement(item.id)}
-                      style={{
-                        background: "#f1f6fd",
-                        color: "#001b42",
-                        border: "none",
-                        padding: "6px 12px",
-                        borderRadius: "10px",
-                        fontWeight: "bold",
-                        fontSize: "1rem",
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "16px",
-                      }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.background = "#d1e5ff")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.background = "#e6f0ff")
-                      }>
-                      <GoHeartFill className="pulse-animation" />
-                      <span
-                        style={{
-                          borderLeft: "2px solid #c2dbff",
-                          paddingLeft: "12px",
-                        }}>
-                        {item.likesCount}
-                      </span>
-                    </button>
+                      {/* ❤️ HIGH-TECH PULSE LIKE BUTTON */}
+                      <button
+                        type="button"
+                        onClick={() => handleLikeIncrement(item.id)}
+                        className="pulse-like-trigger-btn">
+                        <GoHeartFill className="pulse-heart-icon" />
+                        <span className="like-count-value">
+                          {item.likesCount}
+                        </span>
+                      </button>
+                    </div>
                   </div>
-                </div>
+                // </div>
               ))
             ) : (
-              <div
-                style={{
-                  gridColumn: "1 / -1",
-                  textAlign: "center",
-                  padding: "40px",
-                  color: "#aaa",
-                  background: "#f8faff",
-                  borderRadius: "15px",
-                  border: "1px dashed #ccc",
-                }}>
+              <div className="empty-category-notice-box">
                 No comments shared for this category yet.
               </div>
             )}
