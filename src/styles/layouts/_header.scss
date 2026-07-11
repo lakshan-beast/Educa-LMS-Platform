@@ -316,11 +316,11 @@ $transition-fast: 0.2s ease;
   top: 0;
   left: -102%;
   width: 100%; // Mobile එකට ක්‍ෂේත්‍රයේ ස්ථාවර පළලක් දුන්නා ඇද නොවෙන්න
-  height: 100vh;
+  height: 99vh;
   background: rgba($secondary-blue2, 0.98); // iOS App Style Glass Base
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   margin: 0;
   z-index: 10000;
   display: flex;
@@ -329,6 +329,7 @@ $transition-fast: 0.2s ease;
   justify-content: center;
   padding: 30px 20px;
   transition: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+  border-radius: 1rem;
 
   &.nav-active {
     left: 0rem;
@@ -407,13 +408,14 @@ $transition-fast: 0.2s ease;
       }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba($primary-green, 0.08);
         border-color: rgba($primary-green, 1);
-        color: white;
+        color: $primary-green;
         transform: translateX(
           4px
         ); // පොඩ්ඩක් දකුණට Slide වෙන Animation එකක් දුන්නා
         svg {
+          color: $primary-green;
           transform: scale(1.1);
         }
       }
