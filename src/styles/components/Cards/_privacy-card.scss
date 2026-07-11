@@ -1,68 +1,207 @@
+// .privacy-card {
+//   border-radius: 1rem;
+//   .privacy-top {
+//     text-align: center;
+//     margin-bottom: 25px;
+
+//     .privacy-header {
+//       width: 65px;
+//       height: 65px;
+//       background: #001b42;
+//       color: $white;
+//       border-radius: 50%;
+//       display: inline-flex;
+//       justify-content: center;
+//       align-items: center;
+//       font-size: 1.8rem;
+//       margin-bottom: 12px;
+//       box-shadow: 0 8px 20px rgba(3, 32, 75, 0.15);
+//     }
+
+//     h2 {
+//       color: #001b42;
+//       margin: 0;
+//       font-weight: 900;
+//       font-size: 1.4rem;
+//       letter-spacing: -0.5px;
+//     }
+
+//     p {
+//       color: #64748b;
+//       font-size: 0.82rem;
+//       margin-top: 4px;
+//       font-weight: 600;
+//     }
+//   }
+
+//   .privacy-container {
+//     max-height: 300px;
+//     overflow-y: auto;
+//     padding: 20px;
+//     background: #f8fafc;
+//     border-radius: 10px;
+//     border: 1px solid #e2e8f0;
+//     font-size: 0.88rem;
+//     line-height: 1.7;
+//     color: #334155;
+//     text-align: center;
+
+//     h4 {
+//       color: #001b42;
+//       margin-top: 0;
+//       font-size: 0.9rem;
+//       font-weight: 800;
+//       display: flex;
+//       align-items: center;
+//       gap: 8px;
+
+//       .icon {
+//         color: #001b42;
+//       }
+//     }
+
+//     p {
+//       margin-top: 6px;
+//       margin-bottom: 16px;
+//     }
+
+//     .last-content {
+//       margin-bottom: 0;
+//     }
+
+//     ul {
+//       margin: 0;
+//       padding-left: 15px;
+//       display: flex;
+//       flex-direction: column;
+//       gap: 12px;
+//     }
+//   }
+
+//   .privacy-actions {
+//     margin-top: 25px;
+//     border-top: 1px solid #e2e8f0;
+//     padding-top: 20px;
+//     text-align: right;
+
+//     button {
+//       border: none;
+//       padding: 10px 24px;
+//       border-radius: 12px;
+//       font-weight: 700;
+//       cursor: pointer;
+//       display: inline-flex;
+//       align-items: center;
+//       gap: 8px;
+//       font-size: 0.85rem;
+//       transition: 0.2s;
+
+//       &:hover {
+//         opacity: 0.9;
+//         transform: translateY(-1px);
+//       }
+//     }
+
+//     .close-button {
+//       color: white;
+//       background: #001b42;
+//     }
+
+//     .actions-button {
+//       background: #fee2e2;
+//       color: #ef4444;
+//     }
+//   }
+// }
+
+
+/* ========================================================
+   2026 FUTURISTIC MODAL CARD CONTENT (PRIVACY / TERMS)
+   ======================================================== */
 .privacy-card {
-  border-radius: 1rem;
+  border-radius: 24px;
+  background: transparent !important; // Main wrapper background එක transparent කළා overlay එකෙන් පේන්න
+  width: 100%;
+  box-sizing: border-box;
+
+  /* --- 1. TOP HEADER SECTION --- */
   .privacy-top {
     text-align: center;
     margin-bottom: 25px;
 
+    // උඩින්ම තියෙන රවුම් අයිකන්/ලෝගෝ බොක්ස් එක
     .privacy-header {
-      width: 65px;
-      height: 65px;
-      background: #001b42;
-      color: $white;
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 241, 209, 0.1) !important; /* 👈 Neon Teal Alpha Base */
+      border: 1px solid rgba(0, 241, 209, 0.25);
+      color: #00f1d1 !important; /* Icon එක Neon Teal කර පත්තු කළා */
       border-radius: 50%;
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin-bottom: 12px;
-      box-shadow: 0 8px 20px rgba(3, 32, 75, 0.15);
+      box-shadow: 0 8px 20px rgba(0, 241, 209, 0.15);
+      animation: modalIconFloat 3s ease-in-out infinite; // රවුම ලස්සනට පාවෙන ඇනිමේෂන් එකක් දුන්නා
     }
 
+    // Main Header Title
     h2 {
-      color: #001b42;
+      color: #ffffff !important; /* පිරිසිදු සුදු පාට කළා */
       margin: 0;
-      font-weight: 900;
-      font-size: 1.4rem;
-      letter-spacing: -0.5px;
+      font-weight: 850;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
     }
 
+    // Subtext (Last updated text)
     p {
-      color: #64748b;
-      font-size: 0.82rem;
-      margin-top: 4px;
+      color: #94a3b8 !important; /* කියවන්න ලේසි Slate Gray */
+      font-size: 0.85rem;
+      margin-top: 6px;
       font-weight: 600;
     }
   }
 
+  /* --- 2. MIDDLE CONTENT CONTAINER (ලේඛන කියවන ප්‍රධාන පෙට්ටිය) --- */
   .privacy-container {
-    max-height: 300px;
+    max-height: 280px;
     overflow-y: auto;
     padding: 20px;
-    background: #f8fafc;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: #334155;
-    text-align: center;
+    
+    // 👈 2026 Core Change: පරණ සුදු පසුබිම වෙනුවට ඇසට සුවපහසු Dark Matrix Container එකක් දුන්නා
+    background: rgba(0, 0, 0, 0.25) !important; 
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #cbd5e1 !important; // අකුරු ලස්සනට ලයිට් පැහැයෙන් පෙනේ
+    text-align: left; // 📍 කියවීමේ පහසුව සඳහා text-align එක වමට (left) කළා
+
+    // Scrollbar එක පට්ටම සිහින් කර සඟවා තැබුවා
+    &::-webkit-scrollbar { width: 4px; }
+    &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 99px; }
 
     h4 {
-      color: #001b42;
+      color: #ffffff !important; // උප මාතෘකා සුදු පාට කළා
       margin-top: 0;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 800;
       display: flex;
       align-items: center;
       gap: 8px;
 
       .icon {
-        color: #001b42;
+        color: #00f1d1 !important; // ඇතුළේ තියෙන Icons ඔක්කොම Neon Teal වේ
       }
     }
 
     p {
       margin-top: 6px;
       margin-bottom: 16px;
+      color: #94a3b8 !important;
     }
 
     .last-content {
@@ -74,19 +213,23 @@
       padding-left: 15px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      color: #cbd5e1;
     }
   }
 
+  /* --- 3. BOTTOM ACTIONS FOOTER (යටම තියෙන බොත්තම් 2) --- */
   .privacy-actions {
     margin-top: 25px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
     padding-top: 20px;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px; // බොත්තම් දෙක අතර පරතරය
 
     button {
       border: none;
-      padding: 10px 24px;
+      padding: 11px 24px;
       border-radius: 12px;
       font-weight: 700;
       cursor: pointer;
@@ -94,22 +237,137 @@
       align-items: center;
       gap: 8px;
       font-size: 0.85rem;
-      transition: 0.2s;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
       &:hover {
-        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+      &:active {
         transform: translateY(-1px);
       }
     }
 
+    // Accept / Close Primary Button
     .close-button {
-      color: white;
-      background: #001b42;
-    }
+      color: #ffffff !important;
+      background: #2563eb !important; /* Executive Blue */
+      box-shadow: rgba(37, 99, 235, 0.25) 0px 4px 12px;
 
-    .actions-button {
-      background: #fee2e2;
-      color: #ef4444;
+      &:hover {
+        background: #1d4ed8 !important;
+        box-shadow: rgba(37, 99, 235, 0.45) 0px 6px 15px;
+      }
     }
+    // Decline / Action Secondary Button (ලස්සන ලාවට පෙනෙන සයිබර් රතු පාටක් කළා)
+    .actions-button {
+      background: rgba(239, 68, 68, 0.1) !important;
+      color: #ef4444 !important;
+      border: 1px solid rgba(239, 68, 68, 0.15) !important;
+
+      &:hover {
+        background: #ef4444 !important;
+        color: #ffffff !important;
+        box-shadow: rgba(239, 68, 68, 0.3) 0px 4px 12px;
+      }
+    }
+  }
+}
+
+/* ========================================================
+   🚀 FLOATING HEADER ANIMATION
+   ======================================================== */
+@keyframes modalIconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); } /* ලෝගෝ එක ලස්සනට අහසේ පාවේ */
+}
+
+/* ========================================================
+   2026 MODERN iOS BOTTOM SHEET OVERLAY SYSTEM (NO IMPORTANT)
+   ======================================================== */
+
+// 1. Background Backdrop (පසුබිම ලස්සනට බ්ලර් කරන කොටස)
+.footer-bottom-sheet-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  // background: rgba(9, 13, 22, 0.4); // Dark subtle dim
+  // -webkit-backdrop-filter: blur(10px);
+  // backdrop-filter: blur(10px);
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; // 👈 2. මෝඩල් එක යට ඉඳන් උඩට පාවීමට මුලින්ම යටටම කළා
+  padding: 0;
+  box-sizing: border-box;
+  animation: backdropFadeIn 0.3s ease-out;
+}
+
+// 2. THE BOTTOM SHEET CARD (යට ඉඳන් පාවෙලා එන ප්‍රධාන වීදුරු පෙට්ටිය)
+.bottom-sheet-card {
+  width: 100%;
+  max-width: 500px; // Tablet/PC වලදී ලස්සනට මැදින් හිටීමට
+  height: auto;
+  max-height: 80vh; // ෆෝන් එකේ උසෙන් 80% කට වඩා උඩට නොයයි (Full height නොවේ)
+  
+  // Cyber Dark Glass Look
+  background: rgba(15, 23, 42, 0.95);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  
+  // 📍 තද නිල් උඩින් පෙට්ටිය වෙන් වී පෙනෙන්න සිහින් බෝඩර් එක දුන්නා
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px 32px 0 0; // iOS Apps වගේ උඩ පැති දෙක විතරක් සුපිරියට රවුම් කළා
+  
+  padding: 45px 25px 35px 25px;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  position: relative;
+  
+  // 🚀 යට ඉඳන් සිරස්ව උඩට විසිවෙන Smooth Spring Animation එක
+  animation: sheetSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.12);
+
+  /* ✕ CAPSULE INTERACTIVE CLOSE BUTTON (Inline Styles ඔක්කොම පිරිසිදු කළා) */
+  .close-bottom-sheet {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #94a3b8;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    &:hover, &:active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ef4444; // Hover වෙද්දී ලස්සනට රතු වේ
+      transform: scale(1.05);
+    }
+  }
+}
+
+/* ========================================================
+   🚀 CLEAN TRANSITION ANIMATIONS (NO DELAYS)
+   ======================================================== */
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sheetSlideUp {
+  from {
+    transform: translateY(100%); // ముලින්ම screen එකෙන් යට සැඟවී ඇත
+  }
+  to {
+    transform: translateY(0); // කෙලින්ම යට ඉඳන් උඩට පාවේ
   }
 }
