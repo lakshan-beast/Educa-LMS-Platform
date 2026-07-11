@@ -1,0 +1,365 @@
+// .contact-grid {
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   align-items: start;
+//   gap: 40px;
+
+//   @include respond(desktop) {
+//     gap: 50px;
+//     grid-template-columns: repeat(2, 1fr);
+//     align-items: end;
+//   }
+// }
+
+// .success-card {
+//   background: $white;
+//   color: $secondary-blue;
+//   padding: 12px $padding-medium;
+//   border-radius: $border-radius-small-m;
+//   font-size: $font-size-body-m;
+//   font-weight: $font-weight-700;
+//   margin-bottom: 20px;
+//   border: 1px solid #001b42;
+// }
+
+// .contact-info-card {
+//   .contact-cards {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//     flex-direction: column;
+//     gap: 15px;
+//     // margin-top: 30px;
+//     padding: 12px;
+
+//     .contact-card {
+//       background: $white;
+//       padding: 20px;
+//       border-radius: $border-radius-small-m;
+//       box-shadow: $shadow-light;
+//       transition: 0.8s ease;
+//       padding-left: 20px;
+
+//       &:hover {
+//         transform: translateY(-3px);
+//       }
+
+//       h4 {
+//         // color: $secondary-blue2;
+//         color: $secondary-blue;
+//         margin-bottom: 15px;
+//         font-size: $font-size-h3-mm;
+//       }
+
+//       Link,
+//       a {
+//         display: flex;
+//         align-items: center;
+//         gap: 10px;
+//         font-size: $font-size-body-m;
+//         color: $text-medium;
+//         margin-bottom: 8px;
+//         text-decoration: none;
+
+//         &:hover {
+//           color: $secondary-blue;
+//           transform: scale(1.02);
+//         }
+//         .contact-icon {
+//           color: $secondary-blue;
+//         }
+//       }
+
+//       .contact-mail {
+//         text-transform: $text-transform-lowercase;
+//       }
+
+//       address {
+//         font-size: $font-size-body-m;
+//         font-style: normal;
+//         color: $text-medium;
+//         display: flex;
+//         align-items: center;
+//         gap: 8px;
+//         margin-top: 10px;
+//         border-top: 2px solid rgba($text-medium, 0.3);
+//         padding-top: 5px;
+//       }
+//     }
+//   }
+// }
+
+// .contact-form-card {
+//   background: $white;
+//   padding: 30px;
+//   border-radius: $border-radius-medium;
+//   box-shadow: $shadow-medium;
+//   // max-width: 350px;
+//   min-width: 300px;
+//   width: $container-width-default;
+
+//   .input-row {
+//     display: grid;
+//     grid-template-columns: 1fr;
+
+//     @include respond(dekstop) {
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: space-between;
+//       align-content: center;
+//       align-items: center;
+//     }
+//   }
+
+//   .contact-submit-btn {
+//     width: $container-width-default;
+//     padding: $padding-medium;
+//     background: $primary-green;
+//     color: $white;
+//     border: none;
+//     border-radius: $border-radius-small-m;
+//     font-weight: $font-weight-bold;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 10px;
+//     cursor: pointer;
+//     transition: 0.3s;
+
+//     &:hover {
+//       background: rgba($primary-green, 0.5);
+//       transform: translateY(-3px);
+//       gap: 15px;
+//     }
+//   }
+// }
+
+/* ========================================================
+   DEPENDENCIES & CORES
+   ======================================================== */
+// $footer-dark: #0f172a;
+// $secondary-blue: #2563eb;
+// $primary-green: #00f1d1; // Neon Teal Accent
+// $white: #ffffff;
+// $text-medium: #94a3b8;
+// $text-muted: #64748b;
+$primary-green: #00f1d1;
+
+.contact-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// 1. Contact Grid Layout (Desktop Layout එක සමබර කළා)
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start; // 👈 2026 Trend එකට අනුව උඩ සිට සමබරව පෙළගැසීමට 'start' කළා
+  gap: 40px;
+  justify-items: center;
+
+  @media (min-width: 1024px) {
+    gap: 60px;
+    grid-template-columns: 1.5fr 0.8fr; // වම් පැත්තට තව පොඩ්ඩක් ඉඩ ලබා දුන්නා
+    align-items: start;
+  }
+}
+
+// Success Card Style
+.success-card {
+  background: rgba($primary-green, 0.1);
+  color: $primary-green;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border: 1px solid rgba($primary-green, 0.2);
+  box-shadow: rgba($primary-green, 0.1) 0px 4px 12px;
+}
+
+/* ========================================================
+   2. LEFT SIDE: CONTACT CARDS AREA
+   ======================================================== */
+.contact-info-card {
+  h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: $white;
+    margin-bottom: 12px;
+
+    span {
+      color: $primary-green;
+    }
+  }
+
+  .section-desc {
+    color: $text-medium;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 0;
+    padding-top: 12px;
+
+    /* 🎁 INDIVIDUAL CONTACT CARD (2026 Tech Glass Look) */
+    .contact-card {
+      background: rgba(white, 0.02); // വിനിවිദ പെനෙන Glass Panel
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      padding: 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(white, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+      // Hover Effect - සිහින් Neon Teal බෝඩර් එකක් පත්තුවේ
+      &:hover {
+        transform: translateY(-4px);
+        border: 2px solid rgba($primary-green, 0.4);
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.2),
+          rgba($primary-green, 0.1) 0px 0px 20px;
+
+        h4 {
+          color: $primary-green;
+        }
+      }
+
+      h4 {
+        color: white; // සබ්ජෙක්ට් මාතෘකාව පිරිසිදු සුදු පාට කළා
+        margin: 0 0 15px 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: rgba($secondary-blue, 0.4);
+        margin-bottom: 10px;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: white;
+          transform: translateX(4px);
+        }
+
+        .contact-icon {
+          color: $secondary-blue; // Icons ඔක්කොම Neon Teal කර පත්තු කළා
+          font-size: 1.1rem;
+        }
+      }
+
+      .contact-mail {
+        text-transform: lowercase;
+      }
+
+      // Address Section
+      address {
+        font-size: 0.88rem;
+        font-style: normal;
+        color: $text-muted;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+        border-top: 1px solid rgba(white, 0.1);
+        padding-top: 12px;
+
+        .contact-icon {
+          color: $primary-green;
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+/* ========================================================
+   3. RIGHT SIDE: CONTACT FORM MAIN CARD
+   ======================================================== */
+.contact-form-card {
+  background: rgba(white, 0.02); // Dark Glass Background
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  padding: 35px 12px;
+  border-radius: 24px;
+  border: 2px solid rgba(white, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 400px;
+
+  @include respond(tablet) {
+    padding: 12px 25px;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    font-weight: 800;
+    color: $white;
+    margin: 0 0 10px 0;
+  }
+
+  p {
+    color: rgba($secondary-blue, 0.4);
+    font-size: 0.8rem !important;
+    line-height: 1.5;
+    margin: 0 0 25px 0;
+  }
+
+  // 🚨 උඹේ මුල්ම Input Row එක (ඇතුළත inputs වලට හානි කර නැත)
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    // gap: 16px; // Input අතර පරතරය ලස්සන කළා
+  }
+
+  .input-group {
+    margin-bottom: 2px !important;
+  }
+
+  // Submit Button Style
+  .contact-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: rgba($primary-green, 0.6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: rgba($primary-green, 0.24) 0px 4px 15px;
+    // margin-top: 10px;
+
+    &:hover {
+      background: $primary-green; // තද කොළ පාටක් වේ Smooth ලෙස
+      transform: translateY(-2px);
+      box-shadow: rgba($primary-green, 0.4) 0px 6px 20px;
+      gap: 14px;
+    }
+
+    &:disabled {
+      background: rgba($secondary-blue, 0.4);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
