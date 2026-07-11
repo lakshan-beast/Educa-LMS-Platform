@@ -282,7 +282,7 @@ footer {
 /* --- Footer Grid Layout --- */
 .footer-contents {
   width: 100%;
-  padding: 60px 5% !important;
+  padding: 60px 5% 20px 5% !important;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(
@@ -300,6 +300,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 0 1rem;
 
     p {
       padding: 0;
@@ -409,11 +410,11 @@ footer {
 /* --- Footer Bottom Section (Bento Grid Style) --- */
 #footer-bottom {
   // border-top: 2px solid rgba(255, 255, 255, 0.16);
-  padding: 60px 3%;
-  margin-top: 20px;
+  padding: 0px 4%;
+  // margin-top: 20px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   // row-gap: 30px;
-  border-width: 50%;
+  // border-width: 50%;
 
   .footer-card {
     margin: 0;
@@ -460,11 +461,12 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 25px;
   width: 100%;
+  margin-bottom: 2rem !important;
 
+  align-items: center;
   @include respond(desktop) {
     flex-direction: row !important;
   }
@@ -501,39 +503,141 @@ footer {
       transform: translateY(-1px) !important;
     }
   }
+}
+// .footer-grand-branding {
+//   width: 100%;
+//   text-align: center;
+//   font-family: "Exo 2";
+//   font-weight: 900;
+//   font-size: 16vw;
+//   line-height: 0.8;
+//   margin: 2rem 0 1.5rem 0;
+//   color: rgba(255, 255, 255, 0.7);
+//   text-shadow: 6px 10px 6px #676767;
+//   letter-spacing: -0.03em;
+//   text-transform: lowercase;
+//   // user-select: none;
+//   pointer-events: none;
+//   position: relative;
+//   transition: all 0.5s ease-in-out;
+//   position: relative;
+//   // top: 10rem;
+//   span {
+//     color: rgba($primary-green, 0.2);
+//   }
 
-  .footer-grand-branding {
-    width: 100%;
-    text-align: center;
-    font-family: "Exo 2", ;
-    font-weight: 900;
-    font-size: 14vw;
-    line-height: 0.8;
-    margin: 2rem 0 1.5rem 0;
-    color: rgba(255, 254, 254, 0.25);
-    letter-spacing: -0.03em;
-    text-transform: lowercase;
-    // user-select: none;
-    pointer-events: none;
-    position: relative;
-    transition: all 0.5s ease-in-out;
-    // position: relative;
-    // top: 10rem;
-    span {
-      color: rgba(0, 241, 209, 0.15);
-      text-shadow: 0 0 20px rgba(0, 241, 209, 0.2);
-    }
+//   // footer:hover & {
+//   //   color: rgba(255, 255, 255, 0.45);
+//   //   letter-spacing: -0.01em;
+//   //   span {
+//   //     color: rgba(0, 241, 209, 0.4) !important;
+//   //     text-shadow: 0 0 30px rgba(0, 241, 209, 0.6);
+//   //   }
+//   // }
+//   @media (max-width: 600px) {
+//     font-size: 16vw;
+//   }
+// }
 
-    // footer:hover & {
-    //   color: rgba(255, 255, 255, 0.45);
-    //   letter-spacing: -0.01em;
-    //   span {
-    //     color: rgba(0, 241, 209, 0.4) !important;
-    //     text-shadow: 0 0 30px rgba(0, 241, 209, 0.6);
-    //   }
-    // }
-    @media (max-width: 600px) {
-      font-size: 16vw;
+/* ========================================================
+   2026 GIANT FINALE FOOTER TYPOGRAPHY (PURE CSS CLOUDS FIX)
+   ======================================================== */
+.footer-grand-branding {
+  grid-column: 1 / -1; 
+  width: 100%;
+  text-align: center;
+  font-family: "Exo 2", system-ui, sans-serif;
+  font-weight: 950; 
+  font-size: 13vw; /* Screen එකේ පළල අනුව auto ලොකු කුඩා වේ */
+  line-height: 1;
+  margin: 4.5rem 0 0 0;
+  letter-spacing: -0.03em;
+  // text-transform: lowercase;
+  // user-select: none;
+  pointer-events: none;
+  position: relative;
+  z-index: 10;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  // ☁️ 1. PURE CSS CLOUDS: පින්තූර නැතුව CSS Gradients වලින්ම වලාකුළු මවන මැජික් එක
+  background-image: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 40%),
+                    radial-gradient(circle at 50% 30%, rgba(0, 241, 209, 0.5) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 60%, rgba(37, 99, 235, 0.5) 0%, transparent 45%),
+                    linear-gradient(to right, rgba(255,255,255,0.02), rgba(255,255,255,0.05));
+  
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text; /* Background එක අකුරු ඇතුළට පමණක් සීමා කරයි */
+  -webkit-text-fill-color: transparent; // අකුරු වල ඔරිජිනල් පාට විنيවිද පෙනෙන්න සලස්වයි
+  
+  // 🚀 වලාකුළු කැරකෙමින් පාවෙන පට්ටම Organic Animation එකක් දුන්නා
+  animation: pureCssClouds 15s ease infinite alternate; 
+  opacity: 0.6; /* CSS gradients නිසා opacity එක 0.6 කළා ලස්සනට පේන්න */
+
+  // අගට තියෙන තිත විතරක් Neon Teal පාටින් ලස්සනට දිලිසේ
+  span {
+    -webkit-text-fill-color: initial; 
+    color: rgba(0, 241, 209, 0.4);
+    text-shadow: 0 0 20px rgba(0, 241, 209, 0.5);
+    transition: all 0.5s ease;
+  }
+
+  // 🛸 HOVER EFFECT: මවුස් එක ෆුටර් එක ළඟට ගෙනිච්චම වලාකුළු තදින් පත්තු වේ!
+  // footer:hover & {
+  //   opacity: 0.9; 
+  //   letter-spacing: -0.01em; // අකුරු ටික ලස්සනට ඈත් වේ smooth ලෙස
+    
+  //   span {
+  //     color: rgba(0, 241, 209, 0.8) !important;
+  //     text-shadow: 0 0 30px rgba(0, 241, 209, 0.9);
+  //   }
+  // }
+
+  @media (max-width: 600px) {
+    font-size: 17vw;
+    margin: 3rem 0 12px 0;
+  }
+}
+
+/* ========================================================
+   ☁️ PURE CSS CLOUDS ANIMATION (වලාකුළු කැරකෙමින් පාවෙන හැටි)
+   ======================================================== */
+@keyframes pureCssClouds {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%; // වලාකුළු හැඩතල උඩට සහ දකුණට මාරු වේ
+    filter: hue-rotate(15deg); // ලාවට සයිබර් කලර්ස් මාරු වීමක් වෙනවා
+  }
+  100% {
+    background-position: 50% 0%;
+    filter: hue-rotate(-15deg);
+  }
+}
+
+.legel-links ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 2rem;
+  padding-left: 6px;
+
+  @include respond(desktop) {
+    gap:16px;
+    margin-bottom: 0;
+  }
+
+
+  li {
+    // border-right: 2px solid white;
+    padding-right: 8px;
+
+    :last-child {
+      border: none;
     }
   }
 }
