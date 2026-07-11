@@ -139,6 +139,17 @@ const Footer = () => {
                 <FaCaretRight className="footer-icon" /> Daily Learning Mission
               </Link>
             </li>
+
+            <li>
+              <div className="contact-support">
+                <a
+                  href={`https://wa.me/94740130305?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20`}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <FaCaretRight className="footer-icon" /> Password Forget?
+                </a>
+              </div>
+            </li>
           </ul>
         </div>
 
@@ -195,112 +206,67 @@ const Footer = () => {
       </div>
 
       {/* footer bottom section  */}
-      <div className="footer-contents footer-bottom" id="footer-bottom">
-        {/* footer legels  */}
-        <div className=" footer-card footer-legels">
-          <h3>Legal Complaince</h3>
-          <ul>
-            <li>
-              <span
-                onClick={() => setActiveModal("PRIVACY")}
-                className="secret-gen-link">
-                <FaCaretRight className="footer-icon" /> Privacy Policy
-              </span>
-            </li>
-
-            <li>
-              <span
-                onClick={() => setActiveModal("TERMS")}
-                className="secret-gen-link">
-                <FaCaretRight className="footer-icon" />
-                Terms of Services
-              </span>
-            </li>
-
-            <li>
-              <div className="contact-support">
-                <a
-                  href={`https://wa.me/94740130305?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20`}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <FaCaretRight className="footer-icon" /> Password Forget?
-                  (Contact Support)
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div className=" footer-card footer-legels">
-          <h3>Platform Evolution</h3>
-          <ul>
-            <li>
-              <span
-                onClick={() => setActiveModal("UPDATES")}
-                className="secret-gen-link">
-                <FaCaretRight className="footer-icon" /> System Version Updates
-              </span>
-            </li>
-
-            <li>
-              <span
-                onClick={() => setActiveModal("COMING_SOON")}
-                className="secret-gen-link">
-                <FaCaretRight className="footer-icon" /> Coming Soon Engine
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        <div className=" footer-card footer-legels">
-          <h3>Corporate Identity</h3>
-          <ul>
-            <li>
-              <span
-                onClick={() => setActiveModal("ABOUT")}
-                className="secret-gen-link">
-                <FaCaretRight className="footer-icon" /> About educa. Platform
-              </span>
-            </li>
-
-            <li>
-              <span
-                onClick={() => setActiveModal("NEXUS_LABS")}
-                className="secret-gen-link">
-                <FaCaretRight className="footer-icon" /> NexusLabs Studio
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        {/* footer badge level */}
-        {/* <div className="footer-card badge-levelup">
-          <h3>Biuld for Sri Lankan | O/L Students</h3>
-          <p>
-            <FaRocket className="footer-icon" />
-            Version 1.5 Production
-          </p>
-          <p>
-            <FaSquareCheck className="footer-icon" />
-            Verified Academic Links
-          </p>
-          <p>
-            <FaLaptopCode className="footer-icon" />
-            last updated :<span> 2026 July</span>
-          </p>
-          <p>
-            <FaUsers className="footer-icon" />
-            Community Reviewed & Approved
-          </p>
-        </div> */}
-
+      <div className=" footer-bottom" id="footer-bottom">
         {/* footer copyright info */}
         <div className="footer-card footer-copyrights">
-          <p>
+         
+
+          <div className="legel-links">
+            <ul>
+              <li>
+                <span
+                  onClick={() => setActiveModal("PRIVACY")}
+                  className="secret-gen-link">
+                  Privacy Policy
+                </span>
+              </li>
+
+              <li>
+                <span
+                  onClick={() => setActiveModal("TERMS")}
+                  className="secret-gen-link">
+                  Terms
+                </span>
+              </li>
+
+              <li>
+                <span
+                  onClick={() => setActiveModal("UPDATES")}
+                  className="secret-gen-link">
+                  Version
+                </span>
+              </li>
+
+              {/* <li>
+                <span
+                  onClick={() => setActiveModal("COMING_SOON")}
+                  className="secret-gen-link">
+                  Coming Soon
+                </span>
+              </li> */}
+              <li>
+                <span
+                  onClick={() => setActiveModal("ABOUT")}
+                  className="secret-gen-link">
+                  About us
+                </span>
+              </li>
+
+              {/* <li>
+                <span
+                  onClick={() => setActiveModal("NEXUS_LABS")}
+                  className="secret-gen-link">
+                  NexusLabs
+                </span>
+              </li> */}
+            </ul>
+          </div>
+
+           <p>
             Copyright <FaRegCopyright /> {currentYear} <span>Educa.</span> - A
             Product of <span>NexusLabs</span> Sri Lanka. All rights reserved.
           </p>
-          <br />
+
           <p>
             Designed & Engineered <FaHeart /> by
             <a
