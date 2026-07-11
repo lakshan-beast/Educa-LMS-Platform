@@ -237,18 +237,18 @@ const StudentVoices = () => {
         </div>
 
         <div className="voices-container parts">
-          <div>
-            <h2>
-              Our Students'
-              <span>Verified Success</span>
-            </h2>
-            <p>
-              Read real experiences and genuine reviews shared directly by our
-              students. Discover how our friendly digital lessons, interactive
-              test tools, and Neti AI have helped them boost their exam grades..
-            </p>
-          </div>
+          {/* <div> */}
+          <h2>
+            Our Students'
+            <span>Verified Success</span>
+          </h2>
+          <p>
+            Read real experiences and genuine reviews shared directly by our
+            students. Discover how our friendly digital lessons, interactive
+            test tools, and Neti AI have helped them boost their exam grades..
+          </p>
         </div>
+        {/* </div> */}
 
         <div className="reviews-header-zone">
           {/* 🎛️ TOP ROW: BADGE & ACTIONS */}

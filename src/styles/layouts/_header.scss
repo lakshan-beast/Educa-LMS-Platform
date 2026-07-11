@@ -314,7 +314,7 @@ $transition-fast: 0.2s ease;
 .header-navbar {
   position: fixed;
   top: 0;
-  left: -100%;
+  left: -102%;
   width: 100%; // Mobile එකට ක්‍ෂේත්‍රයේ ස්ථාවර පළලක් දුන්නා ඇද නොවෙන්න
   height: 100vh;
   background: rgba($secondary-blue2, 0.98); // iOS App Style Glass Base
@@ -339,26 +339,27 @@ $transition-fast: 0.2s ease;
     display: none; /* Desktop එකේදී Mobile Menu එක background එකෙන් මුළුමනින්ම ඉවත් කළා */
   }
   .mobile-close-btn {
-      color: $white;
-      border: none;
-      // background: rgba(255, 255, 255, 0.05);
-      font-size: 1rem;
-      cursor: pointer;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%; // රවුම් Close button එකක් කළා Premium පෙනෙන්න
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: $transition-fast;
-      position: fixed;
-      top: 1rem;right: 1rem;
+    color: $white;
+    border: none;
+    // background: rgba(255, 255, 255, 0.05);
+    font-size: 1rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; // රවුම් Close button එකක් කළා Premium පෙනෙන්න
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: $transition-fast;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: $primary-green;
-      }
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: $primary-green;
     }
+  }
 
   // 1. Mobile Menu Top Header
   .mobile-nav-header {
@@ -373,8 +374,6 @@ $transition-fast: 0.2s ease;
     // .header-logo {
     //   color: $white;
     // }
-
-    
   }
 
   // 2. Mobile Menu Cards Grid (Premium Glass Cards)
@@ -391,7 +390,7 @@ $transition-fast: 0.2s ease;
       border-radius: 14px;
       display: flex;
       align-items: center;
-      
+
       gap: 16px;
       color: #e2e8f0;
       text-decoration: none;
@@ -421,7 +420,6 @@ $transition-fast: 0.2s ease;
     }
   }
 }
-
 
 // notification
 /* 👑 🔔 NAVBAR NOTIFICATION BELL TRIGGER BUTTON */

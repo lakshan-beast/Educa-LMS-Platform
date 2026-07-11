@@ -2,6 +2,10 @@
    2026 FUTURISTIC STUDENT REVIEWS HEADER CONTROL MATRIX
    ======================================================== */
 
+ .parts {
+  padding: 0 !important;
+}
+
 .reviews-header-zone {
   width: 100%;
   display: flex;
@@ -139,7 +143,7 @@
   backdrop-filter: blur(16px);
 
   // 📍 මේ සිහින් බෝඩර් එක නිසා තද නිල් පසුබිම උඩින් කාඩ් එක වෙන් වී පෙනේ
-  border: 3px solid rgba(255, 255, 255, 0.404);
+  border: 3px solid rgba(255, 255, 255, 0.04);
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 12px 35px rgba(59, 59, 59, 0.2);
@@ -304,15 +308,16 @@
   .teacher-badge {
     background-color: rgba(white, 0.08);
     border: 2px solid rgba(white, 0.05);
-border-radius: 6px;
+    border-radius: 6px;
     padding: 6px 13px;
     font-size: 0.7rem;
     font-weight: bold;
 
     span {
-      margin:0 2px;
+      margin: 0 2px;
       padding-left: 3px;
       border-left: 2px solid rgba(white, 0.5);
+      color: white !important;
 
       &:nth-child(1) {
         border: none;
