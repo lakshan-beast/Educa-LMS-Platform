@@ -3,7 +3,8 @@
    ======================================================== */
 
 // 1. Background Backdrop (පසුබිම ලස්සනට බ්ලර් කරන කොටස)
-.review-bottom-sheet-overlay {
+.review-bottom-sheet-overlay,
+.results-bottom-sheet-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,7 +23,8 @@
 }
 
 // 2. THE BOTTOM SHEET CARD (යට ඉඳන් පාවෙලා එන ප්‍රධාන වීදුරු පෙට්ටිය)
-.review-sheet-card {
+.review-sheet-card,
+.results-sheet-card {
   width: 100%;
   max-width: 480px; 
   height: auto;
@@ -35,12 +37,13 @@
   backdrop-filter: blur(24px);
   
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px 32px 0 0; // iOS Bottom Sheet Layout
+  border-radius: 32px; // iOS Bottom Sheet Layout
   padding: 35px 25px;
   box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   position: relative;
   text-align: left;
+  margin-bottom: 0.2rem;
   
   // යට ඉඳන් සිරස්ව උඩට විසිවෙන Smooth Spring Animation එක
   animation: sheetSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.12);
