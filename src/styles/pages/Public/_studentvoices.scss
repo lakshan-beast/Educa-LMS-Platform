@@ -1,4 +1,329 @@
-.voices-container {
-    padding: 0;
-    margin-bottom: 16px;
+/* ========================================================
+   2026 MODERN iOS BOTTOM SHEET REVIEW FORM (NO IMPORTANT)
+   ======================================================== */
+
+// 1. Background Backdrop (පසුබිම ලස්සනට බ්ලර් කරන කොටස)
+.review-bottom-sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(9, 13, 22, 0.4); 
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; // මෝඩල් එක යට ඉඳන් උඩට පාවීමට මුලින්ම යටටම කළා
+  padding: 0;
+  box-sizing: border-box;
+  animation: backdropFadeIn 0.3s ease-out;
 }
+
+// 2. THE BOTTOM SHEET CARD (යට ඉඳන් පාවෙලා එන ප්‍රධාන වීදුරු පෙට්ටිය)
+.review-sheet-card {
+  width: 100%;
+  max-width: 480px; 
+  height: auto;
+  max-height: 85vh; // ෆෝන් එකේ උසෙන් 85% කට වඩා උඩට නොයයි (Full height නොවේ)
+  overflow-y: auto; // ඇතුළත දත්ත ගොඩක් ඇති නිසා scroll වීමට ඉඩ දුන්නා
+  
+  // Cyber Dark Glass Look
+  background: rgba(15, 23, 42, 0.88);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px 32px 0 0; // iOS Bottom Sheet Layout
+  padding: 35px 25px;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  position: relative;
+  text-align: left;
+  
+  // යට ඉඳන් සිරස්ව උඩට විසිවෙන Smooth Spring Animation එක
+  animation: sheetSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.12);
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.05); border-radius: 99px; }
+
+  // Headings
+  h3 {
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+  }
+
+  .sheet-subtext {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin: 0 0 25px 0;
+    line-height: 1.4;
+  }
+
+  // Error Card Display
+  .sheet-error-card {
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid #ef4444;
+    color: #f87171;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  /* ✕ CAPSULE INTERACTIVE CLOSE BUTTON */
+  .close-sheet-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #94a3b8;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+
+    &:hover, &:active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ef4444;
+      transform: scale(1.05);
+    }
+  }
+}
+
+/* ========================================================
+   FORM FIELDS & COMPONENT INPUT STYLES (PURE CYBER GLASS)
+   ======================================================== */
+.sheet-main-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+
+  .sheet-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+
+    label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      display: block;
+    }
+
+    // Universal Inputs, Selects & Textarea
+    input[type="text"], select, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      outline: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:focus {
+        border-color: #00f1d1;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: rgba(0, 241, 209, 0.15) 0px 0px 10px;
+      }
+    }
+
+    select {
+      cursor: pointer;
+      font-weight: 700;
+      option {
+        background-color: #0f172a;
+        color: #ffffff;
+      }
+    }
+
+    textarea {
+      resize: none;
+      height: 95px;
+      line-height: 1.5;
+    }
+    /* 3. MULTIPLE CHECKBOXES CONTAINER ROW */
+    .sheet-checkbox-container-row {
+      display: flex;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      flex-wrap: wrap;
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+        // user-select: none;
+
+        input[type="checkbox"] {
+          width: 16px;
+          height: 16px;
+          cursor: pointer;
+          border-radius: 4px;
+        }
+
+        &.checkbox-label-maths { color: #0776f5; input[type="checkbox"] { accent-color: #2563eb; } }
+        &.checkbox-label-science { color: #f14a07; input[type="checkbox"] { accent-color: #ff4b2b; } }
+        &.checkbox-label-english { color: #07f05c; input[type="checkbox"] { accent-color: #2ecc71; } }
+      }
+    }
+
+    /* 4. CHARACTER AVATAR RADIO ROW */
+    .sheet-radio-container-row {
+      display: flex;
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+
+      .radio-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #cbd5e1;
+
+        input[type="radio"] {
+          width: 16px;
+          height: 16px;
+          accent-color: #00f1d1; // Neon Teal Radio Glow
+          cursor: pointer;
+        }
+      }
+    }
+
+    /* 5. PREMIUM COLOR DOTS PICKER FIELD */
+    .sheet-color-picker-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 4px;
+      flex-wrap: wrap;
+
+      .color-dot-node {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        font-size: 0.8rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        .check-icon-seal {
+          filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+          animation: modalScaleIn 0.2s ease;
+        }
+      }
+    }
+  }
+
+  /* 🧠 ACCENT FIELD: CUSTOM JOB INPUT (Profession input alert style) */
+  .sheet-input-group.accent-group {
+    .accent-label { color: #ff4b2b !important; }
+    .accent-input {
+      border-color: rgba(255, 75, 43, 0.3) !important;
+      &:focus { border-color: #ff4b2b !important; box-shadow: rgba(255, 75, 43, 0.2) 0px 0px 10px !important; }
+    }
+  }
+
+  .sheet-conditional-form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+  }
+}
+
+/* ========================================================
+   🚀 CLEAN TRANSITION ANIMATIONS
+   ======================================================== */
+.condition-popup-fade {
+  animation: modalScaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sheetSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes modalScaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+// 🚀 FIXED: Submit Button එකට අදාළ 2026 High-Contrast Cyber Style එක
+    .sheet-submit-btn {
+      width: 100%;
+      padding: 20px 14px;
+      
+      // 👈 පරණ මඩ නිල් පාට වෙනුවට, සයිට් එකේ ප්‍රධාන Executive Blue වර්ණය දුන්නා
+      background: $primary-green; 
+      color: $white ;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      margin-top: 10px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover:not(:disabled) {
+        background: rgba($primary-green, 0.6);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba($primary-green, 0.55);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(-1px);
+      }
+      
+      // Submit වෙන වෙලාවට (Disabled state) බටන් එක ලස්සනට මැලවී යයි
+      &:disabled {
+        background: rgba($primary-green, 0.8);
+        color: #94a3b8;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+      }
+    }
