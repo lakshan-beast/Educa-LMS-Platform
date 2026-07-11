@@ -1,0 +1,959 @@
+// .ai-floating-bubble {
+// position: "fixed",
+//             bottom: "25px",
+//             right: "25px",
+//             width: "60px",
+//             height: "60px",
+//             background: "linear-gradient(135deg, #03204b 0%, #0265f8 100%)",
+//             borderRadius: "50%",
+//             display: "flex",
+//             justifyContent: "center",
+//             alignItems: "center",
+//             color: "white",
+//             fontSize: "1.8rem",
+//             cursor: "pointer",
+//             boxShadow: "0 8px 24px rgba(75,107,251,0.35)",
+//             zIndex: 999999,
+//             transition: "0.3s ease",
+
+//             span {
+//                  position: "absolute",
+//               bottom: "2px",
+//               right: "2px",
+//               width: "16px",
+//               height: "16px",
+//               //   background: "#2ecc71",
+//               background: "#fd473a",
+//               borderRadius: "50%",
+//               border: "2px solid white",
+//             }
+// }
+
+// // ai chat window card
+// .ai-chat-window-card {
+//     position: "fixed",
+//             bottom: "25px",
+//             right: "25px",
+//             width: "380px",
+//             maxWidth: "100%",
+//             height: "600px",
+//             background: "white",
+//             borderRadius: "24px",
+//             boxShadow: "0 12px 40px rgba(26,10,84,0.15)",
+//             display: "flex",
+//             flexDirection: "column",
+//             overflow: "hidden",
+//             zIndex: 999999,
+//             border: "1px solid #eef2ff",
+//             animation: "popupFade 0.3s ease",
+
+//             // hearts
+//             .hearts-container {
+//                 position: "absolute",
+//                 top: 0,
+//                 left: 0,
+//                 width: "100%",
+//                 height: "100%",
+//                 pointerEvents: "none",
+//                 zIndex: 99999,
+//                 overflow: "hidden",
+
+//                 span {
+//                     position: "absolute",
+//                   bottom: "-20px",
+//                   left: "15%",
+//                   fontSize: "1.5rem",
+//                   animation: "heartFloatUp 2.2s ease-in-out infinite",
+//                   color: "#fc2212",
+//                 }
+//             }
+
+//     // chat window header
+//     .chat-header-container {
+//          background: "linear-gradient(135deg, #03204b 0%, #001431 100%)",
+//               padding: "18px 20px",
+//               display: "flex",
+//               justifyContent: "space-between",
+//               alignItems: "center",
+//               color: "white",
+
+//               .chat-header {
+//                 display: "flex", alignItems: "center", gap: "12px";
+
+//                 .chat-logo {
+//                      width: "38px",
+//                   height: "38px",
+//                   background: "rgba(255, 255, 255, 0.5)",
+//                   borderRadius: "50%",
+//                   display: "flex",
+//                   justifyContent: "center",
+//                   alignItems: "center",
+//                   fontSize: "1.3rem",
+
+//                   .icon {
+//                     color: #e9ecf0;
+//                   }
+//                 }
+
+//                 .chat-top {
+//                     text-align: left;
+
+//                     h4 {
+//                          margin: 0,
+//                     fontSize: "1rem",
+//                     fontWeight: "800",
+//                     letterSpacing: "0.3px",
+//                     }
+
+//                     small {
+//                         color: "#2ecc71",
+//                     display: "flex",
+//                     alignItems: "center",
+//                     gap: "5px",
+//                     fontWeight: "700",
+//                     fontSize: "0.72rem",
+//                     marginTop: "2px",
+//                     }
+
+//                     .active-ball {
+//                         fontSize: "0.5rem",
+//                       animation: "heartBeat 1s infinite",
+//                     }
+//                 }
+
+//                 // control part
+//                 .window-control {
+//                     display: "flex",
+//                 alignItems: "center",
+//                 gap: "12px",
+//                 fontSize: "1.3rem",
+//                 opacity: 0.8,
+
+//                 .close-mark {
+//                     cursor: pointer;
+//                 }
+//                 }
+//               }
+//     }
+
+//     // chat messsage box
+//     .chat-message {
+//         flex: 1,
+//               padding: "20px",
+//               overflowY: "auto",
+//               background: "$bg-light",
+//               display: "flex",
+//               flexDirection: "column",
+//               gap: "15px",
+
+//               .message-container {
+//                  display: "flex",
+//                   flexDirection: "column",
+//                   alignItems: msg.role === "user" ? "flex-end" : "flex-start",
+//                   width: "100%",
+//               }
+
+//               .message-text {
+//                  maxWidth: "82%",
+//                     fontSize: "0.86rem",
+//                     padding: "12px 16px",
+//                     lineHeight: "1.5",
+//                     fontWeight: "500",
+//                     whiteSpace: "pre-line",
+//                     textAlign: "left",
+//               }
+//     }
+
+//     // typing text
+//     .typing-container {
+//          display: "flex",
+//                   flexDirection: "column",
+//                   alignItems: "flex-start",
+//                   width: "100%",
+
+//                   .typing-content {
+//    background: "white",
+//                     padding: "12px 18px",
+//                     borderRadius: "18px 18px 18px 0",
+//                     boxShadow: "0 3px 10px rgba(0,0,0,0.02)",
+//                     display: "flex",
+//                     alignItems: "center",
+//                     gap: "5px",
+
+//                     span {
+//                          color: "#777",
+//                       fontSize: "0.78rem",
+//                       fontWeight: "bold",
+//                       marginRight: "4px",
+//                     }
+//                   }
+
+//                   .typing-dot {
+//                      width: "5px",
+//                       height: "5px",
+//                       background: "#4b6bfb",
+//                       borderRadius: "50%",
+//                       animation: "dotBounce 1.4s infinite",
+//                       animationDelay: "0s",
+//                   }
+//     }
+
+//     // suggest
+//     .suggest-conatiner {
+//         background: "white",
+//               padding: "10px 15px 5px",
+//               display: "flex",
+//               gap: "8px",
+//               overflowX: "auto",
+//               borderTop: "1px solid #f1f5f9",
+//               whiteSpace: "nowrap",
+
+//               button {
+//                  background: "#f1f5f9",
+//                 color: "$secondary-blue",
+//                 border: "none",
+//                 padding: "6px 12px",
+//                 borderRadius: "20px",
+//                 fontSize: "0.75rem",
+//                 fontWeight: "bold",
+//                 cursor: "pointer",
+//                 display: "flex",
+//                 alignItems: "center",
+//                 gap: "5px",
+//               }
+//     }
+
+//     // input control
+//     form {
+//          background: "white",
+//               padding: "12px 15px",
+//               display: "flex",
+//               alignItems: "center",
+//               gap: "10px",
+//               borderTop: "1px solid #edf2f9",
+
+//               input {
+//                  flex: 1,
+//                 padding: "10px 14px",
+//                 borderRadius: "12px",
+//                 border: "1px solid #e2e8f0",
+//                 fontSize: "0.85rem",
+//                 outline: "none",
+//                 background: "$bg-light",
+//               }
+
+//               button {
+//                  background: "#4b6bfb",
+//                 color: "white",
+//                 border: "none",
+//                 width: "38px",
+//                 height: "38px",
+//                 borderRadius: "12px",
+//                 display: "flex",
+//                 justifyContent: "center",
+//                 alignItems: "center",
+//                 fontSize: "1rem",
+//                 cursor: "pointer",
+//                 boxShadow: "0 4px 10px rgba(75,107,251,0.2)",
+//                 transition: "0.2s",
+//               }
+//     }
+// }
+
+// .ai-floating-bubble {
+//   position: fixed;
+//   bottom: 25px;
+//   right: 25px;
+//   width: 60px;
+//   height: 60px;
+//   background: linear-gradient(135deg, #fbfdff 0%, #001330 100%);
+//   background: $primary-orange;
+//   border-radius: $border-radius-circle;
+//   color: $white;
+//   font-size: $font-size-h2-m;
+//   cursor: pointer;
+//   box-shadow: 0 8px 24px rgba(75, 107, 251, 0.35);
+//   z-index: 999999;
+//   transition: 0.3s ease;
+
+//   @include center-everything;
+
+//   span {
+//     position: absolute;
+//     bottom: 2px;
+//     right: 2px;
+//     width: 16px;
+//     height: 16px;
+//     background: $secondary-blue;
+//     border-radius: $border-radius-circle;
+//     border: 2px solid $white;
+//   }
+// }
+
+// .ai-chat-window-card {
+//   position: fixed;
+//   bottom: 0px;
+//   right: 0px;
+//   max-width: 400px;
+//   width: 100%;
+//   height: 600px;
+//   background: $white;
+//   border-radius: $border-radius-large;
+//   box-shadow: 0 12px 40px rgba(26, 10, 84, 0.15);
+//   display: flex;
+//   flex-direction: column;
+//   overflow: hidden;
+//   z-index: 999999;
+//   border: 1px solid #eef2ff;
+//   animation: popupFade 0.3s ease;
+
+//   .hearts-container {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: $container-width-default;
+//     height: 100%;
+//     pointer-events: none;
+//     z-index: 99999;
+//     overflow: hidden;
+
+//     span {
+//       position: absolute;
+//       bottom: -20px;
+//       left: 15%;
+//       font-size: $font-size-h2-mm;
+//       animation: heartFloatUp 2.2s ease-in-out infinite;
+//       color: #fc2212;
+//     }
+//   }
+
+//   .chat-window-container {
+//     background: linear-gradient(135deg, #03204b 0%, #001431 100%);
+//     padding: 18px 20px;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     color: $white;
+
+//     .chat-header {
+//       display: flex;
+//       align-items: center;
+//       gap: 12px;
+//       width: $container-width-default;
+
+//       .chat-logo {
+//         width: 38px;
+//         height: 38px;
+//         background: rgba(255, 255, 255, 0.2);
+//         border-radius: $border-radius-circle;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         font-size: $font-size-h3;
+
+//         .icon {
+//           color: #e9ecf0;
+//         }
+//       }
+
+//       .chat-top {
+//         text-align: left;
+//         flex: 1;
+
+//         h4 {
+//           margin: $margin-none;
+//           font-size: $font-size-default;
+//           font-weight: $font-weight-800;
+//           letter-spacing: 0.3px;
+//         }
+
+//         small {
+//           color: #2ecc71;
+//           display: inline-flex;
+//           align-items: center;
+//           gap: 5px;
+//           font-weight: $font-weight-700;
+//           font-size: $font-size-body-mm;
+//           margin-top: 2px;
+//         }
+
+//         .active-ball {
+//           font-size: 0.5rem;
+//           animation: heartBeat 1s infinite;
+//         }
+//       }
+
+//       .window-control {
+//         display: flex;
+//         align-items: center;
+//         gap: 12px;
+//         font-size: $font-size-h3;
+//         opacity: 0.8;
+
+//         .close-mark {
+//           cursor: pointer;
+//           transition: transform 0.2s ease;
+//           &:hover {
+//             transform: scale(1.1);
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .chat-message {
+//     flex: 1;
+//     padding: 20px;
+//     overflow-y: auto;
+//     background: $bg-light;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 15px;
+
+//     .message-container {
+//       display: flex;
+//       flex-direction: column;
+//       width: $container-width-default;
+
+//       /* 👑 [THE SMART ROLE CLASSES]:
+//          React එකෙන් Card එකට දාන user හරි assistant හරි class එක අනුව පැති මාරු වේ මචං! */
+//       &.user {
+//         align-items: flex-end;
+//         .message-text {
+//           background-color: $secondary-blue;
+//           color: $white;
+//           border-radius: 18px 18px 0 18px;
+//         }
+//       }
+
+//       &.assistant {
+//         align-items: flex-start;
+//         .message-text {
+//           background-color: $white;
+//           color: $secondary-blue3;
+//           border-radius: 18px 18px 18px 0;
+//           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+//           border: 1px solid #e2e8f0;
+//         }
+//       }
+//     }
+
+//     .message-text {
+//       max-width: 82%;
+//       font-size: $font-size-body-m;
+//       padding: 12px 16px;
+//       line-height: 1.5;
+//       font-weight: $font-weight-500;
+//       white-space: pre-line;
+//       text-align: left;
+//     }
+//   }
+
+//   .typing-container {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     width: $container-width-default;
+//     .typing-content {
+//       background: $white;
+//       padding: 12px 18px;
+//       border-radius: 18px 18px 18px 0;
+//       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+//       display: flex;
+//       align-items: center;
+//       gap: 5px;
+//       border: 1px solid #e2e8f0;
+
+//       span {
+//         color: $secondary-blue3;
+//         font-size: $font-size-body-mm;
+//         font-weight: $font-weight-bold;
+//         margin-right: 4px;
+//       }
+//     }
+
+//     .typing-dot {
+//       width: 5px;
+//       height: 5px;
+//       background: rgba($secondary-blue, 0.6);
+//       border-radius: $border-radius-circle;
+//       animation: dotBounce 1.4s infinite;
+
+//       &:nth-child(2) {
+//         animation-delay: 0.2s;
+//       }
+//       &:nth-child(3) {
+//         animation-delay: 0.4s;
+//       }
+//     }
+//   }
+
+//   .suggest-conatiner {
+//     background: $white;
+//     padding: 10px 15px 5px;
+//     display: flex;
+//     gap: 8px;
+//     overflow-x: auto;
+//     border-top: 1px solid #f1f5f9;
+//     white-space: nowrap;
+
+//     button {
+//       background: $navbar-white;
+//       color: $secondary-blue;
+//       border: none;
+//       padding: 6px 12px;
+//       border-radius: $border-radius-xlarge;
+//       font-size: $font-size-body-m;
+//       font-weight: $font-weight-bold;
+//       cursor: pointer;
+//       display: inline-flex;
+//       align-items: center;
+//       gap: 5px;
+//       transition: background 0.2s;
+
+//       &:hover {
+//         background: #e2e8f0;
+//       }
+//     }
+//   }
+
+//   form {
+//     background: $white;
+//     padding: 12px 15px;
+//     display: flex;
+//     align-items: center;
+//     gap: 10px;
+//     border-top: 1px solid #edf2f9;
+
+//     input {
+//       flex: 1;
+//       padding: 10px 14px;
+//       border-radius: $border-radius-small-m;
+//       border: 1px solid #e2e8f0;
+//       font-size: $font-size-body-m;
+//       outline: none;
+//       background: $bg-light;
+//     }
+
+//     button {
+//       background: $secondary-blue;
+//       color: $white;
+//       border: none;
+//       width: 38px;
+//       height: 38px;
+//       border-radius: $border-radius-small-m;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       font-size: $font-size-default;
+//       cursor: pointer;
+//       box-shadow: 0 4px 10px rgba(75, 107, 251, 0.2);
+//       transition: 0.2s;
+
+//       &:hover {
+//         background: rgba($secondary-blue, 0.6);
+//       }
+//     }
+//   }
+// }
+
+/* ========================================================
+   2026 NETI AI INTEGRATED PORTABLE HOLOGRAPHIC CHAT SYSTEM
+   ======================================================== */
+
+// 1. FLOATING CHAT BUBBLE (යටම දකුණු කෙළවරේ පාවෙන රොබෝ බොත්තම)
+.ai-floating-bubble {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    135deg,
+    #115cff 0%,
+    #001b66 100%
+  ); /* Executive Blue Gradient */
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border: 2px solid white;
+
+  // Cyber Blue Glow Shadow එකක් දුන්නා පිරිසිදුව පෙනෙන්න
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+  z-index: 999999;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // Active Green Dot (Online Status)
+  span {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background: #00f1d1; /* Neon Teal Online Indicator */
+    border-radius: 50%;
+    border: 2px solid #090d16;
+  }
+
+  &:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 241, 209, 0.4);
+    background: linear-gradient(
+      135deg,
+      #002281 0%,
+      #00f1d1 100%
+    ); // Hover වෙද්දී Neon Teal වේ
+
+    border: 3px solid $primary-green;
+  }
+}
+
+
+/* ========================================================
+   2. MAIN CHAT WINDOW CARD (2026 Premium Dark Tech Glass Face)
+   ======================================================== */
+.ai-chat-window-card {
+  position: fixed;
+  bottom: 6px;
+  right: 12px;
+
+  background: rgba(15, 23, 42, 0.65) ;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) ;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999999;
+  border: 3px solid rgba(255, 255, 255, 0.8); // Invisible Border Line
+  box-sizing: border-box;
+
+  @include respond(small-mobile) {
+    max-width: 350px;
+    width: 100%;
+
+    max-height: 860px;
+    height: 82%;
+  }
+
+  @include respond(medium-mobile) {
+    min-width: 380px;
+    max-width: 480px;
+    width: calc(100% - 25px);
+    height: 85%;
+  }
+
+  // &::after {
+  //   content: "";
+  //   position: fixed; // 👈 චැට් එක පිටුපසින් මුළු Screen එකම වසා ගන්නා පරිදි Layout එක හැදුවා
+  //   top: -100vh;
+  //   left: -100vw;
+  //   width: 300vw;
+  //   height: 300vh; // සයිට් එකේ තද නිල් පාටට ගැලපෙන පරිදි ඉතාමත් ලස්සන ඩාර්ක් ලේයර් එකක්
+  //   background: rgba(9, 13, 22, 0.5);
+  //   -webkit-backdrop-filter: blur(8px) saturate(120%);
+  //   backdrop-filter: blur(8px) saturate(120%);
+  //   z-index: -2; // චැට් එකේ බොත්තම් සහ මැසේජ් වලට යටින් පිහිටීමට
+  //   pointer-events: none; // පසුබිමේ ඇති දේවල් ක්ලික් කිරීමට බාධා නොවන ලෙස
+  //   animation: fadeOverlay 0.4s ease-out forwards;
+  // }
+
+  /* 🚨 👦 100% ORIGINAL HEARTS CONTAINER (උඹේ රහස් ආදර ඇනිමේෂන් එක නූලටම රැකගත්තා) */
+  .heart-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99999;
+    overflow: hidden;
+
+    span {
+      position: absolute;
+      bottom: -20px;
+      left: 15%;
+      font-size: 1.5rem;
+      animation: heartFloatUp 2.2s ease-in-out infinite;
+      color: #fc2212;
+    }
+  }
+
+  /* --- CHAT HEADER PANEL (උඩම තියෙන බාර් එක) --- */
+  .chat-window-container {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+
+      .chat-logo {
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1rem;
+
+        .icon {
+          color: #00f1d1; /* රොබෝ අයිකන් එක Neon Teal කර පත්තු කළා */
+          filter: drop-shadow(0 0 5px #00f1d1);
+        }
+      }
+
+      .chat-top {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+
+        h4 {
+          margin: 0;
+          font-size: 0.95rem;
+          font-weight: 700;
+          letter-spacing: 0.3px;
+          color: #ffffff;
+        }
+
+        small {
+          color: #10b981; // Active Green
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-weight: 600;
+          font-size: 0.75rem;
+          margin-top: 2px;
+        }
+        .active-vall {
+          font-size: 0.5rem;
+          color: #10b981;
+          animation: heartBeat 1.2s infinite; // Live Beat Animation
+        }
+      }
+    }
+
+    // Close Button (X)
+    .window-control {
+      display: flex;
+      align-items: center;
+      font-size: 2.2rem;
+      color: $primary-green;
+
+      .close-mark {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        padding: 5px;
+        border-radius: 50%;
+
+        &:hover {
+          color: #ef4444; // Close වෙද්දී රතු වේ
+          background: rgba(255, 255, 255, 0.05);
+        }
+      }
+    }
+  }
+
+  /* ========================================================
+     CHAT MESSAGES STREAM AREA (මැසේජ් ලස්සනට පෙනෙන කොටස)
+     ======================================================== */
+  .chat-message {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.15); // Dark Mesh Subtle Base
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    // Webkit Scrollbar පිරිසිදු කිරීම
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 99px;
+    }
+
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    // 👑 THE CHAT BUBBLE CONTEXT LAYER
+    .message-text {
+      max-width: 82%;
+      font-size: 0.88rem;
+      padding: 12px 16px;
+      line-height: 1.5;
+      font-weight: 500;
+      white-space: pre-line;
+      text-align: left;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      border: 1px solid transparent;
+
+      /* JSX එකෙන් එන inline styles මෙතනින් override වෙලා ඩාර්ක් තීම් එකට ලස්සන වේ මචං */
+      &[style*="background: rgb(75, 107, 251)"],
+      &[style*="background: #4b6bfb"] {
+        background: #00f1d1 !important; /* User Message: Executive Blue */
+        color: $white !important;
+      }
+
+      &[style*="background: white"],
+      &[style*="background: rgb(255, 255, 255)"] {
+        background: rgba(
+          255,
+          255,
+          255,
+          0.04
+        ) !important; /* Neti AI Message: Premium Dark Glass */
+        color: #e2e8f0 !important;
+        border-color: rgba(255, 255, 255, 0.06) !important;
+      }
+    }
+  }
+
+  /* --- BOT LIVE TYPING LOADER (Neti is searching...) --- */
+  .typing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    .typing-content {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 10px 16px;
+      border-radius: 18px 18px 18px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      span {
+        color: #00f1d1; // Text පට්ට Neon Teal
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+    }
+
+    // බෝල 3 පනින ඇනිමේෂන් එක
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #00f1d1 !important; /* Dots ටිකත් Neon Teal කළා */
+      border-radius: 50%;
+      animation: dotBounce 1.4s infinite;
+    }
+  }
+
+  /* --- QUICK STUDY SUGGESTIONS PANEL (පහළ තියෙන බොත්තම් 3) --- */
+  .suggest-conatiner {
+    background: rgba(15, 23, 42, 0.8);
+    padding: 12px 15px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      height: 0px;
+    } // Scrollbar එක සැඟවීම
+
+    button {
+      background: rgba(255, 255, 255, 0.03); // Glass Buttons
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #cbd5e1 !important;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(0, 241, 209, 0.1);
+        border-color: #00f1d1;
+        color: #ffffff !important;
+        transform: translateY(-1px);
+      }
+    }
+  }
+  /* --- BOTTOM INPUT MESSAGE CONTROLLER FORM (යටම ටෙක්ස්ට් ලියන කොටස) --- */
+  form {
+    background: #0f172a; // Deep slate dark bottom bar
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+
+    input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.9rem;
+      outline: none;
+      background: rgba(255, 255, 255, 0.03);
+      color: #ffffff;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: #00f1d1;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: rgba(0, 241, 209, 0.15) 0px 0px 10px;
+      }
+    }
+
+    // Send Button Arrow
+    button {
+      background: #00f1d1;
+      color: $white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: rgba(37, 99, 235, 0.3) 0px 4px 12px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover:not(:disabled) {
+        background: #00f1d1b4;
+        transform: scale(1.04);
+        box-shadow: rgba(37, 99, 235, 0.5) 0px 6px 15px;
+      }
+
+      &:disabled {
+        background: #475569;
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
