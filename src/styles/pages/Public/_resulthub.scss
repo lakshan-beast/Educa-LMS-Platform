@@ -326,6 +326,373 @@
 //   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 // }
 
+/* ========================================================
+   2026 CYBER ANALYTICS BENTO GRID SYSTEM (100% RESPONSIVE)
+   ======================================================== */
+.analytics-summary-dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 0.5rem;
+
+  // 👈 Core Dark Change: පරණ ඝන නිල් පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
+  background: rgba(15, 23, 42, 0.55);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+
+  // 📍 මේ සිහින් බෝඩර් එක නිසා තද නිල් පසුබිම උඩින් මුළු ග්‍රිඩ් එකම කැපිලා පෙනේ
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  width: 100%;
+  max-width: 750px; // දත්ත ලස්සනට පේන්න පළල පොඩ්ඩක් වැඩි කළා
+  box-sizing: border-box;
+
+  /* 🎛️ LAYER A: SUMMARY TOP (Total Candidates, Passed, Pass Rate 3 Bento Tiles) */
+  .summary-top {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(180px, 1fr)
+    ); // 100% Responsive Grid
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 🎛️ LAYER B: SUMMARY FOOTER (සර්ලාගේ සාමාර්ථ කාඩ්ස් 3) */
+  .summary-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06); // මැදින් වෙන් කරන සිහින් ඉර
+    padding-top: 20px;
+    box-sizing: border-box;
+  }
+
+  /* ========================================================
+     📦 INDIVIDUAL BENTO MINI CARDS (අච්චාරු ඉරි වෙනුවට පිරිසිදු Tiles)
+     ======================================================== */
+  // .analytic-mini-card {
+  //   background: rgba(0, 0, 0, 0.2); // ඇතුළත කුඩා පෙට්ටි වල පසුබිම
+  //   border: 1px solid rgba(255, 255, 255, 0.03);
+  //   border-radius: 14px;
+  //   padding: 20px 16px;
+  //   display: flex;
+  //   flex-direction: column; // උඩ යට පිරිසිදුව පෙනීමට Column කළා
+  //   align-items: flex-start;
+  //   gap: 8px;
+  //   box-sizing: border-box;
+  //   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  //   &:hover {
+  //     background: rgba(0, 0, 0, 0.3);
+  //     border-color: rgba(255, 255, 255, 0.08);
+  //     transform: translateY(-2px); // හොවර් වෙද්දී ලාවට උඩට පාවේ
+  //   }
+
+  //   // දත්ත වල මාතෘකාව (Total Candidates, Pass Rate ආදිය)
+  //   h3 {
+  //     margin: 0 auto;
+  //     padding-bottom: 3px;
+  //     font-size: 0.8rem;
+  //     color: #94a3b8; // කියවන්න ලේසි මෘදු Slate Gray
+  //     font-weight: 600;
+  //     text-transform: uppercase; // බ්‍රෑන්ඩ් ලුක් එකක් දීමට කැපිටල් කළා
+  //     letter-spacing: 0.5px;
+  //     text-align: center;
+  //     border-bottom: 2px solid rgba(white, 0.1);
+  //   }
+
+  //   // ප්‍රධාන ඉලක්කම් (Numbers)
+  //   strong {
+  //     font-size: 1.6rem; // ඉලක්කම් ලස්සනට ලොකු කර කැපී පෙනෙන්න හැදුවා
+  //     color: #ffffff;
+  //     margin: 0 auto;
+
+  //     font-weight: 800; // ඩිජිටල් අංක වලට පට්ට
+  //   }
+
+  //   // 📊 Overall Pass Rate එක තියෙන තැනට සරාගී Neon Cyan Glow එකක් දුන්නා
+  //   &.percentage-card {
+  //     border-color: rgba(0, 241, 209, 0.15);
+  //     strong {
+  //       color: #00f1d1;
+  //       text-shadow: 0 0 10px rgba(0, 241, 209, 0.3);
+  //     }
+  //   }
+
+  //   /* 📐🔬🔤 TEACHER CARDS SPECIFIC STYLES (සර්ලාගේ සාමාර්ථ පෙන්වන කොටස) */
+  //   &.teacher-cards {
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: flex-start;
+  //     gap: 12px;
+
+  //     h3 {
+  //       color: #ffffff;
+  //       font-weight: 700;
+  //       font-size: 0.85rem;
+  //       text-transform: none; // සර්ලාගේ නම් කැපිටල් කරන්නේ නැත
+  //       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  //       padding-bottom: 6px;
+  //       width: 100%;
+  //     }
+
+  //     // A: 5, B: 2 වගේ ඒවා එක ළඟ පිරිසිදුව පේළියට තැබීම
+  //     .score {
+  //       width: 100%;
+  //       font-size: 1.3rem;
+  //       font-weight: 700;
+  //       display: flex;
+  //       justify-content: center;
+  //       gap: 6px;
+  //       align-items: center;
+  //       padding: 5px 10px;
+  //       border-radius: 8px;
+  //       box-sizing: border-box;
+
+  //       // 🟢 A සාමාර්ථ බෝලය (Soft Neon Green)
+  //       &:nth-of-type(1) {
+  //         background-color: rgba(16, 185, 129, 0.12);
+  //         color: #10b981;
+  //         border: 1px solid rgba(16, 185, 129, 0.2);
+  //       }
+
+  //       // 🟠 B සාමාර්ථ බෝලය (Soft Neon Orange)
+  //       &:nth-of-type(2) {
+  //         background-color: rgba(249, 115, 22, 0.12);
+  //         color: #f97316;
+  //         border: 1px solid rgba(249, 115, 22, 0.2);
+  //       }
+
+  //       // 🔵 C සාමාර්ථ බෝලය (Soft Neon Blue)
+  //       &:nth-of-type(3) {
+  //         background-color: rgba(37, 99, 235, 0.12);
+  //         color: #60a5fa;
+  //         border: 1px solid rgba(37, 99, 235, 0.2);
+  //       }
+  //     }
+  //   }
+  // }
+
+  /* ========================================================
+     📦 2026 LUXURY BENTO MINI CARDS (UPGRADED ACTIVE TILES)
+     ======================================================== */
+  .analytic-mini-card {
+    // 👈 1. Core Shift: පරණ සාමාන්‍ය කොටුව වෙනුවට Holographic Glass Layout එකක් දුන්නා
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px; // තව පොඩ්ඩක් වටකුරු කළා Premium පෙනෙන්න
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden; // Shimmer එක එළියට පැනීම වැළැක්වීමට
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    // 📐 Blueprint Grid Overlay (කාඩ් එක ඇතුළතින් පෙනෙන සිහින් සයිබර් ඉරි ජාලය)
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+      background-size: 10px 10px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    // 🔮 Ambient Underglow Base (කාඩ් එක යටින් පත්තුවෙන ලස්සන ආලෝක බෝලය)
+    &::before {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      bottom: -20px;
+      right: -20px;
+      background: rgba(37, 99, 235, 0.15); // Default Executive Blue Glow
+      filter: blur(1.2rem);
+      z-index: 0;
+      transition: all 0.4s ease;
+    }
+
+    // 🚀 HOVER / TOUCH INTERACTION (මවුස් එක ගෙනිද්දී ත්‍රිමාණව පණ ලැබෙන හැටි)
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+      );
+      border-color: rgba(37, 99, 235, 0.3);
+      transform: translateY(-4px) scale(1.02); // 3D Micro-Float Feel
+      box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.3),
+        rgba(37, 99, 235, 0.1) 0px 0px 15px;
+
+      &::before {
+        transform: scale(1.4);
+        background: rgba(37, 99, 235, 0.3); // Glow එක තද වේ
+      }
+
+      strong {
+        transform: translateZ(5px);
+        color: #ffffff;
+      }
+    }
+
+    // සියලුම ඇතුළත දත්ත (Texts) උඩින්ම පෙනීමට Z-index දුන්නා
+    h3,
+    strong {
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    // දත්ත වල මාතෘකාව (Total Candidates ආදිය)
+    h3 {
+      margin: 0;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    // ප්‍රධාන විශාල ඉලක්කම් (Numbers)
+    strong {
+      font-size: 1.8rem; // තවත් පොඩ්ඩක් ලොකු කර කැපී පෙනෙන්න හැදුවා
+      color: #f1f5f9;
+      margin: 0;
+      font-weight: 800;
+      font-family: monospace;
+      letter-spacing: -0.02em;
+    }
+
+    /* ========================================================
+       🎨 2026 EXCLUSIVE: 3 කාඩ් එකට වෙන වෙනම NEON MATRIX THEMES දීම
+       ======================================================== */
+
+    // 📊 1. OVERALL PASS RATE CARD (ප්‍රතිශතය පෙන්වන සරාගී Neon Teal කාඩ් එක)
+    &.percentage-card {
+      border-color: rgba(0, 241, 209, 0.08);
+
+      &::before {
+        background: rgba(0, 241, 209, 0.15); // Teal Glow
+      }
+
+      strong {
+        color: #00f1d1;
+        text-shadow: 0 0 12px rgba(0, 241, 209, 0.35);
+      }
+
+      &:hover {
+        border-color: #00f1d1;
+        box-shadow:
+          0 15px 30px rgba(0, 0, 0, 0.3),
+          rgba(0, 241, 209, 0.2) 0px 0px 20px;
+
+        &::before {
+          background: rgba(0, 241, 209, 0.35);
+        }
+      }
+    }
+
+    // 🟢 2. TOTAL PASSED STUDENTS CARD (පාස් වුණු ළමයි පෙන්වන Soft Green කාඩ් එක)
+    &:nth-child(2) {
+      &::before {
+        background: rgba(16, 185, 129, 0.12);
+      }
+
+      &:hover {
+        border-color: #10b981;
+        box-shadow:
+          0 15px 30px rgba(0, 0, 0, 0.3),
+          rgba(16, 185, 129, 0.15) 0px 0px 15px;
+        &::before {
+          background: rgba(16, 185, 129, 0.25);
+        }
+        strong {
+          color: #10b981;
+        }
+      }
+    }
+
+    /* 📐🔬🔤 3. TEACHER CARDS SPECIFIC STYLES (සර්ලාගේ සාමාර්ථ පෙන්වන යට පේළිය - පරණ ඒවා එලෙසම ඇත) */
+    &.teacher-cards {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.2);
+
+      &::before {
+        display: none;
+      } // සර්ලාගේ කාඩ් වලට underglow එක අවශ්‍ය නැත
+      &:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      h3 {
+        color: #ffffff;
+        font-weight: 750;
+        font-size: 0.85rem;
+        text-transform: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 6px;
+        width: 100%;
+      }
+
+      .score {
+        width: 100%;
+        font-size: 0.85rem;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-family: monospace;
+
+        &:nth-of-type(1) {
+          background-color: rgba(16, 185, 129, 0.12);
+          color: #10b981;
+          border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        &:nth-of-type(2) {
+          background-color: rgba(249, 115, 22, 0.12);
+          color: #f97316;
+          border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+        &:nth-of-type(3) {
+          background-color: rgba(37, 99, 235, 0.12);
+          color: #60a5fa;
+          border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+      }
+    }
+  }
+}
+
 .secure-submission-form h3 {
   // color: #ffffff;
   font-size: 1.3rem;
@@ -475,262 +842,262 @@ select {
   font-weight: 600;
 }
 
-/* 🔒 Table Container Isolation Shield */
-.secure-table-isolation-shield {
-  //   background: #161b22;
-  //   border: 1px solid #30363d;
-  border-radius: 8px;
-  overflow: hidden;
-}
+// /* 🔒 Table Container Isolation Shield */
+// .secure-table-isolation-shield {
+//   //   background: #161b22;
+//   //   border: 1px solid #30363d;
+//   border-radius: 8px;
+//   overflow: hidden;
+// }
 
-/* 📱 ජංගම දුරකථන වලදී වගුව විතරක් වමට/දකුණට Scroll කරවන කොටස */
-.table-responsive-wrapper {
-  overflow-x: auto;
-  overflow-y: hidden;
-  //   -webkit-overflow-scrolling: touch;
-}
+// /* 📱 ජංගම දුරකථන වලදී වගුව විතරක් වමට/දකුණට Scroll කරවන කොටස */
+// .table-responsive-wrapper {
+//   overflow-x: auto;
+//   overflow-y: hidden;
+//   //   -webkit-overflow-scrolling: touch;
+// }
 
-.secure-honors-ledger-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.95rem;
-  min-width: 850px; /* Mobile වලදී Scroll එක ක්‍රියාත්මක වීමට අවම පළලක් */
+// .secure-honors-ledger-table {
+//   width: 100%;
+//   border-collapse: collapse;
+//   text-align: left;
+//   font-size: 0.95rem;
+//   min-width: 850px; /* Mobile වලදී Scroll එක ක්‍රියාත්මක වීමට අවම පළලක් */
 
-  //   height: 600px;
-  overflow: scroll;
-  margin: 2rem auto;
-}
+//   //   height: 600px;
+//   overflow: scroll;
+//   margin: 2rem auto;
+// }
 
-/* 📌 Heading එක උඩම හිරවෙන Sticky Header */
-.secure-honors-ledger-table th {
-  background: $secondary-blue;
-  color: #c9d1d9;
-  padding: 14px 16px;
-  font-weight: 600;
-  border-bottom: 2px solid $secondary-blue;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  -webkit-user-select: none;
-  user-select: none;
-  text-align: center;
-}
-table caption {
-  text-align: center;
-  margin: 0.5rem auto;
-  color: $secondary-blue;
-}
-table thead {
-  margin: 1rem 0;
-}
-table tr {
-  margin: 13px 0;
-}
-.secure-honors-ledger-table td {
-  padding: 0px 16px;
-  border-bottom: 1px solid $secondary-blue;
-  color: #e6edf3;
-  vertical-align: middle;
-  //   background-color: red;
-  text-align: center;
-}
-.details-content {
-  display: flex;
-  gap: 3px;
-  flex-direction: column;
-}
-/* Student Identity Stack */
-.table-student-identity {
-  display: flex;
-  flex-direction: column;
-}
+// /* 📌 Heading එක උඩම හිරවෙන Sticky Header */
+// .secure-honors-ledger-table th {
+//   background: $secondary-blue;
+//   color: #c9d1d9;
+//   padding: 14px 16px;
+//   font-weight: 600;
+//   border-bottom: 2px solid $secondary-blue;
+//   position: sticky;
+//   top: 0;
+//   z-index: 10;
+//   -webkit-user-select: none;
+//   user-select: none;
+//   text-align: center;
+// }
+// table caption {
+//   text-align: center;
+//   margin: 0.5rem auto;
+//   color: $secondary-blue;
+// }
+// table thead {
+//   margin: 1rem 0;
+// }
+// table tr {
+//   margin: 13px 0;
+// }
+// .secure-honors-ledger-table td {
+//   padding: 0px 16px;
+//   border-bottom: 1px solid $secondary-blue;
+//   color: #e6edf3;
+//   vertical-align: middle;
+//   //   background-color: red;
+//   text-align: center;
+// }
+// .details-content {
+//   display: flex;
+//   gap: 3px;
+//   flex-direction: column;
+// }
+// /* Student Identity Stack */
+// .table-student-identity {
+//   display: flex;
+//   flex-direction: column;
+// }
 
-.student-name-text {
-  font-weight: 600;
-  color: rgba($secondary-blue, 0.8);
-}
+// .student-name-text {
+//   font-weight: 600;
+//   color: rgba($secondary-blue, 0.8);
+// }
 
-.student-index-subtext {
-  font-size: 0.9rem;
-  color: rgba($secondary-blue, 0.7);
-  margin-top: 3px;
-}
+// .student-index-subtext {
+//   font-size: 0.9rem;
+//   color: rgba($secondary-blue, 0.7);
+//   margin-top: 3px;
+// }
 
-.table-school-tag {
-  color: rgba($secondary-blue, 0.8);
-  font-size: 0.9rem;
-}
+// .table-school-tag {
+//   color: rgba($secondary-blue, 0.8);
+//   font-size: 0.9rem;
+// }
 
-.table-overall-badge {
-  background: rgba($secondary-blue, 0.9);
-  padding: 4px 16px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  // border: 1px solid #30363d;
-}
+// .table-overall-badge {
+//   background: rgba($secondary-blue, 0.9);
+//   padding: 4px 16px;
+//   border-radius: 4px;
+//   font-size: 0.85rem;
+//   font-weight: bold;
+//   // border: 1px solid #30363d;
+// }
 
-/* Individual Grade Cell Colors (Color Coding) */
-.table-grade-cell {
-  text-align: center;
-  margin: 0 auto;
-}
-.table-grade-cell strong {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 28px;
-  //   border-radius: 50%;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 0 auto;
-  border-radius: 3px;
-}
-.table-grade-cell.grade-a strong {
-  background: rgba(204, 176, 18, 0.15);
-  color: #e4b109;
-  border: 1px solid rgba(160, 130, 46, 0.3);
-}
-.table-grade-cell.grade-b strong {
-  background: rgba(51, 255, 0, 0.15);
-  color: #33ff00;
-  border: 1px solid rgba(51, 255, 0, 0.3);
-}
-.table-grade-cell.grade-c strong {
-  background: rgba(88, 166, 255, 0.15);
-  color: #58a6ff;
-  border: 1px solid rgba(88, 166, 255, 0.3);
-}
-.table-grade-cell.grade-s strong {
-  background: rgba(139, 148, 158, 0.15);
-  color: #8b949e;
-  border: 1px solid rgba(139, 148, 158, 0.3);
-}
-.table-grade-cell.grade-f strong {
-  background: rgba(248, 81, 73, 0.15);
-  color: #f85149;
-  border: 1px solid rgba(248, 81, 73, 0.3);
-}
+// /* Individual Grade Cell Colors (Color Coding) */
+// .table-grade-cell {
+//   text-align: center;
+//   margin: 0 auto;
+// }
+// .table-grade-cell strong {
+//   display: inline-block;
+//   width: 30px;
+//   height: 30px;
+//   line-height: 28px;
+//   //   border-radius: 50%;
+//   font-size: 0.9rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: 1.5rem;
+//   text-align: center;
+//   margin: 0 auto;
+//   border-radius: 3px;
+// }
+// .table-grade-cell.grade-a strong {
+//   background: rgba(204, 176, 18, 0.15);
+//   color: #e4b109;
+//   border: 1px solid rgba(160, 130, 46, 0.3);
+// }
+// .table-grade-cell.grade-b strong {
+//   background: rgba(51, 255, 0, 0.15);
+//   color: #33ff00;
+//   border: 1px solid rgba(51, 255, 0, 0.3);
+// }
+// .table-grade-cell.grade-c strong {
+//   background: rgba(88, 166, 255, 0.15);
+//   color: #58a6ff;
+//   border: 1px solid rgba(88, 166, 255, 0.3);
+// }
+// .table-grade-cell.grade-s strong {
+//   background: rgba(139, 148, 158, 0.15);
+//   color: #8b949e;
+//   border: 1px solid rgba(139, 148, 158, 0.3);
+// }
+// .table-grade-cell.grade-f strong {
+//   background: rgba(248, 81, 73, 0.15);
+//   color: #f85149;
+//   border: 1px solid rgba(248, 81, 73, 0.3);
+// }
 
-/* Live Cloud Like Trigger Button */
-.table-like-trigger-btn {
-  background: transparent;
-  // border: 1px solid $secondary-blue;
-  // border-color: #f85149;
-  color: #fcbbb8;
-  padding: 6px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  transition: all 0.2s;
-  font-size: 1.2rem;
-  margin: 0 auto;
-}
+// /* Live Cloud Like Trigger Button */
+// .table-like-trigger-btn {
+//   background: transparent;
+//   // border: 1px solid $secondary-blue;
+//   // border-color: #f85149;
+//   color: #fcbbb8;
+//   padding: 6px 8px;
+//   border-radius: 6px;
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+//   gap: 16px;
+//   transition: all 0.2s;
+//   font-size: 1.2rem;
+//   margin: 0 auto;
+// }
 
-.table-like-trigger-btn:hover {
-  color: #ff857e;
-  background: rgba(248, 81, 73, 0.05);
-}
+// .table-like-trigger-btn:hover {
+//   color: #ff857e;
+//   background: rgba(248, 81, 73, 0.05);
+// }
 
-.table-like-trigger-btn span {
-  font-weight: 600;
-  color: #f85149;
-  // border-left: 3px solid rgb(255, 180, 180);
-  padding-left: 6px;
-}
+// .table-like-trigger-btn span {
+//   font-weight: 600;
+//   color: #f85149;
+//   // border-left: 3px solid rgb(255, 180, 180);
+//   padding-left: 6px;
+// }
 
-/* ==========================================================================
-   ✨ ELITE 9A GOLD ROW SHIMMER ANIMATION
-   ========================================================================== */
-.elite-9a-gold-row-shimmer {
-  //   background: linear-gradient(
-  //     90deg,
-  //     rgba(255, 217, 0, 0.24) 0%,
-  //     rgba(255, 239, 153, 0.59) 50%,
-  //     rgba(255, 215, 0, 0.24) 100%
-  //   ) !important;
-  //   background-size: 200% 100%;
-  //   animation: goldShimmerEffect 3s infinite linear;
+// /* ==========================================================================
+//    ✨ ELITE 9A GOLD ROW SHIMMER ANIMATION
+//    ========================================================================== */
+// .elite-9a-gold-row-shimmer {
+//   //   background: linear-gradient(
+//   //     90deg,
+//   //     rgba(255, 217, 0, 0.24) 0%,
+//   //     rgba(255, 239, 153, 0.59) 50%,
+//   //     rgba(255, 215, 0, 0.24) 100%
+//   //   ) !important;
+//   //   background-size: 200% 100%;
+//   //   animation: goldShimmerEffect 3s infinite linear;
 
-  border-bottom: 2px solid #fbbf24 !important;
-  border-radius: 1rem;
-  //   border-top: 4px dotted #fbbf24 !important;
-  //   border-bottom: 4px dotted #fbbf24 !important;
-  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15) !important;
-  background: #fff6d7;
+//   border-bottom: 2px solid #fbbf24 !important;
+//   border-radius: 1rem;
+//   //   border-top: 4px dotted #fbbf24 !important;
+//   //   border-bottom: 4px dotted #fbbf24 !important;
+//   box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15) !important;
+//   background: #fff6d7;
 
-  //   &::before {
-  //     content: "";
-  //     position: absolute;
-  //     top: 0;
-  //     left: -150%;
-  //     // width: 150%;
-  //     // height: 100%;
-  //     background: linear-gradient(
-  //       to right,
-  //       rgba(255, 255, 255, 0) 0%,
-  //       rgba(251, 190, 36, 0.562) 50%,
-  //       rgba(255, 255, 255, 0) 100%
-  //     );
-  //     transform: skewX(-20deg);
-  //     animation: goldCardShimmering 2.5s ease-in-out infinite;
-  // animation: goldShimmerEffect 2.5s ease-in-out infinite;
-  //   }
-}
+//   //   &::before {
+//   //     content: "";
+//   //     position: absolute;
+//   //     top: 0;
+//   //     left: -150%;
+//   //     // width: 150%;
+//   //     // height: 100%;
+//   //     background: linear-gradient(
+//   //       to right,
+//   //       rgba(255, 255, 255, 0) 0%,
+//   //       rgba(251, 190, 36, 0.562) 50%,
+//   //       rgba(255, 255, 255, 0) 100%
+//   //     );
+//   //     transform: skewX(-20deg);
+//   //     animation: goldCardShimmering 2.5s ease-in-out infinite;
+//   // animation: goldShimmerEffect 2.5s ease-in-out infinite;
+//   //   }
+// }
 
-.elite-9a-gold-row-shimmer td {
-  // border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-}
+// // .elite-9a-gold-row-shimmer td {
+// //   // border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+// // }
 
-.gold-medal-text {
-  color: #ffd700 !important;
-  font-weight: bold;
-  background: rgba(255, 215, 0, 0.1) !important;
-  // border: 1px solid rgba(255, 215, 0, 0.4) !important;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
-}
+// .gold-medal-text {
+//   color: #ffd700 !important;
+//   font-weight: bold;
+//   background: rgba(255, 215, 0, 0.1) !important;
+//   // border: 1px solid rgba(255, 215, 0, 0.4) !important;
+//   text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+// }
 
-.gold-medal-tag {
-  background-color: #fbbf24;
-  color: $secondary-blue;
-  box-shadow: 0px 3px 6px rgba($secondary-blue3, 0.5);
-  padding: 4px 2px;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
+// .gold-medal-tag {
+//   background-color: #fbbf24;
+//   color: $secondary-blue;
+//   box-shadow: 0px 3px 6px rgba($secondary-blue3, 0.5);
+//   padding: 4px 2px;
+//   border-radius: 6px;
+//   font-size: 0.7rem;
+//   font-weight: 900;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 12px;
+// }
 
-@keyframes goldShimmerEffect {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
+// @keyframes goldShimmerEffect {
+//   0% {
+//     background-position: 200% 0;
+//   }
+//   100% {
+//     background-position: -200% 0;
+//   }
+// }
 
-@keyframes goldCardShimmering {
-  0% {
-    left: -150%;
-  }
-  30% {
-    left: 150%;
-  }
-  100% {
-    left: 150%;
-  }
-}
+// @keyframes goldCardShimmering {
+//   0% {
+//     left: -150%;
+//   }
+//   30% {
+//     left: 150%;
+//   }
+//   100% {
+//     left: 150%;
+//   }
+// }
 
 // /* ==========================================================================
 //    💬 MODAL POPUP MESSAGE BLUR OVERLAY
@@ -755,6 +1122,315 @@ table tr {
 //   padding: 30px;
 //   border-radius: 12px;
 //   max-width: 460px;
+
+/* ========================================================
+   2026 CYBERPUNK O/L HONORS LEDGER TABLE MATRIX (NO VARIABLES)
+   ======================================================== */
+
+// 1. 🔒 Table Container Isolation Shield (වගුව වටා ඇති ප්‍රධාන ආරක්ෂිත ආවරණය)
+.secure-table-isolation-shield {
+  background: rgba(15, 23, 42, 0.45); // Deep Dark Glass Layer
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.06); // සිහින් රිදී බෝඩර් ලයින් එක
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  margin: 2rem auto;
+  // max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// 📱 2. ජංගම දුරකථන වලදී වගුව විතරක් වමට/දකුණට සුමටව Scroll කරවන කොටස
+.table-responsive-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+
+  // Scrollbar එක සයිබර් ස්ටයිල් එකට සිහින් කළා
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 99px;
+  }
+}
+
+// 📊 3. THE MAIN SECURE TABLE SYSTEM
+.secure-honors-ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+  min-width: 900px; /* Mobile වලදී ලස්සනට Scroll එක ක්‍රියාත්මක වීමට */
+  margin: 0;
+
+  // Table Title Caption Styling
+  caption {
+    text-align: center;
+    margin: 1.2rem auto;
+    color: #00f1d1; // Caption එක Neon Teal කර පත්තු කළා
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 241, 209, 0.2);
+  }
+
+  /* 📌 4. TH HEADERS: උඩම තීරුව සැමවිටම Sticky ව ලොක් වී පවතී */
+  th {
+    background: #0f172a; // Deep Matte Dark Layer
+    color: #94a3b8; // Slate Gray Headers
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    // user-select: none;
+    text-align: center;
+  }
+
+  /* 📄 5. TD CELLS: වගුවේ සාමාන්‍ය දත්ත කොටු */
+  td {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04); // සිහින් සයිබර් ඉරි කෑලි
+    color: #cbd5e1; // කියවන්න ලේසි ඇස් නිවන වර්ණය
+    vertical-align: middle;
+    text-align: center;
+    transition: background 0.3s ease;
+  }
+
+  // සාමාන්‍ය පේළි උඩට මවුස් එක ගෙනිච්චම Highlight වෙන හැටි
+  tr:not(.elite-9a-gold-row-shimmer):hover td {
+    background: rgba(255, 255, 255, 0.015);
+  }
+}
+
+/* ========================================================
+   👦 👧 STUDENT IDENTITY & LABELS SYSTEM
+   ======================================================== */
+.details-content {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+  align-items: center; // මැදට පෙළගැස්වීම
+
+  .student-name-text {
+    font-weight: 700;
+    color: #ffffff; // ශිෂ්‍යයාගේ නම පිරිසිදු සුදු පැහැයෙන් පෙනේ
+    font-size: 0.95rem;
+  }
+
+  .student-index-subtext {
+    font-size: 0.8rem;
+    color: #64748b; // Index ID එක Slate Gray වේ
+    font-weight: 600;
+    font-family: monospace;
+  }
+}
+
+// School Name Tag Layout
+.table-school-tag {
+  color: #94a3b8;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+// Overall Results Basic Badge (9A නොවන සාමාන්‍ය ළමයින්ගේ)
+.table-overall-badge {
+  background: rgba(37, 99, 235, 0.12); // Soft Alpha Blue
+  color: #60a5fa;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 4px 14px;
+  border-radius: 20px; // Capsule Badge
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* ========================================================
+   🎨 INDIVIDUAL GRADE CELLS (A, B, C NEON COLOR CODING)
+   ======================================================== */
+.table-grade-cell {
+  text-align: center;
+
+  strong {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; // වටකුරු කොටු හැඩයක් දුන්නා
+    font-family: system-ui, sans-serif;
+    transition: all 0.3s ease;
+  }
+  // 🟡 A Grade Capsule (Soft Neon Gold)
+  &.grade-a strong {
+    background: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    text-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+  }
+
+  // 🟢 B Grade Capsule (Soft Neon Green)
+  &.grade-b strong {
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+  }
+
+  // 🔵 C Grade Capsule (Soft Neon Blue)
+  &.grade-c strong {
+    background: rgba(37, 99, 235, 0.12);
+    color: #60a5fa;
+    border: 1px solid rgba(37, 99, 235, 0.25);
+    text-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+  }
+
+  // ⚪ S Grade Capsule (Soft Neon Slate)
+  &.grade-s strong {
+    background: rgba(148, 163, 184, 0.12);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+  }
+
+  // 🔴 F/W Grade Capsule (Soft Neon Red Warning)
+  &.grade-f strong {
+    background: rgba(239, 68, 68, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+  }
+}
+
+/* ========================================================
+   ❤️ LIVE APPRECIATION LIKE BUTTON (High-Tech Pulse Vibe)
+   ======================================================== */
+.table-like-trigger-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #64748b;
+  padding: 6px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 0 auto;
+
+  svg {
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  span {
+    font-weight: 700;
+    color: #94a3b8;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 10px;
+    font-family: monospace;
+  }
+
+  // හොවර් කරද්දී ලස්සනට රතු පාටින් පත්තුවීම
+  &:hover,
+  &:active {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
+
+    svg {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 4px #ef4444);
+    }
+    span {
+      color: #ffffff;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+  }
+}
+
+/* ==========================================================================
+   👑 👑 👑 [THE 9A ELITE MASTERPIECE]: උඹ ඉල්ලපු සුපිරි GOLD SHIMMER EFFECT එක
+   ========================================================================== */
+.elite-9a-gold-row-shimmer {
+  border-bottom: 1px solid rgba(251, 191, 36, 0.3) !important;
+  box-shadow: inset 0 0 20px rgba(251, 191, 36, 0.05) !important;
+
+  // 👈 2026 Shift: පරණ තද කහ කතන්දර අයින් කර, ඩාර්ක් තීම් එකට මැච් වෙන ලස්සන Gold Metallic Layer එකක් දුන්නා
+  background: linear-gradient(
+    90deg,
+    rgba(251, 191, 36, 0.03) 0%,
+    rgba(251, 191, 36, 0.12) 50%,
+    rgba(251, 191, 36, 0.03) 100%
+  ) !important;
+  background-size: 200% 100% !important;
+
+  // 🚀 රන්වන් ආලෝක ධාරාව වමෙන් දකුණට නොනවතී ගලා යන පට්ටම ඇනිමේෂන් එක
+  animation: goldShimmerEffect 3.5s infinite linear !important;
+
+  td {
+    color: #fef08a !important; // 9A ළමයින්ගේ අකුරු ලස්සන ලයිට් රන්වන් පාට වේ
+    border-bottom: 1px solid rgba(251, 191, 36, 0.15) !important;
+  }
+
+  .student-name-text {
+    color: #fbbf24 !important; // නම පට්ටම රන්වන් පාටින් පත්තුවේ
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+  }
+
+  .table-school-tag {
+    color: #fde047 !important;
+    opacity: 0.8;
+  }
+
+  /* 🏅 9A ELITE GOLD CAPUSLE BADGE STYLING */
+  .gold-medal-tag {
+    background: linear-gradient(
+      135deg,
+      #fbbf24 0%,
+      #d97706 100%
+    ) !important; // Premium Gold Medal Roll
+    color: #0f172a !important; // ඇතුළේ අකුරු තද Slate පැහැයෙන් කැපී පෙනේ
+    box-shadow: 0px 4px 12px rgba(251, 191, 36, 0.35) !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.75rem !important;
+    font-weight: 900 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    text-shadow: none !important;
+  }
+}
+
+/* ========================================================
+   DADA SHIMMER FLOW ANIMATIONS RUNNER
+   ======================================================== */
+@keyframes goldShimmerEffect {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  } // රන් ආලෝකය නොනවතී ගලා යාම
+}
 
 /* ==========================================================================
    💬 MODAL POPUP MESSAGE BLUR OVERLAY
@@ -868,116 +1544,116 @@ table tr {
 // new
 // 📊 ULTRA-MINIMALIST ROW LAYOUT (NO MORE CARDS - EYE COMFORT MAX)
 
-.analytics-summary-dashboard-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  // margin-bottom: 25px;
-  padding: 16px;
-  background: $secondary-blue; // මුළු දත්ත ටිකම එකම එක පසුබිමකට ගත්තා
-  border: 1px solid #21262d;
-  border-radius: 8px;
-  position: relative;
-  z-index: 2;
-  text-align: left;
-  max-width: 675px;
+// .analytics-summary-dashboard-grid {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 12px;
+//   // margin-bottom: 25px;
+//   padding: 16px;
+//   background: $secondary-blue; // මුළු දත්ත ටිකම එකම එක පසුබිමකට ගත්තා
+//   border: 1px solid #21262d;
+//   border-radius: 8px;
+//   position: relative;
+//   z-index: 2;
+//   text-align: left;
+//   max-width: 675px;
 
-  @include respond(desktop) {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap; // තිරයේ ඉඩ මදි වුවහොත් පමණක් ඊළඟ පේළියට යාමට
-    // margin: 12px auto;
-  }
+//   @include respond(desktop) {
+//     flex-direction: row;
+//     align-items: flex-start;
+//     justify-content: space-between;
+//     flex-wrap: wrap; // තිරයේ ඉඩ මදි වුවහොත් පමණක් ඊළඟ පේළියට යාමට
+//     // margin: 12px auto;
+//   }
 
-  // 📦 කාඩ්පත් වෙනුවට සරල පේළි අයිතම (Simple Inline Items)
-  .analytic-mini-card {
-    background: transparent !important; // කාඩ්පත් පසුබිම් සියල්ල ඉවත් කළා
-    border: none !important; // කොටු Borders කිසිවක් නැත
-    box-shadow: none !important; // ඇස් වෙහෙසවන හෙවනැලි (Shadows) නැත
-    padding: 6px 12px !important;
-    display: flex;
-    flex-direction: row; // උඩ යට වෙනුවට වමේ සිට දකුණට පේළියට තැබීම
-    align-items: center;
-    gap: 10px;
-    border-right: 1px solid #21262d; // වෙන් කර හඳුනා ගැනීමට ලා ඉරක් පමණි
+//   // 📦 කාඩ්පත් වෙනුවට සරල පේළි අයිතම (Simple Inline Items)
+//   .analytic-mini-card {
+//     background: transparent !important; // කාඩ්පත් පසුබිම් සියල්ල ඉවත් කළා
+//     border: none !important; // කොටු Borders කිසිවක් නැත
+//     box-shadow: none !important; // ඇස් වෙහෙසවන හෙවනැලි (Shadows) නැත
+//     padding: 6px 12px !important;
+//     display: flex;
+//     flex-direction: row; // උඩ යට වෙනුවට වමේ සිට දකුණට පේළියට තැබීම
+//     align-items: center;
+//     gap: 10px;
+//     border-right: 1px solid #21262d; // වෙන් කර හඳුනා ගැනීමට ලා ඉරක් පමණි
 
-    &:last-of-type {
-      border-right: none; // අන්තිම එකේ ඉර ඉවත් කිරීම
-    }
+//     &:last-of-type {
+//       border-right: none; // අන්තිම එකේ ඉර ඉවත් කිරීම
+//     }
 
-    @include respond(desktop) {
-      border-right: none;
-      border-bottom: 1px solid #21262d; // Mobile වලදී යටින් ඉරක්
-      width: 100%;
-      justify-content: space-between;
-    }
+//     @include respond(desktop) {
+//       border-right: none;
+//       border-bottom: 1px solid #21262d; // Mobile වලදී යටින් ඉරක්
+//       width: 100%;
+//       justify-content: space-between;
+//     }
 
-    // මාතෘකාව (Total Candidates, Pass Rate ආදිය)
-    h3 {
-      margin: 0;
-      font-size: 0.85rem;
-      color: #8b949e; // මෘදු අළු පාට
-      // font-family: "Inter", sans-serif;
-      font-weight: 500;
-      text-transform: none; // කැපිටල් අකුරු නිසා ඇස් වෙහෙසීම වැළැක්වීමට
-      letter-spacing: 0;
-    }
+//     // මාතෘකාව (Total Candidates, Pass Rate ආදිය)
+//     h3 {
+//       margin: 0;
+//       font-size: 0.85rem;
+//       color: #8b949e; // මෘදු අළු පාට
+//       // font-family: "Inter", sans-serif;
+//       font-weight: 500;
+//       text-transform: none; // කැපිටල් අකුරු නිසා ඇස් වෙහෙසීම වැළැක්වීමට
+//       letter-spacing: 0;
+//     }
 
-    // ප්‍රධාන ඉලක්කම් (Numbers)
-    strong {
-      font-size: 1.1rem; // ප්‍රමාණය ගොඩක් කුඩා කර ඇසට හුරු කළා
-      color: #ffffff;
-      margin: 0;
-      // font-family: "Inter", sans-serif;
-      font-weight: 600;
-    }
+//     // ප්‍රධාන ඉලක්කම් (Numbers)
+//     strong {
+//       font-size: 1.1rem; // ප්‍රමාණය ගොඩක් කුඩා කර ඇසට හුරු කළා
+//       color: #ffffff;
+//       margin: 0;
+//       // font-family: "Inter", sans-serif;
+//       font-weight: 600;
+//     }
 
-    // 📊 ප්‍රතිශතය පෙන්වන තැන
-    &.percentage-card strong {
-      color: #58a6ff; // සාමාන්‍ය මෘදු නිල් පාටක්
-    }
+//     // 📊 ප්‍රතිශතය පෙන්වන තැන
+//     &.percentage-card strong {
+//       color: #58a6ff; // සාමාන්‍ය මෘදු නිල් පාටක්
+//     }
 
-    // 📐🔬🔤 සර්ලාගේ සාමාර්ථ පෙන්වන සරලම ක්‍රමය (Inline Teacher Scores)
-    &.teacher-cards {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      margin-top: 6px;
+//     // 📐🔬🔤 සර්ලාගේ සාමාර්ථ පෙන්වන සරලම ක්‍රමය (Inline Teacher Scores)
+//     &.teacher-cards {
+//       display: flex;
+//       align-items: center;
+//       justify-content: space-between;
+//       gap: 6px;
+//       margin-top: 6px;
 
-      h3 {
-        color: #c9d1d9;
-        font-weight: 600;
-      }
+//       h3 {
+//         color: #c9d1d9;
+//         font-weight: 600;
+//       }
 
-      // A: 5 | B: 2 වගේ ඒවා එක ළඟ පිරිසිදුව පෙන්වීම
-      .score {
-        font-size: 0.85rem;
-        // color: #8b949e;
-        background: transparent;
-        border: none;
-        padding: 0;
-        margin: 0;
-        display: inline-block;
-        padding: 3px 8px;
-        border-radius: 6px;
+//       // A: 5 | B: 2 වගේ ඒවා එක ළඟ පිරිසිදුව පෙන්වීම
+//       .score {
+//         font-size: 0.85rem;
+//         // color: #8b949e;
+//         background: transparent;
+//         border: none;
+//         padding: 0;
+//         margin: 0;
+//         display: inline-block;
+//         padding: 3px 8px;
+//         border-radius: 6px;
 
-        // සියලුම වර්ණ ඉවත් කර, ඉතාම සරලව අකුරු පමණක් පෙන්වීම
-        &:nth-of-type(1) {
-          background-color: #0ae227;
-          color: $white;
-        }
+//         // සියලුම වර්ණ ඉවත් කර, ඉතාම සරලව අකුරු පමණක් පෙන්වීම
+//         &:nth-of-type(1) {
+//           background-color: #0ae227;
+//           color: $white;
+//         }
 
-        &:nth-of-type(2) {
-          background-color: #ff9900;
-          color: $secondary-blue;
-        }
-        &:nth-of-type(3) {
-          background-color: #0873ee;
-          color: $white;
-        }
-      }
-    }
-  }
-}
+//         &:nth-of-type(2) {
+//           background-color: #ff9900;
+//           color: $secondary-blue;
+//         }
+//         &:nth-of-type(3) {
+//           background-color: #0873ee;
+//           color: $white;
+//         }
+//       }
+//     }
+//   }
+// }
