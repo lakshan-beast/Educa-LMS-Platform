@@ -270,57 +270,31 @@ const ResultsHub = () => {
         </div>
 
         <div className="results-containers parts">
-          <div>
-            <h2>
-              Verified O/L <span>Honors Portal</span>
-            </h2>
-            <p>
-              Showcase the true reward of your hard work; a live-updating
-              official directory of ordinary level achievers.
-            </p>
-          </div>
+          {/* <div> */}
+          <h2>
+            Verified O/L <span>Honors Portal</span>
+          </h2>
+          <p>
+            Showcase the true reward of your hard work; a live-updating official
+            directory of ordinary level achievers.
+          </p>
         </div>
+        {/* </div> */}
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "15px",
-            marginBottom: "0.5rem",
-          }}>
-          {/* 💬 ALL COMMENTS COUNT BADGE */}
-          <div
-            style={{
-              background: "#eef2ff",
-              color: "#001b42",
-              padding: "10px 18px",
-              borderRadius: "12px",
-              fontWeight: "800",
-              fontSize: "0.9rem",
-              border: "1px solid #d9e8ff",
-            }}>
-            Total Results: {results.length}
+        <div className="results-header-zone">
+          <div className="results-top-action-bar">
+            <div className="total-results-badge">
+              Total Results: <span>{results.length}</span>
+            </div>
+
+            {/* 📣 ADD NEW COMMENT BUTTON */}
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="share-results-btn">
+              <FaPlus /> Share Your Results
+            </button>
           </div>
-
-          {/* 📣 ADD NEW COMMENT BUTTON */}
-          <button
-            type="button"
-            onClick={() => setIsModalOpen(true)}
-            style={{
-              background: "#ff4b2b",
-              color: "white",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "12px",
-              fontWeight: "bold",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              boxShadow: "0 4px 12px rgba(255,75,43,0.2)",
-            }}>
-            <FaPlus /> Share Your Results
-          </button>
         </div>
 
         {/* 📈 LIVE ANALYTICS DASHBOARD CARD LAYER */}
@@ -363,32 +337,31 @@ const ResultsHub = () => {
         </div>
 
         <div>
-          {/* DISPLAY SIDE (TABLE LAYOUT) */}
           <div className="secure-results-display-terminal">
-            <div className="subject-matrix-tabs">
+            <div className="results-filters-row">
               <button
                 onClick={() => setActiveFilter("ALL")}
-                className={activeFilter === "ALL" ? "active" : ""}>
+                className={activeFilter === "ALL" ? "filter-active" : ""}>
                 All Honors
               </button>
               <button
                 onClick={() => setActiveFilter("9A")}
-                className={activeFilter === "9A" ? "active" : ""}>
+                className={activeFilter === "9A" ? "filter-active" : ""}>
                 ⭐ 9A Elite
               </button>
               <button
                 onClick={() => setActiveFilter("MATHS_A")}
-                className={activeFilter === "MATHS_A" ? "active" : ""}>
+                className={activeFilter === "MATHS_A" ? "filter-active" : ""}>
                 Maths A
               </button>
               <button
                 onClick={() => setActiveFilter("SCIENCE_A")}
-                className={activeFilter === "SCIENCE_A" ? "active" : ""}>
+                className={activeFilter === "SCIENCE_A" ? "filter-active" : ""}>
                 Science A
               </button>
               <button
                 onClick={() => setActiveFilter("ENGLISH_A")}
-                className={activeFilter === "ENGLISH_A" ? "active" : ""}>
+                className={activeFilter === "ENGLISH_A" ? "filter-active" : ""}>
                 English A
               </button>
             </div>
@@ -489,82 +462,30 @@ const ResultsHub = () => {
         {/* results-core-split-layout END */}
 
         {isModalOpen && (
-          <div
-            className="results-core-split-layout"
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100vw",
-              height: "100vh",
-              background: "rgba(26, 10, 84, 0.4)",
-              backdropFilter: "blur(4px)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 99999,
-            }}>
-            <div
-              style={{
-                background: "white",
-                padding: "30px",
-                borderRadius: "24px",
-                maxWidth: "460px",
-                width: "90%",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                position: "relative",
-                textAlign: "left",
-                maxHeight: "90vh",
-                overflowY: "auto",
-              }}>
+          <div className="results-bottom-sheet-overlay">
+            <div className="results-sheet-card">
               {/* Close Cross Button */}
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                style={{
-                  position: "absolute",
-                  top: "20px",
-                  right: "20px",
-                  background: "#f1f5f9",
-                  border: "none",
-                  width: "32px",
-                  height: "32px",
-                  borderRadius: "50%",
-                  cursor: "pointer",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  color: "#555",
-                }}>
+                className="close-sheet-btn">
                 <FaXmark />
               </button>
 
+              <h3>Submit O/L Records</h3>
+              <p className="sheet-subtext">
+                Enter your examination details accurately to log your
+                achievements into the live registry.
+              </p>
+
               {/* {formError && (
-                <div
-                  style={{
-                    background: "#fdedec",
-                    borderLeft: "4px solid #e74c3c",
-                    color: "#c0392b",
-                    padding: "10px",
-                    borderRadius: "6px",
-                    fontSize: "0.8rem",
-                    fontWeight: "bold",
-                    marginBottom: "15px",
-                  }}>
-                  ⚠️ {formError}
-                </div>
+                <div className="sheet-error-card">⚠️ {formError}</div>
               )} */}
 
               <form
                 onSubmit={handleSubmitResult}
-                className="secure-submission-form styled-form ">
-                <h3>Submit O/L Records</h3>
-                <p>
-                  Enter your examination details accurately to log your
-                  achievements into the live registry.
-                </p>
-
-                <div className="input-group">
+                className="sheet-main-form styled-form ">
+                <div className="sheet-input-group">
                   <label>Full Name</label>
                   <input
                     type="text"
@@ -576,7 +497,7 @@ const ResultsHub = () => {
                     required
                   />
                 </div>
-                <div className="input-group">
+                <div className="sheet-input-group">
                   <label>Index Number</label>
                   <input
                     type="text"
@@ -588,7 +509,7 @@ const ResultsHub = () => {
                     required
                   />
                 </div>
-                <div className="input-group">
+                <div className="sheet-input-group">
                   <label>Attended School Name</label>
                   <input
                     type="text"
@@ -600,7 +521,7 @@ const ResultsHub = () => {
                     required
                   />
                 </div>
-                <div className="input-group">
+                <div className="sheet-input-group">
                   <label>Overall Examination Result</label>
                   <input
                     type="text"
@@ -613,7 +534,7 @@ const ResultsHub = () => {
                   />
                 </div>
                 {/* TEACHERS SELECTION DROPDOWNS */}
-                <div className="input-group">
+                <div className="sheet-input-group">
                   <label>Maths Teacher Name</label>
                   <select
                     value={form.mathsTeacher}
@@ -624,7 +545,7 @@ const ResultsHub = () => {
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                <div className="input-group">
+                <div className="sheet-input-group">
                   <label>Science Teacher Name</label>
                   <select
                     value={form.scienceTeacher}
@@ -635,7 +556,7 @@ const ResultsHub = () => {
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                <div className="input-group">
+                <div className="sheet-input-group">
                   <label>English Teacher Name</label>
                   <select
                     value={form.englishTeacher}
@@ -692,19 +613,7 @@ const ResultsHub = () => {
                 </div>
                 <button
                   type="submit"
-                  style={{
-                    width: "100%",
-                    padding: "12px",
-                    background: "#001b42",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "8px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    boxShadow: "0 4px 12px rgba(255,75,43,0.2)",
-                    marginTop: "5px",
-                  }}
-                  className="submit-verify-btn "
+                  className="sheet-submit-btn "
                   disabled={isUploading}>
                   <FaPaperPlane />{" "}
                   {isUploading ? "Uploading..." : "Verify & Submit Records"}
@@ -731,7 +640,7 @@ const ResultsHub = () => {
               </p>
 
               <div className="popup-action-row-buttons">
-                <Link className="popup-redirect-btn" to="/students-reviews">
+                <Link className="popup-redirect-btn" to="students-reviews">
                   <FaCommentDots /> Go to Comments Board
                 </Link>
 
