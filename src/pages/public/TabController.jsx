@@ -18,7 +18,7 @@ const TabController = () => {
             <IoIosArrowBack /> Back to Home
           </Link>
           <Link className="back-btn" to="/dashboard">
-            Back to Dashboard <IoIosArrowForward />
+            Go to Dashboard <IoIosArrowForward />
           </Link>
         </div>
 
