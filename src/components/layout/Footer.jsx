@@ -209,8 +209,6 @@ const Footer = () => {
       <div className=" footer-bottom" id="footer-bottom">
         {/* footer copyright info */}
         <div className="footer-card footer-copyrights">
-         
-
           <div className="legel-links">
             <ul>
               <li>
@@ -262,7 +260,7 @@ const Footer = () => {
             </ul>
           </div>
 
-           <p>
+          <p>
             Copyright <FaRegCopyright /> {currentYear} <span>Educa.</span> - A
             Product of <span>NexusLabs</span> Sri Lanka. All rights reserved.
           </p>
@@ -289,13 +287,15 @@ const Footer = () => {
       {/* // activeModel  */}
       {activeModal && (
         <div
-          className="logins-overlay"
+          className="footer-bottom-sheet-overlay"
           onClick={() => {
             setActiveModal(false);
           }}>
-          <div onClick={(e) => e.stopPropagation()}>
+          <div
+            className="bottom-sheet-card"
+            onClick={(e) => e.stopPropagation()}>
             <button
-              className="close-x"
+              className="close-bottom-sheet"
               onClick={() => setActiveModal(null)}
               style={{
                 position: "absolute",
