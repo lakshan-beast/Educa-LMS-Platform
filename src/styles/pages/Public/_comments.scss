@@ -2,13 +2,15 @@
    2026 FUTURISTIC STUDENT REVIEWS HEADER CONTROL MATRIX
    ======================================================== */
 
-.student-voices-wrapper {
-  .voices-container {
-    padding: 0 !important;
-  }
-}
+// .student-voices-wrapper,
+// .secure-results-wrapper-shell {
+//   .voices-container, .results-containers {
+//     padding: 0 !important;
+//   }
+// }
 
-.reviews-header-zone {
+.reviews-header-zone,
+.results-header-zone {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -18,7 +20,8 @@
 }
 
 /* --- 1. TOP ACTION BAR (Badge & Add Button) --- */
-.reviews-top-action-bar {
+.reviews-top-action-bar,
+.results-top-action-bar {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -26,7 +29,8 @@
   width: 100%;
 
   // Total Stories Shared Badge
-  .total-stories-badge {
+  .total-stories-badge,
+  .total-results-badge {
     background: rgba(255, 255, 255, 0.03); // Glass Badge
     border: 1px solid rgba(255, 255, 255, 0.06);
     color: #94a3b8; // Slate Gray Light Text
@@ -43,7 +47,8 @@
   }
 
   // Share Your Voice Trigger Button
-  .share-voice-btn {
+  .share-voice-btn,
+  .share-results-btn {
     background: linear-gradient(135deg, #ff4b2b 0%, #ff2c14 100%);
     color: #ffffff;
     border: none;
@@ -72,13 +77,12 @@
 /* ========================================================
    🎛️ 2. TEACHER FILTERS ROW (100% RESPONSIVE GLASS TABS)
    ======================================================== */
-.teacher-filters-row {
+.teacher-filters-row,
+.results-filters-row {
   display: flex;
   gap: 8px;
   margin-bottom: 25px;
-  flex-wrap: wrap; // 👈 1. Mobile Fix: ෆෝන් screen වලදී බොත්තම් 4 කැඩෙන්නේ නැතිව යටට පේළි ගැසේ
-
-  // පරණ කැත ලයිට් පසුබිම වෙනුවට Cyber Dark Glass Base එකක් දුන්නා
+  flex-wrap: wrap;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 8px;
@@ -90,7 +94,8 @@
   backdrop-filter: blur(8px);
 
   // Individual Filter Tab Button Common Style
-  .filter-tab-btn {
+  .filter-tab-btn,
+  button {
     padding: 8px 18px;
     border-radius: 10px;
 
