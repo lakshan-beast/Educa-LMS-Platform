@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
@@ -137,14 +135,13 @@ const Header = () => {
           <div
             className={`header-navbar ${isActive ? "nav-active" : ""}`}
             id="header-navbar">
+            <button className="mobile-close-btn" onClick={toggleMenu}>
+              <FaX className="close-icon" />
+            </button>
             <div className="mobile-nav-header">
               <div className="header-logo">
                 <div className="logo-circle">E</div>educa<span>.</span>
               </div>
-
-              <button className="mobile-close-btn" onClick={toggleMenu}>
-                <FaX className="close-icon" />
-              </button>
             </div>
 
             <div className="mobile-nav-links-grid">
