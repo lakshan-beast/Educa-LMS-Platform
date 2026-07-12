@@ -50,7 +50,7 @@ const Footer = () => {
             <a href="https://facebook.com" target="_blank" rel="noreferrer">
               <FaFacebook />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+            <a href="https://telegram.com" target="_blank" rel="noreferrer">
               <FaTelegram />
             </a>
             <a href="https://wa.me" target="_blank" rel="noreferrer">
@@ -296,24 +296,7 @@ const Footer = () => {
             onClick={(e) => e.stopPropagation()}>
             <button
               className="close-bottom-sheet"
-              onClick={() => setActiveModal(null)}
-              style={{
-                position: "absolute",
-                top: "20px",
-                right: "20px",
-                border: "none",
-                background: "#f1f5f9",
-                width: "32px",
-                height: "32px",
-                borderRadius: "50%",
-                cursor: "pointer",
-                fontSize: "0.85rem",
-                fontWeight: "bold",
-                color: "#666",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}>
+              onClick={() => setActiveModal(null)}>
               ✕
             </button>
 
