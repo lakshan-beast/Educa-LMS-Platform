@@ -631,7 +631,7 @@
   flex-direction: column;
   overflow: hidden;
   z-index: 999999;
-  border: 3px solid rgba(255, 255, 255, 0.8); // Invisible Border Line
+  border: 2px solid rgba(255, 255, 255, 0.8); // Invisible Border Line
   box-sizing: border-box;
 
   @include respond(small-mobile) {
