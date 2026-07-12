@@ -1,0 +1,195 @@
+/* ========================================================
+     🔮 EXTENSION B: STUDY DESK NOTES & HOMEWORK TRACKER
+     ======================================================== */
+.notes-card {
+  max-width: 420px; // නෝට්ස් ලියන්න ලස්සනට ඉඩ මදි නොවෙන්න පළල 420px කළා
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  h3 svg {
+    color: #f97316;
+  } // Orange Icon for Study Notes
+
+  // Internal Scroll Container Setup (නෝට්ස් ගොඩක් වැඩි වුණොත් ඇතුළෙන් විතරක් ස්ක්‍රෝල් වේ)
+  .desk-notes-vertical-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 4px;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 9px;
+    }
+  }
+
+  // 📝 1. NOTE LOGGING FORM (නෝට්ස් ලියන උඩ පෙට්ටිය)
+  .notes-logging-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.2); // Dark Matrix Input Box
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    select,
+    input {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 0.88rem;
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: #f97316; // Focus වෙද්දී ලස්සන සයිබර් ඔරේන්ජ් ලයින් එකක් වේ
+        box-shadow: rgba(249, 115, 22, 0.15) 0px 0px 8px;
+      }
+    }
+
+    select {
+      font-weight: 700;
+      cursor: pointer;
+      option {
+        background-color: #0f172a;
+        color: #ffffff;
+      }
+    }
+
+    input {
+      font-size: 0.85rem;
+    }
+
+    // Add Button Style
+    .notes-add-submit-btn {
+      background: #f97316; /* Cyber Warning Orange */
+      color: #ffffff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #ea580c;
+        box-shadow: 0 6px 15px rgba(249, 115, 22, 0.45);
+      }
+    }
+  }
+
+  // Ledger Titles
+  .notebook-ledger-title {
+    margin: 0 0 12px 0;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 750;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+  }
+
+  // Notebook Empty State Notice
+  .empty-notebook-notice {
+    margin: 0;
+    color: #64748b;
+    font-style: italic;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 30px 0;
+    font-weight: 500;
+  }
+
+  // 🧾 2. INDIVIDUAL NOTEBOOK TILE (ශිෂ්‍යයා ලියපු නෝට් කාඩ් එක)
+  .notebook-note-tile {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    box-sizing: border-box;
+
+    // 👈 Core Dark Override Fix: ඩයිනමික් බැක්ග්‍රවුන්ඩ් එක උඩින් අකුරු ලස්සනට කියවන්න මිශ්‍රණයක් (Mix-blend) දුන්නා
+    background-blend-mode: overlay;
+
+    .note-tile-content-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+      flex: 1;
+    }
+
+    .note-tile-meta-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .note-subject-tag {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .note-logged-date {
+        color: #64748b;
+        font-size: 0.72rem;
+        font-weight: 600;
+        font-family: monospace;
+      }
+    }
+    // 💻 FIXED: ළමයා ලියපු සැබෑ නෝට් එකේ අකුරු (පරණ තද නිල් වෙනුවට කියවන්න පහසු කළා)
+    .note-actual-text-body {
+      margin: 0;
+      font-size: 0.88rem;
+      color: #ffffff !important; /* 👈 හැමවිටම පිරිසිදු සුදු පැහැයෙන් දිලිසේ */
+      font-weight: 500;
+      line-height: 1.45;
+      white-space: pre-line;
+    }
+
+    // Delete Trash Button
+    .note-delete-trigger-btn {
+      background: none;
+      border: none;
+      color: #ef4444; // Neon Red Delete icon
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 5px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background: rgba(239, 68, 68, 0.1);
+        color: #dc2626;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
