@@ -128,7 +128,7 @@ const AIChatWidget = () => {
     setMessages((prev) => [...prev, { role: "user", text: userText }]);
 
     // 🚀 [THE MASTER NETHMI BYPASS TRIGGER]
-    if (userText.toLowerCase() === "nethmi-chubby") {
+    if (userText.toLowerCase() === "neth-chubby") {
       setShowHearts(true);
       setInputText("");
 
@@ -169,67 +169,42 @@ const AIChatWidget = () => {
               </span>
               <span
                 style={{
-                  position: "absolute",
-                  bottom: "-20px",
-                  left: "30%",
                   fontSize: "1.8rem",
-                  animation: "heartFloatUp 2.8s ease-in-out infinite",
                   animationDelay: "0.2s",
-                  color: "#fc2212",
+                  left: "15%",
                 }}>
-                {/* ❤️ */}
                 <TiHeartFullOutline />
               </span>
               <span
                 style={{
-                  position: "absolute",
-                  bottom: "-20px",
                   left: "45%",
-                  fontSize: "1.4rem",
-                  animation: "heartFloatUp 2.0s ease-in-out infinite",
                   animationDelay: "0.5s",
-                  color: "#fc2212",
+                  fontSize: "1.4rem",
                 }}>
-                {/* ❤️ */}
                 <TiHeartFullOutline />
               </span>
               <span
                 style={{
-                  position: "absolute",
-                  bottom: "-20px",
                   left: "60%",
-                  fontSize: "2.0rem",
-                  animation: "heartFloatUp 2.5s ease-in-out infinite",
                   animationDelay: "0.1s",
-                  color: "#fc2212",
+                  fontSize: "2.0rem",
                 }}>
-                {/* ❤️ */}
                 <TiHeartFullOutline />
               </span>
               <span
                 style={{
-                  position: "absolute",
-                  bottom: "-20px",
-                  left: "75%",
-                  fontSize: "1.6rem",
-                  animation: "heartFloatUp 2.3s ease-in-out infinite",
                   animationDelay: "0.4s",
-                  color: "#fc2212",
+                  fontSize: "1.6rem",
+                  left: "75%",
                 }}>
-                {/* ❤️ */}
                 <TiHeartFullOutline />
               </span>
               <span
                 style={{
-                  position: "absolute",
-                  bottom: "-20px",
                   left: "85%",
                   fontSize: "1.3rem",
-                  animation: "heartFloatUp 2.7s ease-in-out infinite",
                   animationDelay: "0.3s",
-                  color: "#fc2212",
                 }}>
-                {/* ❤️ */}
                 <TiHeartFullOutline />
               </span>
             </div>
@@ -323,7 +298,7 @@ const AIChatWidget = () => {
                   "O/L විභාගයට පට්ටම ප්‍රැක්ටිකල් පාඩම් Time Table එකක් හදලා දෙන්න.",
                 );
               }}>
-              <FaGraduationCap style={{ color: "#4b6bfb", fontSize: "1rem" }} />{" "}
+              <FaGraduationCap style={{ color: "#4b6bfb", fontSize: "1rem" }} />
               Study Plan
             </button>
             <button
@@ -333,7 +308,7 @@ const AIChatWidget = () => {
                   "Maths වල ත්‍රිකෝණමිතිය සයින් නීතිය (Sine Rule) සරලව කියලා දෙන්න.",
                 );
               }}>
-              <FaLightbulb style={{ color: "#f1c40f", fontSize: "1rem" }} />{" "}
+              <FaLightbulb style={{ color: "#f1c40f", fontSize: "1rem" }} />
               Sine Rule
             </button>
             <button
