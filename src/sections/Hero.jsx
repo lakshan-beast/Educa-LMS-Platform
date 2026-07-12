@@ -6,8 +6,6 @@ import "aos/dist/aos.css";
 
 import { BsStars } from "react-icons/bs";
 
-// import heroImg from "../assets/hero-img.jpg";
-
 const Hero = () => {
   useEffect(() => {
     AOS.init({
