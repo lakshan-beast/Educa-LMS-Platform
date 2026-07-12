@@ -1,0 +1,423 @@
+/* ========================================================
+   2026 CENTRAL TIMELINE MATRIX CONTROLLER SASS (NO VARIABLES)
+   ======================================================== */
+
+.schedule-manager-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  box-sizing: border-box;
+  animation: adminViewFadeIn 0.4s ease-out;
+
+  /* --- 👑 LAYER A: MANAGER HEADER BAR (මාතෘකාව, Dropdown සහ බටන් එක) --- */
+  .manager-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; // Mobile Friendly
+    gap: 16px;
+
+    background: rgba(15, 23, 42, 0.45); // Premium Dark Glass Layer
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    padding: 24px 28px;
+    border-radius: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 1.45rem;
+      font-weight: 850;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin: 6px 0 0 0;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    // Action Zone Control Side
+    .action-zone {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+
+      // Grade Dropdown Selector Box
+      .grade-selector-dropdown {
+        padding: 11px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        color: #ffffff;
+        font-size: 0.88rem;
+        font-weight: 700;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:focus {
+          border-color: #00f1d1;
+        }
+        option {
+          background-color: #0f172a;
+          color: #ffffff;
+        }
+      }
+
+      // Structure Timeline Button
+      .create-schedule-btn {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        color: #ffffff;
+        border: none;
+        padding: 12px 22px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.88rem;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 22px rgba(37, 99, 235, 0.55);
+          background: linear-gradient(
+            135deg,
+            #1d4ed8 0%,
+            #00f1d1 100%
+          ); // Hover වෙද්දී Neon Teal වේ
+        }
+      }
+    }
+  }
+
+  /* --- ⏳ LEDGER SYSTEM LOADING BUFFER --- */
+  .ledger-loading {
+    text-align: center;
+    color: #64748b;
+    font-weight: 600;
+    padding: 60px 10px;
+    font-size: 0.92rem;
+    font-style: italic;
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.05);
+  }
+
+  /* ========================================================
+     📊 LAYER B: SCHEDULES MATRIX GRID (සියලුම ශ්‍රේණි 7 කාඩ්පත්)
+     ======================================================== */
+  .schedules-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(290px, 1fr)
+    ); // High-density grid architecture
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+
+    // 🏢 INDIVIDUAL TIMELINE MATRIX CARD (Holographic Control Cards)
+    .schedule-matrix-card {
+      // Background and border blend dynamically via statusConfig from JSX
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+
+      border: 1px solid transparent; // Injected color from inline logic takes over
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      box-sizing: border-box;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      }
+      // 🔴 💥 [THE ACTIVE FORCE PULSE]: පන්තිය ලයිව් කරපු සැනින් මුළු කාඩ් එකම රෝස/රතු පාටින් ගැස්සේ!
+      &.neon-pulse-active {
+        box-shadow: 0 0 25px rgba(255, 44, 115, 0.2) !important;
+        animation: adminLivePulseGlow 1.8s infinite alternate ease-in-out !important;
+
+        .card-top-meta-zone .faculty-badge {
+          color: #ff2c73 !important;
+          text-shadow: 0 0 8px rgba(255, 44, 115, 0.3);
+        }
+      }
+
+      /* --- CARD UPPER LAYER (Meta Headers) --- */
+      .card-top-meta-zone {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        padding-bottom: 12px;
+
+        .faculty-badge {
+          font-weight: 800;
+          color: #ffffff;
+          font-size: 0.9rem;
+          letter-spacing: -0.01em;
+        }
+
+        // Live status context capsule badge
+        .status-pill {
+          padding: 4px 10px;
+          border-radius: 6px;
+          font-size: 0.7rem;
+          font-weight: 900;
+          letter-spacing: 0.3px;
+          text-transform: uppercase;
+
+          &.force_active {
+            background: rgba(255, 44, 115, 0.12);
+            color: #ff2c73;
+          }
+          &.postponed {
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+          }
+          &.closed {
+            background: rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+          }
+          &.auto {
+            background: rgba(0, 241, 209, 0.1);
+            color: #00f1d1;
+          }
+        }
+      }
+
+      /* --- CARD BODY PARAMETERS CONTENT ROWS --- */
+      .card-body-parameters {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        text-align: left;
+
+        .param-row {
+          margin: 0;
+          font-size: 0.88rem;
+          color: #94a3b8; // Parameter key tags description
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          svg {
+            color: #64748b;
+            font-size: 0.95rem;
+          }
+          span {
+            font-weight: 600;
+            color: #475569;
+            width: 65px;
+            display: inline-block;
+          }
+          strong {
+            color: #ffffff;
+            font-weight: 700;
+          } // Sereal dynamic value
+        }
+
+        // ⚠️ Notice instruction Alert Banner box
+        .special-instructions-alert {
+          background: rgba(241, 196, 15, 0.03);
+          border: 1px solid rgba(241, 196, 15, 0.08);
+          border-left: 4px solid #f1c40f;
+          padding: 10px 12px;
+          border-radius: 0 8px 8px 0;
+          margin: 4px 0 0 0;
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          font-size: 0.84rem;
+          line-height: 1.4;
+
+          svg {
+            color: #f1c40f;
+            margin-top: 2px;
+          }
+          span {
+            color: #f1c40f;
+            font-weight: 700;
+            width: auto;
+          }
+          strong {
+            color: #cbd5e1;
+            font-weight: 500;
+          }
+        }
+
+        // Secure Zoom Gating info tag block
+        .secure-link-gating-badge {
+          background: rgba(16, 185, 129, 0.06);
+          border: 1px solid rgba(16, 185, 129, 0.12);
+          padding: 6px 12px;
+          border-radius: 8px;
+          color: #10b981;
+          font-size: 0.75rem;
+          font-weight: 700;
+          font-family: monospace;
+          margin-top: 4px;
+        }
+      }
+
+      /* ========================================================
+         🎛️ THE OPERATIONAL CONTROL HUB (බොත්තම් 5 පද්ධතිය)
+         ======================================================== */
+      .operational-control-hub {
+        display: grid;
+        grid-template-columns: repeat(
+          3,
+          1fr
+        ); // Matrix grid button split layout
+        gap: 8px;
+        margin-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        padding-top: 14px;
+        width: 100%;
+        box-sizing: border-box;
+
+        .override-action-btn {
+          padding: 10px 4px;
+          border: none;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 0.8rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          box-sizing: border-box;
+          transition: all 0.2s ease;
+          &:active {
+            transform: scale(0.96);
+          }
+        }
+
+        // 🔴 1. Force Live Now Button
+        .force-live {
+          background: rgba(255, 44, 115, 0.08);
+          color: #ff2c73;
+          &:hover {
+            background: #ff2c73;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(255, 44, 115, 0.35);
+          }
+        }
+
+        // 🟠 2. Force Pause/Postpone Button
+        .force-postpone {
+          background: rgba(243, 156, 18, 0.08);
+          color: #f39c12;
+          &:hover {
+            background: #f39c12;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.35);
+          }
+        }
+
+        // ⚪ 3. Force Close Session Button
+        .force-close {
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          color: #94a3b8;
+          &:hover {
+            background: #475569;
+            color: #ffffff;
+          }
+        }
+
+        // 🔄 4. Reset to Active Auto Countdown Button (Grid එක පිරිසිදු කිරීමට Column 2ක් ගනී)
+        .force-auto {
+          grid-column: span 2;
+          background: rgba(0, 241, 209, 0.06);
+          border: 1px solid rgba(0, 241, 209, 0.12);
+          color: #00f1d1;
+
+          &:hover {
+            background: #00f1d1;
+            color: #0f172a;
+            box-shadow: 0 4px 12px rgba(0, 241, 209, 0.3);
+          }
+        }
+
+        // 🗑️ 5. Reset/Delete Framework Button (කුඩා කුණු කූඩේ බොත්තම)
+        .force-delete {
+          background: rgba(239, 68, 68, 0.06);
+          color: #f87171;
+
+          &:hover {
+            background: #ef4444;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+          }
+        }
+      }
+
+      /* Empty Hollow state card inside slot */
+      //   .empty-parameter-state {
+      //     color: #475569;
+      //     font-size: 0.85rem;
+      //     font-weight: 600;
+      //     line-height: 1.5;
+      //     padding: 30px 10px;
+      //     text-align: center;
+      //     border: 1px dashed rgba(255, 255, 255, 0.04);
+
+      // Empty Hollow state card inside slot (කිසිදු කාලසටහනක් නොමැති විට පෙනෙන කොටස)
+      .empty-parameter-state {
+        color: #475569;
+        font-size: 0.85rem;
+        font-weight: 600;
+        line-height: 1.5;
+        padding: 30px 10px;
+        text-align: center;
+        border: 1px dashed rgba(255, 255, 255, 0.04);
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+/* ========================================================
+   🚀 CENTRAL MASTER SYSTEM ANIMATIONS
+   ======================================================== */
+@keyframes adminViewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes adminLivePulseGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 44, 115, 0.15);
+    border-color: rgba(255, 44, 115, 0.3) !important;
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 44, 115, 0.45);
+    border-color: rgba(255, 44, 115, 1) !important;
+  }
+}
