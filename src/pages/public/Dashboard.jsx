@@ -230,142 +230,138 @@ const Dashboard = () => {
             <StudentToolkit />
           </div>
 
-          <div>
-            <div className="side-dash-content">
-              <div className="card-container countdown-card">
-                <h4>
-                  <img
-                    src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
-                    alt="live-emoji"
-                    style={{
-                      width: "20px",
-                      height: "20px",
-                      objectFit: "contain",
-                    }}
-                  />{" "}
-                  2026 - O/L Exam Countdown
-                </h4>
-                <div className="countdown-tiles">
-                  <div>
-                    <h3>{countdown.days}</h3>
-                    <small>Days</small>
-                  </div>
-                  <div>
-                    <h3>{countdown.hours}</h3>
-                    <small>Hours</small>
-                  </div>
-                  <div>
-                    <h3>{countdown.mins}</h3>
-                    <small>Mins</small>
-                  </div>
-                  <div>
-                    <h3 className="seconds">{countdown.secs}</h3>
-                    <small>Secs</small>
-                  </div>
+          {/* <div> */}
+          <div className="side-dash-content">
+            <div className="card-container countdown-card">
+              <h4>
+                <img
+                  src="https://fonts.gstatic.com/s/e/notoemoji/latest/231b/512.gif"
+                  alt="live-emoji"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    objectFit: "contain",
+                  }}
+                />{" "}
+                2026 - O/L Exam Countdown
+              </h4>
+              <div className="countdown-tiles">
+                <div>
+                  <h3>{countdown.days}</h3>
+                  <small>Days</small>
                 </div>
-                <p>* Target Date: December 08, 2026</p>
+                <div>
+                  <h3>{countdown.hours}</h3>
+                  <small>Hours</small>
+                </div>
+                <div>
+                  <h3>{countdown.mins}</h3>
+                  <small>Mins</small>
+                </div>
+                <div>
+                  <h3 className="seconds">{countdown.secs}</h3>
+                  <small>Secs</small>
+                </div>
               </div>
+              <p>* Target Date: December 08, 2026</p>
             </div>
           </div>
+          {/* </div> */}
 
           {/* <div className="sub-grid"> */}
-            <div className="subjects-section">
-              <div className="subjects-grid">
-                {/* <h2>Your Study Vault</h2> */}
-                {/* 1. MATHEMATICS PORTAL */}
-                <div
-                  className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
-                  style={{
-                    opacity: hasAccess("M") ? 1 : 0.6,
-                  }}>
-                  {!hasAccess("M") && (
-                    <div className="locked">
-                      <FaLock className="lock-icon" /> Locked
-                    </div>
-                  )}
-                  <h4>Mathematics Class</h4>
-                  {hasAccess("M") ? (
-                    <Link
-                      to="/paper-hub/maths"
-                      className="browse-btn paper-btn">
-                      <FaBookOpen /> Study Vault
-                    </Link>
-                  ) : (
-                    <p className="not-allowed">Not enrolled in this subject.</p>
-                  )}
-                </div>
+          <div className="subjects-section">
+            <h2>Your Study Vault</h2>
+            <div className="subjects-grid">
+              {/* 1. MATHEMATICS PORTAL */}
+              <div
+                className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
+                style={{
+                  opacity: hasAccess("M") ? 1 : 0.6,
+                }}>
+                {!hasAccess("M") && (
+                  <div className="locked-content">
+                    <FaLock className="lock-icon" /> Locked
+                  </div>
+                )}
+                <h4>Mathematics Class</h4>
+                {hasAccess("M") ? (
+                  <Link to="/paper-hub/maths" className="browse-btn paper-btn">
+                    <FaBookOpen /> Study Vault
+                  </Link>
+                ) : (
+                  <p className="not-allowed">Not enrolled in this subject.</p>
+                )}
+              </div>
 
-                {/* 2. SCIENCE PORTAL */}
-                <div
-                  className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
-                  style={{
-                    // borderLeft: "5px solid #2ecc71",
-                    opacity: hasAccess("S") ? 1 : 0.6,
-                  }}>
-                  {!hasAccess("S") && (
-                    <div className="locked">
-                      <FaLock className="lock-icon" />
-                    </div>
-                  )}
-                  <h4>Science Class</h4>
-                  {hasAccess("S") ? (
-                    <Link
-                      to="/paper-hub/science"
-                      className="browse-btn paper-btn">
-                      <FaBookOpen /> Study Vault
-                    </Link>
-                  ) : (
-                    <p className="not-allowed ">
-                      Not enrolled in this subject.
-                    </p>
-                  )}
-                </div>
+              {/* 2. SCIENCE PORTAL */}
+              <div
+                className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
+                style={{
+                  // borderLeft: "5px solid #2ecc71",
+                  opacity: hasAccess("S") ? 1 : 0.6,
+                }}>
+                {!hasAccess("S") && (
+                  <div className="locked">
+                    <FaLock className="lock-icon" />
+                  </div>
+                )}
+                <h4>Science Class</h4>
+                {hasAccess("S") ? (
+                  <Link
+                    to="/paper-hub/science"
+                    className="browse-btn paper-btn">
+                    <FaBookOpen /> Study Vault
+                  </Link>
+                ) : (
+                  <p className="not-allowed ">Not enrolled in this subject.</p>
+                )}
+              </div>
 
-                {/* 3. ENGLISH PORTAL */}
-                <div
-                  className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
-                  style={{
-                    // borderLeft: "5px solid #ff9f43",
-                    opacity: hasAccess("E") ? 1 : 0.6,
-                  }}>
-                  {!hasAccess("E") && (
-                    <div className="locked">
-                      <FaLock className="lock-icon" /> Locked
-                    </div>
-                  )}
-                  <h4>English Class</h4>
-                  {hasAccess("E") ? (
-                    <Link
-                      to="/paper-hub/english"
-                      className="browse-btn paper-btn">
-                      <FaBookOpen /> Study Vault
-                    </Link>
-                  ) : (
-                    <p className="not-allowed">Not enrolled in this subject.</p>
-                  )}
-                </div>
+              {/* 3. ENGLISH PORTAL */}
+              <div
+                className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
+                style={{
+                  // borderLeft: "5px solid #ff9f43",
+                  opacity: hasAccess("E") ? 1 : 0.6,
+                }}>
+                {!hasAccess("E") && (
+                  <div className="locked">
+                    <FaLock className="lock-icon" /> Locked
+                  </div>
+                )}
+                <h4>English Class</h4>
+                {hasAccess("E") ? (
+                  <Link
+                    to="/paper-hub/english"
+                    className="browse-btn paper-btn">
+                    <FaBookOpen /> Study Vault
+                  </Link>
+                ) : (
+                  <p className="not-allowed">Not enrolled in this subject.</p>
+                )}
               </div>
             </div>
           </div>
-
-          <div className="quick-actions">
-            <Link smooth to="/">
-              <IoHomeOutline className="icons" />
-            </Link>
-            <Link smooth to="/tab-controller">
-              <IoCalendarOutline className="icons" />
-            </Link>
-            <Link smooth to="/student-voices">
-              <IoChatbubbleEllipsesOutline className="icons" />
-            </Link>
-            <Link smooth to="/result-hub">
-              <IoBarChartOutline className="icons" />
-            </Link>
-            <button onClick={handleLogout}>
-              <IoLogOutOutline className="icons signout" />
-            </button>
-          </div>
         </div>
+
+        <div className="quick-actions">
+          <Link smooth to="/">
+            <IoHomeOutline className="icons" />
+          </Link>
+          <Link smooth to="/tab-controller">
+            <IoCalendarOutline className="icons" />
+          </Link>
+          <Link smooth to="/student-voices">
+            <IoChatbubbleEllipsesOutline className="icons" />
+          </Link>
+          <Link smooth to="/result-hub">
+            <IoBarChartOutline className="icons" />
+          </Link>
+          <button onClick={handleLogout}>
+            <IoLogOutOutline className="icons signout" />
+          </button>
+        </div>
+      </div>
       {/* </div> */}
 
       {/* <div className="premium-tracker-zone">
