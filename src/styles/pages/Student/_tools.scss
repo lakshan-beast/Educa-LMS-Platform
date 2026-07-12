@@ -1,0 +1,94 @@
+/* ========================================================
+   2026 INTERACTIVE CYBER HUD UTILITY LAUNCH DOCK (NO VARIABLES)
+   ======================================================== */
+
+.student-utility-toolkit-workspace {
+  padding: 8px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// 🎛️ THE BUTTONS CONTAINER DOCK
+.utility-trigger-buttons-dock {
+  display: grid; // 👈 1. Layout Fix: Mobile වලදී එක පිට එක ලස්සනට වැටෙන්න Grid එකක් කළා
+  grid-template-columns: 1fr;
+  gap: 12px; // බොත්තම් අතර ලස්සන පරතරය
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr); // 💻 2. Desktop වලදී ලස්සනට පැත්තෙන් පැත්තට 3 Columns වේ
+  }
+
+  // Common Button Base Style (Premium Dark Glass Tiles)
+  .guild-chat-portal-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 14px 20px; // පෑඩින් එක පොඩ්ඩක් ඝන කළා Premium පෙනෙන්න
+    
+    // 👈 2026 Core Change: පරණ ලයිට් පසුබිම් වෙනුවට Transparent Dark Glass Base එක දුන්නා
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px; // වඩාත් සුමට රේඩියස් එකක්
+    
+    color: #cbd5e1; // සාමාන්‍ය වෙලාවට ලස්සන Slate Gray වර්ණයක්
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    @media (min-width: 600px) {
+      justify-content: center; // PC එකේදී මැදට පෙළගැසේ
+    }
+
+    .guild-chat-icon {
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+
+    span {
+      white-space: nowrap;
+    }
+
+    /* ========================================================
+       🎨 3 BUTTONS DISTINCT NEON GLOWS (හොවර් වෙද්දී පත්තුවෙන හැටි)
+       ======================================================== */
+    
+    // 🔵 1. Calculator Button Hover (Cyber Blue Vibe)
+    &.tool-calc:hover, &.tool-calc:active {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+      transform: translateY(-2px);
+
+      .guild-chat-icon { color: #3b82f6; transform: scale(1.1) rotate(-5deg); }
+    }
+
+    // 🟢 2. Unit Converter Button Hover (Cyber Emerald Green Vibe)
+    &.tool-converter:hover, &.tool-converter:active {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: #10b981;
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+      transform: translateY(-2px);
+
+      .guild-chat-icon { color: #10b981; transform: scale(1.1) rotate(5deg); }
+    }
+
+    // 🟠 3. Study Desk Notes Button Hover (Cyber Warning Orange Vibe)
+    &.tool-notes:hover, &.tool-notes:active {
+      background: rgba(249, 115, 22, 0.1);
+      border-color: #f97316;
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.25);
+      transform: translateY(-2px);
+
+      .guild-chat-icon { color: #f97316; transform: scale(1.1) rotate(-5deg); }
+    }
+  }
+}
