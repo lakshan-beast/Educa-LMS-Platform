@@ -1,0 +1,223 @@
+/* ========================================================
+   2026 CENTRAL CYBER COMMAND CENTER - MAIN ADMIN LAYOUT SASS
+   ======================================================== */
+
+// 1. MAIN ROOT WRAPPER LAYER (පිරිසිදු තද නිල් පසුබිම)
+.admin-panel-root-wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #090d16; /* සයිට් එකේ ඔරිජිනල් තද නිල් පසුබිම */
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ========================================================
+   🛸 PANEL A: THE COMMAND SIDEBAR (ვම් පැත්තේ පාලන පැනලය)
+   ======================================================== */
+.admin-sidebar {
+  width: 260px;
+  min-height: 100vh;
+
+  // 👈 2026 Shift: පරණ ඝන නිල් පාට වෙනුවට Ultra-Blur Dark Glass Panel එකක් දුන්නා
+  background: rgba(15, 23, 42, 0.65);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+
+  border-right: 1px solid rgba(255, 255, 255, 0.05); // සිහින් සයිබර් ඉර
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  z-index: 100;
+  transition: all 0.4s ease;
+
+  // 📱 Mobile Framework Support (ෆෝන් වලදී මෙනු එක ඉබේම සැඟවේ)
+  @media (max-width: 900px) {
+    position: fixed;
+    left: -260px;
+    height: 100vh;
+
+    &.menu-active {
+      left: 0;
+    } // Hamburger එකක් දැම්මොත් ලේසියෙන්ම active වීමට
+  }
+
+  // Brand Header Logo Space
+  .admin-brand-zone {
+    width: 100%;
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #00f1d1; // Main Brand එක පට්ට Neon Teal කළා
+      letter-spacing: -0.02em;
+      font-family: "Exo 2", sans-serif;
+
+      .control-accent {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        opacity: 0.8;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  /* --- NAVIGATION LINKS MATRIX (Tabs 5 එක පෙළට) --- */
+  .admin-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    width: 100%;
+
+    .admin-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #94a3b8; // සාමාන්‍ය වෙලාවට Slate Muted පැහැය
+      text-decoration: none !important;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+
+      svg {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+
+      // 🚀 HOVER GLOW SYSTEM: මවුස් එක ගෙනිද්දී පට්ටම ලස්සන Neon Teal වලින් පාවේ!
+      &:hover,
+      &:active,
+      &.active {
+        color: #00f1d1;
+        background: rgba(0, 241, 209, 0.08); /* Neon Teal Alpha Background */
+        border: 1px solid rgba(0, 241, 209, 0.15);
+        padding-left: 22px; // 👈 වමෙන් දකුණට ලස්සනට Slide වෙන ට්‍රික් එක!
+
+        svg {
+          transform: scale(1.05) rotate(4deg);
+          color: #00f1d1;
+        }
+      }
+    }
+  }
+
+  /* 🚨 TERMINATE SESSION BUTTON (සුපිරිම රතු පාට දිලිසෙන ලයින් එක!) */
+  .admin-terminate-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: none;
+    border: 1px solid transparent;
+    color: #cbd5e1;
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    text-align: left;
+    font-size: 0.92rem;
+    transition: all 0.3s ease;
+
+    svg {
+      font-size: 1.15rem;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: rgba(239, 68, 68, 0.1); // Cyber Red Alpha Base
+      border-color: #ef4444;
+      color: #ffffff;
+      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+
+      svg {
+        transform: translateX(-3px);
+        color: #ef4444;
+      }
+    }
+  }
+}
+
+/* ========================================================
+💻 PANEL B: MAIN CONTENT BACKBONE SCREEN (දකුණු පැනලය)
+   ======================================================== */
+.admin-content-backbone {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 👑 1. TOPBAR HEADER PANEL (උඩම තීරුව) */
+.admin-topbar {
+  // 👈 2026 Core Change: පරණ සුදු පසුබිම වෙනුවට Ultra-Blur Dark Glass Base එක දුන්නා
+  background: rgba(15, 23, 42, 0.45);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  height: 80px; /* 📍 උස 120px සිට ලස්සන 80px Executive සීමාවට හැදුවා */
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+  // Active Subject Faculty Capsule Badge
+  .faculty-active-badge {
+    font-weight: 800;
+    color: #00f1d1; // Neon Teal Text
+    text-transform: uppercase;
+    background: rgba(0, 241, 209, 0.08); /* Neon Teal Alpha Capsule */
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(0, 241, 209, 0.15);
+  }
+
+  // Admin Profile Title Label
+  .admin-profile-name {
+    font-weight: 700;
+    color: #ffffff; // පිරිසිදු සුදු පැහැය
+    font-size: 0.92rem;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* 📄 2. DYNAMIC RENDERING PANEL VIEW (සියලුම පිටු ලෝඩ් වන කොටස) */
+.admin-page-render-view {
+  flex-grow: 1;
+  overflow-y: auto; // ඇතුළත Content එක විතරක් පිරිසිදුව ස්ක්‍රෝල් වෙයි
+  padding: 20px 12px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+
+  // Webkit Scrollbar පිරිසිදු කිරීම
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 99px;
+  }
+}
