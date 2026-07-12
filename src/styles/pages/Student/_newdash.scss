@@ -6,7 +6,7 @@
 .dashboard-wrapper {
   min-height: 100vh;
   width: 100%;
-//   background-color: #090d16; /* සයිට් එකේ ඔරිජිනල් තද නිල් පසුබිම */
+  //   background-color: #090d16; /* සයිට් එකේ ඔරිජිනල් තද නිල් පසුබිම */
   padding: 90px 4% 40px 4%; // Header එකට ඉඩ තැබුවා
   box-sizing: border-box;
   font-family:
@@ -100,6 +100,10 @@
     align-items: flex-start;
     padding: 6px 0;
     border-bottom: 2px solid rgba(white, 0.3);
+
+    @include respond(Desktop) {
+      border: none !important;
+    }
     // border-top: 2px solid rgba(white, 0.3);
 
     .user-name {
@@ -209,65 +213,67 @@
 /* ========================================================
    💻 PANEL C: THE ASYMMETRIC SUB-GRID LAYOUT
    ======================================================== */
-.sub-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 35px;
-  margin-bottom: 35px;
+// .sub-grid {
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   gap: 24px;
+//   width: 100%;
+//   border-top: 1px solid rgba(255, 255, 255, 0.06);
+//   padding-top: 35px;
+//   margin-bottom: 35px;
 
-  @media (min-width: 900px) {
-    grid-template-columns: 1.35fr 0.65fr; // Stripe-Style Multi-Panel Grid Shift
-    align-items: start;
-  }
-}
+//   @media (min-width: 900px) {
+//     grid-template-columns: 1.35fr 0.65fr; // Stripe-Style Multi-Panel Grid Shift
+//     align-items: start;
+//   }
+// }
 
 /* --- THE 3D SUBJECT SLATES GRID (විෂය කාඩ්පත් පද්ධතිය) --- */
+.subjects-section h2 {
+  text-align: center;
+  color: rgba(white, 0.5);
+  margin: 30px 0 6px 0;
+}
+
 .subjects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 16px;
+  gap: 8px;
   width: 100%;
+  margin-top: 2rem;
 
   .subject-portal-card {
     background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba($primary-green, 0.2);
     padding: 26px 22px;
     border-radius: 20px;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     box-sizing: border-box;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform-style: preserve-3d;
+    text-align: center;
 
     h4 {
-      margin: 0 0 16px 0;
+      margin: 0 0 24px 0;
       font-size: 1.1rem;
       font-weight: 800;
       color: #ffffff;
       letter-spacing: -0.01em;
     }
 
-    .not-allowed {
-      font-size: 0.8rem;
-      color: #475569;
-      margin: 0;
-      font-weight: 500;
-    }
-
     // Active Study Vault Link Button
     .browse-btn.paper-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 18px;
       padding: 9px 18px;
-      background: #2563eb;
-      color: #ffffff !important;
+      background: transparent;
+      color: $primary-green;
+      border: 2px solid $primary-green;
       border-radius: 12px;
       font-size: 0.85rem;
       font-weight: 700;
@@ -276,7 +282,7 @@
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
       &:hover {
-        background: #1d4ed8;
+        background: rgba($primary-green, 0.1);
         box-shadow: rgba(37, 99, 235, 0.45) 0px 6px 16px;
         transform: translateY(-1px);
       }
@@ -295,19 +301,29 @@
 
     /* 🔒 FROZEN GLASS MATRIX CARD (Access නැති කොටස මාරම බ්‍රෑන්ඩඩ් කළා) */
     &.locked {
-      background: rgba(15, 23, 42, 0.4);
-      filter: grayscale(20%);
+      background: rgba(rgb(255, 72, 0), 0.3);
+      border: 3px solid rgb(255, 72, 0);
+      filter: grayscale(10%);
+      color: rgba(white, 0.8);
+      cursor: not-allowed;
 
-      .locked-badge {
+      .locked-content {
+        background-color: rgb(255, 72, 0);
+        padding: 6px 12px;
+        color: white;
+        border-radius: 6px;
+      }
+
+      .lock-icon {
         position: absolute;
-        top: 14px;
-        right: 14px;
-        background: rgba(249, 115, 22, 0.08);
-        border: 1px solid #f97316;
-        color: #f97316;
+        top: 6px;
+        right: 6px;
+        // background: rgba(206, 199, 195, 0.705);
+        // border: 1px solid #ffffff;
+        color: #ffffff;
         padding: 4px 10px;
         border-radius: 8px;
-        font-size: 0.7rem;
+        font-size: 3rem;
         font-weight: 800;
         display: inline-flex;
         align-items: center;
@@ -318,6 +334,15 @@
         // Chrono Pulse Lock Animation
         animation: lockRadarPulse 2s infinite ease-in-out;
       }
+      .not-allowed {
+        font-size: 0.9rem;
+
+        border-top: 2px solid;
+        padding-top: 6px;
+        color: rgba(white, 0.9);
+        margin: 0;
+        font-weight: 700;
+      }
     }
   }
 }
@@ -325,17 +350,18 @@
 /* --- THE SLEEK iOS COUNTDOWN WIDGET CARD --- */
 .side-dash-content {
   width: 100%;
+  margin: 12px 0;
 
   .countdown-card {
     background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    padding: 26px 22px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 12px;
     border-radius: 22px;
     text-align: left;
     box-sizing: border-box;
 
     h4 {
-      margin: 0 0 18px 0;
+      margin: 12px 0 24px 0;
       font-size: 0.98rem;
       font-weight: 700;
       color: #ffffff;
@@ -355,10 +381,11 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
-      margin-bottom: 15px;
+      //   margin-bottom: 15px;
+      margin: 16px 0;
 
       div {
-        background: rgba(15, 23, 42, 0.5);
+        background: rgba(15, 23, 42, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.02);
         padding: 12px 2px;
         border-radius: 12px;
@@ -391,11 +418,14 @@
     }
 
     p {
-      margin: 0;
+      //   margin: 0;
+      margin-top: 12px;
+      border-top: 2px solid rgba(255, 255, 255, 0.3);
+      padding-top: 10px;
+      text-align: right;
       font-size: 0.74rem;
       color: #475569;
       font-weight: 600;
-      font-family: monospace;
     }
   }
 }
@@ -581,10 +611,10 @@
       background: rgba(37, 99, 235, 0.12);
       border-color: $primary-green;
       transform: translateY(-3px) scale(1.04);
-      
+
       .icons {
         //   color: #ffffff;
-          color: $primary-green;
+        color: $primary-green;
       }
     }
   }
