@@ -3,7 +3,6 @@
   font-family: inherit;
   padding: 0.3em;
   padding-left: 1.2em;
-  font-size: 17px;
   font-weight: 500;
   border-radius: 0.9em;
   border: none;
@@ -39,11 +38,11 @@
   // box-shadow: 0.1em 0.1em 0.6em 0.2em $primary-green;
   right: 0.3em;
   transition: all 0.3s;
-  margin: 0 3px 0 10px;
+  margin: 0 0 0 10px;
 }
 
 .started-btn:hover .icon {
-  width: calc(100% - 1em);
+  width: calc(100% - 0.7em);
 }
 
 .started-btn .icon svg {
@@ -54,9 +53,10 @@
 
 .started-btn:hover .icon svg {
   transform: translateX(0.1em);
+  color: $primary-green;
+  
 }
 
 .started-btn:active .icon {
   transform: scale(0.95);
 }
-
