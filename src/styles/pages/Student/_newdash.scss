@@ -1,0 +1,640 @@
+/* ========================================================
+   2026 WORLD-CLASS DUAL-PANEL STUDENT DASHBOARD SYSTEM
+   ======================================================== */
+
+// 1. MAIN MASTER WRAPPER LAYER (පිරිසිදු තද නිල් පසුබිම)
+.dashboard-wrapper {
+  min-height: 100vh;
+  width: 100%;
+//   background-color: #090d16; /* සයිට් එකේ ඔරිජිනල් තද නිල් පසුබිම */
+  padding: 90px 4% 40px 4%; // Header එකට ඉඩ තැබුවා
+  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.system-container-dashboard {
+  width: 100%;
+  max-width: 1000px; // ලස්සනට සීමා කළ පිරිසිදු Executive පළල
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+/* ========================================================
+   🏢 PANEL A: THE MASTER BENTO SHELL (ප්‍රධාන පැනලය)
+   ======================================================== */
+.welcome-banner {
+  background: rgba(15, 23, 42, 0.45); // Premium Ultra-Blur Dark Glass
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  // 📍 සිහින් Silver Border ලයින් එක නිසා තද නිල් උඩින් පට්ටම ලස්සනට වෙන් වේ
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 32px; // Apple Style Smooth Radii
+  padding: 30px 12px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    padding: 45px;
+  }
+
+  // Live Waving Emoji Heading
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 850;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    // margin: 0 0 35px 0;
+    letter-spacing: -0.02em;
+
+    @media (min-width: 768px) {
+      font-size: 2.4rem;
+    }
+
+    span {
+      background: linear-gradient(
+        to right,
+        #ffffff,
+        #00f1d1
+      ); // නම ළඟින් Neon Teal Gradient
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    img.greeting-emoji-gif {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      animation: bigSisterWave 2.5s ease-in-out infinite;
+    }
+  }
+}
+
+/* --- PANEL B: STRUCTURAL CREDENTIALS GRID --- */
+.user-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 10px;
+  margin-bottom: 35px;
+
+  @media (min-width: 650px) {
+    grid-template-columns: repeat(2, 1fr); // Column 2 කට පිරිසිදුව බෙදුවා
+  }
+
+  // Student Profile Data
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6px 0;
+    border-bottom: 2px solid rgba(white, 0.3);
+    // border-top: 2px solid rgba(white, 0.3);
+
+    .user-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+
+      .check-icon {
+        color: #00f1d1;
+        filter: drop-shadow(0 0 6px #00f1d1); // Verified Token Glow
+      }
+    }
+
+    .user-batch {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+  }
+
+  // Contact Numbers Node
+  .user-number {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+
+    p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+  }
+
+  // Enrolled Subjects Badges
+  .user-subjects {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+
+    border-top: 2px solid rgba(white, 0.3);
+    padding-top: 12px;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(37, 99, 235, 0.08); // Micro alpha badges
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      border-radius: 20px;
+      color: #93c5fd;
+      font-size: 0.82rem;
+      font-weight: 700;
+
+      .check-icon {
+        color: #00f1d1;
+      }
+    }
+  }
+  // Key Access Security Badge (ID & Password)
+  .user-security {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.25); // Integrated dark box
+    padding: 14px 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    justify-content: space-between;
+
+    p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #64748b;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: monospace;
+
+      svg {
+        color: #00f1d1;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Student Toolkit Row Component Space
+.student-tools {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* ========================================================
+   💻 PANEL C: THE ASYMMETRIC SUB-GRID LAYOUT
+   ======================================================== */
+.sub-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 35px;
+  margin-bottom: 35px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1.35fr 0.65fr; // Stripe-Style Multi-Panel Grid Shift
+    align-items: start;
+  }
+}
+
+/* --- THE 3D SUBJECT SLATES GRID (විෂය කාඩ්පත් පද්ධතිය) --- */
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  width: 100%;
+
+  .subject-portal-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 26px 22px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+
+    h4 {
+      margin: 0 0 16px 0;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .not-allowed {
+      font-size: 0.8rem;
+      color: #475569;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    // Active Study Vault Link Button
+    .browse-btn.paper-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      background: #2563eb;
+      color: #ffffff !important;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none !important;
+      box-shadow: rgba(37, 99, 235, 0.2) 0px 4px 12px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover {
+        background: #1d4ed8;
+        box-shadow: rgba(37, 99, 235, 0.45) 0px 6px 16px;
+        transform: translateY(-1px);
+      }
+    }
+
+    /* 🚀 INTERACTIVE: ACCESSIBLE CARD CLICK DEPTH (ඇතුළට එබෙන පට්ට 3D ලුක් එක) */
+    &.accessible:hover {
+      transform: translateZ(-6px); /* 3D Inward Tactile Feel */
+      border-color: rgba(0, 241, 209, 0.2);
+      background: rgba(0, 0, 0, 0.3);
+
+      h4 {
+        color: #00f1d1;
+      }
+    }
+
+    /* 🔒 FROZEN GLASS MATRIX CARD (Access නැති කොටස මාරම බ්‍රෑන්ඩඩ් කළා) */
+    &.locked {
+      background: rgba(15, 23, 42, 0.4);
+      filter: grayscale(20%);
+
+      .locked-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: rgba(249, 115, 22, 0.08);
+        border: 1px solid #f97316;
+        color: #f97316;
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+
+        // Chrono Pulse Lock Animation
+        animation: lockRadarPulse 2s infinite ease-in-out;
+      }
+    }
+  }
+}
+
+/* --- THE SLEEK iOS COUNTDOWN WIDGET CARD --- */
+.side-dash-content {
+  width: 100%;
+
+  .countdown-card {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 26px 22px;
+    border-radius: 22px;
+    text-align: left;
+    box-sizing: border-box;
+
+    h4 {
+      margin: 0 0 18px 0;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      img.hourglass-gif {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+    }
+
+    // Countdown Grid System (iOS 4 Tile Architecture)
+    .countdown-tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 15px;
+
+      div {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.02);
+        padding: 12px 2px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+
+        h3 {
+          margin: 0;
+          font-size: 1.3rem;
+          font-weight: 800;
+          color: #00f1d1;
+          font-family: monospace;
+          text-shadow: 0 0 8px rgba(0, 241, 209, 0.3);
+
+          &.seconds {
+            color: #f97316;
+            text-shadow: 0 0 8px rgba(249, 115, 22, 0.3);
+          } // Seconds Warning Vibe
+        }
+
+        small {
+          font-size: 0.62rem;
+          color: #475569;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin-top: 3px;
+          display: block;
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.74rem;
+      color: #475569;
+      font-weight: 600;
+      font-family: monospace;
+    }
+  }
+}
+
+/* ========================================================
+   🔒 PANEL D: HIGH-GLOW PREMIUM TRACKER ZONE (CROWN CARD)
+   ======================================================== */
+.premium-tracker-zone {
+  width: 100%;
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 35px;
+  margin-bottom: 10px;
+}
+
+// .premium-lock-card {
+//   background: rgba(15, 23, 42, 0.45);
+//   border: 1px solid rgba(255, 255, 255, 0.05);
+//   border-radius: 24px;
+//   padding: 40px 30px;
+//   text-align: center;
+//   position: relative;
+//   overflow: hidden;
+//   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+//   box-sizing: border-box;
+
+//   // Linear / Vercel Style Soft Back Aura Gradient
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: -60px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     width: 200px;
+//     height: 200px;
+
+/* 🔒 PANEL D: HIGH-GLOW PREMIUM TRACKER ZONE (CROWN CARD) */
+.premium-lock-card {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+
+  // Linear / Vercel Style Soft Back Aura Gradient
+  &::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(
+      circle,
+      rgba(245, 158, 11, 0.08) 0%,
+      transparent 75%
+    );
+    filter: blur(1.5rem);
+  }
+
+  // Floating Crown Core Action
+  .premium-crown-logo {
+    font-size: 2.4rem;
+    color: #f59e0b;
+    margin-bottom: 12px;
+    display: inline-block;
+    filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.4));
+    animation: luxuryCrownFloat 4s ease-in-out infinite;
+  }
+
+  .premium-lock-logo {
+    font-size: 1.4rem;
+    color: #ef4444;
+    margin-bottom: 18px;
+    opacity: 0.8;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    font-weight: 850;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .premium-desc {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto 30px auto;
+  }
+
+  /* Price Offer Tag Row */
+  .offer-content {
+    margin-bottom: 25px;
+
+    .offer-text {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #ef4444;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      background: rgba(239, 68, 68, 0.08);
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(239, 68, 68, 0.15);
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: #10b981; /* Unlocked Emerald Green */
+      margin: 12px 0 0 0;
+      letter-spacing: -0.02em;
+
+      .old-price {
+        font-size: 1.15rem;
+        color: #475569;
+        text-decoration: line-through;
+        margin-left: 8px;
+        font-weight: 600;
+        font-family: monospace;
+      }
+    }
+  }
+
+  // Claim Trigger Button
+  .claim-btn.start-btn {
+    padding: 13px 38px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    color: #475569;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+  }
+}
+// }
+
+/* ========================================================
+   🎛️ PANEL E: FLOATING FIXED QUICK SHORTCUTS NAVIGATION (යටම බොත්තම් ටික)
+   ======================================================== */
+.quick-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  a,
+  button {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 0;
+    margin: 0 !important;
+
+    .icons {
+      font-size: 1.4rem;
+      color: white;
+      transition: all 0.2s ease;
+    }
+
+    &:hover {
+      background: rgba(37, 99, 235, 0.12);
+      border-color: $primary-green;
+      transform: translateY(-3px) scale(1.04);
+      
+      .icons {
+        //   color: #ffffff;
+          color: $primary-green;
+      }
+    }
+  }
+
+  // 🚨 [THE SIGN-OUT GLOW EFFECT]: උඹ ආස වුණු සුපිරිම රතු පාට දිලිසෙන ලයින් එක!
+  button:has(.signout) {
+    &:hover {
+      background: #ef4444 !important;
+      border-color: #ef4444 !important;
+      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.45) !important;
+
+      .icons.signout {
+        color: #ffffff !important;
+        transform: rotate(5deg);
+      }
+    }
+  }
+}
+
+/* ========================================================
+   LUXURY CORE LIQUID ANIMATIONS RUNNERS
+   ======================================================== */
+@keyframes bigSisterWave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(12deg) scale(1.05);
+  }
+}
+
+@keyframes luxuryCrownFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(3deg);
+  }
+}
+
+@keyframes lockRadarPulse {
+  0%,
+  100% {
+    opacity: 0.65;
+    box-shadow: 0 0 0px rgba(249, 115, 22, 0);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.45);
+  }
+}
