@@ -75,7 +75,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     if (!currentFacultySubject) return;
     setIsLoading(true);
-
+    
     // A. Students Stream & Gender Demographics Calculator [INDEX 51]
     const studentQuery = query(
       collection(db, "students"),
