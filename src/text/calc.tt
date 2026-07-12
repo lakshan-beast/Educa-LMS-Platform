@@ -1,0 +1,263 @@
+{activeModal === "calc" && (
+        <div
+          className="admin-modal-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.4)",
+            backdropFilter: "blur(4px)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 10000,
+          }}>
+          <div
+            className="admin-modal-card"
+            style={{
+              background: "#ffffff",
+              padding: "25px",
+              borderRadius: "16px",
+              width: "320px",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+              position: "relative",
+            }}>
+            <button
+              onClick={() => {
+                setActiveModal(null);
+                clearCalc();
+              }}
+              style={{
+                position: "absolute",
+                top: "15px",
+                right: "15px",
+                background: "none",
+                border: "none",
+                fontSize: "1.2rem",
+                cursor: "pointer",
+                color: "#8b949e",
+              }}>
+              <FaXmark />
+            </button>
+            <h3
+              style={{
+                margin: "0 0 15px 0",
+                color: "#001b42",
+                fontSize: "1.1rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}>
+              <FaCalculator style={{ color: "#0056ff" }} /> Math Desk Calculator
+            </h3>
+
+            {/* Display Engine */}
+            <div
+              style={{
+                background: "#f4f6fa",
+                padding: "15px",
+                borderRadius: "8px",
+                textAlign: "right",
+                marginBottom: "15px",
+                minHeight: "70px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: "5px",
+              }}>
+              <div
+                style={{
+                  fontSize: "1.2rem",
+                  fontWeight: "bold",
+                  color: "#001b42",
+                  wordBreak: "break-all",
+                }}>
+                {calcInput || "0"}
+              </div>
+              {calcResult && (
+                <div
+                  style={{
+                    fontSize: "1rem",
+                    color: "#10b981",
+                    fontWeight: "bold",
+                  }}>
+                  = {calcResult}
+                </div>
+              )}
+            </div>
+
+            {/* Buttons Grid Matrix */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(4, 1fr)",
+                gap: "8px",
+              }}>
+              <button
+                onClick={() => handleScientificFunc("sqrt")}
+                style={{
+                  padding: "12px",
+                  background: "#eef2ff",
+                  color: "#0056ff",
+                  border: "none",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}>
+                √
+              </button>
+              <button
+                onClick={() => handleScientificFunc("sq")}
+                style={{
+                  padding: "12px",
+                  background: "#eef2ff",
+                  color: "#0056ff",
+                  border: "none",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}>
+                x²
+              </button>
+              <button
+                onClick={() => handleCalcClick("π")}
+                style={{
+                  padding: "12px",
+                  background: "#eef2ff",
+                  color: "#0056ff",
+                  border: "none",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}>
+                π
+              </button>
+              <button
+                onClick={clearCalc}
+                style={{
+                  padding: "12px",
+                  background: "#fff5f5",
+                  color: "#ff4b4b",
+                  border: "none",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}>
+                C
+              </button>
+
+              {["7", "8", "9", "/"].map((v) => (
+                <button
+                  key={v}
+                  onClick={() => handleCalcClick(v)}
+                  style={{
+                    padding: "12px",
+                    background: v === "/" ? "#f4f6fa" : "#ffffff",
+                    border: "1px solid #f4f6fa",
+                    borderRadius: "6px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}>
+                  {v}
+                </button>
+              ))}
+              {["4", "5", "6", "*"].map((v) => (
+                <button
+                  key={v}
+                  onClick={() => handleCalcClick(v)}
+                  style={{
+                    padding: "12px",
+                    background: v === "*" ? "#f4f6fa" : "#ffffff",
+                    border: "1px solid #f4f6fa",
+                    borderRadius: "6px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}>
+                  {v}
+                </button>
+              ))}
+              {["1", "2", "3", "-"].map((v) => (
+                <button
+                  key={v}
+                  onClick={() => handleCalcClick(v)}
+                  style={{
+                    padding: "12px",
+                    background: v === "-" ? "#f4f6fa" : "#ffffff",
+                    border: "1px solid #f4f6fa",
+                    borderRadius: "6px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}>
+                  {v}
+                </button>
+              ))}
+
+              <button
+                onClick={backspaceCalc}
+                style={{
+                  padding: "12px",
+                  background: "#f4f6fa",
+                  border: "none",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}>
+                <TiBackspace />
+              </button>
+              <button
+                onClick={() => handleCalcClick("0")}
+                style={{
+                  padding: "12px",
+                  background: "#ffffff",
+                  border: "1px solid #f4f6fa",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}>
+                0
+              </button>
+              <button
+                onClick={() => handleCalcClick(".")}
+                style={{
+                  padding: "12px",
+                  background: "#ffffff",
+                  border: "1px solid #f4f6fa",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}>
+                .
+              </button>
+              <button
+                onClick={() => handleCalcClick("+")}
+                style={{
+                  padding: "12px",
+                  background: "#f4f6fa",
+                  border: "none",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}>
+                +
+              </button>
+            </div>
+            <button
+              onClick={calculateResult}
+              style={{
+                width: "100%",
+                padding: "12px",
+                background: "#0056ff",
+                color: "white",
+                border: "none",
+                borderRadius: "6px",
+                fontWeight: "bold",
+                cursor: "pointer",
+                marginTop: "10px",
+              }}>
+              =
+            </button>
+          </div>
+        </div>
+      )}
