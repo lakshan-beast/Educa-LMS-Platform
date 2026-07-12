@@ -101,8 +101,8 @@
     padding: 6px 0;
     border-bottom: 2px solid rgba(white, 0.3);
 
-    @include respond(Desktop) {
-      border: none !important;
+    @include respond(tablet) {
+      border-bottom: none !important;
     }
     // border-top: 2px solid rgba(white, 0.3);
 
@@ -394,7 +394,7 @@
 
         h3 {
           margin: 0;
-          font-size: 1.3rem;
+          font-size: 2.2rem;
           font-weight: 800;
           color: #00f1d1;
           font-family: monospace;
