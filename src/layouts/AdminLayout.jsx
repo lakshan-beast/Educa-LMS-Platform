@@ -21,218 +21,74 @@ const AdminLayout = () => {
   };
 
   return (
-    <div
-      className="admin-panel-root-wrapper"
-      style={{ display: "flex", minHeight: "100vh", background: "#f8faff" }}>
-
-      <aside
-        className="admin-sidebar"
-        style={{
-          width: "260px",
-          background: "#001b42",
-          color: "white",
-          padding: "25px 20px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "30px",
-        }}>
+    <div className="admin-panel-root-wrapper">
+      {/* 🛸 LEFT CONTROL SIDEBAR PANEL */}
+      <aside className="admin-sidebar">
         <div className="admin-brand-zone">
-          <h2
-            style={{
-              margin: 0,
-              fontSize: "1.5rem",
-              fontWeight: "bold",
-              color: "#00f7ff",
-            }}>
-            educa.{" "}
-            <span style={{ fontSize: "0.8rem", color: "white", opacity: 0.7 }}>
-              Control
-            </span>
+          <h2>
+            educa. <span className="control-accent">Control</span>
           </h2>
         </div>
 
-        <nav
-          className="admin-nav-links"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "8px",
-            flexGrow: 1,
-          }}>
-          <Link
-            to={`/admin/${subject}/dashboard`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              color: "white",
-              textDecoration: "none",
-              padding: "12px",
-              borderRadius: "8px",
-              fontWeight: "600",
-              fontSize: "0.95rem",
-            }}>
+        <nav className="admin-nav-links">
+          <Link to={`/admin/${subject}/dashboard`} className="admin-nav-item">
             <FiLayout />
-            Analytics Hub
+            <span>Analytics Hub</span>
           </Link>
+
           <Link
             to={`/admin/${subject}/all-students`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              color: "white",
-              textDecoration: "none",
-              padding: "12px",
-              borderRadius: "8px",
-              fontWeight: "600",
-              fontSize: "0.95rem",
-            }}>
-            <FaUsers /> Student Vault
+            className="admin-nav-item">
+            <FaUsers />
+            <span>Student Vault</span>
           </Link>
-          <Link
-            to={`/admin/${subject}/schedules`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              color: "white",
-              textDecoration: "none",
-              padding: "12px",
-              borderRadius: "8px",
-              fontWeight: "600",
-              fontSize: "0.95rem",
-            }}>
-            <FaCalendarDays /> Class Schedules
+
+          <Link to={`/admin/${subject}/schedules`} className="admin-nav-item">
+            <FaCalendarDays />
+            <span>Class Schedules</span>
           </Link>
-          <Link
-            to={`/admin/${subject}/notices`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              color: "white",
-              textDecoration: "none",
-              padding: "12px",
-              borderRadius: "8px",
-              fontWeight: "600",
-              fontSize: "0.95rem",
-            }}>
-            <FaBullhorn /> Notices Board
+
+          <Link to={`/admin/${subject}/notices`} className="admin-nav-item">
+            <FaBullhorn />
+            <span>Notices Board</span>
           </Link>
-          <Link
-            to={`/admin/${subject}/papers`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              color: "white",
-              textDecoration: "none",
-              padding: "12px",
-              borderRadius: "8px",
-              fontWeight: "600",
-              fontSize: "0.95rem",
-            }}>
-            <FaFilePdf /> Academic Papers
+
+          <Link to={`/admin/${subject}/papers`} className="admin-nav-item">
+            <FaFilePdf />
+            <span>Academic Papers</span>
           </Link>
 
           <Link
             to={`/admin/${subject}/staff-registry`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              color: "white",
-              textDecoration: "none",
-              padding: "12px",
-              borderRadius: "8px",
-              fontWeight: "600",
-              fontSize: "0.95rem",
-            }}>
-            <FaFilePdf /> Chat Room
+            className="admin-nav-item">
+            <FaFilePdf />
+            <span>Chat Room</span>
           </Link>
         </nav>
 
-        <button
-          onClick={handleLogout}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            background: "none",
-            border: "none",
-            color: "#ff4b4b",
-            padding: "12px",
-            cursor: "pointer",
-            fontWeight: "bold",
-            textAlign: "left",
-            fontSize: "0.95rem",
-          }}>
-          <FaRightFromBracket /> Terminate Session
+        {/* TERMINATE SESSION ACTION */}
+        <button onClick={handleLogout} className="admin-terminate-btn">
+          <FaRightFromBracket />
+          <span>Terminate Session</span>
         </button>
       </aside>
 
       {/* 💻 MAIN CONTENT SCREEN (TOPBAR + CONTENT VIEW) */}
-      <div
-        className="admin-content-backbone"
-        style={{
-          flexGrow: 1,
-          display: "flex",
-          flexDirection: "column",
-          maxHeight: "100vh",
-          overflowY: "scroll",
-        }}>
+      <div className="admin-content-backbone">
         {/* 👑 TOPBAR HEADER */}
-        <header
-          className="admin-topbar"
-          style={{
-            background: "white",
-            padding: "15px 30px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.02)",
-            height: "120px",
-            position: "relative",
-            top: "0",
-          }}>
+        <header className="admin-topbar">
           <div className="topbar-left-meta">
-            <span
-              style={{
-                fontWeight: "bold",
-                color: "#001b42",
-                textTransform: "uppercase",
-                background: "#eef2ff",
-                padding: "6px 12px",
-                borderRadius: "6px",
-                fontSize: "0.85rem",
-              }}>
+            <span className="faculty-active-badge">
               Active Faculty: {subject}
             </span>
           </div>
-          <div
-            className="topbar-right-profile"
-            style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span
-              style={{
-                fontWeight: "bold",
-                color: "#001b42",
-                fontSize: "0.9rem",
-              }}>
-              Janaka Sir (Admin) 👋
-            </span>
+          <div className="topbar-right-profile">
+            <span className="admin-profile-name">Janaka Sir (Admin) 👋</span>
           </div>
         </header>
 
-        {/* 📄 සියලුම ඇඩ්මින් පිටු (StudentManager, NoticeManager) ලෝඩ් වෙන්නේ මෙතනයි */}
-        <main
-          className="admin-page-render-view"
-          style={{
-            // padding: "30px",
-            flexGrow: 1,
-            overflowY: "auto",
-            margin: "1rem",
-          }}>
+        {/* 📄 සියලුම ඇඩ්මින් පිටු ලෝඩ් වෙන්නේ මෙතනයි */}
+        <main className="admin-page-render-view">
           <Outlet />
         </main>
       </div>
