@@ -21,7 +21,6 @@ const Information = () => {
         lessons, and a modern online tracking portal to help every student boost
         their confidence and score top exam results.
       </p>
-
       <p data-aos="fade-up">
         We firmly believe that every child absorbs information differently. Our
         core mission is to bridge the gap between heavy textbook theories and
@@ -31,7 +30,6 @@ const Information = () => {
       </p>
 
       <div className="about-container info-column" id="about">
-        {/* Left Content */}
         <div className="info-left card">
           <div className="about-info" data-aos="fade-up">
             <h4>
@@ -71,8 +69,7 @@ const Information = () => {
             </p>
           </div>
         </div>
-
-        {/* Right Content - Stats Boxes */}
+       
         <div className="info-right" data-aos="fade-right">
           <div className="about-status">
             <div className="courses-box box" data-aos="fade-right">
