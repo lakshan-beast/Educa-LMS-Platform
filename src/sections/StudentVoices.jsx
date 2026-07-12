@@ -975,11 +975,10 @@ const StudentVoices = () => {
           <div
             className="review-bottom-sheet-overlay"
             onClick={() => setIsModalOpen(false)}>
-            {/* 👈 1. පරණ ලොගින් ඕවර්ලේ එකෙන් වෙන් කිරීමට නම මාරු කර iOS Bottom Sheet ලුක් එක දුන්නා */}
+          
             <div
               className="review-sheet-card"
               onClick={(e) => e.stopPropagation()}>
-              {/* Close Cross Button */}
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
@@ -1244,19 +1243,19 @@ const StudentVoices = () => {
               </form>
 
               <style>{`
-        @keyframes popupFade {
-          from { transform: scale(0.95); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
-        }
-        .pulse-animation {
-          animation: heartBeat 1.2s infinite ease-in-out;
-        }
-        @keyframes heartBeat {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.12); }
-          100% { transform: scale(1); }
-        }
-      `}</style>
+                @keyframes popupFade {
+                  from { transform: scale(0.95); opacity: 0; }
+                  to { transform: scale(1); opacity: 1; }
+                }
+                .pulse-animation {
+                  animation: heartBeat 1.2s infinite ease-in-out;
+                }
+                @keyframes heartBeat {
+                  0% { transform: scale(1); }
+                  50% { transform: scale(1.12); }
+                  100% { transform: scale(1); }
+                }
+              `}</style>
             </div>
           </div>
         )}
