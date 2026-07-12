@@ -1,0 +1,647 @@
+// import { useState, useEffect } from "react";
+
+// import { db } from "../../firebaseConfig";
+// import {
+//   collection,
+//   query,
+//   onSnapshot,
+//   doc,
+//   updateDoc,
+//   deleteDoc,
+//   where,
+// } from "firebase/firestore";
+
+// import {
+//   FaUserPen,
+//   FaUserMinus,
+//   FaCheck,
+//   FaXmark,
+//   FaMagnifyingGlass,
+//   FaEye,
+//   FaEyeSlash,
+// } from "react-icons/fa6";
+// import { IoCheckmarkCircle } from "react-icons/io5";
+
+// const AllStudents = () => {
+//   const [students, setStudents] = useState([]);
+//   const [isLoading, setIsLoading] = useState(true);
+//   const [searchTerm, setSearchTerm] = useState("");
+
+//   const [activeGrade, setActiveGrade] = useState("11");
+//   const [activeGender, setActiveGender] = useState("ALL");
+//   const [revealedIds, setRevealedIds] = useState({});
+
+//   const [editingId, setEditingId] = useState(null);
+//   const [editForm, setEditForm] = useState({
+//     fullName: "",
+//     password: "",
+//     studentMobile: "",
+//     parentMobile: "",
+//     grade: "",
+//     maths: false,
+//     science: false,
+//     english: false,
+//     gender: "",
+//   });
+
+//   const currentFacultySubject =
+//     localStorage.getItem("admin_faculty_subject") || "MATHS";
+//   const facultyFieldLock = currentFacultySubject.toLowerCase();
+
+//   useEffect(() => {
+//     const q = query(
+//       collection(db, "students"),
+//       where(facultyFieldLock, "==", true),
+//     );
+
+//     const unsubscribe = onSnapshot(
+//       q,
+//       (snapshot) => {
+//         const studentList = snapshot.docs.map((doc) => ({
+//           docId: doc.id,
+//           ...doc.data(),
+//         }));
+//         setStudents(studentList);
+//         setIsLoading(false);
+//       },
+//       (err) => {
+//         console.error("Cloud Secure Sync Error:", err);
+//         setIsLoading(false);
+//       },
+//     );
+
+//     return () => unsubscribe();
+//   }, [facultyFieldLock]);
+
+//   const startEdit = (student) => {
+//     setEditingId(student.docId);
+//     setEditForm({
+//       fullName: student.fullName || "",
+//       password: student.password || "",
+//       studentMobile: student.studentMobile || "",
+//       parentMobile: student.parentMobile || "",
+//       grade: student.grade || "",
+//       maths: student.maths || false,
+//       science: student.science || false,
+//       english: student.english || false,
+//       gender: student.gender || "boy",
+//     });
+//   };
+
+//   const handleUpdateStudent = async (docId) => {
+//     try {
+//       await updateDoc(doc(db, "students", docId), editForm);
+//       setEditingId(null);
+//     } catch (err) {
+//       console.error("Update Student Error:", err);
+//     }
+//   };
+
+//   const handleDeleteStudent = async (docId, name) => {
+//     if (
+//       window.confirm(`Are you sure you want to permanently remove ${name}?`)
+//     ) {
+//       try {
+//         await deleteDoc(doc(db, "students", docId));
+//       } catch (err) {
+//         console.error("Delete Student Error:", err);
+//       }
+//     }
+//   };
+
+//   const toggleMasking = (docId) => {
+//     setRevealedIds((prev) => ({ ...prev, [docId]: !prev[docId] }));
+//   };
+
+//   const maskString = (str) => {
+//     if (!str) return "**";
+//     return "**" + str.slice(8);
+//   };
+
+//   const filteredStudents = students.filter((student) => {
+//     const matchesSearch =
+//       student.fullName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+//       student.id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+//       student.studentMobile?.includes(searchTerm);
+
+//     const matchesGrade = student.grade === activeGrade;
+//     const matchesGender =
+//       activeGender === "ALL" ? true : student.gender === activeGender;
+
+//     return matchesSearch && matchesGrade && matchesGender;
+//   });
+
+//   return (
+//     // <div className="all-students-wrapper">
+//     <div className="vault-container">
+//       <div className="students-header">
+//         <div>
+//           <h1>{currentFacultySubject} Faculty Registry</h1>
+//           <p>
+//             Secure subject-isolated student database core managing Grade 10 & 11
+//             frameworks.
+//           </p>
+//         </div>
+
+//         <div className="search-box-bar">
+//           <FaMagnifyingGlass />
+//           <input
+//             type="text"
+//             placeholder="Search student profile..."
+//             value={searchTerm}
+//             onChange={(e) => setSearchTerm(e.target.value)}
+//           />
+//         </div>
+//       </div>
+//       <div className="master-filter-control-dock">
+//         <div className="filter-segment">
+//           <span className="segment-label">Select Academic Grade:</span>
+//           <button
+//             onClick={() => setActiveGrade("10")}
+//             className={`filter-pill-btn ${activeGrade === "10" ? "active" : ""}`}>
+//             Grade 10
+//           </button>
+//           <button
+//             onClick={() => setActiveGrade("11")}
+//             className={`filter-pill-btn ${activeGrade === "11" ? "active" : ""}`}>
+//             Grade 11
+//           </button>
+//         </div>
+
+//         <div className="filter-segment">
+//           <span className="segment-label">Gender Filter:</span>
+//           <button
+//             onClick={() => setActiveGender("ALL")}
+//             className={`filter-pill-btn ${activeGender === "ALL" ? "active" : ""}`}>
+//             All Students
+//           </button>
+//           <button
+//             onClick={() => setActiveGender("boy")}
+//             className={`filter-pill-btn ${activeGender === "boy" ? "active" : ""}`}>
+//             Boys Only
+//           </button>
+//           <button
+//             onClick={() => setActiveGender("girl")}
+//             className={`filter-pill-btn ${activeGender === "girl" ? "active" : ""}`}>
+//             Girls Only
+//           </button>
+//         </div>
+//       </div>
+
+//       {isLoading ? (
+//         <div className="registry-loading">
+//           Syncing Secure Student Cloud Ledger...
+//         </div>
+//       ) : filteredStudents.length === 0 ? (
+//         <div className="registry-empty">
+//           No matching records allocated inside this filtered cluster.
+//         </div>
+//       ) : (
+//         <div className="students-table-scroll-shield">
+//           <table className="students-management-table">
+//             <thead>
+//               <tr>
+//                 <th>Student ID</th>
+//                 <th>Student Password</th>
+//                 <th>Enrolled Classes</th>
+//                 <th>Full Name</th>
+//                 <th>Student Phone</th>
+//                 <th>Guardian Phone</th>
+//                 <th>Grade</th>
+//                 <th>Actions</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               {filteredStudents.map((student) => {
+//                 const isEditing = editingId === student.docId;
+//                 const isRevealed = revealedIds[student.docId];
+//                 const genderClass =
+//                   student.gender === "girl"
+//                     ? "gender-row-girl"
+//                     : "gender-row-boy";
+
+//                 return (
+//                   <tr
+//                     key={student.docId}
+//                     className={`${genderClass} ${isEditing ? "row-editing-active" : ""}`}>
+//                     <td>
+//                       <strong>{student.id || "PENDING"}</strong>
+//                     </td>
+
+//                     {isEditing ? (
+//                       <>
+//                         <td>
+//                           <input
+//                             type="text"
+//                             value={editForm.password}
+//                             onChange={(e) =>
+//                               setEditForm({
+//                                 ...editForm,
+//                                 password: e.target.value,
+//                               })
+//                             }
+//                           />
+//                         </td>
+//                         <td>
+//                           <input
+//                             type="text"
+//                             value={editForm.fullName}
+//                             onChange={(e) =>
+//                               setEditForm({
+//                                 ...editForm,
+//                                 fullName: e.target.value,
+//                               })
+//                             }
+//                           />
+//                         </td>
+//                         <td>
+//                           <input
+//                             type="text"
+//                             value={editForm.studentMobile}
+//                             onChange={(e) =>
+//                               setEditForm({
+//                                 ...editForm,
+//                                 studentMobile: e.target.value,
+//                               })
+//                             }
+//                           />
+//                         </td>
+
+//                         <td>
+//                           <input
+//                             type="text"
+//                             value={editForm.parentMobile}
+//                             onChange={(e) =>
+//                               setEditForm({
+//                                 ...editForm,
+//                                 parentMobile: e.target.value,
+//                               })
+//                             }
+//                           />
+//                         </td>
+//                         <td>
+//                           <input
+//                             type="text"
+//                             value={editForm.grade}
+//                             onChange={(e) =>
+//                               setEditForm({
+//                                 ...editForm,
+//                                 grade: e.target.value,
+//                               })
+//                             }
+//                             style={{ width: "60px" }}
+//                           />
+//                         </td>
+//                         <td>
+//                           <div className="subject-badge-container-cell">
+//                             <label>
+//                               <input
+//                                 type="checkbox"
+//                                 checked={editForm.maths}
+//                                 onChange={(e) =>
+//                                   setEditForm({
+//                                     ...editForm,
+//                                     maths: e.target.checked,
+//                                   })
+//                                 }
+//                               />
+//                               M
+//                             </label>
+//                             <label>
+//                               <input
+//                                 type="checkbox"
+//                                 checked={editForm.science}
+//                                 onChange={(e) =>
+//                                   setEditForm({
+//                                     ...editForm,
+//                                     science: e.target.checked,
+//                                   })
+//                                 }
+//                               />
+//                               S
+//                             </label>
+//                             <label>
+//                               <input
+//                                 type="checkbox"
+//                                 checked={editForm.english}
+//                                 onChange={(e) =>
+//                                   setEditForm({
+//                                     ...editForm,
+//                                     english: e.target.checked,
+//                                   })
+//                                 }
+//                               />
+//                               E
+//                             </label>
+//                           </div>
+//                         </td>
+//                         <td>
+//                           <button
+//                             onClick={() => handleUpdateStudent(student.docId)}
+//                             className="action-btn save-btn">
+//                             <FaCheck />
+//                           </button>
+//                           <button
+//                             onClick={() => setEditingId(null)}
+//                             className="action-btn cancel-btn">
+//                             <FaXmark />
+//                           </button>
+//                         </td>
+//                       </>
+//                     ) : (
+//                       <>
+//                         <td>
+//                           <div className="masked-data-cell">
+//                             <span>
+//                               {isRevealed
+//                                 ? student.password
+//                                 : maskString(student.password)}
+//                             </span>
+//                           </div>
+//                         </td>
+//                         <td>
+//                           <div className="subject-badge-container-cell">
+//                             {student.maths && (
+//                               <span className="sub-badge-tag maths">
+//                                 <IoCheckmarkCircle />
+//                               </span>
+//                             )}
+//                             {student.science && (
+//                               <span className="sub-badge-tag science">
+//                                 <IoCheckmarkCircle />
+//                               </span>
+//                             )}
+//                             {student.english && (
+//                               <span className="sub-badge-tag english">
+//                                 <IoCheckmarkCircle />
+//                               </span>
+//                             )}
+//                           </div>
+//                         </td>
+//                         <td>{student.fullName}</td>
+//                         <td>
+//                           <div className="masked-data-cell">
+//                             <span>
+//                               {isRevealed
+//                                 ? student.studentMobile
+//                                 : maskString(student.studentMobile)}
+//                             </span>
+//                           </div>
+//                         </td>
+
+//                         <td>
+//                           <div className="masked-data-cell">
+//                             <span>
+//                               {isRevealed
+//                                 ? student.parentMobile
+//                                 : maskString(student.parentMobile)}
+//                             </span>
+//                           </div>
+//                         </td>
+//                         <td>{student.grade}</td>
+
+//                         <td>
+//                           <div className="rows-btn">
+//                             <button
+//                               onClick={() => toggleMasking(student.docId)}
+//                               className="mask-toggle-trigger action-btn check-btn">
+//                               {isRevealed ? <FaEyeSlash /> : <FaEye />}
+//                             </button>
+//                             <button
+//                               onClick={() => startEdit(student)}
+//                               className="action-btn edit-btn">
+//                               <FaUserPen />
+//                             </button>
+//                             <button
+//                               onClick={() =>
+//                                 handleDeleteStudent(
+//                                   student.docId,
+//                                   student.fullName,
+//                                 )
+//                               }
+//                               className="action-btn delete-btn">
+//                               <FaUserMinus />
+//                             </button>
+//                           </div>
+//                         </td>
+//                       </>
+//                     )}
+//                   </tr>
+//                 );
+//               })}
+//             </tbody>
+//           </table>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default AllStudents;
+
+  //   return (
+  //     <div className="vault-container" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+
+  //       {/* 👑 TOP METADATA HEADER */}
+  //       <div className="students-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "white", padding: "20px", borderRadius: "12px", boxShadow: "0 2px 10px rgba(0,0,0,0.01)" }}>
+  //         <div>
+  //           <h1 style={{ margin: 0, color: "#001b42", fontSize: "1.5rem" }}>{currentFacultySubject} Faculty Registry</h1>
+  //           <p style={{ margin: "5px 0 0 0", color: "#8b949e", fontSize: "0.9rem" }}>Secure subject-isolated student database core managing institutional tiers [INDEX 4].</p>
+  //         </div>
+  //         <div className="search-box-bar" style={{ display: "flex", alignItems: "center", gap: "10px", background: "#f4f6fa", padding: "10px 15px", borderRadius: "8px", width: "300px" }}>
+  //           <FaMagnifyingGlass style={{ color: "#8b949e" }} />
+  //           <input
+  //             type="text"
+  //             placeholder="Search student by name or ID..."
+  //             value={searchTerm}
+  //             onChange={(e) => setSearchTerm(e.target.value)}
+  //             style={{ border: "none", background: "none", outline: "none", width: "100%", fontSize: "0.9rem" }}
+  //           />
+  //         </div>
+  //       </div>
+
+  //       {/* 🎛️ FILTER CONTROLS DOCK */}
+  //       <div className="master-filter-control-dock" style={{ display: "flex", gap: "30px", background: "white", padding: "15px 20px", borderRadius: "12px", boxShadow: "0 2px 10px rgba(0,0,0,0.01)" }}>
+  //         <div className="filter-segment" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+  //           <span style={{ fontSize: "0.85rem", fontWeight: "600", color: "#8b949e" }}>Academic Grade:</span>
+  //           {["10", "11"].map(g => (
+  //             <button key={g} onClick={() => { setActiveGrade(g); setSelectedStudent(null); }} style={{ padding: "6px 14px", borderRadius: "20px", border: "none", background: activeGrade === g ? "#0056ff" : "#f4f6fa", color: activeGrade === g ? "white" : "#001b42", fontWeight: "600", cursor: "pointer", fontSize: "0.85rem" }}>Grade {g}</button>
+  //           ))}
+  //         </div>
+  //         <div className="filter-segment" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+  //           <span style={{ fontSize: "0.85rem", fontWeight: "600", color: "#8b949e" }}>Gender Share:</span>
+  //           {[
+  //             { id: "ALL", label: "All Students" },
+  //             { id: "boy", label: "Boys" },
+  //             { id: "girl", label: "Girls" }
+  //           ].map(gen => (
+  //             <button key={gen.id} onClick={() => { setActiveGender(gen.id); setSelectedStudent(null); }} style={{ padding: "6px 14px", borderRadius: "20px", border: "none", background: activeGender === gen.id ? "#0056ff" : "#f4f6fa", color: activeGender === gen.id ? "white" : "#001b42", fontWeight: "600", cursor: "pointer", fontSize: "0.85rem" }}>{gen.label}</button>
+  //           ))}
+  //         </div>
+  //       </div>
+
+  //       {/* 🎚️ SPLIT MASTER-DETAIL WORKSPACE */}
+  //       <div className="split-workspace-grid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "25px", alignItems: "start" }}>
+
+  //         {/* 💻 LEFT SIDE: SLIM MASTER TABLE */}
+  //         <div className="left-table-shield" style={{ background: "white", borderRadius: "12px", padding: "20px", boxShadow: "0 2px 12px rgba(0,0,0,0.01)" }}>
+  //           {isLoading ? (
+  //             <div style={{ padding: "20px", textAlignment: "center", fontWeight: "600", color: "#8b949e" }}>Syncing Student Cloud Ledger...</div>
+  //           ) : filteredStudents.length === 0 ? (
+  //             <div style={{ padding: "20px", textAlignment: "center", fontWeight: "600", color: "#8b949e" }}>No matching records allocated inside this filtered cluster.</div>
+  //           ) : (
+  //             <table style={{ width: "100%", borderCollapse: "collapse", textAlignment: "left" }}>
+  //               <thead>
+  //                 <tr style={{ borderBottom: "2px solid #f4f6fa" }}>
+  //                   <th style={{ padding: "12px 10px", color: "#8b949e", fontSize: "0.85rem", textTransform: "uppercase" }}>Student ID</th>
+  //                   <th style={{ padding: "12px 10px", color: "#8b949e", fontSize: "0.85rem", textTransform: "uppercase" }}>Full Name</th>
+  //                 </tr>
+  //               </thead>
+  //               <tbody>
+  //                 {filteredStudents.map((student) => (
+  //                   <tr
+  //                     key={student.docId}
+  //                     onClick={() => { setSelectedStudent(student); setIsEditing(false); }}
+  //                     style={{
+  //                       borderBottom: "1px solid #f4f6fa",
+  //                       cursor: "pointer",
+  //                       background: selectedStudent?.docId === student.docId ? "#eef2ff" : "transparent",
+  //                       transition: "0.2s"
+  //                     }}
+  //                     className="student-table-row-hover"
+  //                   >
+  //                     <td style={{ padding: "14px 10px", fontSize: "0.95rem" }}><strong>{student.id || "PENDING"}</strong></td>
+  //                     <td style={{ padding: "14px 10px", fontSize: "0.95rem", color: "#001b42", fontWeight: "500" }}>{student.fullName}</td>
+  //                   </tr>
+  //                 ))}
+  //               </tbody>
+  //             </table>
+  //           )}
+  //         </div>
+
+  //         {/* 📋 RIGHT SIDE: DYNAMIC DETAILS VAULT CARD */}
+  //         <div className="right-details-card-vault">
+  //           {!selectedStudent ? (
+  //             <div style={{ background: "#f8faff", border: "2px dashed #eef2ff", borderRadius: "12px", padding: "40px", textAlignment: "center", color: "#8b949e", display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+  //               <FaUsers style={{ fontSize: "2rem", color: "#d2d6dc" }} />
+  //               <span style={{ fontSize: "0.95rem", fontWeight: "500" }}>Select a student row from the vault register to audit complete institutional profiles.</span>
+  //             </div>
+  //           ) : isEditing ? (
+  //             /* 📝 IS EDITING PANEL MODE */
+  //             <div style={{ background: "white", padding: "30px", borderRadius: "12px", boxShadow: "0 4px 20px rgba(0,0,0,0.03)", display: "flex", flexDirection: "column", gap: "15px" }}>
+  //               {/* 📋 RIGHT SIDE: DYNAMIC DETAILS VAULT CARD */}
+  //         <div className="right-details-card-vault">
+  //           {!selectedStudent ? (
+  //             <div style={{ background: "#f8faff", border: "2px dashed #eef2ff", borderRadius: "12px", padding: "40px", textAlign: "center", color: "#8b949e", display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+  //               <FaUsers style={{ fontSize: "2rem", color: "#d2d6dc" }} />
+  //               <span style={{ fontSize: "0.95rem", fontWeight: "500" }}>Select a student row from the vault register to audit complete institutional profiles.</span>
+  //             </div>
+  //           ) : isEditing ? (
+  //             /* 📝 IS EDITING PANEL MODE */
+  //             <div style={{ background: "white", padding: "30px", borderRadius: "12px", boxShadow: "0 4px 20px rgba(0,0,0,0.03)", display: "flex", flexDirection: "column", gap: "15px" }}>
+  //               <h3 style={{ margin: "0 0 10px 0", color: "#001b42" }}>Edit Faculty Profile</h3>
+
+  //               <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+  //                 <label style={{ fontSize: "0.8rem", fontWeight: "bold", color: "#8b949e" }}>Full Name</label>
+  //                 <input type="text" value={editForm.fullName} onChange={(e) => setEditForm({...editForm, fullName: e.target.value})} style={{ padding: "10px", borderRadius: "6px", border: "1px solid #d2d6dc", outline: "none" }} />
+  //               </div>
+
+  //               <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+  //                 <label style={{ fontSize: "0.8rem", fontWeight: "bold", color: "#8b949e" }}>Login Password</label>
+  //                 <input type="text" value={editForm.password} onChange={(e) => setEditForm({...editForm, password: e.target.value})} style={{ padding: "10px", borderRadius: "6px", border: "1px solid #d2d6dc", outline: "none" }} />
+  //               </div>
+
+  //               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "15px" }}>
+  //                 <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+  //                   <label style={{ fontSize: "0.8rem", fontWeight: "bold", color: "#8b949e" }}>Student Mobile</label>
+  //                   <input type="text" value={editForm.studentMobile} onChange={(e) => setEditForm({...editForm, studentMobile: e.target.value})} style={{ padding: "10px", borderRadius: "6px", border: "1px solid #d2d6dc" }} />
+  //                 </div>
+  //                 <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+  //                   <label style={{ fontSize: "0.8rem", fontWeight: "bold", color: "#8b949e" }}>Parent Mobile</label>
+  //                   <input type="text" value={editForm.parentMobile} onChange={(e) => setEditForm({...editForm, parentMobile: e.target.value})} style={{ padding: "10px", borderRadius: "6px", border: "1px solid #d2d6dc" }} />
+  //                 </div>
+  //               </div>
+
+  //               <div style={{ display: "flex", gap: "15px", alignItems: "center", marginTop: "10px" }}>
+  //                 <span style={{ fontSize: "0.85rem", fontWeight: "bold", color: "#8b949e" }}>Gated Tutors:</span>
+  //                 <label><input type="checkbox" checked={editForm.maths} onChange={(e) => setEditForm({...editForm, maths: e.target.checked})} /> M</label>
+  //                 <label><input type="checkbox" checked={editForm.science} onChange={(e) => setEditForm({...editForm, science: e.target.checked})} /> S</label>
+  //                 <label><input type="checkbox" checked={editForm.english} onChange={(e) => setEditForm({...editForm, english: e.target.checked})} /> E</label>
+  //               </div>
+
+  //               <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
+  //                 <button onClick={() => handleUpdateStudent(selectedStudent.docId)} style={{ flexGrow: 1, padding: "10px", background: "#10b981", color: "white", border: "none", borderRadius: "6px", fontWeight: "bold", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}><FaCheck /> Save Profile</button>
+  //                 <button onClick={() => setIsEditing(false)} style={{ padding: "10px", background: "#f4f6fa", color: "#001b42", border: "none", borderRadius: "6px", fontWeight: "bold", cursor: "pointer" }}><FaXmark /> Cancel</button>
+  //               </div>
+  //             </div>
+  //           ) : (
+  //             /* 🗃️ STANDARD ACTIVE VIEW PROFILE MODE */
+  //             <div style={{ background: "white", padding: "30px", borderRadius: "12px", boxShadow: "0 4px 25px rgba(0,0,0,0.02)", borderTop: "4px solid #0056ff", display: "flex", flexDirection: "column", gap: "20px" }}>
+  //               <div style={{ display: "flex", flexDirection: "column" }}>
+  //                 <span style={{ fontSize: "0.8rem", color: "#8b949e", fontWeight: "bold", textTransform: "uppercase" }}>Selected Registry Profile</span>
+  //                 <h2 style={{ margin: "5px 0 0 0", color: "#001b42", fontSize: "1.4rem" }}>{selectedStudent.fullName}</h2>
+  //                 <small style={{ color: "#0056ff", fontWeight: "bold", marginTop: "3px" }}>System Token: {selectedStudent.id}</small>
+  //               </div>
+
+  //               <div style={{ display: "flex", flexDirection: "column", gap: "12px", background: "#f8faff", padding: "15px", borderRadius: "8px" }}>
+  //                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem" }}>
+  //                   <span style={{ color: "#8b949e" }}>Grade Tier:</span>
+  //                   <strong style={{ color: "#001b42" }}>Grade {selectedStudent.grade}</strong>
+  //                 </div>
+  //                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem" }}>
+  //                   <span style={{ color: "#8b949e" }}>Gender Matrix:</span>
+  //                   <strong style={{ color: "#001b42", textTransform: "capitalize" }}>{selectedStudent.gender}</strong>
+  //                 </div>
+  //                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem" }}>
+  //                   <span style={{ color: "#8b949e" }}>Student Mobile:</span>
+  //                   <strong style={{ color: "#001b42" }}>{selectedStudent.studentMobile || "N/A"}</strong>
+  //                 </div>
+  //                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem" }}>
+  //                   <span style={{ color: "#8b949e" }}>Guardian Mobile:</span>
+  //                   <strong style={{ color: "#001b42" }}>{selectedStudent.parentMobile || "N/A"}</strong>
+  //                 </div>
+
+  //                 {/* 🔐 SENSITIVE PASSWORD VAULT MASKING */}
+  //                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "0.9rem", borderTop: "1px dashed #eef2ff", paddingTop: "10px" }}>
+  //                   <span style={{ color: "#8b949e" }}>Access Password:</span>
+  //                   <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+  //                     <strong style={{ color: "#001b42", letterSpacing: isPasswordRevealed ? "normal" : "2px" }}>
+  //                       {isPasswordRevealed ? selectedStudent.password : "••••••••"}
+  //                     </strong>
+  //                     <button onClick={() => setIsPasswordRevealed(!isPasswordRevealed)} style={{ background: "none", border: "none", cursor: "pointer", color: "#8b949e", display: "flex" }}>
+  //                       {isPasswordRevealed ? <FaEyeSlash /> : <FaEye />}
+  //                     </button>
+  //                   </div>
+  //                 </div>
+  //               </div>
+
+  //               {/* 🎓 ENROLLED CLASSES (SUBJECT GATING TAGS) */}
+  //               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+  //                 <span style={{ fontSize: "0.8rem", color: "#8b949e", fontWeight: "bold" }}>Enrolled Faculties</span>
+  //                 <div style={{ display: "flex", gap: "10px" }}>
+  //                   {[{ id: "maths", label: "Mathematics (M)" }, { id: "science", label: "Science (S)" }, { id: "english", label: "English (E)" }].map(sub => {
+  //                     const isEnrolled = selectedStudent[sub.id];
+  //                     return (
+  //                       <span key={sub.id} style={{ padding: "6px 12px", borderRadius: "6px", fontSize: "0.8rem", fontWeight: "bold", background: isEnrolled ? "#eef2ff" : "#f4f6fa", color: isEnrolled ? "#0056ff" : "#d2d6dc", display: "flex", alignItems: "center", gap: "5px" }}>
+  //                         {isEnrolled && <IoCheckmarkCircle />} {sub.label}
+  //                       </span>
+  //                     );
+  //                   })}
+  //                 </div>
+  //               </div>
+
+  //               {/* 🛠️ ACTION BUTTONS ZONE */}
+  //               <div style={{ display: "flex", gap: "10px", borderTop: "1px solid #f4f6fa", paddingTop: "15px", marginTop: "5px" }}>
+  //                 <button onClick={() => startEdit(selectedStudent)} style={{ flexGrow: 1, padding: "10px", background: "#ffc107", color: "#001b42", border: "none", borderRadius: "6px", fontWeight: "bold", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}><FaUserPen /> Modify Registry</button>
+  //                 <button onClick={() => handleDeleteStudent(selectedStudent.docId, selectedStudent.fullName)} style={{ padding: "10px", background: "#fff5f5", color: "#ff4b4b", border: "none", borderRadius: "6px", fontWeight: "bold", cursor: "pointer", display: "flex", alignItems: "center", gap: "8px" }}><FaUserMinus /> Evict</button>
+  //               </div>
+  //             </div>
+  //           )}
+  //         </div>
+
+  //         </div>
+
+  //   );
+  // };
+
+  // export default AllStudents;
