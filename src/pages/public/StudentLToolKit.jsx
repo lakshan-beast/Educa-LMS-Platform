@@ -213,7 +213,7 @@ const StudentToolkit = () => {
           }}>
           <FaNoteSticky className="guild-chat-icon" /> Study Desk Notes
         </button>
-        <Link
+        {/* <Link
           to="/student-guild"
           className="guild-chat-portal-link"
           style={{
@@ -233,7 +233,7 @@ const StudentToolkit = () => {
           }}>
           <FaComments className="guild-chat-icon" />
           <span>11 Study Guild</span>
-        </Link>
+        </Link> */}
       </div>
 
       {/* ==========================================
