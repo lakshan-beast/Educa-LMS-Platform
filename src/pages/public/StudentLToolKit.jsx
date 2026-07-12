@@ -149,71 +149,35 @@ const StudentToolkit = () => {
   };
 
   return (
-    <div
-      className="student-utility-toolkit-workspace"
-      style={{
-        padding: "8px 0",
-        display: "flex",
-        flexDirection: "row",
-        gap: "25px",
-      }}>
+    <div className="student-utility-toolkit-workspace">
       {/* 🎛️ 1. CORE UTILITY LAUNCH DOCK BUTTONS */}
-      <div className="utility-trigger-buttons-dock" style={{display: "flex", flexDirection: "column"}}>
+      <div className="utility-trigger-buttons-dock">
+        {/* CALCULATOR LAUNCHER */}
         <button
           onClick={() => setActiveModal("calc")}
-          className="guild-chat-portal-link"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "12px 20px",
-            background: "#eef2ff",
-            color: "#0056ff",
-            border: "1px solid #c7d2fe",
-            borderRadius: "8px",
-            fontWeight: "bold",
-            cursor: "pointer",
-            transition: "0.2s",
-          }}>
-          <FaCalculator className="guild-chat-icon" /> Launch Calculator
+          className="guild-chat-portal-link tool-calc">
+          <FaCalculator className="guild-chat-icon" />
+          <span>Launch Calculator</span>
         </button>
+
+        {/* UNIT CONVERTER LAUNCHER */}
         <button
           onClick={() => setActiveModal("converter")}
-          className="guild-chat-portal-link"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "12px 20px",
-            background: "#ecfdf5",
-            color: "#10b981",
-            border: "1px solid #bbf7d0",
-            borderRadius: "8px",
-            fontWeight: "bold",
-            cursor: "pointer",
-            transition: "0.2s",
-          }}>
-          <FaScaleBalanced className="guild-chat-icon" /> Unit Converter
+          className="guild-chat-portal-link tool-converter">
+          <FaScaleBalanced className="guild-chat-icon" />
+          <span>Unit Converter</span>
         </button>
+
+        {/* STUDY NOTES LAUNCHER */}
         <button
           onClick={() => setActiveModal("notes")}
-          className="guild-chat-portal-link"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "12px 20px",
-            background: "#fff7ed",
-            color: "#ff9900",
-            border: "1px solid #fed7aa",
-            borderRadius: "8px",
-            fontWeight: "bold",
-            cursor: "pointer",
-            transition: "0.2s",
-          }}>
-          <FaNoteSticky className="guild-chat-icon" /> Study Desk Notes
+          className="guild-chat-portal-link tool-notes">
+          <FaNoteSticky className="guild-chat-icon" />
+          <span>Study Desk Notes</span>
         </button>
-        {/* <Link
+      </div>
+      {/* </div> */}
+      {/* <Link
           to="/student-guild"
           className="guild-chat-portal-link"
           style={{
@@ -234,158 +198,62 @@ const StudentToolkit = () => {
           <FaComments className="guild-chat-icon" />
           <span>11 Study Guild</span>
         </Link> */}
-      </div>
+      {/* // </div> */}
 
       {/* ==========================================
           🧮 MODAL A: SCIENTIFIC MINI CALCULATOR POPUP
           ========================================== */}
       {activeModal === "calc" && (
         <div
-          className="admin-modal-overlay"
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.4)",
-            backdropFilter: "blur(4px)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 10000,
+          className="toolkit-sheet-overlay"
+          onClick={() => {
+            setActiveModal(null);
+            clearCalc();
           }}>
+          {/* 👈 යට ඉඳන් පාවෙලා එන iOS Bottom Sheet Card එක */}
           <div
-            className="admin-modal-card"
-            style={{
-              background: "#ffffff",
-              padding: "25px",
-              borderRadius: "16px",
-              width: "320px",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-              position: "relative",
-            }}>
+            className="toolkit-sheet-card calc-card"
+            onClick={(e) => e.stopPropagation()}>
+            {/* Close Cross Button */}
             <button
+              className="close-sheet-btn"
               onClick={() => {
                 setActiveModal(null);
                 clearCalc();
-              }}
-              style={{
-                position: "absolute",
-                top: "15px",
-                right: "15px",
-                background: "none",
-                border: "none",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                color: "#8b949e",
               }}>
               <FaXmark />
             </button>
-            <h3
-              style={{
-                margin: "0 0 15px 0",
-                color: "#001b42",
-                fontSize: "1.1rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}>
-              <FaCalculator style={{ color: "#0056ff" }} /> Math Desk Calculator
+
+            <h3>
+              <FaCalculator /> Math Desk Calculator
             </h3>
 
             {/* Display Engine */}
-            <div
-              style={{
-                background: "#f4f6fa",
-                padding: "15px",
-                borderRadius: "8px",
-                textAlign: "right",
-                marginBottom: "15px",
-                minHeight: "70px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                gap: "5px",
-              }}>
-              <div
-                style={{
-                  fontSize: "1.2rem",
-                  fontWeight: "bold",
-                  color: "#001b42",
-                  wordBreak: "break-all",
-                }}>
-                {calcInput || "0"}
-              </div>
+            <div className="calc-display-screen">
+              <div className="calc-input-stream">{calcInput || "0"}</div>
               {calcResult && (
-                <div
-                  style={{
-                    fontSize: "1rem",
-                    color: "#10b981",
-                    fontWeight: "bold",
-                  }}>
-                  = {calcResult}
-                </div>
+                <div className="calc-result-stream">= {calcResult}</div>
               )}
             </div>
 
             {/* Buttons Grid Matrix */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: "8px",
-              }}>
+            <div className="calc-buttons-grid-matrix">
               <button
                 onClick={() => handleScientificFunc("sqrt")}
-                style={{
-                  padding: "12px",
-                  background: "#eef2ff",
-                  color: "#0056ff",
-                  border: "none",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+                className="sci-op-btn">
                 √
               </button>
               <button
                 onClick={() => handleScientificFunc("sq")}
-                style={{
-                  padding: "12px",
-                  background: "#eef2ff",
-                  color: "#0056ff",
-                  border: "none",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+                className="sci-op-btn">
                 x²
               </button>
               <button
                 onClick={() => handleCalcClick("π")}
-                style={{
-                  padding: "12px",
-                  background: "#eef2ff",
-                  color: "#0056ff",
-                  border: "none",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+                className="sci-op-btn">
                 π
               </button>
-              <button
-                onClick={clearCalc}
-                style={{
-                  padding: "12px",
-                  background: "#fff5f5",
-                  color: "#ff4b4b",
-                  border: "none",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+              <button onClick={clearCalc} className="calc-clear-btn">
                 C
               </button>
 
@@ -393,14 +261,7 @@ const StudentToolkit = () => {
                 <button
                   key={v}
                   onClick={() => handleCalcClick(v)}
-                  style={{
-                    padding: "12px",
-                    background: v === "/" ? "#f4f6fa" : "#ffffff",
-                    border: "1px solid #f4f6fa",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}>
+                  className={`num-btn ${v === "/" ? "math-op-btn" : ""}`}>
                   {v}
                 </button>
               ))}
@@ -408,14 +269,7 @@ const StudentToolkit = () => {
                 <button
                   key={v}
                   onClick={() => handleCalcClick(v)}
-                  style={{
-                    padding: "12px",
-                    background: v === "*" ? "#f4f6fa" : "#ffffff",
-                    border: "1px solid #f4f6fa",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}>
+                  className={`num-btn ${v === "*" ? "math-op-btn" : ""}`}>
                   {v}
                 </button>
               ))}
@@ -423,80 +277,32 @@ const StudentToolkit = () => {
                 <button
                   key={v}
                   onClick={() => handleCalcClick(v)}
-                  style={{
-                    padding: "12px",
-                    background: v === "-" ? "#f4f6fa" : "#ffffff",
-                    border: "1px solid #f4f6fa",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}>
+                  className={`num-btn ${v === "-" ? "math-op-btn" : ""}`}>
                   {v}
                 </button>
               ))}
 
               <button
                 onClick={backspaceCalc}
-                style={{
-                  padding: "12px",
-                  background: "#f4f6fa",
-                  border: "none",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+                className="math-op-btn backspace-btn">
                 <TiBackspace />
               </button>
-              <button
-                onClick={() => handleCalcClick("0")}
-                style={{
-                  padding: "12px",
-                  background: "#ffffff",
-                  border: "1px solid #f4f6fa",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+              <button onClick={() => handleCalcClick("0")} className="num-btn">
                 0
               </button>
-              <button
-                onClick={() => handleCalcClick(".")}
-                style={{
-                  padding: "12px",
-                  background: "#ffffff",
-                  border: "1px solid #f4f6fa",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+              <button onClick={() => handleCalcClick(".")} className="num-btn">
                 .
               </button>
               <button
                 onClick={() => handleCalcClick("+")}
-                style={{
-                  padding: "12px",
-                  background: "#f4f6fa",
-                  border: "none",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+                className="math-op-btn">
                 +
               </button>
             </div>
+
             <button
               onClick={calculateResult}
-              style={{
-                width: "100%",
-                padding: "12px",
-                background: "#0056ff",
-                color: "white",
-                border: "none",
-                borderRadius: "6px",
-                fontWeight: "bold",
-                cursor: "pointer",
-                marginTop: "10px",
-              }}>
+              className="calc-evaluate-submit-btn">
               =
             </button>
           </div>
@@ -506,100 +312,41 @@ const StudentToolkit = () => {
       {/* ==========================================
           ⚖️ MODAL B: SCIENCE UNIT CONVERTER POPUP
           ========================================== */}
+
       {activeModal === "converter" && (
         <div
-          className="admin-modal-overlay"
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.4)",
-            backdropFilter: "blur(4px)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 10000,
-          }}>
+          className="toolkit-sheet-overlay"
+          onClick={() => setActiveModal(null)}>
+          {/* 👈 යට ඉඳන් පාවෙලා උඩට එන iOS Bottom Sheet Card එක */}
           <div
-            className="admin-modal-card"
-            style={{
-              background: "#ffffff",
-              padding: "25px",
-              borderRadius: "16px",
-              width: "400px",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-              position: "relative",
-            }}>
+            className="toolkit-sheet-card converter-card"
+            onClick={(e) => e.stopPropagation()}>
+            {/* Close Cross Button */}
             <button
-              onClick={() => setActiveModal(null)}
-              style={{
-                position: "absolute",
-                top: "15px",
-                right: "15px",
-                background: "none",
-                border: "none",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                color: "#8b949e",
-              }}>
+              className="close-sheet-btn"
+              onClick={() => setActiveModal(null)}>
               <FaXmark />
             </button>
-            <h3
-              style={{
-                margin: "0 0 15px 0",
-                color: "#001b42",
-                fontSize: "1.1rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}>
-              <FaScaleBalanced style={{ color: "#10b981" }} /> Science Unit
-              Converter
+
+            <h3>
+              <FaScaleBalanced /> Science Unit Converter
             </h3>
 
             {/* Category Select Tabs */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "5px",
-                marginBottom: "15px",
-              }}>
+            <div className="converter-category-tabs-grid">
               {["speed", "length", "mass"].map((type) => (
                 <button
                   key={type}
                   onClick={() => setConverterType(type)}
-                  style={{
-                    padding: "8px 5px",
-                    border: "none",
-                    borderRadius: "6px",
-                    background: converterType === type ? "#10b981" : "#f4f6fa",
-                    color: converterType === type ? "white" : "#001b42",
-                    fontWeight: "bold",
-                    fontSize: "0.8rem",
-                    cursor: "pointer",
-                    textTransform: "capitalize",
-                  }}>
+                  className={`converter-tab-btn ${converterType === type ? "active-converter-tab" : ""}`}>
                   {type}
                 </button>
               ))}
             </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "5px",
-                }}>
-                <label
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: "bold",
-                    color: "#8b949e",
-                  }}>
+
+            <div className="converter-input-output-container">
+              <div className="converter-input-field-group">
+                <label>
                   {converterType === "speed"
                     ? "Enter Speed value (km/h)"
                     : converterType === "length"
@@ -611,28 +358,12 @@ const StudentToolkit = () => {
                   placeholder="Enter number value..."
                   value={convertValue}
                   onChange={(e) => handleConversion(e.target.value)}
-                  style={{
-                    padding: "10px",
-                    borderRadius: "6px",
-                    border: "1px solid #d2d6dc",
-                    outline: "none",
-                  }}
                 />
               </div>
 
               {/* Conversion Result Block */}
               {convertResult && (
-                <div
-                  style={{
-                    background: "#ecfdf5",
-                    border: "1px solid #bbf7d0",
-                    padding: "12px",
-                    borderRadius: "6px",
-                    color: "#065f46",
-                    fontWeight: "bold",
-                    fontSize: "0.9rem",
-                    textAlign: "center",
-                  }}>
+                <div className="converter-live-result-block">
                   {convertResult}
                 </div>
               )}
@@ -652,92 +383,38 @@ const StudentToolkit = () => {
       {/* ==========================================
           📝 MODAL C: SUBJECT-WISE NOTES WORKSPACE
           ========================================== */}
+
       {activeModal === "notes" && (
         <div
-          className="admin-modal-overlay"
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.4)",
-            backdropFilter: "blur(4px)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 10000,
-          }}>
+          className="toolkit-sheet-overlay"
+          onClick={() => setActiveModal(null)}>
+          {/* 👈 යට ඉඳන් පාවෙලා උඩට එන iOS Bottom Sheet Card එක */}
           <div
-            className="admin-modal-card"
-            style={{
-              background: "#ffffff",
-              padding: "25px",
-              borderRadius: "16px",
-              maxWidth: "330px",
-              width: "100%",
-              maxHeight: "85vh",
-              overflowY: "auto",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-              position: "relative",
-            }}>
+            className="toolkit-sheet-card notes-card"
+            onClick={(e) => e.stopPropagation()}>
+            {/* Close Cross Button */}
             <button
-              onClick={() => setActiveModal(null)}
-              style={{
-                position: "absolute",
-                top: "15px",
-                right: "15px",
-                background: "none",
-                border: "none",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                color: "#8b949e",
-              }}>
+              className="close-sheet-btn"
+              onClick={() => setActiveModal(null)}>
               <FaXmark />
             </button>
-            <h3
-              style={{
-                margin: "12px 0 15px 0",
-                color: "#001b42",
-                fontSize: "1.1rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}>
-              <FaNoteSticky style={{ color: "#ff9900" }} /> Study Desk Notes &
-              Homework Tracker
+
+            <h3>
+              <FaNoteSticky /> Study Desk Notes & Homework Tracker
             </h3>
 
             {/* Note Logging Form */}
-            <form
-              onSubmit={handleAddNote}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                background: "#f8faff",
-                padding: "15px",
-                borderRadius: "8px",
-                marginBottom: "20px",
-              }}>
+            <form onSubmit={handleAddNote} className="notes-logging-form">
               <select
                 value={noteForm.subject}
                 onChange={(e) =>
                   setNoteForm({ ...noteForm, subject: e.target.value })
-                }
-                style={{
-                  padding: "8px",
-                  borderRadius: "6px",
-                  border: "1px solid #d2d6dc",
-                  background: "white",
-                  fontWeight: "bold",
-                  color: "#001b42",
-                  outline: "none",
-                }}>
+                }>
                 <option value="Maths">Maths Class</option>
                 <option value="Science">Science Class</option>
                 <option value="English">English Class</option>
               </select>
+
               <input
                 type="text"
                 placeholder="Type homework task or specific note description..."
@@ -746,128 +423,56 @@ const StudentToolkit = () => {
                 onChange={(e) =>
                   setNoteForm({ ...noteForm, text: e.target.value })
                 }
-                style={{
-                  flexGrow: 1,
-                  padding: "8px 12px",
-                  borderRadius: "6px",
-                  border: "1px solid #d2d6dc",
-                  outline: "none",
-                  fontSize: "0.85rem",
-                }}
               />
-              <button
-                type="submit"
-                style={{
-                  background: "#ff9900",
-                  color: "white",
-                  border: "none",
-                  padding: "8px 15px",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "5px",
-                  justifyContent: "center",
-                }}>
+
+              <button type="submit" className="notes-add-submit-btn">
                 <FaPlus /> Add
               </button>
             </form>
 
-            {/* Dynamic Notes Grid (Subject-wise Color Accents Mapping) */}
-            <h4
-              style={{
-                margin: "0 0 12px 0",
-                color: "#001b42",
-                fontSize: "0.9rem",
-              }}>
+            {/* Dynamic Notes Grid */}
+            <h4 className="notebook-ledger-title">
               Active Core Notebook Ledger
             </h4>
+
             {notes.length === 0 ? (
-              <p
-                style={{
-                  margin: 0,
-                  color: "#8b949e",
-                  fontStyle: "italic",
-                  fontSize: "0.85rem",
-                  textAlign: "center",
-                  padding: "20px 0",
-                }}>
+              <p className="empty-notebook-notice">
                 Notebook empty. Log tasks above to keep track of operations
                 [INDEX 4].
               </p>
             ) : (
-              <div
-                className="desk-notes-vertical-feed"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "12px",
-                }}>
+              <div className="desk-notes-vertical-feed">
                 {notes.map((item) => {
                   const subTheme = getSubjectColor(item.subject);
                   return (
                     <div
                       key={item.id}
+                      className="notebook-note-tile"
                       style={{
+                        // 👈 ඩේටාබේස් එකෙන් එන ඩයිනමික් කලර්ස් පිරිසිදුව ඇසට නොරිදෙන ලෙස ඉන්ජෙක්ට් වෙයි
                         background: subTheme.bg,
-                        border: subTheme.border,
-                        padding: "15px",
-                        borderRadius: "10px",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        gap: "15px",
+                        borderColor:
+                          subTheme.border || "rgba(255, 255, 255, 0.05)",
                       }}>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "5px",
-                          textAlign: "left",
-                        }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "10px",
-                          }}>
+                      <div className="note-tile-content-block">
+                        <div className="note-tile-meta-header">
                           <span
-                            style={{
-                              fontSize: "0.75rem",
-                              fontWeight: "800",
-                              color: subTheme.txt,
-                              textTransform: "uppercase",
-                            }}>
+                            className="note-subject-tag"
+                            style={{ color: subTheme.txt }}>
                             ● {item.subject}
                           </span>
-                          <small
-                            style={{ color: "#8b949e", fontSize: "0.75rem" }}>
+                          <small className="note-logged-date">
                             Logged: {item.date}
                           </small>
                         </div>
-                        <p
-                          style={{
-                            margin: 0,
-                            fontSize: "0.9rem",
-                            color: "#001b42",
-                            fontWeight: "500",
-                            lineHeight: "1.4",
-                          }}>
-                          {item.text}
-                        </p>
+
+                        {/* 💻 FIXED: අකුරු වල පාට ඩාර්ක් තීම් එකට ගැළපෙන පරිදි SASS එකෙන් පාලනය වේ */}
+                        <p className="note-actual-text-body">{item.text}</p>
                       </div>
+
                       <button
                         onClick={() => handleDeleteNote(item.id)}
-                        style={{
-                          background: "none",
-                          border: "none",
-                          color: "#ff4b4b",
-                          cursor: "pointer",
-                          fontSize: "0.95rem",
-                          padding: "5px",
-                          transition: "0.2s",
-                        }}
+                        className="note-delete-trigger-btn"
                         title="Remove Note From Desk">
                         <FaTrashCan />
                       </button>
