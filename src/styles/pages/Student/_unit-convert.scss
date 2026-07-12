@@ -1,0 +1,388 @@
+/* ========================================================
+   2026 MODERN iOS BOTTOM SHEET UNIVERSAL TOOLKIT SYSTEM
+   ======================================================== */
+
+// 🌌 1. UNIVERSAL BACKDROP OVERLAY (සියලුම ටූල්ස් වලට පොදු පසුබිම)
+.toolkit-sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(9, 13, 22, 0.45);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* යට ඉඳන් උඩට පාවීමට මුලින්ම යටටම කළා */
+  padding: 0;
+  box-sizing: border-box;
+  animation: backdropFadeIn 0.3s ease-out;
+}
+
+// 📱 2. THE BOTTOM SHEET UTILITY MASTER CARD (පොදු වීදුරු පෙට්ටිය)
+.toolkit-sheet-card {
+  width: 100%;
+  max-width: 380px; /* Converter සහ Notes වලටත් ඉඩ මදි නොවෙන්න පොඩ්ඩක් පළල කළා */
+  height: auto;
+  max-height: 85vh;
+
+  // Premium iOS Dark Glass Board Look
+  background: rgba(15, 23, 42, 0.88);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px 32px 0 0; /* iOS Bottom Sheet Smooth Radii */
+  padding: 30px 24px 35px 24px;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  position: relative;
+  text-align: left;
+
+  animation: sheetSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.12);
+
+  // Universal Close X Button (✕)
+  .close-sheet-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.2s ease;
+    padding: 4px;
+
+    &:hover,
+    &:active {
+      color: #ef4444;
+      transform: scale(1.05);
+    }
+  }
+
+  // Universal Header Title (සියලුම මාතෘකා වලට පොදු ස්ටයිල් එක)
+  h3 {
+    margin: 0 0 20px 0;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.01em;
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  /* ========================================================
+     🎛️ EXTENSION A: MATH DESK CALCULATOR STYLES
+     ======================================================== */
+  &.calc-card {
+    h3 svg {
+      color: #2563eb;
+    } // Calculator එකට විතරක් Blue Icon වදී
+
+    // Calculator Display Screen
+    .calc-display-screen {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 16px;
+      border-radius: 14px;
+      text-align: right;
+      margin-bottom: 20px;
+      min-height: 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      box-sizing: border-box;
+
+      .calc-input-stream {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+        word-break: break-all;
+        font-family: monospace;
+      }
+
+      .calc-result-stream {
+        font-size: 1.1rem;
+        color: #10b981;
+        font-weight: 800;
+        font-family: monospace;
+        text-shadow: 0 0 6px rgba(16, 185, 129, 0.2);
+      }
+    }
+
+    // Buttons Grid Matrix
+    .calc-buttons-grid-matrix {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      width: 100%;
+      box-sizing: border-box;
+
+      button {
+        padding: 14px 0;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        font-family: monospace;
+        box-sizing: border-box;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+
+      .num-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        color: #cbd5e1;
+        &:hover {
+          background: rgba(255, 255, 255, 0.08);
+          color: #ffffff;
+        }
+      }
+
+      .sci-op-btn {
+        background: rgba(37, 99, 235, 0.1);
+        color: #60a5fa;
+        &:hover {
+          background: rgba(37, 99, 235, 0.2);
+          color: #ffffff;
+        }
+      }
+      .math-op-btn {
+        background: rgba(255, 255, 255, 0.06);
+        color: #94a3b8;
+        &:hover {
+          background: rgba(255, 255, 255, 0.12);
+          color: #ffffff;
+        }
+
+        &.backspace-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.15rem;
+        }
+      }
+
+      .calc-clear-btn {
+        background: rgba(239, 68, 68, 0.1);
+        color: #f87171;
+        &:hover {
+          background: #ef4444;
+          color: #ffffff;
+          box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+      }
+    }
+
+    // Evaluate Submit Button
+    .calc-evaluate-submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 14px;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #1d4ed8;
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
+      }
+    }
+  }
+
+  /* ========================================================
+     🔮 4. FUTURE EXTENSIONS PLACEHOLDERS (ඊළඟට එවන්න ඉන්න කොටස්)
+     ======================================================== */
+  &.converter-card {
+    h3 svg {
+      color: #10b981;
+    } // Green Icon for Unit Converter
+    /* Converter එකට ලියන අලුත් ස්ටයිල්ස් ඊළඟ පියවරේදී මෙතැනට වදී මචං... */
+  }
+
+  &.notes-card {
+    h3 svg {
+      color: #f97316;
+    } // Orange Icon for Study Notes
+    /* Study Notes එකට ලියන අලුත් ස්ටයිල්ස් මෙතැනට වදී... */
+  }
+}
+
+/* ========================================================
+   🚀 UNIVERSAL ANIMATIONS RUNNERS
+   ======================================================== */
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sheetSlideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+/* ========================================================
+     🔮 EXTENSION C: SCIENCE UNIT CONVERTER STYLES
+     ======================================================== */
+&.converter-card {
+  max-width: 380px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+
+  h3 svg {
+    color: #10b981;
+  } // Cyber Emerald Green Icon for Converter
+
+  // 🎛️ 1. CATEGORY SELECT TABS GRID (Speed, Length, Mass)
+  .converter-category-tabs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .converter-tab-btn {
+      padding: 10px 5px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      color: #94a3b8; // Muted slate text
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      text-transform: capitalize;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: #ffffff;
+      }
+
+      /* 🚀 ACTIVE CONVERTER TAB: සිලෙක්ට් වුණු ඒකකය Neon Green වලින් පත්තුවේ */
+      &.active-converter-tab {
+        background: rgba(
+          16,
+          185,
+          129,
+          0.12
+        ) !important; /* Soft Emerald Alpha Base */
+        border-color: #10b981 !important;
+        color: #10b981 !important;
+        box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+      }
+    }
+  }
+
+  // 📋 2. INPUT & OUTPUT CONTENT AREA
+  .converter-input-output-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .converter-input-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+
+      label {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #64748b; // Input instruction label
+        letter-spacing: 0.3px;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        color: #ffffff;
+        font-size: 0.9rem;
+        outline: none;
+        box-sizing: border-box;
+        font-family: monospace;
+        transition: all 0.3s ease;
+
+        &:focus {
+          border-color: #10b981; // Focus වෙද්දී Neon Green ලේසර් ලයින් එකක් වේ
+          background: rgba(255, 255, 255, 0.05);
+          box-shadow: rgba(16, 185, 129, 0.15) 0px 0px 8px;
+        }
+
+        &::placeholder {
+          color: #475569;
+        }
+      }
+    }
+
+    /* 🟢 3. CONVERSION LIVE RESULT BLOCK (පරිවර්තනය වුණු සැබෑ පිළිතුර) */
+    .converter-live-result-block {
+      background: rgba(
+        16,
+        185,
+        129,
+        0.1
+      ) !important; /* పරණ කැත ඝන කොළ පාට වෙනුවට Soft Alpha Green */
+      border: 1px solid rgba(16, 185, 129, 0.2) !important;
+      padding: 14px;
+      border-radius: 12px;
+      color: #10b981 !important; /* පිළිතුර සරාගී කොළ පැහැයෙන් පත්තුවේ */
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-align: center;
+      font-family: monospace;
+      letter-spacing: 0.3px;
+      box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.05);
+      animation: resultFadeIn 0.3s ease-out;
+    }
+  }
+}
+
+/* Extra animation for result splash */
+@keyframes resultFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
