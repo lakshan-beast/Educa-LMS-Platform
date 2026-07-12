@@ -211,6 +211,11 @@
 //   box-sizing: border-box;
 // }
 
+.page-container {
+  max-width: 1400px;
+  width: 100%;
+}
+
 .paper-hub-wrapper {
   min-height: 90vh;
   width: 100%;
