@@ -1,28 +1,241 @@
-// --- Academic Paper Hub Component Styles ---
-.parent-portal-wrapper {
-  max-width: 1400px;
-  margin: 3rem auto;
-  padding-top: 5rem;
-}
+// // --- Academic Paper Hub Component Styles ---
+// .parent-portal-wrapper {
+//   max-width: 1400px;
+//   margin: 3rem auto;
+//   padding-top: 5rem;
+// }
+
+// .paper-hub-wrapper {
+//   min-height: 90vh;
+//   width: $container-width-default;
+//   // margin-top: 4rem;
+//   // padding: 50px 20px;
+//   // background-color: $bg-light;
+
+//   // 👑 A. Premium Vault Header
+//   .subject-vault-header {
+//     padding: 35px;
+//     margin-bottom: 30px;
+//     color: $white;
+//     background: rgba($secondary-blue, 1);
+//     border-radius: $border-radius-xlarge;
+//     box-shadow: 0 12px 25px rgba(38, 19, 108, 0.12);
+//     position: relative;
+//     overflow: hidden;
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       right: -30px;
+//       bottom: -30px;
+//       width: 150px;
+//       height: 150px;
+//       background: rgba($white, 0.15);
+//       box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.8);
+//       border-radius: $border-radius-circle;
+//     }
+
+//     h2 {
+//       margin: $margin-none;
+//       font-size: $font-size-h1-mm;
+//       font-weight: $font-weight-800;
+//       border-bottom: 2px solid;
+//       display: flex;
+//       align-items: center;
+//       gap: 12px;
+//     }
+
+//     p {
+//       margin: 8px 0 0;
+//       color: $white;
+//       font-size: $font-size-body;
+//       opacity: 0.8;
+//     }
+//   }
+
+//   // 🎛️ B. Interactive Tabs Menu Layout
+//   .paper-tabs-container {
+//     padding-bottom: 12px;
+//     margin-bottom: 30px;
+//     border-bottom: 2px solid #e2e8f0;
+//     display: flex;
+//     gap: 12px;
+//     flex-wrap: wrap;
+
+//     .tab-btn {
+//       padding: 12px 24px;
+//       background: $white;
+//       color: $text-medium;
+//       font-size: $font-size-body;
+//       font-weight: $font-weight-700;
+//       border: 1px solid #cbd5e1;
+//       border-radius: $border-radius-small-m;
+//       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+//       cursor: pointer;
+//       display: flex;
+//       align-items: center;
+//       gap: 8px;
+
+//       svg {
+//         font-size: $font-size-h3-mm;
+//         opacity: 0.8;
+//       }
+
+//       &:hover {
+//         color: $secondary-blue;
+//         background: rgba($secondary-blue3, 0.05);
+//         border-color: $secondary-blue;
+//         transform: translateY(-2px);
+//       }
+
+//       &.active-paper-tab {
+//         color: $white;
+//         background: $secondary-blue;
+//         border-color: $secondary-blue;
+//         box-shadow: 0 6px 15px rgba($secondary-blue, 0.2);
+
+//         svg {
+//           opacity: 1;
+//         }
+
+//         &:hover {
+//           color: $white;
+//         }
+//       }
+//     }
+//   }
+
+//   // 📄 C. PDF Download Rows Layout
+//   .papers-list-grid {
+//     animation: fadeIn 0.4s ease-out;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 16px;
+
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+//     .paper-download-row {
+//       padding: 20px 25px;
+//       max-width: 400px;
+//       background: $white;
+//       transition: all 0.3s ease;
+//       border-radius: $border-radius-medium;
+//       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.015);
+//       border: 1px solid #edf2f9;
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: center;
+
+//       &:hover {
+//         transform: translateY(-3px);
+//         border-color: rgba($primary-orange, 0.3);
+//         background: $bg-light;
+//       }
+
+//       .pdf-icon-box {
+//         width: 42px;
+//         height: 42px;
+//         background: #fff0f0;
+//         color: $primary-orange;
+//         border-radius: $border-radius-small-m;
+//         font-size: $font-size-h3-m;
+//         transition: 0.3s;
+
+//         @include center-everything;
+//       }
+
+//       &:hover .pdf-icon-box {
+//         color: $white;
+//         background: #e74c3c;
+//         transform: scale(1.05);
+//       }
+
+//       h4 {
+//         color: $secondary-blue2;
+//         margin: $margin-none;
+//         font-size: $font-size-default;
+//         font-weight: $font-weight-700;
+//         line-height: 1.4;
+//       }
+
+//       // 📥 Download Button Style
+//       .browse-btn {
+//         padding: 10px 20px;
+//         font-size: $font-size-body-m;
+//         font-weight: $font-weight-700;
+//         text-align: center;
+//         transition: all 0.3s ease;
+//         gap: 8px;
+
+//         @include center-everything;
+
+//         .download-icon {
+//           margin-left: 6px;
+//         }
+
+//         &:hover {
+//           box-shadow: 0 6px 15px rgba(#4b6bfb, 0.3);
+//           gap: 12px;
+//         }
+//       }
+
+//       .no-pdfs {
+//         color: $text-medium;
+//         text-align: center;
+//         margin-top: 20px;
+//       }
+//     }
+//   }
+// }
+
+// @keyframes fadeIn {
+//   from {
+//     opacity: 0;
+//     transform: translateY(8px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+/* ========================================================
+   2026 CYBERPUNK CLOUD STORAGE PORTAL (NO VARIABLES)
+   ======================================================== */
+
+// .parent-portal-wrapper {
+//   max-width: 1400px;
+//   margin: 3rem auto;
+//   padding-top: 5rem;
+//   box-sizing: border-box;
+// }
 
 .paper-hub-wrapper {
   min-height: 90vh;
-  width: $container-width-default;
-  margin-top: 4rem;
-  padding: 50px 20px;
-  background-color: $bg-light;
+  width: 100%;
+  // 👈 Core Dark Change: පරණ ලයිට් බැක්ග්‍රවුන්ඩ් එක මුළුමනින්ම ගලවා ඩාර්ක් කළා
+  // background-color: #090d16;
+  
+  box-sizing: border-box;
 
-  // 👑 A. Premium Vault Header
+  // 👑 A. Premium Vault Header (පිරිසිදු Dark Tech Alpha Surface එකක් කළා)
   .subject-vault-header {
     padding: 35px;
-    margin-bottom: 30px;
-    color: $white;
-    background: rgba($secondary-blue, 1);
-    border-radius: $border-radius-xlarge;
-    box-shadow: 0 12px 25px rgba(38, 19, 108, 0.12);
+    margin-bottom: 15px;
+    color: #ffffff;
+
+    background: rgba(15, 23, 42, 0.55);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    border-radius: 24px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
     position: relative;
     overflow: hidden;
 
+    // උඩින්ම පත්තුවෙන ලස්සන Neon Glow Aura එකක් දුන්නා
     &::before {
       content: "";
       position: absolute;
@@ -30,169 +243,259 @@
       bottom: -30px;
       width: 150px;
       height: 150px;
-      background: rgba($white, 0.15);
-      box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.8);
-      border-radius: $border-radius-circle;
+      background: radial-gradient(
+        circle,
+        rgba(0, 241, 209, 0.55) 0%,
+        transparent 70%
+      );
+      filter: blur(1rem);
+      border-radius: 50%;
     }
 
     h2 {
-      margin: $margin-none;
-      font-size: $font-size-h1-mm;
-      font-weight: $font-weight-800;
-      border-bottom: 2px solid;
-      display: flex;
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 850;
+      border-bottom: 2px solid rgba(0, 241, 209, 0.2);
+      display: inline-flex;
       align-items: center;
       gap: 12px;
+      padding-bottom: 8px;
+      letter-spacing: -0.01em;
+      color: #ffffff;
     }
 
     p {
-      margin: 8px 0 0;
-      color: $white;
-      font-size: $font-size-body;
-      opacity: 0.8;
+      margin: 12px 0 0;
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.4;
     }
   }
 
-  // 🎛️ B. Interactive Tabs Menu Layout
+  // 🎛️ B. Interactive Tabs Menu Layout (Cyber Glass Tabs Bar)
   .paper-tabs-container {
     padding-bottom: 12px;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06); // පරණ ඝන ඉර වෙනුවට සිහින් ලයින් එකක්
     display: flex;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
+
+
 
     .tab-btn {
       padding: 12px 24px;
-      background: $white;
-      color: $text-medium;
-      font-size: $font-size-body;
-      font-weight: $font-weight-700;
-      border: 1px solid #cbd5e1;
-      border-radius: $border-radius-small-m;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.02);
+      color: #94a3b8; // Slate Gray Muted
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
 
       svg {
-        font-size: $font-size-h3-mm;
-        opacity: 0.8;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
       }
 
       &:hover {
-        color: $secondary-blue;
-        background: rgba($secondary-blue3, 0.05);
-        border-color: $secondary-blue;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.15);
         transform: translateY(-2px);
       }
 
+      /* 🚀 ACTIVE PAPER TAB STATE - සිලෙක්ට් වුණු ටැබ් එක පට්ටම ලස්සන Neon Teal වලින් පත්තුවේ */
       &.active-paper-tab {
-        color: $white;
-        background: $secondary-blue;
-        border-color: $secondary-blue;
-        box-shadow: 0 6px 15px rgba($secondary-blue, 0.2);
+        color: #00f1d1 !important;
+        background: rgba(0, 241, 209, 0.1) !important;
+        border-color: #00f1d1 !important;
+        box-shadow: 0 0 15px rgba(0, 241, 209, 0.2);
 
         svg {
-          opacity: 1;
+          color: #00f1d1;
         }
-
         &:hover {
-          color: $white;
+          color: #00f1d1;
         }
       }
     }
   }
 
-  // 📄 C. PDF Download Rows Layout
+  // 📄 C. PDF Download Rows Layout (Holographic Storage List)
   .papers-list-grid {
-    animation: fadeIn 0.4s ease-out;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(300px, 1fr)
+    ); 
+    gap: 18px;
+    width: 100%;
+    box-sizing: border-box;
 
     .paper-download-row {
-      padding: 20px 25px;
-      max-width: 400px;
-      background: $white;
-      transition: all 0.3s ease;
-      border-radius: $border-radius-medium;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.015);
-      border: 1px solid #edf2f9;
+      padding: 12px 16px;
+      background: rgba(15, 23, 42, 0.55); // Dark Glass Tiles
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       display: flex;
+      flex-direction: column; // 📱 Mobile Friendly වීමට Column කර පෑඩින් හැදුවා
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
+      gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+      @media (min-width: 480px) {
+        // flex-direction: row; // ඩෙස්ක්ටොප් වලදී ලස්සනට පැත්තෙන් පැත්තට පේළියට හිටී
+        // align-items: center;
+      }
 
       &:hover {
-        transform: translateY(-3px);
-        border-color: rgba($primary-orange, 0.3);
-        background: $bg-light;
+        transform: translateY(-4px);
+        border-color: rgba(
+          37,
+          99,
+          235,
+          0.3
+        ); // Hover වෙද්දී Executive Blue බෝඩර් එකක් වේ
+        background: rgba(15, 23, 42, 0.75);
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.3),
+          rgba(37, 99, 235, 0.1) 0px 0px 20px;
       }
 
+      // Title & Icon Block
+      .paper-details-meta-block {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex: 1;
+      }
+
+      /* 🔴 NEON RED PDF INDICATOR CARD BOX */
       .pdf-icon-box {
-        width: 42px;
-        height: 42px;
-        background: #fff0f0;
-        color: $primary-orange;
-        border-radius: $border-radius-small-m;
-        font-size: $font-size-h3-m;
-        transition: 0.3s;
-
-        @include center-everything;
-      }
-
-      &:hover .pdf-icon-box {
-        color: $white;
-        background: #e74c3c;
-        transform: scale(1.05);
-      }
-
-      h4 {
-        color: $secondary-blue2;
-        margin: $margin-none;
-        font-size: $font-size-default;
-        font-weight: $font-weight-700;
-        line-height: 1.4;
-      }
-
-      // 📥 Download Button Style
-      .browse-btn {
-        padding: 10px 20px;
-        font-size: $font-size-body-m;
-        font-weight: $font-weight-700;
-        text-align: center;
+        width: 44px;
+        height: 44px;
+        background: rgba(239, 68, 68, 0.1); // Soft Alpha Red Warning
+        color: #ef4444; // Neon Red PDF Color
+        border: 1px solid rgba(239, 68, 68, 0.15);
+        border-radius: 12px;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
         transition: all 0.3s ease;
-        gap: 8px;
+      }
 
-        @include center-everything;
+      // Card එක හොවර් කරද්දී PDF එක තද රතු පාටින් පත්තුවේ
+      &:hover .pdf-icon-box {
+        color: #ffffff;
+        background: #ef4444;
+        border-color: #ef4444;
+        transform: scale(1.05) rotate(-5deg);
+        filter: drop-shadow(0 0 8px #ef4444);
+      }
+
+      // PDF Title
+      h4.paper-core-title {
+        color: #ffffff; // පිරිසිදු සුදු පාට කළා Dark bg එකට පේන්න
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 700;
+        line-height: 1.4;
+        text-align: left;
+      }
+
+      /* 📥 DOWNLOAD BUTTON STYLE (EXECUTIVE BLUE GLOW) */
+      .browse-btn-download {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-align: center;
+        // background: rgba($primary-green, 0.5); /* Executive Blue Base */
+        // color: #ffffff !important;
+        // border: none;
+        border-radius: 10px;
+        text-decoration: none !important;
+        box-shadow: rgba(37, 99, 235, 0.25) 0px 4px 12px;
+        margin: 0 auto;
+
+        border: 3px solid $primary-green;
+        background-color: transparent;
+        color: $primary-green;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        width: auto; // Desktop වලදී නෝර්මල් ප්‍රමාණයට හැඩගැසේ
+        // width: 100%; // Mobile වලදී බටන් එක Full width වේ
+
+       
 
         .download-icon {
-          margin-left: 6px;
+          margin-left: 2px;
+          font-size: 0.9rem;
+          transition: transform 0.3s ease;
         }
 
         &:hover {
-          box-shadow: 0 6px 15px rgba(#4b6bfb, 0.3);
-          gap: 12px;
+          background: rgba($primary-green, 0.1);
+          box-shadow: rgba($primary-green, 0.3) 0px 8px 20px;
+          gap: 12px; // 👈 බටන් එක හොවර් වෙද්දී Arrow එක ලස්සනට ඈත් වේ!
+
+          .download-icon {
+            transform: translateY(2px);
+          }
         }
       }
+    }
 
-      .no-pdfs {
-        color: $text-medium;
-        text-align: center;
-        margin-top: 20px;
+    /* Hollow Empty Category Alert Notice Card */
+    .empty-papers-notice-card {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 45px 20px;
+      background: rgba(15, 23, 42, 0.3);
+      border-radius: 16px;
+      border: 1px dashed rgba(255, 255, 255, 0.08);
+
+      p {
+        margin: 0 0 6px 0;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: rgba($primary-green, 0.5);
+      }
+      small {
+        color: #475569;
+        font-size: 0.8rem;
+        font-weight: 500;
       }
     }
   }
 }
 
+/* ========================================================
+   SMOOTH ENTRY ANIMATIONS
+   ======================================================== */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
