@@ -71,25 +71,27 @@ const PaperHub = ({ subject }) => {
   }
 
   return (
-    <div className="paper-hub-wrapper page-container">
+    <div className="paper-hub-container page-container">
       <div className="system-container">
-        <Link className="back-btn" to="/dashboard">
-          <IoIosArrowBack /> Back to Dashboard
-        </Link>
+        <div className="back-buttons">
+          <Link className="back-btn" to="/dashboard">
+            <IoIosArrowBack /> Back to Dashboard
+          </Link>
+        </div>
 
-        <div className="subject-vault-header">
+        {/* <div className="subject-vault-header parts">
           <h2>
             {subject
               ? subject.toUpperCase() + " PAPER HUB"
               : "ACADEMIC PAPER HUB"}
           </h2>
-          <p style={{ margin: "5px 0 0", fontSize: "0.88rem" }}>
+          <p>
             Grade {studentGrade} • All structural tutes, past papers and
             materials are dynamically fetched from Live Cloud.
           </p>
         </div>
 
-        {/* 🎛 TABS MENU */}
+        {/* 🎛 TABS MENU 
         <div
           className="paper-tabs-container"
           style={{
@@ -204,7 +206,7 @@ const PaperHub = ({ subject }) => {
                   </h4>
                 </div>
 
-                {/* 🚀 🔐 Google Drive Link Download Button */}
+                {/* 🚀 🔐 Google Drive Link Download Button 
                 <a
                   href={paper.driveUrl}
                   target="_blank"
@@ -246,6 +248,80 @@ const PaperHub = ({ subject }) => {
               </small>
             </div>
           )}
+        </div> */}
+
+        <div className="paper-hub-wrapper">
+          {/* 👑 PREMIUM VAULT HEADER */}
+          <div className="subject-vault-header">
+            <h2>
+              {subject
+                ? subject.toUpperCase() + " PAPER HUB"
+                : "ACADEMIC PAPER HUB"}
+            </h2>
+            <p>
+              Grade {studentGrade} • All structural tutes, past papers and
+              materials are dynamically fetched from Live Cloud.
+            </p>
+          </div>
+
+          {/* 🎛️ CYBER INTERACTIVE TABS MENU */}
+          <div className="paper-tabs-container">
+            <button
+              className={`tab-btn ${activeTab === "tutes" ? "active-paper-tab" : ""}`}
+              onClick={() => setActiveTab("tutes")}>
+              <FaFileLines /> Class Tutes
+            </button>
+
+            <button
+              className={`tab-btn ${activeTab === "pastPapers" ? "active-paper-tab" : ""}`}
+              onClick={() => setActiveTab("pastPapers")}>
+              <FaFilePdf /> Past Papers
+            </button>
+
+            {subject !== "english" && (
+              <button
+                className={`tab-btn ${activeTab === "formulas" ? "active-paper-tab" : ""}`}
+                onClick={() => setActiveTab("formulas")}>
+                <FaGraduationCap /> Formula Guides
+              </button>
+            )}
+          </div>
+
+          {/* 📄 PAPERS CONTAINER GRID */}
+          <div className="papers-list-grid">
+            {isLoading ? (
+              <Loader />
+            ) : filteredMaterials.length > 0 ? (
+              filteredMaterials.map((paper) => (
+                <div key={paper.id} className="paper-download-row">
+                  <div className="paper-details-meta-block">
+                    <div className="pdf-icon-box">
+                      <FaFilePdf />
+                    </div>
+                    <h4 className="paper-core-title">{paper.title}</h4>
+                  </div>
+
+                  {/* 🚀 🔐 Google Drive Link Download Button */}
+                  <a
+                    href={paper.driveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="browse-btn-download">
+                    Download PDF
+                    <FaArrowDown className="download-icon" />
+                  </a>
+                </div>
+              ))
+            ) : (
+              <div className="empty-papers-notice-card">
+                <p>No documents uploaded in this category yet.</p>
+                <small>
+                  The admin panel has not added any tutorials to this section
+                  yet.
+                </small>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
