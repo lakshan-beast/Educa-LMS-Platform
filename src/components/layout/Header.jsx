@@ -131,7 +131,6 @@ const Header = () => {
           </div>
 
           {/* 📱 MOBILE NAVIGATION MENU*/}
-
           <div
             className={`header-navbar ${isActive ? "nav-active" : ""}`}
             id="header-navbar">
