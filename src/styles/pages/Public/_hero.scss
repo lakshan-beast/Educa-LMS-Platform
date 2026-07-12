@@ -101,7 +101,7 @@
         margin-right: 6px;
         border-radius: $border-radius-xlarge;
         height: 50px;
-        font-size: 1.05rem;
+        font-size: 1rem;
 
         @include respond(tablet) {
           margin-top: $margin-small;
