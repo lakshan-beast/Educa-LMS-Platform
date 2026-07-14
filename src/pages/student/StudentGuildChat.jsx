@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { db } from "../../firebaseConfig";
 import {
   collection,
@@ -23,6 +23,7 @@ import {
   FaCircleCheck,
   FaComments,
 } from "react-icons/fa6";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const StudentGuildChat = () => {
   const { subject } = useParams();
@@ -167,401 +168,385 @@ const StudentGuildChat = () => {
   });
 
   return (
-    <div
-      className="student-guild-chat-workspace"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "85vh",
-        background: "#f8faff",
-        borderRadius: "12px",
-        border: "1px solid #eef2ff",
-        overflow: "hidden",
-        marginTop: "9rem",
-      }}>
-      {/* 🎛️ TOP CONTROLLER BAR: FILTER PILLS MATRIX */}
-      <div
-        className="chat-top-filter-dock"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "15px 20px",
-          background: "#ffffff",
-          borderBottom: "1px solid #eef2ff",
-        }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <FaComments style={{ color: "#0056ff", fontSize: "1.2rem" }} />
-          <strong style={{ color: "#001b42", fontSize: "1rem" }}>
-            {subject?.toUpperCase()} Grade 11 Study Guild
-          </strong>
+    <div className="student-guild-chat-workspace">
+      <div className="system-container">
+        <div className="back-buttons">
+          <Link className="back-btn" to="/">
+            <IoIosArrowBack /> Back to Home
+          </Link>
+          <Link className="back-btn" to="/student-voices">
+            Go to Comments
+            <IoIosArrowForward />
+          </Link>
         </div>
 
-        {/* 🔍 QUESTION FILTER PILLS */}
-        <div style={{ display: "flex", gap: "8px" }}>
-          {[
-            { id: "ALL", label: "All Streams" },
-            { id: "UNSOLVED", label: "❓ Unsolved Only" },
-            { id: "SOLVED", label: "✅ Knowledge Hub" },
-          ].map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setActiveFilter(p.id)}
-              style={{
-                padding: "6px 14px",
-                borderRadius: "20px",
-                border: "none",
-                background: activeFilter === p.id ? "#0056ff" : "#f4f6fa",
-                color: activeFilter === p.id ? "white" : "#001b42",
-                fontWeight: "bold",
-                fontSize: "0.8rem",
-                cursor: "pointer",
-                transition: "0.2s",
-              }}>
-              {p.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 💬 LIVE MESSAGES FEED MATRIX */}
-      <div
-        className="chat-messages-scroll-area"
-        style={{
-          flexGrow: 1,
-          padding: "20px",
-          overflowY: "auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-        }}>
-        {filteredMessages.length === 0 ? (
-          <div
-            style={{
-              textAlign: "center",
-              color: "#8b949e",
-              fontStyle: "italic",
-              fontSize: "0.85rem",
-              margin: "auto",
-            }}>
-            No corporate timeline frames cataloged inside this filter partition.
+        {/* 🎛️ TOP CONTROLLER BAR: FILTER PILLS MATRIX */}
+        <div className="chat-top-filter-dock">
+          <div className="chat-title-meta-group">
+            <FaComments className="chat-hub-main-icon" />
+            <strong className="chat-hub-display-heading">
+              {subject?.toUpperCase()} Grade 11 Study Guild
+            </strong>
           </div>
-        ) : (
-          filteredMessages.map((msg) => {
-            // 🎨 VISUAL ISOLATION: ප්‍රශ්න, උත්තර සහ සාමාන්‍ය මැසේජ් වෙන වෙනම පාට වලින් වෙන් කිරීම
-            const isMsgQuestion = msg.type === "question";
-            const isMsgSolved = msg.status === "solved";
 
-            let bubbleBg = "#ffffff";
-            let bubbleBorder = "1px solid #eef2ff";
-            if (isMsgQuestion) {
-              bubbleBg = "#f0f4ff";
-              bubbleBorder = "1px solid #c7d2fe";
-            } else if (isMsgSolved) {
-              bubbleBg = "#ecfdf5";
-              bubbleBorder = "1px solid #bbf7d0";
-            }
+          {/* 🔍 QUESTION FILTER PILLS */}
+          <div className="chat-question-filter-pills-row">
+            {[
+              { id: "ALL", label: "All Streams" },
+              { id: "UNSOLVED", label: "❓ Unsolved Only" },
+              { id: "SOLVED", label: "✅ Knowledge Hub" },
+            ].map((p) => (
+              <button
+                key={p.id}
+                onClick={() => setActiveFilter(p.id)}
+                className={`chat-filter-pill-trigger-btn ${activeFilter === p.id ? "pill-active" : ""}`}>
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
-            return (
-              <div
-                key={msg.docId}
-                style={{
-                  background: bubbleBg,
-                  border: bubbleBorder,
-                  padding: "15px",
-                  borderRadius: "12px",
-                  maxWidth: "70%",
-                  width: "fit-content",
-                  alignSelf:
-                    msg.senderName === currentUserName
-                      ? "flex-end"
-                      : "flex-start",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.01)",
-                  position: "relative",
-                }}>
-                {/* 📌 WHATSAPP STYLE FORWARD / REPLY PREVIEW BOX */}
-                {msg.replyTo && (
+        {/* 💬 LIVE MESSAGES FEED MATRIX */}
+        <div
+          className="chat-messages-scroll-area"
+          style={{
+            flexGrow: 1,
+            padding: "20px",
+            overflowY: "auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+          }}>
+          {filteredMessages.length === 0 ? (
+            <div
+              style={{
+                textAlign: "center",
+                color: "#8b949e",
+                fontStyle: "italic",
+                fontSize: "0.85rem",
+                margin: "auto",
+              }}>
+              No corporate timeline frames cataloged inside this filter
+              partition.
+            </div>
+          ) : (
+            filteredMessages.map((msg) => {
+              // 🎨 VISUAL ISOLATION: ප්‍රශ්න, උත්තර සහ සාමාන්‍ය මැසේජ් වෙන වෙනම පාට වලින් වෙන් කිරීම
+              const isMsgQuestion = msg.type === "question";
+              const isMsgSolved = msg.status === "solved";
+
+              let bubbleBg = "#ffffff";
+              let bubbleBorder = "1px solid #eef2ff";
+              if (isMsgQuestion) {
+                bubbleBg = "#f0f4ff";
+                bubbleBorder = "1px solid #c7d2fe";
+              } else if (isMsgSolved) {
+                bubbleBg = "#ecfdf5";
+                bubbleBorder = "1px solid #bbf7d0";
+              }
+
+              return (
+                <div
+                  key={msg.docId}
+                  style={{
+                    background: bubbleBg,
+                    border: bubbleBorder,
+                    padding: "15px",
+                    borderRadius: "12px",
+                    maxWidth: "70%",
+                    width: "fit-content",
+                    alignSelf:
+                      msg.senderName === currentUserName
+                        ? "flex-end"
+                        : "flex-start",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.01)",
+                    position: "relative",
+                  }}>
+                  {/* 📌 WHATSAPP STYLE FORWARD / REPLY PREVIEW BOX */}
+                  {msg.replyTo && (
+                    <div
+                      style={{
+                        background: "rgba(0,0,0,0.03)",
+                        borderLeft: "3px solid #0056ff",
+                        padding: "8px 10px",
+                        borderRadius: "4px",
+                        marginBottom: "8px",
+                        fontSize: "0.8rem",
+                        color: "#484848",
+                      }}>
+                      <strong style={{ display: "block", color: "#0056ff" }}>
+                        @{msg.replyTo.sender} (Question)
+                      </strong>
+                      <p
+                        style={{
+                          margin: 0,
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}>
+                        {msg.replyTo.text}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* MAIN TEXT CHANNEL */}
+                  <p
+                    style={{
+                      margin: "0 0 10px 0",
+                      color: "#001b42",
+                      fontSize: "0.92rem",
+                      lineHeight: "1.4",
+                      fontWeight: isMsgQuestion ? "600" : "500",
+                      textAlign: "left",
+                    }}>
+                    {msg.text}
+                  </p>
+
+                  {/* 👟 METADATA FOOTER: නම, රෝල් එක සහ වෙලාව */}
                   <div
                     style={{
-                      background: "rgba(0,0,0,0.03)",
-                      borderLeft: "3px solid #0056ff",
-                      padding: "8px 10px",
-                      borderRadius: "4px",
-                      marginBottom: "8px",
-                      fontSize: "0.8rem",
-                      color: "#484848",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: "20px",
+                      borderTop: "1px solid rgba(0,0,0,0.03)",
+                      paddingTop: "8px",
                     }}>
-                    <strong style={{ display: "block", color: "#0056ff" }}>
-                      @{msg.replyTo.sender} (Question)
-                    </strong>
-                    <p
+                    <small
                       style={{
-                        margin: 0,
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
+                        color: "#8b949e",
+                        fontSize: "0.75rem",
+                        fontWeight: "bold",
                       }}>
-                      {msg.replyTo.text}
-                    </p>
-                  </div>
-                )}
-
-                {/* MAIN TEXT CHANNEL */}
-                <p
-                  style={{
-                    margin: "0 0 10px 0",
-                    color: "#001b42",
-                    fontSize: "0.92rem",
-                    lineHeight: "1.4",
-                    fontWeight: isMsgQuestion ? "600" : "500",
-                    textAlign: "left",
-                  }}>
-                  {msg.text}
-                </p>
-
-                {/* 👟 METADATA FOOTER: නම, රෝල් එක සහ වෙලාව */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "20px",
-                    borderTop: "1px solid rgba(0,0,0,0.03)",
-                    paddingTop: "8px",
-                  }}>
-                  <small
-                    style={{
-                      color: "#8b949e",
-                      fontSize: "0.75rem",
-                      fontWeight: "bold",
-                    }}>
-                    {msg.senderName} |{" "}
-                    <span
-                      style={{
-                        color:
-                          msg.senderRole === "teacher"
-                            ? "#ff4b4b"
-                            : msg.senderRole === "mentor"
-                              ? "#ff9900"
-                              : "#0056ff",
-                      }}>
-                      {msg.senderRole?.toUpperCase()}
-                    </span>
-                  </small>
-                  <small style={{ color: "#8b949e", fontSize: "0.7rem" }}>
-                    {new Date(msg.createdAt).toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </small>
-                </div>
-
-                {/* 👍 INTERACTIVE REACTION MATRIX CONTROLS */}
-                <div style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
-                  <button
-                    onClick={() => handleAddReaction(msg.docId, "heart")}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "3px",
-                      fontSize: "0.75rem",
-                      color: "#ff4b6e",
-                      cursor: "pointer",
-                    }}>
-                    <FaHeart /> {msg.reactions?.heart || 0}
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleAddReaction((docId) => msg.docId, "thumbs")
-                    }
-                    style={{
-                      background: "none",
-                      border: "none",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "3px",
-                      fontSize: "0.75rem",
-                      color: "#0056ff",
-                      cursor: "pointer",
-                    }}>
-                    <FaThumbsUp /> {msg.reactions?.thumbs || 0}
-                  </button>
-                </div>
-
-                {/* 🎛️ ACTION PANEL: REPLY / VERIFY / EVICT CONTROLS */}
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "8px",
-                    justifyContent: "flex-end",
-                    marginTop: "10px",
-                    borderTop: "1px solid rgba(0,0,0,0.03)",
-                    paddingTop: "6px",
-                  }}>
-                  <button
-                    onClick={() => setReplyTarget(msg)}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: "#0056ff",
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "4px",
-                    }}
-                    title="Reply to Message">
-                    <FaReply /> Reply
-                  </button>
-
-                  {isMsgQuestion &&
-                    msg.status === "pending" &&
-                    (currentUserRole === "teacher" ||
-                      currentUserRole === "mentor") && (
-                      <button
-                        onClick={() => handleVerifyAnswer(msg.docId)}
+                      {msg.senderName} |{" "}
+                      <span
                         style={{
-                          background: "none",
-                          border: "none",
-                          color: "#10b981",
-                          cursor: "pointer",
-                          fontSize: "0.8rem",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "4px",
-                        }}
-                        title="Mark as Solved">
-                        <FaCircleCheck /> Solve
-                      </button>
-                    )}
+                          color:
+                            msg.senderRole === "teacher"
+                              ? "#ff4b4b"
+                              : msg.senderRole === "mentor"
+                                ? "#ff9900"
+                                : "#0056ff",
+                        }}>
+                        {msg.senderRole?.toUpperCase()}
+                      </span>
+                    </small>
+                    <small style={{ color: "#8b949e", fontSize: "0.7rem" }}>
+                      {new Date(msg.createdAt).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </small>
+                  </div>
 
-                  {currentUserRole === "teacher" && (
+                  {/* 👍 INTERACTIVE REACTION MATRIX CONTROLS */}
+                  <div
+                    style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
                     <button
-                      onClick={() => handleEvictMessage(msg.docId)}
+                      onClick={() => handleAddReaction(msg.docId, "heart")}
                       style={{
                         background: "none",
                         border: "none",
-                        color: "#ff4b4b",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
+                        fontSize: "0.75rem",
+                        color: "#ff4b6e",
+                        cursor: "pointer",
+                      }}>
+                      <FaHeart /> {msg.reactions?.heart || 0}
+                    </button>
+                    <button
+                      onClick={() =>
+                        handleAddReaction((docId) => msg.docId, "thumbs")
+                      }
+                      style={{
+                        background: "none",
+                        border: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
+                        fontSize: "0.75rem",
+                        color: "#0056ff",
+                        cursor: "pointer",
+                      }}>
+                      <FaThumbsUp /> {msg.reactions?.thumbs || 0}
+                    </button>
+                  </div>
+
+                  {/* 🎛️ ACTION PANEL: REPLY / VERIFY / EVICT CONTROLS */}
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "8px",
+                      justifyContent: "flex-end",
+                      marginTop: "10px",
+                      borderTop: "1px solid rgba(0,0,0,0.03)",
+                      paddingTop: "6px",
+                    }}>
+                    <button
+                      onClick={() => setReplyTarget(msg)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        color: "#0056ff",
                         cursor: "pointer",
                         fontSize: "0.8rem",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
                       }}
-                      title="Evict Frame">
-                      <FaTrashCan />
+                      title="Reply to Message">
+                      <FaReply /> Reply
                     </button>
-                  )}
+
+                    {isMsgQuestion &&
+                      msg.status === "pending" &&
+                      (currentUserRole === "teacher" ||
+                        currentUserRole === "mentor") && (
+                        <button
+                          onClick={() => handleVerifyAnswer(msg.docId)}
+                          style={{
+                            background: "none",
+                            border: "none",
+                            color: "#10b981",
+                            cursor: "pointer",
+                            fontSize: "0.8rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "4px",
+                          }}
+                          title="Mark as Solved">
+                          <FaCircleCheck /> Solve
+                        </button>
+                      )}
+
+                    {currentUserRole === "teacher" && (
+                      <button
+                        onClick={() => handleEvictMessage(msg.docId)}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: "#ff4b4b",
+                          cursor: "pointer",
+                          fontSize: "0.8rem",
+                        }}
+                        title="Evict Frame">
+                        <FaTrashCan />
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        )}
-        <div ref={chatEndRef} />
-      </div>
-
-      {/* 📌 FLOATING REPLY ANCHOR NOTIFICATION */}
-      {replyTarget && (
-        <div
-          style={{
-            background: "#eef2ff",
-            padding: "8px 20px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            borderTop: "1px solid #c7d2fe",
-            fontSize: "0.85rem",
-            color: "#0056ff",
-          }}>
-          <span>
-            Replying to <strong>@{replyTarget.senderName}</strong>: "
-            {replyTarget.text.slice(0, 40)}..."
-          </span>
-          <button
-            onClick={() => setReplyTarget(null)}
-            style={{
-              background: "none",
-              border: "none",
-              color: "#ff4b4b",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}>
-            Cancel
-          </button>
+              );
+            })
+          )}
+          <div ref={chatEndRef} />
         </div>
-      )}
 
-      {/* 🚀 BOTTOM LAYOUT: CHAT INPUT CONTROLLERS */}
-      <form
-        onSubmit={handleSendMessage}
-        style={{
-          display: "flex",
-          gap: "12px",
-          padding: "15px 20px",
-          background: "#ffffff",
-          borderTop: "1px solid #eef2ff",
-          alignItems: "center",
-        }}>
-        {/* ❓ QUESTION TOGGLE TEMPLATE */}
-        <label
+        {/* 📌 FLOATING REPLY ANCHOR NOTIFICATION */}
+        {replyTarget && (
+          <div
+            style={{
+              background: "#eef2ff",
+              padding: "8px 20px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderTop: "1px solid #c7d2fe",
+              fontSize: "0.85rem",
+              color: "#0056ff",
+            }}>
+            <span>
+              Replying to <strong>@{replyTarget.senderName}</strong>: "
+              {replyTarget.text.slice(0, 40)}..."
+            </span>
+            <button
+              onClick={() => setReplyTarget(null)}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#ff4b4b",
+                cursor: "pointer",
+                fontWeight: "bold",
+              }}>
+              Cancel
+            </button>
+          </div>
+        )}
+
+        {/* 🚀 BOTTOM LAYOUT: CHAT INPUT CONTROLLERS */}
+        <form
+          onSubmit={handleSendMessage}
           style={{
             display: "flex",
+            gap: "12px",
+            padding: "15px 20px",
+            background: "#ffffff",
+            borderTop: "1px solid #eef2ff",
             alignItems: "center",
-            gap: "6px",
-            fontSize: "0.85rem",
-            fontWeight: "bold",
-            color: isQuestionToggle ? "#ff9900" : "#8b949e",
-            background: isQuestionToggle ? "#fff7ed" : "#f4f6fa",
-            padding: "10px 14px",
-            borderRadius: "8px",
-            cursor: "pointer",
-            transition: "0.2s",
           }}>
+          {/* ❓ QUESTION TOGGLE TEMPLATE */}
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              fontSize: "0.85rem",
+              fontWeight: "bold",
+              color: isQuestionToggle ? "#ff9900" : "#8b949e",
+              background: isQuestionToggle ? "#fff7ed" : "#f4f6fa",
+              padding: "10px 14px",
+              borderRadius: "8px",
+              cursor: "pointer",
+              transition: "0.2s",
+            }}>
+            <input
+              type="checkbox"
+              checked={isQuestionToggle}
+              onChange={(e) => setIsQuestionToggle(e.target.checked)}
+              style={{ cursor: "pointer" }}
+            />
+            <FaCircleQuestion /> Mark as Core Question
+          </label>
+
           <input
-            type="checkbox"
-            checked={isQuestionToggle}
-            onChange={(e) => setIsQuestionToggle(e.target.checked)}
-            style={{ cursor: "pointer" }}
+            type="text"
+            placeholder={
+              isQuestionToggle
+                ? "Type your academic question details..."
+                : "Type your message stream details..."
+            }
+            required
+            value={typedMessage}
+            onChange={(e) => setTypedMessage(e.target.value)}
+            style={{
+              flexGrow: 1,
+              padding: "12px 15px",
+              borderRadius: "8px",
+              border: "1px solid #d2d6dc",
+              outline: "none",
+              fontSize: "0.9rem",
+            }}
           />
-          <FaCircleQuestion /> Mark as Core Question
-        </label>
 
-        <input
-          type="text"
-          placeholder={
-            isQuestionToggle
-              ? "Type your academic question details..."
-              : "Type your message stream details..."
-          }
-          required
-          value={typedMessage}
-          onChange={(e) => setTypedMessage(e.target.value)}
-          style={{
-            flexGrow: 1,
-            padding: "12px 15px",
-            borderRadius: "8px",
-            border: "1px solid #d2d6dc",
-            outline: "none",
-            fontSize: "0.9rem",
-          }}
-        />
-
-        <button
-          type="submit"
-          style={{
-            background: "#0056ff",
-            color: "white",
-            border: "none",
-            padding: "12px 18px",
-            borderRadius: "8px",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyValue: "center",
-          }}
-          title="Broadcast Message">
-          <FaPaperPlane />
-        </button>
-      </form>
+          <button
+            type="submit"
+            style={{
+              background: "#0056ff",
+              color: "white",
+              border: "none",
+              padding: "12px 18px",
+              borderRadius: "8px",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyValue: "center",
+            }}
+            title="Broadcast Message">
+            <FaPaperPlane />
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
