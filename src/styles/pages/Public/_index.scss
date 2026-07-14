@@ -38,7 +38,7 @@ main {
 
       &:hover {
         gap: 12px;
-        color:$primary-green;
+        color: $primary-green;
       }
     }
 
@@ -115,10 +115,22 @@ main {
 .teachers-grid,
 .classes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  // grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 10px;
   padding: 4rem 0rem;
 }
+
+/* 👑 FIXED: HUAPEI Y5 LITE ඇතුළු සියලුම කුඩා දුරකථන සඳහා කාඩ්පත් නූලටම ලොක් කළා! */
+.dashboard-grid,
+.subjects-grid,
+.counters-grid {
+  display: grid;
+  // 🚀 තිරය කුඩා වෙද්දී 100% ක්ම ඔටෝ ඇකිලෙන සුපිරි ලොජික් එක
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 15px;
+}
+
 .classes-grid {
   padding-bottom: 1rem;
 }
