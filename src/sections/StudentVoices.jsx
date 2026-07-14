@@ -77,8 +77,9 @@ const StudentVoices = () => {
     setTimeout(() => setIsLoading(false), 0);
   }, []);
 
-  fetchCloudVoices();
-  useEffect(() => {}, [fetchCloudVoices]);
+  useEffect(() => {
+    fetchCloudVoices();
+  }, [fetchCloudVoices]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
