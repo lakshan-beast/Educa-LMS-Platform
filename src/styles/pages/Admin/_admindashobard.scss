@@ -1,142 +1,1451 @@
-/* 🏛️ ADMIN CORE COMMAND CENTER DASHBOARD STYLES */
-.admin-analytics-core-dashboard {
-  padding: 10px;
-  animation: fadeIn 0.4s ease;
+// /* 🏛️ ADMIN CORE COMMAND CENTER DASHBOARD STYLES */
+// .admin-analytics-core-dashboard {
+//   padding: 10px;
+//   animation: fadeIn 0.4s ease;
 
-  /* 👑 1. TOP ALERTS & SMART REMINDERS */
+//   /* 👑 1. TOP ALERTS & SMART REMINDERS */
+//   .dashboard-top-alert-matrix {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 15px;
+
+//     .pulse-icon-live {
+//       color: #ff4b4b;
+//       animation: alertBlink 1.2s infinite alternate;
+//     }
+//   }
+
+//   /* 🎛️ 2. QUICK MANAGEMENT SHORTCUTS */
+//   .shortcut-btn-hover {
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+//     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+//     &:hover {
+//       transform: translateY(-3px);
+//       box-shadow: 0 10px 25px rgba(0, 86, 255, 0.08);
+//       border-color: #0056ff !important;
+//     }
+//   }
+
+//   /* 📊 3. DYNAMIC COUNTER CARDS */
+//   h2 {
+//     font-weight: 700;
+//     letter-spacing: -0.5px;
+//   }
+
+//   /* 📱 4. TODAY'S CLASSES TIMELINE PANEL */
+//   .today-class-node {
+//     background: #f8faff;
+//     padding: 15px;
+//     border-radius: 8px;
+//     border: 1px solid #eef2ff;
+//     transition: 0.2s;
+
+//     &:hover {
+//       border-color: #0056ff;
+//       background: #ffffff;
+//     }
+//   }
+
+//   /* 📊 5. GRAPHICS DATA LAYER (CHARTS) */
+//   .recharts-default-tooltip {
+//     border-radius: 8px !important;
+//     border: 1px solid #eef2ff !important;
+//     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+//   }
+
+//   /* 🏁 6. TRIPLE EXAM DEADLINE COUNTDOWN GRID */
+//   .secure-exam-countdown-card {
+//     background: #0d1117;
+//     border: 1px solid #30363d;
+//     padding: 20px;
+//     border-radius: 12px;
+//     transition: all 0.3s ease;
+
+//     &:hover {
+//       border-color: #ffd700;
+//       box-shadow: 0 5px 20px rgba(255, 215, 0, 0.05);
+//     }
+
+//     code {
+//       font-family: "Courier New", Courier, monospace;
+//       text-shadow: 0 0 6px rgba(0, 247, 255, 0.3);
+//     }
+//   }
+// }
+
+// /* 🎨 ANIMATIONS LAYER */
+// @keyframes alertBlink {
+//   0% {
+//     opacity: 0.4;
+//     transform: scale(0.95);
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: scale(1.05);
+//   }
+// }
+
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(10px);
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// /* 🏛️ RE-ARM INTERSECTION EXTRA GRAPHICS STYLES */
+// .mini-calendar-widget-core {
+//   background: #ffffff;
+//   border: 1px solid #f4f6fa;
+//   border-radius: 8px;
+//   padding: 5px;
+
+//   .calendar-days-grid-matrix {
+//     .calendar-day-cell-node {
+//       height: 38px;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       transition: all 0.2s ease;
+//       cursor: default;
+
+//       &.active-day:hover {
+//         background: #0056ff !important;
+//         color: #ffffff !important;
+//         cursor: pointer;
+
+//         span {
+//           background: #ffffff !important;
+//         } /* Hover වෙද්දී තිත සුදු පාට වේ */
+//       }
+
+//       &.empty-day {
+//         opacity: 0;
+//         pointer-events: none;
+//       }
+//     }
+//   }
+// }
+
+// /* 🚀 UPCOMING LOGISTICS TIMELINE ANIMATION FEED */
+// .folders-vertical-stack,
+// .folders-vertical-stack div {
+//   transition: all 0.2s ease-in-out;
+
+//   &:hover {
+//     border-color: #ff9900;
+//   }
+// }
+
+/* ========================================================
+   2026 CENTRAL CYBER COMMAND CENTER - ANALYTICS HUB HEADER
+   ======================================================== */
+
+.admin-analytics-core-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  box-sizing: border-box;
+  animation: adminViewFadeIn 0.4s ease-out;
+
   .dashboard-top-alert-matrix {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-    .pulse-icon-live {
-      color: #ff4b4b;
-      animation: alertBlink 1.2s infinite alternate;
+  /* 👑 A. MAIN WELCOME HERO BANNER (Premium Dark Tech Glass Layer) */
+  .admin-welcome-hero-banner {
+    // 👈 2026 Core Change: පරණ ඝන නිල් පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
+    background: linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.6) 0%,
+      rgba(30, 41, 59, 0.3) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    // 📍 තද නිල් උඩින් පෙට්ටිය වෙන් වී පෙනෙන්න සිහින් බෝඩර් එක දුන්නා
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 18px; // Smooth Apple Style Radii
+    padding: 28px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    box-sizing: border-box;
+
+    h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 850;
+      color: #ffffff; // පිරිසිදු සුදු පැහැය
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 6px 0 0 0;
+      color: #94a3b8; // Slate Gray Light Text
+      font-size: 0.92rem;
+      line-height: 1.4;
     }
   }
 
-  /* 🎛️ 2. QUICK MANAGEMENT SHORTCUTS */
-  .shortcut-btn-hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 86, 255, 0.08);
-      border-color: #0056ff !important;
-    }
-  }
-
-  /* 📊 3. DYNAMIC COUNTER CARDS */
-  h2 {
+  /* ========================================================
+     🔔 B. SMART ADMINISTRATIVE REMINDER STRIP (නිවේදන තීරුව)
+     ======================================================== */
+  .smart-admin-reminder-strip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    border-radius: 0 12px 12px 0; // Left side boundary open
+    font-size: 0.88rem;
     font-weight: 700;
-    letter-spacing: -0.5px;
-  }
-
-  /* 📱 4. TODAY'S CLASSES TIMELINE PANEL */
-  .today-class-node {
-    background: #f8faff;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #eef2ff;
-    transition: 0.2s;
-
-    &:hover {
-      border-color: #0056ff;
-      background: #ffffff;
-    }
-  }
-
-  /* 📊 5. GRAPHICS DATA LAYER (CHARTS) */
-  .recharts-default-tooltip {
-    border-radius: 8px !important;
-    border: 1px solid #eef2ff !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-  }
-
-  /* 🏁 6. TRIPLE EXAM DEADLINE COUNTDOWN GRID */
-  .secure-exam-countdown-card {
-    background: #0d1117;
-    border: 1px solid #30363d;
-    padding: 20px;
-    border-radius: 12px;
+    box-sizing: border-box;
+    text-align: left;
     transition: all 0.3s ease;
 
-    &:hover {
-      border-color: #ffd700;
-      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.05);
+    svg {
+      font-size: 1rem;
+      flex-shrink: 0;
     }
 
-    code {
-      font-family: "Courier New", Courier, monospace;
-      text-shadow: 0 0 6px rgba(0, 247, 255, 0.3);
+    // 🔴 1. CONDITION: අද පන්ති පවතින විට පත්තුවෙන ලස්සන Neon Crimson රතු ලයින් එක
+    &.alert-live-today {
+      background: rgba(239, 68, 68, 0.08); // Soft Red Alpha Base
+      border-left: 4px solid #ef4444; // Hot Neon Red Alert Border
+      color: #f87171; // Light Red Text
+
+      svg {
+        color: #ef4444;
+        filter: drop-shadow(0 0 6px #ef4444);
+      }
+
+      // 🚀 ලයිව් අයිකන් එක නිවී නිවී පත්තුවෙන සජීවී ඇනිමේෂන් එක
+      .pulse-icon-live {
+        animation: adminBoltPulse 1.2s infinite alternate ease-in-out;
+      }
+    }
+
+    // 🔵 2. CONDITION: අද පන්ති නොමැති විට පවතින සන්සුන් Executive Blue ලයින් එක
+    &.alert-auto-upcoming {
+      background: rgba(37, 99, 235, 0.08); // Soft Blue Alpha Base
+      border-left: 4px solid #2563eb; // Standard Blue Border
+      color: #60a5fa; // Light Blue Text
+
+      svg {
+        color: #2563eb;
+        filter: drop-shadow(0 0 4px #2563eb);
+      }
     }
   }
 }
 
-/* 🎨 ANIMATIONS LAYER */
-@keyframes alertBlink {
-  0% {
-    opacity: 0.4;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
+/* ========================================================
+   🚀 HARD CORE SYSTEM KEYFRAMES
+   ======================================================== */
+@keyframes adminViewFadeIn {
+  from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* 🏛️ RE-ARM INTERSECTION EXTRA GRAPHICS STYLES */
-.mini-calendar-widget-core {
-  background: #ffffff;
-  border: 1px solid #f4f6fa;
-  border-radius: 8px;
-  padding: 5px;
+@keyframes adminBrainBoltPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 1;
+  } // Bolt icon alert pulse
+}
 
-  .calendar-days-grid-matrix {
-    .calendar-day-cell-node {
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      cursor: default;
+/* ========================================================
+   2026 CYBER CENTRAL ANALYTICS - QUICK SHORTCUT HUB GRID
+   ======================================================== */
 
-      &.active-day:hover {
-        background: #0056ff !important;
-        color: #ffffff !important;
-        cursor: pointer;
+.admin-shortcut-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  ); // 100% Responsive Grid Setup
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 
-        span {
-          background: #ffffff !important;
-        } /* Hover වෙද්දී තිත සුදු පාට වේ */
+  // 1. COMMON BASE STYLE FOR BOTH TILES (Premium Dark Glass Framework)
+  .admin-shortcut-tile-btn,
+  .admin-shortcut-tile-display {
+    background: rgba(15, 23, 42, 0.55); // Deep Dark Glass Face
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border: 1px solid rgba(255, 255, 255, 0.05); // සිහින් රිදී බෝඩර් රේඛාව
+    padding: 16px 20px;
+    border-radius: 16px; // Smooth Apple Style Radii
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  // Specific Button Trigger Styling
+  .admin-shortcut-tile-btn {
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+
+    .shortcut-label-text {
+      color: #cbd5e1; // Slate Gray Light Text
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    // 🚀 HOVER ACTION INTERACTION: හොවර් වෙද්දී බටන් එක ලස්සනට සයිබර් ඔරේන්ජ් වෙලා දිලිසේ!
+    &:hover,
+    &:active {
+      background: rgba(249, 115, 22, 0.08); // Alpha Warning Orange Base
+      border-color: #f97316;
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        rgba(249, 115, 22, 0.15) 0px 0px 15px;
+
+      .shortcut-label-text {
+        color: #ffffff;
       }
+      .shortcut-icon-wrapper.icon-exam {
+        background: #f97316;
+        color: #ffffff;
+        filter: drop-shadow(0 0 6px #f97316);
+      }
+    }
+  }
 
-      &.empty-day {
-        opacity: 0;
-        pointer-events: none;
+  /* --- 🎨 INDIVIDUAL ICON WRAPPERS ACCENTS (කුඩා අයිකන් කොටු) --- */
+  .shortcut-icon-wrapper {
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+
+    // 🟠 + Schedule Exam Icon (Soft Alpha Orange)
+    &.icon-exam {
+      background: rgba(249, 115, 22, 0.1);
+      color: #f97316;
+      border: 1px solid rgba(249, 115, 22, 0.15);
+    }
+
+    // 🟢 Terminal Clock Icon (Soft Alpha Emerald Green)
+    &.icon-clock {
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.15);
+    }
+  }
+
+  /* --- 💻 HIGH-TECH DIGITAL CLOCK META NODE (ඔරලෝසු පෙට්ටිය) --- */
+  .terminal-clock-meta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+
+    .clock-hud-label {
+      color: #64748b; // Slate description text
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
+
+    // 🟢 Live Clock Numbers (ඩිජිටල් අංක සරාගී කොළ පාටින් පත්තුවේ)
+    .clock-digital-digits {
+      font-size: 1.2rem;
+      color: #10b981;
+      font-weight: 800;
+      font-family: monospace; // ඩිජිටල් ඔරලෝසු වලට පට්ට
+      text-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+    }
+  }
+}
+
+/* ========================================================
+   2026 CYBER CENTRAL ANALYTICS - DYNAMIC METRICS BENTO GRID
+   ======================================================== */
+
+.admin-metrics-counter-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(260px, 1fr)
+  ); // 100% Responsive Grid Flow
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* 🏢 INDIVIDUAL BENTO METRIC TILE (Holographic Data Tiles) */
+  .metric-bento-tile {
+    // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    // 📍 තද නිල් පසුබිම උඩින් කාඩ්ස් වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 18px; // Smooth Apple Style Radii
+    padding: 24px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden; // Underglow එක එළියට පැනීම වැළැක්වීමට
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    // 🚀 HOVER / TOUCH INTERACTION: හොවර් කරද්දී ලස්සනට ත්‍රිමාණව පණ ලැබීම
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+      );
+      transform: translateY(-4px);
+    }
+
+    // Texts Layout Group
+    .metric-data-stream {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      text-align: left;
+    }
+
+    // Data Title Header (ENROLLED STUDENTS ආදිය)
+    .metric-hud-title {
+      color: #64748b; // Muted Slate Gray
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
+
+    // Main Big Digital Numbers (ලොකු ඉලක්කම්)
+    .metric-digital-digits {
+      margin: 0;
+      font-size: 2.2rem; // තවත් පොඩ්ඩක් ලොකු කර කැපී පෙනෙන්න හැදුවා
+      color: #ffffff;
+      font-weight: 800;
+      font-family: monospace; // ඩිජිටල් අංක වලට පට්ට
+      letter-spacing: -0.02em;
+    }
+
+    // Rounded Avatar Icon Glow Holder Base
+    .metric-avatar-icon-glow {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    /* ========================================================
+       🎨 3 TILES EXCLUSIVE CODES: කාඩ් 3 ට වෙන වෙනම සන්නාම වර්ණ දීම
+       ======================================================== */
+
+    // 🔵 1. ENROLLED STUDENTS CARD (Executive Blue Theme)
+    &.tile-students {
+      .metric-avatar-icon-glow {
+        background: rgba(37, 99, 235, 0.1);
+        color: #3b82f6;
+        border: 1px solid rgba(37, 99, 235, 0.15);
+      }
+      &:hover {
+        border-color: #2563eb;
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.35),
+          rgba(37, 99, 235, 0.15) 0px 0px 20px;
+        .metric-avatar-icon-glow {
+          background: #2563eb;
+          color: #ffffff;
+          filter: drop-shadow(0 0 6px #2563eb);
+        }
+        .metric-digital-digits {
+          color: #60a5fa;
+        }
+      }
+    }
+
+    // 🟠 2. BROADCAST NOTICES CARD (Cyber Warning Orange Theme)
+    &.tile-notices {
+      .metric-avatar-icon-glow {
+        background: rgba(249, 115, 22, 0.1);
+        color: #f97316;
+        border: 1px solid rgba(249, 115, 22, 0.15);
+      }
+      &:hover {
+        border-color: #f97316;
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.35),
+          rgba(249, 115, 22, 0.15) 0px 0px 20px;
+        .metric-avatar-icon-glow {
+          background: #f97316;
+          color: #ffffff;
+          filter: drop-shadow(0 0 6px #f97316);
+        }
+        .metric-digital-digits {
+          color: #f97316;
+          text-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+        }
+      }
+    }
+    // 🟢 3. MATERIAL ASSETS CARD (Cyber Emerald Green Theme)
+    &.tile-assets {
+      .metric-avatar-icon-glow {
+        background: rgba(16, 185, 129, 0.1);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.15);
+      }
+      &:hover {
+        border-color: #10b981;
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.35),
+          rgba(16, 185, 129, 0.15) 0px 0px 20px;
+        .metric-avatar-icon-glow {
+          background: #10b981;
+          color: #ffffff;
+          filter: drop-shadow(0 0 6px #10b981);
+        }
+        .metric-digital-digits {
+          color: #10b981;
+          text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
       }
     }
   }
 }
 
-/* 🚀 UPCOMING LOGISTICS TIMELINE ANIMATION FEED */
-.folders-vertical-stack,
-.folders-vertical-stack div {
-  transition: all 0.2s ease-in-out;
+/* ========================================================
+   2026 CYBER CENTRAL ANALYTICS - TODAY'S CLASSES PIPELINE
+   ======================================================== */
 
-  &:hover {
-    border-color: #ff9900;
+.admin-today-classes-pipeline-panel {
+  // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  // 📍 තද නිල් පසුබිම උඩින් පැනලය වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px; // Smooth Apple Style Radii
+  padding: 26px 28px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+
+  // Main Header Title Line (Today's Active Classes Pipeline)
+  .pipeline-core-heading {
+    margin: 0 0 20px 0;
+    color: #ffffff; // පිරිසිදු සුදු පැහැය
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    svg {
+      color: #2563eb; // Icon එක පට්ටම ලස්සන Executive Blue කළා
+      filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.3));
+    }
+  }
+
+  // Hollow Empty State Configuration text
+  .pipeline-empty-state-text {
+    margin: 0;
+    color: #64748b; // Muted slate gray text
+    font-style: italic;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 20px 0;
+    text-align: center;
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.04);
+  }
+
+  /* ========================================================
+     📊 ACTIVE CARDS GRID (සක්‍රීය පන්ති මතු වන ජාලය)
+     ======================================================== */
+  .pipeline-active-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(280px, 1fr)
+    ); // 100% Responsive Grid Flow
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+
+    // 📱 INDIVIDUAL CLASS NODE TILE (Holographic Class Modules)
+    .pipeline-class-node-tile {
+      background: rgba(0, 0, 0, 0.2); // Integrated Dark Matrix Input Box
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 18px 20px;
+      border-radius: 12px; // Rounded boxes
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      // Hover / Touch interaction
+      &:hover {
+        background: rgba(0, 0, 0, 0.3);
+        border-color: rgba(
+          37,
+          99,
+          235,
+          0.25
+        ); // Hover වෙද්දී Executive Blue බෝඩර් එකක් වේ
+        transform: translateY(-2px);
+        box-shadow:
+          0 8px 20px rgba(0, 0, 0, 0.2),
+          rgba(37, 99, 235, 0.05) 0px 0px 12px;
+
+        .class-node-title {
+          color: #60a5fa;
+        } // Title glows soft blue
+      }
+
+      // Class Name String Header
+      .class-node-title {
+        color: #ffffff; // පිරිසිදු සුදු පැහැය
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        display: block;
+        transition: color 0.3s ease;
+      }
+
+      // Current Active Lesson text
+      .class-node-lesson-subtext {
+        color: #94a3b8; // Slate Light Gray Text
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+    }
   }
 }
+
+/* ========================================================
+   2026 CYBER CENTRAL ANALYTICS - GRAPHICS CHARTS LAYER
+   ======================================================== */
+
+.admin-graphics-charts-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(340px, 1fr)
+  ); // 100% Fluid Grid Architecture
+  gap: 25px;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* 🏢 INDIVIDUAL CHART BENTO TILE CARD (Holographic Data Slates) */
+  .chart-bento-tile-card {
+    // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    // 📍 තද නිල් පසුබිම උඩින් පෙට්ටි වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px; // Smooth Apple Style Radii
+    padding: 26px 28px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    // Main Chart Title Heading (Demographics, Paper Hub Allocations)
+    .chart-core-title {
+      margin: 0 0 20px 0;
+      color: #ffffff; // පිරිසිදු සුදු පැහැය
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    // 💻 RECHARTS SVG CANVAS BOUNDER WRAPPER
+    .recharts-canvas-container {
+      width: 100%;
+      height: 200px;
+      box-sizing: border-box;
+      position: relative;
+
+      // Recharts ඇතුළෙන් ඉබේම හැදෙන SVG elements පිරිසිදු කිරීම්
+      svg {
+        overflow: visible;
+      }
+
+      // Tooltip Popup Box Styling Inside SVG (ප්‍රස්ථාරේ උඩට ඇඟිල්ල තියෙද්දී එන tooltip එක ඩාර්ක් කළා)
+      .recharts-tooltip-wrapper {
+        .recharts-default-tooltip {
+          background-color: #0f172a !important;
+          border: 1px solid rgba(255, 255, 255, 0.08) !important;
+          border-radius: 8px !important;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+
+          .recharts-tooltip-item {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+          }
+        }
+      }
+
+      // Legend Text Items Labeling (යටින් තියෙන labels ඩාර්ක් තීම් එකට හැරවීම)
+      .recharts-legend-wrapper {
+        .recharts-legend-item-text {
+          color: #94a3b8 !important; // Muted slate gray labels text
+          font-weight: 700 !important;
+          font-size: 0.82rem !important;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
+
+/* ========================================================
+   🚀 STRUCTURAL DYNAMIC HARD KEYFRAMES
+   ======================================================== */
+@keyframes adminViewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================================
+   2026 CYBER CENTRAL ANALYTICS - EXAM DEADLINE COUNTDOWN
+   ======================================================== */
+
+.admin-exam-countdown-pipeline-panel {
+  // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  // 📍 තද නිල් පසුබිම උඩින් පැනලය වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px; // Smooth Apple Style Radii
+  padding: 26px 28px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+
+
+
+
+  /* ========================================================
+     🔮 EXTENSION D: MILESTONE ASSESSMENT SETUP MODAL
+     ======================================================== */
+  &.exam-setup-card {
+    max-width: 440px; // Forms පුරවන්න ලස්සනට ඉඩ තියෙන සීමාව
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+
+    h3 svg { color: #fbbf24; } // Graduation Cap එකට Gold Icon එකක් දුන්නා Premium ලුක් එකට
+
+    // 📝 THE FORM BODY CONTAINER
+    .exam-logging-form-body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 10px;
+
+      // Input field groupings
+      .exam-input-field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        box-sizing: border-box;
+
+        label {
+          font-size: 0.82rem;
+          font-weight: 700;
+          color: #94a3b8; // Slate Gray කියවන්න ලේසි වර්ණය
+          letter-spacing: 0.3px;
+          text-align: left;
+        }
+
+        // Inputs, Selects Fields
+        input[type="text"], input[type="date"], input[type="time"], select {
+          width: 100%;
+          padding: 12px 14px;
+          background: rgba(255, 255, 255, 0.03); // Dark Glass Fields
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 10px;
+          color: #ffffff;
+          font-size: 0.88rem;
+          font-family: inherit;
+          outline: none;
+          box-sizing: border-box;
+          transition: all 0.3s ease;
+
+          &:focus {
+            border-color: #fbbf24; // Focus වෙද්දී ලස්සන සයිබර් Gold ලයින් එකක් වේ
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: rgba(251, 191, 36, 0.15) 0px 0px 8px;
+          }
+
+          &::placeholder { color: #475569; }
+        }
+
+        select {
+          font-weight: 700;
+          cursor: pointer;
+          option { background-color: #0f172a; color: #ffffff; }
+        }
+
+        // Date and Time Webkit Configs (ඩාර්ක් තීම් එකේ අයිකන්ස් පේන්න)
+        input[type="date"], input[type="time"] {
+          color: #cbd5e1;
+          font-weight: 600;
+          font-family: monospace;
+          &::-webkit-calendar-picker-indicator { filter: invert(0.6); cursor: pointer; }
+        }
+      }
+
+      // 📊 2-Column Split Grid Row (Date & Time පැත්තෙන් පැත්තට හිටීමට)
+      .exam-date-time-split-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      // 🚀 DEPLOY SUBMIT BUTTON (Hot Warning Red Gradient Glow)
+      .exam-deploy-clock-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #ff4b4b 0%, #dc2626 100%);
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        margin-top: 10px;
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.25);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(239, 68, 68, 0.45);
+          background: linear-gradient(135deg, #dc2626 0%, #fbbf24 100%); // Hover වෙද්දී Gold පැහැයට මිශ්‍ර වේ
+        }
+
+        &:active {
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+
+
+
+  // Main Header Title Line (Core Milestone Countdown Monitors)
+  .pipeline-core-heading {
+    margin: 0 0 20px 0;
+    color: #ffffff; // පිරිසිදු සුදු පැහැය
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    svg {
+      color: #ef4444; // Warning Red Icon
+      filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.3));
+    }
+  }
+
+  // Hollow Empty State Configuration text
+  .pipeline-empty-state-text {
+    margin: 0;
+    color: #64748b; // Muted slate gray text
+    font-style: italic;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 20px 0;
+    text-align: center;
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.04);
+  }
+
+  /* ========================================================
+     📊 ACTIVE CARDS GRID (සක්‍රීය විභාග මතු වන ජාලය)
+     ======================================================== */
+  .pipeline-active-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(300px, 1fr)
+    ); // 100% Fluid Grid Flow
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+
+    // 📱 INDIVIDUAL EXAM NODE TILE (Holographic Countdown Modules)
+    .pipeline-exam-node-tile {
+      background: rgba(0, 0, 0, 0.25); // Integrated Dark Matrix Input Box
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 20px;
+      border-radius: 14px; // Rounded boxes
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.35);
+        border-color: rgba(
+          0,
+          241,
+          209,
+          0.2
+        ); // Hover වෙද්දී Neon Teal ਬෝඩර් එකක් වේ
+        transform: translateY(-2px);
+        box-shadow:
+          0 10px 25px rgba(0, 0, 0, 0.3),
+          rgba(0, 241, 209, 0.05) 0px 0px 12px;
+      }
+
+      // Upper Header Data Meta Bar
+      .node-top-meta-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        padding-bottom: 10px;
+
+        // Exam Title Text (රන්වන් පැහැයෙන් පත්තුවේ)
+        .exam-node-title {
+          color: #fbbf24;
+          font-size: 0.98rem;
+          font-weight: 800;
+          letter-spacing: -0.01em;
+          text-shadow: 0 0 6px rgba(251, 191, 36, 0.15);
+        }
+
+        // Category metadata badge tag
+        .category-meta-badge {
+          font-size: 0.7rem;
+          font-weight: 800;
+          padding: 3px 8px;
+          border-radius: 6px;
+          letter-spacing: 0.5px;
+
+          &.national-badge {
+            background: rgba(239, 68, 68, 0.1); // Soft Alpha Red
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.15);
+          }
+
+          &.term-badge {
+            background: rgba(255, 255, 255, 0.03); // Soft Alpha Slate
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+          }
+        }
+      }
+
+      // Body Parameters Layout Row
+      .node-body-parameters {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        .exam-node-deadline-text {
+          color: #64748b; // Muted slate gray deadline slot text
+          font-size: 0.82rem;
+          font-weight: 600;
+          font-family: monospace;
+        }
+
+        /* 🎚️ REAL-TIME COUNTDOWN DOCK CONTAINER (කවුන්ට්ඩවුන් පෙට්ටිය) */
+        .countdown-live-clock-dock {
+          background: rgba(0, 241, 209, 0.03); // Soft Neon Cyan Base
+          border: 1px solid rgba(0, 241, 209, 0.12);
+          padding: 12px;
+          border-radius: 10px;
+          text-align: center;
+          width: 100%;
+          box-sizing: border-box;
+
+          // 💻 🟢 Live Countdown Numbers (ඩිජිටල් අංක සරාගී නිල්-කොළ පාටින් පත්තුවේ)
+          .countdown-digital-digits {
+            color: #00f1d1;
+            font-weight: 800;
+            font-size: 1.15rem;
+            font-family: monospace; // ඩිජිටල් අංක වලට පට්ට
+            text-shadow: 0 0 10px rgba(0, 241, 209, 0.4);
+            letter-spacing: 0.5px;
+          }
+        }
+
+
+
+        
+      }
+    }
+  }
+}
+
+/* ========================================================
+   2026 CYBER CENTRAL ANALYTICS - MASTER CALENDAR & ACTIVITIES
+   ======================================================== */
+
+.admin-calendar-activities-split-grid {
+  display: grid;
+  grid-template-columns: 1fr; // 📱 Mobile වලදී 1 Column වේ
+  gap: 25px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1.2fr 1fr; // 💻 Desktop වලදී පැනල් 2ක ව්‍යුහය
+  }
+
+  // Common Bento Tile Box (Premium Dark Glass Matrix Base)
+  .chart-bento-tile-card {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 26px 28px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    transition: all 0.3s ease;
+
+    .chart-core-title {
+      margin: 0;
+      color: #ffffff;
+      font-size: 0.98rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+/* ========================================================
+   📅 1. MINI EVENT CALENDAR WIDGET ARCHITECTURE
+   ======================================================== */
+.calendar-widget-tile {
+  h3 svg {
+    color: #f97316;
+  } // Warning Orange Header Icon
+
+  .mini-calendar-widget-core {
+    width: 100%;
+    margin-top: 20px;
+
+    // Month Row Title & Navigation Buttons (උඩම පේළිය)
+    .calendar-header-month {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      font-size: 0.95rem;
+
+      .calendar-month-nav-btns {
+        display: flex;
+        gap: 8px;
+
+        .cal-nav-btn {
+          cursor: pointer;
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 0.02);
+          color: #94a3b8;
+          border-radius: 6px;
+          padding: 4px 10px;
+          font-weight: bold;
+          font-family: monospace;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.15);
+          }
+        }
+      }
+    }
+
+    // Days Matrix Board (Su, Mo, Tu... 7 Column Grid)
+    .calendar-days-grid-matrix {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      text-align: center;
+      width: 100%;
+
+      .calendar-day-name-label {
+        font-size: 0.78rem;
+        color: #64748b; // Slate gray week name labels
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      // Individual Day Box Cells Nodes
+      .calendar-day-cell-node {
+        padding: 10px 0;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        position: relative;
+        font-family: monospace;
+        transition: all 0.2s ease;
+
+        &.empty-day {
+          background: transparent;
+          color: #475569;
+        }
+
+        &.active-day {
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          color: #cbd5e1;
+          font-weight: 700;
+
+          &:hover {
+            background: rgba(37, 99, 235, 0.12); // Blue hover block
+            border-color: #2563eb;
+            color: #ffffff;
+          }
+        }
+
+        // 🔵 Real-time Live Event Dot Indicator (දිනේ යටින් පත්තුවෙන නිල් බෝලය)
+        .live-event-dot-indicator {
+          position: absolute;
+          bottom: 4px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 4px;
+          background: #00f1d1; // Neon Teal indicator dot
+          border-radius: 50%;
+          box-shadow: 0 0 6px #00f1d1;
+        }
+      }
+    }
+  }
+}
+
+/* ========================================================
+   🚀 2. QUICK LINKS & ACTIVITIES COLUMN STYLES (දකුණු පස)
+   ======================================================== */
+.admin-activities-vertical-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  // A. QUICK LINKS PANEL
+  .quick-links-panel {
+    h3 svg {
+      color: #2563eb;
+    } // Executive Blue Bolt Icon
+
+    .quick-links-action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+      width: 100%;
+
+      .shortcut-btn-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 10px;
+        text-decoration: none !important;
+        font-weight: 700;
+        font-size: 0.85rem;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-sizing: border-box;
+
+        &:active {
+          transform: scale(0.96);
+        }
+
+        // Zoom Key
+        &.zoom-link {
+          background: rgba(37, 99, 235, 0.08);
+          color: #60a5fa;
+          border: 1px solid rgba(37, 99, 235, 0.12);
+          &:hover {
+            background: #2563eb;
+            color: #ffffff !important;
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.35);
+          }
+        }
+
+        // Drive Key
+        &.drive-link {
+          background: rgba(16, 185, 129, 0.08);
+          color: #10b981;
+          border: 1px solid rgba(16, 185, 129, 0.12);
+          &:hover {
+            background: #10b981;
+            color: #ffffff !important;
+            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.35);
+          }
+        }
+      }
+    }
+  }
+
+  // B. UPCOMING ACTIVITIES TIMELINE PANEL
+  .activities-feed-panel {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .feed-upper-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 18px;
+      flex-shrink: 0;
+
+      h3 svg {
+        color: #f59e0b;
+      } // Crown / Cap Gold Icon
+
+      // + Log Event Button Trigger
+      .log-event-toggle-btn {
+        background: none;
+        border: none;
+        color: #2563eb; // Link Blue Trigger
+        font-weight: 800;
+        cursor: pointer;
+        font-size: 0.85rem;
+        padding: 4px 8px;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #60a5fa;
+        }
+      }
+    }
+
+    // 📝 3. EVENT LOGGING CONDITIONAL FORM (නිවේදන ඇතුළත් කරන උඩ ෆෝම් එක)
+    .activity-logging-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.2); // Dark Matrix Input Layer
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      margin-bottom: 18px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      animation: adminFormFadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+      input {
+        width: 100%;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-family: inherit;
+        outline: none;
+        box-sizing: border-box;
+        transition: border 0.2s ease;
+
+        &:focus {
+          border-color: #2563eb;
+        }
+        &::placeholder {
+          color: #475569;
+        }
+      }
+
+      input[type="date"] {
+        color: #64748b;
+        font-weight: 700;
+        cursor: pointer;
+        &::-webkit-calendar-picker-indicator {
+          filter: invert(0.5);
+        } // Make date icon visible on dark
+      }
+
+      // Commit Submit Button
+      .activity-commit-submit-btn {
+        background: #2563eb;
+        color: #ffffff;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #1d4ed8;
+          box-shadow: 0 6px 15px rgba(37, 99, 235, 0.45);
+        }
+      }
+    }
+    // Empty Logistics placeholder text
+    .empty-activities-notice-text {
+      margin: 0;
+      color: #64748b;
+      font-style: italic;
+      font-size: 0.88rem;
+      text-align: center;
+      padding: 40px 0;
+      font-weight: 500;
+    }
+
+    // 📋 4. ACTIVITIES VERTICAL FEED (සජීවී නිවේදන තීරු මාලාව)
+    .activities-vertical-stack-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      overflow-y: auto;
+      flex-grow: 1;
+
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 9px;
+      }
+
+      // Individual Strip Node Node (පේළි අයිතම)
+      .activity-bulletin-strip-node {
+        border-left: 3px solid #f59e0b; // Gold Border Left Accent line
+        background: rgba(255, 255, 255, 0.01);
+        padding: 12px 16px;
+        border-radius: 0 10px 10px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: left;
+        box-sizing: border-box;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.03);
+        }
+
+        .activity-node-title-label {
+          display: block;
+          color: #ffffff; // පිරිසිදු සුදු පැහැය
+          font-size: 0.9rem;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .activity-node-target-date {
+          color: #64748b;
+          font-size: 0.75rem;
+          font-weight: 600;
+          font-family: monospace;
+        }
+      }
+    }
+  }
+}
+
+/* ========================================================
+   🚀 HARD STRUCTURAL KEYFRAMES SETUP
+   ======================================================== */
+@keyframes adminFormFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
