@@ -1,285 +1,1085 @@
-/* 👑 ALL STUDENTS LIVE REGISTRY TABLE SYSTEM */
-.all-students-wrapper {
-  padding: 40px 20px;
-  max-width: 1400px;
-  margin: $margin-center;
-}
+// /* 👑 ALL STUDENTS LIVE REGISTRY TABLE SYSTEM */
+// .all-students-wrapper {
+//   padding: 40px 20px;
+//   max-width: 1400px;
+//   margin: $margin-center;
+// }
 
-.students-header {
+// .students-header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   flex-wrap: wrap;
+//   gap: 20px;
+//   border-bottom: 2px solid #e2e8f0;
+//   padding-bottom: 6px;
+//   margin-bottom: 12px;
+
+//   h1 {
+//     color: $secondary-blue;
+//     font-weight: $font-weight-900;
+//     margin: $margin-none;
+//     font-size: $font-size-h1-mm;
+//     display: flex;
+//     align-items: center;
+//     gap: 12px;
+//   }
+//   p {
+//     color: $secondary-blue3;
+//     margin: 5px 0 0 0;
+//     font-size: $font-size-body;
+//   }
+// }
+
+// .search-box-bar {
+//   display: flex;
+//   align-items: center;
+//   gap: 10px;
+//   background-color: $bg-light;
+//   border: 1px solid #cbd5e1;
+//   padding: 10px 16px;
+//   border-radius: $border-radius-small-m;
+//   width: $container-width-default;
+//   max-width: 380px;
+//   color: $secondary-blue3;
+
+//   input {
+//     border: none;
+//     background: none;
+//     outline: none;
+//     width: $container-width-default;
+//     font-size: $font-size-body-mm;
+//     color: $secondary-blue;
+//     font-weight: $font-weight-600;
+//   }
+// }
+
+// .students-table-scroll-shield {
+//   width: $container-width-default;
+//   overflow-x: auto;
+//   background-color: $white;
+//   border-radius: $border-radius-small;
+//   border: 1px solid #e2e8f0;
+//   box-shadow: 0 10px 25px rgba(3, 32, 75, 0.02);
+// }
+
+// .students-management-table {
+//   width: $container-width-default;
+//   border-collapse: collapse;
+//   text-align: left;
+//   font-size: $font-size-body;
+
+//   th {
+//     background-color: $bg-light;
+//     color: $secondary-blue;
+//     padding: 16px 20px;
+//     font-weight: $font-weight-800;
+//     border-bottom: 2px solid #e2e8f0;
+//     text-align: center;
+//   }
+
+//   td {
+//     padding: 2px 8px;
+//     color: $secondary-blue;
+//     border-bottom: 1px solid #f1f5f9;
+//     font-weight: $font-weight-500;
+//     text-align: center;
+
+//     input {
+//       padding: 6px 12px;
+//       border-radius: $border-radius-small-m;
+//       border: 1px solid #cbd5e1;
+//       font-size: $font-size-body-m;
+//       color: $secondary-blue;
+//       font-weight: $font-weight-600;
+//       width: $container-width-default;
+//       outline: none;
+//       background-color: #f8fafc;
+//     }
+//   }
+
+//   tr:last-child td {
+//     border-bottom: none;
+//   }
+//   tr.row-editing-active {
+//     background-color: #f0fdf4;
+//   }
+// }
+
+// .action-btn {
+//   border: none;
+//   width: 34px;
+//   height: 34px;
+//   border-radius: $border-radius-small-m;
+//   cursor: pointer;
+//   display: inline-flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-size: $font-size-body;
+//   margin-right: 6px;
+//   transition: all 0.2s;
+// }
+
+// .check-btn {
+//   background-color: #000000;
+//   color: $white;
+//   &:hover {
+//     background-color: #8d8d8d;
+//   }
+// }
+// .edit-btn {
+//   background-color: #f1f5f9;
+//   color: $secondary-blue;
+//   &:hover {
+//     background-color: #cbd5e1;
+//   }
+// }
+// .delete-btn {
+//   background-color: #fee2e2;
+//   color: #ef4444;
+//   &:hover {
+//     background-color: #fca5a5;
+//   }
+// }
+// .save-btn {
+//   background-color: #dcfce7;
+//   color: #15803d;
+//   &:hover {
+//     background-color: #bbf7d0;
+//   }
+// }
+// .cancel-btn {
+//   background-color: #f1f5f9;
+//   color: $secondary-blue3;
+//   &:hover {
+//     background-color: #cbd5e1;
+//   }
+// }
+
+// // new
+// /* 👑 MULTI-LEVEL FILTER CONTROL DOCK */
+// .master-filter-control-dock {
+//   display: flex;
+//   justify-content: space-between;
+//   gap: 2rem;
+//   margin-bottom: 1rem;
+//   background-color: #f8fafc;
+//   padding: 18px 15px;
+//   border-radius: $border-radius-medium;
+//   border: 1px solid #e2e8f0;
+//   flex-wrap: wrap;
+// }
+
+// .filter-segment {
+//   display: flex;
+//   align-items: center;
+//   gap: 0.8rem;
+//   .segment-label {
+//     font-size: $font-size-body-m;
+//     color: $secondary-blue3;
+//     font-weight: $font-weight-700;
+//   }
+// }
+
+// .filter-pill-btn {
+//   background-color: #ffffff;
+//   color: $secondary-blue3;
+//   border: 1px solid #cbd5e1;
+//   padding: 6px 16px;
+//   border-radius: $border-radius-small-m;
+//   font-weight: $font-weight-700;
+//   font-size: $font-size-body-m;
+//   cursor: pointer;
+//   transition: all 0.2s;
+//   &:hover {
+//     background-color: #f1f5f9;
+//     color: $secondary-blue;
+//   }
+// }
+
+// .filter-pill-btn.active {
+//   background-color: $secondary-blue !important;
+//   color: $white !important;
+//   border-color: $secondary-blue !important;
+// } /* 🎨 DYNAMIC GENDER BACKGROUND SHIELDS */
+
+// .students-management-table tbody {
+//   .gender-row-boy {
+//     background-color: #d4e6ff !important;
+
+//     &:hover {
+//       background-color: #dbeafe !important;
+//     }
+//   }
+//   .gender-row-girl {
+//     background-color: #ffd9dc !important;
+
+//     &:hover {
+//       background-color: #ffe4e6 !important;
+//     }
+//   }
+// }
+
+// /* 🔒 DATA MASKING CORES */
+// .masked-data-cell {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   gap: 8px;
+//   font-weight: $font-weight-700;
+//   letter-spacing: 0.5px;
+// }
+
+// .mask-toggle-trigger {
+//   background: $secondary-blue;
+//   border: none;
+//   color: $white;
+//   cursor: pointer;
+//   font-size: $font-size-default;
+//   display: flex;
+//   align-items: center;
+//   transition: color 0.2s;
+
+//   &:hover {
+//     color: $secondary-blue;
+//   }
+// }
+
+// /* SUBJECT BADGES IN TABLE */
+// .subject-badge-container-cell {
+//   display: flex;
+//   gap: 4px;
+//   flex-wrap: wrap;
+// }
+// .sub-badge-tag {
+//   font-size: $font-size-default !important;
+//   font-weight: $font-weight-800;
+//   padding: 2px 2px 0px 2px !important;
+//   border-radius: $border-radius-circle;
+//   color: $white;
+//   text-transform: $text-transform-uppercase;
+//   opacity: 1 !important;
+
+//   &.maths {
+//     background-color: #0062ff;
+//   }
+//   &.science {
+//     background-color: #00ff22;
+//     // color: $secondary-blue;
+//   }
+//   &.english {
+//     background-color: #ff7b00;
+//   }
+// }
+
+// .table-dropdown-select {
+//   padding: 6px;
+//   border-radius: $border-radius-small-m;
+//   border: 1px solid #cbd5e1;
+//   font-weight: $font-weight-600;
+//   color: $secondary-blue;
+// }
+
+// .rows-btn {
+//   display: flex;
+// }
+
+/* ========================================================
+   2026 CENTRAL CYBER COMMAND CENTER - STUDENT REGISTRY HUB
+   ======================================================== */
+
+.admin-student-vault-root-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  border-bottom: 2px solid #e2e8f0;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  box-sizing: border-box;
+  animation: adminViewFadeIn 0.4s ease-out;
 
-  h1 {
-    color: $secondary-blue;
-    font-weight: $font-weight-900;
-    margin: $margin-none;
-    font-size: $font-size-h1-mm;
+  /* --- 👑 LAYER A: TOP METADATA HEADER ZONE --- */
+  .students-registry-top-header-zone {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 12px;
-  }
-  p {
-    color: $secondary-blue3;
-    margin: 5px 0 0 0;
-    font-size: $font-size-body;
-  }
-}
+    flex-wrap: wrap; // Mobile/Tablet friendly auto wrapping Support
+    gap: 20px;
 
-.search-box-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: $bg-light;
-  border: 1px solid #cbd5e1;
-  padding: 10px 16px;
-  border-radius: $border-radius-small-m;
-  width: $container-width-default;
-  max-width: 380px;
-  color: $secondary-blue3;
+    // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට පට්ටම Premium Dark Glass Layer එකක් දුන්නා
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 
-  input {
-    border: none;
-    background: none;
-    outline: none;
-    width: $container-width-default;
-    font-size: $font-size-body-mm;
-    color: $secondary-blue;
-    font-weight: $font-weight-600;
-  }
-}
+    padding: 24px 28px;
+    border-radius: 18px; // Smooth Apple Style Smooth Radii
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 
-.students-table-scroll-shield {
-  width: $container-width-default;
-  overflow-x: auto;
-  background-color: $white;
-  border-radius: $border-radius-small;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px rgba(3, 32, 75, 0.02);
-}
+    .header-meta-details {
+      text-align: left;
 
-.students-management-table {
-  width: $container-width-default;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: $font-size-body;
+      h1 {
+        margin: 0;
+        color: #ffffff; // පිරිසිදු සුදු පැහැය
+        font-size: 1.45rem;
+        font-weight: 850;
+        letter-spacing: -0.01em;
+      }
 
-  th {
-    background-color: $bg-light;
-    color: $secondary-blue;
-    padding: 16px 20px;
-    font-weight: $font-weight-800;
-    border-bottom: 2px solid #e2e8f0;
-    text-align: center;
-  }
+      .registry-subtext {
+        margin: 6px 0 0 0;
+        color: #94a3b8; // Slate Gray description text
+        font-size: 0.88rem;
+        line-height: 1.4;
+      }
+    }
 
-  td {
-    padding: 2px 8px;
-    color: $secondary-blue;
-    border-bottom: 1px solid #f1f5f9;
-    font-weight: $font-weight-500;
-    text-align: center;
+    /* ========================================================
+       🔍 B. CYBER LASER SEARCH BAR TERMINAL (සර්ච් බාර් එක)
+       ======================================================== */
+    .registry-search-box-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.2); // Integrated Dark Matrix Input Box
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      max-width: 450px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
-    input {
-      padding: 6px 12px;
-      border-radius: $border-radius-small-m;
-      border: 1px solid #cbd5e1;
-      font-size: $font-size-body-m;
-      color: $secondary-blue;
-      font-weight: $font-weight-600;
-      width: $container-width-default;
-      outline: none;
-      background-color: #f8fafc;
+      .search-icon-hud {
+        color: #64748b; // Muted gray icon
+        font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      input[type="text"] {
+        border: none;
+        background: none;
+        outline: none;
+        width: 100%;
+        font-size: 0.9rem;
+        color: #ffffff; // ටයිප් කරන අකුරු පිරිසිදු සුදු වේ
+        font-family: inherit;
+
+        &::placeholder {
+          color: #475569;
+        }
+      }
+
+      // 🚀 INPUT ACTIVE INTERACTION: සර්ච් එක ඇතුළේ ටයිප් කරන්න ගද්දී Neon Teal වලින් පාවේ!
+      &:focus-within {
+        border-color: #00f1d1; // Main Brand Neon Teal Laser Line
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: rgba(0, 241, 209, 0.15) 0px 0px 10px;
+
+        .search-icon-hud {
+          color: #00f1d1;
+          filter: drop-shadow(0 0 4px #00f1d1);
+        }
+      }
+    }
+
+    // ➕ C. ADD NEW STUDENT ACTION TRIGGER BUTTON
+    .add-new-student-trigger-btn {
+      background: linear-gradient(
+        135deg,
+        #2563eb 0%,
+        #1d4ed8 100%
+      ); // Executive Blue Gradient Roll
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(37, 99, 235, 0.55);
+        background: linear-gradient(
+          135deg,
+          #1d4ed8 0%,
+          #00f1d1 100%
+        ); // Hover වෙද්දී Neon Teal පැහැයට හැරේ
+      }
+
+      &:active {
+        transform: translateY(-1px);
+      }
     }
   }
-
-  tr:last-child td {
-    border-bottom: none;
-  }
-  tr.row-editing-active {
-    background-color: #f0fdf4;
-  }
 }
 
-.action-btn {
-  border: none;
-  width: 34px;
-  height: 34px;
-  border-radius: $border-radius-small-m;
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: $font-size-body;
-  margin-right: 6px;
-  transition: all 0.2s;
-}
-
-.check-btn {
-  background-color: #000000;
-  color: $white;
-  &:hover {
-    background-color: #8d8d8d;
+/* ========================================================
+   🚀 STRUCTURAL DYNAMIC KEYFRAMES SETUP
+   ======================================================== */
+@keyframes adminViewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
-}
-.edit-btn {
-  background-color: #f1f5f9;
-  color: $secondary-blue;
-  &:hover {
-    background-color: #cbd5e1;
-  }
-}
-.delete-btn {
-  background-color: #fee2e2;
-  color: #ef4444;
-  &:hover {
-    background-color: #fca5a5;
-  }
-}
-.save-btn {
-  background-color: #dcfce7;
-  color: #15803d;
-  &:hover {
-    background-color: #bbf7d0;
-  }
-}
-.cancel-btn {
-  background-color: #f1f5f9;
-  color: $secondary-blue3;
-  &:hover {
-    background-color: #cbd5e1;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-// new
-/* 👑 MULTI-LEVEL FILTER CONTROL DOCK */
+/* ========================================================
+   2026 CENTRAL CYBER COMMAND CENTER - MASTER FILTER DOCK
+   ======================================================== */
+
+// 🎛️ MAIN FILTER CONTROLS MASTER DOCK LAYER
 .master-filter-control-dock {
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 1rem;
-  background-color: #f8fafc;
-  padding: 18px 15px;
-  border-radius: $border-radius-medium;
-  border: 1px solid #e2e8f0;
-  flex-wrap: wrap;
-}
-
-.filter-segment {
-  display: flex;
+  gap: 30px;
+  flex-wrap: wrap; // Mobile Friendly auto wrap support
   align-items: center;
-  gap: 0.8rem;
-  .segment-label {
-    font-size: $font-size-body-m;
-    color: $secondary-blue3;
-    font-weight: $font-weight-700;
-  }
-}
+  width: 100%;
+  box-sizing: border-box;
 
-.filter-pill-btn {
-  background-color: #ffffff;
-  color: $secondary-blue3;
-  border: 1px solid #cbd5e1;
-  padding: 6px 16px;
-  border-radius: $border-radius-small-m;
-  font-weight: $font-weight-700;
-  font-size: $font-size-body-m;
-  cursor: pointer;
-  transition: all 0.2s;
-  &:hover {
-    background-color: #f1f5f9;
-    color: $secondary-blue;
-  }
-}
+  // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට පට්ටම Premium Dark Glass Layer එකක් දුන්නා
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 14px 24px;
+  border-radius: 16px; // Smooth Apple Style Smooth Radii
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-.filter-pill-btn.active {
-  background-color: $secondary-blue !important;
-  color: $white !important;
-  border-color: $secondary-blue !important;
-} /* 🎨 DYNAMIC GENDER BACKGROUND SHIELDS */
+  // Individual segment alignment groups (Grade or Gender slots)
+  .filter-segment-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 
-.students-management-table tbody {
-  .gender-row-boy {
-    background-color: #d4e6ff !important;
+    // Filter segment header text labels (Grade: / Gender:)
+    .filter-hud-meta-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #64748b; // Muted Slate Gray Description text
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-    &:hover {
-      background-color: #dbeafe !important;
+    // Universal Filter Pill Buttons (Pills Base Style)
+    .filter-dock-pill-btn {
+      padding: 6px 16px;
+      border-radius: 20px; // Capsule Pills Layout
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.02);
+      color: #94a3b8;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      /* 🚀 ACTIVE FILTER STATUS: සිලෙක්ට් වුණු පෙරහන පට්ටම ලස්සන Executive Blue වලින් පත්තුවේ */
+      &.pill-active {
+        background: rgba(
+          37,
+          99,
+          235,
+          0.12
+        ) !important; /* Soft Blue Alpha Base */
+        border-color: #2563eb !important; /* Executive Blue Laser Line */
+        color: #60a5fa !important; /* Vibrant Light Blue text */
+        box-shadow: 0 0 12px rgba(37, 99, 235, 0.2);
+      }
     }
   }
-  .gender-row-girl {
-    background-color: #ffd9dc !important;
+}
 
-    &:hover {
-      background-color: #ffe4e6 !important;
+/* ========================================================
+   2026 CENTRAL CYBER COMMAND CENTER - SLIM MASTER TABLE
+   ======================================================== */
+
+// 🏛️ MAIN SPLIT WORKSPACE GRID STRUCTURE
+.admin-vault-split-workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr; // 📱 Mobile වලදී 1 Column වේ
+  gap: 25px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1.2fr 1fr; // 💻 Desktop වලදී පැනල් 2ක ව්‍යුහය
+  }
+}
+
+// 💻 LEFT SIDE: SLIM MASTER TABLE SHIELD (වම් පස පැනලය)
+.left-table-shield {
+  // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට පට්ටම Premium Dark Glass Layer එකක් දුන්නා
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  padding: 24px;
+  border-radius: 18px; // Smooth Apple Style Smooth Radii
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  box-sizing: border-box;
+
+  /* THE HIGH-DENSITY VAULT TABLE INTERFACE */
+  .vault-slim-master-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    // Table Headers (th)
+    th {
+      padding: 12px 10px;
+      color: #64748b; // Muted Slate Gray Header text
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.04);
+    }
+
+    // Table Data Cells (td)
+    td {
+      padding: 14px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03); // සිහින් සයිබර් ඉරි කෑලි
+      color: #94a3b8;
+      font-size: 0.9rem;
+      vertical-align: middle;
+
+      // Student ID Strong Tag
+      strong {
+        color: #00f1d1; // Student ID එක පට්ටම Neon Teal කළා
+        font-family: monospace; // ඩිජිටල් අංක වලට පට්ට
+        font-weight: 700;
+        text-shadow: 0 0 6px rgba(0, 241, 209, 0.2);
+      }
+    }
+
+    // Student Full Name Specific Cell
+    .student-full-name-cell {
+      color: #ffffff; // ඩාර්ක් තීම් එකේ ළමයාගේ නම පිරිසිදු සුදු පැහැයෙන් පෙනේ
+      font-weight: 600;
+    }
+
+    // Table Rows (tr) Interaction
+    tr {
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover td {
+        background: rgba(255, 255, 255, 0.015); // Normal Hover Effect
+      }
+
+      /* 🚀 SELECTED ROW ACTIVE STATUS: සිලෙක්ට් කළ ළමයාගේ පේළිය Executive Blue වලින් පත්තුවේ */
+      &.selected-row-active td {
+        background: rgba(
+          37,
+          99,
+          235,
+          0.12
+        ) !important; /* Soft Blue Alpha Base */
+        color: #ffffff !important;
+        border-bottom-color: rgba(37, 99, 235, 0.3) !important;
+
+        .student-full-name-cell {
+          color: #60a5fa !important; // Selected නම ලස්සනට ලයිට් නිල් වේ
+          text-shadow: 0 0 6px rgba(96, 165, 250, 0.2);
+        }
+      }
+    }
+  }
+
+  /* ⏳ STREAMING & EMPTY HOLLOW STATES INTERFACES */
+  .ledger-sync-loading-text,
+  .ledger-sync-empty-text {
+    padding: 30px 10px;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.04);
+  }
+}
+
+/* ========================================================
+   2026 CENTRAL CYBER COMMAND CENTER - DETAILS VAULT CARD
+   ======================================================== */
+
+.right-details-card-vault {
+  width: 100%;
+  box-sizing: border-box;
+
+  /* ⏳ CONDITION 01: HOLLOW EMPTY SELECTION PLACEHOLDER */
+  .vault-empty-selection-placeholder {
+    background: rgba(15, 23, 42, 0.2); // Low contrast hollow block
+    border: 1px dashed rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    padding: 45px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+
+    .placeholder-users-icon {
+      font-size: 2.2rem;
+      color: #475569; // Dim icon
+    }
+
+    .placeholder-label-text {
+      font-size: 0.92rem;
+      color: #64748b;
+      font-weight: 600;
+      font-style: italic;
+    }
+  }
+
+  /* ========================================================
+     📝 CONDITION 02: PROFILE EDIT MODE ACTIVE TERMINAL WINDOW
+     ======================================================== */
+  .vault-profile-edit-glass-form {
+    // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට පට්ටම Premium Dark Glass Layer එකක් දුන්නා
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    padding: 30px;
+    border-radius: 18px; // Apple Style Smooth Radii
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+
+    .form-main-heading {
+      margin: 0 0 4px 0;
+      color: #ffffff; // පිරිසිදු සුදු පැහැය
+      font-size: 1.2rem;
+      font-weight: 850;
+      letter-spacing: -0.01em;
+      text-align: left;
+    }
+
+    // Input Group Structure (Labels + Data Input Field)
+    .form-input-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      text-align: left;
+
+      label {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #64748b; // Muted Slate Gray Header text
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      // Universal Input Fields Styling
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.03); // Glass Fields Base
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
+        color: #ffffff;
+        font-size: 0.88rem;
+        font-family: inherit;
+        outline: none;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+
+        // 🚀 INPUT ACTIVE FOCUS: පුරවන්න ගද්දී Neon Teal ලේසර් ලයින් එකක් වේ!
+        &:focus {
+          border-color: #00f1d1;
+          background: rgba(255, 255, 255, 0.05);
+          box-shadow: rgba(0, 241, 209, 0.15) 0px 0px 8px;
+        }
+      }
+    }
+
+    // 📊 DOUBLE SPLIT GRID ROW (Mobile Phone Fields side by side layout)
+    .form-double-split-grid-row {
+      display: grid;
+      grid-template-columns: 1fr; // Mobile 1 Column
+      gap: 14px;
+      width: 100%;
+      box-sizing: border-box;
+
+      @media (min-width: 480px) {
+        grid-template-columns: 1fr 1fr; // Desktop/Tablet 2 Column Split Row
+      }
+    }
+
+    /* 🎛️ MULTIPLE CHECKBOXES GATING MANAGEMENT PANEL */
+    .form-checkbox-gating-row-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+
+      .checkbox-hud-section-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .checkbox-nodes-flex-stack {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        // Individual Checkbox Nodes Styling Labels
+        .checkbox-node-label {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.88rem;
+          font-weight: 800;
+          cursor: pointer;
+          // user-select: none;
+          input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+          }
+
+          // Dynamic colors integration matching subject codes
+          &.check-maths {
+            color: #60a5fa;
+            input[type="checkbox"] {
+              accent-color: #2563eb;
+            }
+          }
+          &.check-science {
+            color: #f87171;
+            input[type="checkbox"] {
+              accent-color: #ff4b4b;
+            }
+          }
+          &.check-english {
+            color: #4ade80;
+            input[type="checkbox"] {
+              accent-color: #10b981;
+            }
+          }
+        }
+      }
+    }
+
+    /* ========================================================
+       📥 FOOTER ACTIONS BUTTON ROWS (සේව් / කැන්සල්)
+       ======================================================== */
+    .form-action-footer-buttons-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      width: 100%;
+
+      button {
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-sizing: border-box;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+        &:active {
+          transform: scale(0.97);
+        }
+      }
+
+      // 🟢 Save Profile Primary Button (Neon Green Gradient)
+      .form-submit-save-profile-btn {
+        flex-grow: 1;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+
+        &:hover {
+          background: linear-gradient(135deg, #059669 0%, #00f1d1 100%);
+          box-shadow: 0 8px 20px rgba(16, 185, 129, 0.45);
+          transform: translateY(-2px);
+        }
+      }
+
+      // ⚪ Cancel Abort Button Style (Muted Dark Capsule)
+      .form-cancel-abort-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        color: #94a3b8;
+        padding-left: 16px;
+        padding-right: 16px;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.08);
+          color: #ffffff;
+        }
+      }
     }
   }
 }
 
-/* 🔒 DATA MASKING CORES */
-.masked-data-cell {
+/* ========================================================
+     📄 CONDITION 03: PROFILE VIEW MODE ACTIVE TERMINAL CARD
+     ======================================================== */
+.vault-profile-view-glass-card {
+  background: rgba(15, 23, 42, 0.45); // Deep Dark Glass Face
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  // 👈 Executive Layout Highlight Line: උඩින්ම වදින පට්ටම ලස්සන සයිබර් බ්ලූ ඉර
+  border-top: 4px solid #2563eb;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  font-weight: $font-weight-700;
-  letter-spacing: 0.5px;
-}
+  flex-direction: column;
+  gap: 22px;
+  box-sizing: border-box;
 
-.mask-toggle-trigger {
-  background: $secondary-blue;
-  border: none;
-  color: $white;
-  cursor: pointer;
-  font-size: $font-size-default;
-  display: flex;
-  align-items: center;
-  transition: color 0.2s;
+  // Card Header Metadata Area
+  .view-card-header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
 
-  &:hover {
-    color: $secondary-blue;
+    .view-card-hud-small-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #64748b; // Muted Slate Gray
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .view-card-student-name {
+      margin: 5px 0 0 0;
+      color: #ffffff; // ඩාර්ක් තීම් එකේ ළමයාගේ නම පිරිසිදු සුදු පැහැයෙන් පෙනේ
+      font-size: 1.45rem;
+      font-weight: 850;
+      letter-spacing: -0.01em;
+    }
+
+    .view-card-system-token {
+      color: #60a5fa; // Token ID glows soft blue
+      font-weight: 700;
+      margin-top: 4px;
+      font-family: monospace;
+      font-size: 0.82rem;
+    }
   }
-}
 
-/* SUBJECT BADGES IN TABLE */
-.subject-badge-container-cell {
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
-}
-.sub-badge-tag {
-  font-size: $font-size-default !important;
-  font-weight: $font-weight-800;
-  padding: 2px 2px 0px 2px !important;
-  border-radius: $border-radius-circle;
-  color: $white;
-  text-transform: $text-transform-uppercase;
-  opacity: 1 !important;
+  /* --- 🧾 THE CORE BIO PARAMETERS LEDGER PANEL (දත්ත වගු පෙට්ටිය) --- */
+  .view-card-parameters-ledger-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.2); // Integrated Dark Matrix Input Box
+    padding: 16px 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    box-sizing: border-box;
 
-  &.maths {
-    background-color: #0062ff;
+    .ledger-data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+      padding-bottom: 10px;
+
+      &:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .ledger-label {
+        color: #94a3b8; // Slate Gray parameters labels
+        font-weight: 500;
+      }
+
+      .ledger-value {
+        color: #ffffff; // Values display pure white
+        font-weight: 700;
+
+        &.value-capitalize {
+          text-transform: capitalize;
+        }
+        &.password-masked-dots {
+          letter-spacing: 2px;
+          color: #64748b;
+        } // Masked dots spaced out
+      }
+    }
+
+    // Password display split hub row
+    .password-split-row {
+      border-top: 1px dashed rgba(255, 255, 255, 0.06);
+      padding-top: 12px;
+      margin-top: 2px;
+
+      .password-display-interactive-node {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        // Eye show hide visibility toggle button
+        .password-toggle-visibility-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: #64748b;
+          display: flex;
+          padding: 4px;
+          font-size: 1rem;
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: #ffffff;
+          }
+        }
+      }
+    }
   }
-  &.science {
-    background-color: #00ff22;
-    // color: $secondary-blue;
-  }
-  &.english {
-    background-color: #ff7b00;
-  }
-}
 
-.table-dropdown-select {
-  padding: 6px;
-  border-radius: $border-radius-small-m;
-  border: 1px solid #cbd5e1;
-  font-weight: $font-weight-600;
-  color: $secondary-blue;
-}
+  /* --- 🏅 ENROLLED FACULTIES BADGES SPACE --- */
+  .view-card-enrolled-subjects-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
 
-.rows-btn {
-  display: flex;
+    .checkbox-hud-section-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .faculties-pills-flex-stack {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap; // Auto wrap alignment support
+      .faculty-enrollment-status-pill {
+        padding: 6px 14px;
+        border-radius: 20px; // Capsule layout style
+        font-size: 0.8rem;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid transparent;
+
+        // Condition 1: 🔵 ශිෂ්‍යයා පන්තියට ඇතුළත් වී ඇති විට (Soft Alpha Blue)
+        &.enrolled-active {
+          background: rgba(37, 99, 235, 0.08);
+          border-color: rgba(37, 99, 235, 0.15);
+          color: #60a5fa;
+
+          svg {
+            color: #00f1d1;
+            filter: drop-shadow(0 0 4px #00f1d1);
+          } // Checked indicator glows green
+        }
+
+        // Condition 2: ⚪ ශිෂ්‍යයා පන්තියට ඇතුළත් වී නොමැති විට (Muted Slate)
+        &.enrolled-disabled {
+          background: rgba(255, 255, 255, 0.02);
+          border-color: rgba(255, 255, 255, 0.04);
+          color: #475569;
+        }
+      }
+    }
+  }
+
+  /* --- 📥 FOOTER ACTION INTERFACE BUTTONS (MODIFY / EVICT) --- */
+  .view-card-action-footer-hub-row {
+    display: flex;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 18px;
+    margin-top: 4px;
+    width: 100%;
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+
+    // 🟡 Modify Registry Button Style (Cyber Laser Orange Vibe)
+    .form-modify-registry-btn {
+      flex-grow: 1;
+      background: linear-gradient(
+        135deg,
+        #f59e0b 0%,
+        #d97706 100%
+      ); // Premium Gold Medal Roll
+      color: #0f172a; // Dark text contrast
+
+      &:hover {
+        background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+        box-shadow: 0 6px 16px rgba(245, 158, 11, 0.3);
+        transform: translateY(-2px);
+      }
+    }
+
+    // 🔴 Evict / Delete Student Button (Cyber Red Alert Base)
+    .form-evict-delete-btn {
+      background: rgba(239, 68, 68, 0.06);
+      color: #f87171;
+
+      &:hover {
+        background: #ef4444; // Active Hot Red Warning
+        color: #ffffff;
+        box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+        transform: translateY(-2px);
+      }
+    }
+  }
 }
