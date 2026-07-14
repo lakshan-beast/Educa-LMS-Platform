@@ -202,9 +202,9 @@ $primary-green: #00f1d1;
   .contact-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
+    gap: 6px;
     padding: 0;
-    padding-top: 12px;
+    padding-top: 24px;
 
     /* 🎁 INDIVIDUAL CONTACT CARD (2026 Tech Glass Look) */
     .contact-card {
@@ -292,7 +292,7 @@ $primary-green: #00f1d1;
   background: rgba(white, 0.02); // Dark Glass Background
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  padding: 35px 12px;
+  padding: 12px;
   border-radius: 24px;
   border: 2px solid rgba(white, 0.3);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
@@ -346,7 +346,7 @@ $primary-green: #00f1d1;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: rgba($primary-green, 0.24) 0px 4px 15px;
-    // margin-top: 10px;
+    margin-top: 6px;
 
     &:hover {
       background: $primary-green; // තද කොළ පාටක් වේ Smooth ලෙස
