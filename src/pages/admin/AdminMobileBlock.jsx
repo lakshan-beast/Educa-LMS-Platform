@@ -72,7 +72,9 @@ const AdminMobileBlock = () => {
             fontSize: "0.88rem",
             lineHeight: "1.5",
           }}>
-          As the admin panel contains a large volume of data (data ledgers), access via mobile phones has been completely disabled to ensure the system's security and speed.
+          As the admin panel contains a large volume of data (data ledgers),
+          access via mobile phones has been completely disabled to ensure the
+          system's security and speed.
         </p>
 
         <div
