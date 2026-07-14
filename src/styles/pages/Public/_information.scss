@@ -224,8 +224,8 @@
   flex-direction: column;
   justify-content: center;
   background: rgba($white, 0.02); // ලාවට පෙනෙන Glass Panel එකක්
-  border: 1px solid rgba($white, 0.05);
-  padding: 0px;
+  // border: 1px solid rgba($white, 0.05);
+  padding: 0px 10px;
   border-radius: 24px;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
@@ -246,7 +246,7 @@
   &:hover {
     transform: none !important;
     box-shadow: none !important;
-    border-color: rgba(white, 0.08);
+    // border-color: rgba(white, 0.08);
   }
 
   /* Inside Features Lists (Simplified mapping, Exam guidance etc.) */
@@ -275,10 +275,10 @@
 
     p {
       color: $text-medium;
-      padding: 0 0 0 35px; // Icon එක කෙලින් text එක පටන් ගැනීමට පෑඩින් සකස් කළා
+      padding: 0 0 0 15px; // Icon එක කෙලින් text එක පටන් ගැනීමට පෑඩින් සකස් කළා
       font-size: 0.92rem;
       line-height: 1.5;
-      margin: 5px 0 0 0;
+      // margin: 5px 0 0 0;
       text-align: left;
     }
 
@@ -303,7 +303,7 @@
   .about-status {
     display: grid;
     grid-template-columns: repeat(2, 1fr); // Mobile වලදී 2x2 grid එකක් වේ
-    gap: 16px; // කොටු අතර ඉඩ ලස්සන කළා
+    gap: 6px; // කොටු අතර ඉඩ ලස්සන කළා
 
     @media (min-width: 1024px) {
       grid-template-columns: repeat(2, 1fr); // Desktop එකෙත් පේළියට 2 බැගින් Bento එකක් කළා
@@ -317,7 +317,7 @@
       padding: 28px 20px;
       border-radius: 20px;
       text-align: center;
-      border: 1px solid rgba($white, 0.06); // සිහින් invisible border එක
+      border: 1px solid rgba(white, 0.15); // සිහින් invisible border එක
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
@@ -361,6 +361,7 @@
         padding: 0;
         border: none; // පරණ කැත ඉරි කෑලි අයින් කළා
 
+
         @media (min-width: 1024px) {
           padding-left: 0;
           border-left: none;
@@ -375,10 +376,10 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin: 4px 0 0 0;
+        text-align: center;
 
         @media (min-width: 1024px) {
           padding: 0;
-          text-align: center;
         }
       }
 
