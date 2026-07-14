@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig";
 import {
@@ -144,102 +142,47 @@ const AllStudents = () => {
   });
 
   return (
-    <div
-      className="vault-container"
-      style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+    <div className="admin-student-vault-root-container">
       {/* 👑 TOP METADATA HEADER */}
-      <div
-        className="students-header"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          background: "white",
-          padding: "20px",
-          borderRadius: "12px",
-        }}>
-        <div>
-          <h1 style={{ margin: 0, color: "#001b42", fontSize: "1.5rem" }}>
-            {/* {currentFacultySubject}  */}
-            Faculty Registry
-          </h1>
-          <p
-            style={{
-              margin: "5px 0 0 0",
-              color: "#8b949e",
-              fontSize: "0.9rem",
-            }}>
+      <div className="students-registry-top-header-zone">
+        <div className="header-meta-details">
+          <h1>Faculty Registry</h1>
+          <p className="registry-subtext">
             Secure subject-isolated student database core.
           </p>
         </div>
-        <div
-          className="search-box-bar"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            background: "#f4f6fa",
-            padding: "10px 15px",
-            borderRadius: "8px",
-            maxWidth: "500px",
-            width: "100%",
-          }}>
-          <FaMagnifyingGlass style={{ color: "#8b949e" }} />
+
+        {/* 🔍 CYBER LASER SEARCH BAR TERMINAL */}
+        <div className="registry-search-box-bar">
+          <FaMagnifyingGlass className="search-icon-hud" />
           <input
             type="text"
             placeholder="Search student profile..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{
-              border: "none",
-              background: "none",
-              outline: "none",
-              width: "100%",
-              fontSize: "0.9rem",
-            }}
           />
         </div>
-        {/* <div className="addbtn"> */}
+
+        {/* + ADD NEW STUDENT TRIGGER BUTTON */}
         <button
           onClick={() => setIsAddModalOpen(true)}
-          style={{
-            background: "#0056ff",
-            color: "white",
-            padding: "10px 18px",
-            border: "none",
-            borderRadius: "8px",
-            fontWeight: "bold",
-            cursor: "pointer",
-          }}>
+          className="add-new-student-trigger-btn">
           + Add New Student
         </button>
+
+        {/* ADD STUDENT MODAL BACKBONE */}
         <AddStudentForm
           isOpen={isAddModalOpen}
           onClose={() => setIsAddModalOpen(false)}
           selectedGrade={activeGrade}
         />
-        Use code with caution.
-        {/* </div> */}
       </div>
+
       {/* 🎛️ FILTER CONTROLS DOCK */}
-      <div
-        className="master-filter-control-dock"
-        style={{
-          display: "flex",
-          gap: "30px",
-          background: "white",
-          padding: "15px 20px",
-          borderRadius: "12px",
-        }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span
-            style={{
-              fontSize: "0.85rem",
-              fontWeight: "600",
-              color: "#8b949e",
-            }}>
-            Grade:
-          </span>
+      <div className="master-filter-control-dock">
+        {/* GRADE FILTER SEGMENT */}
+        <div className="filter-segment-group">
+          <span className="filter-hud-meta-label">Grade:</span>
           {["10", "11"].map((g) => (
             <button
               key={g}
@@ -247,28 +190,15 @@ const AllStudents = () => {
                 setActiveGrade(g);
                 setSelectedStudent(null);
               }}
-              style={{
-                padding: "6px 14px",
-                borderRadius: "20px",
-                border: "none",
-                background: activeGrade === g ? "#0056ff" : "#f4f6fa",
-                color: activeGrade === g ? "white" : "#001b42",
-                fontWeight: "600",
-                cursor: "pointer",
-              }}>
+              className={`filter-dock-pill-btn ${activeGrade === g ? "pill-active" : ""}`}>
               Grade {g}
             </button>
           ))}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span
-            style={{
-              fontSize: "0.85rem",
-              fontWeight: "600",
-              color: "#8b949e",
-            }}>
-            Gender:
-          </span>
+
+        {/* GENDER FILTER SEGMENT */}
+        <div className="filter-segment-group">
+          <span className="filter-hud-meta-label">Gender:</span>
           {[
             { id: "ALL", label: "All Students" },
             { id: "boy", label: "Boys" },
@@ -280,215 +210,100 @@ const AllStudents = () => {
                 setActiveGender(gen.id);
                 setSelectedStudent(null);
               }}
-              style={{
-                padding: "6px 14px",
-                borderRadius: "20px",
-                border: "none",
-                background: activeGender === gen.id ? "#0056ff" : "#f4f6fa",
-                color: activeGender === gen.id ? "white" : "#001b42",
-                fontWeight: "600",
-                cursor: "pointer",
-              }}>
+              className={`filter-dock-pill-btn ${activeGender === gen.id ? "pill-active" : ""}`}>
               {gen.label}
             </button>
           ))}
         </div>
       </div>
-      {/* 🎚️ SPLIT WORKSPACE GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.2fr 1fr",
-          gap: "25px",
-          alignItems: "start",
-        }}>
+
+      {/* 🎛️ SPLIT WORKSPACE GRID */}
+      <div className="admin-vault-split-workspace-grid">
         {/* 💻 LEFT SIDE: SLIM MASTER TABLE */}
-        <div
-          className="left-table-shield"
-          style={{
-            background: "white",
-            borderRadius: "12px",
-            padding: "20px",
-          }}>
+        <div className="left-table-shield">
           {isLoading ? (
-            <div style={{ padding: "20px", color: "#8b949e" }}>
+            <div className="ledger-sync-loading-text">
               Syncing Cloud Ledger...
             </div>
           ) : filteredStudents.length === 0 ? (
-            <div style={{ padding: "20px", color: "#8b949e" }}>
+            <div className="ledger-sync-empty-text">
               No matching records allocated.
             </div>
           ) : (
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                textAlign: "left",
-              }}>
+            <table className="vault-slim-master-table">
               <thead>
-                <tr style={{ borderBottom: "2px solid #f4f6fa" }}>
-                  <th
-                    style={{
-                      padding: "12px 10px",
-                      color: "#8b949e",
-                      fontSize: "0.85rem",
-                    }}>
-                    Student ID
-                  </th>
-                  <th
-                    style={{
-                      padding: "12px 10px",
-                      color: "#8b949e",
-                      fontSize: "0.85rem",
-                    }}>
-                    Full Name
-                  </th>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Full Name</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredStudents.map((student) => (
-                  <tr
-                    key={student.docId}
-                    onClick={() => {
-                      setSelectedStudent(student);
-                      setIsEditing(false);
-                    }}
-                    style={{
-                      borderBottom: "1px solid #f4f6fa",
-                      cursor: "pointer",
-                      background:
-                        selectedStudent?.docId === student.docId
-                          ? "#eef2ff"
-                          : "transparent",
-                    }}>
-                    <td style={{ padding: "14px 10px" }}>
-                      <strong>{student.id || "PENDING"}</strong>
-                    </td>
-                    <td
-                      style={{
-                        padding: "14px 10px",
-                        color: "#001b42",
-                        fontWeight: "500",
-                      }}>
-                      {student.fullName}
-                    </td>
-                  </tr>
-                ))}
+                {filteredStudents.map((student) => {
+                  const isSelected = selectedStudent?.docId === student.docId;
+                  return (
+                    <tr
+                      key={student.docId}
+                      onClick={() => {
+                        setSelectedStudent(student);
+                        setIsEditing(false);
+                      }}
+                      className={isSelected ? "selected-row-active" : ""}>
+                      <td>
+                        <strong>{student.id || "PENDING"}</strong>
+                      </td>
+                      <td className="student-full-name-cell">
+                        {student.fullName}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           )}
         </div>
+
         {/* 📋 RIGHT SIDE: DYNAMIC DETAILS VAULT CARD */}
         <div className="right-details-card-vault">
+          {/* CONDITION 01: NO STUDENT SELECTED (හිස් අවස්ථාව) */}
           {!selectedStudent ? (
-            <div
-              style={{
-                background: "#f8faff",
-                border: "2px dashed #eef2ff",
-                borderRadius: "12px",
-                padding: "40px",
-                textAlign: "center",
-                color: "#8b949e",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "10px",
-              }}>
-              <FaUsers style={{ fontSize: "2rem", color: "#d2d6dc" }} />
-              <span style={{ fontSize: "0.95rem" }}>
-                Select a student row to view details [INDEX 4].
+            <div className="vault-empty-selection-placeholder">
+              <FaUsers className="placeholder-users-icon" />
+              <span className="placeholder-label-text">
+                Select a student row to view details.
               </span>
             </div>
           ) : isEditing ? (
-            <div
-              style={{
-                background: "white",
-                padding: "30px",
-                borderRadius: "12px",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
-                display: "flex",
-                flexDirection: "column",
-                gap: "15px",
-              }}>
-              <h3 style={{ margin: "0 0 10px 0", color: "#001b42" }}>
-                Edit Faculty Profile
-              </h3>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "5px",
-                }}>
-                <label
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: "bold",
-                    color: "#8b949e",
-                  }}>
-                  Full Name
-                </label>
+            <div className="vault-profile-edit-glass-form">
+              <h3 className="form-main-heading">Edit Faculty Profile</h3>
+
+              {/* FULL NAME FIELD */}
+              <div className="form-input-field-group">
+                <label>Full Name</label>
                 <input
                   type="text"
                   value={editForm.fullName}
                   onChange={(e) =>
                     setEditForm({ ...editForm, fullName: e.target.value })
                   }
-                  style={{
-                    padding: "10px",
-                    borderRadius: "6px",
-                    border: "1px solid #d2d6dc",
-                    outline: "none",
-                  }}
                 />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "5px",
-                }}>
-                <label
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: "bold",
-                    color: "#8b949e",
-                  }}>
-                  Login Password
-                </label>
+
+              {/* LOGIN PASSWORD FIELD */}
+              <div className="form-input-field-group">
+                <label>Login Password</label>
                 <input
                   type="text"
                   value={editForm.password}
                   onChange={(e) =>
                     setEditForm({ ...editForm, password: e.target.value })
                   }
-                  style={{
-                    padding: "10px",
-                    borderRadius: "6px",
-                    border: "1px solid #d2d6dc",
-                    outline: "none",
-                  }}
                 />
               </div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "15px",
-                }}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "5px",
-                  }}>
-                  <label
-                    style={{
-                      fontSize: "0.8rem",
-                      fontWeight: "bold",
-                      color: "#8b949e",
-                    }}>
-                    Student Mobile
-                  </label>
+
+              {/* SPLIT ROW: MOBILE NUMBERS */}
+              <div className="form-double-split-grid-row">
+                <div className="form-input-field-group">
+                  <label>Student Mobile</label>
                   <input
                     type="text"
                     value={editForm.studentMobile}
@@ -498,268 +313,149 @@ const AllStudents = () => {
                         studentMobile: e.target.value,
                       })
                     }
-                    style={{
-                      padding: "10px",
-                      borderRadius: "6px",
-                      border: "1px solid #d2d6dc",
-                    }}
                   />
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "5px",
-                  }}>
-                  <label
-                    style={{
-                      fontSize: "0.8rem",
-                      fontWeight: "bold",
-                      color: "#8b949e",
-                    }}>
-                    Parent Mobile
-                  </label>
+
+                <div className="form-input-field-group">
+                  <label>Parent Mobile</label>
                   <input
                     type="text"
                     value={editForm.parentMobile}
                     onChange={(e) =>
                       setEditForm({ ...editForm, parentMobile: e.target.value })
                     }
-                    style={{
-                      padding: "10px",
-                      borderRadius: "6px",
-                      border: "1px solid #d2d6dc",
-                    }}
                   />
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "15px",
-                  alignItems: "center",
-                  marginTop: "10px",
-                }}>
-                <span
-                  style={{
-                    fontSize: "0.85rem",
-                    fontWeight: "bold",
-                    color: "#8b949e",
-                  }}>
+
+              {/* GATED TUTORS MULTIPLE CHECKBOXES */}
+              <div className="form-checkbox-gating-row-wrapper">
+                <span className="checkbox-hud-section-label">
                   Gated Tutors:
                 </span>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={editForm.maths}
-                    onChange={(e) =>
-                      setEditForm({ ...editForm, maths: e.target.checked })
-                    }
-                  />
-                  M
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={editForm.science}
-                    onChange={(e) =>
-                      setEditForm({ ...editForm, science: e.target.checked })
-                    }
-                  />
-                  S
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={editForm.english}
-                    onChange={(e) =>
-                      setEditForm({ ...editForm, english: e.target.checked })
-                    }
-                  />
-                  E
-                </label>
+                <div className="checkbox-nodes-flex-stack">
+                  <label className="checkbox-node-label check-maths">
+                    <input
+                      type="checkbox"
+                      checked={editForm.maths}
+                      onChange={(e) =>
+                        setEditForm({ ...editForm, maths: e.target.checked })
+                      }
+                    />
+                    <span>M</span>
+                  </label>
+
+                  <label className="checkbox-node-label check-science">
+                    <input
+                      type="checkbox"
+                      checked={editForm.science}
+                      onChange={(e) =>
+                        setEditForm({ ...editForm, science: e.target.checked })
+                      }
+                    />
+                    <span>S</span>
+                  </label>
+
+                  <label className="checkbox-node-label check-english">
+                    <input
+                      type="checkbox"
+                      checked={editForm.english}
+                      onChange={(e) =>
+                        setEditForm({ ...editForm, english: e.target.checked })
+                      }
+                    />
+                    <span>E</span>
+                  </label>
+                </div>
               </div>
-              <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
+
+              {/* ACTION FOOTER BUTTONS */}
+              <div className="form-action-footer-buttons-row">
                 <button
                   onClick={() => handleUpdateStudent(selectedStudent.docId)}
-                  style={{
-                    flexGrow: 1,
-                    padding: "10px",
-                    background: "#10b981",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
-                  }}>
+                  className="form-submit-save-profile-btn">
                   <FaCheck /> Save Profile
                 </button>
+
                 <button
                   onClick={() => setIsEditing(false)}
-                  style={{
-                    padding: "10px",
-                    background: "#f4f6fa",
-                    color: "#001b42",
-                    border: "none",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}>
+                  className="form-cancel-abort-btn">
                   <FaXmark /> Cancel
                 </button>
               </div>
             </div>
           ) : (
-            <div
-              style={{
-                background: "white",
-                padding: "30px",
-                borderRadius: "12px",
-                boxShadow: "0 4px 25px rgba(0,0,0,0.02)",
-                borderTop: "4px solid #0056ff",
-                display: "flex",
-                flexDirection: "column",
-                gap: "20px",
-              }}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <span
-                  style={{
-                    fontSize: "0.8rem",
-                    color: "#8b949e",
-                    fontWeight: "bold",
-                    textTransform: "uppercase",
-                  }}>
+            /* CONDITION 03: VIEWING REJECT/REGISTRY PROFILE DETAILS (විස්තර බැලීමේ පැනලය) */
+            <div className="vault-profile-view-glass-card">
+              {/* PROFILE HEADER DATA IDENTIFIER */}
+              <div className="view-card-header-meta">
+                <span className="view-card-hud-small-label">
                   Selected Registry Profile
                 </span>
-                <h2
-                  style={{
-                    margin: "5px 0 0 0",
-                    color: "#001b42",
-                    fontSize: "1.4rem",
-                  }}>
+                <h2 className="view-card-student-name">
                   {selectedStudent.fullName}
                 </h2>
-                <small
-                  style={{
-                    color: "#0056ff",
-                    fontWeight: "bold",
-                    marginTop: "3px",
-                  }}>
+                <small className="view-card-system-token">
                   System Token: {selectedStudent.id}
                 </small>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "12px",
-                  background: "#f8faff",
-                  padding: "15px",
-                  borderRadius: "8px",
-                }}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: "0.9rem",
-                  }}>
-                  <span style={{ color: "#8b949e" }}>Grade Tier:</span>
-                  <strong style={{ color: "#001b42" }}>
+
+              {/* CORE BIO PARAMETERS LEDGER PANEL */}
+              <div className="view-card-parameters-ledger-box">
+                <div className="ledger-data-row">
+                  <span className="ledger-label">Grade Tier:</span>
+                  <strong className="ledger-value">
                     Grade {selectedStudent.grade}
                   </strong>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: "0.9rem",
-                  }}>
-                  <span style={{ color: "#8b949e" }}>Gender Matrix:</span>
-                  <strong
-                    style={{ color: "#001b42", textTransform: "capitalize" }}>
+
+                <div className="ledger-data-row">
+                  <span className="ledger-label">Gender Matrix:</span>
+                  <strong className="ledger-value value-capitalize">
                     {selectedStudent.gender}
                   </strong>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: "0.9rem",
-                  }}>
-                  <span style={{ color: "#8b949e" }}>Student Mobile:</span>
-                  <strong style={{ color: "#001b42" }}>
+
+                <div className="ledger-data-row">
+                  <span className="ledger-label">Student Mobile:</span>
+                  <strong className="ledger-value">
                     {selectedStudent.studentMobile || "N/A"}
                   </strong>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: "0.9rem",
-                  }}>
-                  <span style={{ color: "#8b949e" }}>Guardian Mobile:</span>
-                  <strong style={{ color: "#001b42" }}>
+
+                <div className="ledger-data-row">
+                  <span className="ledger-label">Guardian Mobile:</span>
+                  <strong className="ledger-value">
                     {selectedStudent.parentMobile || "N/A"}
                   </strong>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    fontSize: "0.9rem",
-                    borderTop: "1px dashed #eef2ff",
-                    paddingTop: "10px",
-                  }}>
-                  <span style={{ color: "#8b949e" }}>Access Password:</span>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}>
+
+                {/* GATED ACCESS PASSWORD CONTROLLER */}
+                <div className="ledger-data-row password-split-row">
+                  <span className="ledger-label">Access Password:</span>
+                  <div className="password-display-interactive-node">
                     <strong
-                      style={{
-                        color: "#001b42",
-                        letterSpacing: isPasswordRevealed ? "normal" : "2px",
-                      }}>
+                      className={`ledger-value ${!isPasswordRevealed ? "password-masked-dots" : ""}`}>
                       {isPasswordRevealed
                         ? selectedStudent.password
                         : "••••••••"}
                     </strong>
                     <button
+                      type="button"
                       onClick={() => setIsPasswordRevealed(!isPasswordRevealed)}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        color: "#8b949e",
-                        display: "flex",
-                      }}>
+                      className="password-toggle-visibility-btn">
                       {isPasswordRevealed ? <FaEyeSlash /> : <FaEye />}
                     </button>
                   </div>
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "8px",
-                }}>
-                <span
-                  style={{
-                    fontSize: "0.8rem",
-                    color: "#8b949e",
-                    fontWeight: "bold",
-                  }}>
+
+              {/* ENROLLED FACULTIES BADGES SPACE */}
+              <div className="view-card-enrolled-subjects-zone">
+                <span className="checkbox-hud-section-label">
                   Enrolled Faculties
                 </span>
-                <div style={{ display: "flex", gap: "10px" }}>
+                <div className="faculties-pills-flex-stack">
                   {[
                     { id: "maths", label: "Mathematics (M)" },
                     { id: "science", label: "Science (S)" },
@@ -769,49 +465,22 @@ const AllStudents = () => {
                     return (
                       <span
                         key={sub.id}
-                        style={{
-                          padding: "6px 12px",
-                          borderRadius: "6px",
-                          fontSize: "0.8rem",
-                          fontWeight: "bold",
-                          background: isEnrolled ? "#eef2ff" : "#f4f6fa",
-                          color: isEnrolled ? "#0056ff" : "#d2d6dc",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "5px",
-                        }}>
+                        className={`faculty-enrollment-status-pill ${isEnrolled ? "enrolled-active" : "enrolled-disabled"}`}>
                         {isEnrolled && <IoCheckmarkCircle />} {sub.label}
                       </span>
                     );
                   })}
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "10px",
-                  borderTop: "1px solid #f4f6fa",
-                  paddingTop: "15px",
-                  marginTop: "5px",
-                }}>
+
+              {/* FOOTER MANAGEMENT ACTIONS BUTTONS (MODIFY / EVICT) */}
+              <div className="view-card-action-footer-hub-row">
                 <button
                   onClick={() => startEdit(selectedStudent)}
-                  style={{
-                    flexGrow: 1,
-                    padding: "10px",
-                    background: "#ffc107",
-                    color: "#001b42",
-                    border: "none",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
-                  }}>
+                  className="form-modify-registry-btn">
                   <FaUserPen /> Modify Registry
                 </button>
+
                 <button
                   onClick={() =>
                     handleDeleteStudent(
@@ -819,18 +488,7 @@ const AllStudents = () => {
                       selectedStudent.fullName,
                     )
                   }
-                  style={{
-                    padding: "10px",
-                    background: "#fff5f5",
-                    color: "#ff4b4b",
-                    border: "none",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}>
+                  className="form-evict-delete-btn">
                   <FaUserMinus /> Evict
                 </button>
               </div>
