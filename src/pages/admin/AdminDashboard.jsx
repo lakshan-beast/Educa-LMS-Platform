@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { db } from "../../firebaseConfig";
 import {
   collection,
-  //   getDocs,
   query,
   where,
   addDoc,
@@ -25,7 +24,6 @@ import {
   FaUsers,
   FaBullhorn,
   FaFilePdf,
-  //   FaChartLine,
   FaVideo,
   FaXmark,
   FaClock,
@@ -33,7 +31,6 @@ import {
   FaGraduationCap,
   FaPenToSquare,
   FaHourglassHalf,
-  //   FaCircleExclamation,
   FaBolt,
 } from "react-icons/fa6";
 
@@ -73,9 +70,9 @@ const AdminDashboard = () => {
 
   // 🔄 LIVE CLOUD HYDRATION MATRIX (Subject-Isolated Content Gating) [INDEX 4, 51]
   useEffect(() => {
+    // setIsLoading(true);
     if (!currentFacultySubject) return;
-    setIsLoading(true);
-    
+
     // A. Students Stream & Gender Demographics Calculator [INDEX 51]
     const studentQuery = query(
       collection(db, "students"),
@@ -122,11 +119,6 @@ const AdminDashboard = () => {
       let tutes = 0,
         papers = 0,
         formulas = 0;
-      //   list.forEach((r) => {
-      //     if ((row) => r.category === "classTutes") tutes++;
-      //     else if (r.category === "pastPapers") papers++;
-      //     else formulas++;
-      //   });
 
       list.forEach((r) => {
         if (r.category === "classTutes") tutes++;
@@ -176,14 +168,6 @@ const AdminDashboard = () => {
     const unsubExams = onSnapshot(examQuery, (snapshot) => {
       setExams(snapshot.docs.map((doc) => doc.data()));
     });
-
-    // return () => {
-    //   unsubStudents();
-    //   unsubNotices();
-    //   unsubPapers();
-    //   unsubSchedules();
-    //   unsubExams();
-    // };
 
     // 👑 FIXED: සියලුම Cloud Listeners සක්‍රීය වුණු සැනින් Loading එක නවතා දමයි! [INDEX 4]
     const delayFlag = setTimeout(() => {
@@ -331,32 +315,12 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div
-      className="admin-analytics-core-dashboard"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "25px",
-        animation: "fadeIn 0.4s ease",
-        width: "100%",
-        marginTop: "350px",
-      }}>
+    <div className="admin-analytics-core-dashboard">
       {/* 👑 1. TOP DYNAMIC WELCOME BANNER & REMINDER DOCK */}
-      <div
-        className="dashboard-top-alert-matrix"
-        style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-        <div
-          style={{
-            background: "linear-gradient(135deg, #001b42 0%, #002b66 100%)",
-            color: "white",
-            padding: "25px 30px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-          }}>
-          <h1 style={{ margin: 0, fontSize: "1.6rem", fontWeight: "bold" }}>
-            Welcome to {subject?.toUpperCase()} Operational Center
-          </h1>
-          <p style={{ margin: "5px 0 0 0", opacity: 0.8, fontSize: "0.9rem" }}>
+      <div className="dashboard-top-alert-matrix">
+        <div className="admin-welcome-hero-banner">
+          <h1>Welcome to {subject?.toUpperCase()} Operational Center</h1>
+          <p>
             Monitor live operations, schedule configurations, and broadcast
             cluster indexes.
           </p>
@@ -364,19 +328,13 @@ const AdminDashboard = () => {
 
         {/* 🔔 SMART ADMINISTRATIVE REMINDER BANNER */}
         <div
+          className="smart-admin-reminder-strip"
           style={{
             background: todayClasses.length > 0 ? "#fff5f5" : "#f4f7ff",
             borderLeft:
               todayClasses.length > 0
                 ? "4px solid #ff4b4b"
                 : "4px solid #0056ff",
-            padding: "12px 20px",
-            borderRadius: "0 8px 8px 0",
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            fontSize: "0.85rem",
-            fontWeight: "600",
             color: todayClasses.length > 0 ? "#991b1b" : "#1e1b4b",
           }}>
           <FaBolt
@@ -387,70 +345,26 @@ const AdminDashboard = () => {
       </div>
 
       {/* 🎛️ 2. QUICK MANAGEMENT SHORTCUT HUB & ACTIONS */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "15px",
-        }}>
+      <div className="admin-shortcut-hub-grid">
+        {/* SCHEDULE EXAM MODAL TRIGGER */}
         <button
+          type="button"
           onClick={() => setIsExamModalOpen(true)}
-          style={{
-            background: "white",
-            border: "1px solid #eef2ff",
-            padding: "15px",
-            borderRadius: "10px",
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            cursor: "pointer",
-            fontWeight: "bold",
-            color: "#001b42",
-            transition: "0.2s",
-          }}
-          className="shortcut-btn-hover">
-          <span
-            style={{
-              background: "#fff7ed",
-              color: "#ff9900",
-              padding: "10px",
-              borderRadius: "8px",
-              display: "flex",
-            }}>
+          className="admin-shortcut-tile-btn">
+          <span className="shortcut-icon-wrapper icon-exam">
             <FaPenToSquare />
           </span>
-          <span>+ Schedule Exam</span>
+          <span className="shortcut-label-text">+ Schedule Exam</span>
         </button>
-        <div
-          style={{
-            background: "white",
-            border: "1px solid #eef2ff",
-            padding: "15px",
-            borderRadius: "10px",
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-          }}>
-          <span
-            style={{
-              background: "#f0fdf4",
-              color: "#10b981",
-              padding: "10px",
-              borderRadius: "8px",
-              display: "flex",
-            }}>
+
+        {/* HIGH-TECH LIVE TERMINAL CLOCK */}
+        <div className="admin-shortcut-tile-display">
+          <span className="shortcut-icon-wrapper icon-clock">
             <FaClock />
           </span>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <small
-              style={{
-                color: "#8b949e",
-                fontSize: "0.75rem",
-                fontWeight: "600",
-              }}>
-              TERMINAL CLOCK
-            </small>
-            <strong style={{ fontSize: "0.9rem", color: "#001b42" }}>
+          <div className="terminal-clock-meta-block">
+            <small className="clock-hud-label">TERMINAL CLOCK</small>
+            <strong className="clock-digital-digits">
               {currentTime.toLocaleTimeString()}
             </strong>
           </div>
@@ -458,187 +372,57 @@ const AdminDashboard = () => {
       </div>
 
       {/* 📊 3. DYNAMIC METRICS COUNTER CARDS LAYER */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "20px",
-        }}>
-        <div
-          style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            borderLeft: "5px solid #0056ff",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}>
-          <div>
-            <span
-              style={{
-                color: "#8b949e",
-                fontSize: "0.8rem",
-                fontWeight: "bold",
-              }}>
-              ENROLLED STUDENTS
-            </span>
-            <h2
-              style={{
-                margin: "5px 0 0 0",
-                fontSize: "2rem",
-                color: "#001b42",
-              }}>
-              {totalStudents}
-            </h2>
+      <div className="admin-metrics-counter-bento-grid">
+        {/* 👥 CARD 1: ENROLLED STUDENTS */}
+        <div className="metric-bento-tile tile-students">
+          <div className="metric-data-stream">
+            <span className="metric-hud-title">ENROLLED STUDENTS</span>
+            <h2 className="metric-digital-digits">{totalStudents}</h2>
           </div>
-          <div
-            style={{
-              background: "#eef2ff",
-              color: "#0056ff",
-              padding: "15px",
-              borderRadius: "50%",
-              fontSize: "1.2rem",
-              display: "flex",
-            }}>
+          <div className="metric-avatar-icon-glow">
             <FaUsers />
           </div>
         </div>
-        <div
-          style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            borderLeft: "5px solid #ff9900",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}>
-          <div>
-            <span
-              style={{
-                color: "#8b949e",
-                fontSize: "0.8rem",
-                fontWeight: "bold",
-              }}>
-              BROADCAST NOTICES
-            </span>
-            <h2
-              style={{
-                margin: "5px 0 0 0",
-                fontSize: "2rem",
-                color: "#001b42",
-              }}>
-              {totalNotices}
-            </h2>
+
+        {/* 📢 CARD 2: BROADCAST NOTICES */}
+        <div className="metric-bento-tile tile-notices">
+          <div className="metric-data-stream">
+            <span className="metric-hud-title">BROADCAST NOTICES</span>
+            <h2 className="metric-digital-digits">{totalNotices}</h2>
           </div>
-          <div
-            style={{
-              background: "#fff7ed",
-              color: "#ff9900",
-              padding: "15px",
-              borderRadius: "50%",
-              fontSize: "1.2rem",
-              display: "flex",
-            }}>
+          <div className="metric-avatar-icon-glow">
             <FaBullhorn />
           </div>
         </div>
-        <div
-          style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            borderLeft: "5px solid #10b981",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}>
-          <div>
-            <span
-              style={{
-                color: "#8b949e",
-                fontSize: "0.8rem",
-                fontWeight: "bold",
-              }}>
-              MATERIAL ASSETS
-            </span>
-            <h2
-              style={{
-                margin: "5px 0 0 0",
-                fontSize: "2rem",
-                color: "#001b42",
-              }}>
-              {totalPapers}
-            </h2>
+
+        {/* 📄 CARD 3: MATERIAL ASSETS */}
+        <div className="metric-bento-tile tile-assets">
+          <div className="metric-data-stream">
+            <span className="metric-hud-title">MATERIAL ASSETS</span>
+            <h2 className="metric-digital-digits">{totalPapers}</h2>
           </div>
-          <div
-            style={{
-              background: "#ecfdf5",
-              color: "#10b981",
-              padding: "15px",
-              borderRadius: "50%",
-              fontSize: "1.2rem",
-              display: "flex",
-            }}>
+          <div className="metric-avatar-icon-glow">
             <FaFilePdf />
           </div>
         </div>
       </div>
 
       {/* 📱 4. TODAY'S CLASSES TIMELINE PANEL */}
-      <div
-        style={{
-          background: "white",
-          padding: "25px",
-          borderRadius: "12px",
-          boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-        }}>
-        <h3
-          style={{
-            margin: "0 0 15px 0",
-            color: "#001b42",
-            fontSize: "1rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-          }}>
-          <FaCalendarDays style={{ color: "#0056ff" }} /> Today's Active Classes
-          Pipeline
+      <div className="admin-today-classes-pipeline-panel">
+        <h3 className="pipeline-core-heading">
+          <FaCalendarDays /> Today's Active Classes Pipeline
         </h3>
+
         {todayClasses.length === 0 ? (
-          <p
-            style={{
-              margin: 0,
-              color: "#8b949e",
-              fontStyle: "italic",
-              fontSize: "0.85rem",
-            }}>
+          <p className="pipeline-empty-state-text">
             No active terminal grids configured for today's operational slot.
           </p>
         ) : (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "15px",
-            }}>
+          <div className="pipeline-active-cards-grid">
             {todayClasses.map((c, i) => (
-              <div
-                key={i}
-                style={{
-                  background: "#f8faff",
-                  padding: "15px",
-                  borderRadius: "8px",
-                  border: "1px solid #eef2ff",
-                }}>
-                <strong style={{ color: "#001b42", display: "block" }}>
-                  {c.className}
-                </strong>
-                <small style={{ color: "#8b949e" }}>
+              <div key={i} className="pipeline-class-node-tile">
+                <strong className="class-node-title">{c.className}</strong>
+                <small className="class-node-lesson-subtext">
                   📚 Lesson: {c.currentLesson || "N/A"}
                 </small>
               </div>
@@ -647,30 +431,11 @@ const AdminDashboard = () => {
         )}
       </div>
 
-      {/* 📊 5. GRAPHICS DATA LAYER (GENDER + RESOURCE ANALYSIS CHARTS) */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-          gap: "25px",
-        }}>
-        {/* Gender Shares Donut Panel */}
-        <div
-          style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-          }}>
-          <h3
-            style={{
-              margin: "0 0 15px 0",
-              color: "#001b42",
-              fontSize: "0.95rem",
-            }}>
-            Demographics (Gender Shares)
-          </h3>
-          <div style={{ width: "100%", height: "200px" }}>
+      <div className="admin-graphics-charts-bento-grid">
+        {/* 🟢 PANEL 1: GENDER SHARES DONUT PANEL */}
+        <div className="chart-bento-tile-card donut-chart-tile">
+          <h3 className="chart-core-title">Demographics (Gender Shares)</h3>
+          <div className="recharts-canvas-container">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -684,6 +449,7 @@ const AdminDashboard = () => {
                   {genderData.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
+                      // 👈 COLORS ලිස්ට් එකට ඔයාගේ component එක ඇතුළෙන් දෙන පාටවල් වදී (උදා: #00f1d1, #ff2c73 වගේ ඒවා පට්ට)
                       fill={COLORS[index % COLORS.length]}
                     />
                   ))}
@@ -695,29 +461,23 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Resources Bars Panel */}
-        <div
-          style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-          }}>
-          <h3
-            style={{
-              margin: "0 0 15px 0",
-              color: "#001b42",
-              fontSize: "0.95rem",
-            }}>
-            Paper Hub Asset Allocations
-          </h3>
-          <div style={{ width: "100%", height: "200px" }}>
+        {/* 🔵 PANEL 2: RESOURCES BARS PANEL */}
+        <div className="chart-bento-tile-card bar-chart-tile">
+          <h3 className="chart-core-title">Paper Hub Asset Allocations</h3>
+          <div className="recharts-canvas-container">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={resourceData}>
-                <XAxis dataKey="name" stroke="#8b949e" fontSize={12} />
-                <YAxis stroke="#8b949e" fontSize={12} />
+                {/* 💻 FIXED: ඩාර්ක් පසුබිම උඩින් අකුරු ලස්සනට පේන්න stroke එක Slate Gray කළා */}
+                <XAxis
+                  dataKey="name"
+                  stroke="#94a3b8"
+                  fontSize={12}
+                  tickLine={false}
+                />
+                <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} />
                 <Tooltip />
-                <Bar dataKey="count" fill="#0056ff" />
+                {/* 🚀 FIXED: බාර් තීරු පරණ මඩ නිල් වෙනුවට, සයිබර් Executive Blue පාටින් පත්තු කළා */}
+                <Bar dataKey="count" fill="#2563eb" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -725,120 +485,35 @@ const AdminDashboard = () => {
       </div>
 
       {/* 🏁 6. TRIPLE EXAM DEADLINE COUNTDOWN GRID */}
-      {/* <div style={{ background: "white", padding: "25px", borderRadius: "12px", boxShadow: "0 2px 10px rgba(0,0,0,0.01)" }}>
-        <h3 style={{ margin: "0 0 20px 0", color: "#001b42", fontSize: "1rem", display: "flex", alignItems: "center", gap: "8px" }}><FaHourglassHalf style={{ color: "#ff4b4b" }} /> Core Milestone Countdown Monitors</h3>
-        
-        {exams.length === 0 ? (
-          <p style={{ margin: 0, color: "#8b949e", fontStyle: "italic", fontSize: "0.85rem" }}>No milestone exams or O/L targets logged inside this hub cluster.</p>
-        ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px" }}>
-            {exams.map((ex) => (
-              <div key={ex.id} style={{ background: "#0d1117", border: "1px solid #30363d", padding: "20px", borderRadius: "10px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #21262d", paddingBottom: "10px", marginBottom: "12px" }}>
-                  <strong style={{ color: "#ffd700", fontSize: "0.95rem" }}>{ex.title}</strong>
-                  <span style={{ fontSize: "0.7rem", fontWeight: "bold", padding: "2px 6px", borderRadius: "4px", background: ex.category === "national-ol" ? "#fff5f5" : "#f4f6fa", color: ex.category === "national-ol" ? "#ff4b4b" : "#001b42" }}>
-                    {ex.category?.replace("-", " ").toUpperCase()}
-                  </span>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-                  <small style={{ color: "#8b949e" }}>⏰ Deadline Slot: {ex.targetDate} | {ex.targetTime}</small> */}
-
-      {/* 🏁 6. TRIPLE EXAM DEADLINE COUNTDOWN GRID */}
-      <div
-        style={{
-          background: "white",
-          padding: "25px",
-          borderRadius: "12px",
-          boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-        }}>
-        <h3
-          style={{
-            margin: "0 0 20px 0",
-            color: "#001b42",
-            fontSize: "1rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-          }}>
-          <FaHourglassHalf style={{ color: "#ff4b4b" }} /> Core Milestone
-          Countdown Monitors
+      <div className="admin-exam-countdown-pipeline-panel">
+        <h3 className="pipeline-core-heading">
+          <FaHourglassHalf /> Core Milestone Countdown Monitors
         </h3>
 
         {exams.length === 0 ? (
-          <p
-            style={{
-              margin: 0,
-              color: "#8b949e",
-              fontStyle: "italic",
-              fontSize: "0.85rem",
-            }}>
+          <p className="pipeline-empty-state-text">
             No milestone exams or O/L targets logged inside this hub cluster.
           </p>
         ) : (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "20px",
-            }}>
+          <div className="pipeline-active-cards-grid">
             {exams.map((ex) => (
-              <div
-                key={ex.id}
-                style={{
-                  background: "#0d1117",
-                  border: "1px solid #30363d",
-                  padding: "20px",
-                  borderRadius: "10px",
-                }}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    borderBottom: "1px solid #21262d",
-                    paddingBottom: "10px",
-                    marginBottom: "12px",
-                  }}>
-                  <strong style={{ color: "#ffd700", fontSize: "0.95rem" }}>
-                    {ex.title}
-                  </strong>
+              <div key={ex.id} className="pipeline-exam-node-tile">
+                <div className="node-top-meta-bar">
+                  <strong className="exam-node-title">{ex.title}</strong>
                   <span
-                    style={{
-                      fontSize: "0.7rem",
-                      fontWeight: "bold",
-                      padding: "2px 6px",
-                      borderRadius: "4px",
-                      background:
-                        ex.category === "national-ol" ? "#fff5f5" : "#f4f6fa",
-                      color:
-                        ex.category === "national-ol" ? "#ff4b4b" : "#001b42",
-                    }}>
+                    className={`category-meta-badge ${ex.category === "national-ol" ? "national-badge" : "term-badge"}`}>
                     {ex.category?.replace("-", " ").toUpperCase()}
                   </span>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "5px",
-                  }}>
-                  <small style={{ color: "#8b949e" }}>
+
+                <div className="node-body-parameters">
+                  <small className="exam-node-deadline-text">
                     ⏰ Deadline Slot: {ex.targetDate} | {ex.targetTime}
                   </small>
-                  <div
-                    style={{
-                      marginTop: "8px",
-                      background: "rgba(0, 247, 255, 0.03)",
-                      padding: "10px",
-                      borderRadius: "6px",
-                      border: "1px solid #002b66",
-                      textAlign: "center",
-                    }}>
-                    <code
-                      style={{
-                        color: "#00f7ff",
-                        fontWeight: "bold",
-                        fontSize: "1.05rem",
-                      }}>
+
+                  {/* REAL-TIME DYNAMIC TIME COUNTDOWN DOCK */}
+                  <div className="countdown-live-clock-dock">
+                    <code className="countdown-digital-digits">
                       {calculateLiveClock(ex.targetDate, ex.targetTime)}
                     </code>
                   </div>
@@ -849,48 +524,21 @@ const AdminDashboard = () => {
         )}
       </div>
 
-      {/* 🏛️ 4.5 NEW COMPONENT LAYER: EVENT CALENDAR & QUICK LINKS INTERSECTION GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.2fr 1fr",
-          gap: "25px",
-        }}>
+      {/* 📊 5. GRAPHICS DATA LAYER (GENDER + RESOURCE ANALYSIS CHARTS) */}
+      <div className="admin-calendar-activities-split-grid">
         {/* 📅 MINI EVENT CALENDAR WIDGET */}
-        <div
-          style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-          }}>
-          <h3
-            style={{
-              margin: "0 0 15px 0",
-              color: "#001b42",
-              fontSize: "1rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}>
-            <FaCalendarDays style={{ color: "#ff9900" }} /> Faculty Master Event
-            Calendar
+        <div className="chart-bento-tile-card calendar-widget-tile">
+          <h3 className="chart-core-title">
+            <FaCalendarDays /> Faculty Master Event Calendar
           </h3>
+
           <div className="mini-calendar-widget-core">
-            <div
-              className="calendar-header-month"
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginBottom: "15px",
-                fontWeight: "bold",
-                color: "#001b42",
-              }}>
+            <div className="calendar-header-month">
               <span>
                 {calendarDate.toLocaleString("default", { month: "long" })}{" "}
                 {calendarDate.getFullYear()}
               </span>
-              <div style={{ display: "flex", gap: "10px" }}>
+              <div className="calendar-month-nav-btns">
                 <button
                   onClick={() =>
                     setCalendarDate(
@@ -899,13 +547,7 @@ const AdminDashboard = () => {
                       ),
                     )
                   }
-                  style={{
-                    cursor: "pointer",
-                    border: "1px solid #eee",
-                    background: "none",
-                    borderRadius: "4px",
-                    padding: "2px 8px",
-                  }}>
+                  className="cal-nav-btn">
                   &lt;
                 </button>
                 <button
@@ -916,58 +558,26 @@ const AdminDashboard = () => {
                       ),
                     )
                   }
-                  style={{
-                    cursor: "pointer",
-                    border: "1px solid #eee",
-                    background: "none",
-                    borderRadius: "4px",
-                    padding: "2px 8px",
-                  }}>
+                  className="cal-nav-btn">
                   &gt;
                 </button>
               </div>
             </div>
-            <div
-              className="calendar-days-grid-matrix"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(7, 1fr)",
-                gap: "8px",
-                textAlign: "center",
-              }}>
+
+            <div className="calendar-days-grid-matrix">
               {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((d) => (
-                <strong
-                  key={d}
-                  style={{ fontSize: "0.8rem", color: "#8b949e" }}>
+                <strong key={d} className="calendar-day-name-label">
                   {d}
                 </strong>
               ))}
               {calendarCells.map((day, idx) => (
                 <div
                   key={idx}
-                  className={`calendar-day-cell-node ${day ? "active-day" : "empty-day"}`}
-                  style={{
-                    padding: "10px",
-                    borderRadius: "6px",
-                    background: day ? "#f8faff" : "transparent",
-                    fontSize: "0.85rem",
-                    position: "relative",
-                    fontWeight: day ? "600" : "normal",
-                  }}>
+                  className={`calendar-day-cell-node ${day ? "active-day" : "empty-day"}`}>
                   {day}
                   {/* Real-time Indicator loop values can bind dynamically here */}
                   {day && idx % 5 === 0 && (
-                    <span
-                      style={{
-                        position: "absolute",
-                        bottom: "3px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: "4px",
-                        height: "4px",
-                        background: "#0056ff",
-                        borderRadius: "50%",
-                      }}></span>
+                    <span className="live-event-dot-indicator"></span>
                   )}
                 </div>
               ))}
@@ -976,115 +586,48 @@ const AdminDashboard = () => {
         </div>
 
         {/* 🚀 QUICK LINKS & UPCOMING ACTIVITIES HUB */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div className="admin-activities-vertical-deck">
           {/* QUICK LINKS PANEL */}
-          <div
-            style={{
-              background: "white",
-              padding: "25px",
-              borderRadius: "12px",
-              boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-            }}>
-            <h3
-              style={{
-                margin: "0 0 15px 0",
-                color: "#001b42",
-                fontSize: "1rem",
-              }}>
-              <FaBolt style={{ color: "#0056ff" }} /> Quick Operational Links
+          <div className="chart-bento-tile-card quick-links-panel">
+            <h3 className="chart-core-title">
+              <FaBolt /> Quick Operational Links
             </h3>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "10px",
-              }}>
+            <div className="quick-links-action-row">
               <a
-                href="https://zoom.us"
+                href="https://us05web.zoom.us/myhome"
                 target="_blank"
                 rel="noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "12px",
-                  background: "#f0f6ff",
-                  color: "#0056ff",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  fontWeight: "bold",
-                  fontSize: "0.85rem",
-                }}
-                className="shortcut-btn-hover">
+                className="shortcut-btn-link zoom-link">
                 <FaVideo /> Zoom Web Portal
               </a>
               <a
-                href="https://google.com"
+                href="https://drive.google.com/drive"
                 target="_blank"
                 rel="noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "12px",
-                  background: "#ecfdf5",
-                  color: "#10b981",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  fontWeight: "bold",
-                  fontSize: "0.85rem",
-                }}
-                className="shortcut-btn-hover">
+                className="shortcut-btn-link drive-link">
                 <FaFilePdf /> Drive Repository
               </a>
             </div>
           </div>
+
           {/* UPCOMING ACTIVITIES TIMELINE FEED */}
-          <div
-            style={{
-              background: "white",
-              padding: "25px",
-              borderRadius: "12px",
-              boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-              flexGrow: 1,
-            }}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: "15px",
-              }}>
-              <h3 style={{ margin: 0, color: "#001b42", fontSize: "1rem" }}>
-                <FaGraduationCap style={{ color: "#ff9900" }} /> Upcoming
-                Logistics Activities
+          <div className="chart-bento-tile-card activities-feed-panel">
+            <div className="feed-upper-header-bar">
+              <h3 className="chart-core-title">
+                <FaGraduationCap /> Upcoming Logistics Activities
               </h3>
               <button
                 onClick={() => setIsActivityFormOpen(!isActivityFormOpen)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#0056ff",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                  fontSize: "0.85rem",
-                }}>
+                className="log-event-toggle-btn">
                 + Log Event
               </button>
             </div>
 
+            {/* IS ACTIVTY FORM OPEN CONDITIONAL OVERLAY */}
             {isActivityFormOpen && (
               <form
                 onSubmit={handleActivitySubmit}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
-                  background: "#f8faff",
-                  padding: "15px",
-                  borderRadius: "8px",
-                  marginBottom: "15px",
-                }}>
+                className="activity-logging-form">
                 <input
                   type="text"
                   placeholder="Activity Title (ex: Tute Book Release)"
@@ -1093,13 +636,6 @@ const AdminDashboard = () => {
                   onChange={(e) =>
                     setNewActivity({ ...newActivity, title: e.target.value })
                   }
-                  style={{
-                    padding: "8px",
-                    borderRadius: "6px",
-                    border: "1px solid #d2d6dc",
-                    outline: "none",
-                    fontSize: "0.85rem",
-                  }}
                 />
                 <input
                   type="date"
@@ -1108,63 +644,25 @@ const AdminDashboard = () => {
                   onChange={(e) =>
                     setNewActivity({ ...newActivity, date: e.target.value })
                   }
-                  style={{
-                    padding: "8px",
-                    borderRadius: "6px",
-                    border: "1px solid #d2d6dc",
-                    fontSize: "0.85rem",
-                  }}
                 />
-                <button
-                  type="submit"
-                  style={{
-                    background: "#0056ff",
-                    color: "white",
-                    border: "none",
-                    padding: "8px",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    fontSize: "0.85rem",
-                  }}>
+                <button type="submit" className="activity-commit-submit-btn">
                   Commit Event
                 </button>
               </form>
             )}
-
+            {/* ACTIVITIES RECEPTACLE ITERATION */}
             {activities.length === 0 ? (
-              <p
-                style={{
-                  margin: 0,
-                  color: "#8b949e",
-                  fontStyle: "italic",
-                  fontSize: "0.85rem",
-                }}>
+              <p className="empty-activities-notice-text">
                 No upcoming logistics entries cataloged.
               </p>
             ) : (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "12px",
-                }}>
+              <div className="activities-vertical-stack-feed">
                 {activities.map((act) => (
-                  <div
-                    key={act.id}
-                    style={{
-                      borderLeft: "3px solid #ff9900",
-                      paddingLeft: "12px",
-                    }}>
-                    <strong
-                      style={{
-                        display: "block",
-                        color: "#001b42",
-                        fontSize: "0.9rem",
-                      }}>
+                  <div key={act.id} className="activity-bulletin-strip-node">
+                    <strong className="activity-node-title-label">
                       {act.title}
                     </strong>
-                    <small style={{ color: "#8b949e" }}>
+                    <small className="activity-node-target-date">
                       📅 target: {act.date}
                     </small>
                   </div>
@@ -1178,65 +676,29 @@ const AdminDashboard = () => {
       {/* 📝 7. TRIPLE EXAM SCHEDULER POPUP MODAL */}
       {isExamModalOpen && (
         <div
-          className="admin-modal-overlay"
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.5)",
-            backdropFilter: "blur(4px)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 10000,
-          }}>
+          className="toolkit-sheet-overlay"
+          onClick={() => setIsExamModalOpen(false)}>
+          {/* 👈 යට ඉඳන් පාවෙලා උඩට එන iOS Bottom Sheet Card එක */}
           <div
-            className="admin-modal-card"
-            style={{
-              background: "white",
-              padding: "30px",
-              borderRadius: "12px",
-              width: "460px",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-              position: "relative",
-            }}>
+            className="toolkit-sheet-card exam-setup-card"
+            onClick={(e) => e.stopPropagation()}>
+            {/* Close Cross Button */}
             <button
-              onClick={() => setIsExamModalOpen(false)}
-              style={{
-                position: "absolute",
-                top: "20px",
-                right: "20px",
-                background: "none",
-                border: "none",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                color: "#8b949e",
-              }}>
+              className="close-sheet-btn"
+              onClick={() => setIsExamModalOpen(false)}>
               <FaXmark />
             </button>
-            <h3 style={{ margin: "0 0 15px 0", color: "#001b42" }}>
+
+            <h3>
               <FaGraduationCap /> Log Milestone Assessment
             </h3>
 
             <form
               onSubmit={handleExamSubmit}
-              style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "5px",
-                }}>
-                <label
-                  style={{
-                    fontSize: "0.85rem",
-                    fontWeight: "bold",
-                    color: "#001b42",
-                  }}>
-                  Assessment / Exam Title
-                </label>
+              className="exam-logging-form-body">
+              {/* TITLE INPUT */}
+              <div className="exam-input-field-group">
+                <label>Assessment / Exam Title</label>
                 <input
                   type="text"
                   name="title"
@@ -1244,115 +706,48 @@ const AdminDashboard = () => {
                   required
                   value={examForm.title}
                   onChange={handleExamInputChange}
-                  style={{
-                    padding: "10px",
-                    borderRadius: "6px",
-                    border: "1px solid #d2d6dc",
-                    outline: "none",
-                  }}
                 />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "5px",
-                }}>
-                <label
-                  style={{
-                    fontSize: "0.85rem",
-                    fontWeight: "bold",
-                    color: "#001b42",
-                  }}>
-                  Milestone Classification
-                </label>
+
+              {/* CLASSIFICATION SELECT */}
+              <div className="exam-input-field-group">
+                <label>Milestone Classification</label>
                 <select
                   name="category"
                   value={examForm.category}
-                  onChange={handleExamInputChange}
-                  style={{
-                    padding: "10px",
-                    borderRadius: "6px",
-                    border: "1px solid #d2d6dc",
-                    background: "white",
-                  }}>
+                  onChange={handleExamInputChange}>
                   <option value="class-exam">Class Monthly Test</option>
                   <option value="school-term">School Term Test</option>
                   <option value="national-ol">Government National O/L</option>
                 </select>
               </div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "15px",
-                }}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "5px",
-                  }}>
-                  <label
-                    style={{
-                      fontSize: "0.85rem",
-                      fontWeight: "bold",
-                      color: "#001b42",
-                    }}>
-                    Date
-                  </label>
+
+              {/* DATE & TIME SPLIT ROW */}
+              <div className="exam-date-time-split-grid">
+                <div className="exam-input-field-group">
+                  <label>Date</label>
                   <input
                     type="date"
                     name="targetDate"
                     required
                     value={examForm.targetDate}
                     onChange={handleExamInputChange}
-                    style={{
-                      padding: "10px",
-                      borderRadius: "6px",
-                      border: "1px solid #d2d6dc",
-                    }}
                   />
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "5px",
-                  }}>
-                  <label
-                    style={{
-                      fontSize: "0.85rem",
-                      fontWeight: "bold",
-                      color: "#001b42",
-                    }}>
-                    Time
-                  </label>
+
+                <div className="exam-input-field-group">
+                  <label>Time</label>
                   <input
                     type="time"
                     name="targetTime"
                     value={examForm.targetTime}
                     onChange={handleExamInputChange}
-                    style={{
-                      padding: "10px",
-                      borderRadius: "6px",
-                      border: "1px solid #d2d6dc",
-                    }}
                   />
                 </div>
               </div>
-              <button
-                type="submit"
-                style={{
-                  background: "#ff4b4b",
-                  color: "white",
-                  border: "none",
-                  padding: "12px",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                  marginTop: "10px",
-                }}>
+
+              {/* DEPLOY SUBMIT BUTTON */}
+              <button type="submit" className="exam-deploy-clock-btn">
                 Deploy Milestone Clock
               </button>
             </form>
