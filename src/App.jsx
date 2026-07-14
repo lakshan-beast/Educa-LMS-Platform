@@ -35,7 +35,7 @@ import TabController from "./pages/public/TabController";
 import AdminProtectedRoute from "./components/ui/AdminProtectedRoute";
 
 // 1. App.jsx එකේ ඉහළින්ම import කරගන්න:
-// import AdminMobileBlock from "./pages/admin/AdminMobileBlock";
+import AdminMobileBlock from "./pages/admin/AdminMobileBlock";
 
 // 2. Routes ලියලා තියෙන ලැයිස්තුවේ උඩම හරියේ (අර security-lockdown එක තියෙන තැනට යටින්) මේ පේළිය දාන්න:
 
@@ -55,7 +55,7 @@ const App = () => {
       <Routes>
         {/* <Route path="/security-lockdown" element={<SecurityLockdownGate />} /> */}
 
-        {/* <Route path="/admin-desktop-only" element={<AdminMobileBlock />} /> */}
+        <Route path="/admin-desktop-only" element={<AdminMobileBlock />} />
 
         {/* 🌐 GROUP A: PUBLIC FACING ECOSYSTEM */}
         <Route element={<PublicLayout />}>
