@@ -27,7 +27,7 @@ const Classes = () => {
       title: "O/L English",
       description:
         "Build ultimate confidence in English communication, school textbook lessons, and grammar structure. We focus heavily on formal essay writing techniques, comprehensions, local literature appreciation, and targeted exam paper drills to secure your absolute 'A' grade .",
-      grade: "01 - 11",
+      grade: "06 - 11",
       medium: "English & Sinhala",
       icon: <LuLanguages className="subject-icon" />, // English Icon
     },

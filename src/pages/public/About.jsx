@@ -23,6 +23,8 @@ const About = ({ onClose }) => {
           academic dominance.
         </div>
 
+        
+
         <div className="privacy-actions">
           <button onClick={onClose} className="close-button">
             <FaCircleCheck /> Close

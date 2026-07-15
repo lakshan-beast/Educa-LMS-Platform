@@ -23,6 +23,8 @@ const NexusLabs = ({ onClose }) => {
           ultimate product identity.
         </div>
 
+        
+
         <div className="privacy-actions">
           <button onClick={onClose} className="close-button">
             <FaCircleCheck /> Close

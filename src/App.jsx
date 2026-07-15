@@ -13,7 +13,7 @@ import Dashboard from "./pages/public/Dashboard";
 import PaperHub from "./pages/public/PaperHub";
 // import StudentGuildChat from "./pages/student/StudentGuildChat";
 import ResultHub from "./pages/public/ResultHub";
-import FullTimetable from "./pages/public/Timetables";
+import FullTimetable from "./pages/Future/Timetables";
 import ClassesDetails from "./pages/public/ClassesDetails";
 import ParentPortal from "./pages/Future/ParentPortal";
 import Terms from "./pages/public/Terms";
