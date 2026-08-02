@@ -169,8 +169,8 @@
       rgba(15, 23, 42, 0.6) 0%,
       rgba(30, 41, 59, 0.3) 100%
     );
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
 
     // 📍 තද නිල් උඩින් පෙට්ටිය වෙන් වී පෙනෙන්න සිහින් බෝඩර් එක දුන්නා
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -290,8 +290,8 @@
   .admin-shortcut-tile-btn,
   .admin-shortcut-tile-display {
     background: rgba(15, 23, 42, 0.55); // Deep Dark Glass Face
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 
     border: 1px solid rgba(255, 255, 255, 0.05); // සිහින් රිදී බෝඩර් රේඛාව
     padding: 16px 20px;
@@ -411,8 +411,8 @@
       rgba(255, 255, 255, 0.03) 0%,
       rgba(255, 255, 255, 0.01) 100%
     );
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 
     // 📍 තද නිල් පසුබිම උඩින් කාඩ්ස් වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -562,8 +562,8 @@
 .admin-today-classes-pipeline-panel {
   // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
   background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
 
   // 📍 තද නිල් පසුබිම උඩින් පැනලය වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -688,8 +688,8 @@
   .chart-bento-tile-card {
     // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
     background: rgba(15, 23, 42, 0.45);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 
     // 📍 තද නිල් පසුබිම උඩින් පෙට්ටි වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -776,8 +776,8 @@
 .admin-exam-countdown-pipeline-panel {
   // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
   background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
 
   // 📍 තද නිල් පසුබිම උඩින් පැනලය වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -1074,8 +1074,8 @@
   // Common Bento Tile Box (Premium Dark Glass Matrix Base)
   .chart-bento-tile-card {
     background: rgba(15, 23, 42, 0.45);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 26px 28px;

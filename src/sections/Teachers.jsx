@@ -1,7 +1,7 @@
 import { FaFacebook, FaWhatsapp, FaPhone } from "react-icons/fa6";
 import { CiShare1 } from "react-icons/ci";
 
-import tutor from "../assets/teacher.webp";
+import tutor from "../assets/teacher1.jpg";
 
 const Teachers = () => {
   const teacherData = [
