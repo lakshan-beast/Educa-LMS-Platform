@@ -42,7 +42,7 @@ const ScheduleSubmitForm = ({ isOpen, onClose, selectedGrade, subject }) => {
       specialNotes: formData.specialNotes,
       zoomLink: formData.zoomLink,
       weekPicker: formData.weekPicker,
-      overrideStatus: "AUTO COUNTDOWN", // Default State එක AUTO COUNTDOWN ලෙස සකසයි
+      overrideStatus: "AUTO COUNTDOWN",
     };
 
     try {

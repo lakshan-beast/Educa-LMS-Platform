@@ -87,7 +87,6 @@ const AdminLayout = () => {
           </div>
         </header>
 
-        {/* 📄 සියලුම ඇඩ්මින් පිටු ලෝඩ් වෙන්නේ මෙතනයි */}
         <main className="admin-page-render-view">
           <Outlet />
         </main>

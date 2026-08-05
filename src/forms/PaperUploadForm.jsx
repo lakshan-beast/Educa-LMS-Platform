@@ -41,7 +41,7 @@ const PaperPublishForm = ({
       return;
     }
 
-    // 👑 FIXED SCOPE: ID Generation එක handleSubmit එක ඇතුළටම ගෙනාවා (No Global Duplication) [INDEX 4]
+    // 👑 FIXED SCOPE: ID Generation handleSubmit 
     const uniqueMaterialId = "Paper-" + Date.now().toString().slice(-8);
 
     const materialCloudData = {
@@ -62,7 +62,7 @@ const PaperPublishForm = ({
 
       setFormData({ category: "classTutes", materialTitle: "", driveUrl: "" });
 
-      if (onUploadSuccess) onUploadSuccess(); // Parent Manager එකේ Inventory එක Refresh කිරීමට
+      if (onUploadSuccess) onUploadSuccess(); 
 
       setTimeout(() => {
         onClose();

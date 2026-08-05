@@ -17,8 +17,6 @@ const AddStudentVault = ({ selectedGrade, onClose, isOpen, subject }) => {
   const [success, setSuccess] = useState("");
   const [registeredData, setRegisterData] = useState(null);
 
-  // const [selectedGrade, setSelectedGrade] = useState("11");
-
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "",
@@ -225,12 +223,8 @@ const AddStudentVault = ({ selectedGrade, onClose, isOpen, subject }) => {
 
         <form
           onSubmit={handleRegisterSubmit}
-          // className="styled-form "
           style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-          {/* Left Form Column */}
-          <div
-            // className="form-content"
-            style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
             <div className="input-group">
               <label
                 style={{
@@ -304,19 +298,9 @@ const AddStudentVault = ({ selectedGrade, onClose, isOpen, subject }) => {
               </select>
             </div>
           </div>
-          {/* <div className="input-group">
-          <label>Select Grade Class</label>
-          <select
-            value={selectedGrade}
-            onChange={(e) => setSelectedGrade(e.target.value)}>
-            <option value="10">Grade 10 </option>
-            <option value="11">Grade 11 Theory/Revision</option>
-            <option value="11-Paper">Grade 11 Premium Paper Class</option>
-          </select>
-        </div> */}
 
           {/* Right Form Column */}
-          {/* <div className="form-content"> */}
+
           <div className="input-group">
             <label>Select Enrolled Subjects (Subjects)</label>
             <div className="subject-select">
@@ -406,11 +390,10 @@ const AddStudentVault = ({ selectedGrade, onClose, isOpen, subject }) => {
           <button type="submit" className="start-btn submit-button">
             Register & Generate Student ID
           </button>
-          {/* </div> */}
         </form>
 
         {/* DISPLAY GENERATED ID & WHATSAPP BUTTON PANEL */}
-        {/* <div className="custom-modal-blur-overlay"> */}
+
         <div className="share-panel">
           {generatedID ? (
             <div className="share-panel-header">
@@ -436,11 +419,6 @@ const AddStudentVault = ({ selectedGrade, onClose, isOpen, subject }) => {
                   className="copy-button">
                   <FaCopy /> {copied ? "Copied!" : "Copy to Clipboard"}
                 </button>
-
-                {/* // 🛠️ React Code එකේ Copy Button එක මේ විදිහට Modify කරන්න: */}
-                {/* <button className={`copy-button ${copied ? '--copied' : ''}`} onClick={...} >
-  {copied ? 'Copied!' : 'Copy ID'}
-</button> */}
               </div>
             </div>
           ) : (
