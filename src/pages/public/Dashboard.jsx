@@ -21,19 +21,12 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 
-// import ScoreAnalytics from "../Future/ScorenAnalytics";
-// import { premiumStudentsList } from "../../data/approvedStudents";
-
 const Dashboard = () => {
   const navigate = useNavigate();
   const studentId = localStorage.getItem("user_id") || "";
   const userSubjects = localStorage.getItem("user_subjects") || "";
 
   const nowYear = new Date().getFullYear();
-
-  // const isPremiumUser = premiumStudentsList.includes(
-  //   studentId.trim().toUpperCase(),
-  // );
 
   // 2. Countdown State (2026 O/L Exam - Target Date: Dec 8, 2026)
   const [countdown, setCountdown] = useState({
@@ -362,45 +355,6 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      {/* </div> */}
-
-      {/* <div className="premium-tracker-zone">
-          {isPremiumUser ? (
-            <ScoreAnalytics />
-          ) : (
-            <div className="premium-lock-card">
-              <div className="premium-crown-logo">
-                <FaCrown className="crown" />
-              </div>
-
-              <div>
-                <FaLock className="premium-lock-logo" />
-              </div>
-
-              <h3>Unlock O/L Progress Analytics Tracker </h3>
-              <p className="premium-desc">
-                Activate Sri Lanka's first smart system that can track your
-                mistakes and weaknesses by graphing your paper scores for all 9
-                of your O/L subjects individually (Line Graph).
-              </p>
-
-              {/* විශේෂ දීමනාව 
-              <div className="offer-content">
-                <span className="offer-text">Limited Lifetime Offer</span>
-                <h2>
-                  Free Claim <span className="old-price">Rs.990</span>
-                </h2>
-              </div>
-
-              {/* WhatsApp Payment Trigger Button 
-              <div>
-                <button type="button" className="claim-btn start-btn">
-                  Waiting...
-                </button>
-              </div>
-            </div>
-          )}
-        </div> */}
 
       <AIChatWidget />
     </div>

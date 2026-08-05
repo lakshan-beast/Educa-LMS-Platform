@@ -1,4 +1,3 @@
-// import React from "react";
 import {
   FaHourglassHalf,
   FaCircleCheck,
@@ -21,30 +20,6 @@ const ComingSoon = ({ onClose }) => {
           <h2>Product Evolution Roadmap</h2>
           <p>Next-Generation SaaS Architecture Pipeline</p>
         </div>
-
-        {/* <div className="privacy-container">
-          <h4>
-            <FaSquarePollVertical className="icon" /> Enterprise Parent
-            Gateway (Target: July 2026)
-          </h4>
-          <p>
-            A dedicated real-time analytical interface built for guardians to
-            monitor cross-subject score tracking, automated attendance metrics,
-            and direct administrative escalation paths without interfering with
-            the minor's main terminal dashboard.
-          </p>
-
-          <h4>
-            <FaLightbulb className="icon" /> AI Study Studio Hub (Target:
-            August 2026)
-          </h4>
-          <p className="last-bottom">
-            A comprehensive, full-page workspace introducing real-time cognitive
-            gap detection. The platform will dynamically analyze weak subject
-            areas, generate custom revision test arrays, and assign specific
-            micro-learning tasks automatically .
-          </p> */}
-        {/* </div> */}
 
         {/* 👑 UPDATED: NEXT-GENERATION ENTERPRISE PRODUCT ROADMAP POPUP MODAL */}
         <div
@@ -237,32 +212,6 @@ const ComingSoon = ({ onClose }) => {
             </p>
           </div>
         </div>
-
-        {/* <div
-          className="privacy-actions"
-          style={{
-            marginTop: "25px",
-            display: "flex",
-            justifyContent: "flex-end",
-          }}>
-          <button
-            onClick={onClose}
-            className="close-button"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              background: "#0056ff",
-              color: "white",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "6px",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}>
-            <FaCircleCheck /> Back to Dashboard
-          </button>
-        </div> */}
 
         <div className="privacy-actions">
           <button onClick={onClose} className="close-button">

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import {
   FaCalculator,
   FaScaleBalanced,
@@ -7,7 +6,6 @@ import {
   FaXmark,
   FaTrashCan,
   FaPlus,
-  FaComments,
 } from "react-icons/fa6";
 import { TiBackspace } from "react-icons/ti";
 
@@ -100,7 +98,7 @@ const StudentToolkit = () => {
   const [notes, setNotes] = useState([]);
   const [noteForm, setNoteForm] = useState({ subject: "Maths", text: "" });
 
-  // 🔄 LocalStorage එකෙන් පරණ සටහන් කියවා ගැනීම (Hydration) [INDEX 4]
+  // 🔄 LocalStorage 
   useEffect(() => {
     const savedNotes = localStorage.getItem("student_desk_notes");
     if (savedNotes) {
@@ -124,22 +122,21 @@ const StudentToolkit = () => {
         month: "short",
         day: "numeric",
         year: "numeric",
-      }), // 📅 දාපු දවස [INDEX 4]
+      }), 
     };
 
     const updatedNotes = [newNotePayload, ...notes];
     setNotes(updatedNotes);
-    localStorage.setItem("student_desk_notes", JSON.stringify(updatedNotes)); // 💾 Local Storage Lock [INDEX 4]
-    setNoteForm((prev) => ({ ...prev, text: "" })); // Text Field එක හිස් කිරීම
+    localStorage.setItem("student_desk_notes", JSON.stringify(updatedNotes));
+    setNoteForm((prev) => ({ ...prev, text: "" })); 
   };
 
   const handleDeleteNote = (id) => {
     const updatedNotes = notes.filter((n) => n.id !== id);
     setNotes(updatedNotes);
-    localStorage.setItem("student_desk_notes", JSON.stringify(updatedNotes)); // 🗑️ Delete Refresh [INDEX 4]
+    localStorage.setItem("student_desk_notes", JSON.stringify(updatedNotes)); 
   };
 
-  // විෂය අනුව කාඩ් එකේ පාට වෙනස් වීමේ Matrix එක 🎨 [INDEX 4]
   const getSubjectColor = (sub) => {
     if (sub === "Maths")
       return { bg: "#eef2ff", border: "1px solid #c7d2fe", txt: "#0056ff" };
@@ -176,29 +173,7 @@ const StudentToolkit = () => {
           <span>Study Desk Notes</span>
         </button>
       </div>
-      {/* </div> */}
-      {/* <Link
-          to="/student-guild"
-          className="guild-chat-portal-link"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "12px 20px",
-            background: "#ffecec",
-            color: "#ff0000",
-            border: "1px solid #ff6868",
-            borderRadius: "8px",
-            fontWeight: "bold",
-            cursor: "pointer",
-            transition: "0.2s",
-            margin: "0",
-            width: "100%"
-          }}>
-          <FaComments className="guild-chat-icon" />
-          <span>11 Study Guild</span>
-        </Link> */}
-      {/* // </div> */}
+    
 
       {/* ==========================================
           🧮 MODAL A: SCIENTIFIC MINI CALCULATOR POPUP
@@ -210,7 +185,6 @@ const StudentToolkit = () => {
             setActiveModal(null);
             clearCalc();
           }}>
-          {/* 👈 යට ඉඳන් පාවෙලා එන iOS Bottom Sheet Card එක */}
           <div
             className="toolkit-sheet-card calc-card"
             onClick={(e) => e.stopPropagation()}>
@@ -317,7 +291,6 @@ const StudentToolkit = () => {
         <div
           className="toolkit-sheet-overlay"
           onClick={() => setActiveModal(null)}>
-          {/* 👈 යට ඉඳන් පාවෙලා උඩට එන iOS Bottom Sheet Card එක */}
           <div
             className="toolkit-sheet-card converter-card"
             onClick={(e) => e.stopPropagation()}>
@@ -372,13 +345,6 @@ const StudentToolkit = () => {
         </div>
       )}
 
-      {/* ==========================================
-          📝 MODAL C: SUBJECT-WISE NOTES WORKSPACE
-          ========================================== 
-      {activeModal === "notes" && (
-        <div className="admin-modal-overlay" style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(4px)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 10000 }}>
-          <div className="admin-modal-card" style={{ background: "#ffffff", padding: "25px", borderRadius: "16px", width: "550px", maxHeight: "85vh", overflowY: "auto", boxShadow: "0 10px 30px rgba(0,0,0,0.15)", position: "relative" }}>
-            <button onClick={() => setActiveModal(null)} style={{ position: "absolute", top: "15px", right: "15px", background: "none", border: "none", fontSize: "1.2rem", cursor: "pointer", color: "#8b949e" }}><FaXmark /></button>*/}
 
       {/* ==========================================
           📝 MODAL C: SUBJECT-WISE NOTES WORKSPACE
@@ -388,7 +354,6 @@ const StudentToolkit = () => {
         <div
           className="toolkit-sheet-overlay"
           onClick={() => setActiveModal(null)}>
-          {/* 👈 යට ඉඳන් පාවෙලා උඩට එන iOS Bottom Sheet Card එක */}
           <div
             className="toolkit-sheet-card notes-card"
             onClick={(e) => e.stopPropagation()}>
@@ -449,7 +414,6 @@ const StudentToolkit = () => {
                       key={item.id}
                       className="notebook-note-tile"
                       style={{
-                        // 👈 ඩේටාබේස් එකෙන් එන ඩයිනමික් කලර්ස් පිරිසිදුව ඇසට නොරිදෙන ලෙස ඉන්ජෙක්ට් වෙයි
                         background: subTheme.bg,
                         borderColor:
                           subTheme.border || "rgba(255, 255, 255, 0.05)",
@@ -466,7 +430,6 @@ const StudentToolkit = () => {
                           </small>
                         </div>
 
-                        {/* 💻 FIXED: අකුරු වල පාට ඩාර්ක් තීම් එකට ගැළපෙන පරිදි SASS එකෙන් පාලනය වේ */}
                         <p className="note-actual-text-body">{item.text}</p>
                       </div>
 

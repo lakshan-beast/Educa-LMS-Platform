@@ -9,11 +9,9 @@ import {
   FaTriangleExclamation,
 } from "react-icons/fa6";
 
-// import Loader from "../components/Loader";
 
 const LiveClass = () => {
   const [classData, setClassData] = useState(null);
-  // const [isLoading, setIsLoading] = useState(true);
   const [isClassActive, setIsClassActive] = useState(false);
   const [isCheatingAttempted, setIsCheatingAttempted] = useState(false);
 
@@ -43,11 +41,9 @@ const LiveClass = () => {
 
           setIsClassActive(activeStatus);
         }
-        // setIsLoading(false);
       },
       (err) => {
         console.error("Live Class Stream Error:", err);
-        // setIsLoading(false);
       },
     );
 
@@ -56,7 +52,7 @@ const LiveClass = () => {
       if (document.hidden && isClassActive) {
         setIsCheatingAttempted(true);
         alert(
-          "🚨 WARNING: You are not allowed to leave the classroom terminal during an active session! Your screen is locked [INDEX 4].",
+          "🚨 WARNING: You are not allowed to leave the classroom terminal during an active session! Your screen is locked.",
         );
       }
     };

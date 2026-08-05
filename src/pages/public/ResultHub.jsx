@@ -33,7 +33,7 @@ const ResultsHub = () => {
   const [showPopup, setShowPopup] = useState(false); // Popup Comment
   const [isModalOpen, setIsModalOpen] = useState(false); // Popup Controller
 
-  // 📝 Form එකේ State එක (පින්තූර/කමෙන්ට් අයින් කර සර්ලාගේ Dropdowns දමා ඇත)
+  // 📝 Form එකේ State
   const [form, setForm] = useState({
     fullName: "",
     indexNumber: "",
@@ -114,7 +114,7 @@ const ResultsHub = () => {
     }
   };
 
-  // 📈 LIVE ANALYTICS COUNTERS (සර්ලා මට්ටමේ A/B සාමාර්ථ ගණනය කිරීම්)
+  // 📈 LIVE ANALYTICS COUNTERS
   const analytics = useMemo(() => {
     const total = results.length;
     const passed = results.filter((item) =>
@@ -192,7 +192,6 @@ const ResultsHub = () => {
     try {
       setIsUploading(true);
 
-      // Firestore Cloud එකට දත්ත යැවීම
       await addDoc(collection(db, "ol_results_2025"), {
         ...form,
         status: "approved",
@@ -201,7 +200,6 @@ const ResultsHub = () => {
       });
       setIsModalOpen(false);
 
-      // Form එක සාර්ථකව Reset කර Popup එක Open කිරීම
       setForm({
         fullName: "",
         indexNumber: "",
@@ -228,7 +226,6 @@ const ResultsHub = () => {
     return num.slice(0, 3) + "****";
   };
 
-  // Filter Tabs වලට අනුව වගුවේ දත්ත පෙන්නන්න කලින් වෙන් කරගන්නා තැන
   const filteredResults = results.filter((item) => {
     if (activeFilter === "ALL") return true;
     if (activeFilter === "9A")
@@ -270,7 +267,6 @@ const ResultsHub = () => {
         </div>
 
         <div className="results-containers parts">
-          {/* <div> */}
           <h2>
             Verified O/L <span>Honors Portal</span>
           </h2>
@@ -477,10 +473,6 @@ const ResultsHub = () => {
                 Enter your examination details accurately to log your
                 achievements into the live registry.
               </p>
-
-              {/* {formError && (
-                <div className="sheet-error-card">⚠️ {formError}</div>
-              )} */}
 
               <form
                 onSubmit={handleSubmitResult}

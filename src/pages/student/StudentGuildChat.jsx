@@ -18,7 +18,6 @@ import {
   FaTrashCan,
   FaHeart,
   FaThumbsUp,
-  //   FaLightbulb,
   FaCircleQuestion,
   FaCircleCheck,
   FaComments,
@@ -29,7 +28,7 @@ const StudentGuildChat = () => {
   const { subject } = useParams();
   const currentSubject = subject ? subject.toLowerCase() : "maths";
 
-  // 📝 USER SESSION METADATA (ලොග් වී ඉන්නා ළමයාගේ දත්ත Session එකෙන් ගනී)
+  // 📝 USER SESSION METADATA 
   const currentUserName =
     localStorage.getItem("student_name") || "Active Student";
   const currentUserRole = localStorage.getItem("student_role") || "student"; // student | mentor | teacher
@@ -38,14 +37,14 @@ const StudentGuildChat = () => {
   const [messages, setMessages] = useState([]);
   const [typedMessage, setTypedMessage] = useState("");
   const [isQuestionToggle, setIsQuestionToggle] = useState(false);
-  const [replyTarget, setReplyTarget] = useState(null); // Forward/Reply සඳහා පරණ මැසේජ් එක ලොක් කරයි
+  const [replyTarget, setReplyTarget] = useState(null); 
   const [activeFilter, setActiveFilter] = useState("ALL"); // ALL | UNSOLVED | SOLVED
 
   const chatEndRef = useRef(null);
 
   // 🔄 REAL-TIME CLOUD CHAT MATRIX HYDRATION LOOP [INDEX 51]
   useEffect(() => {
-    // ⏳ 30 DAYS LIFECYCLE FILTER LOGIC: දවස් 30කට වඩා පරණ මැසේජ් ලෝඩ් නොවේ [INDEX 4]
+    // ⏳ 30 DAYS LIFECYCLE FILTER LOGIC 
     const expirationLimit = new Date();
     expirationLimit.setDate(expirationLimit.getDate() - 30);
     const dateBarrierStr = expirationLimit.toISOString();
@@ -86,7 +85,7 @@ const StudentGuildChat = () => {
 
     const today = new Date();
     const expiryDate = new Date();
-    expiryDate.setDate(today.getDate() + 30); // ⏳ Auto-Expire Timestamp එක දවස් 30කට ඉදිරියට ලොක් කරයි [INDEX 4]
+    expiryDate.setDate(today.getDate() + 30); 
 
     const chatPayload = {
       id: "MSG-" + Date.now().toString().slice(-6),
