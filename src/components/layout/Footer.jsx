@@ -143,7 +143,7 @@ const Footer = () => {
             <li>
               <div className="contact-support">
                 <a
-                  href={`https://wa.me/94740130305?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20`}
+                  href={`https://wa.me/94707046840?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20`}
                   target="_blank"
                   rel="noopener noreferrer">
                   <FaCaretRight className="footer-icon" /> Password Forget?

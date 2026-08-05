@@ -14,10 +14,12 @@
     // background-position: center;
   }
 
-  background-image: url(../../../assets/writers-scene-concept.jpg);
+  background-image: url(../../../assets/cold-melancholic-scene.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
+  // background-position: center;
+  background-position: left;
 
   @include flex-custom;
 
