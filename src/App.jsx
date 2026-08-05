@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-// import { lazy, Suspense } from "react";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -11,7 +10,6 @@ import AdminLayout from "./layouts/AdminLayout";
 import Home from "./pages/public/Home";
 import Dashboard from "./pages/public/Dashboard";
 import PaperHub from "./pages/public/PaperHub";
-// import StudentGuildChat from "./pages/student/StudentGuildChat";
 import ResultHub from "./pages/public/ResultHub";
 import FullTimetable from "./pages/Future/Timetables";
 import ClassesDetails from "./pages/public/ClassesDetails";
@@ -31,22 +29,16 @@ import ClassScheduleVault from "./pages/admin/ClassScheduleVault";
 import PaperManager from "./pages/admin/PaperHubUploadVault";
 
 import TabController from "./pages/public/TabController";
-
 import AdminProtectedRoute from "./components/ui/AdminProtectedRoute";
-
-// 1. App.jsx එකේ ඉහළින්ම import කරගන්න:
 import AdminMobileBlock from "./pages/admin/AdminMobileBlock";
 
-// 2. Routes ලියලා තියෙන ලැයිස්තුවේ උඩම හරියේ (අර security-lockdown එක තියෙන තැනට යටින්) මේ පේළිය දාන්න:
 
 const App = () => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  // const StudentGuildChat = lazy(
-  //   () => import("./pages/student/StudentGuildChat"),
-  // );
+  
 
   return (
     <>
@@ -80,8 +72,10 @@ const App = () => {
             <Route path="all-students" element={<AllStudents />} />
             <Route path="notices" element={<NoticeManager />} />
             <Route path="schedules" element={<ClassScheduleVault />} />
+
             {/* <Route path="student-guild" element={<StudentGuildChat />} /> */}
             {/* <Route path="guild-chat" element={<StudentGuildChat />} />{" "} */}
+            
             <Route path="staff-registry" element={<StaffRegistryManager />} />
             <Route path="papers" element={<PaperManager />} />
           </Route>
