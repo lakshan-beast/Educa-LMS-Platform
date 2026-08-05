@@ -1,205 +1,5 @@
-// .about-container {
-//   margin-top: 1.5rem;
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   align-items: center;
-//   gap: 50px;
-
-//   @include respond(desktop) {
-//     grid-template-columns: 3fr 1fr;
-//   }
-// }
-
-// .info-left {
-//   justify-content: center;
-
-//   p {
-//     font-size: $font-size-default;
-//     line-height: 1.3;
-//     margin-bottom: 10px;
-//     text-align: left;
-//     padding: $padding-small $padding-none;
-//   }
-
-//   &:hover {
-//     transform: translate(0);
-//     box-shadow: none;
-//     border: none;
-//   }
-
-//   .about-info {
-//     h4 {
-//       display: flex;
-//       align-items: center;
-//       gap: 6px;
-//       // color: $dark-purple;
-//       color: $secondary-blue;
-//       font-size: $font-size-h3-m;
-//       border-top: 2px solid rgb(218, 218, 218);
-//       padding-top: 12px;
-
-//       .icon {
-//         font-size: $font-size-h2-mm;
-//       }
-
-//       svg {
-//         font-size: $font-size-h3;
-//         border-right: 2px solid rgba($text-medium, 0.3);
-//         padding-right: 6px;
-//       }
-//     }
-
-//     p {
-//       color: $text-medium;
-//       padding: 12px 0 0 6px;
-//       font-size: $font-size-body;
-//     }
-//   }
-// }
-
-// .info-right {
-//   .about-status {
-//     display: grid;
-//     grid-template-columns: repeat(2, 1fr);
-//     gap: 6px;
-
-//     @include respond(desktop) {
-//       grid-template-columns: repeat(1, 1fr);
-//     }
-
-//     .box {
-//       color: $white;
-//       // background: $linear-left;
-//       background-color: $secondary-blue;
-//       padding: 32px 20px;
-//       border-radius: $border-radius-small-m;
-//       text-align: center;
-//       box-shadow: $shadow-light;
-//       transition: all 0.3s ease;
-//       border: 1px solid #f0f0f0;
-
-//       &::after {
-//         content: "";
-//         position: relative;
-//         right: -40px;
-//         top: -80px;
-//         width: 80px;
-//         height: 80px;
-//         background: rgba($white, 0.15);
-//         box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.8);
-//         border-radius: $border-radius-circle;
-//         display: none;
-//       }
-
-//       @include respond(desktop) {
-//         display: flex;
-//         flex-direction: row;
-//         justify-content: space-between;
-//         align-items: center;
-//         gap: 16px;
-//       }
-
-//       svg {
-//         font-size: $font-size-h1-mm;
-//         color: $white;
-//         margin-bottom: 15px;
-
-//         @include respond(desktop) {
-//           margin-bottom: 0px;
-//           margin-right: 6px;
-//         }
-//       }
-
-//       h3 {
-//         font-size: $font-size-h1-m;
-//         color: $white;
-//         padding-top: 6px;
-//         margin-bottom: 6px;
-//         color: $primary-orange;
-//         border-top: 3px solid rgba($white, 0.15);
-
-//         @include respond(desktop) {
-//           border-left: 3px solid rgba($white, 0.15);
-//           border-top: none;
-//           padding-left: 6px;
-//           margin-bottom: 0;
-//         }
-//       }
-
-//       p {
-//         font-size: $font-size-body-m;
-//         font-weight: $font-weight-600;
-//         color: $text-medium;
-//         text-transform: $text-transform-uppercase;
-//         letter-spacing: 1px;
-//         margin: 3px 0;
-
-//         @include respond(desktop) {
-//           padding: $padding-none;
-//           text-align: end;
-//         }
-//       }
-//     }
-//   }
-
-//   // Chart Area Styling
-//   .result-container {
-//     background: $white;
-//     padding: 20px;
-//     border-radius: $border-radius-large;
-//     box-shadow: $shadow-dark;
-//     border: 1px solid #eee;
-//     display: none;
-
-//     canvas {
-//       width: 100% !important;
-//       height: auto !important;
-//     }
-//   }
-// }
-
-
-
 /* ========================================================
-   1. VARIABLES & DEPENDENCIES (Header/Footer වලට ගැලපෙන ලෙස)
-   ======================================================== */
-// $footer-dark: #0f172a;       // Deep Slate Dark
-// $secondary-blue: #2563eb;    // Executive Blue
-// $primary-green: #00f1d1;   // Neon Teal (AI Accent)
-// $white: #ffffff;
-// $text-medium: #94a3b8;
-// $text-muted: #64748b;
-
-// Main Section Wrapper
-// .parts {
-//   padding: 5rem 8% 4rem 8%;
-//   background: transparent;
-//   width: 100%;
-//   box-sizing: border-box;
-
-//   h2 {
-//     font-size: 2.2rem;
-//     font-weight: 800;
-//     color: $white;
-//     letter-spacing: -0.02em;
-//     margin-bottom: 12px;
-
-//     span {
-//       color: $primary-green; // Faculty Lead Text එක Neon Teal වේ
-//     }
-//   }
-
-//   p {
-//     color: $text-medium;
-//     font-size: 1rem;
-//     line-height: 1.6;
-//     max-width: 700px;
-//     margin-bottom: 2rem;
-//   }
-// }
-
-/* ========================================================
-   2. BENTO GRID LAYOUT (Desktop ඉඩ ප්‍රමාණය නිවැරදි කළා)
+   2. BENTO GRID LAYOUT
    ======================================================== */
 .about-container {
   margin-top: 2.5rem;
@@ -207,11 +7,10 @@
   grid-template-columns: 1fr;
   gap: 40px;
   width: 100%;
-  
 
   // 💻 2026 Bento Column Ratio
   @media (min-width: 1024px) {
-    grid-template-columns: 1.8fr 1.2fr; // දකුණු පැත්තේ කොටු 4ට ලස්සනට ඉඩ ලැබෙන පරිදි සකස් කළා
+    grid-template-columns: 1.8fr 1.2fr;
     align-items: flex-start;
   }
 }
@@ -223,8 +22,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba($white, 0.02); // ලාවට පෙනෙන Glass Panel එකක්
-  // border: 1px solid rgba($white, 0.05);
+  background: rgba($white, 0.02);
   padding: 0px 10px;
   border-radius: 24px;
   -webkit-backdrop-filter: blur(8px);
@@ -242,11 +40,9 @@
     text-align: left;
   }
 
-  // Hover වුණාම කාඩ් එක ඇද වීම හෝ බිඳීම සම්පූර්ණයෙන්ම වැළැක්වීමට
   &:hover {
     transform: none !important;
     box-shadow: none !important;
-    // border-color: rgba(white, 0.08);
   }
 
   /* Inside Features Lists (Simplified mapping, Exam guidance etc.) */
@@ -259,30 +55,29 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      color: white; // මාතෘකා සුදු පාට කළා Premium පෙනෙන්න
+      color: white;
       font-size: 1.15rem;
       font-weight: 700;
       margin: 0;
       padding-top: 15px;
-      border-top: 1px solid rgba(white, 0.08); // පරණ තද ඉර වෙනුවට සිහින් ලයින් එකක්
+      border-top: 1px solid rgba(white, 0.08);
 
       .icon {
         font-size: 1.35rem;
-        color: $primary-green; // Icons ඔක්කොම Neon Teal කර පත්තු කළා
+        color: $primary-green;
         transition: transform 0.3s ease;
       }
     }
 
     p {
       color: $text-medium;
-      padding: 0 0 0 15px; // Icon එක කෙලින් text එක පටන් ගැනීමට පෑඩින් සකස් කළා
+      padding: 0 0 0 15px;
       font-size: 0.92rem;
       line-height: 1.5;
-      // margin: 5px 0 0 0;
       text-align: left;
     }
 
-    // Interactive Hover Effect - එකින් එක විශේෂාංගය Highlight වීම
+    // Interactive Hover Effect
     h4:hover {
       color: $primary-green;
       cursor: pointer;
@@ -302,11 +97,11 @@
 
   .about-status {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); // Mobile වලදී 2x2 grid එකක් වේ
-    gap: 6px; // කොටු අතර ඉඩ ලස්සන කළා
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
 
     @media (min-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr); // Desktop එකෙත් පේළියට 2 බැගින් Bento එකක් කළා
+      grid-template-columns: repeat(2, 1fr);
     }
 
     /* 🎁 INDIVIDUAL STATS BOX (2026 Premium Dark Glass Look) */
@@ -317,7 +112,7 @@
       padding: 28px 20px;
       border-radius: 20px;
       text-align: center;
-      border: 1px solid rgba(white, 0.15); // සිහින් invisible border එක
+      border: 1px solid rgba(white, 0.15);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
@@ -327,13 +122,13 @@
       position: relative;
       overflow: hidden;
 
-      // පරණ ::after බෝල සෙල්ලම් 2026 ට ගැළපෙන්නේ නැති නිසා අක්‍රීය කළා
-      &::after { display: none; }
+      &::after {
+        display: none;
+      }
 
-      // Desktop එකට ආවම Layout එක Row එකක් වෙන්න තිබුණු පරණ අවුල නිවැරදි කළා
       @media (min-width: 1024px) {
         display: flex;
-        flex-direction: column; // කොටුවක් ඇතුළේ පිළිවෙළට තැබීමට Column කළා
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 35px 20px;
@@ -359,8 +154,7 @@
         color: $primary-green;
         margin: 5px 0;
         padding: 0;
-        border: none; // පරණ කැත ඉරි කෑලි අයින් කළා
-
+        border: none;
 
         @media (min-width: 1024px) {
           padding-left: 0;
@@ -383,17 +177,17 @@
         }
       }
 
-      /* 🚀 INTERACTIVE HOVER GLOW (මවුස් එක ගෙනිච්චම පිස්සු හැදෙන කොටස) */
+      /* 🚀 INTERACTIVE HOVER GLOW  */
       &:hover {
         transform: translateY(-5px);
         background-color: rgba($footer-dark, 0.65);
-        border-color: $primary-green; // බෝඩර් එක Neon Teal පාටින් පත්තුවේ
-        box-shadow: 
+        border-color: $primary-green;
+        box-shadow:
           0 20px 40px rgba(0, 0, 0, 0.3),
-          rgba($primary-green, 0.15) 0px 0px 25px; // යටින් ලස්සන AI Neon Glow එකක් එනවා
+          rgba($primary-green, 0.15) 0px 0px 25px;
 
         svg {
-          color: $primary-green; // Hover වෙද්දී Icon එකත් Neon Teal වේ
+          color: $primary-green;
           transform: scale(1.1) translateY(-2px);
         }
       }

@@ -1,145 +1,3 @@
-// /* 🏛️ ADMIN CORE COMMAND CENTER DASHBOARD STYLES */
-// .admin-analytics-core-dashboard {
-//   padding: 10px;
-//   animation: fadeIn 0.4s ease;
-
-//   /* 👑 1. TOP ALERTS & SMART REMINDERS */
-//   .dashboard-top-alert-matrix {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 15px;
-
-//     .pulse-icon-live {
-//       color: #ff4b4b;
-//       animation: alertBlink 1.2s infinite alternate;
-//     }
-//   }
-
-//   /* 🎛️ 2. QUICK MANAGEMENT SHORTCUTS */
-//   .shortcut-btn-hover {
-//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-//     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-
-//     &:hover {
-//       transform: translateY(-3px);
-//       box-shadow: 0 10px 25px rgba(0, 86, 255, 0.08);
-//       border-color: #0056ff !important;
-//     }
-//   }
-
-//   /* 📊 3. DYNAMIC COUNTER CARDS */
-//   h2 {
-//     font-weight: 700;
-//     letter-spacing: -0.5px;
-//   }
-
-//   /* 📱 4. TODAY'S CLASSES TIMELINE PANEL */
-//   .today-class-node {
-//     background: #f8faff;
-//     padding: 15px;
-//     border-radius: 8px;
-//     border: 1px solid #eef2ff;
-//     transition: 0.2s;
-
-//     &:hover {
-//       border-color: #0056ff;
-//       background: #ffffff;
-//     }
-//   }
-
-//   /* 📊 5. GRAPHICS DATA LAYER (CHARTS) */
-//   .recharts-default-tooltip {
-//     border-radius: 8px !important;
-//     border: 1px solid #eef2ff !important;
-//     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-//   }
-
-//   /* 🏁 6. TRIPLE EXAM DEADLINE COUNTDOWN GRID */
-//   .secure-exam-countdown-card {
-//     background: #0d1117;
-//     border: 1px solid #30363d;
-//     padding: 20px;
-//     border-radius: 12px;
-//     transition: all 0.3s ease;
-
-//     &:hover {
-//       border-color: #ffd700;
-//       box-shadow: 0 5px 20px rgba(255, 215, 0, 0.05);
-//     }
-
-//     code {
-//       font-family: "Courier New", Courier, monospace;
-//       text-shadow: 0 0 6px rgba(0, 247, 255, 0.3);
-//     }
-//   }
-// }
-
-// /* 🎨 ANIMATIONS LAYER */
-// @keyframes alertBlink {
-//   0% {
-//     opacity: 0.4;
-//     transform: scale(0.95);
-//   }
-//   100% {
-//     opacity: 1;
-//     transform: scale(1.05);
-//   }
-// }
-
-// @keyframes fadeIn {
-//   0% {
-//     opacity: 0;
-//     transform: translateY(10px);
-//   }
-//   100% {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// }
-
-// /* 🏛️ RE-ARM INTERSECTION EXTRA GRAPHICS STYLES */
-// .mini-calendar-widget-core {
-//   background: #ffffff;
-//   border: 1px solid #f4f6fa;
-//   border-radius: 8px;
-//   padding: 5px;
-
-//   .calendar-days-grid-matrix {
-//     .calendar-day-cell-node {
-//       height: 38px;
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       transition: all 0.2s ease;
-//       cursor: default;
-
-//       &.active-day:hover {
-//         background: #0056ff !important;
-//         color: #ffffff !important;
-//         cursor: pointer;
-
-//         span {
-//           background: #ffffff !important;
-//         } /* Hover වෙද්දී තිත සුදු පාට වේ */
-//       }
-
-//       &.empty-day {
-//         opacity: 0;
-//         pointer-events: none;
-//       }
-//     }
-//   }
-// }
-
-// /* 🚀 UPCOMING LOGISTICS TIMELINE ANIMATION FEED */
-// .folders-vertical-stack,
-// .folders-vertical-stack div {
-//   transition: all 0.2s ease-in-out;
-
-//   &:hover {
-//     border-color: #ff9900;
-//   }
-// }
 
 /* ========================================================
    2026 CENTRAL CYBER COMMAND CENTER - ANALYTICS HUB HEADER
@@ -163,7 +21,6 @@
 
   /* 👑 A. MAIN WELCOME HERO BANNER (Premium Dark Tech Glass Layer) */
   .admin-welcome-hero-banner {
-    // 👈 2026 Core Change: පරණ ඝන නිල් පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
     background: linear-gradient(
       135deg,
       rgba(15, 23, 42, 0.6) 0%,
@@ -171,8 +28,6 @@
     );
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
-
-    // 📍 තද නිල් උඩින් පෙට්ටිය වෙන් වී පෙනෙන්න සිහින් බෝඩර් එක දුන්නා
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 18px; // Smooth Apple Style Radii
     padding: 28px 30px;
@@ -184,7 +39,7 @@
       margin: 0;
       font-size: 1.6rem;
       font-weight: 850;
-      color: #ffffff; // පිරිසිදු සුදු පැහැය
+      color: #ffffff;
       letter-spacing: -0.02em;
     }
 
@@ -197,7 +52,7 @@
   }
 
   /* ========================================================
-     🔔 B. SMART ADMINISTRATIVE REMINDER STRIP (නිවේදන තීරුව)
+     🔔 B. SMART ADMINISTRATIVE REMINDER STRIP
      ======================================================== */
   .smart-admin-reminder-strip {
     display: flex;
@@ -227,13 +82,12 @@
         filter: drop-shadow(0 0 6px #ef4444);
       }
 
-      // 🚀 ලයිව් අයිකන් එක නිවී නිවී පත්තුවෙන සජීවී ඇනිමේෂන් එක
       .pulse-icon-live {
         animation: adminBoltPulse 1.2s infinite alternate ease-in-out;
       }
     }
 
-    // 🔵 2. CONDITION: අද පන්ති නොමැති විට පවතින සන්සුන් Executive Blue ලයින් එක
+    // 🔵 2. CONDITION:
     &.alert-auto-upcoming {
       background: rgba(37, 99, 235, 0.08); // Soft Blue Alpha Base
       border-left: 4px solid #2563eb; // Standard Blue Border
@@ -293,7 +147,7 @@
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
 
-    border: 1px solid rgba(255, 255, 255, 0.05); // සිහින් රිදී බෝඩර් රේඛාව
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 16px 20px;
     border-radius: 16px; // Smooth Apple Style Radii
     display: flex;
@@ -317,7 +171,7 @@
       transition: color 0.3s ease;
     }
 
-    // 🚀 HOVER ACTION INTERACTION: හොවර් වෙද්දී බටන් එක ලස්සනට සයිබර් ඔරේන්ජ් වෙලා දිලිසේ!
+    // 🚀 HOVER ACTION INTERACTION:
     &:hover,
     &:active {
       background: rgba(249, 115, 22, 0.08); // Alpha Warning Orange Base
@@ -338,7 +192,7 @@
     }
   }
 
-  /* --- 🎨 INDIVIDUAL ICON WRAPPERS ACCENTS (කුඩා අයිකන් කොටු) --- */
+  /* --- 🎨 INDIVIDUAL ICON WRAPPERS ACCENTS --- */
   .shortcut-icon-wrapper {
     padding: 10px;
     border-radius: 10px;
@@ -364,7 +218,7 @@
     }
   }
 
-  /* --- 💻 HIGH-TECH DIGITAL CLOCK META NODE (ඔරලෝසු පෙට්ටිය) --- */
+  /* --- 💻 HIGH-TECH DIGITAL CLOCK META NODE  --- */
   .terminal-clock-meta-block {
     display: flex;
     flex-direction: column;
@@ -378,12 +232,12 @@
       letter-spacing: 0.8px;
     }
 
-    // 🟢 Live Clock Numbers (ඩිජිටල් අංක සරාගී කොළ පාටින් පත්තුවේ)
+    // 🟢 Live Clock Numbers 
     .clock-digital-digits {
       font-size: 1.2rem;
       color: #10b981;
       font-weight: 800;
-      font-family: monospace; // ඩිජිටල් ඔරලෝසු වලට පට්ට
+      font-family: monospace;
       text-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
     }
   }
@@ -405,7 +259,6 @@
 
   /* 🏢 INDIVIDUAL BENTO METRIC TILE (Holographic Data Tiles) */
   .metric-bento-tile {
-    // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
     background: linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.03) 0%,
@@ -413,8 +266,6 @@
     );
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
-
-    // 📍 තද නිල් පසුබිම උඩින් කාඩ්ස් වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 18px; // Smooth Apple Style Radii
     padding: 24px;
@@ -424,11 +275,10 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    overflow: hidden; // Underglow එක එළියට පැනීම වැළැක්වීමට
+    overflow: hidden;
     box-sizing: border-box;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
-    // 🚀 HOVER / TOUCH INTERACTION: හොවර් කරද්දී ලස්සනට ත්‍රිමාණව පණ ලැබීම
     &:hover {
       background: linear-gradient(
         135deg,
@@ -455,13 +305,13 @@
       letter-spacing: 0.8px;
     }
 
-    // Main Big Digital Numbers (ලොකු ඉලක්කම්)
+    // Main Big Digital Numbers 
     .metric-digital-digits {
       margin: 0;
-      font-size: 2.2rem; // තවත් පොඩ්ඩක් ලොකු කර කැපී පෙනෙන්න හැදුවා
+      font-size: 2.2rem; 
       color: #ffffff;
       font-weight: 800;
-      font-family: monospace; // ඩිජිටල් අංක වලට පට්ට
+      font-family: monospace; 
       letter-spacing: -0.02em;
     }
 
@@ -480,7 +330,7 @@
     }
 
     /* ========================================================
-       🎨 3 TILES EXCLUSIVE CODES: කාඩ් 3 ට වෙන වෙනම සන්නාම වර්ණ දීම
+       🎨 3 TILES EXCLUSIVE CODES:
        ======================================================== */
 
     // 🔵 1. ENROLLED STUDENTS CARD (Executive Blue Theme)
@@ -560,12 +410,9 @@
    ======================================================== */
 
 .admin-today-classes-pipeline-panel {
-  // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
   background: rgba(15, 23, 42, 0.45);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-
-  // 📍 තද නිල් පසුබිම උඩින් පැනලය වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 20px; // Smooth Apple Style Radii
   padding: 26px 28px;
@@ -577,7 +424,7 @@
   // Main Header Title Line (Today's Active Classes Pipeline)
   .pipeline-core-heading {
     margin: 0 0 20px 0;
-    color: #ffffff; // පිරිසිදු සුදු පැහැය
+    color: #ffffff;
     font-size: 1.05rem;
     font-weight: 800;
     letter-spacing: 0.3px;
@@ -586,7 +433,7 @@
     gap: 10px;
 
     svg {
-      color: #2563eb; // Icon එක පට්ටම ලස්සන Executive Blue කළා
+      color: #2563eb; 
       filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.3));
     }
   }
@@ -606,14 +453,14 @@
   }
 
   /* ========================================================
-     📊 ACTIVE CARDS GRID (සක්‍රීය පන්ති මතු වන ජාලය)
+     📊 ACTIVE CARDS GRID 
      ======================================================== */
   .pipeline-active-cards-grid {
     display: grid;
     grid-template-columns: repeat(
       auto-fit,
       minmax(280px, 1fr)
-    ); // 100% Responsive Grid Flow
+    );
     gap: 16px;
     width: 100%;
     box-sizing: border-box;
@@ -638,7 +485,7 @@
           99,
           235,
           0.25
-        ); // Hover වෙද්දී Executive Blue බෝඩර් එකක් වේ
+        ); 
         transform: translateY(-2px);
         box-shadow:
           0 8px 20px rgba(0, 0, 0, 0.2),
@@ -646,12 +493,12 @@
 
         .class-node-title {
           color: #60a5fa;
-        } // Title glows soft blue
+        }
       }
 
       // Class Name String Header
       .class-node-title {
-        color: #ffffff; // පිරිසිදු සුදු පැහැය
+        color: #ffffff;
         font-size: 0.95rem;
         font-weight: 800;
         letter-spacing: -0.01em;
@@ -661,7 +508,7 @@
 
       // Current Active Lesson text
       .class-node-lesson-subtext {
-        color: #94a3b8; // Slate Light Gray Text
+        color: #94a3b8;
         font-size: 0.82rem;
         font-weight: 600;
         letter-spacing: 0.3px;
@@ -679,19 +526,16 @@
   grid-template-columns: repeat(
     auto-fit,
     minmax(340px, 1fr)
-  ); // 100% Fluid Grid Architecture
+  ); 
   gap: 25px;
   width: 100%;
   box-sizing: border-box;
 
   /* 🏢 INDIVIDUAL CHART BENTO TILE CARD (Holographic Data Slates) */
   .chart-bento-tile-card {
-    // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
     background: rgba(15, 23, 42, 0.45);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
-
-    // 📍 තද නිල් පසුබිම උඩින් පෙට්ටි වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px; // Smooth Apple Style Radii
     padding: 26px 28px;
@@ -709,7 +553,7 @@
     // Main Chart Title Heading (Demographics, Paper Hub Allocations)
     .chart-core-title {
       margin: 0 0 20px 0;
-      color: #ffffff; // පිරිසිදු සුදු පැහැය
+      color: #ffffff; 
       font-size: 0.95rem;
       font-weight: 800;
       letter-spacing: 0.3px;
@@ -722,12 +566,11 @@
       box-sizing: border-box;
       position: relative;
 
-      // Recharts ඇතුළෙන් ඉබේම හැදෙන SVG elements පිරිසිදු කිරීම්
       svg {
         overflow: visible;
       }
 
-      // Tooltip Popup Box Styling Inside SVG (ප්‍රස්ථාරේ උඩට ඇඟිල්ල තියෙද්දී එන tooltip එක ඩාර්ක් කළා)
+      // Tooltip Popup Box Styling Inside SVG
       .recharts-tooltip-wrapper {
         .recharts-default-tooltip {
           background-color: #0f172a !important;
@@ -742,7 +585,7 @@
         }
       }
 
-      // Legend Text Items Labeling (යටින් තියෙන labels ඩාර්ක් තීම් එකට හැරවීම)
+      // Legend Text Items Labeling 
       .recharts-legend-wrapper {
         .recharts-legend-item-text {
           color: #94a3b8 !important; // Muted slate gray labels text

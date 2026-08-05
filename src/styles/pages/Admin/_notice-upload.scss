@@ -3,11 +3,10 @@
    ======================================================== */
 
 .notice-dispatcher-root-container {
-//   max-width: 900px;
   width: 100%;
   height: auto;
   max-height: 700px;
-  overflow-y: auto; // 👈 Core Fix: 700px සීමාව ඇතුළත පිරිසිදුව ස්ක්‍රෝල් වීමට
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -22,15 +21,13 @@
     border-radius: 99px;
   }
 
-  /* --- 👑 LAYER A: HEADER ZONE (මාතෘකාව සහ බ්‍රෝඩ්කාස්ට් බොත්තම) --- */
+  /* --- 👑 LAYER A: HEADER ZONE --- */
   .dispatcher-top-header-zone {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
-
-    // 👈 පරණ සුදු පසුබිම වෙනුවට පට්ටම Premium Dark Glass Layer එකක් දුන්නා
     background: rgba(15, 23, 42, 0.45);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
@@ -44,7 +41,7 @@
 
     h1 {
       margin: 0;
-      color: #ffffff; // පිරිසිදු සුදු පැහැය
+      color: #ffffff; 
       font-size: 1.45rem;
       font-weight: 850;
       letter-spacing: -0.01em;
@@ -80,12 +77,12 @@
           135deg,
           #ea580c 0%,
           #00f1d1 100%
-        ); // Hover වෙද්දී Neon Teal වේ
+        ); 
       }
     }
   }
 
-  /* --- 💊 LAYER B: FILTER CONTROL DOCK (ශ්‍රේණි පෙරහන් පේළිය) --- */
+  /* --- 💊 LAYER B: FILTER CONTROL DOCK --- */
   .grade-filter-dock-row {
     display: flex;
     gap: 8px;
@@ -123,7 +120,6 @@
         background: rgba(255, 255, 255, 0.06);
       }
 
-      /* 🚀 ACTIVE FILTER: සිලෙක්ට් වුණු ශ්‍රේණිය පට්ටම ලස්සන Executive Blue වලින් පත්තුවේ */
       &.pill-active {
         background: rgba(37, 99, 235, 0.12) !important;
         border-color: #2563eb !important;
@@ -134,7 +130,7 @@
   }
 
   /* ========================================================
-     💻 LAYER C: LIVE FEED RECEPTACLE (නිවේදන ලැයිස්තු පැනලය)
+     💻 LAYER C: LIVE FEED RECEPTACLE 
      ======================================================== */
   .live-feed-receptacle-panel {
     background: rgba(15, 23, 42, 0.45);
@@ -179,7 +175,7 @@
         border-color: rgba(255, 255, 255, 0.08);
       }
 
-      // 🔴 🔥 [THE URGENT ALERT NODE]: හදිසි නිවේදන වටේට රතු ලේසර් ලයින් එකක් පත්තුවේ!
+      // 🔴 🔥 [THE URGENT ALERT NODE]: 
       &.urgent-alert-node {
         border-color: rgba(239, 68, 68, 0.3) !important;
         background: rgba(239, 68, 68, 0.02) !important;
@@ -225,10 +221,10 @@
         }
       }
 
-      // 💻 FIXED: නිවේදනයේ සැබෑ පණිවිඩය (පරණ තද නිල් වෙනුවට සුදු කළා)
+      // 💻 FIXED: 
       .node-actual-text-message {
         margin: 0 0 16px 0;
-        color: #cbd5e1; // කියවන්න මාරම පහසු ලයිට් පැහැය
+        color: #cbd5e1;
         font-size: 0.94rem;
         line-height: 1.55;
         font-weight: 500;

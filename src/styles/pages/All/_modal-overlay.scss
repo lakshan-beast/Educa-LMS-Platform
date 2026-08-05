@@ -1,7 +1,6 @@
-// 🎨 SCSS විදිහට නිවැරදිව සකස් කරන ලද කේතය
 
 .modal-overlay {
-  position: fixed; // JavaScript කොමා (,) සහ Quotes ("") සහමුලින්ම ඉවත් කරන ලදී
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
@@ -14,7 +13,6 @@
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 
-  // 📦 Modal Card එක Overlay එක ඇතුළට Nest කිරීම
   .modal-card {
     background: white;
     padding: 30px;
@@ -33,7 +31,7 @@
 
   h3 {
     margin: 0 0 10px;
-    color: $secondary-blue; // SCSS Variable එක නිවැරදිව සම්බන්ධ කළා
+    color: $secondary-blue;
     font-weight: 800;
   }
 
@@ -44,7 +42,6 @@
     line-height: 1.5;
   }
 
-  // 🎛️ බටන් තියෙන කොටස
   .actions-buttons {
     display: flex;
     justify-content: center;
@@ -61,7 +58,7 @@
     }
 
     .confirm-button {
-      background: $secondary-blue; // Default පාට
+      background: $secondary-blue; 
       color: white;
       border: none;
       padding: 10px 22px;
@@ -69,8 +66,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: background 0.2s;
-
-      // 🔥 Danger Type එක පාලනය කිරීමට SCSS Modifier එකක් එකතු කළා
+      
       &.--danger {
         background: #e74c3c;
 

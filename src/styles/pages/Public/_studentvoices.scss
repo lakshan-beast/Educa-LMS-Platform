@@ -2,7 +2,7 @@
    2026 MODERN iOS BOTTOM SHEET REVIEW FORM (NO IMPORTANT)
    ======================================================== */
 
-// 1. Background Backdrop (පසුබිම ලස්සනට බ්ලර් කරන කොටස)
+// 1. Background Backdrop 
 .review-bottom-sheet-overlay,
 .results-bottom-sheet-overlay {
   position: fixed;
@@ -16,36 +16,33 @@
   z-index: 999999;
   display: flex;
   justify-content: center;
-  align-items: flex-end; // මෝඩල් එක යට ඉඳන් උඩට පාවීමට මුලින්ම යටටම කළා
+  align-items: flex-end; 
   padding: 0;
   box-sizing: border-box;
   animation: backdropFadeIn 0.3s ease-out;
 }
 
-// 2. THE BOTTOM SHEET CARD (යට ඉඳන් පාවෙලා එන ප්‍රධාන වීදුරු පෙට්ටිය)
+// 2. THE BOTTOM SHEET CARD
 .review-sheet-card,
 .results-sheet-card {
   width: 100%;
   max-width: 480px; 
   height: auto;
-  max-height: 85vh; // ෆෝන් එකේ උසෙන් 85% කට වඩා උඩට නොයයි (Full height නොවේ)
-  overflow-y: auto; // ඇතුළත දත්ත ගොඩක් ඇති නිසා scroll වීමට ඉඩ දුන්නා
+  max-height: 85vh; 
+  overflow-y: auto; 
   
   // Cyber Dark Glass Look
   background: rgba(15, 23, 42, 0.88);
   -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
-  
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px; // iOS Bottom Sheet Layout
+  border-radius: 32px; 
   padding: 35px 25px;
   box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   position: relative;
   text-align: left;
   margin-bottom: 0.2rem;
-  
-  // යට ඉඳන් සිරස්ව උඩට විසිවෙන Smooth Spring Animation එක
   animation: sheetSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.12);
 
   &::-webkit-scrollbar { width: 4px; }
@@ -181,7 +178,6 @@
         font-size: 0.85rem;
         font-weight: 700;
         cursor: pointer;
-        // user-select: none;
 
         input[type="checkbox"] {
           width: 16px;
@@ -294,12 +290,10 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-// 🚀 FIXED: Submit Button එකට අදාළ 2026 High-Contrast Cyber Style එක
+// 🚀 FIXED: Submit Button - 2026 High-Contrast Cyber Style 
     .sheet-submit-btn {
       width: 100%;
       padding: 20px 14px;
-      
-      // 👈 පරණ මඩ නිල් පාට වෙනුවට, සයිට් එකේ ප්‍රධාන Executive Blue වර්ණය දුන්නා
       background: $primary-green; 
       color: $white ;
       border: none;
@@ -320,8 +314,7 @@
       &:active:not(:disabled) {
         transform: translateY(-1px);
       }
-      
-      // Submit වෙන වෙලාවට (Disabled state) බටන් එක ලස්සනට මැලවී යයි
+ 
       &:disabled {
         background: rgba($primary-green, 0.8);
         color: #94a3b8;

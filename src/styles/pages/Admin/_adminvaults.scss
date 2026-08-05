@@ -1,5 +1,5 @@
 .vault-container {
-  background: white; // 🛠️ JavaScript කොමා (,) සහ Quotes ("") සහමුලින්ම ඉවත් කළා
+  background: white;
   padding: 1rem;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -18,7 +18,6 @@
     p {
       color: #666;
       font-size: 0.85rem;
-      //   margin: 5px 0 0;
     }
   }
 
@@ -45,40 +44,6 @@
     font-weight: bold;
   }
 
-  /* ➕ Add Student Form Matrix */
-  // .add-student-form {
-  //   display: grid;
-  //   grid-template-columns: 1fr 1fr;
-  //   gap: 12px 80px;
-
-  //   .form-content {
-  //     display: flex;
-  //     flex-direction: column;
-  //     gap: 0px;
-
-  //     .subject-select {
-  //       display: flex;
-  //       gap: 20px;
-  //       background: #f8faff;
-  //       padding: 12px;
-  //       border-radius: 8px;
-  //       border: 1px solid #eef2ff;
-  //       margin-top: 5px;
-  //     }
-  //   }
-
-  //   .submit-button {
-  //     height: 70px;
-  //     width: 100%;
-  //     padding: 12px;
-  //     background: $secondary-blue;
-  //     color: white;
-  //     border: none;
-  //     border-radius: 8px;
-  //     font-weight: bold;
-  //     cursor: pointer;
-  //   }
-  // }
 
   /* 🔗 Generate ID & WhatsApp Share Panel */
   .share-panel {
@@ -162,14 +127,13 @@
         gap: 8px;
         transition: background 0.2s;
 
-        /* 🛠️ JavaScript 'copied' වෙනුවට SCSS Modifier Class එකක් දැම්මා */
         &.--copied {
           background: #2ecc71;
         }
       }
     }
 
-    /* 🛠️ Nesting Fix: empty-content එක share-content එකෙන් එළියට ගත්තා */
+    /* 🛠️ Nesting Fix: empty-content  */
     .empty-content {
       text-align: center;
       color: #aaa;
@@ -223,37 +187,23 @@
   }
 }
 
-// .custom-modal-blur-overlay {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0.75);
-//   -webkit-backdrop-filter: blur(5px);
-//   backdrop-filter: blur(5px); /* පිටුපස ඇති දේවල් ලස්සනට බ්ලර් කරවයි */
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   z-index: 9999;
-// }
 
-/* 🗂️ BASE SIDEBAR STYLE (සාමාන්‍ය වෙලාවට කුඩාවට Icons විතරක් පේන හැටි) */
+/* 🗂️ BASE SIDEBAR STYLE  */
 .admin-sidebar {
   width: 70px;
   min-height: 100vh;
   background: #001b42;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  white-space: nowrap; /* 👈 අකුරු එළියට පැනීම වැළැක්වීමට */
+  white-space: nowrap;
 }
 
-/* 🔥 HOVER MATRIX (Mouse එක උඩට ගිය සැනින් පිරිසිදුව දිග ඇරෙන හැටි) */
+/* 🔥 HOVER MATRIX  */
 .admin-sidebar:hover {
   width: 260px;
 }
 
-/* 📝 LINK NAV TEXTS (සාමාන්‍ය වෙලාවට අකුරු නොපෙනී, Hover වෙද්දී විතරක් පෙනෙන හැටි) */
+/* 📝 LINK NAV TEXTS */
 .admin-sidebar .nav-text {
   opacity: 0;
   transition: opacity 0.2s ease;

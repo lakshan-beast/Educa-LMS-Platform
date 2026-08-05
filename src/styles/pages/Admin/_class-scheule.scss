@@ -10,7 +10,7 @@
   box-sizing: border-box;
   animation: adminViewFadeIn 0.4s ease-out;
 
-  /* --- 👑 LAYER A: MANAGER HEADER BAR (මාතෘකාව, Dropdown සහ බටන් එක) --- */
+  /* --- 👑 LAYER A: MANAGER HEADER BAR --- */
   .manager-top-bar {
     display: flex;
     justify-content: space-between;
@@ -19,8 +19,8 @@
     gap: 16px;
 
     background: rgba(15, 23, 42, 0.45); // Premium Dark Glass Layer
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.05);
 
     padding: 24px 28px;
@@ -93,7 +93,7 @@
             135deg,
             #1d4ed8 0%,
             #00f1d1 100%
-          ); // Hover වෙද්දී Neon Teal වේ
+          ); 
         }
       }
     }
@@ -113,23 +113,23 @@
   }
 
   /* ========================================================
-     📊 LAYER B: SCHEDULES MATRIX GRID (සියලුම ශ්‍රේණි 7 කාඩ්පත්)
+     📊 LAYER B: SCHEDULES MATRIX GRID 
      ======================================================== */
   .schedules-matrix-grid {
     display: grid;
     grid-template-columns: repeat(
       auto-fill,
       minmax(290px, 1fr)
-    ); // High-density grid architecture
+    ); 
+
     gap: 20px;
     width: 100%;
     box-sizing: border-box;
 
     // 🏢 INDIVIDUAL TIMELINE MATRIX CARD (Holographic Control Cards)
     .schedule-matrix-card {
-      // Background and border blend dynamically via statusConfig from JSX
-      backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
 
       border: 1px solid transparent; // Injected color from inline logic takes over
       border-radius: 20px;
@@ -147,7 +147,7 @@
         transform: translateY(-4px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
       }
-      // 🔴 💥 [THE ACTIVE FORCE PULSE]: පන්තිය ලයිව් කරපු සැනින් මුළු කාඩ් එකම රෝස/රතු පාටින් ගැස්සේ!
+      // 🔴 💥 [THE ACTIVE FORCE PULSE]: 
       &.neon-pulse-active {
         box-shadow: 0 0 25px rgba(255, 44, 115, 0.2) !important;
         animation: adminLivePulseGlow 1.8s infinite alternate ease-in-out !important;
@@ -278,7 +278,7 @@
       }
 
       /* ========================================================
-         🎛️ THE OPERATIONAL CONTROL HUB (බොත්තම් 5 පද්ධතිය)
+         🎛️ THE OPERATIONAL CONTROL HUB
          ======================================================== */
       .operational-control-hub {
         display: grid;
@@ -344,7 +344,7 @@
           }
         }
 
-        // 🔄 4. Reset to Active Auto Countdown Button (Grid එක පිරිසිදු කිරීමට Column 2ක් ගනී)
+        // 🔄 4. Reset to Active Auto Countdown Button 
         .force-auto {
           grid-column: span 2;
           background: rgba(0, 241, 209, 0.06);
@@ -358,7 +358,7 @@
           }
         }
 
-        // 🗑️ 5. Reset/Delete Framework Button (කුඩා කුණු කූඩේ බොත්තම)
+        // 🗑️ 5. Reset/Delete Framework Button 
         .force-delete {
           background: rgba(239, 68, 68, 0.06);
           color: #f87171;
@@ -371,17 +371,7 @@
         }
       }
 
-      /* Empty Hollow state card inside slot */
-      //   .empty-parameter-state {
-      //     color: #475569;
-      //     font-size: 0.85rem;
-      //     font-weight: 600;
-      //     line-height: 1.5;
-      //     padding: 30px 10px;
-      //     text-align: center;
-      //     border: 1px dashed rgba(255, 255, 255, 0.04);
-
-      // Empty Hollow state card inside slot (කිසිදු කාලසටහනක් නොමැති විට පෙනෙන කොටස)
+      // Empty Hollow state card inside slot 
       .empty-parameter-state {
         color: #475569;
         font-size: 0.85rem;

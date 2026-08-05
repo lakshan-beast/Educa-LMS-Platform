@@ -1,14 +1,6 @@
 /* ========================================================
    2026 FUTURISTIC STUDENT REVIEWS HEADER CONTROL MATRIX
    ======================================================== */
-
-// .student-voices-wrapper,
-// .secure-results-wrapper-shell {
-//   .voices-container, .results-containers {
-//     padding: 0 !important;
-//   }
-// }
-
 .reviews-header-zone,
 .results-header-zone {
   width: 100%;
@@ -25,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap; // Mobile වලදී එක පිට එක ලස්සනට වැටීමට
+  flex-wrap: wrap;
   width: 100%;
 
   // Total Stories Shared Badge
@@ -98,8 +90,6 @@
   button {
     padding: 8px 18px;
     border-radius: 10px;
-
-    // සාමාන්‍ය වෙලාවට ලාවට පෙනෙන Invisible Border එකක්
     border: 1px solid rgba(255, 255, 255, 0.04);
     background: transparent;
     color: #94a3b8; // Slate muted text
@@ -114,16 +104,11 @@
       background: rgba(255, 255, 255, 0.04);
     }
 
-    /* 🚀 2. ACTIVE FILTER STATE - ක්ලික් කළ සබ්ජෙක්ට් එක පට්ටම ලස්සන Neon Teal වලින් පත්තුවේ */
+    /* 🚀 2. ACTIVE FILTER STATE  */
     &.filter-active {
-      background: rgba(
-        0,
-        241,
-        209,
-        0.1
-      ) !important; /* 👈 Neon Teal Alpha Base */
-      border-color: #00f1d1 !important; /* බෝඩර් එක නියම සයිබර් ලයින් එකක් වේ */
-      color: #00f1d1 !important; /* අකුරු Neon Teal වේ */
+      background: rgba(0, 241, 209, 0.1) !important;
+      border-color: #00f1d1 !important;
+      color: #00f1d1 !important;
       box-shadow: rgba(0, 241, 209, 0.15) 0px 0px 12px;
     }
   }
@@ -144,12 +129,9 @@
 
 /* 🏢 INDIVIDUAL COMMENT BOX CARD (Premium Dark Tech Glass) */
 .comment-box-card {
-  // 👈 1. Core Dark Change: පරණ සුදු පසුබිම වෙනුවට Ultra-Blur Dark Glass Base එක දුන්නා
   background: rgba(15, 23, 42, 0.253);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-
-  // 📍 මේ සිහින් බෝඩර් එක නිසා තද නිල් පසුබිම උඩින් කාඩ් එක වෙන් වී පෙනේ
   border: 3px solid rgba(255, 255, 255, 0.04);
   border-radius: 20px;
   padding: 25px;
@@ -164,43 +146,9 @@
   box-sizing: border-box;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
-  // &::after {
-  //   content: "“"; // ලස්සන Curly Double Quote එකක්
-  //   position: absolute;
-  //   top: 15%; // 📍 කාඩ් එකේ හරියටම මැදට වෙන්න පිහිටුවා ඇත
-  //   left: 42%;
-  //   transform: translate(-50%, -50%) rotate(-10deg); // පොඩ්ඩක් ඇල කළා සයිබර් ලුක් එකට font-family: "Exo 2", Georgia, serif;
-  //   font-size: 15rem; // මාරම දැවැන්ත ලස්සන ප්‍රමාණයක්
-  //   line-height: 0; // ඩාර්ක් තීම් එකට ගැළපෙන පරිදි ඉතාමත් ලාවට, ඇසට කරදරයක් නැතිව පෙනේ
-  //   color: rgba(255, 255, 255, 0.02);
-  //   text-shadow: 0 0 20px rgba(0, 241, 209, 0.01);
-  //   z-index: 0; // Text සහ Buttons වලට යටින් පිහිටීමට
-  //   pointer-events: none;
-  //   // user-select: none;
-  //   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  // }
-
-  // &:hover {
-  //   transform: translateY(-4px);
-  //   border-color: rgba(0, 241, 209, 0.25);
-  //   box-shadow:
-  //     0 20px 40px rgba(0, 0, 0, 0.3),
-  //     rgba(0, 241, 209, 0.1) 0px 0px 20px; // Hover වෙද්දී පසුබිමේ තියෙන Quote එක ලස්සනට Neon Teal පාටින් පණ ලබා දිලිසේ!
-  //   &::after {
-  //     color: rgba(0, 241, 209, 0.05);
-  //     transform: translate(-50%, -50%) rotate(5deg) scale(1.08); // Smooth ලෙස අනෙක් පැත්තට කැරකේ
-  //     filter: drop-shadow(0 0 15px rgba(0, 241, 209, 0.1));
-  //   }
-  // }
-
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(
-      0,
-      241,
-      209,
-      0.5
-    ); // Hover වෙද්දී Neon Teal බෝඩර් එකක් වේ
+    border-color: rgba(0, 241, 209, 0.5);
     border-width: 3px;
     box-shadow:
       0 20px 40px rgba(0, 0, 0, 0.3),
@@ -228,7 +176,7 @@
     gap: 12px;
   }
 
-  // DYNAMIC AVATAR ROUNDED BUFFER (ළමයා තෝරන පාට ඩේටාබේස් එකෙන්ම වදී)
+  // DYNAMIC AVATAR ROUNDED BUFFER
   .dynamic-avatar-circle {
     width: 45px;
     height: 45px;
@@ -237,7 +185,6 @@
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
-    // color: #ffffff;
     background-color: rgba(white, 0.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(241, 218, 218, 0.1);
@@ -250,7 +197,7 @@
     // Student Name Header
     .student-name-title {
       margin: 0;
-      color: #ffffff; // පිරිසිදු සුදු පාට කළා
+      color: #ffffff;
       font-weight: 800;
       font-size: 1.2rem;
       display: flex;
@@ -258,7 +205,7 @@
       gap: 8px;
 
       .verified-seal-badge {
-        color: #00f1d1; /* Verified Badge එක සරාගී Neon Teal කළා */
+        color: #00f1d1;
         filter: drop-shadow(0 0 4px #00f1d1);
         display: flex;
         align-items: center;
@@ -287,7 +234,6 @@
   .voice-message-body {
     border-radius: 10px;
     width: 100%;
-    // margin: 12px;
     background-color: rgba(white, 0.05);
 
     p {
@@ -333,7 +279,6 @@
   }
 
   .pulse-like-trigger-btn {
-    // 👈 2. 2026 Core Change: පරණ සුදු/ලා නිල් බටන් එක වෙනුවට Transparent Tech Layer එකක් හැදුවා
     background: rgba(255, 255, 255, 0.03);
     color: #e2e8f0;
     border: 1px solid rgba(255, 255, 255, 0.06);
@@ -358,10 +303,9 @@
     .like-count-value {
       border-left: 2px solid rgba(255, 255, 255, 0.08);
       padding-left: 12px;
-      font-family: monospace; // ඩිජිටල් අංක වලට පට්ට
+      font-family: monospace;
     }
 
-    // 🚀 ලයික් බටන් එක හොවර් කරද්දී රතු පාටින් දිලිසෙන සුපිරි සයිබර් ඇනිමේෂන් එක
     &:hover,
     &:active {
       background: rgba(239, 68, 68, 0.1);
@@ -378,7 +322,7 @@
   }
 }
 
-/* --- EMPTY HOLLOW CONTAINER (කාණ්ඩයේ ප්‍රතිචාර නොමැති විට පෙනෙන කොටස) --- */
+/* --- EMPTY HOLLOW CONTAINER  --- */
 .empty-category-notice-box {
   grid-column: 1 / -1;
   text-align: center;
@@ -400,5 +344,5 @@
   }
   100% {
     transform: scale(1.2);
-  } // ලස්සනට පත්තුවෙවී ගැස්සෙන ලයික් අයිකන් එක
+  }
 }

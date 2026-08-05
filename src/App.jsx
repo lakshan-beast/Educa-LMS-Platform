@@ -32,13 +32,10 @@ import TabController from "./pages/public/TabController";
 import AdminProtectedRoute from "./components/ui/AdminProtectedRoute";
 import AdminMobileBlock from "./pages/admin/AdminMobileBlock";
 
-
 const App = () => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
-
-  
 
   return (
     <>
@@ -75,7 +72,7 @@ const App = () => {
 
             {/* <Route path="student-guild" element={<StudentGuildChat />} /> */}
             {/* <Route path="guild-chat" element={<StudentGuildChat />} />{" "} */}
-            
+
             <Route path="staff-registry" element={<StaffRegistryManager />} />
             <Route path="papers" element={<PaperManager />} />
           </Route>

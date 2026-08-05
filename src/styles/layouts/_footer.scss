@@ -1,228 +1,15 @@
-// // footer style
-// footer {
-//   margin: 0;
-//   background-color: $footer-dark;
-//   color: $secondary-blue;
-//   border-radius: 1.5rem 1.5rem 0 0;
-//   padding-top: 1.5rem;
-
-//   @include flex-custom(flex-start, flex-start, column);
-
-//   // @include respond(desktop) {
-//   //   border-radius: 1rem 1rem 0 0;
-//   // }
-
-//   h3 {
-//     margin-bottom: 16px;
-//     color: $secondary-blue;
-//     font-size: 1.2rem;
-//     word-spacing: 5px;
-//     letter-spacing: 1.1px;
-//   }
-
-//   ul {
-//     list-style: none;
-//     padding: 0;
-//     margin: 0;
-//   }
-
-//   .secret-gen-link,
-//   // Link,
-//   a {
-//     margin: 5px 0;
-//     display: block;
-//     color: $text-light;
-//     font-size: 0.85rem;
-//     text-decoration: none;
-//     transition: transform 0.3s ease;
-//     cursor: pointer;
-//     opacity: 0.8;
-
-//     &:hover {
-//       color: $primary-green;
-//       transform: translateX(8px);
-//       text-decoration: none;
-//     }
-//   }
-
-//   .footer-icon {
-//     margin-right: 8px;
-//     padding: 1px 0;
-//   }
-// }
-
-// // footer contents
-// .footer-contents {
-//   gap: 50px;
-//   width: 100%;
-//   padding: 30px 10%;
-//   transition: 0.3s ease;
-
-//   @include respond(desktop) {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fit, minmax(15%, 1fr));
-//     gap: 60px;
-//   }
-
-//   // footer cards
-//   .footer-card {
-//     margin: 2rem 0;
-//     padding: 0rem;
-//     width: 100%;
-
-//     @include flex-custom(flex-start, flex-start, column);
-
-//     p {
-//       padding: 0;
-//       margin: 0;
-//       color: $text-medium;
-//       font-size: 0.85rem;
-//     }
-//   }
-// }
-
-// // footer logo
-// .footer-logo {
-//   color: $secondary-blue;
-
-//   .logo {
-//     color: $white;
-//     font-size: 2rem;
-//     font-weight: bolder;
-//     font-family: "Exo 2";
-//     display: inline-block;
-//     letter-spacing: 2px;
-
-//     span {
-//       color: $primary-green;
-//     }
-
-//     &:hover {
-//       transform: translate(0);
-//       color: $white;
-//       text-decoration: none;
-//     }
-//   }
-
-//   p {
-//     font-size: $font-size-body;
-//     font-size: 0.85rem;
-//   }
-// }
-
-// // socail links
-// .social-links {
-//   padding: 2rem 0;
-
-//   @include flex-custom(center, center, row, nowrap);
-
-//   a {
-//     margin: 0 0.5rem;
-//     font-size: 1.75rem;
-
-//     &:hover {
-//       color: $primary-green;
-//       transform: translateY(-3px);
-//     }
-//   }
-// }
-
-// #contact-email {
-//   text-transform: lowercase;
-// }
-
-// // footer bottom
-// #footer-bottom {
-//   margin-bottom: 6px;
-//   border-top: none;
-
-//   @include flex-custom(space-between, center, column, 0px, wrap);
-
-//   @include respond(mobile) {
-//     border-top: 2px solid #212747;
-//   }
-
-//   .footer-card {
-//     margin: 1.5rem 0;
-//     padding: 0rem;
-//     width: 100%;
-
-//     @include flex-custom(flex-start, flex-start, column);
-//   }
-// }
-
-// // footer legel
-// .footer-legels {
-//   Link {
-//     margin: 0;
-//     text-decoration: underline;
-//     color: $white;
-//   }
-// }
-
-// // footer copyrights
-// .footer-copyrights {
-//   display: flex;
-//   flex-direction: column;
-//   color: $white;
-
-//   a {
-//     margin-left: 10px;
-//     display: inline-block;
-//     color: rgba($white, 0.9);
-//     color: rgba($secondary-blue, 0.9);
-//   }
-// }
-
-// // specail contact form button
-// .subject-contacts {
-//   margin-top: 15px;
-//   border-top: 1px solid rgba(255, 255, 255, 0.1);
-//   padding-top: 10px;
-
-//   p {
-//     font-size: 0.9rem;
-//   }
-
-//   .contact-button {
-//     color: $white;
-//     background-color: $navbar-white;
-//     padding: 6px 12px;
-//     text-align: center;
-//     border-radius: 5px;
-
-//     &:hover {
-//       text-decoration: none;
-//       transform: translateY(3px);
-//     }
-//   }
-// }
-
-// // contact support
-// .contact-support {
-//   text-align: right;
-//   margin-top: 5px;
-//   margin-bottom: 15px;
-
-//   a {
-//     color: $orange;
-//     text-decoration: none;
-//   }
-// }
-
 /* ========================================================
-   2026 AI TREND VARIABLES (උඹේ කෝඩ් එකේ අඩුව තිබුණු ටික මෙන්න)
+   2026 AI TREND VARIABLES 
    ======================================================== */
 
 footer {
-  margin: 3rem 0 0 0; // උඩ සෙක්ෂන් එකෙන් පොඩ්ඩක් වෙන් කළා
+  margin: 3rem 0 0 0;
   background-color: rgba(white, 0.05);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  // color: $text-medium;
-  border-radius: 32px 32px 0 0; // වඩාත් සුමට රේඩියස් එකක්
+  border-radius: 32px 32px 0 0;
   padding-top: 3rem;
-  border-top: 2px solid rgba($primary-green, 0.25); 
+  border-top: 2px solid rgba($primary-green, 0.25);
   box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.3);
 
   display: flex;
@@ -230,7 +17,7 @@ footer {
 
   h3 {
     margin-bottom: 12px;
-    color: white; // මාතෘකා සුදු පාට කළා Executive පෙනෙන්න
+    color: white;
     font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -274,7 +61,7 @@ footer {
 
   .footer-icon {
     margin-right: 8px;
-    color: rgba(white, 0.3); // Icon එක සාමාන්‍ය වෙලාවට ලාවට පෙනේ
+    color: rgba(white, 0.3);
     transition: all 0.3s ease;
   }
 }
@@ -285,10 +72,7 @@ footer {
   padding: 0px 5% 20px 3% !important;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(200px, 1fr)
-  ); // Responsive බිඳෙන්නේ නැති වෙන්න හැදුවා
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 
   @include respond(desktop) {
@@ -304,7 +88,6 @@ footer {
 
     p {
       padding: 0;
-      // margin: 10px 0;
       color: rgba($secondary-blue, 0.75);
       font-size: 0.88rem;
       line-height: 1.6;
@@ -321,7 +104,7 @@ footer {
 .footer-logo {
   &:hover {
     transform: none !important;
-  } // ලෝගෝ එක Hover වෙද්දී ඇද වීම වැළැක්වීමට
+  }
 }
 
 /* --- Social Icons (Neon Glowing Rings) --- */
@@ -402,19 +185,14 @@ footer {
     &:hover {
       background-color: rgba($primary-green, 1);
       transform: translateY(-2px) !important;
-      // box-shadow: rgba($secondary-blue, 0.5) 0px 6px 15px;
     }
   }
 }
 
 /* --- Footer Bottom Section (Bento Grid Style) --- */
 #footer-bottom {
-  // border-top: 2px solid rgba(255, 255, 255, 0.16);
   padding: 0px 4%;
-  // margin-top: 20px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  // row-gap: 30px;
-  // border-width: 50%;
 
   .footer-card {
     margin: 0;
@@ -438,8 +216,6 @@ footer {
     display: flex;
     align-items: center;
     color: $text-medium !important;
-    // margin: 8px 0 !important;
-
     span {
       color: $primary-green;
       font-weight: 700;
@@ -454,7 +230,7 @@ footer {
 
 // Copyrights & Author Details
 .footer-copyrights {
-  grid-column: 1 / -1; // Bottom එකේ මුළු පළලම ගැනීමට
+  grid-column: 1 / -1;
   border-top: 2px solid rgba(255, 255, 255, 0.16);
   padding-top: 60px;
   margin-top: 20px !important;
@@ -501,45 +277,10 @@ footer {
     font-weight: 600;
 
     &:hover {
-      // text-decoration: underline !important;
       transform: translateY(-1px) !important;
     }
   }
 }
-// .footer-grand-branding {
-//   width: 100%;
-//   text-align: center;
-//   font-family: "Exo 2";
-//   font-weight: 900;
-//   font-size: 16vw;
-//   line-height: 0.8;
-//   margin: 2rem 0 1.5rem 0;
-//   color: rgba(255, 255, 255, 0.7);
-//   text-shadow: 6px 10px 6px #676767;
-//   letter-spacing: -0.03em;
-//   text-transform: lowercase;
-//   // user-select: none;
-//   pointer-events: none;
-//   position: relative;
-//   transition: all 0.5s ease-in-out;
-//   position: relative;
-//   // top: 10rem;
-//   span {
-//     color: rgba($primary-green, 0.2);
-//   }
-
-//   // footer:hover & {
-//   //   color: rgba(255, 255, 255, 0.45);
-//   //   letter-spacing: -0.01em;
-//   //   span {
-//   //     color: rgba(0, 241, 209, 0.4) !important;
-//   //     text-shadow: 0 0 30px rgba(0, 241, 209, 0.6);
-//   //   }
-//   // }
-//   @media (max-width: 600px) {
-//     font-size: 16vw;
-//   }
-// }
 
 /* ========================================================
    2026 GIANT FINALE FOOTER TYPOGRAPHY (PURE CSS CLOUDS FIX)
@@ -550,19 +291,17 @@ footer {
   text-align: center;
   font-family: "Exo 2", system-ui, sans-serif;
   font-weight: 950;
-  font-size: 13vw; /* Screen එකේ පළල අනුව auto ලොකු කුඩා වේ */
+  font-size: 13vw;
   line-height: 1;
   margin: 4.5rem 0 0 0;
   letter-spacing: -0.03em;
-  // text-transform: lowercase;
-  // user-select: none;
   pointer-events: none;
   position: relative;
   bottom: 1rem;
   z-index: 10;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 
-  // ☁️ 1. PURE CSS CLOUDS: පින්තූර නැතුව CSS Gradients වලින්ම වලාකුළු මවන මැජික් එක
+  // ☁️ 1. PURE CSS CLOUDS
   background-image:
     radial-gradient(
       circle at 20% 50%,
@@ -587,31 +326,17 @@ footer {
 
   background-size: 200% 200%;
   background-position: 0% 50%;
-  -webkit-background-clip: text; /* Background එක අකුරු ඇතුළට පමණක් සීමා කරයි */
-  -webkit-text-fill-color: transparent; // අකුරු වල ඔරිජිනල් පාට විنيවිද පෙනෙන්න සලස්වයි
-
-  // 🚀 වලාකුළු කැරකෙමින් පාවෙන පට්ටම Organic Animation එකක් දුන්නා
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   animation: pureCssClouds 15s ease infinite alternate;
-  opacity: 0.6; /* CSS gradients නිසා opacity එක 0.6 කළා ලස්සනට පේන්න */
-
-  // අගට තියෙන තිත විතරක් Neon Teal පාටින් ලස්සනට දිලිසේ
+  opacity: 0.6;
   span {
     -webkit-text-fill-color: initial;
     color: rgba(0, 241, 209, 0.4);
     text-shadow: 0 0 20px rgba(0, 241, 209, 0.5);
     transition: all 0.5s ease;
   }
-
-  // 🛸 HOVER EFFECT: මවුස් එක ෆුටර් එක ළඟට ගෙනිච්චම වලාකුළු තදින් පත්තු වේ!
-  // footer:hover & {
-  //   opacity: 0.9;
-  //   letter-spacing: -0.01em; // අකුරු ටික ලස්සනට ඈත් වේ smooth ලෙස
-
-  //   span {
-  //     color: rgba(0, 241, 209, 0.8) !important;
-  //     text-shadow: 0 0 30px rgba(0, 241, 209, 0.9);
-  //   }
-  // }
 
   @media (max-width: 600px) {
     font-size: 17vw;
@@ -620,7 +345,7 @@ footer {
 }
 
 /* ========================================================
-   ☁️ PURE CSS CLOUDS ANIMATION (වලාකුළු කැරකෙමින් පාවෙන හැටි)
+   ☁️ PURE CSS CLOUDS ANIMATION
    ======================================================== */
 @keyframes pureCssClouds {
   0% {
@@ -628,8 +353,8 @@ footer {
     filter: hue-rotate(0deg);
   }
   50% {
-    background-position: 100% 100%; // වලාකුළු හැඩතල උඩට සහ දකුණට මාරු වේ
-    filter: hue-rotate(15deg); // ලාවට සයිබර් කලර්ස් මාරු වීමක් වෙනවා
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
   }
   100% {
     background-position: 50% 0%;
@@ -652,7 +377,6 @@ footer {
   }
 
   li {
-    // border-right: 2px solid white;
     padding-right: 8px;
 
     :last-child {

@@ -76,13 +76,13 @@
 }
 
 .zoom-trigger-btn.active-ready {
-  background-color: #22c55e; /* 🟢 පන්තිය තියෙන වෙලාවට ලස්සන කොළ පාටින් පණ ගැන්වේ! */
+  background-color: #22c55e; 
   color: $white;
   box-shadow: 0 10px 25px rgba(34, 197, 94, 0.25);
 }
 
 .zoom-trigger-btn.disabled-lock {
-  background-color: #cbd5e1; /* 🔘 පන්ති නැති වෙලාවට අළු පාටින් ලොක් වී පවතී */
+  background-color: #cbd5e1;
   color: $secondary-blue3;
   cursor: not-allowed;
 }

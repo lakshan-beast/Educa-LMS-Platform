@@ -12,35 +12,27 @@ $blue-soft: #4b6bfb;
 
 $orange: rgb(255, 72, 0);
 $linear-left: linear-gradient(135deg, #4e4ef1da 0%, #000b3b 100%);
-// $white: #ffffff;
-// $white: #000e1d;
+
 $white: #01030f;
 $bg-light: #f4f7ff;
 
 $bg-soft: #7f91ec14;
 $navbar-white: #ebebeb;
 $dark-blue: #303030;
-// $footer-dark: #000118;
 $footer-dark: #000000;
 
 $red-color: #ff0a0a;
-$primary-green:#00f1d1;
+$primary-green: #00f1d1;
 
 // text colors
 $text-light: #f7f7f7;
 $text-medium: #7b808f;
 $text-blue: #7f91ec;
 
-// purple colors
-// $dark-purple1: #484aee;
-// $dark-purple2: #5454d9;
-// $dark-purple: #26136d;
-
 $text-muted: #64748b;
 $text-main: #0f172a;
-$neon-accent: #00f1d1; // 2026 Trend Neon Teal පාටක්
+$neon-accent: #00f1d1; // 2026 Trend Neon Teal
 $active-blue: #2563eb;
-
 
 // shadow
 $link-shadow: #ddddff;
@@ -48,7 +40,6 @@ $link-shadow: #ddddff;
 // fonts
 $font-primary: "Tilt Neon";
 $font-secondary: "Exo 2";
-// $font-forms: "Inter", sans-serif;
 
 // font-sizes
 $font-size-h1: 2.5rem;
@@ -205,20 +196,19 @@ $animation-timing-ease-in-out: ease-in-out;
 /* 🏛️ GLOBAL THEME TOKENS RULES (Add inside SASS variables config) */
 :root {
   /* ☀️ LIGHT MODE CONFIGURATION */
-  --bg-primary: #f8faff; // ළා අළු පැහැති පසුබිම
-  --bg-card: #ffffff; // පිරිසිදු සුදු පැහැති කාඩ්ස් [INDEX 4]
-  --text-main: #001b42; // ප්‍රධාන Royal Deep Blue අකුරු [INDEX 4]
-  --text-muted: #8e9196; // Slate Gray අළු පැහැති සරල විස්තර [INDEX 4]
-  --border-color: #eef2ff; // මෘදු Border ඉරි
-  --card-shadow: 0 4px 20px rgba(0, 27, 66, 0.02); // පාවෙන මෘදු හෙවනැල්ල
+  --bg-primary: #f8faff;
+  --bg-card: #ffffff;
+  --text-main: #001b42;
+  --text-muted: #8e9196;
+  --border-color: #eef2ff;
+  --card-shadow: 0 4px 20px rgba(0, 27, 66, 0.02);
 }
 
 html[data-theme="dark"] {
-  /* 🌙 DARK MODE CONFIGURATION (උඹ ඉල්ලපු විදිහටම #001b42 ප්‍රධාන පසුබිම කළා!) [INDEX 4] */
-  --bg-primary: #000c24; // තවත් තද නිල් පාට පසුබිම
-  --bg-card: #001b42; // 👑 ප්‍රධාන Deep Navy Blue එක කාඩ්පත් සහ පැනල් වලට! [INDEX 4]
-  --text-main: #ffffff; // අකුරු සහමුලින්ම පිරිසිදු සුදු පැහැයට හැරේ
-  --text-muted: #8e9196; // පරණ අළු පාටමයි [INDEX 4]
-  --border-color: rgba(255, 255, 255, 0.08); // පාරදෘශ්‍ය මෘදු Borders
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); // තද සෙවනැල්ලක්
+  --bg-primary: #000c24;
+  --bg-card: #001b42;
+  --text-main: #ffffff;
+  --text-muted: #8e9196;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }

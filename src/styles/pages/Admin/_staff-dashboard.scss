@@ -10,7 +10,7 @@
   box-sizing: border-box;
   animation: adminViewFadeIn 0.4s ease-out;
 
-  /* --- 👑 LAYER A: TOP HEADER zone (ඇඩ්මින් මාතෘකාව සහ ඔන්බෝඩ් බොත්තම) --- */
+  /* --- 👑 LAYER A: TOP HEADER zone --- */
   .staff-registry-top-header-zone {
     display: flex;
     justify-content: space-between;
@@ -18,7 +18,7 @@
     flex-wrap: wrap; // Mobile Friendly auto wrap support
     gap: 16px;
 
-    // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට පට්ටම Premium Dark Glass Layer එකක් දුන්නා
+    // 👈 Core Change:
     background: rgba(15, 23, 42, 0.45);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
@@ -35,7 +35,7 @@
 
       h1 {
         margin: 0;
-        color: #ffffff; // පිරිසිදු සුදු පැහැය
+        color: #ffffff; 
         font-size: 1.45rem;
         font-weight: 850;
         letter-spacing: -0.01em;
@@ -56,6 +56,7 @@
         #2563eb 0%,
         #1d4ed8 100%
       ); // Executive Blue Gradient Roll
+
       color: #ffffff;
       border: none;
       padding: 12px 24px;
@@ -77,7 +78,7 @@
           135deg,
           #1d4ed8 0%,
           #00f1d1 100%
-        ); // Hover වෙද්දී Neon Teal පැහැයට හැරේ
+        ); 
       }
 
       &:active {
@@ -111,22 +112,22 @@
     auto-fit,
     minmax(260px, 1fr)
   ); // 100% Fluid Layout Shift
+
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
 
   /* 🏢 INDIVIDUAL BENTO COUNTER TILE (Holographic Glass Slates) */
   .staff-bento-tile {
-    // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
+    // 👈 Core Change: 
     background: linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.03) 0%,
       rgba(255, 255, 255, 0.01) 100%
     );
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 
-    // 📍 තද නිල් පසුබිම උඩින් කාඩ්ස් වෙන් වී පෙනෙන්න සිහින් රිදී බෝඩර් එකක්
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 18px; // Smooth Apple Style Smooth Radii
     padding: 22px 24px;
@@ -158,7 +159,7 @@
 
       &.full-width-stream {
         width: 100%;
-        gap: 12px; // චැට් බොත්තමට ඉඩ තැබුවා
+        gap: 12px;
       }
     }
 
@@ -170,13 +171,13 @@
       letter-spacing: 0.8px;
     }
 
-    // Main Big Digital Numbers (ලොකු ඉලක්කම්)
+    // Main Big Digital Numbers 
     .metric-digital-digits {
       margin: 0;
       font-size: 1.9rem;
       color: #ffffff;
       font-weight: 800;
-      font-family: monospace; // ඩිජිටල් අංක වලට පට්ට
+      font-family: monospace; 
       letter-spacing: -0.01em;
 
       // Active Online Live Green Text Glow
@@ -298,10 +299,9 @@
    ======================================================== */
 
 .admin-faculty-teachers-ledger-panel {
-  // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
   background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 
   padding: 26px 28px;
@@ -315,7 +315,7 @@
   // Main Header Title Line (Registered Faculty Teachers)
   .ledger-core-heading {
     margin: 0 0 20px 0;
-    color: #ffffff; // පිරිසිදු සුදු පැහැය
+    color: #ffffff;
     font-size: 1.05rem;
     font-weight: 800;
     letter-spacing: 0.3px;
@@ -324,7 +324,7 @@
     gap: 10px;
 
     svg {
-      color: #2563eb; // Icon එක පට්ටම ලස්සන Executive Blue කළා
+      color: #2563eb; 
       filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.3));
     }
   }
@@ -346,14 +346,14 @@
   }
 
   /* ========================================================
-     📊 THE HIGH-DENSITY VAULT TABLE INTERFACE (ලේඛන වගුව)
+     📊 THE HIGH-DENSITY VAULT TABLE INTERFACE
      ======================================================== */
   .faculty-master-ledger-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
     font-size: 0.88rem;
-    min-width: 600px; // Mobile වලදී ලස්සනට Scroll එක ක්‍රියාත්මක වීමට
+    min-width: 600px; 
 
     // Table Headers (th) - Deep Dark Cyber Rows Setup
     th {
@@ -374,7 +374,7 @@
     // Table Data Cells (td)
     td {
       padding: 14px 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03); // සිහින් සයිබර් ඉරි කෑලි
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03); 
       color: #cbd5e1;
       vertical-align: middle;
 
@@ -390,14 +390,14 @@
 
     // Teacher Full Name Cell Group
     .teacher-full-name-cell {
-      color: #ffffff; // ළමයට පේන ගුරුවරයාගේ නම පිරිසිදු සුදු පැහැයෙන් පෙනේ
+      color: #ffffff; 
       font-weight: 700;
     }
 
     // Teacher Secure ID Code display
     .teacher-secure-id-code {
-      color: #00f1d1; // Authorized ID එක පට්ටම Neon Teal කළා
-      font-family: monospace; // ඩිජිටල් අංක වලට පට්ට
+      color: #00f1d1; 
+      font-family: monospace; 
       font-weight: 700;
       text-shadow: 0 0 6px rgba(0, 241, 209, 0.2);
       font-size: 0.9rem;
@@ -451,10 +451,9 @@
    ======================================================== */
 
 .admin-student-mentors-ledger-panel {
-  // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
   background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 
   padding: 26px 28px;
@@ -463,7 +462,7 @@
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  margin-top: 25px; // වගු දෙක අතර ලස්සන පරතරය
+  margin-top: 25px;
 
   // Main Header Title Line (Verified Student Mentors)
   .ledger-core-heading {
@@ -477,7 +476,7 @@
     gap: 10px;
 
     svg {
-      color: #f97316; // Mentor Icon එක පට්ටම ලස්සන Cyber Orange කළා
+      color: #f97316; 
       filter: drop-shadow(0 0 4px rgba(249, 115, 22, 0.3));
     }
   }
@@ -499,7 +498,7 @@
   }
 
   /* ========================================================
-     📊 THE HIGH-DENSITY VAULT TABLE INTERFACE (ලේඛන වගුව)
+     📊 THE HIGH-DENSITY VAULT TABLE INTERFACE
      ======================================================== */
   .mentor-master-ledger-table {
     width: 100%;
@@ -549,7 +548,7 @@
 
     // Mentor Secure ID Code display
     .mentor-secure-id-code {
-      color: #f97316; // Mentor ID එක පට්ටම Cyber Orange කළා
+      color: #f97316; 
       font-family: monospace;
       font-weight: 700;
       text-shadow: 0 0 6px rgba(249, 115, 22, 0.2);
@@ -605,10 +604,9 @@
    ======================================================== */
 
 .admin-alumni-ledger-panel {
-  // 👈 Core Change: පරණ සුදු පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
   background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 
   padding: 26px 28px;
@@ -617,7 +615,7 @@
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  margin-top: 25px; // වගු අතර ලස්සන පරතරය
+  margin-top: 25px;
 
   // Main Header Title Line (Registered Old Students)
   .ledger-core-heading {
@@ -631,7 +629,7 @@
     gap: 10px;
 
     svg {
-      color: #10b981; // Alumni Icon එක පට්ටම ලස්සන Neon Emerald Green කළා
+      color: #10b981; 
       filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.3));
     }
   }
@@ -653,7 +651,7 @@
   }
 
   /* ========================================================
-     📊 THE HIGH-DENSITY VAULT TABLE INTERFACE (ලේඛන වගුව)
+     📊 THE HIGH-DENSITY VAULT TABLE INTERFACE 
      ======================================================== */
   .alumni-master-ledger-table {
     width: 100%;
@@ -703,7 +701,7 @@
 
     // Alumni Secure ID Code display
     .alumni-secure-id-code {
-      color: #10b981; // Alumni ID එක පට්ටම Neon Green කළා
+      color: #10b981;
       font-family: monospace;
       font-weight: 700;
       text-shadow: 0 0 6px rgba(16, 185, 129, 0.2);
@@ -759,10 +757,9 @@
    ======================================================== */
 
 .admin-live-guild-bulletin-monitor-panel {
-  // 👈 Core Change: පරණ පසුබිම වෙනුවට සරාගී Dark Glass Layer එකක් දුන්නා
   background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 
   padding: 26px 28px;
@@ -771,7 +768,7 @@
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  margin-top: 25px; // වගුවට යටින් ලස්සන පරතරය
+  margin-top: 25px; 
 
   /* --- 👑 UPPER CONTROL METADATA BAR (උඩම පේළිය) --- */
   .monitor-top-meta-header-bar {
@@ -793,7 +790,7 @@
       gap: 10px;
       letter-spacing: 0.3px;
 
-      // 🔴 [THE LIVE RED PULSE DOT INDICATOR]: පරණ ඉමෝජි වෙනුවට සැබෑ ලයිව් රේඩාර් බෝලය!
+      // 🔴 [THE LIVE RED PULSE DOT INDICATOR]:
       .pulse-icon-live-dot {
         width: 10px;
         height: 10px;
@@ -814,12 +811,12 @@
     }
   }
 
-  /* --- 💻 MESSAGES VERTICAL SCROLL FEED (මැද පණිවිඩ ගලායන ජාලය) --- */
+  /* --- 💻 MESSAGES VERTICAL SCROLL FEED --- */
   .monitor-messages-vertical-scroll-feed {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-height: 400px; // උස ලස්සනට 400px සීමා කළා
+    max-height: 400px; 
     overflow-y: auto;
     padding-right: 6px;
     box-sizing: border-box;
@@ -915,16 +912,15 @@
         }
       }
 
-      // 💻 FIXED: ළමයා දාපු සැබෑ මැසේජ් එක (පරණ තද කළු-නිල් වෙනුවට කියවන්න පහසු කළා)
       .message-actual-text-body {
         margin: 0;
-        color: #cbd5e1; // කියවන්න මාරම සුමට ලයිට් වර්ණය
+        color: #cbd5e1;
         font-size: 0.9rem;
         line-height: 1.45;
         font-weight: 500;
       }
 
-      // 🗑️ QUICK EVICTION TRASH BUTTON (මැසේජ් එක Cloud එකෙන් මකන බටන් එක)
+      // 🗑️ QUICK EVICTION TRASH BUTTON 
       .message-quick-evict-delete-btn {
         background: rgba(239, 68, 68, 0.08); // Cyber Red Alpha Base
         color: #f87171;
@@ -983,7 +979,7 @@
      🔮 EXTENSION E: STAFF & FACULTY ACCOUNT ONBOARDING MODAL
      ======================================================== */
 .staff-onboard-card {
-  max-width: 440px; // Forms පුරවන්න ලස්සනට ඉඩ තියෙන සීමාව
+  max-width: 440px;
   max-height: 85vh;
   display: flex;
   flex-direction: column;
@@ -1014,7 +1010,7 @@
       label {
         font-size: 0.82rem;
         font-weight: 700;
-        color: #94a3b8; // Slate Gray කියවන්න ලේසි වර්ණය
+        color: #94a3b8; 
         letter-spacing: 0.3px;
         text-align: left;
       }
@@ -1037,7 +1033,7 @@
         transition: all 0.3s ease;
 
         &:focus {
-          border-color: #00f1d1; // Focus වෙද්දී ලස්සන සයිබර් Neon Teal ලයින් එකක් වේ
+          border-color: #00f1d1;
           background: rgba(255, 255, 255, 0.05);
           box-shadow: rgba(0, 241, 209, 0.15) 0px 0px 8px;
         }
@@ -1062,7 +1058,7 @@
       }
     }
 
-    // 📊 2-Column Split Grid Row (Classification & Academic Year පැත්තෙන් පැත්තට හිටීමට)
+    // 📊 2-Column Split Grid Row (Classification & Academic Year 
     .onboard-double-split-grid-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1093,7 +1089,7 @@
           135deg,
           #1d4ed8 0%,
           #00f1d1 100%
-        ); // Hover වෙද්දී Neon Teal පැහැයට හැරේ
+        ); 
       }
 
       &:active {

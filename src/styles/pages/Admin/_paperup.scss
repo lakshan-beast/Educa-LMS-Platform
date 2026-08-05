@@ -1,238 +1,3 @@
-// /* 🏛️ ACADEMIC PAPERS CORE REPOSITORY DESIGN BLUEPRINT */
-// .paper-manager-root-container {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 25px;
-//   animation: fadeIn 0.4s ease;
-
-//   .manager-top-header-zone {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     background: #ffffff;
-//     padding: 20px 25px;
-//     border-radius: 12px;
-//     h1 {
-//       margin: 0;
-//       color: #001b42;
-//       font-size: 1.5rem;
-//       font-weight: 700;
-//     }
-//     p {
-//       margin: 5px 0 0 0;
-//       color: #8b949e;
-//       font-size: 0.9rem;
-//     }
-//     .upload-trigger-btn {
-//       background: #0056ff;
-//       color: #ffffff;
-//       border: none;
-//       padding: 10px 20px;
-//       border-radius: 8px;
-//       font-weight: bold;
-//       cursor: pointer;
-//       display: flex;
-//       align-items: center;
-//       gap: 8px;
-//       transition: 0.2s;
-//       &:hover {
-//         background: #0045cc;
-//       }
-//     }
-//   }
-
-//   .grade-selector-dock-row {
-//     display: flex;
-//     gap: 10px;
-//     background: #ffffff;
-//     padding: 12px 20px;
-//     border-radius: 12px;
-//     align-items: center;
-//     .dock-meta-label {
-//       font-size: 0.85rem;
-//       font-weight: 600;
-//       color: #8b949e;
-//       margin-right: 10px;
-//     }
-//     .grade-pill-trigger {
-//       padding: 6px 14px;
-//       border-radius: 20px;
-//       border: none;
-//       background: #f4f6fa;
-//       color: #001b42;
-//       font-weight: 600;
-//       cursor: pointer;
-//       font-size: 0.85rem;
-//       transition: 0.2s;
-//       &.active {
-//         background: #0056ff;
-//         color: white;
-//       }
-//     }
-//   }
-
-//   /* 🏛️ SPLIT WORKSPACE GRID */
-//   .manager-split-workspace-grid {
-//     display: grid;
-//     grid-template-columns: 280px 1fr;
-//     gap: 25px;
-//     align-items: start;
-
-//     /* 📁 LEFT SIDE WINDOWS FOLDER SYSTEM LOOK */
-//     .folder-navigation-panel-aside {
-//       background: #ffffff;
-//       padding: 22px;
-//       border-radius: 12px;
-//       display: flex;
-//       flex-direction: column;
-//       gap: 15px;
-//       h3 {
-//         margin: 0;
-//         color: #001b42;
-//         font-size: 1rem;
-//         display: flex;
-//         align-items: center;
-//         gap: 8px;
-//         border-bottom: 2px solid #f4f6fa;
-//         padding-bottom: 10px;
-//       }
-//       .folders-vertical-stack {
-//         display: flex;
-//         flex-direction: column;
-//         gap: 8px;
-//         .folder-block-btn-trigger {
-//           display: flex;
-//           align-items: center;
-//           gap: 12px;
-//           padding: 12px;
-//           border-radius: 8px;
-//           border: 1px solid #f4f6fa;
-//           background: transparent;
-//           cursor: pointer;
-//           text-align: left;
-//           transition: all 0.2s ease;
-//           .f-icon {
-//             display: flex;
-//             font-size: 1.1rem;
-//           }
-//           .f-label {
-//             font-size: 0.9rem;
-//             font-weight: 600;
-//             color: #484848;
-//           }
-//           &:hover {
-//             background: #f8faff;
-//             transform: translateX(3px);
-//           }
-//           &.active-folder {
-//             background: #eef2ff;
-//             border-color: #c7d2fe;
-//             .f-label {
-//               color: #0056ff;
-//             }
-//           }
-//         }
-//       }
-//     }
-
-//     /* 💻 RIGHT SIDE HIGH-DENSITY GRID FLOW */
-//     .resource-matrix-display-main {
-//       .resource-cards-high-density-grid {
-//         display: grid;
-//         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-//         gap: 20px;
-//         .resource-asset-card {
-//           background: #ffffff;
-//           padding: 20px;
-//           border-radius: 12px;
-//           border: 1px solid #eef2ff;
-//           display: flex;
-//           flex-direction: column;
-//           gap: 15px;
-//           transition: all 0.3s ease;
-//           &:hover {
-//             transform: translateY(-4px);
-//             box-shadow: 0 10px 25px rgba(0, 27, 66, 0.03);
-//           }
-//           .card-top-icon-zone {
-//             display: flex;
-//             justify-content: space-between;
-//             align-items: center;
-//             .file-type-avatar-icon {
-//               background: #f4f6fa;
-//               padding: 10px;
-//               border-radius: 50%;
-//               display: flex;
-//               font-size: 1.2rem;
-//             }
-//             .category-meta-badge-tag {
-//               font-size: 0.75rem;
-//               font-weight: 700;
-//               color: #8b949e;
-//               text-transform: uppercase;
-//               background: #f4f6fa;
-//               padding: 3px 8px;
-//               border-radius: 4px;
-//             }
-//           }
-//           .asset-main-title {
-//             margin: 0;
-//             color: #001b42;
-//             font-size: 1rem;
-//             font-weight: 600;
-//             line-height: 1.4;
-//             min-height: 44px;
-//             display: -webkit-box;
-//             -webkit-line-clamp: 2;
-//             -webkit-box-orient: vertical;
-//             overflow: hidden;
-//           }
-//           .card-action-footer-hub {
-//             display: flex;
-//             justify-content: space-between;
-//             align-items: center;
-//             border-top: 1px solid #f4f6fa;
-//             padding-top: 12px;
-//             margin-top: 5px;
-//             .download-resource-btn {
-//               display: inline-flex;
-//               align-items: center;
-//               gap: 6px;
-//               color: #0056ff;
-//               text-decoration: none;
-//               font-weight: bold;
-//               font-size: 0.85rem;
-//               &:hover {
-//                 color: #0045cc;
-//               }
-//             }
-//             .delete-resource-btn {
-//               background: #fff5f5;
-//               color: #ff4b4b;
-//               border: none;
-//               padding: 8px;
-//               border-radius: 6px;
-//               cursor: pointer;
-//               transition: 0.2s;
-//               &:hover {
-//                 background: #ffe5e5;
-//               }
-//             }
-//           }
-//         }
-//       }
-//       .live-ledger-loading-state,
-//       .live-ledger-empty-state {
-//         text-align: center;
-//         color: #8b949e;
-//         font-weight: 600;
-//         padding: 40px 10px;
-//         font-size: 0.9rem;
-//         line-height: 1.5;
-//       }
-//     }
-//   }
-// }
 
 /* ========================================================
    2026 CYBERPUNK INVENTORY MATRIX CONTROL SASS (NO VARIABLES)
@@ -245,18 +10,16 @@
   box-sizing: border-box;
   animation: adminViewFadeIn 0.4s ease-out;
 
-  /* --- 🎛️ LAYER A: TOP HEADER zone (ඇඩ්මින් මාතෘකාව සහ අප්ලෝඩ් බොත්තම) --- */
+  /* --- 🎛️ LAYER A: TOP HEADER zone  --- */
   .manager-top-header-zone {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; // Mobile Friendly
     gap: 16px;
-
-    // 👈 පරණ සුදු පසුබිම වෙනුවට පට්ටම Premium Dark Glass Layer එකක් දුන්නා
     background: rgba(15, 23, 42, 0.45);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.05);
 
     padding: 24px 28px;
@@ -267,7 +30,7 @@
 
     h1 {
       margin: 0;
-      color: #ffffff; // පිරිසිදු සුදු පැහැය
+      color: #ffffff;
       font-size: 1.45rem;
       font-weight: 850;
       letter-spacing: -0.01em;
@@ -303,12 +66,12 @@
           135deg,
           #1d4ed8 0%,
           #00f1d1 100%
-        ); // Hover වෙද්දී Neon Teal වේ
+        );
       }
     }
   }
 
-  /* --- 💊 LAYER B: GRADE PILLS CONTROLLER (පන්ති තෝරන පේළිය) --- */
+  /* --- 💊 LAYER B: GRADE PILLS CONTROLLER  --- */
   .grade-selector-dock-row {
     display: flex;
     gap: 8px;
@@ -346,7 +109,6 @@
         background: rgba(255, 255, 255, 0.06);
       }
 
-      /* 🚀 ACTIVE GRADE: සිලෙක්ට් වුණු පන්තිය පට්ටම ලස්සන Neon Teal වලින් පත්තුවේ */
       &.active {
         background: rgba(0, 241, 209, 0.1) !important;
         border-color: #00f1d1 !important;
@@ -357,24 +119,24 @@
   }
 
   /* ========================================================
-     🏛️ LAYER C: SPLIT WORKSPACE GRID (පැනල් 2ක ව්‍යුහය)
+     🏛️ LAYER C: SPLIT WORKSPACE GRID 
      ======================================================== */
   .manager-split-workspace-grid {
     display: grid;
-    grid-template-columns: 1fr; // 📱 Mobile වලදී 1 Column වේ
+    grid-template-columns: 1fr; 
     gap: 24px;
     align-items: start;
     width: 100%;
     box-sizing: border-box;
 
     @media (min-width: 900px) {
-      grid-template-columns: 260px 1fr; // 💻 Desktop වලදී පිරිසිදු පැනල් 2ක ව්‍යුහය
+      grid-template-columns: 260px 1fr; 
     }
-    /* 📁 LEFT SIDEBAR: FOLDER NAVIGATION ENGINE (ෆෝල්ඩර් පද්ධතිය) */
+    /* 📁 LEFT SIDEBAR: FOLDER NAVIGATION ENGINE  */
     .folder-navigation-panel-aside {
       background: rgba(15, 23, 42, 0.45);
-      backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.05);
 
       padding: 22px;
@@ -399,7 +161,7 @@
 
         svg {
           color: #2563eb;
-        } // Folder icon Blue
+        } 
       }
 
       .folders-vertical-stack {
@@ -435,10 +197,9 @@
 
           &:hover {
             background: rgba(255, 255, 255, 0.04);
-            transform: translateX(4px); // පොඩ්ඩක් දකුණට Slide වේ
+            transform: translateX(4px); 
           }
 
-          /* 🚀 ACTIVE FOLDER STATE - ක්ලික් කළ ෆෝල්ඩරය සරාගී Neon Teal වලින් දිලිසේ */
           &.active-folder {
             background: rgba(0, 241, 209, 0.08);
             border-color: #00f1d1;
@@ -451,7 +212,7 @@
       }
     }
 
-    /* 💻 RIGHT MAIN: HIGH-DENSITY RESOURCE CARDS GRID (දත්ත කාඩ්පත් මාලාව) */
+    /* 💻 RIGHT MAIN: HIGH-DENSITY RESOURCE CARDS GRID */
     .resource-matrix-display-main {
       width: 100%;
       box-sizing: border-box;
@@ -461,7 +222,7 @@
         grid-template-columns: repeat(
           auto-fill,
           minmax(240px, 1fr)
-        ); // High-density grid setup
+        ); 
         gap: 18px;
         width: 100%;
         box-sizing: border-box;
@@ -502,7 +263,7 @@
               border-radius: 50%;
               display: flex;
               font-size: 1.1rem;
-              // 🎨 SUBJECT/FILE ICONS MATRIX ACCENTS FROM JSX CLASSES
+
               svg.tute-icon-clr {
                 color: #38bdf8;
                 filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.3));
@@ -533,19 +294,20 @@
           // Main Asset Title Text
           .asset-main-title {
             margin: 0;
-            color: #ffffff; // පිරිසිදු සුදු පැහැය
+            color: #ffffff;
             font-size: 0.95rem;
             font-weight: 700;
             line-height: 1.4;
             min-height: 42px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-align: left;
           }
 
-          // Card Action Footer Hub (බොත්තම් 2ක යට පේළිය)
+          // Card Action Footer Hub
           .card-action-footer-hub {
             display: flex;
             justify-content: space-between;
@@ -576,7 +338,7 @@
             .delete-resource-btn {
               background: rgba(239, 68, 68, 0.08); // Cyber Red Alpha Base
               color: #f87171;
-              // View PDF Anchor Button Link
+
               .download-resource-btn {
                 display: inline-flex;
                 align-items: center;
@@ -662,6 +424,6 @@
     }
     to {
       transform: rotate(360deg);
-    } // Loading spinner matrix
+    } 
   }
 }

@@ -28,12 +28,8 @@ main {
       color: $secondary-blue;
       word-spacing: 4px;
       font-size: 1rem;
-      // border: 1px solid $primary-green;
-      // padding: 5px 20px;
-      // border-radius: 16px;
       text-decoration: none;
       text-align: center;
-      // box-shadow: 0px 0px 10px $primary-green;
       transition: all 0.3s ease;
 
       &:hover {
@@ -68,7 +64,6 @@ main {
 
   @include respond(tablet) {
     padding: $padding-xlarge;
-    // margin: $margin-none $margin-xlarge;
   }
   @include respond(desktop) {
     padding: 3rem 0rem;
@@ -103,7 +98,6 @@ main {
     text-transform: capitalize;
 
     @include respond(desktop) {
-      // text-align: center;
       font-size: 1.1rem;
       margin: 16px 0;
       text-align: center;
@@ -115,18 +109,16 @@ main {
 .teachers-grid,
 .classes-grid {
   display: grid;
-  // grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 10px;
   padding: 4rem 0rem;
 }
 
-/* 👑 FIXED: HUAPEI Y5 LITE ඇතුළු සියලුම කුඩා දුරකථන සඳහා කාඩ්පත් නූලටම ලොක් කළා! */
+/* 👑 FIXED: HUAPEI Y5 LITE  */
 .dashboard-grid,
 .subjects-grid,
 .counters-grid {
   display: grid;
-  // 🚀 තිරය කුඩා වෙද්දී 100% ක්ම ඔටෝ ඇකිලෙන සුපිරි ලොජික් එක
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 15px;
 }
@@ -189,9 +181,7 @@ main {
   }
 }
 
-/* 🎯 ළමයා බටන් එක ඔබපු සැනින් අපේ තද නිල් පාටින් පත්තු වී සෙවනැල්ලක් මතු වේ මචං! */
 .tab-btn.active {
-  // background-color: $secondary-blue !important;
   background-color: transparent;
   color: white !important;
   border: 3px solid rgba($primary-green, 1);

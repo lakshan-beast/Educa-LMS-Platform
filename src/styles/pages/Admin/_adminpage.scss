@@ -121,7 +121,6 @@
   .admin-sidebar {
     width: 250px;
     margin-top: 1.3rem;
-    // background: $secondary-blue;
     background: $secondary-blue;
     color: $white;
     display: flex;
@@ -245,31 +244,6 @@
     width: $container-width-default;
   }
 }
-
-// vault container
-// .vault-container {
-//   background: $white;
-//   padding: 3rem;
-//   border-radius: $border-radius-large;
-
-//   .vault-content {
-//     margin-bottom: 30px;
-
-//     h3 {
-//       color: $secondary-blue;
-//       margin: $margin-none;
-//       display: flex;
-//       align-items: center;
-//       gap: 10px;
-//     }
-
-//     p {
-//       color: $secondary-blue3;
-//       font-size: $font-size-body-m;
-//       margin: 5px 0 0;
-//     }
-//   }
-// }
 
 // loading spin
 .loading-spin {
