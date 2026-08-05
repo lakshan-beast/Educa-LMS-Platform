@@ -38,7 +38,7 @@ const AllStudents = () => {
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  // 📝 EDIT MODE STATES (දැන් මේක වෙනම panel එකක් ලෙස ක්‍රියා කරයි)
+  // 📝 EDIT MODE STATES 
   const [isEditing, setIsEditing] = useState(false);
   const [editForm, setEditForm] = useState({
     fullName: "",
@@ -72,7 +72,6 @@ const AllStudents = () => {
         setStudents(studentList);
         setIsLoading(false);
 
-        // Live data update වෙද්දී selected student ගේ දත්තද refresh කිරීම
         if (selectedStudent) {
           const updated = studentList.find(
             (s) => s.docId === selectedStudent.docId,
@@ -89,7 +88,6 @@ const AllStudents = () => {
     return () => unsubscribe();
   }, [facultyFieldLock, selectedStudent]);
 
-  // Edit Mode එක පටන් ගැන්ම
   const startEdit = (student) => {
     setIsEditing(true);
     setEditForm({
@@ -120,7 +118,7 @@ const AllStudents = () => {
     ) {
       try {
         await deleteDoc(doc(db, "students", docId));
-        setSelectedStudent(null); // මකපු ළමයාව කාඩ් එකෙන් අයින් කිරීම
+        setSelectedStudent(null); 
       } catch (err) {
         console.error("Delete Student Error:", err);
       }
@@ -264,7 +262,7 @@ const AllStudents = () => {
 
         {/* 📋 RIGHT SIDE: DYNAMIC DETAILS VAULT CARD */}
         <div className="right-details-card-vault">
-          {/* CONDITION 01: NO STUDENT SELECTED (හිස් අවස්ථාව) */}
+          {/* CONDITION 01: NO STUDENT SELECTED  */}
           {!selectedStudent ? (
             <div className="vault-empty-selection-placeholder">
               <FaUsers className="placeholder-users-icon" />
@@ -385,7 +383,7 @@ const AllStudents = () => {
               </div>
             </div>
           ) : (
-            /* CONDITION 03: VIEWING REJECT/REGISTRY PROFILE DETAILS (විස්තර බැලීමේ පැනලය) */
+            /* CONDITION 03: VIEWING REJECT/REGISTRY PROFILE DETAILS  */
             <div className="vault-profile-view-glass-card">
               {/* PROFILE HEADER DATA IDENTIFIER */}
               <div className="view-card-header-meta">

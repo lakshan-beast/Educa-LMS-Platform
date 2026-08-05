@@ -5,7 +5,6 @@ import {
   collection,
   query,
   where,
-  //   getDocs,
   addDoc,
   doc,
   deleteDoc,
@@ -20,7 +19,6 @@ import {
   FaUserShield,
   FaUserCheck,
   FaTrashCan,
-  //   FaCircleCirclePlus,
   FaXmark,
   FaUsersLine,
 } from "react-icons/fa6";
@@ -30,8 +28,8 @@ const StaffRegistryManager = () => {
   const { subject } = useParams();
   const currentSubject = subject ? subject.toLowerCase() : "maths";
 
-  // 👑 🆕 LIVE CHAT BULLETIN LEDGER STREAM (අන්තිමටම වැටුණු මැසේජ් 10 සජීවීව කියවයි) [INDEX 4, 51]
-  const [liveMessages, setLiveMessages] = useState([]); // 👈 මේ State එක Component එකේ උඩින් ලියාගන්න මචං
+  // 👑 🆕 LIVE CHAT BULLETIN LEDGER STREAM
+  const [liveMessages, setLiveMessages] = useState([]); 
 
   const chatQuery = query(
     collection(db, "guild_chats"),
@@ -45,11 +43,10 @@ const StaffRegistryManager = () => {
     );
   });
 
-  // 💡 return () => { ... } එක ඇතුළට unsubLiveChat(); කෑල්ලත් එකතු කරන්න මචං [INDEX 4]
 
   // ☁️ LIVE CLOUD COUNTERS STATES
   const [totalStudents, setTotalStudents] = useState(0);
-  const [onlineStudents, setOnlineStudents] = useState(0); // 🟢 සජීවීව Online ඉන්න ළමයි ගණන [INDEX 4]
+  const [onlineStudents, setOnlineStudents] = useState(0); 
   const [staffList, setStaffList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -59,19 +56,17 @@ const StaffRegistryManager = () => {
     fullName: "",
     secureId: "",
     password: "",
-    role: "mentor", // mentor | old-student | teacher [INDEX 4]
+    role: "mentor", // mentor | old-student | teacher
     academicYear: new Date().getFullYear().toString(),
   });
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // 🔄 1. COUNTERS & STAFF MATRIX HYDRATION LOOP [INDEX 51]
+  // 🔄 1. COUNTERS & STAFF MATRIX HYDRATION LOOP
   useEffect(() => {
     if (!currentSubject) return;
-    // setIsLoading(true);
-
-    // A. Enrolled Students Counter Query [INDEX 51]
+    // A. Enrolled Students Counter Query
     const studentQuery = query(
       collection(db, "students"),
       where(currentSubject, "==", true),
@@ -79,17 +74,17 @@ const StaffRegistryManager = () => {
     const unsubStudents = onSnapshot(studentQuery, (snapshot) => {
       setTotalStudents(snapshot.size);
 
-      // 🟢 Online Simulator Sync: Real-time Online ඉන්න ළමයි ගණන කියවීම [INDEX 4, 51]
+      // 🟢 Online Simulator Sync: 
       const onlineCount = snapshot.docs.filter(
         (doc) => doc.data().isOnline === true,
       ).length;
-      // ළමයි නැති වෙලාවට ලස්සන සජීවී ගණනක් පෙන්වීමට කුඩා fallback එකක්
+
       setOnlineStudents(
         onlineCount > 0 ? onlineCount : Math.floor(snapshot.size * 0.15) || 2,
       );
     });
 
-    // B. Guild Staff & Mentors Stream Query [INDEX 51]
+    // B. Guild Staff & Mentors Stream Query 
     const staffQuery = query(
       collection(db, "guild_staff"),
       where("subject", "==", currentSubject),
@@ -178,7 +173,7 @@ const StaffRegistryManager = () => {
       }
     }
   };
-  // 🔍 USER MATRIX SEGREGATION ENGINE (විෂය අනුව වගු 3කට වෙන් කිරීමේ පෙරහන)
+  // 🔍 USER MATRIX SEGREGATION ENGINE 
   const teachersList = staffList.filter((s) => s.role === "teacher");
   const mentorsList = staffList.filter((s) => s.role === "mentor");
   const oldStudentsList = staffList.filter((s) => s.role === "old-student");
@@ -194,7 +189,7 @@ const StaffRegistryManager = () => {
           color: "#001b42",
           fontWeight: "bold",
         }}>
-        <ImSpinner className="loading-spin" style={{ marginRight: "10px" }} />{" "}
+        <ImSpinner className="loading-spin" style={{ marginRight: "10px" }} />
         Loading Staff Framework Clusters...
       </div>
     );
@@ -498,7 +493,7 @@ const StaffRegistryManager = () => {
                     <p className="message-actual-text-body">{msg.text}</p>
                   </div>
 
-                  {/* 🗑️ QUICK EVICTION BUTTON: සර්ලාට වැරදි මැසේජ් Dashboard එකෙන්ම ඩිලීට් කරන්න දෙන බටන් එක [INDEX 4] */}
+                  {/* 🗑️ QUICK EVICTION BUTTON: */}
                   <button
                     type="button"
                     onClick={() =>
@@ -525,7 +520,6 @@ const StaffRegistryManager = () => {
         <div
           className="toolkit-sheet-overlay"
           onClick={() => setIsFormOpen(false)}>
-          {/* 👈 යට ඉඳන් පාවෙලා උඩට එන iOS Bottom Sheet Card එක */}
           <div
             className="toolkit-sheet-card staff-onboard-card"
             onClick={(e) => e.stopPropagation()}>

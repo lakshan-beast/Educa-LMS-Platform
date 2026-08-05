@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { db } from "../../firebaseConfig";
 import { doc, setDoc, onSnapshot, deleteDoc } from "firebase/firestore";
 import {
-  // FaCalendarDays,
   FaVideo,
   FaPause,
   FaCircleXmark,
@@ -78,7 +77,6 @@ const ScheduleManager = () => {
     };
   };
 
-  // 👑 වැරදුණු Schedule එකක් permanently ඩේටාබේස් එකෙන් මකා දැමීම
   const handleDeleteSchedule = async (grade) => {
     if (
       window.confirm(
@@ -91,7 +89,7 @@ const ScheduleManager = () => {
           "schedules",
           `${grade}_${currentFacultySubject}`,
         );
-        await deleteDoc(docRef); // 👈 Firestore එකෙන් document එකම මකා දමයි [INDEX 51]
+        await deleteDoc(docRef); 
       } catch (err) {
         console.error("Cloud document deletion failed:", err);
       }
@@ -148,7 +146,6 @@ const ScheduleManager = () => {
                 key={grade}
                 className={`schedule-matrix-card ${isForceActive ? "neon-pulse-active" : ""} status-${currentSchedule?.overrideStatus?.toLowerCase() || "none"}`}
                 style={{
-                  // 👈 Database එකෙන් එන Dynamic status border/bg එක පිරිසිදුව මෙතනින් වදී
                   borderColor:
                     statusConfig.border || "rgba(255, 255, 255, 0.05)",
                   background: statusConfig.bg || "rgba(15, 23, 42, 0.55)",
@@ -197,7 +194,6 @@ const ScheduleManager = () => {
                       </div>
                     )}
 
-                    {/* 🎛️ CORE LIVE OPERATION CONTROLLERS (බොත්තම් 5 පේළිය) */}
                     <div className="operational-control-hub">
                       <button
                         onClick={() =>

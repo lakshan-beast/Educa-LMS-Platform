@@ -68,12 +68,12 @@ const AdminDashboard = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // 🔄 LIVE CLOUD HYDRATION MATRIX (Subject-Isolated Content Gating) [INDEX 4, 51]
+  // 🔄 LIVE CLOUD HYDRATION MATRIX (Subject-Isolated Content Gating)
   useEffect(() => {
     // setIsLoading(true);
     if (!currentFacultySubject) return;
 
-    // A. Students Stream & Gender Demographics Calculator [INDEX 51]
+    // A. Students Stream & Gender Demographics Calculator
     const studentQuery = query(
       collection(db, "students"),
       where(currentFacultySubject, "==", true),
@@ -98,7 +98,7 @@ const AdminDashboard = () => {
       ]);
     });
 
-    // B. Notices Stream [INDEX 51]
+    // B. Notices Stream
     const noticeQuery = query(
       collection(db, "class_notices"),
       where("subject", "==", currentFacultySubject),
@@ -107,7 +107,7 @@ const AdminDashboard = () => {
       setTotalNotices(snapshot.size),
     );
 
-    // C. Resource Distribution Tracker (Bar Chart Architecture) [INDEX 4, 51]
+    // C. Resource Distribution Tracker (Bar Chart Architecture)
     const paperQuery = query(
       collection(db, "academic_materials"),
       where("subject", "==", currentFacultySubject),
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
       ]);
     });
 
-    // D. Today's Schedule Operational Pipeline [INDEX 4, 51]
+    // D. Today's Schedule Operational Pipeline
     const scheduleQuery = query(
       collection(db, "schedules"),
       where("subject", "==", currentFacultySubject),
@@ -147,7 +147,7 @@ const AdminDashboard = () => {
       );
       setTodayClasses(mappedToday);
 
-      // Smart Administrative Notification Module [INDEX 4]
+      // Smart Administrative Notification Module
       if (mappedToday.length > 0) {
         const nextClass = mappedToday[0];
         setSmartReminder(
@@ -160,7 +160,7 @@ const AdminDashboard = () => {
       }
     });
 
-    // E. Triple Exam Live Ledger Stream [INDEX 51]
+    // E. Triple Exam Live Ledger Stream
     const examQuery = query(
       collection(db, "dashboard_exams"),
       where("subject", "==", currentFacultySubject),
@@ -169,13 +169,12 @@ const AdminDashboard = () => {
       setExams(snapshot.docs.map((doc) => doc.data()));
     });
 
-    // 👑 FIXED: සියලුම Cloud Listeners සක්‍රීය වුණු සැනින් Loading එක නවතා දමයි! [INDEX 4]
     const delayFlag = setTimeout(() => {
       setIsLoading(false);
     }, 800);
 
     return () => {
-      clearTimeout(delayFlag); // 👈 මේක අර පැරණි return () => { ... } එක ඇතුළට දාන්න මචං
+      clearTimeout(delayFlag);
       unsubStudents();
       unsubNotices();
       unsubPapers();
@@ -246,7 +245,6 @@ const AdminDashboard = () => {
   // 📅 MINI EVENT CALENDAR ENGINE LOGICS
   const [calendarDate, setCalendarDate] = useState(new Date());
 
-  // වත්මන් මාසයේ දින ගණන සහ ආරම්භක දිනය සෙවීමේ ශ්‍රිතයන් [4]
   const getDaysInMonth = (date) =>
     new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   const getFirstDayOfMonth = (date) =>
@@ -264,7 +262,6 @@ const AdminDashboard = () => {
   const [newActivity, setNewActivity] = useState({ title: "", date: "" });
   const [isActivityFormOpen, setIsActivityFormOpen] = useState(false);
 
-  // සජීවීව Activities Cloud Listener එක ක්‍රියාත්මක කිරීම [51]
   useEffect(() => {
     if (!currentFacultySubject) return;
     const actQuery = query(
@@ -449,7 +446,6 @@ const AdminDashboard = () => {
                   {genderData.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
-                      // 👈 COLORS ලිස්ට් එකට ඔයාගේ component එක ඇතුළෙන් දෙන පාටවල් වදී (උදා: #00f1d1, #ff2c73 වගේ ඒවා පට්ට)
                       fill={COLORS[index % COLORS.length]}
                     />
                   ))}
@@ -467,7 +463,6 @@ const AdminDashboard = () => {
           <div className="recharts-canvas-container">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={resourceData}>
-                {/* 💻 FIXED: ඩාර්ක් පසුබිම උඩින් අකුරු ලස්සනට පේන්න stroke එක Slate Gray කළා */}
                 <XAxis
                   dataKey="name"
                   stroke="#94a3b8"
@@ -476,7 +471,6 @@ const AdminDashboard = () => {
                 />
                 <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} />
                 <Tooltip />
-                {/* 🚀 FIXED: බාර් තීරු පරණ මඩ නිල් වෙනුවට, සයිබර් Executive Blue පාටින් පත්තු කළා */}
                 <Bar dataKey="count" fill="#2563eb" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -678,7 +672,6 @@ const AdminDashboard = () => {
         <div
           className="toolkit-sheet-overlay"
           onClick={() => setIsExamModalOpen(false)}>
-          {/* 👈 යට ඉඳන් පාවෙලා උඩට එන iOS Bottom Sheet Card එක */}
           <div
             className="toolkit-sheet-card exam-setup-card"
             onClick={(e) => e.stopPropagation()}>

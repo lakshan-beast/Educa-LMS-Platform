@@ -22,7 +22,7 @@ import {
   FaFolderPlus,
 } from "react-icons/fa6";
 import { ImSpinner } from "react-icons/im";
-import PaperPublishForm from "../../forms/PaperUploadForm"; // 👈 Popup Form එක ලින්ක් කළා
+import PaperPublishForm from "../../forms/PaperUploadForm"; 
 import ConfirmationModal from "../../components/ui/ConfirmationModal";
 
 const PaperManager = () => {
@@ -92,7 +92,7 @@ const PaperManager = () => {
     }
   };
 
-  // 🔍 DYNAMIC MULTI-TENANT FILTER MATRIX (උඹ ඉල්ලපු අච්චාරු විරෝධී Folder Filter Engine එක!) [INDEX 4]
+  // 🔍 DYNAMIC MULTI-TENANT FILTER MATRIX 
   const filteredMaterials = uploadedMaterials.filter((row) => {
     if (activeCategory === "ALL") return true;
     return row.category === activeCategory;

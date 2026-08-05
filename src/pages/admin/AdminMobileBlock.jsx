@@ -18,7 +18,7 @@ const AdminMobileBlock = () => {
         padding: "30px",
         textAlign: "center",
       }}>
-      {/* CARD INTERFACE PANEL [INDEX 4] */}
+      {/* CARD INTERFACE PANEL  */}
       <div
         style={{
           background: "#ffffff",

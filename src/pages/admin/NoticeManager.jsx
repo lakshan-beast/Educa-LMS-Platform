@@ -16,7 +16,7 @@ import {
   FaUserPen,
   FaBullhorn,
 } from "react-icons/fa6";
-import NoticePublishForm from "../../forms/NoticePublishForm"; // 👈 Popup Form එක ලින්ක් කළා
+import NoticePublishForm from "../../forms/NoticePublishForm"; 
 
 const NoticeManager = () => {
   const [notices, setNotices] = useState([]);
