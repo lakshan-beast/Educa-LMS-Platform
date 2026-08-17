@@ -262,7 +262,7 @@ const Footer = () => {
 
           <p>
             Copyright <FaRegCopyright /> {currentYear}
-            <span>SyncXel</span> Web Solutions. All rights reserved.
+             <span>SyncXel</span> Web Solutions. All rights reserved.
           </p>
 
           <p>
