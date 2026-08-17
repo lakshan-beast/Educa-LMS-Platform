@@ -261,7 +261,7 @@ const Footer = () => {
           </div>
 
           <p>
-            Copyright <FaRegCopyright /> {currentYear} <span>Educa.</span>
+            Copyright <FaRegCopyright /> {currentYear}
             <span>SyncXel</span> Web Solutions. All rights reserved.
           </p>
 
