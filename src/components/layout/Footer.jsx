@@ -261,8 +261,8 @@ const Footer = () => {
           </div>
 
           <p>
-            Copyright <FaRegCopyright /> {currentYear} <span>Educa.</span> - A
-            Product of <span>NexusLabs</span> Sri Lanka. All rights reserved.
+            Copyright <FaRegCopyright /> {currentYear} <span>Educa.</span>
+            <span>SyncXel</span> Web Solutions. All rights reserved.
           </p>
 
           <p>
