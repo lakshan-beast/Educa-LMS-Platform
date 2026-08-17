@@ -19,7 +19,7 @@ import {
   FaLaptopCode,
   FaUsers,
   FaTelegram,
-  FaHeart,
+  // FaHeart,
 } from "react-icons/fa";
 
 import Privacy from "../../pages/public/Privacy";
@@ -262,10 +262,20 @@ const Footer = () => {
 
           <p>
             Copyright <FaRegCopyright /> {currentYear}
-            <span>SyncXel</span>Web Solutions. All rights reserved.
+            <span>SyncXel Web Solutions.</span> All rights reserved.
           </p>
 
-          <p>
+          {/* <div className="flex flex-row items-start md:items-center">
+              Copyrights
+              <FaRegCopyright className="ml-1.5 text-sm " />
+              <span className="mx-2">{new Date().getFullYear()}</span>{" "}
+              <span className="font-semibold text-white/60 mr-2">
+                SyncXel Web Solutions. 
+              </span>
+              All rights reserved.
+            </div> */}
+
+          {/* <p>
             Designed & Engineered <FaHeart /> by
             <a
               className="author-link"
@@ -274,7 +284,7 @@ const Footer = () => {
               rel="noopener noreferrer">
               Lakshan
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
 
